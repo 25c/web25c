@@ -1,6 +1,11 @@
 Nkl::Application.routes.draw do
   root :to => 'home#index'
   
+  match 'register' => 'users#new', :via => :get, :as => :register
+  match 'register' => 'users#create', :via => :post
+  
+  resource :users, :only => [ :index, :show ]
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -27,6 +27,7 @@
             %ul.nav
               %li= link_to t('.home'), "/path1"
               %li= link_to t('.about'), "/path2"
+              - if signed_in?
               %li= link_to t('.profile'), "/path3"
               %li= link_to t('.contact'), "/path3"
 
