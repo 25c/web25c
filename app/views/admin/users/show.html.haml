@@ -8,21 +8,13 @@
   %br
   = @user.email
 %p
-  %strong= model_class.human_attribute_name(:password_digest) + ':'
-  %br
-  = @user.password_digest
-%p
   %strong= model_class.human_attribute_name(:facebook_uid) + ':'
   %br
   = @user.facebook_uid
 %p
-  %strong= model_class.human_attribute_name(:facebook_code) + ':'
+  %strong= model_class.human_attribute_name(:is_admin) + ':'
   %br
-  = @user.facebook_code
-%p
-  %strong= model_class.human_attribute_name(:facebook_access_token) + ':'
-  %br
-  = @user.facebook_access_token
+  = @user.is_admin
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), admin_users_path, :class => 'btn'

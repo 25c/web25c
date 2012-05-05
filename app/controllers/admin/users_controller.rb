@@ -30,9 +30,10 @@ class Admin::UsersController < Admin::AdminController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+    @user.assign_attributes(params[:user], :as => :admin)
     @user.editing = true
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.save
         format.html { redirect_to admin_user_path(@user), notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else

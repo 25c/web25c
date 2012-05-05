@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   
   attr_writer :editing
   attr_accessible :email, :password
+  attr_accessible :email, :password, :is_admin, :as => :admin
+  
   
   validates_presence_of :email, :if => 'self.facebook_uid.blank?'
   validates_uniqueness_of :email, :if => 'self.facebook_uid.blank?'
