@@ -35,6 +35,7 @@ en:
       click_here: Click here...
       
     sign_in:
+      failure: Sorry, your email and/or password were incorrect.
       title: Sign in
       
   layouts:
@@ -52,4 +53,8 @@ en:
       sign_out: Sign out
       or: or
       facebook: Login with Facebook
+  
+  users:
+    create:
+      success: Your account has been created!
       

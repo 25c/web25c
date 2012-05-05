@@ -31,11 +31,12 @@
       %a.brand(href=root_path) 25c
       .container.nav-collapse
         %ul.nav
-          %li= link_to t('.home'), "/path1"
-          %li= link_to t('.about'), "/path2"
-          - if signed_in?
-            %li= link_to t('.profile'), "/path3"
-          %li= link_to t('.contact'), "/path3"
+          %li= link_to t('.home'), root_path
+          -#
+            %li= link_to t('.about'), "/path2"
+            - if signed_in?
+              %li= link_to t('.profile'), "/path3"
+            %li= link_to t('.contact'), "/path3"
         - if signed_in?
           %ul.nav.pull-right
             - if current_user.is_admin
