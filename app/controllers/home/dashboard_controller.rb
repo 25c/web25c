@@ -4,4 +4,8 @@ class Home::DashboardController < Home::HomeController
     
   end
   
+  def get_button
+    
+  end
+  
 end

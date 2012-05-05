@@ -27,3 +27,20 @@ body {
 .nav .fb-login-button {
   margin-top: 8px;
 }
+.inline-block {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+/* Get Button
+ *---------------------------- */
+.button-code-container {
+  font-weight: bold;
+  color: #666;
+  padding: 10px;
+  text-align: center;
+}
+.sample-button {
+  text-align: center;
+}

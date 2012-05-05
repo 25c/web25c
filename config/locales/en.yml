@@ -19,6 +19,8 @@ en:
     dashboard:
       index:
         title: Dashboard
+      get_button:
+        title: Get Button
     
     index:
       value_proposition: Rewarding great content & causes with one quarter, one click.

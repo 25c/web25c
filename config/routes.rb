@@ -1,5 +1,6 @@
 Nkl::Application.routes.draw do
   root :to => 'home#index'
+  match 'button/:id' => 'button#button'
   
   match 'register' => 'users#new', :via => :get, :as => :register
   match 'register' => 'users#create', :via => :post
@@ -11,6 +12,7 @@ Nkl::Application.routes.draw do
   
   namespace :home do
     match '' => 'dashboard#index', :as => :dashboard
+    match 'get-button' => 'dashboard#get_button', :as => :get_button
   end
   
   namespace :admin do

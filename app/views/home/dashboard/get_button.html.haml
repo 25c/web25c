@@ -1,0 +1,12 @@
+- content_for :title, t('.title')
+
+.page-header
+  %h1= yield :title
+
+.alert
+  Add the following code to your page to start collecting quarters!
+  .button-code-container
+    &lt;script src="http://localhost:3000/assets/button.js?uuid=#{current_user.uuid}"&gt;&lt;/script&gt;
+
+.sample-button
+  <script src="http://localhost:3000/assets/button.js?uuid=duaneatat"></script>

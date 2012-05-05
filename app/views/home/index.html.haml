@@ -9,7 +9,7 @@
     %h2= t('.for_your_website_header')
     %p= t('.for_your_website_text')
     %p
-      %a.btn= t('.get_your_button')
+      = link_to t('.get_your_button'), home_get_button_path, :class => 'btn'
   .span4
     %h2= t('.reload_your_jar_header')
     %p= t('.reload_your_jar_text')
