@@ -44,11 +44,10 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        current_user = @user
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        self.current_user = @user
+        format.html { redirect_to_session_redirect_path(home_dashboard_path, notice: t('users.create.success')) }
         format.json { render json: @user, status: :created, location: @user }
       else
-        puts @user.errors.inspect
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

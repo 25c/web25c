@@ -51,4 +51,8 @@ en:
       sign_out: Sign out
       or: or
       facebook: Login with Facebook
+  
+  users:
+    create:
+      success: Your account has been created!
       

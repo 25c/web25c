@@ -45,16 +45,16 @@ class ApplicationController < ActionController::Base
   def require_signed_in
     unless self.signed_in?
       session[:redirect_path] = request.path
-      redirect_to sign_in_path
+      redirect_to register_path
     end
   end
   
-  def redirect_to_session_redirect_path(fallback)
+  def redirect_to_session_redirect_path(fallback, options = {})
     redirect_path = session.delete(:redirect_path)
     if redirect_path.blank?
-      redirect_to fallback
+      redirect_to fallback, options
     else
-      redirect_to redirect_path
+      redirect_to redirect_path, options
     end
   end
   
