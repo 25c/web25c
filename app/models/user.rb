@@ -39,9 +39,9 @@ class User < ActiveRecord::Base
   private
   
   def preprocess_fields
-    self.email = self.email.strip
+    self.email = self.email.strip unless self.email.nil?
     self.email = nil if self.email.blank?    
-    self.password = self.password.strip
+    self.password = self.password.strip unless self.password.nil?
   end
   
   def editing?
