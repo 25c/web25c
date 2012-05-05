@@ -40,7 +40,7 @@ en:
       admin: Admin
       dashboard: Dashboard
       
-    application:
+    header:
       home: Home
       about: About
       profile: Profile
