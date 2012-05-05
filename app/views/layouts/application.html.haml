@@ -15,6 +15,23 @@
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
 
   %body
+    #fb-root
+    :javascript
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : 'YOUR_APP_ID',
+          status     : true, 
+          cookie     : true,
+          xfbml      : true,
+          oauth      : true
+        });
+      };
+      (function(d){
+        var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        d.getElementsByTagName('head')[0].appendChild(js);
+      }(document));
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
@@ -30,6 +47,9 @@
               - if signed_in?
               %li= link_to t('.profile'), "/path3"
               %li= link_to t('.contact'), "/path3"
+              %li
+                .fb-login-button
+                  Login with Facebook
 
     .container
       = yield
