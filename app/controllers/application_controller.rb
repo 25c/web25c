@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :check_facebook_cookies
   
-  helper_method :signed_in?, :current_user
+  helper_method :signed_in?, :current_user, :url_base
   
   protected
       
@@ -65,6 +65,14 @@ class ApplicationController < ActionController::Base
     else
       session[:user] = user.uuid
     end
+  end
+  
+  def url_base
+    return @url_base unless @url_base.nil?
+    @url_base = "#{ActionMailer::Base.default_url_options[:host]}"
+    port = ActionMailer::Base.default_url_options[:port]
+    @url_base = "#{url_base}:#{port}" unless port.blank? or port == 80
+    @url_base
   end
   
 end
