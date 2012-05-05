@@ -19,3 +19,13 @@ jQuery ->
   $(".tooltip").tooltip()
   $("a[rel=tooltip]").tooltip()
 
+	$("#sign-out").click () ->
+		pathname = $(this).attr('href')
+		result = FB.getLoginStatus ((response) ->
+			if response.status == 'connected'
+				FB.logout () ->
+					window.location.pathname = pathname
+			else
+				window.location.pathname = pathname
+		), true
+		return false

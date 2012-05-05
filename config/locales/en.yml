@@ -2,6 +2,11 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  application:
+    check_facebook_cookies:
+      sign_in: You have been automatically signed in using your Facebook account.
+      sign_up: You have successfully linked your Facebook account to 25c!
+  
   form:
     submit: Submit
   

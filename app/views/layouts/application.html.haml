@@ -18,6 +18,10 @@
     #fb-root
     :javascript
       window.fbAsyncInit = function() {
+        FB.Event.subscribe('auth.authResponseChange', function(response) {
+          window.location.reload();
+        });
+        #{yield :fb_pre_init}
         FB.init({
           appId      : '#{FACEBOOK_SETTINGS[:app_id]}',
           status     : true, 
@@ -25,6 +29,7 @@
           xfbml      : true,
           oauth      : true
         });
+        #{yield :fb_post_init}
       };
       (function(d){
         var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
@@ -49,7 +54,7 @@
               %li= link_to t('.contact'), "/path3"
             - if signed_in?
               %ul.nav.pull-right
-                %li= link_to t('.sign_out'), sign_out_path
+                %li= link_to t('.sign_out'), sign_out_path, :id => 'sign-out'
             - else
               %ul.nav.pull-right
                 %li.navbar-text.pull-right= t('.or')
@@ -58,8 +63,13 @@
               %ul.nav.pull-right
                 %li
                   .fb-login-button(data-scope="email,publish_actions")= t('.facebook')
-
+                  
     .container
+      - if alert
+        .alert.alert-error= alert
+      - elsif notice
+        .alert.alert-success= notice
+    
       = yield
     
       %footer
