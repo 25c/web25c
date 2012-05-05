@@ -9,17 +9,17 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "application", :media => "all"
-    %link(href="images/favicon.ico" rel="shortcut icon")
-    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon")
-    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72")
-    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
+    / %link(href="images/favicon.ico" rel="shortcut icon")
+    / %link(href="images/apple-touch-icon.png" rel="apple-touch-icon")
+    / %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72")
+    / %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
 
   %body
     #fb-root
     :javascript
       window.fbAsyncInit = function() {
         FB.init({
-          appId      : 'YOUR_APP_ID',
+          appId      : '#{FACEBOOK_SETTINGS[:app_id]}',
           status     : true, 
           cookie     : true,
           xfbml      : true,
@@ -45,11 +45,19 @@
               %li= link_to t('.home'), "/path1"
               %li= link_to t('.about'), "/path2"
               - if signed_in?
-              %li= link_to t('.profile'), "/path3"
+                %li= link_to t('.profile'), "/path3"
               %li= link_to t('.contact'), "/path3"
-              %li
-                .fb-login-button
-                  Login with Facebook
+            - if signed_in?
+              %ul.nav.pull-right
+                %li= link_to t('.sign_out'), sign_out_path
+            - else
+              %ul.nav.pull-right
+                %li.navbar-text.pull-right= t('.or')
+                %li= link_to t('.register'), register_path
+                %li= link_to t('.sign_in'), sign_in_path
+              %ul.nav.pull-right
+                %li
+                  .fb-login-button= t('.facebook')
 
     .container
       = yield

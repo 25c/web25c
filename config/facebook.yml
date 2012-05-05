@@ -1,0 +1,12 @@
+development:
+  app_id: asdf
+  app_secret: asdf
+
+test:
+  app_id: asdf
+  app_secret: asdf
+
+production:
+  app_id: 403609836335934
+  app_secret: 3b515ce87e43694465b163ff5df82dfa
+  

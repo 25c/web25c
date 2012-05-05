@@ -3,10 +3,14 @@ class ApplicationController < ActionController::Base
   
   helper_method :signed_in?, :current_user
   
-  private
+  protected
+  
+  def require_signed_in
+    redirect_to sign_in_path unless self.signed_in?
+  end
   
   def signed_in?
-    !current_user.nil?
+    !self.current_user.nil?
   end
   
   def current_user

@@ -4,7 +4,14 @@ Nkl::Application.routes.draw do
   match 'register' => 'users#new', :via => :get, :as => :register
   match 'register' => 'users#create', :via => :post
   
-  resource :users, :only => [ :index, :show ]
+  match 'sign-in' => 'home#sign_in', :as => :sign_in
+  match 'sign-out' => 'home#sign_out', :as => :sign_out
+  
+  resources :users, :only => [ :index, :show ]
+  
+  namespace :home do
+    match '' => 'dashboard#index', :as => :dashboard
+  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

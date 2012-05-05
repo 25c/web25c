@@ -2,7 +2,14 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  form:
+    submit: Submit
+  
   home:
+    dashboard:
+      index:
+        title: Dashboard
+    
     index:
       value_proposition: Rewarding great content & causes with one quarter, one click.
       for_your_website_header: For your website
@@ -15,10 +22,18 @@ en:
       see_trending_text: See what other people really like and reward!
       click_here: Click here...
       
-  layout:
+    sign_in:
+      title: Sign in
+      
+  layouts:
     application:
       home: Home
       about: About
       profile: Profile
       contact: Contact
+      register: Register
+      sign_in: Sign in
+      sign_out: Sign out
+      or: or
+      facebook: Login with Facebook
       

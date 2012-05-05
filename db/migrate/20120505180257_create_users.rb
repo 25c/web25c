@@ -1,7 +1,6 @@
 class CreateUsers < ActiveRecord::Migration
   
-  def change
-    
+  def up
     create_table :users do |t|
       t.string :uuid, :null => false
       t.string :email
@@ -11,8 +10,14 @@ class CreateUsers < ActiveRecord::Migration
       t.string :facebook_access_token
       t.timestamps
     end
-    add_index :users, :uuid, :unique => true
-    
+    ActiveRecord::Base.connection.execute 'CREATE UNIQUE INDEX "index_users_on_uuid" ON "users" (LOWER(uuid))'
+    ActiveRecord::Base.connection.execute 'CREATE UNIQUE INDEX "index_users_on_email" ON "users" (LOWER(email))'
+  end
+  
+  def down
+    ActiveRecord::Base.connection.execute 'DROP INDEX "index_users_on_uuid"'
+    ActiveRecord::Base.connection.execute 'DROP INDEX "index_users_on_email"'
+    drop_table :users
   end
   
 end
