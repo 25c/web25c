@@ -1,10 +1,13 @@
 class User < ActiveRecord::Base
   has_secure_password
   
+  attr_writer :editing
   attr_accessible :email, :password
   
-  validates_presence_of :email, :password, :if => 'self.facebook_uid.blank?'
+  validates_presence_of :email, :if => 'self.facebook_uid.blank?'
   validates_uniqueness_of :email, :if => 'self.facebook_uid.blank?'
+
+  validates_presence_of :password, :if => 'self.facebook_uid.blank? and not editing?'
   
   before_create :generate_uuid
   
@@ -31,6 +34,10 @@ class User < ActiveRecord::Base
   end
   
   private
+  
+  def editing?
+    @editing
+  end
   
   def generate_uuid
     self.uuid = UUID.new.generate(:compact)

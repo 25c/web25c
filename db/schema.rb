@@ -11,17 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120505180257) do
+ActiveRecord::Schema.define(:version => 20120505201656) do
 
   create_table "users", :force => true do |t|
-    t.string   "uuid",                  :null => false
+    t.string   "uuid",                                     :null => false
     t.string   "email"
     t.string   "password_digest"
     t.string   "facebook_uid"
     t.string   "facebook_code"
     t.string   "facebook_access_token"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.boolean  "is_admin",              :default => false, :null => false
   end
 
 end

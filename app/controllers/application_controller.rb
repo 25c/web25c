@@ -46,6 +46,10 @@ class ApplicationController < ActionController::Base
     redirect_to sign_in_path unless self.signed_in?
   end
   
+  def require_admin
+    redirect_to root_path unless self.signed_in? and self.current_user.is_admin
+  end
+  
   def signed_in?
     !self.current_user.nil?
   end

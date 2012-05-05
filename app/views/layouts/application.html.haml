@@ -1,82 +1,10 @@
 !!! 5
 %html(lang="en")
   %head
-    %meta(charset="utf-8")
-    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title= content_for?(:title) ? yield(:title) : "25c"
-    = csrf_meta_tags
-    / Le HTML5 shim, for IE6-8 support of HTML elements
-    /[if lt IE 9]
-      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
-    = stylesheet_link_tag "application", :media => "all"
-    / %link(href="images/favicon.ico" rel="shortcut icon")
-    / %link(href="images/apple-touch-icon.png" rel="apple-touch-icon")
-    / %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72")
-    / %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
-
+    = render 'layouts/head'
   %body
-    #fb-root
-    :javascript
-      window.fbAsyncInit = function() {
-        FB.Event.subscribe('auth.authResponseChange', function(response) {
-          window.location.reload();
-        });
-        #{yield :fb_pre_init}
-        FB.init({
-          appId      : '#{FACEBOOK_SETTINGS[:app_id]}',
-          status     : true, 
-          cookie     : true,
-          xfbml      : true,
-          oauth      : true
-        });
-        #{yield :fb_post_init}
-      };
-      (function(d){
-        var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-        js = d.createElement('script'); js.id = id; js.async = true;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        d.getElementsByTagName('head')[0].appendChild(js);
-      }(document));
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#") 25c
-          .container.nav-collapse
-            %ul.nav
-              %li= link_to t('.home'), "/path1"
-              %li= link_to t('.about'), "/path2"
-              - if signed_in?
-                %li= link_to t('.profile'), "/path3"
-              %li= link_to t('.contact'), "/path3"
-            - if signed_in?
-              %ul.nav.pull-right
-                %li= link_to t('.sign_out'), sign_out_path, :id => 'sign-out'
-            - else
-              %ul.nav.pull-right
-                %li.navbar-text.pull-right= t('.or')
-                %li= link_to t('.register'), register_path
-                %li= link_to t('.sign_in'), sign_in_path
-              %ul.nav.pull-right
-                %li
-                  .fb-login-button(data-scope="email,publish_actions")= t('.facebook')
-                  
+    = render 'layouts/header'
     .container
-      - if alert
-        .alert.alert-error= alert
-      - elsif notice
-        .alert.alert-success= notice
-    
+      = render 'layouts/alerts'
       = yield
-    
-      %footer
-        %p &copy; Company 2012
-    /
-      Javascripts
-      \==================================================
-    / Placed at the end of the document so the pages load faster
-    = javascript_include_tag "application"
-
+    = render 'layouts/footer'

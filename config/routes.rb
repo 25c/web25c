@@ -13,6 +13,11 @@ Nkl::Application.routes.draw do
     match '' => 'dashboard#index', :as => :dashboard
   end
   
+  namespace :admin do
+    resources :users, :except => [ :new, :create ]
+    match '' => 'dashboard#index', :as => :dashboard
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

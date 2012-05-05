@@ -1,0 +1,18 @@
+!!! 5
+%html(lang="en")
+  %head
+    = render 'layouts/head'
+  %body
+    = render 'layouts/header'
+    .container
+      .row
+        .span3
+          .well.sidebar-nav
+            %ul.nav.nav-list
+              %li.nav-header= t('.admin')
+              %li= link_to t('.dashboard'), admin_dashboard_path
+              %li= link_to User.model_name.human.pluralize, admin_users_path
+        .span9
+          = render 'layouts/alerts'
+          = yield
+    = render 'layouts/footer'

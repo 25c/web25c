@@ -2,6 +2,11 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  admin:
+    dashboard:
+      index:
+        title: Admin Dashboard
+  
   application:
     check_facebook_cookies:
       sign_in: You have been automatically signed in using your Facebook account.
@@ -31,6 +36,10 @@ en:
       title: Sign in
       
   layouts:
+    admin:
+      admin: Admin
+      dashboard: Dashboard
+      
     application:
       home: Home
       about: About
