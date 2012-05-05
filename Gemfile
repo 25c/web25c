@@ -5,12 +5,12 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
-gem 'heroku'
-gem 'thin'
-gem 'haml'
-gem 'simple_form'
-gem "twitter-bootstrap-rails"
+gem 'pg'													# postgres database
+gem 'heroku'											# heroku tools and config
+gem 'thin'												# thin application server
+gem 'haml'												# haml template engine
+gem 'simple_form'									# simple form helpers
+gem 'koala'												# facebook api
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,6 +19,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+	gem "twitter-bootstrap-rails"			# twitter bootstrap generators
   gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
