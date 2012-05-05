@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :password, :if => 'self.facebook_uid.blank? and not editing?'
   
+  before_validation :preprocess_fields
   before_create :generate_uuid
   
   def refresh_facebook_access_token(code, force_refresh = false)
@@ -36,6 +37,12 @@ class User < ActiveRecord::Base
   end
   
   private
+  
+  def preprocess_fields
+    self.email = self.email.strip
+    self.email = nil if self.email.blank?    
+    self.password = self.password.strip
+  end
   
   def editing?
     @editing
