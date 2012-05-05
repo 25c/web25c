@@ -2,4 +2,23 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  home:
+    index:
+      value_proposition: Rewarding great content & causes with one quarter, one click.
+      for_your_website_header: For your website
+      for_your_website_text: Have a blog, music photo collection, great cause? Add a [+25c] button to your pages.
+      get_your_button: Get your 25c button now!
+      reload_your_jar_header: Reload your jar
+      reload_your_jar_text: Add more 25c to your jar so you can rewward content and causes you love!
+      reload_now: Reload Now!
+      see_trending_header: See what's trending
+      see_trending_text: See what other people really like and reward!
+      click_here: Click here...
+      
+  layout:
+    application:
+      home: Home
+      about: About
+      profile: Profile
+      contact: Contact
+      

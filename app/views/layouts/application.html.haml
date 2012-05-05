@@ -22,12 +22,13 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") Nkl
+          %a.brand(href="#") 25c
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to t('.home'), "/path1"
+              %li= link_to t('.about'), "/path2"
+              %li= link_to t('.profile'), "/path3"
+              %li= link_to t('.contact'), "/path3"
 
     .container
       = yield

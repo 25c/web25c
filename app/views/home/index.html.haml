@@ -1,7 +1,22 @@
 .hero-unit
   %h1 25c
-  %p
-    Rewarding great content & causes with one quarter, one click.
+  %p= t('.value_proposition')
   %p
     %a.btn.btn-primary.btn-large How it works
   
+.row
+  .span4
+    %h2= t('.for_your_website_header')
+    %p= t('.for_your_website_text')
+    %p
+      %a.btn= t('.get_your_button')
+  .span4
+    %h2= t('.reload_your_jar_header')
+    %p= t('.reload_your_jar_text')
+    %p
+      %a.btn= t('.reload_now')
+  .span4
+    %h2= t('.see_trending_header')
+    %p= t('.see_trending_text')
+    %p
+      %a.btn= t('.click_here')
