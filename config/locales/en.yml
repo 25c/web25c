@@ -33,6 +33,7 @@ en:
       click_here: Click here...
       
     sign_in:
+      failure: Sorry, your email and/or password were incorrect.
       title: Sign in
       
   layouts:
