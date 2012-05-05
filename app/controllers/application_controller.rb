@@ -32,7 +32,6 @@ class ApplicationController < ActionController::Base
           # register new user
           user = User.new
           user.facebook_uid = @_facebook_session['user_id']
-          user.facebook_registration = true
           user.password = SecureRandom.hex
           user.save!
           self.current_user = user

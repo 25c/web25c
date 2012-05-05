@@ -6,5 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# execute postgres specific changes not supported by rails migration/schema syntax
 ActiveRecord::Base.connection.execute 'CREATE UNIQUE INDEX "index_users_on_uuid" ON "users" (LOWER(uuid))'
 ActiveRecord::Base.connection.execute 'CREATE UNIQUE INDEX "index_users_on_email" ON "users" (LOWER(email))'
