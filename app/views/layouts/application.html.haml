@@ -57,7 +57,7 @@
                 %li= link_to t('.sign_in'), sign_in_path
               %ul.nav.pull-right
                 %li
-                  .fb-login-button= t('.facebook')
+                  .fb-login-button(data-scope="email,publish_actions")= t('.facebook')
 
     .container
       = yield

@@ -1,10 +1,10 @@
 development:
-  app_id: asdf
-  app_secret: asdf
+  app_id: 259751957456159
+  app_secret: 18e931276fed2723d34ce5c21495985b
 
 test:
-  app_id: asdf
-  app_secret: asdf
+  app_id: 259751957456159
+  app_secret: 18e931276fed2723d34ce5c21495985b
 
 production:
   app_id: 403609836335934
