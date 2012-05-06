@@ -15,10 +15,21 @@
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
     :css
       body { padding: 0; }
+      
+      /* Button
+       *---------------------------- */
+      #button-25 {
+        display: block;
+        width: 53px;
+        height: 48px;
+        background: url(#{image_path '25ch.png'}) no-repeat;
+      }
+      #button-25:hover {
+        background-position: 0 -48px;
+      }
 
   %body
-    %a#button.inline-block(href="/click/#{params[:id]}")
-      = image_tag '25c.jpg'
+    %a#button-25(href="/click/#{params[:id]}")
 
     /
       Javascripts
@@ -27,7 +38,7 @@
     = javascript_include_tag "application"
     
     :javascript
-      $('#button').click(function () {
+      $('#button-25').click(function () {
         alert(this.href);
         return false;
       });

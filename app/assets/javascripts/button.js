@@ -6,12 +6,12 @@
  **/
 ;(function() {
   var scriptSource = (function() {
-      var scripts = document.getElementsByTagName('script'),
-          script = scripts[scripts.length - 1];
-      if (script.getAttribute.length !== undefined) {
-          return script.getAttribute('src')
-      }
-      return script.getAttribute('src', 2)
+    var scripts = document.getElementsByTagName('script'),
+      script = scripts[scripts.length - 1];
+    if (script.getAttribute.length !== undefined) {
+      return script.getAttribute('src');
+    }
+    return script.getAttribute('src', 2);
   }());
 
   // TODO(duane): make this more secure so javascript can't be entered into the url
