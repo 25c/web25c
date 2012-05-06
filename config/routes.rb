@@ -1,5 +1,8 @@
 Nkl::Application.routes.draw do
   root :to => 'home#index'
+  
+  match 'button/state' => 'button#state'
+  match 'button/click' => 'button#click'
   match 'button/:id' => 'button#button'
   
   match 'register' => 'users#new', :via => :get, :as => :register

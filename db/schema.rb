@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120505221354) do
+ActiveRecord::Schema.define(:version => 20120506002042) do
 
   create_table "clicks", :force => true do |t|
     t.integer  "publisher_user_id", :null => false
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20120505221354) do
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
     t.boolean  "is_admin",              :default => false, :null => false
+    t.integer  "balance",               :default => 0,     :null => false
   end
 
 end

@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
   has_secure_password
   
+  has_many :clicks_submitted, :class_name => 'Click', :dependent => :destroy
+  has_many :clicks_received, :class_name => 'Click', :foreign_key => :publisher_user_id, :dependent => :destroy
+  
   attr_writer :editing
   attr_accessible :email, :password
-  attr_accessible :email, :password, :is_admin, :as => :admin
-  
+  attr_accessible :email, :password, :is_admin, :as => :admin  
   
   validates_presence_of :email, :if => 'self.facebook_uid.blank?'
   validates_uniqueness_of :email, :if => 'self.facebook_uid.blank?'
