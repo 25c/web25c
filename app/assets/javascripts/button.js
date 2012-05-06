@@ -16,5 +16,5 @@
 
   // TODO(duane): make this more secure so javascript can't be entered into the url
   var uid = scriptSource.split('uid=')[1];
-  document.write('<iframe width="60" height="60" frameborder="0" border="0" scrolling="auto" src="http://#{url_base}/button/' + uid + '" style="vertical-align: middle; display: inline-block; *display: inline; *zoom: 1;"></iframe>');
+  document.write('<iframe width="60" height="60" frameborder="0" border="0" scrolling="auto" src="http://' + nklBaseDomain + '/button/' + uid + '" style="vertical-align: middle; display: inline-block; *display: inline; *zoom: 1;"></iframe>');
 }());
