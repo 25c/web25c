@@ -3,7 +3,7 @@ Nkl::Application.routes.draw do
   
   match 'button/state' => 'button#state'
   match 'button/click' => 'button#click'
-  match 'button/:id' => 'button#button'
+  match 'button/:id' => 'button#button', :as => :button
   
   match 'register' => 'users#new', :via => :get, :as => :register
   match 'register' => 'users#create', :via => :post
