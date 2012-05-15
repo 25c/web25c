@@ -29,7 +29,7 @@
       }
 
   %body
-    %a#button-25(href="/click/#{params[:id]}")
+    %a#button-25(href="/button/click/")
 
     /
       Javascripts
@@ -39,7 +39,11 @@
     
     :javascript
       $('#button-25').click(function () {
-        alert(this.href);
+        $.ajax({
+          url: this.href,
+          type: 'POST',
+          data: { publisher_id: '#{params[:id]}', format: 'json' }
+        });
         return false;
       });
     
