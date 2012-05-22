@@ -15,7 +15,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: nkl_development
+  database: web25c_development
   pool: 5
   username: superuser
   password:
@@ -41,7 +41,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: nkl_test
+  database: web25c_test
   pool: 5
   username: superuser
   password:
@@ -49,7 +49,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: nkl_production
+  database: web25c_production
   pool: 5
-  username: nkl
+  username: web25c
   password:
