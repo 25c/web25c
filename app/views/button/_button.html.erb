@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= content_for?(:title) ? yield(:title) : "25c" %></title>
+    <%= csrf_meta_tags %>
+    <style>
+      body { padding: 0; margin: 0; }
+      
+      /* Button
+       *---------------------------- */
+      #button-25-1 {
+        display: block;
+        width: 53px;
+        height: 48px;
+        background: url(<%= image_path "25ch.png" %>) no-repeat;
+      }
+      #button-25-1:hover {
+        background-position: 0 -48px;
+      }
+      
+      /* Button 2
+       *---------------------------- */
+      #button-25-2 {
+        display: block;
+        width: 24px;
+        height: 25px;
+        background: url(<%= image_path "25c-2.png" %>) no-repeat;
+      }
+      #button-25-2:hover {
+        background-position: 0 -25px;
+      }
+    </style>
+  </head>
+  <body>
+    <a id="button-25-<%= params[:type] %>" class="button" href="/button/click/"></a>
+    
+    <script>
+//      $('.button').click(function () {
+//        $.ajax({
+//          url: this.href,
+//          type: 'POST',
+//          data: { publisher_id: '<%= params[:id] %>', format: 'json' }
+//        });
+//        return false;
+//      });
+      var testy = new _25c(document.getElementById('button-25-<%= params[:type] %>'));
+    </script>
+  </body>
+</html>
+    

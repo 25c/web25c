@@ -14,7 +14,13 @@
 .sample-button
   :javascript
     (function(){
-      var src = (window.location.protocol == 'https:' ? 'https:' : 'http:') + "//#{url_base}/assets/button.js?uuid=#{current_user.uuid}";
+      var src = (window.location.protocol == 'https:' ? 'https:' : 'http:') + "//#{url_base}/javascripts/button/button-compiled.js?uuid=#{current_user.uuid}&type=1";
       document.write('<scri' + 'pt src="' + src + '"></scr' + 'ipt>');
     }());
 
+.sample-button
+  :javascript
+    (function(){
+      var src = (window.location.protocol == 'https:' ? 'https:' : 'http:') + "//#{url_base}/javascripts/button/button-compiled.js?uuid=#{current_user.uuid}&type=2";
+      document.write('<scri' + 'pt src="' + src + '"></scr' + 'ipt>');
+    }());
