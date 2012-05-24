@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Nkl::Application.load_tasks
+Web25c::Application.load_tasks

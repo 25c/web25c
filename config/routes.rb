@@ -1,4 +1,4 @@
-Nkl::Application.routes.draw do
+Web25c::Application.routes.draw do
   root :to => 'home#index'
   
   match 'button/state' => 'button#state'
