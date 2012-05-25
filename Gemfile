@@ -12,6 +12,7 @@ gem 'haml'												# haml template engine
 gem 'simple_form'									# simple form helpers
 gem 'koala'												# facebook api
 gem 'uuid'												# uuid generator gem
+gem 'redis'												# redis gem
 
 # Gems used only for assets and not required
 # in production environments by default.

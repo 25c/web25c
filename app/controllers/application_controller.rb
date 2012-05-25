@@ -67,15 +67,30 @@ class ApplicationController < ActionController::Base
   end
   
   def current_user
-    @_current_user ||= User.find_by_uuid(session[:user])
+    @_current_user ||= User.find_by_uuid(REDIS.get(cookies.signed[:'_25c_session']))
   end
   
   def current_user=(user)
     @_current_user = user
     if user.nil?
-      session.delete(:user)
+      cookies.delete(:'_25c_session', :domain => :all)
     else
-      session[:user] = user.uuid
+      # generate a new session key
+      generator = UUID.new
+      key = generator.generate(:compact)
+      # in the next-to-impossible chance we collide with an existing one, carefully check
+      previous = REDIS.getset(key, user.uuid)
+      while !previous.nil?
+        # set back to its original value
+        REDIS.set(key, previous)
+        # generate new key and try again
+        key = generator.generate(:compact)
+        previous = REDIS.getset(key, user.uuid)
+      end
+      cookies.permanent.signed[:'_25c_session'] = {
+        :value => key,
+        :domain => :all,
+      }
     end
   end
   
