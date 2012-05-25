@@ -6,7 +6,7 @@
 .alert
   Add the following code to your page to start collecting quarters!
   .button-code-container
-    &lt;script&gt;(function(){ var src = (window.location.protocol == 'https:' ? 'https:' : 'http:') + "//#{url_base}/assets/button.js?uuid=#{current_user.uuid}"; document.write('&lt;scri' + 'pt src="' + src + '"&gt;&lt;/scr' + 'ipt&gt;');}());&lt;/script&gt;
+    &lt;script&gt;(function(){ var src = (window.location.protocol == 'https:' ? 'https:' : 'http:') + "//#{url_base}/javascripts/button/button-compiled.js?uuid=#{current_user.uuid}"; document.write('&lt;scri' + 'pt src="' + src + '"&gt;&lt;/scr' + 'ipt&gt;');}());&lt;/script&gt;
     
   .button-code-container
     &lt;iframe width="60" height="60" frameborder="0" border="0" scrolling="auto" src="#{button_url(current_user.uuid, :protocol => Rails.env.development? ? 'http' : 'https')}" style="vertical-align: middle; display: inline-block; *display: inline; *zoom: 1;"&gt;&lt;/iframe&gt;
@@ -14,7 +14,13 @@
 .sample-button
   :javascript
     (function(){
-      var src = (window.location.protocol == 'https:' ? 'https:' : 'http:') + "//#{url_base}/assets/button.js?uuid=#{current_user.uuid}";
+      var src = (window.location.protocol == 'https:' ? 'https:' : 'http:') + "//#{url_base}/javascripts/button/button-compiled.js?uuid=#{current_user.uuid}&type=1";
       document.write('<scri' + 'pt src="' + src + '"></scr' + 'ipt>');
     }());
 
+.sample-button
+  :javascript
+    (function(){
+      var src = (window.location.protocol == 'https:' ? 'https:' : 'http:') + "//#{url_base}/javascripts/button/button-compiled.js?uuid=#{current_user.uuid}&type=2";
+      document.write('<scri' + 'pt src="' + src + '"></scr' + 'ipt>');
+    }());
