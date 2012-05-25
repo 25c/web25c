@@ -41,6 +41,7 @@
           %ul.nav.pull-right
             - if current_user.is_admin
               %li= link_to t('.admin'), admin_dashboard_path
+            %li= link_to t('.contents'), home_contents_path
             %li= link_to t('.sign_out'), sign_out_path, :id => 'sign-out'
         - else
           %ul.nav.pull-right

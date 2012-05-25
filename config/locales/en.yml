@@ -53,6 +53,7 @@ en:
       sign_out: Sign out
       or: or
       facebook: Login with Facebook
+      contents: Content
   
   users:
     create:

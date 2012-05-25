@@ -1,0 +1,5 @@
+.row
+  .span12
+    .page-header
+      %h1= @content.name
+      = link_to "Edit", edit_home_content_path(@content), :class => 'btn'

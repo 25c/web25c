@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
   
+  has_many :contents, :dependent => :destroy
+  
   has_many :clicks_submitted, :class_name => 'Click', :dependent => :destroy
   has_many :clicks_received, :class_name => 'Click', :foreign_key => :publisher_user_id, :dependent => :destroy
   

@@ -14,6 +14,8 @@ Web25c::Application.routes.draw do
   resources :users, :only => [ :index, :show ]
   
   namespace :home do
+    resources :contents
+    
     match '' => 'dashboard#index', :as => :dashboard
     match 'get-button' => 'dashboard#get_button', :as => :get_button
   end
