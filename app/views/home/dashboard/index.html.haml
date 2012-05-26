@@ -1,4 +1,22 @@
 - content_for :title, t('.title')
+
 .page-header
   %h1= yield :title
 
+= link_to t('.get_my_button'), home_get_button_path, :class => 'btn btn-large btn-success'
+
+%h2 Clicks Submitted
+%ul
+  - current_user.clicks_submitted.each do |click|
+    %li
+      = l click.created_at, :format => :short
+      = link_to click.referrer, click.referrer
+
+%h2 Clicks Received
+%ul
+  - current_user.clicks_received.each do |click|
+    %li
+      = l click.created_at, :format => :short
+      = link_to click.referrer, click.referrer      
+
+      

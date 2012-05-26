@@ -53,3 +53,27 @@ production:
   pool: 5
   username: web25c
   password:
+
+development_data:
+  adapter: postgresql
+  encoding: unicode
+  database: data25c_development
+  pool: 5
+  username: superuser
+  password:
+
+test_data:
+  adapter: postgresql
+  encoding: unicode
+  database: data25c_test
+  pool: 5
+  username: superuser
+  password:
+
+production_data:
+  adapter: postgresql
+  encoding: unicode
+  database: data25c_production
+  pool: 5
+  username: superuser
+  password:
