@@ -21,8 +21,16 @@ en:
         title: Dashboard
       get_button:
         title: Get Button
+    buttons:
+      index:
+        title: Your Button
+        button_form: Configure Your Button
+        button_preview: Button Preview
+        button_code: "Button Code (copy-paste into your page):"
     
     index:
+      register: Register
+      facebook: Login with Facebook
       value_proposition: Rewarding great content & causes with one quarter, one click.
       for_your_website_header: For your website
       for_your_website_text: Have a blog, music photo collection, great cause? Add a [+25c] button to your pages.
@@ -44,16 +52,17 @@ en:
       dashboard: Dashboard
       
     header:
+      facebook: Login with Facebook
       home: Home
       about: About
       profile: Profile
       contact: Contact
       register: Register
-      sign_in: Sign in
-      sign_out: Sign out
+      sign_in: Sign In
+      sign_out: Sign Out
       or: or
-      facebook: Login with Facebook
       contents: Content
+      buttons: 25c Button
   
   users:
     create:

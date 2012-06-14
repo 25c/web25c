@@ -3,6 +3,10 @@
 .page-header
   %h1= yield :title
 
+.content
+  -# = render :partial => 'form'
+  =@buttons
+
 .alert
   Add the following code to your page to start collecting quarters!
   .button-code-container

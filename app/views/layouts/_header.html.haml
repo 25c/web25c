@@ -28,10 +28,11 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.brand(href=root_path) 25c
+      %a.nav-logo.pull-left(href=root_path)
+        %img{:src => image_path('25c-logo-small.png')}
       .container.nav-collapse
         %ul.nav
-          %li= link_to t('.home'), root_path
+          %li
           -#
             %li= link_to t('.about'), "/path2"
             - if signed_in?
@@ -41,14 +42,14 @@
           %ul.nav.pull-right
             - if current_user.is_admin
               %li= link_to t('.admin'), admin_dashboard_path
-            %li= link_to t('.contents'), home_contents_path
+            %li= link_to t('.buttons'), home_buttons_path
             %li= link_to t('.sign_out'), sign_out_path, :id => 'sign-out'
         - else
-          %ul.nav.pull-right
-            %li.navbar-text.pull-right= t('.or')
-            %li= link_to t('.register'), register_path
+          %ul.nav.pull-right            
             %li= link_to t('.sign_in'), sign_in_path
           %ul.nav.pull-right
             %li
               .fb-login-button(data-scope="email,publish_actions")= t('.facebook')
+            %li.navbar-text.pull-right= t('.or')
+            %li= link_to t('.register'), register_path, :class => 'btn'
               

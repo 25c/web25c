@@ -21,11 +21,17 @@ body {
 	padding: 9px 0;
 }
 
+/* Nav Logo
+ *---------------------------- */
+.nav-logo {
+  padding-top: 3px;
+}
 
 /* Facebook Login
  *---------------------------- */
 .nav .fb-login-button {
   margin-top: 8px;
+  margin-right: 5px;
 }
 .inline-block {
   display: inline-block;
@@ -43,4 +49,56 @@ body {
 }
 .sample-button {
   text-align: center;
+}
+
+/* Nav Register Button
+ *---------------------------- */
+.navbar .nav > li > a.btn {
+  color: #333;
+  text-shadow: none;
+  line-height: 18px;
+  margin: 5px 5px 6px;
+  padding: 4px 10px;
+}
+.navbar .nav > li > a.btn:hover {
+  color: #333;
+  background-color: #e3e3e3;
+}
+
+/* Nav Register Button
+ *---------------------------- */
+.hero-unit > p > a.btn {
+  font-weight: 400;
+}
+
+/* Nav Register Button
+ *---------------------------- */
+.features {
+  min-height: 200px;
+}
+
+/* Button Creation Page
+ *---------------------------- */
+#button-preview-container {
+  height: 50px;
+  margin: 5px 0;
+}
+#button-preview-image {
+  border: 1px solid transparent;
+  display: none;
+  cursor: pointer;
+}
+#button-preview-image:hover {
+  border-color: #ffbda0;
+  background-color: #ffeae1;
+}
+#code-preview-block {
+  margin: 5px 0;
+  overflow: hidden;
+  resize: none;
+  width: 100%;
+  cursor: text;
+}
+#save-button-message {
+  padding-left: 5px;
 }

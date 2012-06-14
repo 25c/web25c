@@ -1,0 +1,6 @@
+= simple_form_for @button, :url => home_button_path(@button) do |f|
+  = f.input :size, :as => :radio_buttons, :collection => ["large", "medium", "icon"]
+  = f.input :title, :required => false
+  = f.input :description, :required => false, :input_html => { :rows => '3' }
+  .form-actions
+    = f.button :submit, :class => 'btn btn-primary'

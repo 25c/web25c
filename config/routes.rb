@@ -1,7 +1,7 @@
 Web25c::Application.routes.draw do
   root :to => 'home#index'
 
-  match 'button/:id' => 'button#button', :as => :button
+  # match 'button/:id' => 'button#button', :as => :button
   
   match 'register' => 'users#new', :via => :get, :as => :register
   match 'register' => 'users#create', :via => :post
@@ -13,6 +13,7 @@ Web25c::Application.routes.draw do
   
   namespace :home do
     resources :contents
+    resources :buttons
     
     match '' => 'dashboard#index', :as => :dashboard
     match 'get-button' => 'dashboard#get_button', :as => :get_button

@@ -2,13 +2,14 @@ class User < ActiveRecord::Base
   has_secure_password
   
   has_many :contents, :dependent => :destroy
+  has_many :buttons, :dependent => :destroy
   
   has_many :clicks_submitted, :class_name => 'Click', :dependent => :destroy
   has_many :clicks_received, :class_name => 'Click', :foreign_key => :publisher_user_id, :dependent => :destroy
   
   attr_writer :editing
   attr_accessible :email, :password
-  attr_accessible :email, :password, :is_admin, :as => :admin  
+  attr_accessible :email, :password, :is_admin, :as => :admin
   
   validates_presence_of :email, :if => 'self.facebook_uid.blank?'
   validates_uniqueness_of :email, :if => 'self.facebook_uid.blank?'
@@ -17,6 +18,7 @@ class User < ActiveRecord::Base
   
   before_validation :preprocess_fields
   before_create :generate_uuid
+  before_create :create_button
   
   def refresh_facebook_access_token(code, force_refresh = false)
     begin
@@ -54,6 +56,10 @@ class User < ActiveRecord::Base
   
   def generate_uuid
     self.uuid = UUID.new.generate(:compact)
+  end
+  
+  def create_button
+    self.current_user.buttons.build(:size => "large")
   end
   
 end

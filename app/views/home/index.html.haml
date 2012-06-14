@@ -1,22 +1,21 @@
 .hero-unit
-  %h1 25c
-  %p= t('.value_proposition')
-  %p
-    %a.btn.btn-primary.btn-large How it works
-  
-.row
+  .row
+    .span4
+      %h1 25c
+      %p= t('.value_proposition')
+      %p
+        .fb-login-button(data-scope="email,publish_actions")= t('.facebook')
+      %p
+        %a= link_to t('.register'), register_path, :class => 'btn'
+    .span6.pull-right
+      %img{:src => image_path('love-flow.png')}
+.row.features
   .span4
     %h2= t('.for_your_website_header')
     %p= t('.for_your_website_text')
-    %p
-      = link_to t('.get_your_button'), home_get_button_path, :class => 'btn'
   .span4
     %h2= t('.reload_your_jar_header')
     %p= t('.reload_your_jar_text')
-    %p
-      %a.btn= t('.reload_now')
   .span4
     %h2= t('.see_trending_header')
     %p= t('.see_trending_text')
-    %p
-      %a.btn= t('.click_here')
