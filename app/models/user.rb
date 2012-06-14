@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
   
-  has_many :contents, :dependent => :destroy
   has_many :buttons, :dependent => :destroy
   
   has_many :clicks_submitted, :class_name => 'Click', :dependent => :destroy
@@ -18,7 +17,7 @@ class User < ActiveRecord::Base
   
   before_validation :preprocess_fields
   before_create :generate_uuid
-  before_create :create_button
+  after_create :create_default_button
   
   def refresh_facebook_access_token(code, force_refresh = false)
     begin
@@ -58,7 +57,7 @@ class User < ActiveRecord::Base
     self.uuid = UUID.new.generate(:compact)
   end
   
-  def create_button
+  def create_default_button
     self.current_user.buttons.build(:size => "large")
   end
   

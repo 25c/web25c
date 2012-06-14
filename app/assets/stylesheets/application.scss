@@ -14,17 +14,32 @@
 
 body {
 	padding-top: 60px;
-	padding-bottom: 40px;
 }
 
 .sidebar-nav {
 	padding: 9px 0;
 }
 
-/* Nav Logo
+/* Header Nav
  *---------------------------- */
-.nav-logo {
+#nav-logo {
   padding-top: 3px;
+  margin-right: 10px;
+}
+#nav-tagline {
+  color: #e3e3e3;
+}
+
+/* Footer
+ *---------------------------- */
+footer.navbar {
+  margin-bottom: 0;
+}
+
+/* Landing Page
+ *---------------------------- */
+#landing-image {
+  margin-top: 20px;
 }
 
 /* Facebook Login
@@ -75,6 +90,7 @@ body {
  *---------------------------- */
 .features {
   min-height: 200px;
+  padding-bottom: 60px;
 }
 
 /* Button Creation Page

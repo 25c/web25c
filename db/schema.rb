@@ -35,16 +35,6 @@ ActiveRecord::Schema.define(:version => 20120612235516) do
   add_index "clicks", ["publisher_user_id"], :name => "index_clicks_on_publisher_user_id"
   add_index "clicks", ["user_id"], :name => "index_clicks_on_user_id"
 
-  create_table "contents", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "uuid",       :null => false
-    t.integer  "user_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "contents", ["user_id"], :name => "index_contents_on_user_id"
-
   create_table "users", :force => true do |t|
     t.string   "uuid",                                     :null => false
     t.string   "email"

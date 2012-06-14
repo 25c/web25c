@@ -19,8 +19,6 @@ en:
     dashboard:
       index:
         title: Dashboard
-      get_button:
-        title: Get Button
     buttons:
       index:
         title: Your Button
@@ -31,19 +29,27 @@ en:
     index:
       register: Register
       facebook: Login with Facebook
-      value_proposition: Rewarding great content & causes with one quarter, one click.
-      for_your_website_header: For your website
-      for_your_website_text: Have a blog, music photo collection, great cause? Add a [+25c] button to your pages.
-      get_your_button: Get your 25c button now!
-      reload_your_jar_header: Reload your jar
-      reload_your_jar_text: Add more 25c to your jar so you can rewward content and causes you love!
-      reload_now: Reload Now!
-      see_trending_header: See what's trending
-      see_trending_text: See what other people really like and reward!
-      click_here: Click here...
+      value_proposition: Rewarding great content & causes.  One quarter one 
+        click.
+      value_proposition_sub: "Receiving 25c tips for your content & cause is a
+        breeze: Simply add the 25c Gratuity Button&trade; code to your blog, 
+        website, photo collection, videos, etc."
+      about_25c_title: About 25c
+      about_25c_p1: Support what you value.  Easily & directly.  One quarter 
+        one click.   So that in the future you will see more of what you truly 
+        value.  (As opposed to what advertisers value.)
+      about_25c_p2: The 25c Gratuity Button&trade; is easy to add to your website, 
+        blog, etc. -- just insert our code and start receiving 25c tips.   
+      about_25c_p3: Clicking the 25c Gratuity Button&trade; once contributes 25c; 
+        clicking it twice contributes two 25's; and so on.
+      about_25c_p4: It adds up!  A thousand 25c tips can double a freelance 
+        writer's compensation, pay a photographer's expenses.
+      about_25c_p5: Have a sizable Twitter/etc. following?  Use the 25c Short 
+        URL to refer great content & causes - and earn 5 cents for each 25c 
+        donation generated.
       
     sign_in:
-      failure: Sorry, your email and/or password were incorrect.
+      failure: "Sorry, your email and/or password were incorrect."
       title: Sign in
       
   layouts:
@@ -53,6 +59,7 @@ en:
       
     header:
       facebook: Login with Facebook
+      tagline: "25c social micro-donations. One quarter, one click."
       home: Home
       about: About
       profile: Profile
@@ -60,9 +67,8 @@ en:
       register: Register
       sign_in: Sign In
       sign_out: Sign Out
-      or: or
-      contents: Content
-      buttons: 25c Button
+      buttons: Receive 25c Tips
+      payments: Fill Your 25c Jar
   
   users:
     create:

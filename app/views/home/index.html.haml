@@ -1,21 +1,19 @@
 .hero-unit
   .row
-    .span4
-      %h1 25c
-      %p= t('.value_proposition')
+    .span5
+      %h2= t('.value_proposition')
+      %p= raw t('.value_proposition_sub')
       %p
         .fb-login-button(data-scope="email,publish_actions")= t('.facebook')
       %p
         %a= link_to t('.register'), register_path, :class => 'btn'
-    .span6.pull-right
-      %img{:src => image_path('love-flow.png')}
+    .span5.pull-right
+      %img#landing-image{:src => image_path('love-flow.png')}
 .row.features
-  .span4
-    %h2= t('.for_your_website_header')
-    %p= t('.for_your_website_text')
-  .span4
-    %h2= t('.reload_your_jar_header')
-    %p= t('.reload_your_jar_text')
-  .span4
-    %h2= t('.see_trending_header')
-    %p= t('.see_trending_text')
+  .span12
+    %h2= t('.about_25c_title')
+    %p.lead= raw t('.about_25c_p1')
+    %p.lead= raw t('.about_25c_p2')
+    %p.lead= raw t('.about_25c_p3')
+    %p.lead= raw t('.about_25c_p4')
+    %p.lead= raw t('.about_25c_p5')
