@@ -2,16 +2,16 @@ $(document).ready(function(){
   
   // lookup dictionary for image filenames
   var imageDict = {
-    large: '25c-button-large.png',
-    medium: '25c-button-medium.png',
-    icon: '25c-button-icon.png'
+    large: "<%= asset_path '25c-button-large.png' %>",
+    medium: "<%= asset_path '25c-button-medium.png' %>",
+    icon: "<%= asset_path '25c-button-icon.png' %>"
   };
   
   var updateButtonImage = function(newSize) {
     // replace button preview image if new size is valid
-    if (imageDict[newSize]) {
-      var newPath = '/assets/' + imageDict[newSize];
-      $('#button-preview-image').attr('src', newPath).load(function() {
+    var path = imageDict[newSize];
+    if (path) {
+      $('#button-preview-image').attr('src', path).load(function() {
         $(this).show();
       });
     }
