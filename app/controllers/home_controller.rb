@@ -1,10 +1,7 @@
 class HomeController < ApplicationController
   
   def index
-    # redirect_to home_dashboard_path if self.current_user
-    # if self.signed_in?
-    #   redirect_to home_buttons_path
-    # end
+    redirect_to home_dashboard_path if self.current_user
   end
   
   def sign_in    
@@ -12,7 +9,7 @@ class HomeController < ApplicationController
       user = User.find_by_email(params[:user][:email]).try(:authenticate, params[:user][:password])
       if user
         self.current_user = user
-        redirect_to_session_redirect_path(home_buttons_path)
+        redirect_to_session_redirect_path(home_dashboard_path)
       else
         flash[:alert] = t('home.sign_in.failure')
       end
