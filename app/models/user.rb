@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
   end
   
   def create_default_button
-    self.buttons.build(:size => "large")
+    self.buttons.create(:size => "large")
   end
   
 end
