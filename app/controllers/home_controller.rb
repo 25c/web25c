@@ -1,13 +1,10 @@
 class HomeController < ApplicationController
   
   def index
-    # redirect_to home_dashboard_path if self.current_user
-    # if self.signed_in?
-    #   redirect_to home_buttons_path
-    # end
+    # redirect_to home_buttons_path if self.current_user
   end
   
-  def sign_in    
+  def sign_in
     if request.method == 'POST'
       user = User.find_by_email(params[:user][:email]).try(:authenticate, params[:user][:password])
       if user

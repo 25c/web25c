@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         self.current_user = @user
-        format.html { redirect_to_session_redirect_path(home_dashboard_path, notice: t('users.create.success')) }
+        format.html { redirect_to_session_redirect_path(home_buttons_path, notice: t('users.create.success')) }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }

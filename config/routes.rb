@@ -11,7 +11,6 @@ Web25c::Application.routes.draw do
   
   namespace :home do
     resources :buttons
-    
     match '' => 'dashboard#index', :as => :dashboard
   end
   
