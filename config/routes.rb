@@ -7,6 +7,12 @@ Web25c::Application.routes.draw do
   match 'sign-in' => 'home#sign_in', :as => :sign_in
   match 'sign-out' => 'home#sign_out', :as => :sign_out
   
+  match 'about' => 'home#about', :as => :about
+  match 'faq' => 'home#faq', :as => :faq
+  match 'terms' => 'home#terms', :as => :terms
+  match 'privacy' => 'home#privacy', :as => :privacy
+  match 'contact' => 'home#contact', :as => :contact
+  
   resources :users, :only => [ :index, :show ]
   
   namespace :home do

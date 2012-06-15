@@ -22,4 +22,17 @@ class HomeController < ApplicationController
     redirect_to root_path
   end
   
+  # static pages
+  def privacy
+  end
+  
+  def faq
+  end
+  
+  def terms
+  end
+  
+  def contact
+  end
+  
 end

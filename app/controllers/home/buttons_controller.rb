@@ -1,5 +1,10 @@
 class Home::ButtonsController < Home::HomeController
   
+  helper_method :button_uuid
+  def button_uuid
+    @button_uuid = 12345
+  end
+  
   def index
     @button = self.current_user.buttons[0]
   end

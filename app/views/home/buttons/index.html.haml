@@ -10,7 +10,7 @@
       = f.input :size, :as => :radio_buttons, :collection => ["large", "medium", "icon"]
       = f.input :title, :required => false
       = f.input :description, :required => false, :input_html => { :rows => '3' }
-      .form-actions
+      %div
         = f.button :submit, :class => 'btn btn-primary'
         %span.hide#save-button-message= t('.saving_button')
   .span6
@@ -18,9 +18,12 @@
     #button-preview-container
       %img#button-preview-image{:src => image_path('25c-button-large.png')}
     %h4= t('.button_code')
-    %pre#code-preview-block
-      = '<a href="https://api.25c.com/' + @button.uuid + '" data-lang="en">+25c</a>'
+    %pre#button-code-block
+      :escaped
+        <a href="https://api.25c.com/#{@button.uuid}" data-lang="en">+25c</a>
       %br
-      = '<script>(function(){ var src = (window.location.protocol == \'https:\' ? \'https:\' : \'http:\''
-      = '"//www.plus25c.com/javascripts/button/button-compiled.js?' + @button.uuid
-      = '"; document.write(\'<scri\' + \'pt src="\' + src + \'"></scr\' + \'ipt>\');}());</script>'
+      :escaped
+        <script>(function(){ var src = (window.location.protocol == 'https:' ? 'https:' : 'http:'"//www.plus25c.com/javascripts/button/button-compiled.js?id=#{@button.uuid}
+      %span#button-code-params>
+      :escaped
+        "; document.write('<scri' + 'pt src="' + src + '"></scr' + 'ipt>');}());</script>
