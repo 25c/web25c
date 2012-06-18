@@ -1,0 +1,25 @@
+.row
+  .span12
+    %h2.page-header Transaction Confirmed
+.row
+  .span12
+    %h3 Thank you for your payment.
+    %p
+      Email:
+      = @user.email
+    %p 
+      Amount:
+      = @result.transaction.amount
+    %p 
+      Transaction ID:
+      = @result.transaction.id
+    %p
+      Credit Card:
+      = @result.transaction.credit_card_details.masked_number
+    %p
+      Card Type:
+      = @result.transaction.credit_card_details.card_type
+%hr
+.row
+  .span12
+    = link_to "Go back to your tip jar.", home_jar_path

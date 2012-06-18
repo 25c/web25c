@@ -9,11 +9,11 @@ class Home::AccountController < Home::HomeController
   end
   
   def confirm
+    @user = current_user
     @result = Braintree::TransparentRedirect.confirm(request.query_string)
     if @result.success?
       render :action => "confirm"
     else
-      @user = current_user
       @amount = calculate_amount
       render :action => "jar"
     end
