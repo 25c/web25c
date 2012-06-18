@@ -16,6 +16,9 @@ en:
     submit: Submit
   
   home:
+    account:
+      jar:
+        title: "Tip Jar for "
     dashboard:
       index:
         title: Dashboard

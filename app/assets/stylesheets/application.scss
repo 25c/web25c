@@ -119,3 +119,29 @@ footer.navbar {
 #save-button-message {
   padding-left: 5px;
 }
+
+/* Account Credit Card Form
+ *---------------------------- */
+form#transaction-form input[type=text], form#transaction-form input[type=submit] {
+  display: block;
+  margin-right: 10px;
+}
+form#transaction-form #card-number {
+  width: 130px;
+}
+form#transaction-form #card-CVV {
+  width: 60px;
+}
+form#transaction-form #card-expiration-month{
+  width: 140px;
+}
+form#transaction-form #card-expiration-year{
+  margin-left: 6px;
+  width: 70px;
+}
+form#transaction-form #auto-refill-container{
+  margin-bottom: 10px;
+}
+form#transaction-form #auto-refill-checkbox{
+  margin-bottom: 8px;
+}

@@ -1,0 +1,10 @@
+$(document).ready(function(){
+  
+  var braintree = Braintree.create("ddpwb3dd49pqs9fw");
+  var encryptedValue = braintree.encrypt("sensitiveValue");
+  
+  $('#account-form').submit(function () {
+    
+  });
+  
+});

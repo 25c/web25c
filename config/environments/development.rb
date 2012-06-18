@@ -37,4 +37,11 @@ Web25c::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  # Braintree Development Settings
+  Braintree::Configuration.environment = :sandbox
+  Braintree::Configuration.merchant_id = "z8xhfzhb86xgbs7j"
+  Braintree::Configuration.public_key = "ddpwb3dd49pqs9fw"
+  Braintree::Configuration.private_key = "2f7qpq38rwgx92j5"
+  
 end

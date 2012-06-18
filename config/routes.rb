@@ -18,6 +18,8 @@ Web25c::Application.routes.draw do
   namespace :home do
     resources :buttons
     match '' => 'dashboard#index', :as => :dashboard
+    match 'jar' => 'account#jar', :as => :jar
+    match 'confirm-payment' => 'account#confirm', :as => :confirm_payment
   end
   
   namespace :admin do

@@ -13,6 +13,7 @@ gem 'simple_form'									# simple form helpers
 gem 'koala'												# facebook api
 gem 'uuid'												# uuid generator gem
 gem 'redis'												# redis gem
+gem 'braintree'                   # braintree payments
 
 # Gems used only for assets and not required
 # in production environments by default.

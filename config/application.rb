@@ -54,6 +54,8 @@ module Web25c
     config.assets.enabled = true
     
     config.assets.precompile += ['save-button.js']
+    config.assets.precompile += ['braintree-1.1.1.min']
+    config.assets.precompile += ['submit-payment']
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
