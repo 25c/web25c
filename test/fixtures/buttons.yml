@@ -1,11 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  uuid: <%= UUID.new.generate(:compact) %>
   size: MyString
   title: MyString
   description: MyText
+  user: sylvio
 
 two:
+  uuid: <%= UUID.new.generate(:compact) %>
   size: MyString
   title: MyString
   description: MyText
+  user: sylvio
