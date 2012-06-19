@@ -12,8 +12,22 @@ class Home::AccountController < Home::HomeController
     @user = current_user
     @result = Braintree::TransparentRedirect.confirm(request.query_string)
     if @result.success?
-      current_user.balance += @result.transaction.amount
-      render :action => "confirm"
+      @user.editing = true
+      @user.balance += @result.transaction.amount
+      respond_to do |format|
+        if @user.save
+          format.html { 
+            flash.now[:notice] = t('home.account.confirm.success')
+            render :action => "confirm"
+          }
+        else
+          puts @user.errors.inspect
+          format.html {
+            flash.now[:notice] = t('home.account.confirm.failure')
+            render :action => "confirm"
+          }
+        end
+      end
     else
       # @amount = calculate_amount
       render :action => "jar"

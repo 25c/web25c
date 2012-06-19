@@ -19,6 +19,9 @@ en:
     account:
       jar:
         title: "Tip Jar for "
+      confirm:
+        success: You have successfully added to your tip jar.
+        failure: Your account was charged, but there was a problem updating your tip jar.
     dashboard:
       index:
         title: Dashboard
