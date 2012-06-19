@@ -7,14 +7,14 @@
 
 %h2 Clicks Submitted
 %ul
-  - current_user.clicks_submitted.each do |click|
+  - current_user.clicks.each do |click|
     %li
       = l click.created_at, :format => :short
       = link_to click.referrer, click.referrer
 
 %h2 Clicks Received
 %ul
-  - current_user.clicks_received.each do |click|
+  - current_user.buttons[0].clicks.each do |click|
     %li
       = l click.created_at, :format => :short
       = link_to click.referrer, click.referrer      

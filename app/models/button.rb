@@ -1,6 +1,8 @@
 class Button < ActiveRecord::Base
   belongs_to :user
   
+  has_many :clicks
+  
   validates :size, :inclusion => { :in => %w(icon medium large),
       :message => "%{value} is not a valid button size" }
   
