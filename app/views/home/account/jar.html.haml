@@ -7,15 +7,17 @@
     %h2.page-header= t('.title') + @user.email
 .row
   .span12
-    %p.lead
-      25c's in Your 25c Jar:
-      %strong 20 ($4)
-    %p.lead
-      Given:
-      %strong 5  ($1.25)
-    %p.lead
-      Received:
-      %strong 10 ($2.5)
+    .lead
+      %div Your Jar:
+      %div 
+        %b #{@user.balance * 4} 25c's 
+        %span ($#{"%.2f" % @user.balance})
+    / %p.lead
+    /   Given:
+    /   %strong 5  ($1.25)
+    / %p.lead
+    /   Received:
+    /   %strong 10 ($2.5)
 %hr
 .row
   .span12
@@ -37,7 +39,7 @@
           - if amount == '20'
             %option{:value => "#{amount}", :selected => "selected"} $#{amount}.00
           - else
-            %option{:value => "#{amount}"} $#{amount}
+            %option{:value => "#{amount}"} $#{amount}.00
       %label{:for => "cardholder_name"} Name on Card:
       %input{:type => 'text', :size=>40, :name => 'transaction[credit_card][cardholder_name]'}
       %div.pull-left
@@ -48,12 +50,12 @@
       %label{:for => "expiration_date"} Expiration Date:
       %select#card-expiration-month{:name => 'transaction[credit_card][expiration_month]'}
         %option{:selected => "selected", :disabled => "disabled", :value => ""} Month...
-        - ['01','02','03','04','05','06','07','08','09','10','12'].each do |month|
-          %option{:value => "#{month}"} #{month}
+        - (1..12).each do |month|
+          %option{:value => "#{month}"} #{Date::MONTHNAMES[month]}
       %select#card-expiration-year{:name => 'transaction[credit_card][expiration_year]'}
         %option{:selected => "selected", :disabled => "disabled", :value => ""} Year...
         - (Date.today.year..20.years.from_now.year).each do |year|
-          %option{:value => "#{year.to_s()[2,2]}"} #{year.to_s()[2,2]}
+          %option{:value => "#{year.to_s()[2,2]}"} #{year.to_s()}
       = hidden_field_tag :tr_data, 
         Braintree::TransparentRedirect.transaction_data(:redirect_url => home_confirm_payment_url,
             :transaction => {:type => "sale"})

@@ -29,7 +29,7 @@
         %span.icon-bar
         %span.icon-bar
       %a#nav-logo.pull-left(href=root_path)
-        %img{:src => image_path('25c-logo-small.png')}
+        %img{:src => image_path('25c-logo-medium.png')}
       %span#nav-tagline.navbar-text= t('.tagline')
       .nav-collapse.pull-right
         %ul.nav
@@ -43,8 +43,8 @@
           %ul.nav.pull-right
             - if current_user.is_admin
               %li= link_to t('.admin'), admin_dashboard_path
-            %li= link_to t('.payments'), home_buttons_path
             %li= link_to t('.buttons'), home_buttons_path
+            %li= link_to t('.payments'), home_jar_path
             %li= link_to t('.sign_out'), sign_out_path, :id => 'sign-out'
         - else
           %ul.nav.pull-right            
