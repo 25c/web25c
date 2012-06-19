@@ -12,9 +12,10 @@ class Home::AccountController < Home::HomeController
     @user = current_user
     @result = Braintree::TransparentRedirect.confirm(request.query_string)
     if @result.success?
+      current_user.balance += @result.transaction.amount
       render :action => "confirm"
     else
-      @amount = calculate_amount
+      # @amount = calculate_amount
       render :action => "jar"
     end
   end

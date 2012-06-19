@@ -9,7 +9,7 @@
       = @user.email
     %p 
       Amount:
-      = @result.transaction.amount
+      $#{"%.2f" % @result.transaction.amount}
     %p 
       Transaction ID:
       = @result.transaction.id

@@ -25,11 +25,12 @@ en:
     buttons:
       index:
         title: Your Button
-        button_form: Configure Your Button
-        button_preview: Button Preview
+        button_form: "Choose your button's look:"
+        button_preview: "Button preview:"
         button_code: "Button Code (copy-paste into your page):"
     
     index:
+      title: "25c social micro-donations. One quarter, one click."
       register: Register
       facebook: Login with Facebook
       value_proposition: Rewarding great content & causes.  One quarter one 
@@ -50,6 +51,7 @@ en:
       about_25c_p5: Have a sizable Twitter/etc. following?  Use the 25c Short 
         URL to refer great content & causes - and earn 5 cents for each 25c 
         donation generated.
+      learn-more: Learn more...
       
     sign_in:
       failure: "Sorry, your email and/or password were incorrect."
@@ -62,7 +64,7 @@ en:
       
     header:
       facebook: Login with Facebook
-      tagline: "25c social micro-donations. One quarter, one click."
+      tagline: "Social micro-donations. One quarter, one click."
       home: Home
       about: About
       profile: Profile
@@ -70,8 +72,8 @@ en:
       register: Register
       sign_in: Sign In
       sign_out: Sign Out
-      buttons: Receive 25c Tips
-      payments: Fill Your 25c Jar
+      buttons: Receive 25c's
+      payments: Load 25c Jar
   
   users:
     create:
