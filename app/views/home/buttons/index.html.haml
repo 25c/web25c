@@ -20,10 +20,10 @@
     %h4= t('.button_code')
     %pre#button-code-block
       :escaped
-        <a href="https://api.25c.com/#{@button.uuid}" data-lang="en">+25c</a>
+        <a href="https://www.plus25c.com/tip/#{@button.uuid}" class="tip-25c-button" data-size="icon">Tip me +25c!</a>
       %br
       :escaped
-        <script>(function(){ var src = (window.location.protocol == 'https:' ? 'https:' : 'http:'"//www.plus25c.com/javascripts/button/button-compiled.js?id=#{@button.uuid}
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//api.plus25c.com/public/javascripts/button.js
       %span#button-code-params>
       :escaped
-        "; document.write('<scri' + 'pt src="' + src + '"></scr' + 'ipt>');}());</script>
+        ";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");</script>
