@@ -16,13 +16,40 @@ en:
     submit: Submit
   
   home:
+    title: "25c social micro-donations. One quarter, one click."
+    
     account:
       jar:
-        title: "Tip Jar for "
+        25c_units: 25c's
+        title: "25c Jar for "
+        refill_title: Refill my Jar with 25c's
+        refill_amount: "Amount to add:"
+        auto_refill: Automatically refill my Jar if balance drops below $5 (20 25c's).
+        card_on_file: "Card on file:"
+        use_existing: Use existing card
+        use_different: Use different card
+        card_name: "Name on card:"
+        card_number: "Card number:"
+        card_cvv: "Card CVV:"
+        expiration_date: "Expiration date:"
+        select_month: Month...
+        select_year: Year...
+        remember_card: Remember this card for future use.
+        payment_failure: Payment failed. Please check the credit card fields and try again.
+      confirm:
+        confirm_title: Payment confirmed.
+        transaction_id: "Transaction ID:"
+        transaction_amount: "Amount:"
+        transaction_card_number: "Card Number:"
+        transaction_card_type: "Card Type:"
+        return_to_jar: Return to 25c Jar.
+        success: You have successfully added to your 25c Jar.
+        failure: Your account was charged, but there was a problem updating your 25c Jar.
     dashboard:
       index:
         title: Dashboard
     buttons:
+      button_updated: Your button has been updated.
       index:
         title: Your Button
         button_form: "Choose your button's look:"
@@ -30,7 +57,6 @@ en:
         button_code: "Button Code (copy-paste into your page):"
     
     index:
-      title: "25c social micro-donations. One quarter, one click."
       register: Register
       facebook: Login with Facebook
       value_proposition: Rewarding great content & causes.  One quarter one 

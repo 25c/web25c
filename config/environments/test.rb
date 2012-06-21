@@ -34,4 +34,11 @@ Web25c::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  # Braintree Development Settings
+  Braintree::Configuration.environment = :sandbox
+  Braintree::Configuration.merchant_id = "z8xhfzhb86xgbs7j"
+  Braintree::Configuration.public_key = "ddpwb3dd49pqs9fw"
+  Braintree::Configuration.private_key = "2f7qpq38rwgx92j5"
+  
 end

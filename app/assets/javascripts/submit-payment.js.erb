@@ -1,5 +1,46 @@
 $(document).ready(function(){
+
+  var $newCard = $('#new-card');
   
-  // LJ: placeholder for any form manipulation on the jar page. Not used yet.
+  if (hasCard) {  
+    var useExisting = true;
+    var $existingCard = $('#existing-card');
+    var $toggleCardButton = $('#toggle-card-button');
+    
+    $toggleCardButton.click(function() {
+      if (useExisting) {
+        useExisting = false;
+        $existingCard.hide();
+        $newCard.show();
+        $toggleCardButton.text(useExistingText);
+      } else {
+        useExisting = true;
+        $existingCard.show();
+        $newCard.hide();
+        $toggleCardButton.text(useDifferentText);
+      }
+    });
+    if (hasResult) $toggleCardButton.click();
+  } else {
+    $newCard.show();
+  }
+  
+  $('input[type="submit"]').click(function() {
+    $(this).attr('disabled', 'disabled');
+  });
+  
+  var $refillAmount = $('#refill-amount');
+  var $transactionAmount = $('.transaction-amount');
+  $transactionAmount.val($refillAmount.val());
+  
+  $refillAmount.change(function() {
+    $transactionAmount.val($refillAmount.val());
+  });
+    
+  $('#auto-refill-checkbox').change(function() {
+    var autoRefill = false;
+    if ($(this).is(':checked')) autoRefill = true;
+    $.post(setRefillUrl, { auto_refill: autoRefill });
+  });
   
 });
