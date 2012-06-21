@@ -21,7 +21,7 @@ en:
     account:
       jar:
         25c_units: 25c's
-        title: "25c Jar for "
+        title: "Your 25c Jar"
         refill_title: Refill my Jar with 25c's
         refill_amount: "Amount to add:"
         auto_refill: Automatically refill my Jar if balance drops below $5 (20 25c's).
