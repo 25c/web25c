@@ -33,6 +33,7 @@ $(document).ready(function(){
   
   // when submit happens show saving
   $('form.edit_button').submit(function() {
+    $('input[type="submit"]').attr('disabled', 'disabled');
     $('#save-button-message').show();
   });
   

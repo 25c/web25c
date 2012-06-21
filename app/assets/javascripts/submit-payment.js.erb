@@ -12,12 +12,12 @@ $(document).ready(function(){
         useExisting = false;
         $existingCard.hide();
         $newCard.show();
-        $toggleCardButton.text('Use existing card');
+        $toggleCardButton.text(useExistingText);
       } else {
         useExisting = true;
         $existingCard.show();
         $newCard.hide();
-        $toggleCardButton.text('Use a different card');
+        $toggleCardButton.text(useDifferentText);
       }
     });
     if (hasResult) $toggleCardButton.click();

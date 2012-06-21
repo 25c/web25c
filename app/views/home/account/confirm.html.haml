@@ -1,25 +1,21 @@
 .row
   .span12
-    %h2.page-header Transaction Confirmed
+    %h2.page-header= t('.thanks')
 .row
   .span12
-    %h3 Thank you for your payment.
     %p
-      Email:
-      = @user.email
-    %p 
-      Amount:
+      = t('.transaction_amount')
       $#{"%.2f" % @result.transaction.amount}
     %p 
-      Transaction ID:
+      = t('.transaction_id')
       = @result.transaction.id
     %p
-      Credit Card:
+      = t('.transaction_card_number')
       = @result.transaction.credit_card_details.masked_number
     %p
-      Card Type:
+      = t('.transaction_card_type')
       = @result.transaction.credit_card_details.card_type
 %hr
 .row
   .span12
-    = link_to "Go back to your tip jar.", home_jar_path
+    = link_to t('.return_to_jar'), home_jar_path

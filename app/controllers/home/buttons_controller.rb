@@ -24,6 +24,7 @@ class Home::ButtonsController < Home::HomeController
   
   def show
     @button = self.current_user.buttons.find_by_uuid(params[:id])
+    flash[:notice] = t('home.buttons.button_updated')
     redirect_to home_buttons_path
   end
   

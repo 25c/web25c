@@ -4,6 +4,8 @@
     window.hasCard = Boolean(#{ !@card_masked_number.blank? });
     window.hasResult = Boolean(#{ !@result.nil? });
     window.setRefillUrl = '#{ j home_set_refill_path }';
+    window.useExistingText = '#{ j t('.use_existing') }';
+    window.useDifferentText = '#{ j t('.use_different') }';
 
 .row
   .span12
@@ -13,14 +15,14 @@
     .lead
       %div Your Jar:
       %div
-        %b #{@user.balance * 4} 25c's 
+        %b= (@user.balance * 4).to_s() + ' ' + t('.25c_units')
         %span ($#{"%.2f" % @user.balance})
 %hr
 .row
   .span12
-    %h3 Refill your tip jar:
+    %h3#refill-title= t('.refill_title')
     
-    %label{:for => "refill-amount"} Refill Amount:
+    %label{:for => "refill-amount"}= t('.refill_amount')
     %select#refill-amount
       - ['5','10','15','20','50','100'].each do |amount|
         - if amount == '20'
@@ -31,11 +33,11 @@
       %input.checkbox#auto-refill-checkbox{:type => 'checkbox', 
         :checked => @user.auto_refill ? "true" : nil,
         :name => 'auto_refill'} 
-        Automatically refill my 25c Jar if balance drops below $5 (20 25c's).
+        = t('.auto_refill')
     -if !@card_masked_number.blank?
       #existing-card
         %p
-          Card on file:
+          = t('.card_on_file')
           %b
             = @card_masked_number
         %form{:action => home_confirm_payment_url, :method => 'post' }
@@ -44,7 +46,7 @@
           %input.btn{:type => 'submit', :value => 'Submit Payment'}
       
       #toggle-card-container
-        .btn#toggle-card-button Use a different card
+        .btn#toggle-card-button= t('.use_different')
 
     #new-card.hide
       -if @result
@@ -58,28 +60,30 @@
           :builder => ApplicationHelper::BraintreeFormBuilder,
           :url => Braintree::TransparentRedirect.url,
           :html => {:id => "transaction-form", :autocomplete => "off"} do |f|
-        %label{:for => "cardholder_name"} Name on Card:
+        %label{:for => "cardholder_name"}= t('.card_name')
         %input{:type => 'text', :size => 40, :name => 'transaction[credit_card][cardholder_name]'}
         %div.pull-left
-          %label{:for => "number"} Card Number:
+          %label{:for => "number"}= t('.card_name')
           %input#card-number{:type => 'text', :size=>40, 
             :name => 'transaction[credit_card][number]'}
-        %label{:for => "CVV"} CVV:
+        %label{:for => "CVV"}= t('.card_cvv')
         %input#card-CVV{:type => 'text', :size => 40, :name => 'transaction[credit_card][cvv]'}
-        %label{:for => "expiration_date"} Expiration Date:
+        %label{:for => "expiration_date"}= t('.expirating_date')
         %select#card-expiration-month{:name => 'transaction[credit_card][expiration_month]'}
-          %option{:selected => "selected", :disabled => "disabled", :value => ""} Month...
+          %option{:selected => "selected", :disabled => "disabled", :value => ""}
+            = t('.select_month')
           - (1..12).each do |month|
             %option{:value => "#{month}"} #{Date::MONTHNAMES[month]}
         %select#card-expiration-year{:name => 'transaction[credit_card][expiration_year]'}
-          %option{:selected => "selected", :disabled => "disabled", :value => ""} Year...
+          %option{:selected => "selected", :disabled => "disabled", :value => ""}
+            = t('.select_year')
           - (Date.today.year..20.years.from_now.year).each do |year|
             %option{:value => "#{year.to_s()[2,2]}"} #{year.to_s()}
         = hidden_field_tag :tr_data, @bt_data
         %div.checkbox-container
           %input.checkbox{:type => 'checkbox', :checked => 'true', :value => 'true',
             :name => 'transaction[options][store_in_vault_on_success]'}
-            Remember credit card for future transactions.
+            =t('.remember_card')
         %input.transaction-amount{:type => 'hidden', :name => 'transaction[amount]'}
         %input.payment-type{:type => 'hidden', :name => 'payment_type', :value => 'new'}
         %input.btn{:type => 'submit', :value => 'Submit Payment'}
