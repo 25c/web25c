@@ -68,7 +68,7 @@
             :name => 'transaction[credit_card][number]'}
         %label{:for => "CVV"}= t('.card_cvv')
         %input#card-CVV{:type => 'text', :size => 40, :name => 'transaction[credit_card][cvv]'}
-        %label{:for => "expiration_date"}= t('.expirating_date')
+        %label{:for => "expiration_date"}= t('.expiration_date')
         %select#card-expiration-month{:name => 'transaction[credit_card][expiration_month]'}
           %option{:selected => "selected", :disabled => "disabled", :value => ""}
             = t('.select_month')

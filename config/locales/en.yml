@@ -37,7 +37,7 @@ en:
         remember_card: Remember this card for future use.
         payment_failure: Payment failed. Please check the credit card fields and try again.
       confirm:
-        thanks: Thank you for your payment.
+        confirm_title: Payment confirmed.
         transaction_id: "Transaction ID:"
         transaction_amount: "Amount:"
         transaction_card_number: "Card Number:"
