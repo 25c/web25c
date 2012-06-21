@@ -19,7 +19,8 @@ Web25c::Application.routes.draw do
     resources :buttons
     match '' => 'dashboard#index', :as => :dashboard
     match 'jar' => 'account#jar', :as => :jar
-    match 'confirm-payment' => 'account#confirm', :as => :confirm_payment
+    match 'confirm-payout' => 'account#confirm_payout', :as => :confirm_payout
+    match 'confirm-payment' => 'account#confirm_payment', :as => :confirm_payment
     match 'set-refill' => 'account#set_refill', :as => :set_refill
   end
   

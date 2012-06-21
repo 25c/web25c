@@ -12,7 +12,7 @@ class Home::AccountController < Home::HomeController
     @bt_data = get_bt_data(@user, is_on_braintree)
   end
   
-  def confirm
+  def confirm_payment
     @user = current_user
     
     # server-to-server payment from vault for existing card
@@ -61,12 +61,12 @@ class Home::AccountController < Home::HomeController
         if @user.save
           format.html {
             flash.now[:notice] = t('home.account.confirm.success')
-            render :action => "confirm"
+            render :action => "confirm_payment"
           }
         else
           format.html {
             flash.now[:notice] = t('home.account.confirm.failure')
-            render :action => "confirm"
+            render :action => "confirm_payment"
           }
         end
       end
@@ -80,6 +80,13 @@ class Home::AccountController < Home::HomeController
       @bt_data = get_bt_data(@user, is_on_braintree)
       render :action => "jar"
     end
+  end
+  
+  def payout
+    @user = current_user
+  end
+  
+  def confirm_payout
   end
   
   def set_refill
