@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120612235516) do
+ActiveRecord::Schema.define(:version => 20120620211945) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",        :null => false
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(:version => 20120612235516) do
 
   add_index "buttons", ["user_id"], :name => "index_buttons_on_user_id"
 
+  create_table "clicks", :force => true do |t|
+    t.integer  "publisher_user_id", :null => false
+    t.integer  "user_id",           :null => false
+    t.text     "url"
+    t.datetime "created_at"
+  end
+
+  add_index "clicks", ["publisher_user_id"], :name => "index_clicks_on_publisher_user_id"
+  add_index "clicks", ["user_id"], :name => "index_clicks_on_user_id"
+
   create_table "users", :force => true do |t|
     t.string   "uuid",                                     :null => false
     t.string   "email"
@@ -36,6 +46,8 @@ ActiveRecord::Schema.define(:version => 20120612235516) do
     t.datetime "updated_at",                               :null => false
     t.boolean  "is_admin",              :default => false, :null => false
     t.integer  "balance",               :default => 0,     :null => false
+    t.string   "card_token"
+    t.boolean  "auto_refill",           :default => true
   end
 
 end

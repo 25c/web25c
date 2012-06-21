@@ -16,9 +16,12 @@ en:
     submit: Submit
   
   home:
+    title: "25c social micro-donations. One quarter, one click."
+    
     account:
       jar:
         title: "Tip Jar for "
+        payment_failure: Payment failed. Please check the credit card fields and try again.
       confirm:
         success: You have successfully added to your tip jar.
         failure: Your account was charged, but there was a problem updating your tip jar.
@@ -33,7 +36,6 @@ en:
         button_code: "Button Code (copy-paste into your page):"
     
     index:
-      title: "25c social micro-donations. One quarter, one click."
       register: Register
       facebook: Login with Facebook
       value_proposition: Rewarding great content & causes.  One quarter one 

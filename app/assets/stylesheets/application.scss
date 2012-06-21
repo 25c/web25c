@@ -141,6 +141,15 @@ footer.navbar > .navbar-inner > .container {
   padding-left: 5px;
 }
 
+/* Account Page Elements
+ *---------------------------- */
+#existing-card {
+ margin: 10px 0; 
+}
+#toggle-card-container {
+margin-bottom: 20px;
+}
+
 /* Account Credit Card Form
  *---------------------------- */
 form#transaction-form input[type=text], form#transaction-form input[type=submit] {
@@ -160,9 +169,9 @@ form#transaction-form #card-expiration-year{
   margin-left: 6px;
   width: 70px;
 }
-form#transaction-form #auto-refill-container{
+.checkbox-container{
   margin-bottom: 10px;
 }
-form#transaction-form #auto-refill-checkbox{
+input[type="checkbox"].checkbox{
   margin-bottom: 8px;
 }
