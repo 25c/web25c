@@ -193,9 +193,8 @@ input[type="checkbox"].checkbox{
 /* Tip Login
  *---------------------------- */
 #tip-center{
-  border: 1px solid red;
   width: 600px;
-  margin: 40px auto 0 auto;
+  margin: 0 auto;
   text-align: center;
 }
  
@@ -207,39 +206,39 @@ img#tip-25c-logo{
   margin-bottom: 40px;
 }
 
-#tip-or{
+#sign-in-or{
   margin: 10px 0;
 }
 
-#login{
+#sign-in{
   width: 400px;
   margin: 0 auto 20px auto;
   text-align: center;
 }
 
-#login .form-horizontal .control-label {
+#sign-in .form-horizontal .control-label {
   width: 130px;
 }
 
-#login .form-horizontal .controls {
+#sign-in .form-horizontal .controls {
   margin-left: 120px;
 }
 
-#login .form-horizontal .form-actions {
+#sign-in .form-horizontal .form-actions {
   margin-right: auto;
   margin-left: auto;
   padding-left: 0;
   padding-right: 0;
 }
 
-#login input.btn[type="submit"] {
+#sign-in input.btn[type="submit"] {
   width: 200px;
 }
 
-#login input[type="radio"] {
+#sign-in input[type="radio"] {
   margin: 0 5px 0 10px;
 }
 
-#login-choose-account {
+#sign-in-choose-account {
   margin-bottom: 20px;
 }

@@ -9,6 +9,20 @@ class HomeController < ApplicationController
       user = User.find_by_email(params[:user][:email]).try(:authenticate, params[:user][:password])
       if user
         self.current_user = user
+        if params.has_key?(:button_id)
+          button = Button.find_by_uuid(params[:button_id])
+          if !button.nil?
+            click = user.clicks.build()
+            click.user_id = user.uuid
+            click.publisher_user_id = button.user_id
+            if click.save
+            else
+              # puts '*** Click Not Saved ***'
+            end
+          else
+            # puts '*** No Button Found ***'
+          end
+        end
         redirect_to_session_redirect_path(home_buttons_path)
       else
         flash[:alert] = t('home.sign_in.failure')

@@ -1,0 +1,39 @@
+= content_for(:js) do
+  :javascript
+    window.submit_text = {
+      new: '#{ j t('application.sign_in.submit_new') }',
+      existing: '#{ j t('application.sign_in.submit_existing') }'
+    };
+    window.submit_url = {
+      new: '#{ j register_path }',
+      existing: '#{ j sign_in_path }'
+    };
+    $(document).ready(function() {
+      $('#sign-in input[type="radio"]').change(function() {
+        var type = $(this).val();
+        $('#sign-in input[type="submit"]').val(submit_text[type]);
+        $('#sign-in form').attr('action', submit_url[type]);
+      }).filter(':checked').change();
+    });    
+
+= render 'layouts/fb_login'
+#sign-in
+  .fb-login-button(data-scope="email,publish_actions")
+    = t('application.sign_in.facebook')
+  #sign-in-or
+    %b.lead= t('application.sign_in.or')
+  = simple_form_for @user, :url => @user.new_record? ? register_path : sign_in_path, 
+    :html => { :class => 'form-horizontal' } do |f|
+    #sign-in-choose-account
+      %input{:type => 'radio', :name => 'user_account', :value => 'new', 
+        :checked => @is_new ? true : false}
+        =t('application.sign_in.new_account')
+      %input{:type => 'radio', :name => 'user_account', :value => 'existing',
+        :checked => @is_new ? false : true}
+        =t('application.sign_in.existing_account')
+    = f.input :email
+    = f.input :password
+    -if @button_id
+      %input{:type => 'hidden', :name => 'button_id', :value => @button_id}
+    .form-actions
+      = f.button :submit, t('application.sign_in.submit_new'), :class => 'btn-success'

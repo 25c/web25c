@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @is_new = true
 
     respond_to do |format|
-      format.html { render '' }
+      format.html { render '/home/sign_in' }
       format.json { render json: @user }
     end
   end
@@ -46,10 +46,12 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         self.current_user = @user
-        format.html { redirect_to_session_redirect_path(home_buttons_path, notice: t('users.create.success')) }
+        format.html { redirect_to_session_redirect_path(home_buttons_path,
+          notice: t('users.create.success')) }
         format.json { render json: @user, status: :created, location: @user }
       else
-        format.html { render action: "new" }
+        @is_new = true
+        format.html { render '/home/sign_in' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -74,6 +76,7 @@ class UsersController < ApplicationController
   def tip
     @user = User.new
     @is_new = true
+    @button_id = params[:button_id]
     render :layout => "blank"
   end
 end

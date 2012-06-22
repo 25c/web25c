@@ -14,7 +14,8 @@ en:
     check_facebook_cookies:
       sign_in: You have been automatically signed in using your Facebook account.
       sign_up: You have successfully linked your Facebook account to 25c!
-    login:
+    sign_in:
+      title: Sign in to your 25c account
       facebook: Login with Facebook
       or: or
       new_account: I am a new user.
