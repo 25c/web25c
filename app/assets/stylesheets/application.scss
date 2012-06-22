@@ -119,15 +119,17 @@ footer.navbar > .navbar-inner > .container {
   height: 50px;
   margin: 5px 0;
 }
+
 #button-preview-image {
-  border: 1px solid transparent;
   display: none;
   cursor: pointer;
 }
+
 #button-preview-image:hover {
   border-color: #ffbda0;
   background-color: #ffeae1;
 }
+
 #button-code-block {
   background-color: white;
   white-space: normal;
@@ -137,6 +139,7 @@ footer.navbar > .navbar-inner > .container {
   width: 100%;
   cursor: text;
 }
+
 #save-button-message {
   padding-left: 5px;
 }
@@ -146,9 +149,11 @@ footer.navbar > .navbar-inner > .container {
 #existing-card {
  margin: 10px 0; 
 }
+
 #toggle-card-container {
   margin-bottom: 20px;
 }
+
 #refill-title {
   margin-bottom: 10px;
 }
@@ -159,22 +164,82 @@ form#transaction-form input[type=text], form#transaction-form input[type=submit]
   display: block;
   margin-right: 10px;
 }
+
 form#transaction-form #card-number {
   width: 130px;
 }
+
 form#transaction-form #card-CVV {
   width: 60px;
 }
+
 form#transaction-form #card-expiration-month{
   width: 140px;
 }
+
 form#transaction-form #card-expiration-year{
   margin-left: 6px;
   width: 70px;
 }
+
 .checkbox-container{
   margin-bottom: 10px;
 }
+
 input[type="checkbox"].checkbox{
   margin-bottom: 8px;
+}
+
+/* Tip Login
+ *---------------------------- */
+#tip-center{
+  border: 1px solid red;
+  width: 600px;
+  margin: 40px auto 0 auto;
+  text-align: center;
+}
+ 
+img#tip-25c-logo{
+  margin-bottom: 10px;
+}
+
+#tip-25c-tagline{
+  margin-bottom: 40px;
+}
+
+#tip-or{
+  margin: 10px 0;
+}
+
+#login{
+  width: 400px;
+  margin: 0 auto 20px auto;
+  text-align: center;
+}
+
+#login .form-horizontal .control-label {
+  width: 130px;
+}
+
+#login .form-horizontal .controls {
+  margin-left: 120px;
+}
+
+#login .form-horizontal .form-actions {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#login input.btn[type="submit"] {
+  width: 200px;
+}
+
+#login input[type="radio"] {
+  margin: 0 5px 0 10px;
+}
+
+#login-choose-account {
+  margin-bottom: 20px;
 }

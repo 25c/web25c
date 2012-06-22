@@ -8,16 +8,24 @@ en:
         title: Admin Dashboard
   
   application:
+    
+    title: "25c social micro-donations. One quarter, one click."
+    
     check_facebook_cookies:
       sign_in: You have been automatically signed in using your Facebook account.
       sign_up: You have successfully linked your Facebook account to 25c!
+    login:
+      facebook: Login with Facebook
+      or: or
+      new_account: I am a new user.
+      existing_account: I already have a 25c account.
+      submit_new: Create Free Account
+      submit_existing: Sign In
   
   form:
     submit: Submit
   
-  home:
-    title: "25c social micro-donations. One quarter, one click."
-    
+  home:    
     account:
       jar:
         25c_units: 25c's
@@ -58,7 +66,6 @@ en:
     
     index:
       register: Register
-      facebook: Login with Facebook
       value_proposition: Rewarding great content & causes.  One quarter one 
         click.
       value_proposition_sub: "Receiving 25c tips for your content & cause is a
@@ -89,7 +96,6 @@ en:
       dashboard: Dashboard
       
     header:
-      facebook: Login with Facebook
       tagline: "Social micro-donations. One quarter, one click."
       home: Home
       about: About
@@ -103,5 +109,4 @@ en:
   
   users:
     create:
-      success: Your account has been created!
-      
+      success: Your account has been created!      

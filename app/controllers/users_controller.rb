@@ -25,9 +25,10 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
+    @is_new = true
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render '' }
       format.json { render json: @user }
     end
   end
@@ -69,5 +70,10 @@ class UsersController < ApplicationController
       end
     end
   end
-
+  
+  def tip
+    @user = User.new
+    @is_new = true
+    render :layout => "blank"
+  end
 end

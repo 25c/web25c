@@ -4,7 +4,8 @@
       %h2= t('.value_proposition')
       %p= raw t('.value_proposition_sub')
       %p
-        .fb-login-button(data-scope="email,publish_actions")= t('.facebook')
+        .fb-login-button(data-scope="email,publish_actions")
+          = t('application.login.facebook')
       %p
         %a= link_to t('.register'), register_path, :class => 'btn'
     .span5.pull-right

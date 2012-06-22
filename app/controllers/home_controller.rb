@@ -15,6 +15,7 @@ class HomeController < ApplicationController
       end
     end
     @user = User.new
+    @is_new = false
   end
   
   def sign_out
