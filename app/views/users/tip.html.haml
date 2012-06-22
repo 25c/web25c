@@ -1,0 +1,12 @@
+= render 'layouts/fb_login'
+#tip-center
+  %img#tip-25c-logo{:src => image_path('25c-logo-large.png')}
+  #tip-25c-tagline.lead= t('application.title')
+  .fb-login-button(data-scope="email,publish_actions")
+    = t('application.login.facebook')
+  #tip-or
+    %b.lead= t('application.login.or')
+  = render 'layouts/login'
+
+= javascript_include_tag "application"
+= yield(:js)

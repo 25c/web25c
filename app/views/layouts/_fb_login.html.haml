@@ -1,0 +1,23 @@
+#fb-root
+:javascript
+  window.fbAsyncInit = function() {
+    FB.Event.subscribe('auth.authResponseChange', function(response) {
+      window.location.reload();
+    });
+    #{yield :fb_pre_init}
+    FB.init({
+      appId      : '#{FACEBOOK_SETTINGS[:app_id]}',
+      channelUrl : '//#{url_base}/channel.html',
+      status     : true, 
+      cookie     : true,
+      xfbml      : true,
+      oauth      : true
+    });
+    #{yield :fb_post_init}
+  };
+  (function(d){
+    var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    d.getElementsByTagName('head')[0].appendChild(js);
+  }(document));
