@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-    @is_new = true
+    @new = true
 
     respond_to do |format|
       format.html { render '/home/sign_in' }
@@ -37,28 +37,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-
-  # POST /users
-  # POST /users.json
-  def create
-    @user = User.new(params[:user])
-
-    respond_to do |format|
-      if @user.save
-        self.current_user = @user
-        format.html { redirect_to_session_redirect_path(home_buttons_path,
-          notice: t('users.create.success')) }
-        format.json { render json: @user, status: :created, location: @user }
-      else
-        @is_new = true
-        format.html { render '/home/sign_in' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /users/1
-  # PUT /users/1.json
+  
   def update
     @user = User.find(params[:id])
 
@@ -75,7 +54,7 @@ class UsersController < ApplicationController
   
   def tip
     @user = User.new
-    @is_new = true
+    @new = params[:new] ? params[:new] == "true" : true
     @button_id = params[:button_id]
     render :layout => "blank"
   end
