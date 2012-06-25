@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
           flash[:notice] = t('application.check_facebook_cookies.sign_in')
         end
         if self.signed_in?
-          # verify that the signed in user is linked to the facebok account
+          # verify that the signed in user is linked to the facebook account
           if self.current_user.facebook_uid == @_facebook_session['user_id']
             # if so, refresh access token
             self.current_user.refresh_facebook_access_token(@_facebook_session['code'])

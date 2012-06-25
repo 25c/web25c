@@ -1,0 +1,21 @@
+= content_for(:js) do
+  :javascript
+    $('body').load(function() {
+      window.open('', '_self', '');
+    });
+    $(document).ready(function() {
+      $('a.btn').click(function() {
+        // setTimeout("self.close();", 100);
+        // window.close();
+      });
+    });
+
+#tip-center
+  %img#tip-25c-logo{:src => image_path('25c-logo-large.png')}
+  #tip-25c-tagline.lead= t('application.title')
+  #tip-thanks Thanks for giving a tip!
+  / %a= link_to t('.visit_25c'), root_path, :class => 'btn', :target => 'blank'
+  / %a.btn= t('.close_window')
+
+= javascript_include_tag "application"
+= yield(:js)

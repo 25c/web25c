@@ -8,20 +8,21 @@ en:
         title: Admin Dashboard
   
   application:
+    
+    title: "25c social micro-donations. One quarter, one click."
+    
     check_facebook_cookies:
       sign_in: You have been automatically signed in using your Facebook account.
       sign_up: You have successfully linked your Facebook account to 25c!
-  
+      
   form:
     submit: Submit
   
-  home:
-    title: "25c social micro-donations. One quarter, one click."
-    
+  home:    
     account:
       jar:
         25c_units: 25c's
-        title: "25c Jar for "
+        title: "Your 25c Jar"
         refill_title: Refill my Jar with 25c's
         refill_amount: "Amount to add:"
         auto_refill: Automatically refill my Jar if balance drops below $5 (20 25c's).
@@ -58,7 +59,6 @@ en:
     
     index:
       register: Register
-      facebook: Login with Facebook
       value_proposition: Rewarding great content & causes.  One quarter one 
         click.
       value_proposition_sub: "Receiving 25c tips for your content & cause is a
@@ -78,10 +78,20 @@ en:
         URL to refer great content & causes - and earn 5 cents for each 25c 
         donation generated.
       learn-more: Learn more...
-      
+
     sign_in:
+      title: Sign in to your 25c account
+      facebook: Login with Facebook
+      or: or
+      new_account: I am a new user.
+      existing_account: I already have a 25c account.
+      submit_new: Create Free Account
+      submit_existing: Sign In
       failure: "Sorry, your email and/or password were incorrect."
-      title: Sign in
+      click_success: "Your click has been recorded."
+      click_failure: "Something went wrong. Your click was not processed."
+      sign_in_failure: "Something went wrong with the sign in process. Please try again."
+      button_not_found: "The button was not found."
       
   layouts:
     admin:
@@ -89,7 +99,6 @@ en:
       dashboard: Dashboard
       
     header:
-      facebook: Login with Facebook
       tagline: "Social micro-donations. One quarter, one click."
       home: Home
       about: About
@@ -100,8 +109,10 @@ en:
       sign_out: Sign Out
       buttons: Receive 25c's
       payments: Load 25c Jar
-  
+      
   users:
     create:
       success: Your account has been created!
-      
+    confirm_tip:
+      visit_25c: Go to 25c.com
+      close_window: Close this window

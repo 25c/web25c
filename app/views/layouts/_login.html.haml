@@ -1,0 +1,32 @@
+= content_for(:js) do
+  :javascript
+    window.submit_text = {
+      new: '#{ j t('application.login.submit_new') }',
+      existing: '#{ j t('application.login.submit_existing') }'
+    };
+    window.submit_url = {
+      new: '#{ j register_path }',
+      existing: '#{ j sign_in_path }'
+    };
+    $(document).ready(function() {
+      $('#login input[type="radio"]').change(function() {
+        var type = $(this).val();
+        $('#login input[type="submit"]').val(submit_text[type]);
+        $('#login form').attr('action', submit_url[type]);
+      }).filter(':checked').change();
+    });
+ 
+#login
+  = simple_form_for @user, :url => @user.new_record? ? register_path : sign_in_path, 
+    :html => { :class => 'form-horizontal' } do |f|
+    #login-choose-account
+      %input{:type => 'radio', :name => 'user_account', :value => 'new', 
+        :checked => @is_new ? true : false}
+        =t('application.login.new_account')
+      %input{:type => 'radio', :name => 'user_account', :value => 'existing',
+        :checked => @is_new ? false : true}
+        =t('application.login.existing_account')
+    = f.input :email
+    = f.input :password
+    .form-actions
+      = f.button :submit, t('application.login.submit_new'), :class => 'btn-success'
