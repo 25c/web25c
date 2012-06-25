@@ -16,6 +16,7 @@ Web25c::Application.routes.draw do
   resources :users, :only => [ :index, :show ]
   
   match 'tip/:button_id' => 'users#tip', :as => :tip
+  match 'confirm-tip/' => 'users#confirm_tip', :as => :confirm_tip
   
   namespace :home do
     resources :buttons

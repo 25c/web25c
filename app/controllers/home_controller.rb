@@ -5,13 +5,18 @@ class HomeController < ApplicationController
   end
   
   def sign_in
-    if request.method == 'POST'       
+    if request.method == 'POST'
+      
+      sign_in_successful = false
+      has_tip = params.has_key?(:button_id)
+      
+      # new user
       if params[:user_account] == 'new'
         @new = true
         @user = User.new(params[:user])
         if @user.save
+          sign_in_successful = true
           notice = t('users.create.success')
-          json_response = @user
         else
           alert = ""
           @user.errors.full_messages.each do |message|
@@ -19,18 +24,23 @@ class HomeController < ApplicationController
               alert += message
               alert += ", " if message != @user.errors.full_messages.last
             end
-          end
-          
+          end     
           @user = nil
         end
+      # existing user
       else
         @new = false
         @user = User.find_by_email(params[:user][:email]).try(:authenticate, params[:user][:password])
-        alert = t('home.sign_in.failure') if !@user
+        if @user
+          sign_in_successful = true
+        else
+          alert = t('home.sign_in.failure')
+        end
       end
       if @user
         self.current_user = @user
-        if params.has_key?(:button_id)
+        # if there is a tip to process, make sure it gets logged
+        if has_tip
           button = Button.find_by_uuid(params[:button_id])
           if !button.nil?
             click = @user.clicks.build()
@@ -45,8 +55,8 @@ class HomeController < ApplicationController
             alert = t('home.sign_in.button_not_found')
           end
         end
-        redirect_to_session_redirect_path(home_buttons_path)
-        return
+        # redirect_to_session_redirect_path(home_buttons_path)
+        # return
       end
       if alert
         flash[:alert] = alert
@@ -55,10 +65,19 @@ class HomeController < ApplicationController
       end
     end
     
-    @user = User.new if !@user
-    
-    if params.has_key?(:button_id)
-      redirect_to tip_path(:button_id => params[:button_id], :new => @new)
+    # handle page redirecting
+    if sign_in_successful
+      if has_tip && !alert
+        redirect_to_session_redirect_path(confirm_tip_path)
+      else
+        redirect_to_session_redirect_path(home_buttons_path)
+      end
+      return
+    else
+      @user = User.new if !@user
+      if has_tip
+        redirect_to tip_path(:button_id => params[:button_id], :new => @new)
+      end
     end
   end
   

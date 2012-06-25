@@ -109,8 +109,10 @@ en:
       sign_out: Sign Out
       buttons: Receive 25c's
       payments: Load 25c Jar
-  
+      
   users:
     create:
       success: Your account has been created!
-      failure: Something went wrong. Please try again.
+    confirm_tip:
+      visit_25c: Go to 25c.com
+      close_window: Close this window

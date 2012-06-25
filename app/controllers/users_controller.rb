@@ -58,4 +58,10 @@ class UsersController < ApplicationController
     @button_id = params[:button_id]
     render :layout => "blank"
   end
+  
+  def confirm_tip
+    # after tip is made
+    render :layout => "blank"
+  end
+    
 end

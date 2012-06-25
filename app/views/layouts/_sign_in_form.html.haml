@@ -4,15 +4,10 @@
       new: '#{ j t('home.sign_in.submit_new') }',
       existing: '#{ j t('home.sign_in.submit_existing') }'
     };
-    window.submit_url = {
-      new: '#{ j register_path }',
-      existing: '#{ j sign_in_path }'
-    };
     $(document).ready(function() {
       $('#sign-in input[type="radio"]').change(function() {
         var type = $(this).val();
         $('#sign-in input[type="submit"]').val(submit_text[type]);
-        //$('#sign-in form').attr('action', submit_url[type]);
       }).filter(':checked').change();
     });
 
