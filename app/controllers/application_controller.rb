@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
       oauth = Koala::Facebook::OAuth.new(FACEBOOK_SETTINGS['app_id'], FACEBOOK_SETTINGS['app_secret'])
       @_facebook_session = oauth.parse_signed_request(signed_request)
       if @_facebook_session
+        # figure out if we're coming from the "tip" popup login page
+        has_tip = request.url.include? '/tip/'
         # if not signed in, try auto-sign-in by facebook uid        
         unless self.signed_in?
           self.current_user = User.find_by_facebook_uid(@_facebook_session['user_id']) 
@@ -26,7 +28,13 @@ class ApplicationController < ActionController::Base
           else
             # uh-oh, shared computer? clear out
             self.current_user = nil
-            redirect_to root_path
+            if has_tip 
+              flash[:alert] = t('application.check_facebook_cookies.failure');
+              redirect_to tip_path(:button_id => params[:button_id])
+            else
+              redirect_to root_path
+            end
+            return
           end
         else
           # register new user
@@ -36,7 +44,13 @@ class ApplicationController < ActionController::Base
           user.save!
           self.current_user = user
           self.current_user.refresh_facebook_access_token(@_facebook_session['code'])
-          redirect_to home_dashboard_path, :notice => t('application.check_facebook_cookies.sign_up')
+          if !has_tip
+            redirect_to home_dashboard_path, :notice => t('application.check_facebook_cookies.sign_up')
+            return
+          end
+        end
+        if has_tip 
+          redirect_to confirm_tip_path(:button_id => params[:button_id])
         end
       end
     end

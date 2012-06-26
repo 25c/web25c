@@ -4,8 +4,8 @@ Web25c::Application.routes.draw do
   match 'register' => 'users#new', :via => :get, :as => :register
   match 'register' => 'users#create', :via => :post
   
-  match 'sign-in' => 'home#sign_in', :as => :sign_in
-  match 'sign-out' => 'home#sign_out', :as => :sign_out
+  match 'sign-in' => 'users#sign_in', :as => :sign_in
+  match 'sign-out' => 'users#sign_out', :as => :sign_out
   
   match 'about' => 'home#about', :as => :about
   match 'faq' => 'home#faq', :as => :faq
@@ -16,7 +16,7 @@ Web25c::Application.routes.draw do
   resources :users, :only => [ :index, :show ]
   
   match 'tip/:button_id' => 'users#tip', :as => :tip
-  match 'confirm-tip/' => 'users#confirm_tip', :as => :confirm_tip, :via => :post
+  match 'confirm_tip' => 'users#confirm_tip', :as => :confirm_tip
   
   namespace :home do
     resources :buttons

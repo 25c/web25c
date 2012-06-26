@@ -14,6 +14,7 @@ en:
     check_facebook_cookies:
       sign_in: You have been automatically signed in using your Facebook account.
       sign_up: You have successfully linked your Facebook account to 25c!
+      failure: Facebook sign in was unsuccessful. Please try again.
       
   form:
     submit: Submit
@@ -151,4 +152,5 @@ en:
       success: Your account has been created!
     confirm_tip:
       visit_25c: Go to 25c.com
+      view_account: View 25c Account
       close_window: Close this window
