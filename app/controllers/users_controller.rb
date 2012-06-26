@@ -134,8 +134,9 @@ class UsersController < ApplicationController
     button = Button.find_by_uuid(params[:button_id])
     if !button.nil?
       click = @user.clicks.build()
-      click.user_id = @user.uuid
-      click.publisher_user_id = button.user_id
+      click.uuid = UUID.new.generate
+      click.user_id = @user.id
+      click.button_id = button.id
       if click.save
         notice = t('users.sign_in.click_success')
       else
