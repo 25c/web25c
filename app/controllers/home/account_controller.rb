@@ -65,7 +65,7 @@ class Home::AccountController < Home::HomeController
           }
         else
           format.html {
-            flash.now[:notice] = t('home.account.confirm.failure')
+            flash.now[:alert] = t('home.account.confirm.failure')
             render :action => "confirm_payment"
           }
         end
@@ -84,9 +84,32 @@ class Home::AccountController < Home::HomeController
   
   def payout
     @user = current_user
+    @bank_fields = ["account_number", "routing_number", "bank_name"]
+    @contact_fields = [ "name", "company", "phone", "line1", "line2", "city", "region", "zip" ]
   end
   
   def confirm_payout
+    @result = params
+    puts params.inspect
+    if params[:type] == 'paypal'
+      if params[:paypal_email].empty?
+        flash[:alert] = t('home.account.confirm_payout.complete_required')
+        redirect_to home_payout_path
+        return
+      end
+    elsif params[:type] == 'ach'
+      params.each do |key, value|
+        if key != "line2" && value.blank?
+          flash[:alert] = t('home.account.confirm_payout.complete_required')
+          redirect_to home_payout_path
+          return
+        end
+      end
+    else
+      flash[:alert] = t('home.account.confirm_payout.complete_required')
+      redirect_to home_payout_path
+    end
+    # Put payout action here -> email to payout@25c.com?
   end
   
   def set_refill

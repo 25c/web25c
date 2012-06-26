@@ -1,0 +1,20 @@
+$(document).ready(function(){
+  
+  var $payoutAmount = $('#payout-amount');
+  var $payoutAmountHidden = $('.payout-amount-hidden');
+  $payoutAmountHidden.val($payoutAmount.val());
+  
+  $payoutAmount.change(function() {
+    newAmount = $payoutAmount.val();
+    if (newAmount > jarAmount) {
+      $payoutAmount.focus();
+      $('#amount-help').addClass('errors');
+      $('input[type="submit"]').attr('disabled', 'disabled');
+    } else {
+      $payoutAmountHidden.val($payoutAmount.val());
+      $('#amount-help').removeClass('errors');
+      $('input[type="submit"]').removeAttr('disabled');
+    }
+  });
+  
+});

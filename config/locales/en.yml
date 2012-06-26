@@ -8,8 +8,8 @@ en:
         title: Admin Dashboard
   
   application:
-    
     title: "25c social micro-donations. One quarter, one click."
+    25c_units: "25c's"
     
     check_facebook_cookies:
       sign_in: You have been automatically signed in using your Facebook account.
@@ -23,6 +23,7 @@ en:
       jar:
         25c_units: 25c's
         title: "Your 25c Jar"
+        request_payout: "Request a payout from your Jar."
         refill_title: Refill my Jar with 25c's
         refill_amount: "Amount to add:"
         auto_refill: Automatically refill my Jar if balance drops below $5 (20 25c's).
@@ -37,7 +38,7 @@ en:
         select_year: Year...
         remember_card: Remember this card for future use.
         payment_failure: Payment failed. Please check the credit card fields and try again.
-      confirm:
+      confirm_payment:
         confirm_title: Payment confirmed.
         transaction_id: "Transaction ID:"
         transaction_amount: "Amount:"
@@ -46,6 +47,41 @@ en:
         return_to_jar: Return to 25c Jar.
         success: You have successfully added to your 25c Jar.
         failure: Your account was charged, but there was a problem updating your 25c Jar.
+      payout:
+        empty_jar_title: Request a payout from your 25c Jar
+        paypal_title: Request payment through Paypal
+        paypal_email: Paypal account e-mail*
+        ach_title: Request payment through bank ACH transfer
+        bank_info: Your account information
+        account_type: Account Type*
+        account_business: Business
+        account_personal: Personal
+        account_number: Account Number*
+        routing_number: Routing Number*
+        bank_name: Bank Name*
+        contact_info: Your contact information
+        name: Name*
+        company: Company
+        line1: Address Line 1*
+        line2: Address Line 2
+        city: City*
+        region: State / Province / Region*
+        zip: Postal Code*
+        country: Country*
+        submit: Send Request
+      confirm_payout:
+        confirm_title: Payout request sent.
+        complete_required: "Please complete all the required fields."
+        amount: "Request amount:"
+        email: "Email:"
+        account_type: "Account Type:"
+        bank_name: "Bank Name:"
+        name: "Name:"
+        company: "Company:"
+        phone: "Phone Number"
+        address: "Address:"
+        return_to_jar: Return to 25c Jar.
+        failure: "An error occurred and the payout request was not send. Please try again."
     dashboard:
       index:
         title: Dashboard

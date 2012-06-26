@@ -1,15 +1,10 @@
 = content_for(:js) do
+  = javascript_include_tag "sign-in-form"
   :javascript
     window.submit_text = {
       new: '#{ j t('home.sign_in.submit_new') }',
       existing: '#{ j t('home.sign_in.submit_existing') }'
     };
-    $(document).ready(function() {
-      $('#sign-in input[type="radio"]').change(function() {
-        var type = $(this).val();
-        $('#sign-in input[type="submit"]').val(submit_text[type]);
-      }).filter(':checked').change();
-    });
 
 = render 'layouts/fb_login'
 #sign-in

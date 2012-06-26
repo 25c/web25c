@@ -16,15 +16,16 @@ Web25c::Application.routes.draw do
   resources :users, :only => [ :index, :show ]
   
   match 'tip/:button_id' => 'users#tip', :as => :tip
-  match 'confirm-tip/' => 'users#confirm_tip', :as => :confirm_tip
+  match 'confirm-tip/' => 'users#confirm_tip', :as => :confirm_tip, :via => :post
   
   namespace :home do
     resources :buttons
     match '' => 'dashboard#index', :as => :dashboard
     match 'jar' => 'account#jar', :as => :jar
-    match 'confirm-payout' => 'account#confirm_payout', :as => :confirm_payout
-    match 'confirm-payment' => 'account#confirm_payment', :as => :confirm_payment
-    match 'set-refill' => 'account#set_refill', :as => :set_refill
+    match 'confirm-payment' => 'account#confirm_payment', :as => :confirm_payment, :via => :post
+    match 'set-refill' => 'account#set_refill', :as => :set_refill, :via => :post
+    match 'payout' => 'account#payout', :as => :payout
+    match 'confirm-payout' => 'account#confirm_payout', :as => :confirm_payout, :via => :post
   end
   
   namespace :admin do

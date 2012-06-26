@@ -1,33 +1,70 @@
+= content_for(:js) do
+  = javascript_include_tag "request-payout"
+  :javascript
+    window.jarAmount = '#{ @user.balance }';
+
 .row
   .span12
-    %h2.page-header= t('empty_jar_title')
+    %h2.page-header= t('.empty_jar_title')
 .row
   .span12
     .lead
       %div Your Jar:
       %div
-        %b= (@user.balance * 4).to_s() + ' ' + t('.25c_units')
+        %b= (@user.balance * 4).to_s() + ' ' + t('application.25c_units')
         %span ($#{"%.2f" % @user.balance})
 %hr
 .row
   .span12
-    %h3#user-details= t('.details_title')
-    %form{:action => home_confirm_payout_url, :method => 'post' }
-      %label{:for => 'address[name]'}= t('.name')
-      %input{:type => 'text', :name => 'address[name]'}
-      %label{:for => 'address[company]'}= t('.company')
-      %input{:type => 'text', :name => 'address[company]'}
-      %label{:for => 'address[line1]'}= t('.line1')
-      %input{:type => 'text', :name => 'address[line1]'}
-      %label{:for => 'state'}= t('.line2')
-      %input{:type => 'text', :name => 'address[line2]'}
-      %label{:for => 'state'}= t('.city')
-      %input{:type => 'text', :name => 'address[city]'}
-      %label{:for => 'state'}= t('.state')
-      %input{:type => 'text', :name => 'address[state]'}
-      %label{:for => 'state'}= t('.zip')
-      %input{:type => 'text', :name => 'address[zip]'}
-      %label{:for => 'state'}= t('.country')
-      %input{:type => 'text', :name => 'address[country]'}
-      %input.btn{:type => 'submit', :value => 'Submit Payment'}
+    %form{:class => 'form-horizontal'}
+      .control-group
+        %label.control-label{:for => "payout-amount"}= t('.payout_amount')
+        .controls
+          %input#payout-amount{:type => 'text', :name => 'payout_amount',
+            :value => @user.balance > 5 ? "%.2f" % (@user.balance - 5) : "%.2f" % 0}
+          %p#amount-help.help-block Must be less than or equal to your jar total.
+
+.row
+  .span6
+    %h3.payout-request-title= t('.paypal_title') 
+    %form{:action => home_confirm_payout_url, :method => 'post', :class => 'form-horizontal' }
+      .control-group
+        %label.control-label{:for => 'paypal_email'}= t('paypal_email')
+        .controls
+          %input{:type => 'text', :name => 'paypal_email'}
+      %input.payout-amount-hidden{:type => 'hidden', :name => 'amount'}
+      %input.payout-type-hidden{:type => 'hidden', :name => 'type', :value => 'paypal'}
+      .submit-container
+        %input.btn.btn-primary{:type => 'submit', :value => t(".submit")}
+
+.row
+  .span12
+    %h3.payout-request-title= t('.ach_title') 
+  %form{:action => home_confirm_payout_url, :method => 'post', :class => 'form-horizontal' }
+    .span6
+      %h4.info-title= t('.bank_info')
+      .control-group
+        %label.control-label{:for => 'account_type'}= t('account_type')
+        .controls
+          %select{:name => 'account_type'}
+            %option{:selected => "selected", :value => "business"}
+              = t('.account_business')
+            %option{:value => "personal"}
+              = t('.account_personal')
+      - @bank_fields.each do |field|
+        .control-group
+          %label.control-label{:for => field}= t('.' + field)
+          .controls
+            %input{:type => 'text', :name => field}
+    .span6
+      %h4.info-title= t('.contact_info')
+      - @contact_fields.each do |field|
+        .control-group
+          %label.control-label{:for => field}= t('.' + field)
+          .controls
+            %input{:type => 'text', :name => field}
+    %input.payout-amount-hidden{:type => 'hidden', :name => 'amount'}
+    %input.payout-type-hidden{:type => 'hidden', :name => 'type', :value => 'ach'}
+    .submit-container
+      %input.btn.btn-primary{:type => 'submit', :value => t(".submit")}
     
