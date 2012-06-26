@@ -2,27 +2,27 @@
   = javascript_include_tag "sign-in-form"
   :javascript
     window.submit_text = {
-      new: '#{ j t('home.sign_in.submit_new') }',
-      existing: '#{ j t('home.sign_in.submit_existing') }'
+      new: '#{ j t('users.sign_in.submit_new') }',
+      existing: '#{ j t('users.sign_in.submit_existing') }'
     };
 
 = render 'layouts/fb_login'
 #sign-in
   .fb-login-button(data-scope="email,publish_actions")
-    = t('home.sign_in.facebook')
+    = t('users.sign_in.facebook')
   #sign-in-or
-    %b.lead= t('home.sign_in.or')
+    %b.lead= t('users.sign_in.or')
   = simple_form_for @user, :url => sign_in_path, :html => { :class => 'form-horizontal' } do |f|
     #sign-in-choose-account
       %input{:type => 'radio', :name => 'user_account', :value => 'new', 
         :checked => @new ? true : false}
-        =t('home.sign_in.new_account')
+        =t('users.sign_in.new_account')
       %input{:type => 'radio', :name => 'user_account', :value => 'existing',
         :checked => @new ? false : true}
-        =t('home.sign_in.existing_account')
+        =t('users.sign_in.existing_account')
     = f.input :email
     = f.input :password
     -if @button_id
       %input{:type => 'hidden', :name => 'button_id', :value => @button_id}
     .form-actions
-      = f.button :submit, t('home.sign_in.submit_new'), :class => 'btn-success'
+      = f.button :submit, t('users.sign_in.submit_new'), :class => 'btn-success'
