@@ -102,7 +102,7 @@ class UsersController < ApplicationController
         if @user
           sign_in_successful = true
         else
-          alert = t('home.sign_in.failure')
+          alert = t('users.sign_in.failure')
         end
       end
       if @user
@@ -147,7 +147,7 @@ class UsersController < ApplicationController
     if self.current_user
       @user = self.current_user
     else
-      flash[:alert] = t('home.sign_in.failure')
+      flash[:alert] = t('users.sign_in.failure')
       redirect_to tip_path(:button_id => params[:button_id])
       return
     end
@@ -158,12 +158,12 @@ class UsersController < ApplicationController
       click.user_id = @user.id
       click.button_id = button.id
       if click.save
-        notice = t('home.sign_in.click_success')
+        notice = t('users.sign_in.click_success')
       else
-        alert = t('home.sign_in.click_failure')
+        alert = t('users.sign_in.click_failure')
       end
     else
-      alert = t('home.sign_in.button_not_found')
+      alert = t('users.sign_in.button_not_found')
     end
     if alert
       flash.now[:alert] = alert

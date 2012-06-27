@@ -115,20 +115,6 @@ en:
         URL to refer great content & causes - and earn 5 cents for each 25c 
         donation generated.
       learn-more: Learn more...
-
-    sign_in:
-      title: Sign in to your 25c account
-      facebook: Login with Facebook
-      or: or
-      new_account: I am a new user.
-      existing_account: I already have a 25c account.
-      submit_new: Create Free Account
-      submit_existing: Sign In
-      failure: "Sorry, your email and/or password were incorrect."
-      click_success: "Your click has been recorded."
-      click_failure: "Something went wrong. Your click was not processed."
-      sign_in_failure: "Something went wrong with the sign in process. Please try again."
-      button_not_found: "The button was not found."
       
   layouts:
     admin:
@@ -159,6 +145,19 @@ en:
       title: Your Profile
     update_profile:
       success: Your profile has been updated.
+    sign_in:
+      title: Sign in to your 25c account
+      facebook: Login with Facebook
+      or: or
+      new_account: I am a new user.
+      existing_account: I already have a 25c account.
+      submit_new: Create Free Account
+      submit_existing: Sign In
+      failure: "Sorry, your email and/or password were incorrect."
+      click_success: "Your click has been recorded."
+      click_failure: "Something went wrong. Your click was not processed."
+      sign_in_failure: "Something went wrong with the sign in process. Please try again."
+      button_not_found: "The button was not found."
     create:
       success: Your account has been created!
     confirm_tip:
