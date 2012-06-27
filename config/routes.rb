@@ -13,8 +13,6 @@ Web25c::Application.routes.draw do
   match 'privacy' => 'home#privacy', :as => :privacy
   match 'contact' => 'home#contact', :as => :contact
   
-  resources :users, :only => [ :index, :show ]
-  
   match 'tip/:button_id' => 'users#tip', :as => :tip
   match 'confirm_tip' => 'users#confirm_tip', :as => :confirm_tip
   
@@ -27,11 +25,18 @@ Web25c::Application.routes.draw do
     match 'payout' => 'account#payout', :as => :payout
     match 'confirm-payout' => 'account#confirm_payout', :as => :confirm_payout, :via => :post
   end
+  match 'home/account' => 'users#edit', :as => :home_account, :via => :get
+  match 'home/account' => 'users#update', :via => :put
+  match 'home/profile' => 'users#edit_profile', :as => :home_profile, :via => :get
+  match 'home/profile' => 'users#update_profile', :via => :put
   
   namespace :admin do
     resources :users, :except => [ :new, :create ]
     match '' => 'dashboard#index', :as => :dashboard
   end
+  
+  # the profile wildcard route must be last
+  match ':id' => 'users#show', :as => :profile
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

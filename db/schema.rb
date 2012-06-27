@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(:version => 20120627184940) do
     t.integer  "balance",               :default => 0,     :null => false
     t.string   "card_token"
     t.boolean  "auto_refill",           :default => true
+    t.string   "nickname"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "about"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
 end

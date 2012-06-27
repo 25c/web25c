@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :require_signed_in, :only => [ :edit, :update, :edit_profile, :update_profile ]
+  
   # GET /users
   # GET /users.json
   def index
@@ -13,7 +15,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_nickname_ci(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,18 +37,36 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user = self.current_user
   end
   
   def update
-    @user = User.find(params[:id])
-
+    @user = self.current_user
+    @user.editing = true
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to home_account_path, notice: t('users.update.success') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  def edit_profile
+    @user = self.current_user
+  end
+  
+  def update_profile
+    @user = self.current_user
+    @user.editing = true
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to home_profile_path, notice: t('users.update_profile.success') }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit_profile" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

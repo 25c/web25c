@@ -56,6 +56,19 @@ body {
   color: #e3e3e3;
 }
 
+.nav li.dropdown.open .caret,
+.nav li.dropdown.open.active .caret,
+.nav li.dropdown.open a:hover .caret {
+  border-top-color: black;
+  border-bottom-color: black;
+}
+
+.navbar .nav li.dropdown .dropdown-toggle .caret,
+.navbar .nav li.dropdown.open .caret {
+  border-top-color: black;
+  border-bottom-color: black;
+}
+
 /* Footer
  *---------------------------- */
 footer.navbar {

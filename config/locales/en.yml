@@ -128,6 +128,7 @@ en:
       tagline: "Social micro-donations. One quarter, one click."
       home: Home
       about: About
+      account: Account
       profile: Profile
       contact: Contact
       register: Register
@@ -137,6 +138,16 @@ en:
       payments: Load 25c Jar
       
   users:
+    form:
+      edit_password_hint: Leave blank to keep current password.
+    edit:
+      title: Your Account
+    update:
+      success: Your account has been updated.
+    edit_profile:
+      title: Your Profile
+    update_profile:
+      success: Your profile has been updated.
     sign_in:
       title: Sign in to your 25c account
       facebook: Login with Facebook
