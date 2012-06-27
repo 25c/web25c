@@ -2,38 +2,40 @@ $(document).ready(function(){
   
   // lookup dictionary for image filenames
   var imageDict = {
-    large: "<%= asset_path '25c-button-large.png' %>",
-    medium: "<%= asset_path '25c-button-medium.png' %>",
-    icon: "<%= asset_path '25c-button-icon.png' %>"
+    'btn-large': '<%= asset_path '25c-btn-large.png' %>',
+    'btn-medium': '<%= asset_path '25c-btn-medium.png' %>',
+    'btn-small': '<%= asset_path '25c-btn-small.png' %>',
+    'icon-large': '<%= asset_path '25c-icon-large.png' %>',
+    'icon-medium': '<%= asset_path '25c-icon-medium.png' %>',
+    'icon-small': '<%= asset_path '25c-icon-small.png' %>'
   };
+  
+  // placeholder for debug
+  initialButtonSize = 'btn-medium'
   
   var updateButtonImage = function(newSize) {
     // replace button preview image if new size is valid
     var path = imageDict[newSize];
     if (path) {
-      $('#button-preview-image').attr('src', path).load(function() {
+      $('#button-preview img').attr('src', path).load(function() {
         $(this).show();
       });
     }
     $('#button-code-params').html(newSize);
   };
   
+  // add update title field -> modify js string
+  
   // initialize button preview image
-  var buttonSize = $('.radio_buttons:checked').val();
-  updateButtonImage(buttonSize);
+  $('.button-choice>img[data-size="' + initialButtonSize + '"]').addClass('selected-button')
+  updateButtonImage(initialButtonSize);
   
   // when radio buttons change, update image accordingly
-  $('.radio_buttons').change(function() {
-    var $this = $(this);
-    if ($this.attr('checked')) {
-      updateButtonImage($this.val());
-    }
-  });
-  
-  // when submit happens show saving
-  $('form.edit_button').submit(function() {
-    $('input[type="submit"]').attr('disabled', 'disabled');
-    $('#save-button-message').show();
-  });
-  
+  $('.button-choice>img').click(function() {
+    $this = $(this);
+    $this.parent().parent().find('.selected-button').removeClass('selected-button');
+    $this.addClass('selected-button');
+    var buttonSize = $this.attr('data-size');
+    updateButtonImage(buttonSize);
+  });  
 });

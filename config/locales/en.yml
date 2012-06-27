@@ -91,6 +91,7 @@ en:
       index:
         title: Your Button
         button_form: "Choose your button's look:"
+        button_name: "Name your button:"
         button_preview: "Button preview:"
         button_code: "Button Code (copy-paste into your page):"
     
