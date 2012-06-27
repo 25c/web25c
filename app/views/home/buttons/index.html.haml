@@ -4,26 +4,45 @@
 .row
   .span12
     %h2.page-header= t('.title')
-  .span4
-    %h4= t('.button_form')
-    = simple_form_for @button, :url => home_button_path(@button) do |f|
-      = f.input :size, :as => :radio_buttons, :collection => ["large", "medium", "icon"]
-      = f.input :title, :required => false
-      = f.input :description, :required => false, :input_html => { :rows => '3' }
-      %div
+= simple_form_for @button, :url => home_button_path(@button) do |f|
+  .row
+    .span5
+      %p= t('.button_form')
+      #button-choice-container
+        .button-choice
+          %img{:src => image_path('25c-btn-large.png'), :'data-size' => 'btn-large'}
+        .button-choice
+          %img{:src => image_path('25c-icon-large.png'), :'data-size' => 'icon-large'}
+        .button-choice
+          %img{:src => image_path('25c-btn-medium.png'), :'data-size' => 'btn-medium'}
+        .button-choice
+          %img{:src => image_path('25c-icon-medium.png'), :'data-size' => 'icon-medium'}
+        .button-choice
+          %img{:src => image_path('25c-btn-small.png'), :'data-size' => 'btn-small'}
+        .button-choice
+          %img{:src => image_path('25c-icon-small.png'), :'data-size' => 'icon-small'}
+      .clear
+      
+        = f.input :title, :required => false, :label => t('.button_name')
+    .span7
+      %p= t('.button_preview')
+      #button-preview
+        %img{:src => image_path('25c-btn-large.png')}
+      %h4= t('.button_code')
+      %pre#button-code-block
+        :escaped
+          <a href="https://www.plus25c.com/tip/#{@button.uuid}" class="tip-25c-button" data-size="
+        %span#button-code-params>
+        :escaped
+          ">Tip me +25c!</a>
+        %br
+        :escaped
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//api.plus25c.com/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");</script>
+
+  %hr
+  .row
+    .span12
+      .submit-container
         = f.button :submit, :class => 'btn btn-primary'
         %span.hide#save-button-message= t('.saving_button')
-  .span8
-    %h4= t('.button_preview')
-    #button-preview-container
-      %img#button-preview-image{:src => image_path('25c-button-large.png')}
-    %h4= t('.button_code')
-    %pre#button-code-block
-      :escaped
-        <a href="https://www.plus25c.com/tip/#{@button.uuid}" class="tip-25c-button" data-size="
-      %span#button-code-params>
-      :escaped
-        ">Tip me +25c!</a>
-      %br
-      :escaped
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//api.plus25c.com/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");</script>
+      

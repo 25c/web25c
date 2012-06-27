@@ -25,6 +25,10 @@ body {
   color: red;
 }
 
+.clear {
+  clear: both;
+}
+
 /* Header Nav
  *---------------------------- */
 .navbar .navbar-inner {
@@ -100,34 +104,52 @@ footer.navbar > .navbar-inner > .container {
   background-color: #e3e3e3;
 }
 
-/* Nav Register Button
+/* Landing Page Link
  *---------------------------- */
 .hero-unit > p > a.btn {
   font-weight: 400;
 }
 
-/* Nav Register Button
- *---------------------------- */
-.features {
-  padding: 0 60px;
-  min-height: 200px;
-}
 
 /* Button Creation Page
  *---------------------------- */
-#button-preview-container {
-  height: 50px;
+#button-choice-container {
+  width: 300px;
+  height: 212px;
+} 
+
+.button-choice {
+  float: left;
+  height: 60px;
+  width: 126px;
+  line-height: 60px;
   margin: 5px 0;
+  text-align: center;
 }
 
-#button-preview-image {
-  display: none;
-  cursor: pointer;
+.button-choice img {
+  padding: 5px;
 }
 
-#button-preview-image:hover {
+.button-choice:hover img {
+  border-radius: 10px;
   border-color: #ffbda0;
   background-color: #ffeae1;
+}
+
+.selected-button {
+  border-radius: 10px;
+  background-color: #ffeae1;
+}
+
+#button-preview {
+  height: 60px;
+  margin: 10px 0 35px 0;
+}
+
+.button-choice img, #button-preview img {
+  vertical-align: middle;
+  cursor: pointer;
 }
 
 #button-code-block {
