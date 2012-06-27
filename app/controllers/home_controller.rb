@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   
   def index
-    # redirect_to home_buttons_path if self.current_user
+    redirect_to home_buttons_path if self.current_user
   end
     
   # static pages

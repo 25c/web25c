@@ -1,6 +1,5 @@
-= simple_form_for @user, :url => @user.new_record? ? register_path : user_path(@user), :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for @user, :url => @user.new_record? ? register_path : home_account_path, :html => { :class => 'form-horizontal' } do |f|
   = f.input :email
-  = f.input :password
+  = f.input :password, :hint => @user.new_record? ? false : t('.edit_password_hint')
   .form-actions
     = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn'

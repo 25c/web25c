@@ -4,12 +4,16 @@ class User < ActiveRecord::Base
   has_many :buttons, :dependent => :destroy  
   has_many :clicks, :dependent => :destroy
   
-  attr_writer :editing
-  attr_accessible :email, :password
-  attr_accessible :email, :password, :is_admin, :as => :admin
+  # has_attached_file :picture
   
-  validates_presence_of :email, :if => 'self.facebook_uid.blank?'
-  validates_uniqueness_of :email, :if => 'self.facebook_uid.blank?'
+  attr_writer :editing
+  attr_accessible :email, :password, :nickname, :about, :first_name, :last_name
+  attr_accessible :email, :password, :nickname, :about, :first_name, :last_name, :is_admin, :as => :admin
+  
+  validates :email, :presence => true, :if => 'self.facebook_uid.blank?'
+  validates :email, :uniqueness => { :case_sensitive => false }, :allow_nil => true
+  
+  validates :nickname, :uniqueness => { :case_sensitive => false }, :allow_nil => true
 
   validates_presence_of :password, :if => 'self.facebook_uid.blank? and not editing?'
   
@@ -37,6 +41,10 @@ class User < ActiveRecord::Base
       puts $!.inspect
       return false
     end
+  end
+  
+  def display_name
+    self.email
   end
   
   private

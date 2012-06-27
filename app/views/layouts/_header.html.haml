@@ -10,20 +10,21 @@
         %img{:src => image_path('25c-logo-medium.png')}
       %span#nav-tagline.navbar-text= t('.tagline')
       .nav-collapse.pull-right
-        %ul.nav
-          %li
-          -#
-            %li= link_to t('.about'), "/path2"
-            - if signed_in?
-              %li= link_to t('.profile'), "/path3"
-            %li= link_to t('.contact'), "/path3"
         - if signed_in?
           %ul.nav.pull-right
-            - if current_user.is_admin
+            %li.dropdown
+              %a.dropdown-toggle{ :href => '#', :'data-toggle' => 'dropdown' }
+                = current_user.display_name
+                %b.caret
+              %ul.dropdown-menu
+                %li= link_to t('.account'), home_account_path
+                %li= link_to t('.profile'), home_profile_path
+                %li= link_to t('.buttons'), home_buttons_path
+                %li= link_to t('.payments'), home_jar_path
+                %li= link_to t('.sign_out'), sign_out_path, :id => 'sign-out'
+          - if current_user.is_admin
+            %ul.nav.pull-right
               %li= link_to t('.admin'), admin_dashboard_path
-            %li= link_to t('.buttons'), home_buttons_path
-            %li= link_to t('.payments'), home_jar_path
-            %li= link_to t('.sign_out'), sign_out_path, :id => 'sign-out'
         - else
           %ul.nav.pull-right            
             %li= link_to t('.sign_in'), sign_in_path
