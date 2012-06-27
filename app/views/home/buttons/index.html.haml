@@ -1,43 +1,40 @@
 = content_for(:js) do
   = javascript_include_tag "save-button"
+  / %script{:src => "http://api.plus25c.com/public/javascripts/button.js", :id => "tip-25c-js"}
+  :javascript
+    window.buttonId = '#{ @button.uuid }';
 
 .row
   .span12
     %h2.page-header= t('.title')
 = simple_form_for @button, :url => home_button_path(@button) do |f|
   .row
-    .span5
-      %p= t('.button_form')
+    .span12
+      %p
+        %b= t('.button_form')
       #button-choice-container
         .button-choice
-          %img{:src => image_path('25c-btn-large.png'), :'data-size' => 'btn-large'}
+          %img{:src => image_path('25c-btn-large.png'), :'data-size' => 'btn_large'}
         .button-choice
-          %img{:src => image_path('25c-icon-large.png'), :'data-size' => 'icon-large'}
+          %img{:src => image_path('25c-icon-large.png'), :'data-size' => 'icon_large'}
         .button-choice
-          %img{:src => image_path('25c-btn-medium.png'), :'data-size' => 'btn-medium'}
+          %img{:src => image_path('25c-btn-medium.png'), :'data-size' => 'btn_medium'}
         .button-choice
-          %img{:src => image_path('25c-icon-medium.png'), :'data-size' => 'icon-medium'}
+          %img{:src => image_path('25c-icon-medium.png'), :'data-size' => 'icon_medium'}
         .button-choice
-          %img{:src => image_path('25c-btn-small.png'), :'data-size' => 'btn-small'}
+          %img{:src => image_path('25c-btn-small.png'), :'data-size' => 'btn_small'}
         .button-choice
-          %img{:src => image_path('25c-icon-small.png'), :'data-size' => 'icon-small'}
+          %img{:src => image_path('25c-icon-small.png'), :'data-size' => 'icon_small'}
       .clear
-      
-        = f.input :title, :required => false, :label => t('.button_name')
-    .span7
-      %p= t('.button_preview')
-      #button-preview
-        %img{:src => image_path('25c-btn-large.png')}
-      %h4= t('.button_code')
+    .span4
+      = f.input :title, :required => false, :label => t('.button_name')
+      = f.input :code_type, :required => true, :as => :radio_buttons, 
+        :collection => ["javascript", "iframe"], :label => t('.button_type')
+      = f.input :size, :as => :hidden
+    .span8
+      %p
+        %b= t('.button_code')
       %pre#button-code-block
-        :escaped
-          <a href="https://www.plus25c.com/tip/#{@button.uuid}" class="tip-25c-button" data-size="
-        %span#button-code-params>
-        :escaped
-          ">Tip me +25c!</a>
-        %br
-        :escaped
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//api.plus25c.com/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");</script>
 
   %hr
   .row
@@ -45,4 +42,7 @@
       .submit-container
         = f.button :submit, :class => 'btn btn-primary'
         %span.hide#save-button-message= t('.saving_button')
-      
+
+/dummy tooltip
+#tip-25c-tooltip 
+  %p Click to tip 25c!

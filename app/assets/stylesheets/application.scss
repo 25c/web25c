@@ -114,8 +114,7 @@ footer.navbar > .navbar-inner > .container {
 /* Button Creation Page
  *---------------------------- */
 #button-choice-container {
-  width: 300px;
-  height: 212px;
+  height: 120px;
 } 
 
 .button-choice {
@@ -164,6 +163,24 @@ footer.navbar > .navbar-inner > .container {
 
 #save-button-message {
   padding-left: 5px;
+}
+
+#tip-25c-tooltip {
+  position:absolute; 
+  z-index:1000000000; 
+  left:0; 
+  top:0; 
+  width:200px; 
+  min-height:50px; 
+  background:white; 
+  border: 1px solid #ddd; 
+  box-shadow: 2px 2px 4px #333; 
+  border-radius: 4px; 
+  visibility:hidden;
+}
+
+#tip-25c-tooltip p {
+  margin: 1em;
 }
 
 /* Account Page Elements
@@ -280,5 +297,15 @@ img#tip-25c-logo{
 }
 
 #tip-thanks {
+  margin-bottom: 20px;
+}
+
+/* Simple Form Modifications
+ *---------------------------- */
+.simple_form .control-label {
+  font-weight: bold;
+}
+
+.simple_form .control-group {
   margin-bottom: 20px;
 }

@@ -2,40 +2,98 @@ $(document).ready(function(){
   
   // lookup dictionary for image filenames
   var imageDict = {
-    'btn-large': '<%= asset_path '25c-btn-large.png' %>',
-    'btn-medium': '<%= asset_path '25c-btn-medium.png' %>',
-    'btn-small': '<%= asset_path '25c-btn-small.png' %>',
-    'icon-large': '<%= asset_path '25c-icon-large.png' %>',
-    'icon-medium': '<%= asset_path '25c-icon-medium.png' %>',
-    'icon-small': '<%= asset_path '25c-icon-small.png' %>'
+    'btn_large': '<%= asset_path "25c-btn-large.png" %>',
+    'btn_medium': '<%= asset_path "25c-btn-medium.png" %>',
+    'btn_small': '<%= asset_path "25c-btn-small.png" %>',
+    'icon_large': '<%= asset_path "25c-icon-large.png" %>',
+    'icon_medium': '<%= asset_path "25c-icon-medium.png" %>',
+    'icon_small': '<%= asset_path "25c-icon-small.png" %>'
   };
   
-  // placeholder for debug
-  initialButtonSize = 'btn-medium'
+  var jsOpen = '<a href="https://www.plus25c.com/tip/'
+    + buttonId + '" class="tip-25c-button" data-size="';
+  var jsClose = '</a>\n<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];\
+    if(!d.getElementById(id)){js=d.createElement(s);js.id=id;\
+    js.src="//api.plus25c.com/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}\
+    (document,"script","tip-25c-js");</script>';
+  var iframeOpen = '<iframe src="http://api.plus25c.com/button/' + buttonId + '?size=';
+  var iframeClose = '" allowtransparency="true" frameborder="0" scrolling="no" \
+    style="width:180px;height:43px;"></iframe>';
   
-  var updateButtonImage = function(newSize) {
-    // replace button preview image if new size is valid
-    var path = imageDict[newSize];
-    if (path) {
-      $('#button-preview img').attr('src', path).load(function() {
-        $(this).show();
-      });
+  var buttonSize = $('#button_size').val();
+  
+  var updateButtonCode = function() {
+    if ($('input.radio_buttons:checked').val() == 'javascript') {
+      newCode = jsOpen + buttonSize + '">' + $('input#button_title').val() + jsClose;
+    } else {
+      newCode = iframeOpen + buttonSize + iframeClose;
     }
-    $('#button-code-params').html(newSize);
+    $('#button-code-block').text(newCode);
   };
   
   // add update title field -> modify js string
   
-  // initialize button preview image
-  $('.button-choice>img[data-size="' + initialButtonSize + '"]').addClass('selected-button')
-  updateButtonImage(initialButtonSize);
+  $('.button-choice>img[data-size="' + buttonSize + '"]').addClass('selected-button');
+  updateButtonCode();
   
-  // when radio buttons change, update image accordingly
-  $('.button-choice>img').click(function() {
+  // when input changes, update code
+  $('input.radio_buttons, input#button_title').change(function() {
+    updateButtonCode();
+  });
+  
+  // when new image changes, update code and process image selection
+  $('.button-choice img').click(function() {
     $this = $(this);
+  
+    fakeCounter++;
+    $tooltip.html('<p>You\'ve rewarded <b>' + fakeCounter + '</b> credits!</p>' );
+    $tooltip.css('visibility', 'visible');
+    
+    buttonSize = $this.attr('data-size');
+    updateButtonCode();
+    $('#button_size').val(buttonSize);
     $this.parent().parent().find('.selected-button').removeClass('selected-button');
     $this.addClass('selected-button');
-    var buttonSize = $this.attr('data-size');
-    updateButtonImage(buttonSize);
-  });  
+    $this.trigger('mouseenter');
+  });
+  
+  // image hover functionality
+  var timer = null;
+  var fakeCounter = 0;
+  var $tooltip = $("#tip-25c-tooltip");
+  
+  var hideTooltip = function() {
+    $("#tip-25c-tooltip").css("visibility", "hidden");
+  }
+  
+  $('.button-choice img').bind({
+		mouseenter: function() {
+      var $this = $(this)
+			if ($this.hasClass('selected-button')) {
+			  clearTimeout(timer);
+  			var offset = $this.offset();
+  		  var height = $this.height();
+  			$tooltip.css({
+          visibility: "visible",
+  				left: offset.left,
+  				top: offset.top + height + 10
+  			});
+  		} else {
+  		  hideTooltip();
+		  }
+		},
+		mouseleave: function() {
+			timer = setTimeout(hideTooltip, 500);
+		}
+	});
+	
+  // dummy tooltip functionality
+  $("#tip-25c-tooltip").bind({
+		mouseenter: function() {
+			clearTimeout(timer);			
+		},
+		mouseleave: function() {
+			timer = setTimeout(hideTooltip, 500);
+		}
+	});
 });

@@ -1,10 +1,5 @@
 class Home::ButtonsController < Home::HomeController
   
-  helper_method :button_uuid
-  def button_uuid
-    @button_uuid = 12345
-  end
-  
   def index
     @button = self.current_user.buttons[0]
   end
@@ -24,7 +19,6 @@ class Home::ButtonsController < Home::HomeController
   
   def show
     @button = self.current_user.buttons.find_by_uuid(params[:id])
-    flash[:notice] = t('home.buttons.button_updated')
     redirect_to home_buttons_path
   end
   
@@ -35,10 +29,12 @@ class Home::ButtonsController < Home::HomeController
   def update
     @button = self.current_user.buttons.find_by_uuid(params[:id])
     if @button.update_attributes(params[:button])
-      redirect_to home_button_path(@button)
+      flash[:notice] = t('home.buttons.button_updated')
     else
-      render :edit
+      # flash[:alert] = t('home.buttons.update_failure')
+      flash[:alert] = @button.errors.full_messages
     end
+    redirect_to home_buttons_path(@button)
   end
   
 end

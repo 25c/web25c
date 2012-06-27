@@ -88,10 +88,12 @@ en:
         title: Dashboard
     buttons:
       button_updated: Your button has been updated.
+      update_failure: Button update failed. Please try again.
       index:
         title: Your Button
         button_form: "Choose your button's look:"
         button_name: "Name your button:"
+        button_type: "Choose the type of button:"
         button_preview: "Button preview:"
         button_code: "Button Code (copy-paste into your page):"
     
