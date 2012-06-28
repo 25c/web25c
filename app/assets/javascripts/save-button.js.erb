@@ -2,13 +2,22 @@ $(document).ready(function(){
   
   // lookup dictionary for image filenames
   var imageDict = {
-    'btn_large': '<%= asset_path "25c-btn-large.png" %>',
-    'btn_medium': '<%= asset_path "25c-btn-medium.png" %>',
-    'btn_small': '<%= asset_path "25c-btn-small.png" %>',
-    'icon_large': '<%= asset_path "25c-icon-large.png" %>',
-    'icon_medium': '<%= asset_path "25c-icon-medium.png" %>',
-    'icon_small': '<%= asset_path "25c-icon-small.png" %>'
+    'btn-large': '<%= asset_path "25c-btn-large.png" %>',
+    'btn-medium': '<%= asset_path "25c-btn-medium.png" %>',
+    'btn-small': '<%= asset_path "25c-btn-small.png" %>',
+    'icon-large': '<%= asset_path "25c-icon-large.png" %>',
+    'icon-medium': '<%= asset_path "25c-icon-medium.png" %>',
+    'icon-small': '<%= asset_path "25c-icon-small.png" %>'
   };
+	// lookup dictionary for image sizes
+	var imageSizesDict = {
+		'btn-large': 'width:136px;height:70px;',
+		'btn-medium': 'width:94px;height:50px;',
+		'btn-small': 'width:63px;height:35px;',
+		'icon-large': 'width:68px;height:70px;',
+		'icon-medium': 'width:49px;height:50px;',
+		'icon-small': 'width:34px;height:35px;'
+	};
   
   var jsOpen = '<a href="https://www.plus25c.com/tip/'
     + buttonId + '" class="tip-25c-button" data-size="';
@@ -17,8 +26,8 @@ $(document).ready(function(){
     js.src="//api.plus25c.com/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}\
     (document,"script","tip-25c-js");</script>';
   var iframeOpen = '<iframe src="http://api.plus25c.com/button/' + buttonId + '?size=';
-  var iframeClose = '" allowtransparency="true" frameborder="0" scrolling="no" \
-    style="width:180px;height:43px;"></iframe>';
+	var iframeMid = '" allowtransparency="true" frameborder="0" scrolling="no" style="';
+  var iframeClose = '"></iframe>';
   
   var buttonSize = $('#button_size').val();
   
@@ -26,7 +35,7 @@ $(document).ready(function(){
     if ($('input.radio_buttons:checked').val() == 'javascript') {
       newCode = jsOpen + buttonSize + '">' + $('input#button_title').val() + jsClose;
     } else {
-      newCode = iframeOpen + buttonSize + iframeClose;
+      newCode = iframeOpen + buttonSize + iframeMid + imageSizesDict[buttonSize] + iframeClose;
     }
     $('#button-code-block').text(newCode);
   };
