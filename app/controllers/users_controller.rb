@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @new = true
 
     respond_to do |format|
-      format.html { render '/home/sign_in' }
+      format.html { render action: "sign_in" }
       format.json { render json: @user }
     end
   end
