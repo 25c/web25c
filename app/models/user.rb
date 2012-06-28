@@ -4,11 +4,11 @@ class User < ActiveRecord::Base
   has_many :buttons, :dependent => :destroy  
   has_many :clicks, :dependent => :destroy
   
-  # has_attached_file :picture
+  has_attached_file :picture
   
   attr_writer :editing
-  attr_accessible :email, :password, :nickname, :about, :first_name, :last_name
-  attr_accessible :email, :password, :nickname, :about, :first_name, :last_name, :is_admin, :as => :admin
+  attr_accessible :email, :password, :nickname, :about, :first_name, :last_name, :picture
+  attr_accessible :email, :password, :nickname, :about, :first_name, :last_name, :picture, :is_admin, :as => :admin
   
   validates :email, :presence => true, :if => 'self.facebook_uid.blank?'
   validates :email, :uniqueness => { :case_sensitive => false }, :allow_nil => true

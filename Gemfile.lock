@@ -30,6 +30,11 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.8)
     arel (3.0.2)
+    aws-sdk (1.5.5)
+      httparty (~> 0.7)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
     braintree (2.16.0)
       builder (>= 2.0.0)
@@ -59,6 +64,9 @@ GEM
       rest-client (~> 1.6.1)
       rubyzip
     hike (1.2.1)
+    httparty (0.8.3)
+      multi_json (~> 1.0)
+      multi_xml
     i18n (0.6.0)
     journey (1.0.3)
     jquery-rails (2.0.2)
@@ -84,8 +92,10 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.18)
     multi_json (1.3.4)
+    multi_xml (0.5.1)
     multipart-post (1.1.5)
     netrc (0.7.1)
+    nokogiri (1.5.5)
     paperclip (3.1.2)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -157,11 +167,13 @@ GEM
       multi_json (>= 1.0.2)
     uuid (2.3.5)
       macaddr (~> 1.0)
+    uuidtools (2.1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk
   bcrypt-ruby (~> 3.0.0)
   braintree
   coffee-rails (~> 3.2.1)
