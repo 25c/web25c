@@ -8,6 +8,6 @@ else
   Paperclip::Attachment.default_options[:storage] = :s3
   Paperclip::Attachment.default_options[:s3_credentials] = AWS_SETTINGS
   Paperclip::Attachment.default_options[:bucket] = AWS_SETTINGS[:bucket]
-  Paperclip::Attachment.default_options[:url] = ":s3_bucket_url"
+  Paperclip::Attachment.default_options[:url] = ":s3_path_url"
   Paperclip::Attachment.default_options[:path] = ":class/:attachment/:uuid/:style.:extension"
 end
