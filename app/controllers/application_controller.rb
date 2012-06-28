@@ -28,13 +28,14 @@ class ApplicationController < ActionController::Base
           else
             # uh-oh, shared computer? clear out
             self.current_user = nil
+            flash[:alert] = t('application.check_facebook_cookies.failure');
             if has_tip 
-              flash[:alert] = t('application.check_facebook_cookies.failure');
               redirect_to tip_path(:button_id => params[:button_id])
+              return
             else
               redirect_to root_path
+              return
             end
-            return
           end
         else
           # register new user
@@ -51,6 +52,9 @@ class ApplicationController < ActionController::Base
         end
         if has_tip 
           redirect_to confirm_tip_path(:button_id => params[:button_id])
+          return
+        else
+          # render
         end
       end
     end
