@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   has_secure_password
   
-  has_many :buttons, :dependent => :destroy  
+  has_many :buttons, :dependent => :destroy
   has_many :clicks, :dependent => :destroy
+  has_many :received_clicks, :through => :buttons, :source => :clicks
   
   has_attached_file :picture
   
@@ -99,7 +100,7 @@ class User < ActiveRecord::Base
   end
   
   def create_default_button
-    self.buttons.create(:size => "large")
+    self.buttons.create
   end
   
 end

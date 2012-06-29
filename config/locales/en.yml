@@ -86,10 +86,13 @@ en:
     dashboard:
       index:
         title: Dashboard
+        get_button: Get My Button
+        fill_jar: Fill My Jar
         tips_given_title: 25c's given
         tips_received_title: 25c's received
         tips_given: 25c's Given
         tips_received: 25c's Received
+        total: Total
         date_created: Date & Time Created
         provider: Content Provider
         referrer: Content Referrer

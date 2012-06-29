@@ -29,6 +29,16 @@ body {
   clear: both;
 }
 
+hr {
+  color: #e6e6e6;
+  background-color: #e6e6e6;
+  border-color: #e6e6e6;
+}
+
+.page-header {
+  border-bottom: 2px solid #e6e6e6;
+}
+
 /* Header Nav
  *---------------------------- */
 .navbar .navbar-inner {
@@ -326,8 +336,12 @@ img#tip-25c-logo{
   margin-bottom: 20px;
 }
 
-/* Simple Form Modifications
+/* User Dashboard
  *---------------------------- */
 .clicks-table > tbody > tr > td {
   line-height: 28px;
+}
+
+.table-title {
+  margin-bottom: 10px;
 }

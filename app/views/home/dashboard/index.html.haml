@@ -5,12 +5,25 @@
     window.confirmDelete = '#{ j t('.confirm_delete') }';
     window.deleteClickUrl = '#{ j home_delete_click_url }';
 
-.page-header
-  %h1= yield :title
+.row
+  .span12
+    %h2.page-header= t('.title')
 
-= link_to t('.get_my_button'), home_buttons_path, :class => 'btn btn-large btn-success'
-
-%h2= t('.tips_given_title')
+.row
+  .span12
+    .lead
+      %div Your Jar:
+      %div
+        %b= (@user.balance * 4).to_s() + ' ' + t('application.25c_units')
+        %span ($#{"%.2f" % @user.balance})
+      %p.payout-link-container
+    %a= link_to t('.get_button'), home_buttons_path, :class => 'btn'
+    %a= link_to t('.fill_jar'), home_jar_path, :class => 'btn'
+    %a= link_to t('.request_payout'), home_payout_path, :class => 'btn'   
+%hr
+%h3.table-title
+  = t('.tips_given_title')
+  (#{@clicks_given.length} #{t('.total')})
 %table.clicks-table.table.table-condensed.table-striped
   %thead
     %th= t('.date_created')
@@ -23,9 +36,10 @@
           %td= column
         %td
           %a.delete-click.btn.btn-warning{:"data-click_id" => id}= t('.delete')
-
-%h2 Clicks Received
-%ul
+%hr
+%h3.table-title
+  = t('.tips_received_title')
+  (#{@clicks_received.length} #{t('.total')})
 %table.clicks-table.table.table-condensed.table-striped
   %thead
     %th= t('.date_created')

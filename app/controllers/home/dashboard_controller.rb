@@ -1,9 +1,10 @@
 class Home::DashboardController < Home::HomeController
   
   def index
+    @user = current_user
     @clicks_given = {}
-    current_user.clicks.order("created_at DESC").each do |click|
-      button = Button.find(click.button_id)
+    @user.clicks.order("created_at DESC").each do |click|
+      button = click.button
       row = [
         click.created_at,
         button.user.email,
@@ -17,9 +18,9 @@ class Home::DashboardController < Home::HomeController
     @clicks_received = []
     
     button_ids = []
-    current_user.buttons.each {|button| button_ids.push(button.id)}
-    
+    @user.buttons.each {|button| button_ids.push(button.id)}
     Click.find(:all, :conditions => {:button_id => button_ids}, :order => "created_at DESC").each do |click|
+    # @user.button_clicks.each do |click|
       row = [
         click.created_at,
         click.user.email,
