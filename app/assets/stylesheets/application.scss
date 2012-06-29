@@ -86,7 +86,7 @@ footer.navbar {
 }
 
 footer.navbar > .navbar-inner {
-  background-color: transparent;
+  background-color: white;
   box-shadow: none;
   border-top: 1px solid #eee;
 }
@@ -326,8 +326,12 @@ img#tip-25c-logo{
   margin-bottom: 20px;
 }
 
-/* Simple Form Modifications
+/* FORM OVERRIDES
  *---------------------------- */
+form .form-actions {
+  border-top: 0px none transparent;
+} 
+
 .simple_form .control-label {
   font-weight: bold;
 }

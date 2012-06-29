@@ -154,7 +154,7 @@ en:
     form:
       edit_password_hint: Leave blank to keep current password.
     edit:
-      title: Your Account
+      title: Account
     update:
       success: Your account has been updated.
     edit_profile:
