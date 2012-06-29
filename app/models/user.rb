@@ -49,31 +49,36 @@ class User < ActiveRecord::Base
     name
   end
   
-  def update_profile_from_facebook(include_picture = false)
+  def update_picture_from_facebook
     file = nil
     begin
       graph = Koala::Facebook::API.new(self.facebook_access_token)
-      result = graph.get_object("me", :fields => "first_name,last_name,username,picture", :type => "large")
+      picture_url = graph.get_picture("me", :type => "large")
+      file = Curl::Easy.download_file(picture_url)
+      self.picture = file
+      self.save!
+    rescue
+      puts $!.inspect
+      # on error, dispatch a job to retry
+      Resque.enqueue(BackgroundJob, 'User', self.id, 'update_picture_from_facebook')      
+    ensure
+      FileUtils.remove_entry_secure(file.path) unless file.nil?
+    end
+  end
+  
+  def update_profile_from_facebook
+    # dispatch a separate background job to download the profile picture
+    Resque.enqueue(BackgroundJob, 'User', self.id, 'update_picture_from_facebook')      
+    begin
+      graph = Koala::Facebook::API.new(self.facebook_access_token)
+      result = graph.get_object("me", :fields => "first_name,last_name,username")
       self.first_name = result["first_name"]
       self.last_name = result["last_name"]
       self.nickname = result["username"]
-      if include_picture
-        begin
-          file = Curl::Easy.download_file(result["picture"])
-          self.picture = file
-        rescue
-        end
-      end
-      if self.save
-        return true
-      else
-        self.reload
-        return false
-      end
+      self.save!
     rescue
       # on error, dispatch a job to retry
-    ensure
-      FileUtils.remove_entry_secure(file.path) unless file.nil?
+      Resque.enqueue(BackgroundJob, 'User', self.id, 'update_profile_from_facebook')      
     end
   end
   
