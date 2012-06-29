@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
   end
   
   def create_default_button
-    self.buttons.create
+    self.buttons.create!
   end
   
 end

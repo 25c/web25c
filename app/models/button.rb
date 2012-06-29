@@ -15,7 +15,9 @@ class Button < ActiveRecord::Base
       :message => "%{value} is not a valid button size" 
     }
     
-  before_create :generate_uuid, :assign_defaults
+  before_create :generate_uuid
+  
+  before_validation :assign_defaults
   
   attr_accessible :size, :title, :description, :code_type
   
@@ -30,8 +32,8 @@ class Button < ActiveRecord::Base
   end
   
   def assign_defaults
-    self.code_type = "javascript"
-    self.size = "btn-large"
+    self.code_type = "javascript" if self.code_type.blank?
+    self.size = "btn-large" if self.size.blank?
   end
   
 end

@@ -19,12 +19,12 @@ en:
   form:
     submit: Submit
   
-  home:    
+  home:
     account:
       jar:
         25c_units: 25c's
         title: "Your 25c Jar"
-        request_payout: "Request a payout from your Jar."
+        request_payout: "Request Payout"
         refill_title: Refill my Jar with 25c's
         refill_amount: "Amount to add:"
         auto_refill: Automatically refill my Jar if balance drops below $5 (20 25c's).
@@ -176,6 +176,7 @@ en:
       button_not_found: "The button was not found."
     create:
       success: Your account has been created!
+      failure: Your account was not created. Please try again.
     confirm_tip:
       visit_25c: Go to 25c.com
       view_account: View 25c Account

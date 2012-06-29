@@ -86,12 +86,17 @@ class UsersController < ApplicationController
           sign_in_successful = true
           notice = t('users.create.success')
         else
-          alert = ""
-          @user.errors.full_messages.each do |message|
-            if !message.include? "digest"
-              alert += message
-              alert += ", " if message != @user.errors.full_messages.last
+          if @user.errors
+            alert = ""
+            @user.errors.full_messages.each do |message|
+              if !message.include? "digest"
+                alert += message
+                alert += ", " if message != @user.errors.full_messages.last
+              end
             end
+            alert += "."
+          else
+            alert = t('users.create.failure')
           end     
           @user = nil
         end

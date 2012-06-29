@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   
   test "should create a button" do
-    user = User.create(
+    user = User.create!(
       :email => "test@test.com",
       :password => "asdfasdf"
     )
