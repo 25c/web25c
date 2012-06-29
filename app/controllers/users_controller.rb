@@ -125,7 +125,7 @@ class UsersController < ApplicationController
       if has_tip && !alert
         redirect_to confirm_tip_path(:button_id => params[:button_id])
       else
-        redirect_to_session_redirect_path(home_buttons_path)
+        redirect_to_session_redirect_path(home_dashboard_path)
       end
       return
     else

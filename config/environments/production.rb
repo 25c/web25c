@@ -1,4 +1,10 @@
 Web25c::Application.configure do
+  
+  # basic http authentication to hide page from public
+  config.middleware.insert_after(::Rack::Lock, "::Rack::Auth::Basic", "Staging") do |u, p|
+    [u, p] == ['user25c', 'sup3rl!k3']
+  end
+  
   # Settings specified here will take precedence over those in config/application.rb
   config.action_mailer.default_url_options = { :host => "www.plus25c.com" }
 
