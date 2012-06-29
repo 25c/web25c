@@ -16,6 +16,7 @@ gem 'redis'												# redis gem
 gem 'braintree'                   # braintree payments
 gem 'paperclip'										# paperclip model file attachments
 gem 'aws-sdk'											# amazon web services
+gem 'curb'												# libcurl bindings
 
 # Gems used only for assets and not required
 # in production environments by default.

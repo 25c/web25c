@@ -38,13 +38,43 @@ class User < ActiveRecord::Base
       end
       return true
     rescue
-      puts $!.inspect
       return false
     end
   end
   
   def display_name
-    self.email
+    name = "#{self.first_name} #{self.last_name}".strip
+    name = self.nickname if name.blank?
+    name = self.email if name.blank?
+    name
+  end
+  
+  def update_profile_from_facebook(include_picture = false)
+    file = nil
+    begin
+      graph = Koala::Facebook::API.new(self.facebook_access_token)
+      result = graph.get_object("me", :fields => "first_name,last_name,username,picture", :type => "large")
+      self.first_name = result["first_name"]
+      self.last_name = result["last_name"]
+      self.nickname = result["username"]
+      if include_picture
+        begin
+          file = Curl::Easy.download_file(result["picture"])
+          self.picture = file
+        rescue
+        end
+      end
+      if self.save
+        return true
+      else
+        self.reload
+        return false
+      end
+    rescue
+      # on error, dispatch a job to retry
+    ensure
+      FileUtils.remove_entry_secure(file.path) unless file.nil?
+    end
   end
   
   private
