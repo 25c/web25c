@@ -35,6 +35,7 @@ Web25c::Application.routes.draw do
     resources :users, :except => [ :new, :create ]
     match '' => 'dashboard#index', :as => :dashboard
   end
+  mount Resque::Server.new, :at => "/admin/resque/frame"
   
   # the profile wildcard route must be last
   match ':id' => 'users#show', :as => :profile

@@ -5,7 +5,7 @@ class Button < ActiveRecord::Base
   
   validates :size, 
     :inclusion => { 
-      :in => %w(btn_large btn_medium btn_small icon_large icon_medium icon_small),
+      :in => %w(btn-large btn-medium btn-small icon-large icon-medium icon-small),
       :message => "%{value} is not a valid button size" 
     }
   
@@ -30,7 +30,7 @@ class Button < ActiveRecord::Base
   
   def assign_defaults
     self.code_type = "javascript"
-    self.size = "btn_large"
+    self.size = "btn-large"
   end
   
 end

@@ -4,3 +4,8 @@ if ENV["REDISTOGO_URL"]
 else
   REDIS = Redis.new
 end
+
+# Configure resque
+Resque.redis = REDIS
+# Make server endpoint available
+require 'resque/server'

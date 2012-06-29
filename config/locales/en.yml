@@ -105,18 +105,16 @@ en:
         button_name: "Name your button:"
         button_type: "Choose the type of button:"
         button_preview: "Button preview:"
-        button_code: "Button Code (copy-paste into your page):"
-    
+        button_code: "Button Code (copy-paste into your page):"    
+
     index:
       register: Register
-      value_proposition: Rewarding great content & causes.  One quarter one 
-        click.
-      value_proposition_sub: "Receiving 25c tips for your content & cause is a
-        breeze: Simply add the 25c Gratuity Button&trade; code to your blog, 
-        website, photo collection, videos, etc."
+      value_proposition: Super-Like Great Content & Causes. One quarter, one click.
+      value_proposition_sub1: "Bloggers, Webmasters, Apps: Add the 25c Gratuity Button. Collect 25c's."
+      value_proposition_sub2: "Have many followers? Use our Short URL. Earn along."
       about_25c_title: About 25c
-      about_25c_p1: Support what you value.  Easily & directly.  One quarter 
-        one click.   So that in the future you will see more of what you truly 
+      about_25c_p1: Empowering people to support what you value.  Easily & directly.  
+        One quarter one click.   Towards a future measured what you truly 
         value.  (As opposed to what advertisers value.)
       about_25c_p2: The 25c Gratuity Button&trade; is easy to add to your website, 
         blog, etc. -- just insert our code and start receiving 25c tips.   
@@ -128,6 +126,8 @@ en:
         URL to refer great content & causes - and earn 5 cents for each 25c 
         donation generated.
       learn-more: Learn more...
+      button_25c_title: 25c Gratuity Button
+      url_25c_title: 25c Short URL
       
   layouts:
     admin:

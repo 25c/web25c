@@ -1,0 +1,13 @@
+development:
+  access_key_id: AKIAIKO5A3WWLVNZIPDA
+  secret_access_key: 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
+  
+test:
+  access_key_id: AKIAIKO5A3WWLVNZIPDA
+  secret_access_key: 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
+  
+production:
+  access_key_id: AKIAIKO5A3WWLVNZIPDA
+  secret_access_key: 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
+  bucket: assets.plus25c.com
+  

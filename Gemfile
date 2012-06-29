@@ -15,6 +15,9 @@ gem 'uuid'												# uuid generator gem
 gem 'redis'												# redis gem
 gem 'braintree'                   # braintree payments
 gem 'paperclip'										# paperclip model file attachments
+gem 'aws-sdk'											# amazon web services
+gem 'curb'												# libcurl bindings
+gem 'resque', '~>1.20.0'					# redis-backed jobs queuing system
 
 # Gems used only for assets and not required
 # in production environments by default.
