@@ -2,15 +2,22 @@
   .row
     .span5
       %h2= t('.value_proposition')
-      %p= raw t('.value_proposition_sub')
+      %p= raw t('.value_proposition_sub1')
+      %p= raw t('.value_proposition_sub2')
       %p
-        .fb-login-button(data-scope="email,publish_actions")
-          = t('users.sign_in.facebook')
-      %p
-        %a= link_to t('.register'), register_path, :class => 'btn'
+        %span
+          .fb-login-button(data-scope="email,publish_actions")
+            = t('users.sign_in.facebook')
+        %span= t('.or')
+        %span= link_to t('.register'), register_path, :class => 'btn'        
     .span5.pull-right
       %img#landing-image{:src => image_path('love-flow.png')}
 .row
   .span12
+    %h2= raw t('.about_25c_title')
     %p.lead= raw t('.about_25c_p1')
-    %p.lead= link_to t('.learn-more'), root_path
+    %p.lead= link_to t('.learn-more'), faq_path
+    %h2= raw t('.button_25c_title')
+    %p= 'code...'
+    %h2= raw t('.url_25c_title')
+    %p= 'gen short url'
