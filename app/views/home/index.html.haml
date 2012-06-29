@@ -1,3 +1,22 @@
+=content_for(:js) do
+  :javascript
+
+    $(document).ready(function() {
+      $('#about-link').click(function() {
+        $('.about-more').slideToggle('slow', function() {
+           console.log($('.about-more').css('display'));
+           if ($('.about-more').css('display') == 'none') {
+               $('#about-link').text('#{ t('.learn-more')}');   
+           } else { 
+               $('#about-link').text('#{ t('.learn-less')}');
+           }
+
+
+          });
+      });
+    });
+
+
 .hero-unit
   .row
     .span5
@@ -16,7 +35,15 @@
   .span12
     %h2= raw t('.about_25c_title')
     %p.lead= raw t('.about_25c_p1')
-    %p.lead= link_to t('.learn-more'), faq_path
+    .about-more.hide
+      %p.lead= raw t('.about_25c_p2')
+      %p.lead= raw t('.about_25c_p3')
+      %p.lead= raw t('.about_25c_p4')
+      %p.lead= raw t('.about_25c_p5')
+
+    %p.lead
+      %a#about-link= t('.learn-more')
+      
     %h2= raw t('.button_25c_title')
     %p= 'code...'
     %h2= raw t('.url_25c_title')
