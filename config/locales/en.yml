@@ -86,6 +86,16 @@ en:
     dashboard:
       index:
         title: Dashboard
+        tips_given_title: 25c's given
+        tips_received_title: 25c's received
+        tips_given: 25c's Given
+        tips_received: 25c's Received
+        date_created: Date & Time Created
+        provider: Content Provider
+        referrer: Content Referrer
+        clicker: Clicked By
+        delete: Remove
+        confirm_delete: Are you sure you want to remove this click? The provider will not receive your tip.
     buttons:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.

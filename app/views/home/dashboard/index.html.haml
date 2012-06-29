@@ -1,22 +1,38 @@
 - content_for :title, t('.title')
+= content_for(:js) do
+  = javascript_include_tag "update-dashboard"
+  :javascript
+    window.confirmDelete = '#{ j t('.confirm_delete') }';
+    window.deleteClickUrl = '#{ j home_delete_click_url }';
 
 .page-header
   %h1= yield :title
 
 = link_to t('.get_my_button'), home_buttons_path, :class => 'btn btn-large btn-success'
 
-%h2 Clicks Submitted
-%ul
-  - current_user.clicks.each do |click|
-    %li
-      = l click.created_at, :format => :short
-      = link_to click.referrer, click.referrer
+%h2= t('.tips_given_title')
+%table.clicks-table.table.table-condensed.table-striped
+  %thead
+    %th= t('.date_created')
+    %th= t('.provider')
+    %th= t('.referrer')
+  %tbody
+    - @clicks_given.each do |id, row|
+      %tr        
+        - row.each do |column|
+          %td= column
+        %td
+          %a.delete-click.btn.btn-warning{:"data-click_id" => id}= t('.delete')
 
 %h2 Clicks Received
 %ul
-  - current_user.buttons[0].clicks.each do |click|
-    %li
-      = l click.created_at, :format => :short
-      = link_to click.referrer, click.referrer      
-
-      
+%table.clicks-table.table.table-condensed.table-striped
+  %thead
+    %th= t('.date_created')
+    %th= t('.clicker')
+    %th= t('.referrer')
+  %tbody
+    - @clicks_received.each do |row|
+      %tr
+        - row.each do |column|
+          %td= column

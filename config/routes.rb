@@ -19,6 +19,7 @@ Web25c::Application.routes.draw do
   namespace :home do
     resources :buttons
     match '' => 'dashboard#index', :as => :dashboard
+    match 'delete-click' => 'dashboard#delete_click', :as => :delete_click, :via => :post
     match 'jar' => 'account#jar', :as => :jar
     match 'confirm-payment' => 'account#confirm_payment', :as => :confirm_payment, :via => :post
     match 'set-refill' => 'account#set_refill', :as => :set_refill, :via => :post

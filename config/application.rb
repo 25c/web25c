@@ -57,6 +57,7 @@ module Web25c
     config.assets.precompile += ['submit-payment.js']
     config.assets.precompile += ['request-payout.js']
     config.assets.precompile += ['sign-in-form.js']
+    config.assets.precompile += ['update-dashboard.js']
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

@@ -1,0 +1,9 @@
+$(document).ready(function(){
+  $(".delete-click").click(function() {
+    if (confirm(confirmDelete)) {
+      $this = $(this);
+      $.post(deleteClickUrl, { click_id: $this.attr('data-click_id') });
+      $this.parent().parent().fadeOut('slow');
+    }
+  });
+});
