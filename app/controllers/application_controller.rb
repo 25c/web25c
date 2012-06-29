@@ -45,6 +45,7 @@ class ApplicationController < ActionController::Base
           user.save!
           self.current_user = user
           self.current_user.refresh_facebook_access_token(@_facebook_session['code'])
+          self.current_user.update_profile_from_facebook
           if !has_tip
             redirect_to home_dashboard_path, :notice => t('application.check_facebook_cookies.sign_up')
             return

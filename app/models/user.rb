@@ -4,11 +4,11 @@ class User < ActiveRecord::Base
   has_many :buttons, :dependent => :destroy  
   has_many :clicks, :dependent => :destroy
   
-  # has_attached_file :picture
+  has_attached_file :picture
   
   attr_writer :editing
-  attr_accessible :email, :password, :nickname, :about, :first_name, :last_name
-  attr_accessible :email, :password, :nickname, :about, :first_name, :last_name, :is_admin, :as => :admin
+  attr_accessible :email, :password, :nickname, :about, :first_name, :last_name, :picture
+  attr_accessible :email, :password, :nickname, :about, :first_name, :last_name, :picture, :is_admin, :as => :admin
   
   validates :email, :presence => true, :if => 'self.facebook_uid.blank?'
   validates :email, :uniqueness => { :case_sensitive => false }, :allow_nil => true
@@ -38,13 +38,43 @@ class User < ActiveRecord::Base
       end
       return true
     rescue
-      puts $!.inspect
       return false
     end
   end
   
   def display_name
-    self.email
+    name = "#{self.first_name} #{self.last_name}".strip
+    name = self.nickname if name.blank?
+    name = self.email if name.blank?
+    name
+  end
+  
+  def update_profile_from_facebook(include_picture = false)
+    file = nil
+    begin
+      graph = Koala::Facebook::API.new(self.facebook_access_token)
+      result = graph.get_object("me", :fields => "first_name,last_name,username,picture", :type => "large")
+      self.first_name = result["first_name"]
+      self.last_name = result["last_name"]
+      self.nickname = result["username"]
+      if include_picture
+        begin
+          file = Curl::Easy.download_file(result["picture"])
+          self.picture = file
+        rescue
+        end
+      end
+      if self.save
+        return true
+      else
+        self.reload
+        return false
+      end
+    rescue
+      # on error, dispatch a job to retry
+    ensure
+      FileUtils.remove_entry_secure(file.path) unless file.nil?
+    end
   end
   
   private

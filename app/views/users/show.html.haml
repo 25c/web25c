@@ -17,7 +17,11 @@
   %strong= model_class.human_attribute_name(:about) + ':'
   %br
   = @user.about
-
+%p
+  %strong= model_class.human_attribute_name(:picture) + ':'
+  %br
+  = image_tag @user.picture.url if @user.picture?
+  
 .form-actions
   / = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn'
   / = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_path(@user), :class => 'btn'
