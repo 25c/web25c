@@ -102,8 +102,10 @@ en:
     buttons:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
-      index:
+      index: 
         title: Your Button
+      
+      form:
         button_form: "Choose your button's look:"
         button_name: "Name your button:"
         button_type: "Choose the type of button:"
@@ -111,6 +113,7 @@ en:
         button_code: "Button Code (copy-paste into your page):"    
 
     index:
+      or: Or
       register: Register
       value_proposition: Super-Like Great Content & Causes. One quarter, one click.
       value_proposition_sub1: "Bloggers, Webmasters, Apps: Add the 25c Gratuity Button. Collect 25c's."
@@ -119,17 +122,19 @@ en:
       about_25c_p1: Empowering people to support what you value.  Easily & directly.  
         One quarter one click.   Towards a future measured what you truly 
         value.  (As opposed to what advertisers value.)
-      about_25c_p2: The 25c Gratuity Button&trade; is easy to add to your website, 
-        blog, etc. -- just insert our code and start receiving 25c tips.   
-      about_25c_p3: Clicking the 25c Gratuity Button&trade; once contributes 25c; 
+      about_25c_p2: Clicking the 25c Gratuity Button&trade; once contributes 25c; 
         clicking it twice contributes two 25's; and so on.
-      about_25c_p4: It adds up!  A thousand 25c tips can double a freelance 
+      about_25c_p3: It adds up!  A thousand 25c tips can double a freelance 
         writer's compensation, pay a photographer's expenses.
-      about_25c_p5: Have a sizable Twitter/etc. following?  Use the 25c Short 
+      about_25c_p4: Have a sizable Twitter/etc. following?  Use the 25c Short 
         URL to refer great content & causes - and earn 5 cents for each 25c 
         donation generated.
-      learn-more: Show more...
-      learn-less: Show less...
+      about-more: Show more...
+      about-less: Show less...
+      button_description: The 25c Gratuity Button&trade; is easy to add to your website, 
+        blog, etc. -- just insert our code and start receiving 25c tips.
+      button-more: Get your Button!
+      button-less: Hide Button code.
       button_25c_title: 25c Gratuity Button
       url_25c_title: 25c Short URL
       

@@ -31,7 +31,6 @@ class Home::ButtonsController < Home::HomeController
     if @button.update_attributes(params[:button])
       flash[:notice] = t('home.buttons.button_updated')
     else
-      # flash[:alert] = t('home.buttons.update_failure')
       flash[:alert] = @button.errors.full_messages
     end
     redirect_to home_buttons_path(@button)

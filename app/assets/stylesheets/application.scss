@@ -101,7 +101,12 @@ footer.navbar > .navbar-inner > .container {
   margin-top: 20px;
 }
 .hero-unit .fb-login-button {
+  position: relative;
+  top: 2px;
   display: inline;
+}
+.hero-unit > p > a.btn {
+  font-weight: 400;
 }
 
 /* Facebook Login
@@ -129,13 +134,6 @@ footer.navbar > .navbar-inner > .container {
   color: #333;
   background-color: #e3e3e3;
 }
-
-/* Landing Page Link
- *---------------------------- */
-.hero-unit > p > a.btn {
-  font-weight: 400;
-}
-
 
 /* Button Creation Page
  *---------------------------- */
@@ -206,7 +204,9 @@ footer.navbar > .navbar-inner > .container {
 }
 
 #tip-25c-tooltip p {
-  margin: 1em;
+  margin: 10px;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 /* Account Page Elements

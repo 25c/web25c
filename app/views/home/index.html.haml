@@ -1,16 +1,20 @@
 =content_for(:js) do
   :javascript
-
     $(document).ready(function() {
-      $('#about-link').click(function() {
-        $('.about-more').slideToggle('slow', function() {
-           console.log($('.about-more').css('display'));
-           if ($('.about-more').css('display') == 'none') {
-               $('#about-link').text('#{ t('.learn-more')}');   
-           } else { 
-               $('#about-link').text('#{ t('.learn-less')}');
-           }
-          });
+      var linkText = {
+        'about-more': '#{ t('.about-more')}',
+        'about-less': '#{ t('.about-less')}',
+        'button-more': '#{ t('.button-more')}',
+        'button-less': '#{ t('.button-less')}'
+      };      
+      $('.more-link').click(function(e) {
+        e.preventDefault();
+        var $link = $(this);
+        var target = $link.attr("href").substring(1);
+        $('.more-content[name="' + target + '"]').slideToggle('slow', function() {
+          if ($(this).is(':visible')) $link.text(linkText[target + '-less']);
+          else $link.text(linkText[target + '-more']);
+        });
       });
     });
 
@@ -20,28 +24,38 @@
       %h2= t('.value_proposition')
       %p= raw t('.value_proposition_sub1')
       %p= raw t('.value_proposition_sub2')
+      .clear
       %p
         %span
           .fb-login-button(data-scope="email,publish_actions")
             = t('users.sign_in.facebook')
-        %span= t('.or')
-        %span= link_to t('.register'), register_path, :class => 'btn'        
+        / %span= t('.or')
+        / %span= link_to t('.register'), register_path, :class => 'btn'        
     .span5.pull-right
       %img#landing-image{:src => image_path('love-flow.png')}
-.row
-  .span12
-    %h2= raw t('.about_25c_title')
-    %p.lead= raw t('.about_25c_p1')
-    .about-more.hide
-      %p.lead= raw t('.about_25c_p2')
-      %p.lead= raw t('.about_25c_p3')
-      %p.lead= raw t('.about_25c_p4')
-      %p.lead= raw t('.about_25c_p5')
 
-    %p.lead
-      %a#about-link= t('.learn-more')
-      
-    %h2= raw t('.button_25c_title')
-    %p= 'code...'
-    %h2= raw t('.url_25c_title')
-    %p= 'gen short url'
+.hero-unit
+  .row
+    .span10
+      %h2= raw t('.about_25c_title')
+      %p.lead= link_to t('.about-more'), '#about', :class => 'more-link'
+      %p.lead= raw t('.about_25c_p1')
+      .more-content.hide{:name => 'about'}
+        %p.lead= raw t('.about_25c_p2')
+        %p.lead= raw t('.about_25c_p3')
+        %p.lead= raw t('.about_25c_p4')
+
+.hero-unit
+  .row
+    .span10
+      %h2= raw t('.button_25c_title')
+      %p.lead= link_to t('.button-more'), '#button', :class => 'more-link'
+      %p.lead= raw t('.button_description')
+      .more-content.hide{:name => 'button'}
+        =render 'home/buttons/form'
+
+.hero-unit
+  .row
+    .span10
+      %h2= raw t('.url_25c_title')
+      %p= 'gen short url'
