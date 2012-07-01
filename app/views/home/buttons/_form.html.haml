@@ -5,9 +5,9 @@
 
 = simple_form_for @button, :url => home_button_path(@button) do |f|
   .row
-    .span10
+    .span11
       %p
-        %b= t('.button_form')
+        %b= t('.button_form') 
       #button-choice-container
         .button-choice
           %img{:src => image_path('25c-btn-large.png'), :'data-size' => 'btn-large'}
@@ -27,17 +27,26 @@
       = f.input :code_type, :required => true, :as => :radio_buttons, 
         :collection => ["javascript", "iframe"], :label => t('.button_type')
       = f.input :size, :as => :hidden
-    .span6
+    .span7
       %p
         %b= t('.button_code')
-      %pre#button-code-block
-
-  %hr
+      
+      - if @is_demo
+        #code-wrapper
+          %a{:href => register_path}
+            #code-overlay.lead= t('.sign_in_overlay')
+            %pre#button-code-block
+      - else
+        %pre#button-code-block
+        
   .row
-    .span10
+    .span11
+      %hr
       .submit-container
-        = f.button :submit, :class => 'btn btn-primary'
-        %span.hide#save-button-message= t('.saving_button')
+        - if @is_demo
+          =link_to t('.sign_in_button'), register_path, :class => 'btn btn-primary'
+        - else
+          = f.button :submit, :class => 'btn btn-primary'
 
 /dummy tooltip
 #tip-25c-tooltip 

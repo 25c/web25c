@@ -100,13 +100,34 @@ footer.navbar > .navbar-inner > .container {
 #landing-image {
   margin-top: 20px;
 }
-.hero-unit .fb-login-button {
+
+.splash {
+}
+
+.splash, .sub-splash {
+  padding: 38px;
+  margin: 20px 0px;
+  background-color: #eee;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.splash .fb-login-button {
   position: relative;
   top: 2px;
   display: inline;
 }
-.hero-unit > p > a.btn {
+.splash > p > a.btn {
   font-weight: 400;
+}
+
+.sub-splash {
+  margin-bottom: 30px;
+  padding: 20px 40px;
+}
+
+.sub-splash {
+  
 }
 
 /* Facebook Login
@@ -175,14 +196,40 @@ footer.navbar > .navbar-inner > .container {
   cursor: pointer;
 }
 
+#code-wrapper {
+  position: relative;
+}
+
 #button-code-block {
   background-color: white;
   white-space: normal;
   margin: 5px 0;
   overflow: hidden;
   resize: none;
-  width: 100%;
+  width: 97%;
   cursor: text;
+}
+
+#code-wrapper #code-overlay {
+  color: white;
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+#code-wrapper:hover #code-overlay {
+  display: block;
+}
+
+#code-wrapper:hover #button-code-block {
+  background-color: #666;
+  cursor: pointer;
+}
+
+#code-wrapper a:hover {
+  text-decoration: none;
 }
 
 #save-button-message {
@@ -348,4 +395,11 @@ form .form-actions {
 
 .table-title {
   margin-bottom: 10px;
+}
+
+/* BOOTSTRAP OVERRIDES
+*---------------------------- */
+
+[class^="icon-"], [class*=" icon-"] {
+  background-image: url(image_path("glyphicons-halflings.png"));
 }

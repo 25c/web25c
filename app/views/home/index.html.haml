@@ -6,7 +6,7 @@
         'about-less': '#{ t('.about-less')}',
         'button-more': '#{ t('.button-more')}',
         'button-less': '#{ t('.button-less')}'
-      };      
+      };
       $('.more-link').click(function(e) {
         e.preventDefault();
         var $link = $(this);
@@ -18,7 +18,7 @@
       });
     });
 
-.hero-unit
+.splash
   .row
     .span5
       %h2= t('.value_proposition')
@@ -29,33 +29,36 @@
         %span
           .fb-login-button(data-scope="email,publish_actions")
             = t('users.sign_in.facebook')
-        / %span= t('.or')
-        / %span= link_to t('.register'), register_path, :class => 'btn'        
-    .span5.pull-right
+        %span= t('.or')
+        %span= link_to t('.register'), register_path, :class => 'btn'        
+    .span6.pull-right
       %img#landing-image{:src => image_path('love-flow.png')}
+    .clear
 
-.hero-unit
+
+.sub-splash
   .row
-    .span10
+    .span11
       %h2= raw t('.about_25c_title')
-      %p.lead= link_to t('.about-more'), '#about', :class => 'more-link'
+      %p.lead
+        = link_to t('.about-more'), '#about', :class => 'more-link'
       %p.lead= raw t('.about_25c_p1')
       .more-content.hide{:name => 'about'}
         %p.lead= raw t('.about_25c_p2')
         %p.lead= raw t('.about_25c_p3')
         %p.lead= raw t('.about_25c_p4')
 
-.hero-unit
+.sub-splash
   .row
-    .span10
+    .span11
       %h2= raw t('.button_25c_title')
       %p.lead= link_to t('.button-more'), '#button', :class => 'more-link'
       %p.lead= raw t('.button_description')
       .more-content.hide{:name => 'button'}
         =render 'home/buttons/form'
 
-.hero-unit
+.sub-splash
   .row
-    .span10
+    .span11
       %h2= raw t('.url_25c_title')
       %p= 'gen short url'

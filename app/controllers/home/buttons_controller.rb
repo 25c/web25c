@@ -2,6 +2,7 @@ class Home::ButtonsController < Home::HomeController
   
   def index
     @button = self.current_user.buttons[0]
+    @is_demo = false
   end
   
   def new

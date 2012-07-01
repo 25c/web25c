@@ -110,7 +110,9 @@ en:
         button_name: "Name your button:"
         button_type: "Choose the type of button:"
         button_preview: "Button preview:"
-        button_code: "Button Code (copy-paste into your page):"    
+        button_code: "Button Code (copy-paste into your page):"
+        sign_in_overlay: Click here to create an account!
+        sign_in_button: Create a Free Account
 
     index:
       or: Or
