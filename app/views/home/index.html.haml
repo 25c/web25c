@@ -20,17 +20,16 @@
 
 .splash
   .row
+    .span11
+      %h1#splash-title= t('.value_proposition')
     .span5
-      %h2= t('.value_proposition')
-      %p= raw t('.value_proposition_sub1')
-      %p= raw t('.value_proposition_sub2')
+      %p.lead= raw t('.value_proposition_sub1')
+      %p.lead= raw t('.value_proposition_sub2')
       .clear
-      %p
-        %span
-          .fb-login-button(data-scope="email,publish_actions")
-            = t('users.sign_in.facebook')
-        %span= t('.or')
-        %span= link_to t('.register'), register_path, :class => 'btn'        
+      %div
+        .fb-login-button(data-scope="email,publish_actions")= t('users.sign_in.facebook')
+        %span.or-block= t('.or')
+        %span= link_to t('.register'), register_path, :class => 'btn'
     .span6.pull-right
       %img#landing-image{:src => image_path('love-flow.png')}
     .clear

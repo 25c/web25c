@@ -101,6 +101,10 @@ footer.navbar > .navbar-inner > .container {
   margin-top: 20px;
 }
 
+#splash-title {
+  margin-bottom: 20px;
+}
+
 .splash {
 }
 
@@ -119,6 +123,11 @@ footer.navbar > .navbar-inner > .container {
 }
 .splash > p > a.btn {
   font-weight: 400;
+}
+
+.splash .or-block {
+  position: relative;
+  top: 2px;
 }
 
 .sub-splash {
