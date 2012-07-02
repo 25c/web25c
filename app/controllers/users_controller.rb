@@ -142,6 +142,8 @@ class UsersController < ApplicationController
     if sign_in_successful
       if has_tip && !alert
         redirect_to confirm_tip_path(:button_id => params[:button_id])
+      elsif @user.is_new
+        redirect_to_session_redirect_path(home_buttons_path)
       else
         redirect_to_session_redirect_path(home_dashboard_path)
       end

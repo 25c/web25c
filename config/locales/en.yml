@@ -104,6 +104,9 @@ en:
       update_failure: Button update failed. Please try again.
       index: 
         title: Your Button
+        welcome_title: "Getting started: set up your 25c button"
+        welcome_message: Welcome to 25c! Use this page to set your button and begin receiving clicks right away.
+        dismiss: Dismiss This Message
       
       form:
         button_form: "Choose your button's look:"

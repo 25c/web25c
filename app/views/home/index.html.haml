@@ -7,6 +7,7 @@
         'button-more': '#{ t('.button-more')}',
         'button-less': '#{ t('.button-less')}'
       };
+      
       $('.more-link').click(function(e) {
         e.preventDefault();
         var $link = $(this);
@@ -15,7 +16,16 @@
           if ($(this).is(':visible')) $link.text(linkText[target + '-less']);
           else $link.text(linkText[target + '-more']);
         });
+        window.location.hash = target;
       });
+      
+      var hash = window.location.hash.substring(1);
+      if ($.inArray(hash, ['button', 'about']) != -1) {
+        var $link = $('a.more-link[href$="' + hash + '"]');
+        $link.click();
+        $(window).scrollTop($link.parent().offset().top - 40);
+        
+      }
     });
 
 .splash

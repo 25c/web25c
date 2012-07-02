@@ -169,6 +169,21 @@ footer.navbar > .navbar-inner > .container {
   background-color: #e3e3e3;
 }
 
+
+/* Buttons Home Page
+ *---------------------------- */
+#new-user-welcome {
+  padding: 20px;
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+#welcome-message {
+  margin-bottom: 40px;
+}
+
 /* Button Creation Page
  *---------------------------- */
 #button-choice-container {
@@ -431,7 +446,7 @@ form .form-actions {
 
 #user-profile {
   padding: 20px;
-  border: 2px solid #ccc;
+  border: 2px solid #ddd;
   background-color: white;
   border-radius: 10px;
 }

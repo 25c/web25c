@@ -1,4 +1,32 @@
-.row
-  .span12
-    %h2.page-header= t('.title')
+= content_for(:js) do
+  :javascript
+    window.pageTitle = '#{ j t(".title") }';
+    window.dismissWelcomeUrl = '#{ j home_dismiss_welcome_url }';
+    
+    $(document).ready(function(){
+      $("#dismiss-welcome").click(function() {
+        $this = $(this);
+        $.post(dismissWelcomeUrl, {});
+        $container = $this.parent().parent();
+        $container.fadeOut('slow', function(){
+          $container.parent().html('<h2 class="page-header">' + pageTitle + '</h2>');
+          $container.remove();
+        });
+      });
+    });
+
+-if @is_new
+  .row
+    .span12
+      #new-user-welcome
+        #welcome-message
+          %h2= t('.welcome_title')
+          %p= t('.welcome_message')
+        .center
+          =link_to t('.dismiss'), '#', :class => 'btn', :id => 'dismiss-welcome'
+      %hr
+-else
+  .row
+    .span12
+      %h2.page-header= t('.title')
 =render 'form'
