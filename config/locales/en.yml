@@ -159,14 +159,31 @@ en:
       payments: Load 25c Jar
       
   users:
+    show:
+      title: ' - 25c Profile'
+      blank_about: 'I use 25c to get rewarded for my content.'
     form:
       edit_password_hint: Leave blank to keep current password.
+      nickname_url: "Your nickname determines your public profile URL: "
     edit:
       title: Account
     update:
       success: Your account has been updated.
+    profile_form:
+      support_title: Please click the 25c Button below to contribute to
+      support_title_no_name: Please click the 25c Button below to contribute.
+      support_subtitle: Your click shows your appreciation and helps the people who provide great content.
+      image_upload: Upload your image
+      submit: Update Profile
+      first_name_default: First Name
+      last_name_default: Last Name
+      enter_name: Enter your name here.
+      enter_about: Enter information about yourself here.
     edit_profile:
-      title: Your Profile
+      title: Edit your public profile
+      url_title: 'Your Profile will appear at:'
+      edit_url: Modify URL
+      no_url: Choose a nickname to set up your profile URL.
     update_profile:
       success: Your profile has been updated.
     sign_in:

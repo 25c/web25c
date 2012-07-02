@@ -1,28 +1,4 @@
-- model_class = @user.class
-%h1=t '.title', :default => model_class.model_name.human
+- if !@user.first_name.blank?
+  - content_for :title, (@user.first_name + t('.title'))
 
-%p
-  %strong= model_class.human_attribute_name(:nickname) + ':'
-  %br
-  = @user.nickname
-%p
-  %strong= model_class.human_attribute_name(:first_name) + ':'
-  %br
-  = @user.first_name
-%p
-  %strong= model_class.human_attribute_name(:last_name) + ':'
-  %br
-  = @user.last_name
-%p
-  %strong= model_class.human_attribute_name(:about) + ':'
-  %br
-  = @user.about
-%p
-  %strong= model_class.human_attribute_name(:picture) + ':'
-  %br
-  = image_tag @user.picture.url if @user.picture?
-  
-.form-actions
-  / = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn'
-  / = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_path(@user), :class => 'btn'
-  / = link_to t('.destroy', :default => t("helpers.links.destroy")), user_path(@user), :method => "delete", :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-danger'
+= render :partial => "profile_form"

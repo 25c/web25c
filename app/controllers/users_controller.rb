@@ -16,7 +16,10 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find_by_nickname_ci(params[:id])
-
+    @is_editable = false
+    @user.first_name = @user.email if @user.first_name.blank?
+    @user.about = t('users.show.blank_about') if @user.about.blank?
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -38,6 +41,13 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = self.current_user
+    if @user.nickname
+      @url = 'http://' + request.domain
+      @url += ':3000' if request.domain == 'localhost'
+      @url += '/' + @user.nickname
+    else
+      @url = 'http://25c.com/example'
+    end
   end
   
   def update
@@ -56,6 +66,14 @@ class UsersController < ApplicationController
   
   def edit_profile
     @user = self.current_user
+    if @user.nickname
+      @url = 'http://' + request.domain
+      @url += ':3000' if request.domain == 'localhost'
+      @url +=  '/' + @user.nickname
+    else
+      @url = ''
+    end
+    @is_editable = true
   end
   
   def update_profile
