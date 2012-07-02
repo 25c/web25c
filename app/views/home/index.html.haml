@@ -1,6 +1,5 @@
 =content_for(:js) do
   :javascript
-
     $(document).ready(function() {
       $('#about-link').click(function() {
         $('.about-more').slideToggle('slow', function() {
@@ -10,27 +9,27 @@
            } else { 
                $('#about-link').text('#{ t('.learn-less')}');
            }
-
-
           });
       });
     });
 
-
 .hero-unit
   .row
-    .span5
+    .span4
       %h2= t('.value_proposition')
-      %p= raw t('.value_proposition_sub1')
-      %p= raw t('.value_proposition_sub2')
+      %p= raw t('.value_proposition_sub')
+      %p= raw t('.value_proposition_q')
+      %p= raw t('.value_proposition_a')
       %p
         %span
           .fb-login-button(data-scope="email,publish_actions")
             = t('users.sign_in.facebook')
         %span= t('.or')
         %span= link_to t('.register'), register_path, :class => 'btn'        
-    .span5.pull-right
-      %img#landing-image{:src => image_path('love-flow.png')}
+    .span3
+      %img#landing-image{:src => image_path('flow1.png')}      
+    .span3
+      %img#landing-image{:src => image_path('flow2.png')}
 .row
   .span12
     %h2= raw t('.about_25c_title')
@@ -40,10 +39,8 @@
       %p.lead= raw t('.about_25c_p3')
       %p.lead= raw t('.about_25c_p4')
       %p.lead= raw t('.about_25c_p5')
-
     %p.lead
       %a#about-link= t('.learn-more')
-      
     %h2= raw t('.button_25c_title')
     %p= 'code...'
     %h2= raw t('.url_25c_title')
