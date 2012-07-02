@@ -1,11 +1,37 @@
 - content_for :title, t('.title')
+- content_for :js do
+  :javascript
+    $(document).ready(function() {
+    
+      $('#name-block .content-block, #user-profile textarea').addClass('editing');
+      
+      $('#upload-button').click(function() {
+        $('#user_picture').click();
+      });
+      
+      $('#first_name_input, #last_name_input').change(function() {
+        var name = $('#first_name_input').val() + ' ' + $('#last_name_input').val();
+        $('#name-block .content-block').text(name);
+      });
+      
+      $('input, textarea').focusin(function() {
+        $('input, textarea').addClass("focused");
+        $('#name-block .input-block').css('display', 'block');
+        $('#name-block .content-block').css('display', 'none')
+      }).focusout(function() {
+        $('input, textarea').removeClass("focused");
+        $('#name-block .input-block').css('display', '');
+        $('#name-block .content-block').css('display', '');
+      });
+      
+    });
+
 .page-header
-  %h2= yield :title
-= simple_form_for @user, :url =>home_profile_path, :html => { :class => 'form-horizontal' } do |f|
-  = f.input :nickname
-  = f.input :first_name
-  = f.input :last_name
-  = f.input :about, :input_html => { :rows => 4 }
-  = f.input :picture
-  .form-actions
-    = f.button :submit, :class => 'btn-primary'
+  - if @url.blank?
+    %h3= link_to t('.no_url'), home_account_path, :target => '_blank'
+  - else
+    %h3.pull-left
+      = t('.url_title')
+      =link_to @url, @url, :target => '_blank'
+    =link_to t('.edit_url'), home_account_path, :class => 'btn', :id => 'edit-url'
+= render :partial => "profile_form"

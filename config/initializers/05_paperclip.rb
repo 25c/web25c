@@ -3,6 +3,7 @@ Paperclip.interpolates :uuid do |attachment, style|
 end
 
 if Rails.env.development?
+  Paperclip::Attachment.default_options[:default_url] = "http://mhpbooks.com/wp-content/uploads/2012/02/blank-profile-md.png"
   Paperclip::Attachment.default_options[:url] = "/s3/:class/:attachment/:uuid/:style.:extension"
 else
   Paperclip::Attachment.default_options[:storage] = :s3

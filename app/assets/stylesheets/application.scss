@@ -39,6 +39,10 @@ hr {
   border-bottom: 2px solid #e6e6e6;
 }
 
+.center {
+  text-align: center;
+}
+
 /* Header Nav
  *---------------------------- */
 .navbar .navbar-inner {
@@ -100,8 +104,43 @@ footer.navbar > .navbar-inner > .container {
 #landing-image {
   margin-top: 20px;
 }
-.hero-unit .fb-login-button {
+
+#splash-title {
+  margin-bottom: 20px;
+}
+
+.splash {
+}
+
+.splash, .sub-splash {
+  padding: 38px;
+  margin: 20px 0px;
+  background-color: #eee;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.splash .fb-login-button {
+  position: relative;
+  top: 2px;
   display: inline;
+}
+.splash > p > a.btn {
+  font-weight: 400;
+}
+
+.splash .or-block {
+  position: relative;
+  top: 2px;
+}
+
+.sub-splash {
+  margin-bottom: 30px;
+  padding: 20px 40px;
+}
+
+.sub-splash {
+  
 }
 
 /* Facebook Login
@@ -129,13 +168,6 @@ footer.navbar > .navbar-inner > .container {
   color: #333;
   background-color: #e3e3e3;
 }
-
-/* Landing Page Link
- *---------------------------- */
-.hero-unit > p > a.btn {
-  font-weight: 400;
-}
-
 
 /* Button Creation Page
  *---------------------------- */
@@ -177,14 +209,40 @@ footer.navbar > .navbar-inner > .container {
   cursor: pointer;
 }
 
+#code-wrapper {
+  position: relative;
+}
+
 #button-code-block {
   background-color: white;
   white-space: normal;
   margin: 5px 0;
   overflow: hidden;
   resize: none;
-  width: 100%;
+  width: 97%;
   cursor: text;
+}
+
+#code-wrapper #code-overlay {
+  color: white;
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+#code-wrapper:hover #code-overlay {
+  display: block;
+}
+
+#code-wrapper:hover #button-code-block {
+  background-color: #666;
+  cursor: pointer;
+}
+
+#code-wrapper a:hover {
+  text-decoration: none;
 }
 
 #save-button-message {
@@ -206,7 +264,9 @@ footer.navbar > .navbar-inner > .container {
 }
 
 #tip-25c-tooltip p {
-  margin: 1em;
+  margin: 10px;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 /* Account Page Elements
@@ -348,4 +408,129 @@ form .form-actions {
 
 .table-title {
   margin-bottom: 10px;
+}
+
+/* BOOTSTRAP OVERRIDES
+*---------------------------- */
+
+[class^="icon-"], [class*=" icon-"] {
+  background-image: url(image_path("glyphicons-halflings.png"));
+}
+
+
+/* USER PROFILE
+*---------------------------- */
+
+#edit-url{
+  margin-left: 20px;
+}
+
+#profile-container {
+  margin-top: 40px;
+}
+
+#user-profile {
+  padding: 20px;
+  border: 2px solid #ccc;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#user-profile .user-image {
+  width: 260px;
+}
+
+#user-profile .block {
+  position: relative;
+}
+
+#user-profile:hover input {
+  display: block;
+}
+
+#user-profile #image-block {
+  display: none;
+}
+
+#user-profile .user-image {
+  margin-bottom: 10px;
+}
+
+#user-profile input, #user-profile textarea {
+  box-shadow: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  resize: none;
+  width: 245px;
+}
+
+#user-profile #last_name_input, #user-profile #first_name_input {
+  float: left;
+  width: 112px;
+}
+
+#user-profile #first_name_input {
+  margin-right: 11px;
+}
+
+#user-profile textarea {
+}
+
+#user-profile:hover #upload-button {
+  display: block;
+}
+
+#user-profile:hover input, #user-profile:hover textarea.editing, #user-profile input.focused, 
+#user-profile textarea.focused {
+  display: block;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+}
+
+#about-block {
+  min-height: 60px;
+}
+
+#user-profile #upload-button {
+  display: none;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+#profile-submit {
+  margin: 0;
+  text-align: center;
+}
+
+#image-block .input-block {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+#name-block .emphasis {
+  font-weight: bold;
+  font-size: 20px;
+}
+#name-block .content-block {
+  padding: 5px;
+  color: #555;
+}
+
+#user-profile:hover #name-block .content-block.editing {
+  display:none;
+}
+
+#user-profile #name-block .input-block {
+  display:none;
+}
+
+#user-profile:hover #name-block .input-block {
+  display: block;
+}
+
+#button-holder {
+  margin: 40px 0 0 200px;
 }

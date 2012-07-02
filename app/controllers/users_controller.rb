@@ -16,7 +16,10 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find_by_nickname_ci(params[:id])
-
+    @is_editable = false
+    @user.first_name = @user.email if @user.first_name.blank?
+    @user.about = t('users.show.blank_about') if @user.about.blank?
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
@@ -38,6 +41,13 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = self.current_user
+    if @user.nickname
+      @url = 'http://' + request.domain
+      @url += ':3000' if request.domain == 'localhost'
+      @url += '/' + @user.nickname
+    else
+      @url = 'http://25c.com/example'
+    end
   end
   
   def update
@@ -56,6 +66,14 @@ class UsersController < ApplicationController
   
   def edit_profile
     @user = self.current_user
+    if @user.nickname
+      @url = 'http://' + request.domain
+      @url += ':3000' if request.domain == 'localhost'
+      @url +=  '/' + @user.nickname
+    else
+      @url = ''
+    end
+    @is_editable = true
   end
   
   def update_profile
@@ -123,15 +141,15 @@ class UsersController < ApplicationController
     # handle page redirecting
     if sign_in_successful
       if has_tip && !alert
-        redirect_to confirm_tip_path(:button_id => params[:button_id])
+        redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
       else
-        redirect_to_session_redirect_path(home_buttons_path)
+        redirect_to_session_redirect_path(home_dashboard_path)
       end
       return
     else
       @user = User.new if !@user
       if has_tip
-        redirect_to tip_path(:button_id => params[:button_id], :new => @new)
+        redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer], :new => @new)
       end
     end
   end
@@ -145,6 +163,7 @@ class UsersController < ApplicationController
     @user = User.new
     @new = params[:new] ? params[:new] == "true" : true
     @button_id = params[:button_id]
+    @referrer = params[:referrer]
     render :layout => "blank"
   end
   
@@ -153,7 +172,7 @@ class UsersController < ApplicationController
       @user = self.current_user
     else
       flash[:alert] = t('users.sign_in.failure')
-      redirect_to tip_path(:button_id => params[:button_id])
+      redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
       return
     end
     button = Button.find_by_uuid(params[:button_id])
@@ -162,6 +181,7 @@ class UsersController < ApplicationController
       click.uuid = UUID.new.generate
       click.user_id = @user.id
       click.button_id = button.id
+      click.referrer = params[:referrer]
       if click.save
         notice = t('users.sign_in.click_success')
       else

@@ -1,6 +1,53 @@
+= content_for(:js) do
+  = javascript_include_tag "save-button"
+  :javascript
+    window.buttonId = '#{ @button.uuid }';
+
 = simple_form_for @button, :url => home_button_path(@button) do |f|
-  = f.input :size, :as => :radio_buttons, :collection => ["large", "medium", "icon"]
-  = f.input :title, :required => false
-  = f.input :description, :required => false, :input_html => { :rows => '3' }
-  .form-actions
-    = f.button :submit, :class => 'btn btn-primary'
+  .row
+    .span11
+      %p
+        %b= t('.button_form') 
+      #button-choice-container
+        .button-choice
+          %img{:src => image_path('25c-btn-large.png'), :'data-size' => 'btn-large'}
+        .button-choice
+          %img{:src => image_path('25c-icon-large.png'), :'data-size' => 'icon-large'}
+        .button-choice
+          %img{:src => image_path('25c-btn-medium.png'), :'data-size' => 'btn-medium'}
+        .button-choice
+          %img{:src => image_path('25c-icon-medium.png'), :'data-size' => 'icon-medium'}
+        .button-choice
+          %img{:src => image_path('25c-btn-small.png'), :'data-size' => 'btn-small'}
+        .button-choice
+          %img{:src => image_path('25c-icon-small.png'), :'data-size' => 'icon-small'}
+      .clear
+    .span4
+      = f.input :title, :required => false, :label => t('.button_name')
+      = f.input :code_type, :required => true, :as => :radio_buttons, 
+        :collection => ["javascript", "iframe"], :label => t('.button_type')
+      = f.input :size, :as => :hidden
+    .span7
+      %p
+        %b= t('.button_code')
+      
+      - if @is_demo
+        #code-wrapper
+          %a{:href => register_path}
+            #code-overlay.lead= t('.sign_in_overlay')
+            %pre#button-code-block
+      - else
+        %pre#button-code-block
+        
+  .row
+    .span11
+      %hr
+      .submit-container
+        - if @is_demo
+          =link_to t('.sign_in_button'), register_path, :class => 'btn btn-primary'
+        - else
+          = f.button :submit, :class => 'btn btn-primary'
+
+/dummy tooltip
+#tip-25c-tooltip 
+  %p Click to tip 25c!

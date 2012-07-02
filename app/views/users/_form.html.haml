@@ -1,4 +1,5 @@
 = simple_form_for @user, :url => @user.new_record? ? register_path : home_account_path, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :nickname, :hint => t('.nickname_url') + link_to(@url, @url)
   = f.input :email
   = f.input :password, :hint => @user.new_record? ? false : t('.edit_password_hint')
   .form-actions
