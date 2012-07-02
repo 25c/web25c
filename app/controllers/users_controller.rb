@@ -141,7 +141,7 @@ class UsersController < ApplicationController
     # handle page redirecting
     if sign_in_successful
       if has_tip && !alert
-        redirect_to confirm_tip_path(:button_id => params[:button_id])
+        redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
       elsif @user.is_new
         redirect_to_session_redirect_path(home_buttons_path)
       else
@@ -151,7 +151,7 @@ class UsersController < ApplicationController
     else
       @user = User.new if !@user
       if has_tip
-        redirect_to tip_path(:button_id => params[:button_id], :new => @new)
+        redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer], :new => @new)
       end
     end
   end
@@ -165,6 +165,7 @@ class UsersController < ApplicationController
     @user = User.new
     @new = params[:new] ? params[:new] == "true" : true
     @button_id = params[:button_id]
+    @referrer = params[:referrer]
     render :layout => "blank"
   end
   
@@ -173,7 +174,7 @@ class UsersController < ApplicationController
       @user = self.current_user
     else
       flash[:alert] = t('users.sign_in.failure')
-      redirect_to tip_path(:button_id => params[:button_id])
+      redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
       return
     end
     button = Button.find_by_uuid(params[:button_id])
@@ -182,6 +183,7 @@ class UsersController < ApplicationController
       click.uuid = UUID.new.generate
       click.user_id = @user.id
       click.button_id = button.id
+      click.referrer = params[:referrer]
       if click.save
         notice = t('users.sign_in.click_success')
       else

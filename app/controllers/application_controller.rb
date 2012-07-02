@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
             self.current_user = nil
             flash[:alert] = t('application.check_facebook_cookies.failure');
             if has_tip 
-              redirect_to tip_path(:button_id => params[:button_id])
+              redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
               return
             else
               redirect_to root_path
@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
           end
         end
         if has_tip 
-          redirect_to confirm_tip_path(:button_id => params[:button_id])
+          redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
           return
         else
           # render

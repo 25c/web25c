@@ -33,16 +33,19 @@
     .span11
       %h1#splash-title= t('.value_proposition')
     .span5
-      %p.lead= raw t('.value_proposition_sub1')
-      %p.lead= raw t('.value_proposition_sub2')
+      %p.lead= raw t('.value_proposition_sub1q')
+      %p.lead= raw t('.value_proposition_sub1a')
+      %p.lead= raw t('.value_proposition_sub2q')
+      %p.lead= raw t('.value_proposition_sub2a')
       .clear
       %div
         .fb-login-button(data-scope="email,publish_actions")= t('users.sign_in.facebook')
         %span.or-block= t('.or')
         %span= link_to t('.register'), register_path, :class => 'btn'
-    .span6.pull-right
-      %img#landing-image{:src => image_path('love-flow.png')}
-    .clear
+    .span3
+      %img#landing-image{:src => image_path('flow1.png')}
+    .span3
+      %img#landing-image{:src => image_path('flow2.png')}
 
 
 .sub-splash
