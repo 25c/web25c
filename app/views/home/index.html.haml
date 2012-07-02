@@ -1,0 +1,66 @@
+=content_for(:js) do
+  :javascript
+    $(document).ready(function() {
+      var linkText = {
+        'about-more': '#{ t('.about-more')}',
+        'about-less': '#{ t('.about-less')}',
+        'button-more': '#{ t('.button-more')}',
+        'button-less': '#{ t('.button-less')}'
+      };
+      $('.more-link').click(function(e) {
+        e.preventDefault();
+        var $link = $(this);
+        var target = $link.attr("href").substring(1);
+        $('.more-content[name="' + target + '"]').slideToggle('slow', function() {
+          if ($(this).is(':visible')) $link.text(linkText[target + '-less']);
+          else $link.text(linkText[target + '-more']);
+        });
+      });
+    });
+
+.splash
+  .row
+    .span11
+      %h1#splash-title= t('.value_proposition')
+    .span5
+      %p.lead= raw t('.value_proposition_sub1q')
+      %p.lead= raw t('.value_proposition_sub1a')
+      %p.lead= raw t('.value_proposition_sub2q')
+      %p.lead= raw t('.value_proposition_sub2a')
+      .clear
+      %div
+        .fb-login-button(data-scope="email,publish_actions")= t('users.sign_in.facebook')
+        %span.or-block= t('.or')
+        %span= link_to t('.register'), register_path, :class => 'btn'
+    .span3
+      %img#landing-image{:src => image_path('flow1.png')}
+    .span3
+      %img#landing-image{:src => image_path('flow2.png')}
+
+
+.sub-splash
+  .row
+    .span11
+      %h2= raw t('.about_25c_title')
+      %p.lead
+        = link_to t('.about-more'), '#about', :class => 'more-link'
+      %p.lead= raw t('.about_25c_p1')
+      .more-content.hide{:name => 'about'}
+        %p.lead= raw t('.about_25c_p2')
+        %p.lead= raw t('.about_25c_p3')
+        %p.lead= raw t('.about_25c_p4')
+
+.sub-splash
+  .row
+    .span11
+      %h2= raw t('.button_25c_title')
+      %p.lead= link_to t('.button-more'), '#button', :class => 'more-link'
+      %p.lead= raw t('.button_description')
+      .more-content.hide{:name => 'button'}
+        =render 'home/buttons/form'
+
+.sub-splash
+  .row
+    .span11
+      %h2= raw t('.url_25c_title')
+      %p= 'gen short url'

@@ -1,0 +1,210 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  admin:
+    dashboard:
+      index:
+        title: Admin Dashboard
+  
+  application:
+    title: "25c social micro-donations. One quarter, one click."
+    25c_units: "25c's"
+    
+    check_facebook_cookies:
+      sign_in: You have been automatically signed in using your Facebook account.
+      sign_up: You have successfully linked your Facebook account to 25c!
+      failure: Facebook sign in was unsuccessful. Please try again.
+      
+  form:
+    submit: Submit
+  
+  home:
+    account:
+      jar:
+        25c_units: 25c's
+        title: "Your 25c Jar"
+        request_payout: "Request Payout"
+        refill_title: Refill my Jar with 25c's
+        refill_amount: "Amount to add:"
+        auto_refill: Automatically refill my Jar if balance drops below $5 (20 25c's).
+        card_on_file: "Card on file:"
+        use_existing: Use existing card
+        use_different: Use different card
+        card_name: "Name on card:"
+        card_number: "Card number:"
+        card_cvv: "Card CVV:"
+        expiration_date: "Expiration date:"
+        select_month: Month...
+        select_year: Year...
+        remember_card: Remember this card for future use.
+        payment_failure: Payment failed. Please check the credit card fields and try again.
+      confirm_payment:
+        confirm_title: Payment confirmed.
+        transaction_id: "Transaction ID:"
+        transaction_amount: "Amount:"
+        transaction_card_number: "Card Number:"
+        transaction_card_type: "Card Type:"
+        return_to_jar: Return to 25c Jar.
+        success: You have successfully added to your 25c Jar.
+        failure: Your account was charged, but there was a problem updating your 25c Jar.
+      payout:
+        empty_jar_title: Request a payout from your 25c Jar
+        paypal_title: Request payment through Paypal
+        paypal_email: Paypal account e-mail*
+        ach_title: Request payment through bank ACH transfer
+        bank_info: Your account information
+        account_type: Account Type*
+        account_business: Business
+        account_personal: Personal
+        account_number: Account Number*
+        routing_number: Routing Number*
+        bank_name: Bank Name*
+        contact_info: Your contact information
+        name: Name*
+        company: Company
+        line1: Address Line 1*
+        line2: Address Line 2
+        city: City*
+        region: State / Province / Region*
+        zip: Postal Code*
+        country: Country*
+        submit: Send Request
+      confirm_payout:
+        confirm_title: Payout request sent.
+        complete_required: "Please complete all the required fields."
+        amount: "Request amount:"
+        email: "Email:"
+        account_type: "Account Type:"
+        bank_name: "Bank Name:"
+        name: "Name:"
+        company: "Company:"
+        phone: "Phone Number"
+        address: "Address:"
+        return_to_jar: Return to 25c Jar.
+        failure: "An error occurred and the payout request was not send. Please try again."
+    dashboard:
+      index:
+        title: Dashboard
+        get_button: Get My Button
+        fill_jar: Fill My Jar
+        tips_given_title: 25c's given
+        tips_received_title: 25c's received
+        tips_given: 25c's Given
+        tips_received: 25c's Received
+        total: Total
+        date_created: Date & Time Created
+        provider: Content Provider
+        referrer: Content Referrer
+        clicker: Clicked By
+        delete: Remove
+        confirm_delete: Are you sure you want to remove this click? The provider will not receive your tip.
+    buttons:
+      button_updated: Your button has been updated.
+      update_failure: Button update failed. Please try again.
+      index: 
+        title: Your Button
+      
+      form:
+        button_form: "Choose your button's look:"
+        button_name: "Name your button:"
+        button_type: "Choose the type of button:"
+        button_preview: "Button preview:"
+        button_code: "Button Code (copy-paste into your page):"
+        sign_in_overlay: Click here to create an account!
+        sign_in_button: Create a Free Account
+
+    index:
+      or: Or
+      register: Register
+      value_proposition: Super-Like Great Content & Causes. One quarter, one click.
+      value_proposition_sub1q: "Bloggers, Webmasters, Apps:"
+      value_proposition_sub1a: "Add the 25c Gratuity Button. Collect 25c's."
+      value_proposition_sub2q: "Have many followers?"
+      value_proposition_sub2a: "Use our Short URL. Earn along."
+      about_25c_title: About 25c
+      about_25c_p1: Empowering people to support what you value.  Easily & directly.  
+        One quarter one click.   Towards a future measured what you truly 
+        value.  (As opposed to what advertisers value.)
+      about_25c_p2: Clicking the 25c Gratuity Button&trade; once contributes 25c; 
+        clicking it twice contributes two 25's; and so on.
+      about_25c_p3: It adds up!  A thousand 25c tips can double a freelance 
+        writer's compensation, pay a photographer's expenses.
+      about_25c_p4: Have a sizable Twitter/etc. following?  Use the 25c Short 
+        URL to refer great content & causes - and earn 5 cents for each 25c 
+        donation generated.
+      about-more: Show more...
+      about-less: Show less...
+      button_description: The 25c Gratuity Button&trade; is easy to add to your website, 
+        blog, etc. -- just insert our code and start receiving 25c tips.
+      button-more: Get your Button!
+      button-less: Hide Button code.
+      button_25c_title: 25c Gratuity Button
+      url_25c_title: 25c Short URL
+      
+  layouts:
+    admin:
+      admin: Admin
+      dashboard: Dashboard
+      
+    header:
+      tagline: "Social micro-donations. One quarter, one click."
+      home: Home
+      about: About
+      account: Account
+      profile: Profile
+      contact: Contact
+      register: Register
+      sign_in: Sign In
+      sign_out: Sign Out
+      buttons: Receive 25c's
+      payments: Load 25c Jar
+      
+  users:
+    show:
+      title: ' - 25c Profile'
+      blank_about: 'I use 25c to get rewarded for my content.'
+    form:
+      edit_password_hint: Leave blank to keep current password.
+      nickname_url: "Your nickname determines your public profile URL: "
+    edit:
+      title: Account
+    update:
+      success: Your account has been updated.
+    profile_form:
+      support_title: Please click the 25c Button below to contribute to
+      support_title_no_name: Please click the 25c Button below to contribute.
+      support_subtitle: Your click shows your appreciation and helps the people who provide great content.
+      image_upload: Upload your image
+      submit: Update Profile
+      first_name_default: First Name
+      last_name_default: Last Name
+      enter_name: Enter your name here.
+      enter_about: Enter information about yourself here.
+    edit_profile:
+      title: Edit your public profile
+      url_title: 'Your Profile will appear at:'
+      edit_url: Modify URL
+      no_url: Choose a nickname to set up your profile URL.
+    update_profile:
+      success: Your profile has been updated.
+    sign_in:
+      title: Sign in to your 25c account
+      facebook: Login with Facebook
+      or: or
+      new_account: I am a new user.
+      existing_account: I already have a 25c account.
+      submit_new: Create Free Account
+      submit_existing: Sign In
+      failure: "Sorry, your email and/or password were incorrect."
+      click_success: "Your click has been recorded."
+      click_failure: "Something went wrong. Your click was not processed."
+      sign_in_failure: "Something went wrong with the sign in process. Please try again."
+      button_not_found: "The button was not found."
+    create:
+      success: Your account has been created!
+      failure: Your account was not created. Please try again.
+    confirm_tip:
+      visit_25c: Go to 25c.com
+      view_account: View 25c Account
+      close_window: Close this window
