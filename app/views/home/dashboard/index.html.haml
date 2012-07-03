@@ -30,12 +30,13 @@
     %th= t('.provider')
     %th= t('.referrer')
   %tbody
-    - @clicks_given.each do |id, row|
-      %tr        
-        - row.each do |column|
-          %td= column
+    - @clicks_given.each do |click|
+      %tr
+        %td= l click.created_at, :format => :short
+        %td= click.button.user.display_name
+        %td= click.referrer
         %td
-          %a.delete-click.btn.btn-warning{:"data-click_id" => id}= t('.delete')
+          %a.delete-click.btn.btn-warning{:"data-click_id" => click.uuid}= t('.delete')
 /%a.process-all.btn.btn-primary= t('.process_all')
 %hr
 %h3.table-title
@@ -47,7 +48,8 @@
     %th= t('.clicker')
     %th= t('.referrer')
   %tbody
-    - @clicks_received.each do |row|
+    - @clicks_received.each do |click|
       %tr
-        - row.each do |column|
-          %td= column
+        %td= l click.created_at, :format => :short
+        %td= click.user.display_name
+        %td= click.referrer

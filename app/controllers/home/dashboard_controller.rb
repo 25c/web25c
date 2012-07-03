@@ -2,32 +2,8 @@ class Home::DashboardController < Home::HomeController
   
   def index
     @user = current_user
-    @clicks_given = {}
-    @user.clicks.order("created_at DESC").each do |click|
-      button = click.button
-      row = [
-        click.created_at,
-        button.user.email,
-        click.referrer.blank? ? "None" : click.referrer
-        ]
-      @clicks_given[click.uuid] = row
-    end
-    
-    puts @clicks_given.inspect
-    
-    @clicks_received = []
-    
-    button_ids = []
-    @user.buttons.each {|button| button_ids.push(button.id)}
-    Click.find(:all, :conditions => {:button_id => button_ids}, :order => "created_at DESC").each do |click|
-    # @user.button_clicks.each do |click|
-      row = [
-        click.created_at,
-        click.user.email,
-        click.referrer.blank? ? "None" : click.referrer
-        ]
-      @clicks_received.push(row)
-    end
+    @clicks_given = @user.clicks.includes(:button => :user).order("created_at DESC")    
+    @clicks_received = Click.where(:button_id => @user.button_ids).includes(:user).order("created_at DESC")
   end
   
   def delete_click
