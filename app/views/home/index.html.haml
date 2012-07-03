@@ -32,7 +32,7 @@
           $('#value-div').animate({marginLeft: 0}, 'slow');
           position = 0;
         } else {
-          $('#value-div').animate({marginLeft: -300}, 'slow');
+          $('#value-div').animate({marginLeft: -500}, 'slow');
           position = 1;
         }
         $('.selected-circle').removeClass('selected-circle');
@@ -57,11 +57,11 @@
         %span.or-block= t('.or')
         %span= link_to t('.register'), register_path, :class => 'btn'
     .span7
-      %div{:style => 'height: 300px; width: 300px; overflow: hidden'}
-        #value-div{:style => 'position: relative; height: 300px; width: 600px; padding: 0px; margin: 0px'}
-          %img#flow1{:src => image_path('flow1.png'), :style => 'position: absolute; top:0; left: 0; height: 300px; width: 300px'}
-          %img#flow2{:src => image_path('flow2.png'), :style => 'position: absolute; top:0; left: 300px; height: 300px; width: 300px'}
-      %div{:style => 'width: 40px; margin: 0 auto'}
+      %div{:style => 'height: 250px; width: 500px; overflow: hidden'}
+        #value-div{:style => 'position: relative'}
+          %img#flow1{:src => image_path('flow1.png')}
+          %img#flow2{:src => image_path('flow2.png'), :style => 'position: absolute'}
+      %div{:style => 'width: 500px'}
         .circle.pull-right
         .circle.selected-circle.pull-right
 
