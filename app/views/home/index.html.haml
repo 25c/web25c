@@ -23,16 +23,28 @@
       if ($.inArray(hash, ['button', 'about']) != -1) {
         var $link = $('a.more-link[href$="' + hash + '"]');
         $link.click();
-        $(window).scrollTop($link.parent().offset().top - 40);
-        
+        $(window).scrollTop($link.parent().offset().top - 40) 
       }
+
+      var position = 0;
+      $('.circle').click(function() {
+        if (position) {
+          $('#value-div').animate({marginLeft: 0}, 'slow');
+          position = 0;
+        } else {
+          $('#value-div').animate({marginLeft: -300}, 'slow');
+          position = 1;
+        }
+        $('.selected-circle').removeClass('selected-circle');
+        $(this).addClass('selected-circle');
+      });
     });
 
 .splash
   .row
     .span11
       %h1#splash-title= t('.value_proposition')
-    .span5
+    .span4
       %p.lead= raw t('.value_proposition_sub1q')
       %p.lead= raw t('.value_proposition_sub1a')
       %p.lead= raw t('.value_proposition_sub2q')
@@ -42,32 +54,35 @@
         .fb-login-button(data-scope="email,publish_actions")= t('users.sign_in.facebook')
         %span.or-block= t('.or')
         %span= link_to t('.register'), register_path, :class => 'btn'
-    .span3
-      %img#landing-image{:src => image_path('flow1.png')}
-    .span3
-      %img#landing-image{:src => image_path('flow2.png')}
+    .span7
+      %div{:style => 'height: 300px; width: 300px; overflow: hidden'}
+        #value-div{:style => 'position: relative; height: 300px; width: 600px; padding: 0px; margin: 0px'}
+          %img#flow1{:src => image_path('flow1.png'), :style => 'position: absolute; top:0; left: 0; height: 300px; width: 300px'}
+          %img#flow2{:src => image_path('flow2.png'), :style => 'position: absolute; top:0; left: 300px; height: 300px; width: 300px'}
+      %div{:style => 'width: 40px; margin: 0 auto'}
+        .circle.pull-right
+        .circle.selected-circle.pull-right
 
 
 .sub-splash
   .row
     .span11
       %h2= raw t('.about_25c_title')
-      %p.lead
-        = link_to t('.about-more'), '#about', :class => 'more-link'
       %p.lead= raw t('.about_25c_p1')
       .more-content.hide{:name => 'about'}
         %p.lead= raw t('.about_25c_p2')
         %p.lead= raw t('.about_25c_p3')
         %p.lead= raw t('.about_25c_p4')
+      %p.lead= link_to t('.about-more'), '#about', :class => 'more-link'
 
 .sub-splash
   .row
     .span11
       %h2= raw t('.button_25c_title')
-      %p.lead= link_to t('.button-more'), '#button', :class => 'more-link'
       %p.lead= raw t('.button_description')
       .more-content.hide{:name => 'button'}
         =render 'home/buttons/form'
+      %p.lead= link_to t('.button-more'), '#button', :class => 'more-link'
 
 .sub-splash
   .row
