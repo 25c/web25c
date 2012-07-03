@@ -90,7 +90,7 @@ en:
         contents: 'Your 25c Jar contains:'
         get_button: Get My Button
         fill_jar: Fill My 25c Jar
-        process_all: Process my donations now!
+        process_clicks: Process my donations now!
         tips_given_title: 25c's given
         tips_received_title: 25c's received
         tips_given: 25c's Given
@@ -102,6 +102,7 @@ en:
         clicker: Clicked By
         delete: Undo
         confirm_delete: Are you sure you want to undo this click? The provider will not receive your tip.
+        clicks_processed: Your donations have been processed!
     buttons:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.

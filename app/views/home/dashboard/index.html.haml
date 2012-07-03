@@ -4,6 +4,7 @@
   :javascript
     window.confirmDelete = '#{ j t('.confirm_delete') }';
     window.deleteClickUrl = '#{ j home_delete_click_url }';
+    window.processClicks
 
 .row
   .span12
@@ -36,7 +37,7 @@
           %td= column
         %td
           %a.delete-click.btn.btn-warning{:"data-click_id" => id}= t('.delete')
-/%a.process-all.btn.btn-primary= t('.process_all')
+%a.process-clicks.btn.btn-primary= t('.process_clicks')
 %hr
 %h3.table-title
   = t('.tips_received_title')

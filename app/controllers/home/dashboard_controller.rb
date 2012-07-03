@@ -20,7 +20,7 @@ class Home::DashboardController < Home::HomeController
     button_ids = []
     @user.buttons.each {|button| button_ids.push(button.id)}
     Click.find(:all, :conditions => {:button_id => button_ids}, :order => "created_at DESC").each do |click|
-    # @user.button_clicks.each do |click|
+    # @user.received_clicks.each do |click|
       row = [
         click.created_at,
         click.user.email,
@@ -33,6 +33,11 @@ class Home::DashboardController < Home::HomeController
   def delete_click
     current_user.clicks.find_by_uuid(params[:click_id]).destroy
     render :nothing => true
+  end
+  
+  def process_clicks
+    current_user.clicks.update_all(:state => Click::State::FUNDED)
+    flash.now[:notice] = t('home.dashboard.clicks_processed')
   end
   
 end
