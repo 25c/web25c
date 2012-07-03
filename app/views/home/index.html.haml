@@ -52,6 +52,8 @@
       .clear
       %div
         .fb-login-button(data-scope="email,publish_actions")= t('users.sign_in.facebook')
+        = link_to '[insert twitter button here]', '/auth/twitter'
+        = link_to '[insert google button here]', '/auth/google_oauth2'        
         %span.or-block= t('.or')
         %span= link_to t('.register'), register_path, :class => 'btn'
     .span7

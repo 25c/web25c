@@ -34,5 +34,7 @@
             %li
               .fb-login-button(data-scope="email,publish_actions")
                 = t('users.sign_in.facebook')
+            %li= link_to '[twitter button]', '/auth/twitter'
+            %li= link_to '[google button]', '/auth/google_oauth2'
             %li.navbar-text.pull-right= t('.or')
             %li= link_to t('.register'), register_path, :class => 'btn'

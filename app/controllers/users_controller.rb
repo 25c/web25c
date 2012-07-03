@@ -92,6 +92,73 @@ class UsersController < ApplicationController
     end
   end
   
+  def sign_in_callback
+    auth = request.env['omniauth.auth']
+    user = nil
+    case auth['provider']
+    when 'twitter'
+      user = User.find_by_twitter_uid(auth['uid'])
+      if user.nil?
+        user = User.new
+        user.password = SecureRandom.hex
+        user.twitter_uid = auth['uid']
+        user.twitter_username = auth['info']['nickname']
+        user.twitter_token = auth['credentials']['token']
+        user.twitter_token_secret = auth['credentials']['secret']
+        unless auth['info']['name'].blank?
+          names = auth['info']['name'].strip.split(" ")
+          user.first_name = names[0]
+          user.last_name = names[1..-1].join(" ") if names.length > 1
+        end
+        user.save!
+        begin
+          user.nickname = auth['info']['nickname']
+          user.save!
+        rescue
+          user.reload
+        end
+      elsif user.twitter_token.blank? or user.twitter_token_secret.blank?
+        user.twitter_token = auth['credentials']['token']
+        user.twitter_token_secret = auth['credentials']['secret']
+        user.save!
+      end
+      notice = t('users.sign_in_callback.twitter')
+    when 'google_oauth2'
+      user = User.find_by_google_uid(auth['uid'])
+      if user.nil?
+        user = User.new
+        user.password = SecureRandom.hex
+        user.google_uid = auth['uid']
+        user.google_token = auth['credentials']['token']
+        user.google_refresh_token = auth['credentials']['refresh_token']
+        user.first_name = auth['info']['first_name']
+        user.last_name = auth['info']['last_name']
+        user.save!
+        begin
+          user.email = auth['info']['email']
+          user.save!
+        rescue
+          user.reload
+        end
+      elsif user.google_token.blank? or user.google_refresh_token.blank?
+        if auth['credentials']['refresh_token'].blank?
+          redirect_to '/auth/google_oauth2?approval_prompt=force'
+          return
+        end
+        user.google_token = auth['credentials']['token']
+        user.google_refresh_token = auth['credentials']['refresh_token']
+        user.save!
+      end
+      notice = t('users.sign_in_callback.google')
+    end
+    if user.nil?
+      redirect_to sign_in_path
+    else
+      self.current_user = user
+      redirect_to root_path, :notice => notice
+    end
+  end
+  
   def sign_in
     if request.method == 'POST'
       

@@ -9,6 +9,8 @@
 #sign-in
   .fb-login-button(data-scope="email,publish_actions")
     = t('users.sign_in.facebook')
+  = link_to '[insert twitter button here]', '/auth/twitter'
+  = link_to '[insert google button here]', '/auth/google_oauth2'
   #sign-in-or
     %b.lead= t('users.sign_in.or')
   = simple_form_for @user, :url => sign_in_path, :html => { :class => 'form-horizontal' } do |f|

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702180307) do
+ActiveRecord::Schema.define(:version => 20120703223114) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",        :null => false
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(:version => 20120702180307) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.boolean  "is_new",                :default => true
+    t.string   "twitter_uid"
+    t.string   "twitter_username"
+    t.string   "twitter_token"
+    t.string   "twitter_token_secret"
+    t.string   "google_uid"
+    t.string   "google_token"
+    t.string   "google_refresh_token"
   end
+
+  add_index "users", ["google_uid"], :name => "index_users_on_google_uid", :unique => true
+  add_index "users", ["twitter_uid"], :name => "index_users_on_twitter_uid", :unique => true
 
 end
