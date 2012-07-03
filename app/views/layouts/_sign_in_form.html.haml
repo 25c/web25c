@@ -19,8 +19,10 @@
       %input{:type => 'radio', :name => 'user_account', :value => 'existing',
         :checked => @new ? false : true}
         =t('users.sign_in.existing_account')
-    = f.input :email
-    = f.input :password
+    = render 'layouts/alerts'    
+    = f.input :email, :label => t("users.sign_in.email")
+    = f.input :password, :label => t("users.sign_in.password")
+    = f.input :password_confirmation, :label => t("users.sign_in.confirm_password")
     -if @button_id
       %input{:type => 'hidden', :name => 'button_id', :value => @button_id}
       %input{:type => 'hidden', :name => 'referrer', :value => @referrer}

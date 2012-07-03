@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     @is_editable = false
     @user.first_name = @user.email if @user.first_name.blank?
     @user.about = t('users.show.blank_about') if @user.about.blank?
+    @button_id = @user.buttons[0].uuid
     
     respond_to do |format|
       format.html # show.html.erb
@@ -66,6 +67,7 @@ class UsersController < ApplicationController
   
   def edit_profile
     @user = self.current_user
+    @button_id = @user.buttons[0].uuid
     if @user.nickname
       @url = 'http://' + request.domain
       @url += ':3000' if request.domain == 'localhost'
@@ -106,7 +108,7 @@ class UsersController < ApplicationController
         else
           if @user.errors
             alert = ""
-            @user.errors.full_messages.each do |message|
+            @user.errors.full_messages.uniq.each do |message|
               if !message.include? "digest"
                 alert += message
                 alert += ", " if message != @user.errors.full_messages.last

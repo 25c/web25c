@@ -12,7 +12,7 @@
 .row
   .span12
     .lead
-      %div Your Jar:
+      %div= t('.contents')
       %div
         %b= (@user.balance * 4).to_s() + ' ' + t('application.25c_units')
         %span ($#{"%.2f" % @user.balance})
@@ -36,6 +36,7 @@
           %td= column
         %td
           %a.delete-click.btn.btn-warning{:"data-click_id" => id}= t('.delete')
+/%a.process-all.btn.btn-primary= t('.process_all')
 %hr
 %h3.table-title
   = t('.tips_received_title')

@@ -23,11 +23,12 @@ en:
     account:
       jar:
         25c_units: 25c's
-        title: "Your 25c Jar"
+        title: Refill Your 25c Jar
+        contents: 'Your 25c Jar contains:'
         request_payout: "Request Payout"
-        refill_title: Refill my Jar with 25c's
+        refill_title: Refill my 25c Jar with 25c's
         refill_amount: "Amount to add:"
-        auto_refill: Automatically refill my Jar if balance drops below $5 (20 25c's).
+        auto_refill: Automatically refill my 25c Jar if balance drops below $5 (20 25c's).
         card_on_file: "Card on file:"
         use_existing: Use existing card
         use_different: Use different card
@@ -86,8 +87,10 @@ en:
     dashboard:
       index:
         title: Dashboard
+        contents: 'Your 25c Jar contains:'
         get_button: Get My Button
-        fill_jar: Fill My Jar
+        fill_jar: Fill My 25c Jar
+        process_all: Process my donations now!
         tips_given_title: 25c's given
         tips_received_title: 25c's received
         tips_given: 25c's Given
@@ -97,23 +100,23 @@ en:
         provider: Content Provider
         referrer: Content Referrer
         clicker: Clicked By
-        delete: Remove
-        confirm_delete: Are you sure you want to remove this click? The provider will not receive your tip.
+        delete: Undo
+        confirm_delete: Are you sure you want to undo this click? The provider will not receive your tip.
     buttons:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
       index: 
-        title: Your Button
+        title: Button Gallery
         welcome_title: "Getting started: set up your 25c button"
         welcome_message: Welcome to 25c! Use this page to set your button and begin receiving clicks right away.
         dismiss: Dismiss This Message
       
       form:
-        button_form: "Choose your button's look:"
-        button_name: "Name your button:"
-        button_type: "Choose the type of button:"
+        button_form: "Select button type:"
+        button_name: "Customize tooltip message:"
+        button_type: "Button code in:"
         button_preview: "Button preview:"
-        button_code: "Button Code (copy-paste into your page):"
+        button_code: "Add this code to your website:"
         sign_in_overlay: Click here to create an account!
         sign_in_button: Create a Free Account
 
@@ -197,6 +200,9 @@ en:
       or: or
       new_account: I am a new user.
       existing_account: I already have a 25c account.
+      email: Email
+      password: Password
+      confirm_password: Confirm Password
       submit_new: Create Free Account
       submit_existing: Sign In
       failure: "Sorry, your email and/or password were incorrect."

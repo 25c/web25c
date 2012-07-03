@@ -13,7 +13,7 @@
 .row
   .span12
     .lead
-      %div Your Jar:
+      %div= t('.contents')
       %div
         %b= (@user.balance * 4).to_s() + ' ' + t('application.25c_units')
         %span ($#{"%.2f" % @user.balance})

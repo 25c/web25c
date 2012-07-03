@@ -5,18 +5,19 @@ class User < ActiveRecord::Base
   has_many :clicks, :dependent => :destroy
   has_many :received_clicks, :through => :buttons, :source => :clicks
   
-  has_attached_file :picture
+  has_attached_file :picture, :styles => { :thumb => ["50x50#", :jpg], :profile => ["1000x500>", :jpg] }
   
   attr_writer :editing
-  attr_accessible :email, :password, :nickname, :about, :first_name, :last_name, :picture
-  attr_accessible :email, :password, :nickname, :about, :first_name, :last_name, :picture, :is_admin, :as => :admin
+  attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, :last_name, :picture
+  attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, :last_name, :picture, :is_admin, :as => :admin
   
   validates :email, :presence => true, :if => 'self.facebook_uid.blank?'
   validates :email, :uniqueness => { :case_sensitive => false }, :allow_nil => true
   
   validates :nickname, :uniqueness => { :case_sensitive => false }, :allow_nil => true
 
-  validates_presence_of :password, :if => 'self.facebook_uid.blank? and not editing?'
+  validates_presence_of :password, :confirmation => true, :if => 'self.facebook_uid.blank? and not editing?'
+  validates_confirmation_of :password
   
   before_validation :preprocess_fields
   before_create :generate_uuid
@@ -83,6 +84,11 @@ class User < ActiveRecord::Base
     end
   end
   
+  def get_thumb
+    picture = self.picture(:thumb) ? self.picture(:thumb) : ( self.picture ? self.picture : '')
+    picture
+  end
+  
   private
   
   def preprocess_fields
@@ -102,5 +108,5 @@ class User < ActiveRecord::Base
   def create_default_button
     self.buttons.create!
   end
-  
+
 end

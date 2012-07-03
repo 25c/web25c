@@ -36,7 +36,7 @@ hr {
 }
 
 .page-header {
-  border-bottom: 2px solid #e6e6e6;
+  border-bottom: 2px solid transparent;
 }
 
 .center {
@@ -55,12 +55,13 @@ hr {
   color: #999;
 }
 .navbar .nav > li > a {
-  color: #333;
+  color: #555;
   text-shadow: none;
+  border-radius: 5px;
 }
 .navbar .nav > li > a:hover {
   color: #555;
-  background-color: #f6f6f6;
+  background-color: #eee;
 }
 #nav-logo {
   margin-top: -2px;
@@ -79,8 +80,25 @@ hr {
 
 .navbar .nav li.dropdown .dropdown-toggle .caret,
 .navbar .nav li.dropdown.open .caret {
+  margin-top: 8px;
   border-top-color: black;
   border-bottom-color: black;
+}
+
+.navbar .nav li.dropdown .dropdown-toogle {
+  background-color: #ddd;
+}
+
+.navbar .nav > li.dropdown > a {
+    padding: 6px 10px 5px;
+    margin: 2px 5px 5px;
+}
+
+.thumb-image {
+  border-radius: 2px;
+  margin: -1px 4px 0 0;
+  max-width: 25px;
+  max-height: 25px;
 }
 
 /* Footer
@@ -366,6 +384,7 @@ img#tip-25c-logo{
 
 #sign-in{
   width: 400px;
+  min-height: 320px;
   margin: 0 auto 20px auto;
   text-align: center;
 }
@@ -422,7 +441,7 @@ form .form-actions {
 }
 
 .table-title {
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 /* BOOTSTRAP OVERRIDES
@@ -431,7 +450,6 @@ form .form-actions {
 [class^="icon-"], [class*=" icon-"] {
   background-image: url(image_path("glyphicons-halflings.png"));
 }
-
 
 /* USER PROFILE
 *---------------------------- */

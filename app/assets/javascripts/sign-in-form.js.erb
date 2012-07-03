@@ -2,5 +2,8 @@ $(document).ready(function() {
   $('#sign-in input[type="radio"]').change(function() {
     var type = $(this).val();
     $('#sign-in input[type="submit"]').val(submit_text[type]);
+    if (type == 'new') $('#user_password_confirmation').parent().parent().show();
+    else $('#user_password_confirmation').parent().parent().hide();
   }).filter(':checked').change();
+  $('body > .container > .alert').hide();
 });
