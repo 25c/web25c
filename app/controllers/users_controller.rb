@@ -155,7 +155,11 @@ class UsersController < ApplicationController
       redirect_to sign_in_path
     else
       self.current_user = user
-      redirect_to root_path, :notice => notice
+      if params.has_key?(:button_id)
+        redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
+      else        
+        redirect_to root_path, :notice => notice
+      end
     end
   end
   
