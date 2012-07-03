@@ -1,6 +1,13 @@
 class Click < ActiveRecord::Base
   establish_connection "#{Rails.env}_data"
   
+  module State
+    NEW = 0
+    FUNDED = 1
+    PROCESSED = 2
+    PAID = 3
+  end
+  
   belongs_to :button
   belongs_to :user
   
