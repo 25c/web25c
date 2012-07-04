@@ -81,6 +81,7 @@
       %h2= raw t('.button_25c_title')
       %p.lead= raw t('.button_description')
       .more-content.hide{:name => 'button'}
+        =render 'home/buttons/platforms'
         =render 'home/buttons/form'
       %p.lead= link_to t('.button-more'), '#button', :class => 'more-link'
 

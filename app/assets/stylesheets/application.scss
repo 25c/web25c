@@ -221,6 +221,23 @@ footer.navbar > .navbar-inner > .container {
   margin-bottom: 40px;
 }
 
+/* Button Platform Page
+*---------------------------- */
+
+table#platform-table {
+  margin-bottom: 20px;
+}
+
+table#platform-table > thead > tr > th.platform-name {
+  width: 20%;
+}
+
+table#platform-table .platform-code {
+  width: 15%;
+  text-align: center;
+}
+
+
 /* Button Creation Page
  *---------------------------- */
 #button-choice-container {
@@ -461,6 +478,10 @@ form .form-actions {
 
 .table-title {
   margin: 10px 0;
+}
+
+#process-message {
+  margin-top: 20px;
 }
 
 /* BOOTSTRAP OVERRIDES

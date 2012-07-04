@@ -96,12 +96,18 @@ en:
         tips_given: 25c's Given
         tips_received: 25c's Received
         total: Total
+        state: State
+        state0: New
+        state1: Funded
+        state2: Processed
+        state3: Paid
         date_created: Date & Time Created
         provider: Content Provider
         referrer: Content Referrer
         clicker: Clicked By
         delete: Undo
         confirm_delete: Are you sure you want to undo this click? The provider will not receive your tip.
+        confirm_process: Are you sure you want to process all your donations?
         clicks_processed: Your donations have been processed!
     buttons:
       button_updated: Your button has been updated.
@@ -111,7 +117,17 @@ en:
         welcome_title: "Getting started: set up your 25c button"
         welcome_message: Welcome to 25c! Use this page to set your button and begin receiving clicks right away.
         dismiss: Dismiss This Message
-      
+      platforms:
+        title: Supported Platforms
+        platform: Platform
+        javascript: Javascript
+        iframe: IFrame
+        note: Special Instructions
+        html: Your Web Page
+        tumblr: Tumblr
+        wordpress: WordPress Self-Hosted
+        wordpress_note: "25c buttons are not supported on Wordpress.com hosted sites."
+        posterous: Posterous
       form:
         button_form: "Select button type:"
         button_name: "Customize tooltip message:"

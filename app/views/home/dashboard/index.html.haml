@@ -4,7 +4,10 @@
   :javascript
     window.confirmDelete = '#{ j t('.confirm_delete') }';
     window.deleteClickUrl = '#{ j home_delete_click_url }';
-    window.processClicks
+    window.confirmProcess = '#{ j t('.confirm_process') }';
+    window.processClicksUrl = '#{ j home_process_clicks_url }';
+    window.clickState1 = '#{ j t('.state1') }';
+    window.hasNewClicks = #{ @has_new_clicks };
 
 .row
   .span12
@@ -18,37 +21,49 @@
         %b= (@user.balance * 4).to_s() + ' ' + t('application.25c_units')
         %span ($#{"%.2f" % @user.balance})
       %p.payout-link-container
-    %a= link_to t('.get_button'), home_buttons_path, :class => 'btn'
+    %a= link_to t('.get_button'), home_buttons_path, :class => 'btn btn-primary'
     %a= link_to t('.fill_jar'), home_jar_path, :class => 'btn'
     %a= link_to t('.request_payout'), home_payout_path, :class => 'btn'   
 %hr
 %h3.table-title
   = t('.tips_given_title')
   (#{@clicks_given.length} #{t('.total')})
-%table.clicks-table.table.table-condensed.table-striped
+%table#clicks-given.clicks-table.table.table-condensed.table-striped
   %thead
-    %th= t('.date_created')
-    %th= t('.provider')
-    %th= t('.referrer')
+    %tr
+      %th= t('.state')
+      %th= t('.date_created')
+      %th= t('.provider')
+      %th= t('.referrer')
   %tbody
-    - @clicks_given.each do |id, row|
-      %tr        
-        - row.each do |column|
-          %td= column
-        %td
-          %a.delete-click.btn.btn-warning{:"data-click_id" => id}= t('.delete')
-%a.process-clicks.btn.btn-primary= t('.process_clicks')
+    - @clicks_given.each do |click|
+      %tr
+        %td.click-state= t('.state' + click.state.to_s)
+        %td.click-date= l click.created_at, :format => :short
+        %td.click-user= click.button.user.display_name
+        %td.click-referrer= click.referrer
+        %td.click-delete
+          %a.delete-click.btn.btn-warning{:"data-click_id" => click.uuid}= t('.delete')
+- if @has_new_clicks
+  %a#process-clicks.btn.btn-primary= t('.process_clicks')
+- else
+  %a#process-clicks.btn{:disabled => true}= t('.process_clicks')
+#process-message.alert.alert-success.hide= t('.clicks_processed')
 %hr
 %h3.table-title
   = t('.tips_received_title')
   (#{@clicks_received.length} #{t('.total')})
-%table.clicks-table.table.table-condensed.table-striped
+%table#clicks-given.clicks-table.table.table-condensed.table-striped
   %thead
-    %th= t('.date_created')
-    %th= t('.clicker')
-    %th= t('.referrer')
+    %tr
+      %th= t('.state')
+      %th= t('.date_created')
+      %th.click-user= t('.clicker')
+      %th.click-referrer= t('.referrer')
   %tbody
-    - @clicks_received.each do |row|
+    - @clicks_received.each do |click|
       %tr
-        - row.each do |column|
-          %td= column
+        %td.click-state= t('.state' + click.state.to_s)
+        %td.click-date= l click.created_at, :format => :short
+        %td.click-user= click.user.display_name
+        %td.click-referrer= click.referrer
