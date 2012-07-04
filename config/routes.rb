@@ -6,6 +6,7 @@ Web25c::Application.routes.draw do
   
   match 'sign-in' => 'users#sign_in', :as => :sign_in
   match 'sign-out' => 'users#sign_out', :as => :sign_out
+  match 'auth/:provider/callback' => 'users#sign_in_callback'
   
   match 'about' => 'home#about', :as => :about
   match 'faq' => 'home#faq', :as => :faq

@@ -211,6 +211,9 @@ en:
       no_url: Choose a nickname to set up your profile URL.
     update_profile:
       success: Your profile has been updated.
+    sign_in_callback:
+      twitter: You've been signed in automatically using your Twitter account.
+      google: You've been signed in automatically using your Google account.
     sign_in:
       title: Sign in to your 25c account
       facebook: Login with Facebook
