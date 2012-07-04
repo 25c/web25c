@@ -6,4 +6,13 @@ $(document).ready(function(){
       $this.parent().parent().fadeOut('slow');
     }
   });
+  $("#process-clicks").click(function() {
+    if (hasNewClicks && confirm(confirmProcess)) {
+      $this = $(this);
+      $.post(processClicksUrl, {});
+      $('#process-message').show().delay('3000').fadeOut('fast');
+      $('table#clicks-given td.click-state').text(clickState1);
+      $this.removeClass('btn-primary').attr('disabled', 'disabled');
+    }
+  });
 });

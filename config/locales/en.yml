@@ -90,18 +90,25 @@ en:
         contents: 'Your 25c Jar contains:'
         get_button: Get My Button
         fill_jar: Fill My 25c Jar
-        process_all: Process my donations now!
+        process_clicks: Process my donations now!
         tips_given_title: 25c's given
         tips_received_title: 25c's received
         tips_given: 25c's Given
         tips_received: 25c's Received
         total: Total
+        state: State
+        state0: New
+        state1: Funded
+        state2: Processed
+        state3: Paid
         date_created: Date & Time Created
         provider: Content Provider
         referrer: Content Referrer
         clicker: Clicked By
         delete: Undo
         confirm_delete: Are you sure you want to undo this click? The provider will not receive your tip.
+        confirm_process: Are you sure you want to process all your donations?
+        clicks_processed: Your donations have been processed!
     buttons:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
@@ -110,7 +117,17 @@ en:
         welcome_title: "Getting started: set up your 25c button"
         welcome_message: Welcome to 25c! Use this page to set your button and begin receiving clicks right away.
         dismiss: Dismiss This Message
-      
+      platforms:
+        title: Supported Platforms
+        platform: Platform
+        javascript: Javascript
+        iframe: IFrame
+        note: Special Instructions
+        html: Your Web Page
+        tumblr: Tumblr
+        wordpress: WordPress Self-Hosted
+        wordpress_note: "25c buttons are not supported on Wordpress.com hosted sites."
+        posterous: Posterous
       form:
         button_form: "Select button type:"
         button_name: "Customize tooltip message:"
@@ -194,6 +211,9 @@ en:
       no_url: Choose a nickname to set up your profile URL.
     update_profile:
       success: Your profile has been updated.
+    sign_in_callback:
+      twitter: You've been signed in automatically using your Twitter account.
+      google: You've been signed in automatically using your Google account.
     sign_in:
       title: Sign in to your 25c account
       facebook: Login with Facebook

@@ -1,0 +1,11 @@
+development:
+  client_id: 302358520756.apps.googleusercontent.com
+  client_secret: QsVRaJxqIdwSBDRR3wpC5fq5
+  
+test:
+  client_id: 302358520756.apps.googleusercontent.com
+  client_secret: QsVRaJxqIdwSBDRR3wpC5fq5
+
+production:
+  client_id: ""
+  client_secret: ""

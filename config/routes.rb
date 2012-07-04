@@ -6,6 +6,7 @@ Web25c::Application.routes.draw do
   
   match 'sign-in' => 'users#sign_in', :as => :sign_in
   match 'sign-out' => 'users#sign_out', :as => :sign_out
+  match 'auth/:provider/callback' => 'users#sign_in_callback'
   
   match 'about' => 'home#about', :as => :about
   match 'faq' => 'home#faq', :as => :faq
@@ -19,14 +20,20 @@ Web25c::Application.routes.draw do
   namespace :home do
     resources :buttons
     match 'dismiss_welcome' => 'buttons#dismiss_welcome', :as => :dismiss_welcome, :via => :post
+    
+    # Dashboard
     match '' => 'dashboard#index', :as => :dashboard
     match 'delete-click' => 'dashboard#delete_click', :as => :delete_click, :via => :post
+    match 'process-clicks' => 'dashboard#process_clicks', :as => :process_clicks, :via => :post
+    
+    # Account
     match 'jar' => 'account#jar', :as => :jar
     match 'confirm_payment' => 'account#confirm_payment', :as => :confirm_payment, :via => :post
     match 'set_refill' => 'account#set_refill', :as => :set_refill, :via => :post
     match 'payout' => 'account#payout', :as => :payout
     match 'confirm_payout' => 'account#confirm_payout', :as => :confirm_payout, :via => :post
   end
+  
   match 'home/account' => 'users#edit', :as => :home_account, :via => :get
   match 'home/account' => 'users#update', :via => :put
   match 'home/profile' => 'users#edit_profile', :as => :home_profile, :via => :get

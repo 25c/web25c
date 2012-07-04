@@ -19,6 +19,8 @@ gem 'rmagick'                     # imageimagick image manipulation
 gem 'aws-sdk'											# amazon web services
 gem 'curb'												# libcurl bindings
 gem 'resque', '~>1.20.0'					# redis-backed jobs queuing system
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
 
 # Gems used only for assets and not required
 # in production environments by default.

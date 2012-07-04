@@ -1,0 +1,35 @@
+%h3= t('.title')
+%table#platform-table.table.table-condensed.table-striped
+  %thead
+    %tr
+      %th.platform-name= t('.platform')
+      %th.platform-code= t('.javascript')
+      %th.platform-code= t('.iframe')
+      %th= t('.special')
+  %tbody
+    %tr
+      %td= t('.html')
+      %td.platform-code
+        %i.icon-ok
+      %td.platform-code
+        %i.icon-ok
+      %td
+    %tr
+      %td= t('.wordpress')
+      %td.platform-code
+      %td.platform-code
+        %i.icon-ok
+      %td= t('.wordpress_note')
+    %tr
+      %td= t('.tumblr')
+      %td.platform-code
+      %td.platform-code
+        %i.icon-ok
+      %td
+    %tr
+      %td= t('.posterous')
+      %td.platform-code
+      %td.platform-code
+        %i.icon-ok
+      %td
+%hr

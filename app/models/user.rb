@@ -11,12 +11,12 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, :last_name, :picture
   attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, :last_name, :picture, :is_admin, :as => :admin
   
-  validates :email, :presence => true, :if => 'self.facebook_uid.blank?'
+  validates :email, :presence => true, :if => 'not linked?'
   validates :email, :uniqueness => { :case_sensitive => false }, :allow_nil => true
   
   validates :nickname, :uniqueness => { :case_sensitive => false }, :allow_nil => true
 
-  validates_presence_of :password, :confirmation => true, :if => 'self.facebook_uid.blank? and not editing?'
+  validates_presence_of :password, :confirmation => true, :if => 'not linked? and not editing?'
   validates_confirmation_of :password
   
   before_validation :preprocess_fields
@@ -95,6 +95,10 @@ class User < ActiveRecord::Base
     self.email = self.email.strip unless self.email.nil?
     self.email = nil if self.email.blank?    
     self.password = self.password.strip unless self.password.nil? 
+  end
+  
+  def linked?
+    !(self.facebook_uid.blank? and self.twitter_uid.blank? and self.google_uid.blank?)
   end
   
   def editing?
