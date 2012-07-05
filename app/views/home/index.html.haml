@@ -28,6 +28,7 @@
 
       var position = 0;
       $('.circle').click(function() {
+        if ($(this).hasClass('selected-circle')) return;
         if (position) {
           $('#value-div').animate({marginLeft: 0}, 'slow');
           position = 0;
@@ -64,7 +65,6 @@
       %div{:style => 'width: 500px'}
         .circle.pull-right
         .circle.selected-circle.pull-right
-
 
 .sub-splash
   .row
