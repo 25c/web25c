@@ -83,13 +83,22 @@ class UsersController < ApplicationController
     @user.editing = true
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to home_profile_path, notice: t('users.update_profile.success') }
-        format.json { head :no_content }
+        if params[:user].include?(:picture)
+          format.html { render action: 'upload_image', :url => @user.picture }
+          format.json { render json: true, head: :ok }
+        else
+          format.json { render json: true, head: :ok }
+        end
       else
         format.html { render action: "edit_profile" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def upload_image
+    @user = self.current_user
+    render :layout => "blank"
   end
   
   def sign_in_callback

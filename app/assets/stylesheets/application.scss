@@ -44,6 +44,11 @@ hr {
   border-bottom: 2px solid transparent;
 }
 
+.compact-header {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
 .center {
   text-align: center !important;
 }
@@ -561,7 +566,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 #profile-container {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 #user-profile {
@@ -571,8 +576,9 @@ table.table thead .sorting_desc_disabled {
   border-radius: 10px;
 }
 
-#user-profile .user-image {
+#user-profile #user-image {
   width: 260px;
+  margin-bottom: 10px;
 }
 
 #user-profile .block {
@@ -585,10 +591,6 @@ table.table thead .sorting_desc_disabled {
 
 #user-profile #image-block {
   display: none;
-}
-
-#user-profile .user-image {
-  margin-bottom: 10px;
 }
 
 #user-profile input, #user-profile textarea {
@@ -668,4 +670,11 @@ table.table thead .sorting_desc_disabled {
 
 #button-holder {
   margin: 40px 0 0 200px;
+}
+
+#upload-image {
+  height: 0;
+  width: 0;
+  border: none;
+  background-color: transparent;
 }
