@@ -143,8 +143,8 @@ footer.navbar > .navbar-inner > .container {
 
 .splash #splash-buttons {
   position: absolute;
-  bottom: 20px;
-  left: 0px;
+  bottom: 0px;
+  left: -5px;
 }
 
 .splash #splash-left {
@@ -201,34 +201,43 @@ footer.navbar > .navbar-inner > .container {
   
 }
 
-/* Landing Page
+/* Login Buttons
  *---------------------------- */
+ 
+@mixin gradient($from, $to) {
+  background-color: $to;
+  background-image: -moz-linear-gradient(center top, $from, $to);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+  background-image: -webkit-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+}
 
 #splash-buttons .btn {
   color: white;
+  margin-bottom: 5px;
+  width: 125px;
+  text-shadow: 0 2px 2px #666;
 }
 
-#splash-button .btn:hover {
-  background-image: none;
-  background-position: 0 0;
+#header-login .btn {
+  color: white;
+  text-shadow: 0 2px 2px #666;
 }
 
-#splash-buttons #facebook-btn{
-  background-color: #577ac2;
-  background-image: -moz-linear-gradient(center top , #577ac2, #3b5998);
+#splash-buttons .facebook-btn, #header-login .facebook-btn {
+  @include gradient(#577ac2, #3b5998);
 }
 
-#splash-buttons #twitter-btn{
-  background-color: #63d2f4;
-  background-image: -moz-linear-gradient(center top , #63d2f4, #10b8ec);
+#splash-buttons #twitter-btn, #header-login #twitter-btn {
+  @include gradient(#63d2f4, #10b8ec);
 }
 
-#splash-buttons #google-btn{
+#splash-buttons #google-btn, #header-login #google-btn{
+  @include gradient(#d84937, #a8291c);
 }
 
-#splash-buttons #register-btn{
-  background-color: #f9b473;
-  background-image: -moz-linear-gradient(center top , #f9b473, #f9871b);
+#splash-buttons #register-btn, #header-login #register-btn{
+  @include gradient(#bbb, #aaa);
 }
 
 /* Facebook Login

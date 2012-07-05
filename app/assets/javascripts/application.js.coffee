@@ -29,3 +29,6 @@ jQuery ->
 				window.location.pathname = pathname
 		), true
 		return false
+		
+	$(".facebook-btn").click () ->
+    FB.login()

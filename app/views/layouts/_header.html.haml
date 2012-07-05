@@ -30,11 +30,13 @@
         - else
           %ul.nav.pull-right            
             %li= link_to t('.sign_in'), sign_in_path
-          %ul.nav.pull-right
+          %ul#header-login.nav.pull-right
+            .hide
+              %li
+                .fb-login-button(data-scope="email,publish_actions")
             %li
-              .fb-login-button(data-scope="email,publish_actions")
-                = t('users.sign_in.facebook')
-            %li= link_to '[twitter button]', '/auth/twitter'
-            %li= link_to '[google button]', '/auth/google_oauth2'
-            %li.navbar-text.pull-right= t('.or')
-            %li= link_to t('.register'), register_path, :class => 'btn'
+              .btn.facebook-btn F
+            %li= link_to 'T', '/auth/twitter', :id => 'twitter-btn', :class => 'btn'
+            %li= link_to 'G', '/auth/google_oauth2', :id => 'google-btn', :class => 'btn'
+            / %li.navbar-text.pull-right= t('.or')
+            %li= link_to '25c', register_path, :id => 'register-btn', :class => 'btn'
