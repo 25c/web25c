@@ -1,5 +1,7 @@
 - content_for :title, t('.title')
 = content_for(:js) do
+  = javascript_include_tag "jquery.dataTables.min"
+  = javascript_include_tag "paging"
   = javascript_include_tag "update-dashboard"
   :javascript
     window.confirmDelete = '#{ j t('.confirm_delete') }';
@@ -28,22 +30,24 @@
 %h3.table-title
   = t('.tips_given_title')
   (#{@clicks_given.length} #{t('.total')})
-%table#clicks-given.clicks-table.table.table-condensed.table-striped
-  %thead
-    %tr
-      %th= t('.state')
-      %th= t('.date_created')
-      %th= t('.provider')
-      %th= t('.referrer')
-  %tbody
-    - @clicks_given.each do |click|
+.table-wrapper
+  %table#clicks-given.clicks-table.table.table-condensed.table-striped
+    %thead
       %tr
-        %td.click-state= t('.state' + click.state.to_s)
-        %td.click-date= l click.created_at, :format => :short
-        %td.click-user= click.button.user.display_name
-        %td.click-referrer= click.referrer
-        %td.click-delete
-          %a.delete-click.btn.btn-warning{:"data-click_id" => click.uuid}= t('.delete')
+        %th= t('.state')
+        %th= t('.date_created')
+        %th= t('.provider')
+        %th= t('.referrer')
+        %th
+    %tbody
+      - @clicks_given.each do |click|
+        %tr
+          %td.click-state= t('.state' + click.state.to_s)
+          %td.click-date= l click.created_at, :format => :short
+          %td.click-user= click.button.user.display_name
+          %td.click-referrer= click.referrer
+          %td.click-delete.center
+            %a.delete-click.btn.btn-warning{:"data-click_id" => click.uuid}= t('.delete')
 - if @has_new_clicks
   %a#process-clicks.btn.btn-primary= t('.process_clicks')
 - else
@@ -53,7 +57,7 @@
 %h3.table-title
   = t('.tips_received_title')
   (#{@clicks_received.length} #{t('.total')})
-%table#clicks-given.clicks-table.table.table-condensed.table-striped
+%table#clicks-received.clicks-table.table.table-condensed.table-striped
   %thead
     %tr
       %th= t('.state')

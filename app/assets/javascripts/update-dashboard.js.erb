@@ -1,4 +1,16 @@
+$.extend( $.fn.dataTableExt.oStdClasses, {
+    "sWrapper": "dataTables_wrapper form-inline"
+} );
+
 $(document).ready(function(){
+  
+  // activate data tables
+  $('table.clicks-table').dataTable({
+    "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+    "sPaginationType": "bootstrap"
+  });
+
+  // bind click deleting action to buttons
   $(".delete-click").click(function() {
     if (confirm(confirmDelete)) {
       $this = $(this);
@@ -6,6 +18,8 @@ $(document).ready(function(){
       $this.parent().parent().fadeOut('slow');
     }
   });
+  
+  // bind process all action to button
   $("#process-clicks").click(function() {
     if (hasNewClicks && confirm(confirmProcess)) {
       $this = $(this);

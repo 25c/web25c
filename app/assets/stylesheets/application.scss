@@ -45,7 +45,7 @@ hr {
 }
 
 .center {
-  text-align: center;
+  text-align: center !important;
 }
 
 /* Header Nav
@@ -469,8 +469,13 @@ form .form-actions {
   margin-bottom: 20px;
 }
 
-/* User Dashboard
+/* USER DASHBOARD
  *---------------------------- */
+
+.table-wrapper {
+  margin: 20px 0;
+}
+
 .clicks-table > tbody > tr > td {
   line-height: 28px;
 }
@@ -489,6 +494,64 @@ form .form-actions {
 [class^="icon-"], [class*=" icon-"] {
   background-image: url(image_path("glyphicons-halflings.png"));
 }
+
+/* BOOTSTRAP - DATATABLES
+*---------------------------- */
+
+div.dataTables_length label {
+    float: left;
+    text-align: left;
+}
+ 
+div.dataTables_length select {
+}
+ 
+div.dataTables_filter label {
+    float: right;
+}
+ 
+div.dataTables_info {
+    padding-top: 8px;
+}
+ 
+div.dataTables_paginate {
+    padding-top: 8px;
+    float: right;
+    margin: 0;
+}
+ 
+table {
+    margin: 1em 0;
+    clear: both;
+}
+
+table.table thead .sorting,
+table.table thead .sorting_asc,
+table.table thead .sorting_desc,
+table.table thead .sorting_asc_disabled,
+table.table thead .sorting_desc_disabled {
+    cursor: pointer;
+    *cursor: hand;
+}
+ 
+table.table thead .sorting { 
+  background: url(image_path("sort_both.png")) no-repeat center right; 
+}
+
+table.table thead .sorting_asc { 
+  background: url(image_path("sort_asc.png")) no-repeat center right; 
+}
+table.table thead .sorting_desc { 
+  background: url(image_path("sort_desc.png")) no-repeat center right;
+}
+ 
+table.table thead .sorting_asc_disabled { 
+  background: url(image_path("sort_asc_disabled.png")) no-repeat center right; 
+}
+table.table thead .sorting_desc_disabled { 
+  background: url(image_path("sort_desc_disabled.png")) no-repeat center right; 
+}
+
 
 /* USER PROFILE
 *---------------------------- */

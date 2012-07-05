@@ -58,6 +58,8 @@ module Web25c
     config.assets.precompile += ['request-payout.js']
     config.assets.precompile += ['sign-in-form.js']
     config.assets.precompile += ['update-dashboard.js']
+    config.assets.precompile += ['jquery.dataTables.min.js']
+    config.assets.precompile += ['paging.js']
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
