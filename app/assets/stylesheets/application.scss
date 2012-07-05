@@ -53,6 +53,10 @@ hr {
   text-align: center !important;
 }
 
+.relative {
+  position: relative;
+}
+
 /* Header Nav
  *---------------------------- */
 .navbar .navbar-inner {
@@ -133,11 +137,25 @@ footer.navbar > .navbar-inner > .container {
   margin-top: 20px;
 }
 
-#splash-title {
+.splash #splash-title {
   margin-bottom: 20px;
 }
 
-.splash {
+.splash #splash-buttons {
+  position: absolute;
+  bottom: 20px;
+  left: 0px;
+}
+
+.splash #splash-left {
+  position: relative;
+  min-height: 260px;
+}
+
+.splash-text {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .splash, .sub-splash {
@@ -162,7 +180,6 @@ footer.navbar > .navbar-inner > .container {
   top: 2px;
 }
 
-
 .circle{
   height: 20px; 
   width: 20px; 
@@ -182,6 +199,36 @@ footer.navbar > .navbar-inner > .container {
 
 .sub-splash {
   
+}
+
+/* Landing Page
+ *---------------------------- */
+
+#splash-buttons .btn {
+  color: white;
+}
+
+#splash-button .btn:hover {
+  background-image: none;
+  background-position: 0 0;
+}
+
+#splash-buttons #facebook-btn{
+  background-color: #577ac2;
+  background-image: -moz-linear-gradient(center top , #577ac2, #3b5998);
+}
+
+#splash-buttons #twitter-btn{
+  background-color: #63d2f4;
+  background-image: -moz-linear-gradient(center top , #63d2f4, #10b8ec);
+}
+
+#splash-buttons #google-btn{
+}
+
+#splash-buttons #register-btn{
+  background-color: #f9b473;
+  background-image: -moz-linear-gradient(center top , #f9b473, #f9871b);
 }
 
 /* Facebook Login
