@@ -57,17 +57,18 @@
 %h3.table-title
   = t('.tips_received_title')
   (#{@clicks_received.length} #{t('.total')})
-%table#clicks-received.clicks-table.table.table-condensed.table-striped
-  %thead
-    %tr
-      %th= t('.state')
-      %th= t('.date_created')
-      %th.click-user= t('.clicker')
-      %th.click-referrer= t('.referrer')
-  %tbody
-    - @clicks_received.each do |click|
+.table-wrapper
+  %table#clicks-received.clicks-table.table.table-condensed.table-striped
+    %thead
       %tr
-        %td.click-state= t('.state' + click.state.to_s)
-        %td.click-date= l click.created_at, :format => :short
-        %td.click-user= click.user.display_name
-        %td.click-referrer= click.referrer
+        %th= t('.state')
+        %th= t('.date_created')
+        %th.click-user= t('.clicker')
+        %th.click-referrer= t('.referrer')
+    %tbody
+      - @clicks_received.each do |click|
+        %tr
+          %td.click-state= t('.state' + click.state.to_s)
+          %td.click-date= l click.created_at, :format => :short
+          %td.click-user= click.user.display_name
+          %td.click-referrer= click.referrer
