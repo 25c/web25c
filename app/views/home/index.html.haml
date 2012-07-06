@@ -59,15 +59,8 @@
         %p.lead= raw t('.value_proposition_sub2q')
         %p.lead= raw t('.value_proposition_sub2a')
       %div#splash-buttons
-        .hide
-          .fb-login-button(data-scope="email,publish_actions")
-        .facebook-btn.btn= t('users.sign_in.facebook')
-        = link_to t('users.sign_in.twitter'), '/auth/twitter', :id => 'twitter-btn', 
-          :class => 'btn'
-        = link_to t('users.sign_in.google'), '/auth/google_oauth2', :id => 'google-btn', 
-          :class => 'btn'
-        /%span.or-block= t('.or')
-        %span= link_to t('.register'), register_path, :id => 'register-btn', :class => 'btn'
+        =link_to t('.call_to_action'), register_path, :class => 'lead btn btn-large btn-warning', 
+          :style => "width: 250px; font-size: 20px;"
     .span7
       %div{:style => 'height: 250px; width: 500px; overflow: hidden'}
         #value-div{:style => 'position: relative'}
@@ -94,8 +87,8 @@
       %h2= raw t('.button_25c_title')
       %p.lead= raw t('.button_description')
       .more-content.hide{:name => 'button'}
-        =render 'home/buttons/platforms'
         =render 'home/buttons/form'
+        =render 'home/buttons/platforms'
       %p.lead= link_to t('.button-more'), '#button', :class => 'more-link'
 
 .sub-splash

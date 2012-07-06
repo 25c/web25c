@@ -7,10 +7,14 @@
     };
 
 #sign-in
-  .fb-login-button(data-scope="email,publish_actions")
-    = t('users.sign_in.facebook')
-  = link_to '[insert twitter button here]', "/auth/twitter#{'?button_id=' + @button_id if @button_id}#{'&referrer=' + CGI::escape(@referrer) if @button_id and @referrer}"
-  = link_to '[insert google button here]', "/auth/google_oauth2#{'?button_id=' + @button_id}#{'&referrer=' + CGI::escape(@referrer) if @button_id and @referrer}"
+  .hide
+    .fb-login-button(data-scope="email,publish_actions")
+      = t('users.sign_in.facebook')
+  .lead.compact-lead= t('users.sign_in.connect')
+  .login-buttons
+    %a.facebook-btn.pointer= image_tag "logos/facebook-large.png"
+    = link_to image_tag("logos/twitter-large.png"), "/auth/twitter#{'?button_id=' + @button_id if @button_id}#{'&referrer=' + CGI::escape(@referrer) if @button_id and @referrer}"
+    = link_to image_tag("logos/google-large.png"), "/auth/google_oauth2#{'?button_id=' + @button_id if @button_id}#{'&referrer=' + CGI::escape(@referrer) if @button_id and @referrer}"
   #sign-in-or
     %b.lead= t('users.sign_in.or')
   = simple_form_for @user, :url => sign_in_path, :html => { :class => 'form-horizontal' } do |f|
@@ -29,4 +33,4 @@
       %input{:type => 'hidden', :name => 'button_id', :value => @button_id}
       %input{:type => 'hidden', :name => 'referrer', :value => @referrer}
     .form-actions
-      = f.button :submit, t('users.sign_in.submit_new'), :class => 'btn-success'
+      = f.button :submit, t('users.sign_in.submit_new'), :class => 'btn'

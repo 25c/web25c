@@ -20,8 +20,8 @@
     .lead
       %div= t('.contents')
       %div
-        %b= (@user.balance * 4).to_s() + ' ' + t('application.25c_units')
-        %span ($#{"%.2f" % @user.balance})
+        %b= @user.balance.to_s() + ' ' + t('application.25c_units')
+        %span ($#{"%.2f" % (@user.balance / 4)})
       %p.payout-link-container
     %a= link_to t('.get_button'), home_buttons_path, :class => 'btn btn-primary'
     %a= link_to t('.fill_jar'), home_jar_path, :class => 'btn'
@@ -34,16 +34,18 @@
   %table#clicks-given.clicks-table.table.table-condensed.table-striped
     %thead
       %tr
-        %th= t('.state')
-        %th= t('.date_created')
-        %th= t('.provider')
-        %th= t('.referrer')
+        %th
+        %th.click-date= t('.date_created')
+        %th.click-state= t('.state')
+        %th.click-provider= t('.provider')
+        %th.click-referrer= t('.referrer')
         %th
     %tbody
       - @clicks_given.each do |click|
         %tr
-          %td.click-state= t('.state' + click.state.to_s)
+          %td.click-date= click.created_at.to_s(:number)
           %td.click-date= l click.created_at, :format => :short
+          %td.click-state= t('.state' + click.state.to_s)
           %td.click-user= click.button.user.display_name
           %td.click-referrer= click.referrer
           %td.click-delete.center
@@ -61,14 +63,18 @@
   %table#clicks-received.clicks-table.table.table-condensed.table-striped
     %thead
       %tr
-        %th= t('.state')
+        %th
         %th= t('.date_created')
+        %th= t('.state')
         %th.click-user= t('.clicker')
         %th.click-referrer= t('.referrer')
+        %th
     %tbody
       - @clicks_received.each do |click|
         %tr
-          %td.click-state= t('.state' + click.state.to_s)
+          %td.click-date= click.created_at.to_s(:number)
           %td.click-date= l click.created_at, :format => :short
+          %td.click-state= t('.state' + click.state.to_s)
           %td.click-user= click.user.display_name
           %td.click-referrer= click.referrer
+          %td

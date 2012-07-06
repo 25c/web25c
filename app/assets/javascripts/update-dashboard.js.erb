@@ -6,8 +6,18 @@ $(document).ready(function(){
   
   // activate data tables
   $('table.clicks-table').dataTable({
+    // sizing and style
     "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
-    "sPaginationType": "bootstrap"
+    "sPaginationType": "bootstrap",
+    "aaSorting": [[ 0, "desc" ]],   // start with sorting by first col (date), descending
+    "aoColumns": [                  // define setting for each col
+      {"bVisible": false},          // invisible sortable date col
+      {"iDataSort": 0},             // visible readable date - sorting linked to col 0
+      null,
+      null,
+      null,
+      {"bSortable": false}          // don't sort by buttons
+    ]
   });
 
   // bind click deleting action to buttons

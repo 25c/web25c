@@ -28,7 +28,7 @@ Web25c::Application.routes.draw do
     
     # Account
     match 'jar' => 'account#jar', :as => :jar
-    match 'confirm_payment' => 'account#confirm_payment', :as => :confirm_payment, :via => :post
+    match 'confirm_payment' => 'account#confirm_payment', :as => :confirm_payment
     match 'set_refill' => 'account#set_refill', :as => :set_refill, :via => :post
     match 'payout' => 'account#payout', :as => :payout
     match 'confirm_payout' => 'account#confirm_payout', :as => :confirm_payout, :via => :post    

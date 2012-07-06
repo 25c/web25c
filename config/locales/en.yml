@@ -90,6 +90,7 @@ en:
         contents: 'Your 25c Jar contains:'
         get_button: Get My Button
         fill_jar: Fill My 25c Jar
+        request_payout: Request Payout
         process_clicks: Process my donations now!
         tips_given_title: 25c's given
         tips_received_title: 25c's received
@@ -101,7 +102,7 @@ en:
         state1: Funded
         state2: Processed
         state3: Paid
-        date_created: Date & Time Created
+        date_created: Clicked
         provider: Content Provider
         referrer: Content Referrer
         clicker: Clicked By
@@ -142,14 +143,15 @@ en:
       register: Register with 25c
       value_proposition: Super-Like Great Content & Causes. One quarter, one click.
       value_proposition_sub1q: "Bloggers, Webmasters, Apps:"
-      value_proposition_sub1a: "Add the 25c Gratuity Button. Collect 25c's."
+      value_proposition_sub1a: "Add the 25c Super-Like Button. Collect 25c's."
       value_proposition_sub2q: "Have many followers?"
       value_proposition_sub2a: "Use our Short URL. Earn along."
+      call_to_action: Start Collecting 25c's Now!
       about_25c_title: About 25c
       about_25c_p1: Empowering people to support what you value.  Easily & directly.  
         One quarter one click.   Towards a future measured what you truly 
         value.  (As opposed to what advertisers value.)
-      about_25c_p2: Clicking the 25c Gratuity Button&trade; once contributes 25c; 
+      about_25c_p2: Clicking the 25c Super-Like Button&trade; once contributes 25c; 
         clicking it twice contributes two 25's; and so on.
       about_25c_p3: It adds up!  A thousand 25c tips can double a freelance 
         writer's compensation, pay a photographer's expenses.
@@ -158,11 +160,11 @@ en:
         donation generated.
       about-more: Show more...
       about-less: Show less...
-      button_description: The 25c Gratuity Button&trade; is easy to add to your website, 
+      button_description: The 25c Super-Like Button&trade; is easy to add to your website, 
         blog, etc. -- just insert our code and start receiving 25c tips.
       button-more: Get your Button!
       button-less: Hide Button code.
-      button_25c_title: 25c Gratuity Button
+      button_25c_title: 25c Super-Like Button
       url_25c_title: 25c Short URL
       
   layouts:
@@ -178,6 +180,8 @@ en:
       profile: Profile
       contact: Contact
       register: Register
+      connect: "Connect with: "
+      or: "Or: "
       sign_in: Sign In
       sign_out: Sign Out
       buttons: Receive 25c's
@@ -216,10 +220,11 @@ en:
       google: You've been signed in automatically using your Google account.
     sign_in:
       title: Sign in to your 25c account
-      facebook: Login with Facebook
-      twitter: Login with Twitter
-      google: Login with Google
-      or: or
+      connect: "Connect with:"
+      facebook: Sign In with Facebook
+      twitter: Sign In with Twitter
+      google: Sign In with Google
+      or: "Or use a 25c account:"
       new_account: I am a new user.
       existing_account: I already have a 25c account.
       email: Email

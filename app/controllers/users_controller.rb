@@ -30,12 +30,19 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
-    @user = User.new
-    @new = true
-
-    respond_to do |format|
-      format.html { render action: "sign_in" }
-      format.json { render json: @user }
+    if self.current_user
+      if self.current_user.is_new
+        redirect_to_session_redirect_path(home_buttons_path)
+      else
+        redirect_to_session_redirect_path(home_dashboard_path)
+      end
+    else    
+      @user = User.new
+      @new = true
+      respond_to do |format|
+        format.html { render action: "sign_in" }
+        format.json { render json: @user }
+      end
     end
   end
 
@@ -167,7 +174,7 @@ class UsersController < ApplicationController
       if params.has_key?(:button_id)
         redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
       else        
-        redirect_to root_path, :notice => notice
+        redirect_to home_buttons_path, :notice => notice
       end
     end
   end
@@ -219,21 +226,27 @@ class UsersController < ApplicationController
       else
         flash[:notice] = notice
       end
-    end
-    # handle page redirecting
-    if sign_in_successful
-      if has_tip && !alert
-        redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
-      elsif @user.is_new
+      # handle page redirecting
+      if sign_in_successful
+        if has_tip && !alert
+          redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
+        elsif @user.is_new
+          redirect_to_session_redirect_path(home_buttons_path)
+        else
+          redirect_to_session_redirect_path(home_dashboard_path)
+        end
+        return
+      else
+        @user = User.new if !@user
+        if has_tip
+          redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer], :new => @new)
+        end
+      end
+    elsif self.current_user
+      if self.current_user.is_new
         redirect_to_session_redirect_path(home_buttons_path)
       else
         redirect_to_session_redirect_path(home_dashboard_path)
-      end
-      return
-    else
-      @user = User.new if !@user
-      if has_tip
-        redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer], :new => @new)
       end
     end
   end

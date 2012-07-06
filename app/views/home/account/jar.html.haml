@@ -15,8 +15,8 @@
     .lead
       %div= t('.contents')
       %div
-        %b= (@user.balance * 4).to_s() + ' ' + t('application.25c_units')
-        %span ($#{"%.2f" % @user.balance})
+        %b= @user.balance.to_s() + ' ' + t('application.25c_units')
+        %span ($#{"%.2f" % (@user.balance / 4)})
       %p.payout-link-container
     %a= link_to t('.request_payout'), home_payout_path, :class => 'btn'   
 %hr
@@ -26,11 +26,12 @@
     
     %label{:for => "refill-amount"}= t('.refill_amount')
     %select#refill-amount
-      - ['5','10','15','20','50','100'].each do |amount|
-        - if amount == '20'
-          %option{:value => "#{amount}", :selected => "selected"} $#{amount}.00
+      - ['20','40','60','80','200','400'].each do |a|
+        - if a == '80'
+          %option{:value => "#{a}",
+            :selected => "selected"} #{a.to_s + ' ' + t('application.25c_units')} ($#{"%.2f" % (Integer(a)/4)})
         - else
-          %option{:value => "#{amount}"} $#{amount}.00
+          %option{:value => "#{a}"} #{a.to_s + ' ' + t('application.25c_units')} ($#{"%.2f" % (Integer(a)/4)})
     %div.checkbox-container
       %input.checkbox#auto-refill-checkbox{:type => 'checkbox', 
         :checked => @user.auto_refill ? "true" : nil,

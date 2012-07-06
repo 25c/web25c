@@ -1,4 +1,3 @@
-- if !@user.first_name.blank?
-  - content_for :title, (@user.first_name + t('.title'))
+- content_for :title, (@user.display_name + t('.title'))
 
 = render :partial => "profile_form"

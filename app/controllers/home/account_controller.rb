@@ -18,7 +18,7 @@ class Home::AccountController < Home::HomeController
     # server-to-server payment from vault for existing card
     if params[:payment_type] == "existing"
       @result = Braintree::Transaction.sale(
-        :amount => params[:transaction][:amount],
+        :amount => (params[:transaction][:amount]),
         :customer_id => @user.uuid,
         :payment_method_token => @user.card_token
       )
@@ -55,17 +55,18 @@ class Home::AccountController < Home::HomeController
         end
       end
 
-      @user.balance += @result.transaction.amount
+      # hard-coded 25c value - assumes dollars
+      @user.balance += @result.transaction.amount * 4
       
       respond_to do |format|
         if @user.save
           format.html {
-            flash.now[:notice] = t('home.account.confirm.success')
+            flash.now[:notice] = t('home.account.confirm_payment.success')
             render :action => "confirm_payment"
           }
         else
           format.html {
-            flash.now[:alert] = t('home.account.confirm.failure')
+            flash.now[:alert] = t('home.account.confirm_payment.failure')
             render :action => "confirm_payment"
           }
         end

@@ -29,7 +29,7 @@
                 =@user.about.blank? ? t('.enter_about') : @user.about
       .span8
         - if @user.first_name
-          %h1 #{t('.support_title')} #{@user.first_name}.
+          %h1 #{t('.support_title')} #{@user.display_name}.
         - else
           %h1= t('.support_title_no_name')
         #button-holder

@@ -31,10 +31,10 @@ $(document).ready(function(){
   
   var $refillAmount = $('#refill-amount');
   var $transactionAmount = $('.transaction-amount');
-  $transactionAmount.val($refillAmount.val());
+  $transactionAmount.val($refillAmount.val() / 4);
   
   $refillAmount.change(function() {
-    $transactionAmount.val($refillAmount.val());
+    $transactionAmount.val($refillAmount.val() / 4);
   });
     
   $('#auto-refill-checkbox').change(function() {

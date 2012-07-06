@@ -11,8 +11,8 @@
     .lead
       %div Your Jar:
       %div
-        %b= (@user.balance * 4).to_s() + ' ' + t('application.25c_units')
-        %span ($#{"%.2f" % @user.balance})
+        %b= @user.balance.to_s() + ' ' + t('application.25c_units')
+        %span ($#{"%.2f" % (@user.balance/4)})
 %hr
 .row
   .span12
@@ -21,7 +21,7 @@
         %label.control-label{:for => "payout-amount"}= t('.payout_amount')
         .controls
           %input#payout-amount{:type => 'text', :name => 'payout_amount',
-            :value => @user.balance > 5 ? "%.2f" % (@user.balance - 5) : "%.2f" % 0}
+            :value => @user.balance > 25 ? "%.2f" % (@user.balance - 25) : "%.2f" % 0}
           %p#amount-help.help-block Must be less than or equal to your jar total.
 
 .row
