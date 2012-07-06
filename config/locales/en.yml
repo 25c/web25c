@@ -98,9 +98,10 @@ en:
         total: Total
         state: State
         state0: New
-        state1: Funded
-        state2: Processed
-        state3: Paid
+        state1: Deducted
+        state2: Funded
+        state3: Processed
+        state4: Paid
         date_created: Date & Time Created
         provider: Content Provider
         referrer: Content Referrer
