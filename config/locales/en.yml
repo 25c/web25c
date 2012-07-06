@@ -146,11 +146,11 @@ en:
     index:
       or: Or
       register: Register with 25c
-      value_proposition: Super-Like Great Content & Causes. One quarter, one click.
-      value_proposition_sub1q: "Bloggers, Webmasters, Apps:"
-      value_proposition_sub1a: "Add the 25c Super-Like Button. Collect 25c's."
-      value_proposition_sub2q: "Have many followers?"
-      value_proposition_sub2a: "Use our Short URL. Earn along."
+      value_proposition: Put 25c Behind that Like.
+      value_proposition_sub1q: "Bloggers, Artists, Youtubers"
+      value_proposition_sub1a: "Add the <b>25c Super-Like</b> Button. Collect 25c tips with every 'Like'."
+      value_proposition_sub2q: "Have a lot of followers?"
+      value_proposition_sub2a: "Use the <b>25c Short URL</b>. Earn along with the creators you help people discover."
       call_to_action: Start Collecting 25c's Now!
       about_25c_title: About 25c
       about_25c_p1: Empowering people to support what you value.  Easily & directly.  
