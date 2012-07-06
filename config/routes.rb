@@ -31,13 +31,16 @@ Web25c::Application.routes.draw do
     match 'confirm_payment' => 'account#confirm_payment', :as => :confirm_payment, :via => :post
     match 'set_refill' => 'account#set_refill', :as => :set_refill, :via => :post
     match 'payout' => 'account#payout', :as => :payout
-    match 'confirm_payout' => 'account#confirm_payout', :as => :confirm_payout, :via => :post
+    match 'confirm_payout' => 'account#confirm_payout', :as => :confirm_payout, :via => :post    
   end
   
   match 'home/account' => 'users#edit', :as => :home_account, :via => :get
   match 'home/account' => 'users#update', :via => :put
   match 'home/profile' => 'users#edit_profile', :as => :home_profile, :via => :get
   match 'home/profile' => 'users#update_profile', :via => :put
+  
+  # LJ: trying ajax trickery
+  match 'home/upload_image' => 'users#upload_image', :as => :upload_image
   
   namespace :admin do
     resources :users, :except => [ :new, :create ]

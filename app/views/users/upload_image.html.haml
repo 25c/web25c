@@ -1,0 +1,3 @@
+#picture-url{:data_url => @user.picture}
+= simple_form_for @user, :url => home_profile_path, :html => { :multipart => true } do |f|
+  =f.input :picture

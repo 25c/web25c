@@ -44,8 +44,17 @@ hr {
   border-bottom: 2px solid transparent;
 }
 
+.compact-header {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
 .center {
   text-align: center !important;
+}
+
+.relative {
+  position: relative;
 }
 
 /* Header Nav
@@ -128,11 +137,25 @@ footer.navbar > .navbar-inner > .container {
   margin-top: 20px;
 }
 
-#splash-title {
+.splash #splash-title {
   margin-bottom: 20px;
 }
 
-.splash {
+.splash #splash-buttons {
+  position: absolute;
+  bottom: 0px;
+  left: -5px;
+}
+
+.splash #splash-left {
+  position: relative;
+  min-height: 260px;
+}
+
+.splash-text {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .splash, .sub-splash {
@@ -157,7 +180,6 @@ footer.navbar > .navbar-inner > .container {
   top: 2px;
 }
 
-
 .circle{
   height: 20px; 
   width: 20px; 
@@ -177,6 +199,45 @@ footer.navbar > .navbar-inner > .container {
 
 .sub-splash {
   
+}
+
+/* Login Buttons
+ *---------------------------- */
+ 
+@mixin gradient($from, $to) {
+  background-color: $to;
+  background-image: -moz-linear-gradient(center top, $from, $to);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+  background-image: -webkit-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+}
+
+#splash-buttons .btn {
+  color: white;
+  margin-bottom: 5px;
+  width: 125px;
+  text-shadow: 0 2px 2px #666;
+}
+
+#header-login .btn {
+  color: white;
+  text-shadow: 0 2px 2px #666;
+}
+
+#splash-buttons .facebook-btn, #header-login .facebook-btn {
+  @include gradient(#577ac2, #3b5998);
+}
+
+#splash-buttons #twitter-btn, #header-login #twitter-btn {
+  @include gradient(#63d2f4, #10b8ec);
+}
+
+#splash-buttons #google-btn, #header-login #google-btn{
+  @include gradient(#d84937, #a8291c);
+}
+
+#splash-buttons #register-btn, #header-login #register-btn{
+  @include gradient(#bbb, #aaa);
 }
 
 /* Facebook Login
@@ -561,7 +622,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 #profile-container {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 #user-profile {
@@ -571,8 +632,9 @@ table.table thead .sorting_desc_disabled {
   border-radius: 10px;
 }
 
-#user-profile .user-image {
+#user-profile #user-image {
   width: 260px;
+  margin-bottom: 10px;
 }
 
 #user-profile .block {
@@ -585,10 +647,6 @@ table.table thead .sorting_desc_disabled {
 
 #user-profile #image-block {
   display: none;
-}
-
-#user-profile .user-image {
-  margin-bottom: 10px;
 }
 
 #user-profile input, #user-profile textarea {
@@ -668,4 +726,11 @@ table.table thead .sorting_desc_disabled {
 
 #button-holder {
   margin: 40px 0 0 200px;
+}
+
+#upload-image {
+  height: 0;
+  width: 0;
+  border: none;
+  background-color: transparent;
 }

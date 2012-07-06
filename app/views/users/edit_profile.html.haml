@@ -5,13 +5,49 @@
     
       $('#name-block .content-block, #user-profile textarea').addClass('editing');
       
-      $('#upload-button').click(function() {
-        $('#user_picture').click();
+      
+      var $iframe = $('#upload-image');
+      
+      var has_reloaded = false;
+            
+      $iframe.load(function() {
+        if (has_reloaded) {
+          newUrl = $(this).contents().find('#picture-url').attr('data_url');
+          $('#user-profile #user-image').attr('src', newUrl);
+        }
+        
+        var $picture_form = $iframe.contents().find('form');
+        var $picture_input = $picture_form.find('#user_picture');
+          
+        $('#upload-button').unbind('click').click(function() {
+          $picture_input.click();
+          $picture_input.change(function() {
+            $picture_form.submit();
+            has_reloaded = true;
+          });
+        });
       });
       
-      $('#first_name_input, #last_name_input').change(function() {
-        var name = $('#first_name_input').val() + ' ' + $('#last_name_input').val();
-        $('#name-block .content-block').text(name);
+      $('input, textarea').change(function() {
+        var $this = $(this);
+        var key = $this.attr('name').split("[")[1].split("]")[0];
+        userData = {};
+        userData[key] = $this.val();
+        var updates = { user: userData };
+        $.ajax({
+          type: "PUT",
+          url: '#{ home_profile_path }',
+          data: JSON.stringify(updates),
+          contentType: 'application/json',
+          dataType: 'json',
+          success: function(data) {
+            // console.log(data);
+          }
+        });
+        if (key == 'first_name' || key == 'last_name') {
+          var name = $('#first_name_input').val() + ' ' + $('#last_name_input').val();
+          $('#name-block .content-block').text(name);
+        }
       });
       
       $('input, textarea').focusin(function() {
@@ -26,7 +62,7 @@
       
     });
 
-.page-header
+.page-header.compact-header
   - if @url.blank?
     %h3= link_to t('.no_url'), home_account_path, :target => '_blank'
   - else
@@ -35,4 +71,5 @@
       =link_to @url, @url, :target => '_blank'
     =link_to t('.edit_url'), home_account_path, :class => 'btn', :id => 'edit-url'
   %hr
+%iframe#upload-image{:src => upload_image_path }
 = render :partial => "profile_form"

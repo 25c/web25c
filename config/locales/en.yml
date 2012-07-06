@@ -140,7 +140,7 @@ en:
 
     index:
       or: Or
-      register: Register
+      register: Register with 25c
       value_proposition: Super-Like Great Content & Causes. One quarter, one click.
       value_proposition_sub1q: "Bloggers, Webmasters, Apps:"
       value_proposition_sub1a: "Add the 25c Gratuity Button. Collect 25c's."
@@ -218,6 +218,8 @@ en:
     sign_in:
       title: Sign in to your 25c account
       facebook: Login with Facebook
+      twitter: Login with Twitter
+      google: Login with Google
       or: or
       new_account: I am a new user.
       existing_account: I already have a 25c account.
