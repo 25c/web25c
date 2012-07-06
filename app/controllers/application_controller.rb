@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   protected
       
   def check_facebook_cookies
+    has_signed_in = false
     signed_request = cookies["fbsr_#{FACEBOOK_SETTINGS['app_id']}"]
     unless signed_request.blank?
       oauth = Koala::Facebook::OAuth.new(FACEBOOK_SETTINGS['app_id'], FACEBOOK_SETTINGS['app_secret'])
@@ -15,8 +16,11 @@ class ApplicationController < ActionController::Base
       if @_facebook_session
         # figure out if we're coming from the "tip" popup login page
         has_tip = request.url.include? '/tip/'
-        # if not signed in, try auto-sign-in by facebook uid        
-        unless self.signed_in?
+        # if signed in another way, no need to sign in with facebook  
+        if self.signed_in?
+          return
+        # if not, try signing in with an existing facebook-linked account
+        else
           self.current_user = User.find_by_facebook_uid(@_facebook_session['user_id']) 
           flash[:notice] = t('application.check_facebook_cookies.sign_in')
         end
@@ -33,7 +37,7 @@ class ApplicationController < ActionController::Base
               redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
               return
             else
-              redirect_to root_path
+              redirect_to sign_in_path
               return
             end
           end
@@ -46,16 +50,13 @@ class ApplicationController < ActionController::Base
           self.current_user = user
           self.current_user.refresh_facebook_access_token(@_facebook_session['code'])
           self.current_user.update_profile_from_facebook
-          if !has_tip
-            redirect_to home_dashboard_path, :notice => t('application.check_facebook_cookies.sign_up')
-            return
-          end
         end
-        if has_tip 
+        if has_tip
           redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
-          return
+        elsif self.current_user.is_new
+          redirect_to_session_redirect_path(home_buttons_path)
         else
-          # render
+          redirect_to_session_redirect_path(home_dashboard_path)
         end
       end
     end

@@ -7,5 +7,5 @@ test:
   client_secret: QsVRaJxqIdwSBDRR3wpC5fq5
 
 production:
-  client_id: ""
-  client_secret: ""
+  client_id: 302358520756-0kcdmmgo4gnbuaj8qngikejadv5aft1i.apps.googleusercontent.com
+  client_secret: nR6phnRJNnuc5t7mpEPwTcPl
