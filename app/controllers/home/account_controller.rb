@@ -93,14 +93,16 @@ class Home::AccountController < Home::HomeController
     @result = params
     puts params.inspect
     if params[:type] == 'paypal'
+      @method = 'paypal'
       if params[:paypal_email].empty?
         flash[:alert] = t('home.account.confirm_payout.complete_required')
         redirect_to home_payout_path
         return
       end
     elsif params[:type] == 'ach'
+      @method = 'ach'
       params.each do |key, value|
-        if key != "line2" && value.blank?
+        if key != "line2" && key != "company" && value.blank?
           flash[:alert] = t('home.account.confirm_payout.complete_required')
           redirect_to home_payout_path
           return

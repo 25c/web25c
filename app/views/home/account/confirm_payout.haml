@@ -6,7 +6,10 @@
     %p
       = t('.amount')
       $#{"%.2f" % @result[:amount]}
-    - if @request_type == 'paypal'
+    %p
+      = t('.method')
+      = t(@method)
+    - if @method == 'paypal'
       %p
         = t('.email')
         = @result[:paypal_email]

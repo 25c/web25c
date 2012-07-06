@@ -53,7 +53,7 @@ en:
         empty_jar_title: Request a payout from your 25c Jar
         paypal_title: Request payment through Paypal
         paypal_email: Paypal account e-mail*
-        ach_title: Request payment through bank ACH transfer
+        ach_title: Request payment through ACH bank transfer
         bank_info: Your account information
         account_type: Account Type*
         account_business: Business
@@ -63,6 +63,7 @@ en:
         bank_name: Bank Name*
         contact_info: Your contact information
         name: Name*
+        phone: Phone*
         company: Company
         line1: Address Line 1*
         line2: Address Line 2
@@ -75,6 +76,9 @@ en:
         confirm_title: Payout request sent.
         complete_required: "Please complete all the required fields."
         amount: "Request amount:"
+        method: "Method:"
+        paypal: Paypal
+        ach: ACH Bank Transfer
         email: "Email:"
         account_type: "Account Type:"
         bank_name: "Bank Name:"
@@ -230,6 +234,7 @@ en:
       existing_account: I already have a 25c account.
       email: Email
       password: Password
+      new_password: New Password
       confirm_password: Confirm Password
       submit_new: Create Free Account
       submit_existing: Sign In

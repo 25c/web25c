@@ -242,12 +242,15 @@ class UsersController < ApplicationController
           redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer], :new => @new)
         end
       end
+    # not a post request
     elsif self.current_user
       if self.current_user.is_new
         redirect_to_session_redirect_path(home_buttons_path)
       else
         redirect_to_session_redirect_path(home_dashboard_path)
       end
+    else
+      @user = User.new
     end
   end
   

@@ -46,7 +46,7 @@
         %form{:action => home_confirm_payment_url, :method => 'post' }
           %input.transaction-amount{:type => 'hidden', :name => 'transaction[amount]'}
           %input.payment-type{:type => 'hidden', :name => 'payment_type', :value => 'existing'}
-          %input.btn{:type => 'submit', :value => 'Submit Payment'}
+          %input.btn.btn-primary{:type => 'submit', :value => 'Submit Payment'}
       
       #toggle-card-container
         .btn#toggle-card-button= t('.use_different')
@@ -89,4 +89,4 @@
             =t('.remember_card')
         %input.transaction-amount{:type => 'hidden', :name => 'transaction[amount]'}
         %input.payment-type{:type => 'hidden', :name => 'payment_type', :value => 'new'}
-        %input.btn{:type => 'submit', :value => 'Submit Payment'}
+        %input.btn.btn-primary{:type => 'submit', :value => 'Submit Payment'}
