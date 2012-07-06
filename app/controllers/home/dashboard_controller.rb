@@ -14,7 +14,7 @@ class Home::DashboardController < Home::HomeController
   end
   
   def process_clicks
-    current_user.clicks.update_all(:state => Click::State::FUNDED)
+    current_user.clicks.update_all(:state => Click::State::PROCESSED)
     render :nothing => true
   end
   

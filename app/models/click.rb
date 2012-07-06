@@ -3,9 +3,10 @@ class Click < ActiveRecord::Base
   
   module State
     NEW = 0
-    FUNDED = 1
-    PROCESSED = 2
-    PAID = 3
+    DEDUCTED = 1
+    FUNDED = 2
+    PROCESSED = 3
+    PAID = 4
   end
   
   belongs_to :button
