@@ -143,13 +143,13 @@ en:
         button_code: "Add this code to your website:"
         sign_in_overlay: Click here to create an account!
         sign_in_button: Create a Free Account
+        "btn-large": 
       short_url:
         input_label: "Use it when sending links to your followers and earn along for resulting donations:"
         input_text: "Paste content URL to encode"
         output_label: "25c Short URL:"
         get_url: Generate Short URL
         share_label: "Share Your Link:"
-        
 
     index:
       or: Or
