@@ -341,15 +341,44 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
   position: relative;
   float: left;
   margin: 10px; 
-  height: 60px;
+  height: 80px;
   width: 120px;
   line-height: 60px;
+  text-align: center;
 }
 
 .button-choice img {
   position: absolute;
+  top: 50%;
   left: 50%;
-  top: 0px;
+}
+
+.button-choice img[data-size="btn-large"] {
+  margin-left: -60px;
+  margin-top: -10px;
+}
+
+.button-choice img[data-size="icon-large"] {
+  margin-left: -30px;
+  margin-top: -10px;
+}
+
+.button-choice img[data-size="btn-medium"] {
+  margin-left: -40px;
+}
+
+.button-choice img[data-size="icon-medium"] {
+  margin-left: -20px;
+}
+
+.button-choice img[data-size="btn-small"] {
+  margin-left: -25px;
+  margin-top: 8px;
+}
+
+.button-choice img[data-size="icon-small"] {
+  margin-left: -12px;
+  margin-top: 8px;
 }
 
 .button-choice:hover img {
