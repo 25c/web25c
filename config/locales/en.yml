@@ -123,6 +123,7 @@ en:
         welcome_title: "Getting started: set up your 25c button"
         welcome_message: Welcome to 25c! Use this page to set your button and begin receiving clicks right away.
         dismiss: Dismiss This Message
+        short_url_title: 25c Short URL
       platforms:
         title: Supported Platforms
         platform: Platform
@@ -142,35 +143,43 @@ en:
         button_code: "Add this code to your website:"
         sign_in_overlay: Click here to create an account!
         sign_in_button: Create a Free Account
+      short_url:
+        input_label: "Use it when sending links to your followers and earn along for resulting donations:"
+        input_text: "Paste content URL to encode"
+        output_label: "25c Short URL:"
+        get_url: Generate Short URL
+        share_label: "Share Your Link:"
+        
 
     index:
       or: Or
       register: Register with 25c
       value_proposition: Put 25c Behind that Like.
       value_proposition_sub1q: "Bloggers, Artists, Youtubers"
-      value_proposition_sub1a: "Add the <b>25c Super-Like</b> Button. Collect 25c tips with every 'Like'."
+      value_proposition_sub1a: "Add the <b>25c Gratuity</b> Button. Collect 25c tips with every 'Like'."
       value_proposition_sub2q: "Have a lot of followers?"
       value_proposition_sub2a: "Use the <b>25c Short URL</b>. Earn along with the creators you help people discover."
       call_to_action: Start Collecting 25c's Now!
       about_25c_title: About 25c
-      about_25c_p1: Empowering people to support what you value.  Easily & directly.  
-        One quarter one click.   Towards a future measured what you truly 
-        value.  (As opposed to what advertisers value.)
-      about_25c_p2: Clicking the 25c Super-Like Button&trade; once contributes 25c; 
-        clicking it twice contributes two 25's; and so on.
-      about_25c_p3: It adds up!  A thousand 25c tips can double a freelance 
-        writer's compensation, pay a photographer's expenses.
-      about_25c_p4: Have a sizable Twitter/etc. following?  Use the 25c Short 
-        URL to refer great content & causes - and earn 5 cents for each 25c 
-        donation generated.
-      about-more: Show more...
-      about-less: Show less...
-      button_description: The 25c Super-Like Button&trade; is easy to add to your website, 
+      about_25c_p1: 25c makes it easy to collect 25-cent donations from lots of people. Get 10,000 
+        people to give you 25 cents and you have $2,500.
+      about_25c_p2: Display the 25c Gratuity Button&trade; on your blog or Youtube profile by inserting 
+        our snippet of code, and you are ready to collect.
+      about_25c_p3: "The 25c Gratuity Button&trade; works just like a &quot;Like&quot; button but with a 25c 
+        micro-donation. Plus it is &quot;multi-one-click&quot;: Clicking it twice donates two 25c's, 
+        three clicks make three 25c's, etc."
+      about_more: Show more...
+      about_less: Show less...
+      button_description: The 25c Gratuity Button&trade; is easy to add to your website, 
         blog, etc. -- just insert our code and start receiving 25c tips.
-      button-more: Get your Button!
-      button-less: Hide Button code.
-      button_25c_title: 25c Super-Like Button
+      button_more: Get your Button!
+      button_less: Hide Button code.
+      button_25c_title: 25c Gratuity Button
       url_25c_title: 25c Short URL
+      url_description: Use the 25c Short URL to refer great content & causes - and earn 5 cents for 
+        each 25c donation generated.
+      url_more: Generate a 25c Short URL!
+      url_less: Hide URL Generator.
       
   layouts:
     admin:

@@ -26,8 +26,8 @@
     
     %label{:for => "refill-amount"}= t('.refill_amount')
     %select#refill-amount
-      - ['20','40','60','80','200','400'].each do |a|
-        - if a == '80'
+      - ['20','40','60'].each do |a|
+        - if a == '40'
           %option{:value => "#{a}",
             :selected => "selected"} #{a.to_s + ' ' + t('application.25c_units')} ($#{"%.2f" % (Integer(a)/4)})
         - else
