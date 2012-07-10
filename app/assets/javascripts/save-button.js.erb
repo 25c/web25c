@@ -11,12 +11,12 @@ $(document).ready(function(){
   };
 	// lookup dictionary for image sizes
 	var imageSizesDict = {
-		'btn-large': 'width:136px;height:70px;',
-		'btn-medium': 'width:94px;height:50px;',
-		'btn-small': 'width:63px;height:35px;',
-		'icon-large': 'width:68px;height:70px;',
-		'icon-medium': 'width:49px;height:50px;',
-		'icon-small': 'width:34px;height:35px;'
+		'btn-large': ' width="136" height="70"',
+		'btn-medium': ' width="94" height="50"',
+		'btn-small': ' width="63" height="35"',
+		'icon-large': ' width="68" height="70"',
+		'icon-medium': ' width="49" height="50"',
+		'icon-small': ' width="34" height="35"'
 	};
   
   var jsOpen = '<a href="https://www.plus25c.com/tip/'
@@ -26,8 +26,8 @@ $(document).ready(function(){
     js.src="//api.plus25c.com/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}\
     (document,"script","tip-25c-js");</script>';
   var iframeOpen = '<iframe src="http://api.plus25c.com/button/' + buttonId + '?size=';
-	var iframeMid = '" allowtransparency="true" frameborder="0" scrolling="no" style="';
-  var iframeClose = '"></iframe>';
+	var iframeMid = '" allowtransparency="true" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"';
+  var iframeClose = '></iframe>';
   
   var buttonSize = $('#button_size').val();
   
