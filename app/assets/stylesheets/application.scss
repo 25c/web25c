@@ -335,21 +335,17 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
 .button-choice {
   position: relative;
   float: left;
+  margin: 10px; 
   height: 60px;
-  width: 126px;
+  width: 120px;
   line-height: 60px;
-  margin: 5px 0;
-  text-align: center;
 }
 
 .button-choice img {
   position: absolute;
   left: 50%;
-}
-
-.button-choice img[data-size="btn-large"] {
-  border: 1px solid red;
-  margin-left: -20px;
+  top: 0px;
+  left: 0px;
 }
 
 .button-choice:hover img {
