@@ -64,7 +64,27 @@ class Click < ActiveRecord::Base
   
   def process
     self.with_lock do
+      # ensure this click is in a processable state first
+      return false unless self.state == State::FUNDED
       
+      # update state and increment button provider balance
+      self.update_attribute(:state, State::PROCESSED)
+      self.connection.execute("PREPARE TRANSACTION 'process-click-#{self.uuid}'")
+      begin
+        self.button.user.with_lock do
+          self.button.user.update_attribute(:balance, self.button.user.balance + 1)
+          self.button.user.connection.execute("PREPARE TRANSACTION 'process-user-#{self.uuid}'")
+          begin
+            self.button.user.connection.execute("COMMIT PREPARED 'process-user-#{self.uuid}'")
+          rescue
+            self.button.user.connection.execute("ROLLBACK PREPARED 'process-user-#{self.uuid}'")
+            raise $!
+          end
+        end
+      rescue
+        self.connection.execute("ROLLBACK PREPARED 'process-click-#{self.uuid}'")
+      end
+      self.connection.execute("COMMIT PREPARED 'process-click-#{self.uuid}'")
     end  
     true  
   end
