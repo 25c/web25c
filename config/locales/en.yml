@@ -133,7 +133,7 @@ en:
         html: Your Web Page
         tumblr: Tumblr
         wordpress: WordPress Self-Hosted
-        wordpress_note: "25c buttons are not supported on Wordpress.com hosted sites."
+        wordpress_note: "25c buttons are not yet supported on Wordpress.com hosted sites."
         posterous: Posterous
       form:
         button_form: "Select button type:"

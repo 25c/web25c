@@ -306,8 +306,13 @@ table#platform-table {
   margin-bottom: 20px;
 }
 
+table#platform-table > thead > tr > th.platform-logo {
+  width: 20%;
+}
+
+
 table#platform-table > thead > tr > th.platform-name {
-  width: 15%;
+  width: 20%;
 }
 
 table#platform-table .platform-code {
