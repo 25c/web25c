@@ -136,6 +136,12 @@ en:
         posterous: Posterous
       form:
         button_form: "Select button type:"
+        icon-large: "Large icon"
+        btn-large: "Large button" 
+        icon-medium: "Medium icon"
+        btn-medium: "Medium button" 
+        icon-small: "Small icon"
+        btn-small: "Small button" 
         button_name: "Customize tooltip message:"
         button_type: "Button code in:"
         button_preview: "Button preview:"

@@ -332,15 +332,40 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
   position: relative; 
   float: left;
   margin: 10px; 
-  height: 60px;
+  height: 80px;
   width: 120px;
   line-height: 60px;
+  text-align: center;
 }
 
 .button-choice img {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 20px;
+  left: 50%;
+}
+
+.button-choice img[data-size="btn-large"] {
+  margin-left: -60px;
+}
+
+.button-choice img[data-size="icon-large"] {
+  margin-left: -30px;
+}
+
+.button-choice img[data-size="btn-medium"] {
+  margin-left: -40px;
+}
+
+.button-choice img[data-size="icon-medium"] {
+  margin-left: -20px;
+}
+
+.button-choice img[data-size="btn-small"] {
+  margin-left: -25px;
+}
+
+.button-choice img[data-size="icon-small"] {
+  margin-left: -12px;
 }
 
 .button-choice:hover img {
