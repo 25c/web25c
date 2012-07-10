@@ -30,6 +30,9 @@ $(document).ready(function(){
   var iframeClose = '"></iframe>';
   
   var buttonSize = $('#button_size').val();
+  var timer = null;
+  var fakeCounter = 0;
+  var $tooltip = $("#tip-25c-tooltip");
   
   var updateButtonCode = function() {
     if ($('input.radio_buttons:checked').val() == 'javascript') {
@@ -38,8 +41,13 @@ $(document).ready(function(){
       newCode = iframeOpen + buttonSize + iframeMid + imageSizesDict[buttonSize] + iframeClose;
     }
     $('#button-code-block').text(newCode);
+    if (fakeCounter > 0) {
+      $tooltip.html('<b>' + fakeCounter + ' &times; 25c (= $' + (fakeCounter / 4).toFixed(2) 
+        + ') donated</b> -- Thank you! Click again to micro-donate another 25c.');
+    } else {
+      $tooltip.html("Super-like it? Click to like & micro-donate 25c!");
+    }
   };
-  
   // add update title field -> modify js string
   
   $('.button-choice>img[data-size="' + buttonSize + '"]').addClass('selected-button');
@@ -55,7 +63,6 @@ $(document).ready(function(){
     $this = $(this);
   
     fakeCounter++;
-    $tooltip.html('<p>You\'ve rewarded <b>' + fakeCounter + '</b> credits!<br>(example text)</p>' );
     $tooltip.css('visibility', 'visible');
     
     buttonSize = $this.attr('data-size');
@@ -66,19 +73,14 @@ $(document).ready(function(){
     $this.trigger('mouseenter');
   });
   
-  // image hover functionality
-  var timer = null;
-  var fakeCounter = 0;
-  var $tooltip = $("#tip-25c-tooltip");
-  
   var hideTooltip = function() {
     $("#tip-25c-tooltip").css("visibility", "hidden");
   }
   
-  $('.button-choice img').bind({
+  $('.button-choice').bind({
 		mouseenter: function() {
-      var $this = $(this)
-			if ($this.hasClass('selected-button')) {
+      var $this = $(this);
+			if ($this.children('img').hasClass('selected-button')) {
 			  clearTimeout(timer);
   			var offset = $this.offset();
   		  var height = $this.height();

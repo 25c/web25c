@@ -143,7 +143,8 @@ en:
         button_code: "Add this code to your website:"
         sign_in_overlay: Click here to create an account!
         sign_in_button: Create a Free Account
-        "btn-large": 
+        javascript: Javascript
+        iframe: IFrame
       short_url:
         input_label: "Use it when sending links to your followers and earn along for resulting donations:"
         input_text: "Paste content URL to encode"
@@ -200,6 +201,12 @@ en:
       sign_out: Sign Out
       buttons: Receive 25c's
       payments: Load 25c Jar
+    footer:
+      about: About
+      faq: FAQ
+      terms: Terms
+      privacy: Privacy
+      contact: Contact
       
   users:
     show:

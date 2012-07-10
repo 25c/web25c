@@ -414,23 +414,23 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
 }
 
 #tip-25c-tooltip {
+  margin: 1px 0 0;
   position:absolute; 
   z-index:1000000000; 
   left:0; 
   top:0; 
-  width:200px; 
+  width:180px; 
+  padding: 15px;
   min-height:50px; 
-  background:white; 
-  border: 1px solid #ddd; 
-  box-shadow: 2px 2px 4px #333; 
-  border-radius: 4px; 
+  background-color: rgb(255, 255, 255); 
+  border: 1px solid rgba(0, 0, 0, 0.2); 
+  border-radius: 5px 5px 5px 5px; 
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); 
+  background-clip: padding-box; 
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+  font-size: 13px; 
+  line-height: 18px;
   visibility:hidden;
-}
-
-#tip-25c-tooltip p {
-  margin: 10px;
-  font-size: inherit;
-  line-height: inherit;
 }
 
 /* URL Shortener Form
@@ -616,6 +616,15 @@ form .form-actions {
 
 .simple_form .control-group {
   margin-bottom: 20px;
+}
+
+p, strong, h4, ul.plist > li {
+  font-size: 15px;
+  line-height: 1.2em;
+}
+
+h4 {
+  margin: 15px 0 5px 0;
 }
 
 /* USER DASHBOARD
