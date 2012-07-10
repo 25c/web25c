@@ -107,6 +107,7 @@ en:
         state2: Funded
         state3: Processed
         state4: Paid
+        state5: Refunded
         date_created: Date & Time Created
         provider: Content Provider
         referrer: Content Referrer

@@ -9,7 +9,7 @@ class Home::DashboardController < Home::HomeController
   end
   
   def delete_click
-    current_user.clicks.find_by_uuid(params[:click_id]).destroy
+    current_user.clicks.find_by_uuid(params[:click_id]).undo
     render :nothing => true
   end
   
