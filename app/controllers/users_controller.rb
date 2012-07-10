@@ -171,9 +171,10 @@ class UsersController < ApplicationController
       redirect_to sign_in_path
     else
       self.current_user = user
-      if params.has_key?(:button_id)
-        redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
-      else        
+      if session[:button_id]
+        redirect_to confirm_tip_path(:button_id => session.delete(:button_id), 
+          :referrer => session.delete(:referrer))
+      else
         redirect_to home_buttons_path, :notice => notice
       end
     end
@@ -264,6 +265,8 @@ class UsersController < ApplicationController
     @new = params[:new] ? params[:new] == "true" : true
     @button_id = params[:button_id]
     @referrer = params[:referrer]
+    session[:button_id] = @button_id
+    session[:referrer] = @referrer
     render :layout => "blank"
   end
   

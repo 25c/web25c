@@ -49,10 +49,9 @@
             #code-overlay.lead= t('.sign_in_overlay')
             %pre#button-code-block
       - else
-        %pre#button-code-block
-        
+        %pre#button-code-block   
   .row
-    .span11
+    .span3
       .submit-container
         - if @is_demo
           =link_to t('.sign_in_button'), register_path, :class => 'btn btn-primary'

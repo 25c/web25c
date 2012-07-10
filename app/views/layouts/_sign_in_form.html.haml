@@ -13,8 +13,8 @@
   .lead.compact-lead= t('users.sign_in.connect')
   .login-buttons
     %a.facebook-btn.pointer= image_tag "logos/facebook-large.png"
-    = link_to image_tag("logos/twitter-large.png"), "/auth/twitter#{'?button_id=' + @button_id if @button_id}#{'&referrer=' + CGI::escape(@referrer) if @button_id and @referrer}"
-    = link_to image_tag("logos/google-large.png"), "/auth/google_oauth2#{'?button_id=' + @button_id if @button_id}#{'&referrer=' + CGI::escape(@referrer) if @button_id and @referrer}"
+    = link_to image_tag("logos/twitter-large.png"), "/auth/twitter"
+    = link_to image_tag("logos/google-large.png"), "/auth/google_oauth2"
   #sign-in-or
     %b.lead= t('users.sign_in.or')
   = simple_form_for @user, :url => sign_in_path, :html => { :class => 'form-horizontal' } do |f|
