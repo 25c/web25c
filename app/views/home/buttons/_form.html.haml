@@ -58,12 +58,12 @@
         
   .row
     .span11
-      %hr
       .submit-container
         - if @is_demo
           =link_to t('.sign_in_button'), register_path, :class => 'btn btn-primary'
         - else
           = f.button :submit, :class => 'btn btn-primary'
+%hr
 
 /dummy tooltip
 #tip-25c-tooltip 

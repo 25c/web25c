@@ -85,7 +85,8 @@ class User < ActiveRecord::Base
   end
   
   def get_thumb
-    picture = self.picture(:thumb) ? self.picture(:thumb) : ( self.picture ? self.picture : '')
+    picture = self.picture(:thumb) ? self.picture(:thumb)
+      : ( self.picture ? self.picture : 'http://i50.tinypic.com/5y6ljo.png')
     picture
   end
   

@@ -65,6 +65,10 @@ hr {
   cursor: pointer;
 }
 
+.buffer {
+  margin-bottom: 20px;
+}
+
 /* Header Nav
  *---------------------------- */
 .navbar .navbar-inner {
@@ -302,8 +306,13 @@ table#platform-table {
   margin-bottom: 20px;
 }
 
+table#platform-table > thead > tr > th.platform-logo {
+  width: 20%;
+}
+
+
 table#platform-table > thead > tr > th.platform-name {
-  width: 15%;
+  width: 20%;
 }
 
 table#platform-table .platform-code {
@@ -329,7 +338,7 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
 } 
 
 .button-choice {
-  position: relative; 
+  position: relative;
   float: left;
   margin: 10px; 
   height: 80px;
@@ -449,6 +458,58 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
   line-height: inherit;
 }
 
+/* URL Shortener Form
+ *---------------------------- */
+#short-url-input {
+  margin-top: 10px;
+  width: 420px;
+}
+
+#short-url-input.preview {
+  color: #999;
+}
+
+#url-output-container {
+  margin-top: 5px;
+}
+
+#url-output-label {
+  float: left;
+  margin: 5px 0 0 0;
+  width: 140px;
+}
+
+#url-output {
+  float: left;
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  border-radius: 3px 3px 3px 3px;
+  color: #555555;
+  padding: 4px;
+  width: 280px;
+  cursor: text;
+}
+
+#url-output.disabled {
+  color: #999;
+  background-color: #e6e6e6;
+  cursor: auto;
+}
+
+#share-url-container{
+  margin-top: 10px;
+}
+
+#share-url-container > #share-url-label{
+  float: left;
+  margin: 5px 0 0 0;
+  width: 140px;
+}
+
+#share-url-container > .share-img {
+  float: left;
+}
+
 /* Account Page Elements
  *---------------------------- */
 #existing-card {
@@ -502,6 +563,7 @@ input[type="checkbox"].checkbox{
 }
 
 form .submit-container {
+  margin-top: 20px;
   text-align: center;
 }
 
