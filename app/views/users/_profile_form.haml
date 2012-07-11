@@ -33,7 +33,7 @@
         - else
           %h1= t('.support_title_no_name')
         #button-holder
-          <a href="https://www.plus25c.com/tip/#{@button.id}" class="tip-25c-button" data-size="btn-large">#{@button.title}</a>
+          <a href="https://www.plus25c.com/tip/#{@button.uuid}" class="tip-25c-button" data-size="btn-large">#{@button.title}</a>
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];    if(!d.getElementById(id)){js=d.createElement(s);js.id=id;    js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}    (document,"script","tip-25c-js");</script>
           / .button-choice
           /   %img{:src => image_path('25c-btn-large.png')}
