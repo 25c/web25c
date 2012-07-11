@@ -1,12 +1,7 @@
 = content_for(:js) do
   = javascript_include_tag "save-button"
   :javascript
-    window.buttonId = '#{ @button.uuid }';  
-    $(document).ready(function() {
-        $('.button-choice').click(function() {
-            $(this).find("img.unrot").fadeOut(50).delay(50).fadeIn(50);
-        });
-    });
+    window.buttonId = '#{ @button.uuid }';
 
 = simple_form_for @button, :url => home_button_path(@button) do |f|
   .row

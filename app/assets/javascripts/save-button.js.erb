@@ -50,6 +50,11 @@ $(document).ready(function(){
   };
   // add update title field -> modify js string
   
+  // button click visual feedback
+  $('.button-choice').click(function() {
+      $(this).find("img.unrot").fadeOut(50).delay(50).fadeIn(50);
+  });
+  
   $('.button-choice>img[data-size="' + buttonSize + '"]').addClass('selected-button');
   updateButtonCode();
   
