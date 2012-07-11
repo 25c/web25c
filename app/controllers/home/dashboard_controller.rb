@@ -9,12 +9,15 @@ class Home::DashboardController < Home::HomeController
   end
   
   def delete_click
-    current_user.clicks.find_by_uuid(params[:click_id]).destroy
+    current_user.clicks.find_by_uuid(params[:click_id]).undo
     render :nothing => true
   end
   
   def process_clicks
-    current_user.clicks.update_all(:state => Click::State::PROCESSED)
+    # TODO: dispatch a background job that will do this
+    current_user.clicks.where(:state => Click::State::FUNDED).find_each do |click|
+      click.process
+    end
     render :nothing => true
   end
   
