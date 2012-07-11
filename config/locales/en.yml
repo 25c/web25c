@@ -207,6 +207,9 @@ en:
       buttons: Receive 25c's
       payments: Load 25c Jar
       
+    mailer:
+      recipient: "This message was sent to: %{recipient}"
+      
   users:
     show:
       title: ' - 25c Profile'
