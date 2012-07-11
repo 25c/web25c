@@ -51,7 +51,7 @@
       
       - if @is_demo
         #code-wrapper
-          %a{:href => register_path}
+          %a{:href => sign_in_path}
             #code-overlay.lead= t('.sign_in_overlay')
             %pre#button-code-block
       - else
@@ -60,7 +60,7 @@
     .span3
       .submit-container
         - if @is_demo
-          =link_to t('.sign_in_button'), register_path, :class => 'btn btn-primary'
+          =link_to t('.sign_in_button'), sign_in_path, :class => 'btn btn-primary'
         - else
           = f.button :submit, :class => 'btn btn-primary'
 %hr

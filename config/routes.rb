@@ -1,8 +1,8 @@
 Web25c::Application.routes.draw do
   root :to => 'home#index'
   
-  match 'register' => 'users#new', :via => :get, :as => :register
-  match 'register' => 'users#create', :via => :post
+  # match 'register' => 'users#new', :via => :get, :as => :register
+  # match 'register' => 'users#create', :via => :post
   
   match 'sign-in' => 'users#sign_in', :as => :sign_in
   match 'sign-out' => 'users#sign_out', :as => :sign_out

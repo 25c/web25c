@@ -201,7 +201,7 @@ en:
       profile: Profile
       contact: Contact
       register: Register
-      connect: "Connect with: "
+      sign_in_with: "Sign In with: "
       or: "Or: "
       sign_in: Sign In
       sign_out: Sign Out
@@ -247,7 +247,7 @@ en:
       google: You've been signed in automatically using your Google account.
     sign_in:
       title: Sign in to your 25c account
-      connect: "Connect with:"
+      sign_in_with: "Sign In with:"
       facebook: Sign In with Facebook
       twitter: Sign In with Twitter
       google: Sign In with Google

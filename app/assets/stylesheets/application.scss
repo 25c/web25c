@@ -228,30 +228,18 @@ footer.navbar > .navbar-inner > .container {
   width: 125px;
 }
 
-.login-buttons .btn {
-  color: white !important;
-  text-shadow: 0 2px 2px #666 !important;
-}
-
-.login-buttons div.facebook-btn {
-  @include gradient(#577ac2, #3b5998);
-}
-
-.login-buttons a#twitter-btn {
-  @include gradient(#63d2f4, #10b8ec);
-}
-
-.login-buttons a#google-btn{
-  @include gradient(#d84937, #a8291c);
-}
-
-.login-buttons a#register-btn{
-  @include gradient(#bbb, #999);
-}
-
 ul.login-buttons > li.login-logo > a {
   cursor: pointer;
   padding: 4px;
+}
+
+ul.login-buttons > li.login-logo > a > img {
+  height: 32px;
+  width: 32px;
+}
+
+.login-buttons > a {
+  margin: 0 5px;
 }
 
 /* Facebook Login
@@ -406,13 +394,12 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
   position: relative;
 }
 
-#button-code-block {
+pre#button-code-block {
   background-color: white;
   white-space: normal;
-  margin: 5px 0;
+  margin: 5px 0 0 0;
   overflow: hidden;
   resize: none;
-  width: 97%;
   cursor: text;
 }
 
@@ -597,7 +584,7 @@ img#tip-25c-logo{
 
 #sign-in{
   width: 400px;
-  min-height: 370px;
+  min-height: 200px;
   margin: 0 auto 20px auto;
   text-align: center;
 }
@@ -831,6 +818,10 @@ table.table thead .sorting_desc_disabled {
   width: 100%;
   top: 0;
   left: 0;
+}
+
+#name-block {
+  height: 40px;
 }
 
 #name-block .emphasis {

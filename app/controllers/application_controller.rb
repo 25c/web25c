@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
   def require_signed_in
     unless self.signed_in?
       session[:redirect_path] = request.path
-      redirect_to register_path
+      redirect_to sign_in_path
     end
   end
   

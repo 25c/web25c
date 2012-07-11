@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @is_editable = false
     @user.first_name = @user.email if @user.first_name.blank?
     @user.about = t('users.show.blank_about') if @user.about.blank?
-    @button_id = @user.buttons[0].uuid
+    @button = @user.buttons[0]
     
     respond_to do |format|
       format.html # show.html.erb
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
   
   def edit_profile
     @user = self.current_user
-    @button_id = @user.buttons[0].uuid
+    @button = @user.buttons[0]
     if @user.nickname
       @url = 'http://' + request.domain
       @url += ':3000' if request.domain == 'localhost'
@@ -244,14 +244,18 @@ class UsersController < ApplicationController
         end
       end
     # not a post request
-    elsif self.current_user
-      if self.current_user.is_new
-        redirect_to_session_redirect_path(home_buttons_path)
-      else
-        redirect_to_session_redirect_path(home_dashboard_path)
-      end
     else
-      @user = User.new
+      session.delete(:button_id)
+      session.delete(:referrer)
+      if self.current_user
+        if self.current_user.is_new
+          redirect_to_session_redirect_path(home_buttons_path)
+        else
+          redirect_to_session_redirect_path(home_dashboard_path)
+        end
+      else
+        @user = User.new
+      end
     end
   end
   
