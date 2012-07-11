@@ -16,7 +16,7 @@
       %div= t('.contents')
       %div
         %b= @user.balance.to_s() + ' ' + t('application.25c_units')
-        %span ($#{"%.2f" % (@user.balance / 4)})
+        %span ($#{"%.2f" % (@user.balance.to_f / 4)})
       %p.payout-link-container
     %a= link_to t('.request_payout'), home_payout_path, :class => 'btn'   
 %hr
