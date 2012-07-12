@@ -22,6 +22,7 @@ en:
   home:
     account:
       jar:
+        title: Refill 25c Jar
         25c_units: 25c's
         auto_refill: Automatically refill my 25c Jar if balance drops below $5 (20 25c's).
         card_on_file: "Card on file:"

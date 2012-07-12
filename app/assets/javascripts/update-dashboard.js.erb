@@ -9,13 +9,14 @@ $(document).ready(function(){
     // sizing and style
     "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
     "sPaginationType": "bootstrap",
-    "aaSorting": [[ 0, "desc" ]],   // start with sorting by first col (date), descending
+    "aaSorting": [[ 1, "desc" ]],   // start with sorting by first col (date), descending
     "aoColumns": [                  // define setting for each col
-      null,
+      {"bVisible": false},          // invisible sortable count col
+      {"iDataSort": 0},              // click count - sorting linked to raw number
       null,
       null,
       {"bVisible": false},          // invisible sortable date col
-      {"iDataSort": 4},              // visible readable date - sorting linked to col 4
+      {"iDataSort": 5},              // visible readable date - sorting linked to raw date
     ]
   });
   

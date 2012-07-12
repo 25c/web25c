@@ -33,6 +33,7 @@
   %table#clicks-given.clicks-table.table.table-condensed.table-striped
     %thead
       %tr
+        %th
         %th.click-amount= t('.amount')
         %th.click-provider= t('.provider')
         %th.click-referrer= t('.referrer')
@@ -41,6 +42,7 @@
     %tbody
       - @clicks_given.each do |id, click|
         %tr
+          %td= click.count
           %td.click-amount #{click.count} ($#{"%.2f" % (click.count.to_f / 4)})
           %td.click-user= click.button.user.display_name
           %td.click-referrer= link_to click.referrer, click.referrer, :target => "_blank"
@@ -59,6 +61,7 @@
   %table#clicks-received.clicks-table.table.table-condensed.table-striped
     %thead
       %tr
+        %th
         %th.click-amount= t('.amount')
         %th.click-user= t('.clicker')
         %th.click-referrer= t('.referrer')
@@ -67,7 +70,8 @@
     %tbody
       - @clicks_received.each do |id, click|
         %tr
-          %td.click-amount= click.count
+          %td= click.count
+          %td.click-amount #{click.count} ($#{"%.2f" % (click.count.to_f / 4)})
           / %td.click-state= t('.state' + click.state.to_s)
           %td.click-user= click.user.display_name
           %td.click-referrer= link_to click.referrer, click.referrer, :target => "_blank"
