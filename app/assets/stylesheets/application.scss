@@ -316,6 +316,16 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
 }
 
 
+/* Button on the About page
+ *---------------------------- */
+#about-button-container {
+  margin-left: auto;
+  margin-right: auto;
+  height: 140px;
+  width: 120px;
+} 
+
+
 /* Button Creation Page
  *---------------------------- */
 #button-choice-container {
@@ -326,7 +336,7 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
   position: relative;
   float: left;
   margin: 10px; 
-  height: 80px;
+  height: 60px;
   width: 120px;
   line-height: 60px;
   text-align: center;
