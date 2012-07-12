@@ -12,18 +12,6 @@
     %h2.page-header= t('.title')
 .row
   .span12
-    .lead
-      %div= t('.contents')
-      %div
-        %b= @user.balance.to_s() + ' ' + t('application.25c_units')
-        %span ($#{"%.2f" % (@user.balance.to_f / 4)})
-      %p.payout-link-container
-    %a= link_to t('.request_payout'), home_payout_path, :class => 'btn'   
-%hr
-.row
-  .span12
-    %h3#refill-title= t('.refill_title')
-    
     %label{:for => "refill-amount"}= t('.refill_amount')
     %select#refill-amount
       - ['20','40','60'].each do |a|
@@ -80,7 +68,7 @@
         %select#card-expiration-year{:name => 'transaction[credit_card][expiration_year]'}
           %option{:selected => "selected", :disabled => "disabled", :value => ""}
             = t('.select_year')
-          - (Date.today.year..20.years.from_now.year).each do |year|
+          - (Date.today.year..10.years.from_now.year).each do |year|
             %option{:value => "#{year.to_s()[2,2]}"} #{year.to_s()}
         = hidden_field_tag :tr_data, @bt_data
         %div.checkbox-container

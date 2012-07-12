@@ -2,4 +2,7 @@
 - content_for :title, t('.title')
 .page-header
   %h2= yield :title
+.row.buffer
+  .span12
+    %a= link_to t('.request_payout'), home_payout_path, :class => 'btn'
 = render :partial => "form"

@@ -25,7 +25,6 @@ en:
         25c_units: 25c's
         title: Refill Your 25c Jar
         contents: 'Your 25c Jar contains:'
-        request_payout: "Request Payout"
         refill_title: Refill my 25c Jar with 25c's
         refill_amount: "Amount to add:"
         auto_refill: Automatically refill my 25c Jar if balance drops below $5 (20 25c's).
@@ -241,10 +240,13 @@ en:
       title: ' - 25c Profile'
       blank_about: 'I use 25c to get rewarded for my content.'
     form:
+      title: Update Account Settings
       edit_password_hint: Leave blank to keep current password.
       nickname_url: "Your nickname determines your public profile URL: "
+      submit: Update
     edit:
       title: Account
+      request_payout: "Request Payout"
     update:
       success: Your account has been updated.
     profile_form:
