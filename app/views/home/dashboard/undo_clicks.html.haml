@@ -2,7 +2,7 @@
 = content_for(:js) do
   = javascript_include_tag "jquery.dataTables.min"
   = javascript_include_tag "paging"
-  = javascript_include_tag "cancel-clicks"
+  = javascript_include_tag "undo-clicks"
   :javascript
     window.confirmDelete = '#{ j t('.confirm_delete') }';
     window.deleteClickUrl = '#{ j home_delete_click_url }';

@@ -641,15 +641,6 @@ form .form-actions {
   margin-bottom: 20px;
 }
 
-p, strong, h4, ul.plist > li {
-  font-size: 15px;
-  line-height: 1.2em;
-}
-
-h4 {
-  margin: 15px 0 5px 0;
-}
-
 /* USER DASHBOARD
  *---------------------------- */
 
@@ -669,6 +660,10 @@ h4 {
   line-height: 28px;
 }
 
+.clicks-table .delete-click {
+  margin-top: -3px;
+}
+
 .table-title {
   margin: 10px 0;
 }
@@ -682,6 +677,15 @@ h4 {
 
 [class^="icon-"], [class*=" icon-"] {
   background-image: url(image_path("glyphicons-halflings.png"));
+}
+
+p, strong, h4, ul.plist > li {
+  font-size: 15px;
+  line-height: 1.2em;
+}
+
+h4 {
+  margin: 15px 0 5px 0;
 }
 
 /* BOOTSTRAP - DATATABLES
