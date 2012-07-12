@@ -176,24 +176,20 @@ en:
     index:
       or: Or
       register: Register with 25c
-      value_proposition: Put 25c Behind that Like.
-      value_proposition_sub1q: "Add the <b>25c Button&trade;</b> to your blog, website, Youtube."
-      value_proposition_sub1a: "And collect 25c with every click."
+      value_proposition: Micro-Donations Made Easy
+      value_proposition_sub1q: "Add the <b>25c Button&trade;</b> to your blog, website, Youtube..."
+      value_proposition_sub1a: "Collect one quarter with every click."
       value_proposition_sub2q: "Have a lot of followers?"
       value_proposition_sub2a: "Use the <b>25c Short URL</b>. Earn along with the creators you help people discover."
       call_to_action: Start Collecting 25c's Now!
       about_25c_title: About 25c
-      about_25c_p1: 25c makes it easy to collect 25-cent donations from lots of people. Get 10,000 
-        people to give you 25 cents and you have $2,500.
-      about_25c_p2: Display the 25c Button&trade; on your blog or Youtube profile by inserting 
-        our snippet of code, and you are ready to collect.
-      about_25c_p3: "The 25c Button&trade; works just as a &quot;Like&quot; button but with a 25c 
-        micro-donation. Plus it is &quot;multi-one-click&quot;: Clicking it twice donates two 25c's, 
-        three clicks make three 25c's, etc."
+      about_25c_p1: "The 25c Button&trade; combines a 'Like' with a 25c donation.   For the truly valued things. "
+      about_25c_p2: "Display the 25c Button&trade; on your blog or Youtube profile by inserting 
+        our snippet of code, and you are ready to collect. "
+      about_25c_p3: "One click is 25c, two clicks is two 25c, ... , 100,000 clicks is $25,000."
       about_more: Show more...
       about_less: Show less...
-      button_description: The 25c Button&trade; is easy to add to your website, 
-        blog, etc. -- just insert our code and start receiving 25c tips.
+      button_description: "Start receiving 25c tips by inserting your own 25c ButtonTM to your content:"
       button_more: Get your Button!
       button_less: Hide Button code.
       button_25c_title: 25c Button
