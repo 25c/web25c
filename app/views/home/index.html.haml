@@ -21,16 +21,16 @@
         window.location.hash = target;
       });
       
-      var hash = window.location.hash.substring(1);
-      if ($.inArray(hash, ['button', 'about']) != -1) {
-        var $link = $('a.more-link[href$="' + hash + '"]');
-        $link.click();
-        $(window).scrollTop($link.parent().offset().top - 40) 
-      }
+      // var hash = window.location.hash.substring(1);
+      // if ($.inArray(hash, ['button', 'about']) != -1) {
+      //   var $link = $('a.more-link[href$="' + hash + '"]');
+      //   $link.click();
+      //   $(window).scrollTop($link.parent().offset().top - 40) 
+      // }
     });
 
 .splash
-  .row
+  .row.buffer
     .span11
       %h1#splash-title= t('.value_proposition')
     .span4#splash-left
@@ -39,38 +39,22 @@
         %p.lead= raw t('.value_proposition_sub1a')
       %div#splash-buttons
         =link_to t('.call_to_action'), sign_in_path, :class => 'lead btn btn-large btn-warning', 
-          :style => "width: 250px; font-size: 20px;"
+          :id => 'action-button'
     .span7
       %div{:style => 'height: 250px; width: 500px; overflow: hidden'}
         #value-div{:style => 'position: relative'}
           %img#flow1{:src => image_path('flow1.png')}
-
-.sub-splash
   .row
     .span11
-      %h2= raw t('.about_25c_title')
       %p.lead= raw t('.about_25c_p1')
-      .more-content.hide{:name => 'about'}
-        %p.lead= raw t('.about_25c_p2')
-        %p.lead= raw t('.about_25c_p3')
-      %p.lead= link_to t('.about_more'), '#about', :class => 'more-link'
+      %p.lead= raw t('.about_25c_p3')
 
 .sub-splash
   .row
     .span11
       %h2= raw t('.button_25c_title')
       %p.lead= raw t('.button_description')
-      .more-content.hide{:name => 'button'}
+      .more-content{:name => 'button'}
         =render 'home/buttons/form'
         =render 'home/buttons/platforms'
-      %p.lead= link_to t('.button_more'), '#button', :class => 'more-link'
-
-/ .sub-splash
-/   .row
-/     .span11
-/       %h2= raw t('.url_25c_title')
-/       %p.lead= raw t('.url_description')
-/       .more-content.hide{:name => 'url'}
-/         =render 'home/buttons/short_url'
-/       %p.lead= link_to t('.url_more'), '#url', :class => 'more-link'
-      
+      / %p.lead= link_to t('.button_more'), '#button', :class => 'more-link'

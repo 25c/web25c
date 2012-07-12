@@ -265,13 +265,17 @@ class UsersController < ApplicationController
   end
   
   def tip
-    @user = User.new
-    @new = params[:new] ? params[:new] == "true" : true
-    @button_id = params[:button_id]
-    @referrer = params[:referrer]
-    session[:button_id] = @button_id
-    session[:referrer] = @referrer
-    render :layout => "blank"
+    if self.current_user
+      redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
+    else
+      @user = User.new
+      @new = params[:new] ? params[:new] == "true" : true
+      @button_id = params[:button_id]
+      @referrer = params[:referrer]
+      session[:button_id] = @button_id
+      session[:referrer] = @referrer
+      render :layout => "blank"
+    end
   end
   
   def confirm_tip

@@ -157,20 +157,12 @@ footer.navbar > .navbar-inner > .container {
 }
 
 .splash #splash-buttons {
-  position: absolute;
-  bottom: 0px;
-  left: -5px;
+  margin-top: 60px;
 }
 
 .splash #splash-left {
   position: relative;
   min-height: 270px;
-}
-
-.splash-text {
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 .splash, .sub-splash {
@@ -193,6 +185,11 @@ footer.navbar > .navbar-inner > .container {
 .splash .or-block {
   position: relative;
   top: 2px;
+}
+
+#action-button {
+  width: 250px; 
+  font-size: 20px;
 }
 
 .circle{
@@ -648,6 +645,10 @@ h4 {
 
 .table-wrapper {
   margin: 20px 0;
+}
+
+.clicks-table .click-amount {
+  width: 100px;
 }
 
 .clicks-table .click-date {

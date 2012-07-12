@@ -108,7 +108,7 @@ en:
         state3: Processed
         state4: Paid
         state5: Refunded
-        date_created: Date & Time Created
+        date_created: Most Recent
         provider: Content Provider
         referrer: Content Referrer
         clicker: Clicked By
@@ -116,6 +116,24 @@ en:
         confirm_delete: Are you sure you want to undo this click? The provider will not receive your tip.
         confirm_process: Are you sure you want to process all your donations?
         clicks_processed: Your donations have been processed!
+      undo_clicks:
+        title: Cancel Clicks
+        dashboard: Back to Dashboard
+        # state: State
+        # state0: New
+        # state1: Deducted
+        # state2: Funded
+        # state3: Processed
+        # state4: Paid
+        # state5: Refunded
+        date_created: Clicked
+        provider: Content Provider
+        referrer: Content Referrer
+        delete: Undo
+        confirm_delete: Are you sure you want to undo this click? The provider will not receive your tip.
+        confirm_process: Are you sure you want to process all your donations?
+        clicks_processed: Your donations have been processed!
+      
     buttons:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
@@ -162,7 +180,7 @@ en:
     index:
       or: Or
       register: Register with 25c
-      value_proposition: Put 25c Behind that Like
+      value_proposition: Put 25c Behind that Like.
       value_proposition_sub1q: "Add the <b>25c Button&trade;</b> to your blog, website, Youtube."
       value_proposition_sub1a: "And collect 25c with every click."
       value_proposition_sub2q: "Have a lot of followers?"

@@ -8,7 +8,6 @@
     window.deleteClickUrl = '#{ j home_delete_click_url }';
     window.confirmProcess = '#{ j t('.confirm_process') }';
     window.processClicksUrl = '#{ j home_process_clicks_url }';
-    window.clickState1 = '#{ j t('.state1') }';
     window.hasNewClicks = #{ @has_new_clicks };
 
 .row
@@ -25,7 +24,7 @@
       %p.payout-link-container
     %a= link_to t('.get_button'), home_buttons_path, :class => 'btn btn-primary'
     %a= link_to t('.fill_jar'), home_jar_path, :class => 'btn'
-    %a= link_to t('.request_payout'), home_payout_path, :class => 'btn'   
+    %a= link_to t('.undo_clicks'), home_undo_clicks_path, :class => 'btn'
 %hr
 %h3.table-title
   = t('.tips_given_title')
@@ -34,22 +33,19 @@
   %table#clicks-given.clicks-table.table.table-condensed.table-striped
     %thead
       %tr
-        %th
-        %th.click-date= t('.date_created')
-        %th.click-state= t('.state')
+        %th.click-amount= t('.amount')
         %th.click-provider= t('.provider')
         %th.click-referrer= t('.referrer')
         %th
+        %th.click-date= t('.date_created')
     %tbody
-      - @clicks_given.each do |click|
+      - @clicks_given.each do |id, click|
         %tr
+          %td.click-amount #{click.count} ($#{"%.2f" % (click.count.to_f / 4)})
+          %td.click-user= click.button.user.display_name
+          %td.click-referrer= link_to click.referrer, click.referrer, :target => "_blank"
           %td.click-date= click.created_at.to_s(:number)
           %td.click-date= l click.created_at, :format => :short
-          %td.click-state= t('.state' + click.state.to_s)
-          %td.click-user= click.button.user.display_name
-          %td.click-referrer= click.referrer
-          %td.click-delete.center
-            %a.delete-click.btn.btn-warning{:"data-click_id" => click.uuid}= t('.delete')
 - if @has_new_clicks
   %a#process-clicks.btn.btn-primary= t('.process_clicks')
 - else
@@ -63,18 +59,17 @@
   %table#clicks-received.clicks-table.table.table-condensed.table-striped
     %thead
       %tr
-        %th
-        %th= t('.date_created')
-        %th= t('.state')
+        %th.click-amount= t('.amount')
         %th.click-user= t('.clicker')
         %th.click-referrer= t('.referrer')
         %th
+        %th= t('.date_created')
     %tbody
-      - @clicks_received.each do |click|
+      - @clicks_received.each do |id, click|
         %tr
+          %td.click-amount= click.count
+          / %td.click-state= t('.state' + click.state.to_s)
+          %td.click-user= click.user.display_name
+          %td.click-referrer= link_to click.referrer, click.referrer, :target => "_blank"
           %td.click-date= click.created_at.to_s(:number)
           %td.click-date= l click.created_at, :format => :short
-          %td.click-state= t('.state' + click.state.to_s)
-          %td.click-user= click.user.display_name
-          %td.click-referrer= click.referrer
-          %td
