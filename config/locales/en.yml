@@ -23,10 +23,6 @@ en:
     account:
       jar:
         25c_units: 25c's
-        title: Refill Your 25c Jar
-        contents: 'Your 25c Jar contains:'
-        refill_title: Refill my 25c Jar with 25c's
-        refill_amount: "Amount to add:"
         auto_refill: Automatically refill my 25c Jar if balance drops below $5 (20 25c's).
         card_on_file: "Card on file:"
         use_existing: Use existing card
@@ -90,10 +86,10 @@ en:
     dashboard:
       index:
         title: Dashboard
-        contents: 'Your 25c Jar contains:'
+        contents: "Your 25c Jar contains:"
         get_button: Get My Button
         fill_jar: Fill My 25c Jar
-        request_payout: Request Payout
+        undo_clicks: Undo Clicks
         process_clicks: Process my donations now!
         tips_given_title: 25c's given
         tips_received_title: 25c's received
@@ -219,7 +215,7 @@ en:
       profile: Profile
       contact: Contact
       register: Register
-      sign_in_with: "Sign In with: "
+      sign_in_with: "Sign in with:"
       or: "Or: "
       sign_in: Sign In
       sign_out: Sign Out
@@ -271,7 +267,7 @@ en:
       google: You've been signed in automatically using your Google account.
     sign_in:
       title: Sign in to your 25c account
-      sign_in_with: "Sign In with:"
+      sign_in_with: "Sign in with:"
       facebook: Sign In with Facebook
       twitter: Sign In with Twitter
       google: Sign In with Google

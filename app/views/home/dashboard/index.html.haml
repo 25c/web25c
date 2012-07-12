@@ -17,7 +17,7 @@
 .row
   .span12
     .lead
-      %div= t('home.account.jar.contents')
+      %div= t('.contents')
       %div
         %b= @user.balance.to_s + ' ' + t('application.25c_units')
         %span ($#{"%.2f" % (@user.balance.to_f / 4)})
