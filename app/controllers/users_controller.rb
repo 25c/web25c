@@ -137,6 +137,9 @@ class UsersController < ApplicationController
           user.reload
         end
       elsif user.twitter_token.blank? or user.twitter_token_secret.blank?
+        if user.picture_file_name.blank? and !auth['info']['image'].blank?
+          user.picture_url = auth['info']['image'].dup.gsub(/_normal(\.(?i:gif)|\.(?i:jpe?g)|\.(?i:png))$/, "\\1")
+        end
         user.twitter_token = auth['credentials']['token']
         user.twitter_token_secret = auth['credentials']['secret']
         user.save!
@@ -152,7 +155,7 @@ class UsersController < ApplicationController
         user.google_refresh_token = auth['credentials']['refresh_token']
         user.first_name = auth['info']['first_name']
         user.last_name = auth['info']['last_name']
-        user.picture_url = auth['info']['image']
+        user.picture_url = auth['info']['image'] unless auth['info']['image'].blank?
         user.save!
         begin
           user.email = auth['info']['email']
@@ -167,6 +170,7 @@ class UsersController < ApplicationController
         end
         user.google_token = auth['credentials']['token']
         user.google_refresh_token = auth['credentials']['refresh_token']
+        user.picture_url = auth['info']['image'] if user.picture_file_name.blank? and !auth['info']['image'].blank?
         user.save!
       end
       notice = t('users.sign_in_callback.google')
@@ -175,7 +179,7 @@ class UsersController < ApplicationController
       redirect_to sign_in_path
     else
       self.current_user = user
-      user.update_profile if user.picture_file_name.blank? && !user.picture_url.blank?
+      user.update_profile if user.picture_file_name.blank? and !user.picture_url.blank?
       if session[:button_id]
         redirect_to confirm_tip_path(:button_id => session.delete(:button_id), 
           :referrer => session.delete(:referrer))
@@ -234,7 +238,7 @@ class UsersController < ApplicationController
       end
       # handle page redirecting
       if sign_in_successful
-        if has_tip && !alert
+        if has_tip and !alert
           redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
         elsif @user.is_new
           redirect_to_session_redirect_path(home_buttons_path)
