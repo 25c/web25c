@@ -47,6 +47,7 @@ en:
         failure: Your account was charged, but there was a problem updating your 25c Jar.
       payout:
         empty_jar_title: Request a payout from your 25c Jar
+        contents: "Your 25c Jar contains:"
         paypal_title: Request payment through Paypal
         paypal_email: Paypal account e-mail*
         ach_title: Request payment through ACH bank transfer

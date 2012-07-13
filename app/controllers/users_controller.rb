@@ -121,6 +121,9 @@ class UsersController < ApplicationController
         user.twitter_username = auth['info']['nickname']
         user.twitter_token = auth['credentials']['token']
         user.twitter_token_secret = auth['credentials']['secret']
+        unless auth['info']['image'].blank?
+          user.picture_url = auth['info']['image'].dup.gsub(/_normal(\.(?i:gif)|\.(?i:jpe?g)|\.(?i:png))$/, "\\1")
+        end
         unless auth['info']['name'].blank?
           names = auth['info']['name'].strip.split(" ")
           user.first_name = names[0]
@@ -149,6 +152,7 @@ class UsersController < ApplicationController
         user.google_refresh_token = auth['credentials']['refresh_token']
         user.first_name = auth['info']['first_name']
         user.last_name = auth['info']['last_name']
+        user.picture_url = auth['info']['image']
         user.save!
         begin
           user.email = auth['info']['email']
@@ -171,6 +175,7 @@ class UsersController < ApplicationController
       redirect_to sign_in_path
     else
       self.current_user = user
+      user.update_profile if user.picture_file_name.blank? && !user.picture_url.blank?
       if session[:button_id]
         redirect_to confirm_tip_path(:button_id => session.delete(:button_id), 
           :referrer => session.delete(:referrer))

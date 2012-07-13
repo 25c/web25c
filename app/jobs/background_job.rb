@@ -10,5 +10,5 @@ module BackgroundJob
   def self.perform(model_name, id, method)
     object = model_name.constantize.find_by_id(id)
     object.send(method)
-  end  
+  end
 end

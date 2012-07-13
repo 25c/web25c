@@ -51,36 +51,50 @@ class User < ActiveRecord::Base
     name
   end
   
-  def update_picture_from_facebook
+  def update_picture
     file = nil
     begin
-      graph = Koala::Facebook::API.new(self.facebook_access_token)
-      picture_url = graph.get_picture("me", :type => "large")
-      file = Curl::Easy.download_file(picture_url)
-      self.picture = file
-      self.save!
+      unless self.facebook_uid.blank?
+        graph = Koala::Facebook::API.new(self.facebook_access_token)
+        self.picture_url = graph.get_picture("me", :type => "large")
+      end
+      if self.picture_url.blank?
+        return
+      else
+        file = Curl::Easy.download_file(self.picture_url)
+        self.picture = file
+        self.save!
+      end
     rescue
       puts $!.inspect
       # on error, dispatch a job to retry
-      Resque.enqueue(BackgroundJob, 'User', self.id, 'update_picture_from_facebook')      
+      Resque.enqueue(BackgroundJob, 'User', self.id, 'update_picture')      
     ensure
       FileUtils.remove_entry_secure(file.path) unless file.nil?
     end
   end
   
-  def update_profile_from_facebook
+  def update_profile
     # dispatch a separate background job to download the profile picture
-    Resque.enqueue(BackgroundJob, 'User', self.id, 'update_picture_from_facebook')      
+    Resque.enqueue(BackgroundJob, 'User', self.id, 'update_picture')
     begin
-      graph = Koala::Facebook::API.new(self.facebook_access_token)
-      result = graph.get_object("me", :fields => "first_name,last_name,username")
-      self.first_name = result["first_name"]
-      self.last_name = result["last_name"]
-      self.nickname = result["username"]
-      self.save!
+      unless self.facebook_uid.blank?
+        graph = Koala::Facebook::API.new(self.facebook_access_token)
+        result = graph.get_object("me", :fields => "first_name,last_name,username,email")
+        self.first_name = result["first_name"]
+        self.last_name = result["last_name"]
+        self.nickname = result["username"]
+        self.save!
+        begin
+          self.email = result["email"]
+          self.save!
+        rescue
+          self.reload
+        end
+      end
     rescue
       # on error, dispatch a job to retry
-      Resque.enqueue(BackgroundJob, 'User', self.id, 'update_profile_from_facebook')      
+      Resque.enqueue(BackgroundJob, 'User', self.id, 'update_profile')      
     end
   end
   

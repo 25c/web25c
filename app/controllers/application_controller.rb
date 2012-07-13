@@ -49,7 +49,8 @@ class ApplicationController < ActionController::Base
           user.save!
           self.current_user = user
           self.current_user.refresh_facebook_access_token(@_facebook_session['code'])
-          self.current_user.update_profile_from_facebook
+          # self.current_user.update_profile_from_facebook
+          self.current_user.update_profile
         end
         if has_tip
           redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
