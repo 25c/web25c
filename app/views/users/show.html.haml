@@ -1,3 +1,4 @@
 - content_for :title, (@user.display_name + t('.title'))
 
+%iframe#upload-image{:src => upload_image_path }
 = render :partial => "profile_form"

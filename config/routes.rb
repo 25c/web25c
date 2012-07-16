@@ -39,6 +39,7 @@ Web25c::Application.routes.draw do
   match 'home/account' => 'users#update', :via => :put
   match 'home/profile' => 'users#edit_profile', :as => :home_profile, :via => :get
   match 'home/profile' => 'users#update_profile', :via => :put
+  match 'home/choose_nickname' => 'users#choose_nickname', :as => :choose_nickname
   
   # LJ: trying ajax trickery
   match 'home/upload_image' => 'users#upload_image', :as => :upload_image

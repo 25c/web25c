@@ -1,6 +1,11 @@
+- if @is_editable
+  - content_for :js do
+    = javascript_include_tag "edit-profile"
+
 #profile-container
   = simple_form_for @user, :url => home_profile_path, :html => { :multipart => true } do |f|
     .row
+      / =link_to t('.edit_url'), home_account_path, :class => 'btn buffer'
       .span4
         #user-profile
           .block

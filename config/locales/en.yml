@@ -253,6 +253,7 @@ en:
       last_name_default: Last Name
       enter_name: Enter your name here.
       enter_about: Enter information about yourself here.
+      edit_url: Change Profile URL
     edit_profile:
       title: Edit your public profile
       url_title: 'Your Profile will appear at:'

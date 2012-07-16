@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find_by_nickname_ci(params[:id])
-    @is_editable = false
+    @is_editable = self.current_user == @user
     @user.first_name = @user.email if @user.first_name.blank?
     @user.about = t('users.show.blank_about') if @user.about.blank?
     @button = @user.buttons[0]
@@ -106,6 +106,10 @@ class UsersController < ApplicationController
   def upload_image
     @user = self.current_user
     render :layout => "blank"
+  end
+  
+  def choose_nickname
+      @user = self.current_user
   end
   
   def sign_in_callback
