@@ -233,17 +233,8 @@ en:
     show:
       title: ' - 25c Profile'
       blank_about: 'I use 25c to get rewarded for my content.'
-    form:
-      title: Update Account Settings
-      edit_password_hint: Leave blank to keep current password.
-      nickname_url: "Your nickname determines your public profile URL: "
-      submit: Update
-    edit:
-      title: Account
-      request_payout: "Request Payout"
-    update:
-      success: Your account has been updated.
-    profile_form:
+      current_user: 'This is your profile. '
+      change_url: 'Click here to change your profile URL.'
       support_title: Please click the 25c Button below to contribute to
       support_title_no_name: Please click the 25c Button below to contribute.
       support_subtitle: Your click shows your appreciation and helps the people who provide great content.
@@ -254,11 +245,18 @@ en:
       enter_name: Enter your name here.
       enter_about: Enter information about yourself here.
       edit_url: Change Profile URL
-    edit_profile:
-      title: Edit your public profile
-      url_title: 'Your Profile will appear at:'
-      edit_url: Modify URL
-      no_url: Choose a nickname to set up your profile URL.
+      tips_title: "'s Tips"
+      no_clicks: No tips given yet.
+    form:
+      title: Update Account Settings
+      edit_password_hint: Leave blank to keep current password.
+      nickname_url: "Your nickname determines your public profile URL: "
+      submit: Update
+    edit:
+      title: Account
+      request_payout: "Request Payout"
+    update:
+      success: Your account has been updated.
     update_profile:
       success: Your profile has been updated.
     sign_in_callback:
@@ -291,3 +289,12 @@ en:
       visit_25c: Go to 25c.com
       view_account: View 25c Account
       close_window: Close this window
+    choose_nickname:
+      title: Choose User Nickname
+      instructions: "Your Nickname determines the URL of your user profile."
+      user_url: "Your current URL is: "
+      example: "For example: "
+      nickname: user_nickname
+      submit: Update Nickname
+      success: You have updated your profile nickname.
+      failure: That nickname has been taken. Please choose another.

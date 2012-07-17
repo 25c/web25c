@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :require_signed_in, :only => [ :edit, :update, :edit_profile, :update_profile ]
+  before_filter :require_signed_in,
+    :only => [ :edit, :update, :change_nickname, :update_nickname, :upload_image, :update_profile ]
   
   # GET /users
   # GET /users.json
@@ -19,7 +20,9 @@ class UsersController < ApplicationController
     @is_editable = self.current_user == @user
     @user.first_name = @user.email if @user.first_name.blank?
     @user.about = t('users.show.blank_about') if @user.about.blank?
-    @button = @user.buttons[0]
+    @button = @user.buttons[0]    
+    clicks = @user.clicks.includes(:button => :user).order("created_at DESC")
+    @click_sets = group_clicks_by_count(clicks)
     
     respond_to do |format|
       format.html # show.html.erb
@@ -49,13 +52,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = self.current_user
-    if @user.nickname
-      @url = 'http://' + request.domain
-      @url += ':3000' if request.domain == 'localhost'
-      @url += '/' + @user.nickname
-    else
-      @url = 'http://25c.com/example'
-    end
+    @url = get_profile_url(@user)
   end
   
   def update
@@ -66,23 +63,12 @@ class UsersController < ApplicationController
         format.html { redirect_to home_account_path, notice: t('users.update.success') }
         format.json { head :no_content }
       else
+        # @user.reload
+        @url = get_profile_url(@user)
         format.html { render action: "edit" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-  end
-  
-  def edit_profile
-    @user = self.current_user
-    @button = @user.buttons[0]
-    if @user.nickname
-      @url = 'http://' + request.domain
-      @url += ':3000' if request.domain == 'localhost'
-      @url +=  '/' + @user.nickname
-    else
-      @url = ''
-    end
-    @is_editable = true
   end
   
   def update_profile
@@ -91,13 +77,12 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         if params[:user].include?(:picture)
-          format.html { render action: 'upload_image', :url => @user.picture }
+          format.html { render action: 'upload_image', notice: t('users.update.success') }
           format.json { render json: true, head: :ok }
         else
           format.json { render json: true, head: :ok }
         end
       else
-        format.html { render action: "edit_profile" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -109,7 +94,24 @@ class UsersController < ApplicationController
   end
   
   def choose_nickname
-      @user = self.current_user
+    @user = self.current_user
+    @url = get_profile_url(@user)
+  end
+  
+  def update_nickname
+    @user = self.current_user
+    @user.editing = true
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to profile_path(:id => @user.nickname), notice: t('users.choose_nickname.success') }
+        format.json { render json: true, head: :ok }
+      else
+        @user.reload
+        @url = get_profile_url(@user)
+        format.html { redirect_to choose_nickname_path, alert: t('users.choose_nickname.failure')}
+        # format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
   def sign_in_callback
@@ -141,11 +143,12 @@ class UsersController < ApplicationController
           user.reload
         end
       elsif user.twitter_token.blank? or user.twitter_token_secret.blank?
-        if user.picture_file_name.blank? and !auth['info']['image'].blank?
-          user.picture_url = auth['info']['image'].dup.gsub(/_normal(\.(?i:gif)|\.(?i:jpe?g)|\.(?i:png))$/, "\\1")
-        end
         user.twitter_token = auth['credentials']['token']
         user.twitter_token_secret = auth['credentials']['secret']
+        user.save!
+      end
+      if user.picture_file_name.blank? and not auth['info']['image'].blank?
+        user.picture_url = auth['info']['image'].dup.gsub(/_normal(\.(?i:gif)|\.(?i:jpe?g)|\.(?i:png))$/, "\\1")
         user.save!
       end
       notice = t('users.sign_in_callback.twitter')
@@ -173,9 +176,12 @@ class UsersController < ApplicationController
           return
         end
         user.google_token = auth['credentials']['token']
-        user.google_refresh_token = auth['credentials']['refresh_token']
-        user.picture_url = auth['info']['image'] if user.picture_file_name.blank? and !auth['info']['image'].blank?
+        user.google_refresh_token = auth['credentials']['refresh_token']        
         user.save!
+      end
+      if user.picture_file_name.blank? and not auth['info']['image'].blank?
+        user.picture_url = auth['info']['image']
+        user.save!   
       end
       notice = t('users.sign_in_callback.google')
     end
@@ -183,7 +189,7 @@ class UsersController < ApplicationController
       redirect_to sign_in_path
     else
       self.current_user = user
-      user.update_profile if user.picture_file_name.blank? and !user.picture_url.blank?
+      user.update_profile if user.picture_file_name.blank? and not user.picture_url.blank?
       if session[:button_id]
         redirect_to confirm_tip_path(:button_id => session.delete(:button_id), 
           :referrer => session.delete(:referrer))
@@ -210,7 +216,7 @@ class UsersController < ApplicationController
           if @user.errors
             alert = ""
             @user.errors.full_messages.uniq.each do |message|
-              if !message.include? "digest"
+              if not message.include? "digest"
                 alert += message
                 alert += ", " if message != @user.errors.full_messages.last
               end
@@ -242,7 +248,7 @@ class UsersController < ApplicationController
       end
       # handle page redirecting
       if sign_in_successful
-        if has_tip and !alert
+        if has_tip and not alert
           redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
         elsif @user.is_new
           redirect_to_session_redirect_path(home_buttons_path)
@@ -251,7 +257,7 @@ class UsersController < ApplicationController
         end
         return
       else
-        @user = User.new if !@user
+        @user = User.new if not @user
         if has_tip
           redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer], :new => @new)
         end
@@ -300,7 +306,7 @@ class UsersController < ApplicationController
       return
     end
     button = Button.find_by_uuid(params[:button_id])
-    if !button.nil?
+    if not button.nil?
       click = @user.clicks.build()
       click.uuid = UUID.new.generate
       click.user_id = @user.id
@@ -320,6 +326,20 @@ class UsersController < ApplicationController
       flash.now[:notice] = notice
     end
     render :layout => "blank"
+  end
+  
+  private
+  
+  def get_profile_url(user)
+    url = 'http://' + request.domain
+    url += ':3000' if request.domain == 'localhost'
+    url += '/'
+    if user and not user.nickname.blank?
+      url += user.nickname
+    else
+      url += t('users.choose_nickname.nickname')
+    end
+    return url
   end
     
 end

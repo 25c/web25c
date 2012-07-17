@@ -333,7 +333,6 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
 } 
 
 .button-choice {
-  border: 1px solid red;
   position: relative;
   float: left;
   margin: 10px; 
@@ -866,6 +865,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 #button-holder {
+  min-height: 100px;
   margin: 40px 0 0 200px;
 }
 
@@ -874,4 +874,8 @@ table.table thead .sorting_desc_disabled {
   width: 0;
   border: none;
   background-color: transparent;
+}
+
+.change_profile_url {
+  margin-top: 40px;
 }

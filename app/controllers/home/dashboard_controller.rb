@@ -28,21 +28,5 @@ class Home::DashboardController < Home::HomeController
     end
     render :nothing => true
   end
-  
-  private
-  
-  def group_clicks_by_count(clicks)
-    grouped_clicks = {}
-    clicks.each do |click|
-      id = click.button.id
-      if grouped_clicks[id]
-        grouped_clicks[id][:count] += 1
-      else
-        click[:count] = 1
-        grouped_clicks[id] = click
-      end
-    end
-    return grouped_clicks
-  end
-  
+
 end

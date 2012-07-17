@@ -59,6 +59,7 @@ module Web25c
     config.assets.precompile += ['sign-in-form.js']
     config.assets.precompile += ['update-dashboard.js']
     config.assets.precompile += ['undo-clicks.js']
+    config.assets.precompile += ['profile-click-table.js']
     config.assets.precompile += ['jquery.dataTables.min.js']
     config.assets.precompile += ['paging.js']
 

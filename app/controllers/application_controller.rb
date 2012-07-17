@@ -123,4 +123,18 @@ class ApplicationController < ActionController::Base
     @url_base
   end
   
+  def group_clicks_by_count(clicks)
+    click_sets = {}
+    clicks.each do |click|
+      id = click.button.id
+      if click_sets[id]
+        click_sets[id][0] += 1
+      else
+        click_set = [1, click]
+        click_sets[id] = click_set
+      end
+    end
+    return click_sets.values.sort_by { |set| -set[0]  }
+  end
+  
 end

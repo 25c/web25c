@@ -3,7 +3,6 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 } );
 
 $(document).ready(function(){
-  
   // activate data tables
   $('table.clicks-table').dataTable({
     // sizing and style
@@ -13,20 +12,9 @@ $(document).ready(function(){
     "aoColumns": [                  // define setting for each col
       null,
       null,
-      {"bVisible": false},          // invisible sortable date col
+      {"bVisible": false},         // invisible sortable date col
       {"iDataSort": 2},              // visible readable date - sorting linked to col 4
       {"bSortable": false}          // don't sort by cancel button
     ]
-  });
-
-  // bind click deleting action to buttons
-  $(".delete-click").click(function() {
-    if (confirm(confirmDelete)) {
-      $this = $(this);
-      $.post(deleteClickUrl, { click_id: $this.attr('data-click_id') });
-      // $this.parent().parent().fadeOut('slow');
-      $this.parent().parent().find('td, a').css('color', '#bbb');
-      $this.fadeOut('fast');
-    }
   });
 });

@@ -32,7 +32,7 @@ $(document).ready(function() {
     var updates = { user: userData };
     $.ajax({
       type: "PUT",
-      url: '#{ home_profile_path }',
+      url: updateProfileUrl,
       data: JSON.stringify(updates),
       contentType: 'application/json',
       dataType: 'json',

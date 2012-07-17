@@ -40,14 +40,14 @@
         %th
         %th.click-date= t('.date_created')
     %tbody
-      - @clicks_given.each do |id, click|
+      - @clicks_given.each do |set|
         %tr
-          %td= click.count
-          %td.click-amount #{click.count} ($#{"%.2f" % (click.count.to_f / 4)})
-          %td.click-user= click.button.user.display_name
-          %td.click-referrer= link_to click.referrer, click.referrer, :target => "_blank"
-          %td.click-date= click.created_at.to_s(:number)
-          %td.click-date= l click.created_at, :format => :short
+          %td= set[0]
+          %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+          %td.click-user= set[1].button.user.display_name
+          %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
+          %td.click-date= set[1].created_at.to_s(:number)
+          %td.click-date= l set[1].created_at, :format => :short
 - if @has_new_clicks
   %a#process-clicks.btn.btn-primary= t('.process_clicks')
 - else
@@ -68,12 +68,12 @@
         %th
         %th= t('.date_created')
     %tbody
-      - @clicks_received.each do |id, click|
+      - @clicks_received.each do |set|
         %tr
-          %td= click.count
-          %td.click-amount #{click.count} ($#{"%.2f" % (click.count.to_f / 4)})
+          %td= set[0]
+          %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
           / %td.click-state= t('.state' + click.state.to_s)
-          %td.click-user= click.user.display_name
-          %td.click-referrer= link_to click.referrer, click.referrer, :target => "_blank"
-          %td.click-date= click.created_at.to_s(:number)
-          %td.click-date= l click.created_at, :format => :short
+          %td.click-user= set[1].user.display_name
+          %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
+          %td.click-date= set[1].created_at.to_s(:number)
+          %td.click-date= l set[1].created_at, :format => :short
