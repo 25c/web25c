@@ -10,33 +10,39 @@
         %b= t('.button_form') 
       #button-choice-container
         .button-choice
-          %p= t('.btn-large')
-          %img{:src => image_path('25c-rot-btn-large.png'), :'data-size' => 'btn-large'}
+          %input.button-radio{:type => 'radio'}
+          %span= t('.btn-large')
+          / %img{:src => image_path('25c-rot-btn-large.png'), :'data-size' => 'btn-large'}
           %img.unrot{:src => image_path('25c-btn-large.png'), :'data-size' => 'btn-large'}
         .button-choice
-          %img{:src => image_path('25c-rot-icon-large.png'), :'data-size' => 'icon-large'}
+          %input.button-radio{:type => 'radio'}
+          %span= t('.icon-large')
+          / %img{:src => image_path('25c-rot-icon-large.png'), :'data-size' => 'icon-large'}
           %img.unrot{:src => image_path('25c-icon-large.png'), :'data-size' => 'icon-large'}
-          %p= t('.icon-large')
         .button-choice
-          %img{:src => image_path('25c-rot-btn-medium.png'), :'data-size' => 'btn-medium'}
+          %input.button-radio{:type => 'radio'}
+          %span= t('.btn-medium')
+          / %img{:src => image_path('25c-rot-btn-medium.png'), :'data-size' => 'btn-medium'}
           %img.unrot{:src => image_path('25c-btn-medium.png'), :'data-size' => 'btn-medium'}
-          %p= t('.btn-medium')
         .button-choice
-          %img{:src => image_path('25c-rot-icon-medium.png'), :'data-size' => 'icon-medium'}
+          %input.button-radio{:type => 'radio'}
+          %span= t('.icon-medium')
+          / %img{:src => image_path('25c-rot-icon-medium.png'), :'data-size' => 'icon-medium'}
           %img.unrot{:src => image_path('25c-icon-medium.png'), :'data-size' => 'icon-medium'}
-          %p= t('.icon-medium')
         .button-choice
-          %img{:src => image_path('25c-rot-btn-small.png'), :'data-size' => 'btn-small'}
+          %input.button-radio{:type => 'radio'}
+          %span= t('.btn-small')
+          / %img{:src => image_path('25c-rot-btn-small.png'), :'data-size' => 'btn-small'}
           %img.unrot{:src => image_path('25c-btn-small.png'), :'data-size' => 'btn-small'}
-          %p= t('.btn-small')
         .button-choice
-          %img{:src => image_path('25c-rot-icon-small.png'), :'data-size' => 'icon-small'}
+          %input.button-radio{:type => 'radio'}
+          %span= t('.icon-small')
+          / %img{:src => image_path('25c-rot-icon-small.png'), :'data-size' => 'icon-small'}
           %img.unrot{:src => image_path('25c-icon-small.png'), :'data-size' => 'icon-small'}
-          %p= t('.icon-small')
       .clear
     .span4
-      = f.input :title, :required => false, :label => t('.button_name')
-      = f.input :code_type, :required => true, :as => :radio_buttons, 
+      / = f.input :title, :required => false, :label => t('.button_name')
+      = f.input :code_type, :required => true, :as => :radio_buttons,
         :collection => [[t('.javascript'), "javascript"],[t('.iframe'), "iframe"]], 
         :label => t('.button_type')
       = f.input :size, :as => :hidden
@@ -59,7 +65,3 @@
         - else
           = f.button :submit, :class => 'btn btn-primary'
 %hr
-
-/dummy tooltip
-#tip-25c-tooltip 
-  %p Click to tip 25c!

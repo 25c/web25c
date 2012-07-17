@@ -19,8 +19,7 @@ $(document).ready(function(){
 		'icon-small': ' width="25" height="25"'
 	};
   
-  var jsOpen = '<a href="https://www.plus25c.com/tip/'
-    + buttonId + '" class="tip-25c-button" data-size="';
+  var jsOpen = '<a href="https://www.plus25c.com/tip/' + buttonId + '" class="tip-25c-button" data-size="';
   var jsClose = '</a>\n<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];\
     if(!d.getElementById(id)){js=d.createElement(s);js.id=id;\
     js.src="//api.plus25c.com/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}\
@@ -30,9 +29,6 @@ $(document).ready(function(){
   var iframeClose = '></iframe>';
   
   var buttonSize = $('#button_size').val();
-  var timer = null;
-  var fakeCounter = 0;
-  var $tooltip = $("#tip-25c-tooltip");
   
   var updateButtonCode = function() {
     if ($('input.radio_buttons:checked').val() == 'javascript') {
@@ -41,22 +37,16 @@ $(document).ready(function(){
       newCode = iframeOpen + buttonSize + iframeMid + imageSizesDict[buttonSize] + iframeClose;
     }
     $('#button-code-block').text(newCode);
-    if (fakeCounter > 0) {
-      $tooltip.html('<b>' + fakeCounter + ' &times; 25c (= $' + (fakeCounter / 4).toFixed(2) 
-        + ') donated</b> -- Thank you! Click again to micro-donate another 25c.');
-    } else {
-      $tooltip.html("Super-like it? Click to like & micro-donate 25c!");
-    }
   };
-  // add update title field -> modify js string
   
   // button click visual feedback
-  $('.button-choice').click(function() {
-      $(this).find("img.unrot").fadeOut(50).delay(50).fadeIn(50);
-  });
+  // $('.button-choice').click(function() {
+  //     $(this).find("img.unrot").fadeOut(50).delay(50).fadeIn(50);
+  // });
   
-  $('.button-choice>img[data-size="' + buttonSize + '"]').addClass('selected-button');
-  
+  $('.button-choice>img[data-size="' + buttonSize + '"]')
+    .addClass('selected-button').parent().find('input[type=radio]').attr('checked', 'checked');
+
   updateButtonCode();
   
   // when input changes, update code
@@ -65,52 +55,15 @@ $(document).ready(function(){
   });
   
   // when new image changes, update code and process image selection
-  $('.button-choice img').click(function() {
+  $('.button-choice').click(function() {
     $this = $(this);
-  
-    fakeCounter++;
-    $tooltip.css('visibility', 'visible');
-    
-    buttonSize = $this.attr('data-size');
+    $img = $this.find('img');
+    buttonSize = $img.attr('data-size');
     updateButtonCode();
+    $('#button-choice-container input[type=radio]').removeAttr('checked');
+    $this.find('input[type=radio]').attr('checked', 'checked');
     $('#button_size').val(buttonSize);
-    $this.parent().parent().find('.selected-button').removeClass('selected-button');
-    $this.addClass('selected-button');
-    $this.trigger('mouseenter');
+    $this.parent().find('.selected-button').removeClass('selected-button');
+    $img.addClass('selected-button');
   });
-  
-  var hideTooltip = function() {
-    $("#tip-25c-tooltip").css("visibility", "hidden");
-  }
-  
-  $('.button-choice').bind({
-		mouseenter: function() {
-      var $this = $(this);
-			if ($this.children('img').hasClass('selected-button')) {
-			  clearTimeout(timer);
-  			var offset = $this.offset();
-  		  var height = $this.height();
-  			$tooltip.css({
-          visibility: "visible",
-  				left: offset.left,
-  				top: offset.top + height + 10
-  			});
-  		} else {
-  		  hideTooltip();
-		  }
-		},
-		mouseleave: function() {
-			timer = setTimeout(hideTooltip, 500);
-		}
-	});
-	
-  // dummy tooltip functionality
-  $("#tip-25c-tooltip").bind({
-		mouseenter: function() {
-			clearTimeout(timer);			
-		},
-		mouseleave: function() {
-			timer = setTimeout(hideTooltip, 500);
-		}
-	});
 });

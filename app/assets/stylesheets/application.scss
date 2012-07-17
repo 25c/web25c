@@ -336,10 +336,10 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
   position: relative;
   float: left;
   margin: 10px; 
-  height: 60px;
+  height: 70px;
   width: 120px;
-  line-height: 60px;
   text-align: center;
+  cursor: pointer;
 }
 
 .button-choice img {
@@ -382,14 +382,13 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
   background-color: #ffeae1;
 }
 
+.button-choice input[type="radio"] {
+  margin-right: 5px;
+}
+
 .selected-button {
   border-radius: 5px;
   background-color: #ffeae1;
-}
-
-#button-preview {
-  height: 60px;
-  margin: 10px 0 35px 0;
 }
 
 .button-choice img, #button-preview img {
