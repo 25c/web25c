@@ -179,21 +179,21 @@ en:
       register: Register with 25c
       value_proposition: Micro-Donations Made Easy
       value_proposition_sub1q: "Add the <b>25c Button&trade;</b> to your blog, website, Youtube..."
-      value_proposition_sub1a: "Collect one quarter with every click."
+      value_proposition_sub1a: "Collect 25c a click. "
       value_proposition_sub2q: "Have a lot of followers?"
       value_proposition_sub2a: "Use the <b>25c Short URL</b>. Earn along with the creators you help people discover."
       call_to_action: Start Collecting 25c's Now!
       about_25c_title: About 25c
-      about_25c_p1: "The 25c Button&trade; combines a 'Like' with a 25c donation.   For the truly valued things. "
+      about_25c_p1: "The 25c Button&trade;: A 'Like' with a 25c donation. "
       about_25c_p2: "Display the 25c Button&trade; on your blog or Youtube profile by inserting 
         our snippet of code, and you are ready to collect. "
-      about_25c_p3: "One click is 25c, two clicks is two 25c, ... , 100,000 clicks is $25,000."
+      about_25c_p3: "Clicked once is 25c, twice is two 25c's, ... , and 100,000 times is $25,000. "
       about_more: Show more...
       about_less: Show less...
       button_description: "Start receiving 25c tips by inserting your own 25c ButtonTM to your content:"
       button_more: Get your Button!
       button_less: Hide Button code.
-      button_25c_title: 25c Button
+      button_25c_title: Get Your Own 25c Button
       url_25c_title: 25c Short URL
       url_description: Use the 25c Short URL to refer great content & causes - and earn 5 cents for 
         each 25c donation generated.
