@@ -73,7 +73,7 @@ hr {
  *---------------------------- */
 .navbar .navbar-inner {
   padding: 6px 0 6px 0;
-  height: 30px;
+  height: 50px;
   background-image: none;
   background-color: white;
 }
@@ -92,12 +92,19 @@ hr {
 .navbar .nav > li.navbar-text {
   margin: 0 5px;
 }
+
+.navbar .navbar-text {
+  line-height: 55px;
+}
+
 #nav-logo {
   margin-top: -2px;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 #nav-tagline {
   color: #e3e3e3;
+  margin-right: 10px;
+  font-size: 18px;
 }
 
 .nav li.dropdown.open .caret,
@@ -120,7 +127,7 @@ hr {
 
 .navbar .nav > li.dropdown > a {
     padding: 6px 10px 5px;
-    margin: 2px 5px 5px;
+    margin: 12px 5px 5px;
 }
 
 .thumb-image {
