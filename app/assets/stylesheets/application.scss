@@ -14,7 +14,7 @@
 
 body {
   background-color: white;
-	padding-top: 60px;
+	padding-top: 80px;
 }
 
 img {
@@ -71,9 +71,10 @@ hr {
 
 /* Header Nav
  *---------------------------- */
+
 .navbar .navbar-inner {
   padding: 6px 0 6px 0;
-  height: 30px;
+  height: 50px;
   background-image: none;
   background-color: #f6f6f6;
 }
@@ -92,12 +93,19 @@ hr {
 .navbar .nav > li.navbar-text {
   margin: 0 5px;
 }
+
+.navbar .navbar-text {
+  line-height: 50px;
+  font-size: 15px;
+}
+
 #nav-logo {
   margin-top: -2px;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 #nav-tagline {
   color: #e3e3e3;
+  margin-right: 10px;
 }
 
 .nav li.dropdown.open .caret,
@@ -120,7 +128,7 @@ hr {
 
 .navbar .nav > li.dropdown > a {
     padding: 6px 10px 5px;
-    margin: 2px 5px 5px;
+    margin: 7px 5px 5px;
 }
 
 .thumb-image {
@@ -226,6 +234,7 @@ footer.navbar > .navbar-inner > .container {
 }
 
 ul.login-buttons > li.login-logo > a {
+  margin-top: 5px;
   cursor: pointer;
   padding: 4px;
 }
@@ -345,7 +354,6 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
 
 .button-choice img {
   position: absolute;
-  top: 50%;
   left: 50%;
 }
 

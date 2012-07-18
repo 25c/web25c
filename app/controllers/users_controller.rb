@@ -326,16 +326,21 @@ class UsersController < ApplicationController
     end
     button = Button.find_by_uuid(params[:button_id])
     if not button.nil?
-      click = @user.clicks.build()
-      click.uuid = UUID.new.generate
-      click.user_id = @user.id
-      click.button_id = button.id
-      click.referrer = params[:referrer]
-      if click.save
-        notice = t('users.sign_in.click_success')
-      else
-        alert = t('users.sign_in.click_failure')
+      data = {
+        :uuid => UUID.new.generate,
+        :user_uuid => @user.uuid,
+        :button_uuid => button.uuid,
+        :referrer => params[:referrer],
+        :user_agent => request.env['HTTP_USER_AGENT'],
+        :ip_address => request.remote_ip,
+        :created_at => Time.new.utc
+      }
+      counter_key = "#{@user.uuid}:#{button.uuid}"
+      DATA_REDIS.multi do
+        DATA_REDIS.lpush 'QUEUE', data.to_json
+        DATA_REDIS.incr counter_key
       end
+      notice = t('users.sign_in.click_success')
     else
       alert = t('users.sign_in.button_not_found')
     end
