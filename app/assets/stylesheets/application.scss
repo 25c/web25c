@@ -13,8 +13,8 @@
 */
 
 body {
+  background-color: white;
 	padding-top: 60px;
-	background-color: #f6f6f6;
 }
 
 img {
@@ -35,9 +35,9 @@ img {
 }
 
 hr {
-  color: #e6e6e6;
-  background-color: #e6e6e6;
-  border-color: #e6e6e6;
+  color: #ddd;
+  background-color: #ddd;
+  border-color: #ddd;
 }
 
 .page-header {
@@ -75,7 +75,7 @@ hr {
   padding: 6px 0 6px 0;
   height: 30px;
   background-image: none;
-  background-color: white;
+  background-color: #f6f6f6;
 }
 .navbar #nav-tagline {
   color: #999;
@@ -133,11 +133,11 @@ hr {
 /* Footer
  *---------------------------- */
 footer.navbar {
+  background-color: #f6f6f6;
   margin: 100px 0 0 0;
 }
 
 footer.navbar > .navbar-inner {
-  background-color: white;
   box-shadow: none;
   border-top: 1px solid #eee;
 }
@@ -168,7 +168,7 @@ footer.navbar > .navbar-inner > .container {
 .splash, .sub-splash {
   padding: 38px;
   margin: 20px 0px;
-  background-color: #eee;
+  background-color: #f6f6f6;
   border-radius: 10px;
   border: 1px solid #ddd;
 }
@@ -330,14 +330,15 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
  *---------------------------- */
 #button-choice-container {
   height: 120px;
-} 
+}
 
 .button-choice {
+  border: 2px solid transparent;
   position: relative;
   float: left;
-  margin: 10px; 
-  height: 70px;
-  width: 120px;
+  margin: 2px; 
+  height: 100px;
+  width: 130px;
   text-align: center;
   cursor: pointer;
 }
@@ -350,35 +351,36 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
 
 .button-choice img[data-size="btn-large"] {
   margin-left: -60px;
-  margin-top: -10px;
+  margin-top: -20px;
 }
 
 .button-choice img[data-size="icon-large"] {
   margin-left: -30px;
-  margin-top: -10px;
+  margin-top: -20px;
 }
 
 .button-choice img[data-size="btn-medium"] {
   margin-left: -40px;
+  margin-top: -10px;
 }
 
 .button-choice img[data-size="icon-medium"] {
   margin-left: -20px;
+  margin-top: -10px;
 }
 
 .button-choice img[data-size="btn-small"] {
   margin-left: -25px;
-  margin-top: 8px;
+  margin-top: -2px;
 }
 
 .button-choice img[data-size="icon-small"] {
   margin-left: -12px;
-  margin-top: 8px;
+  margin-top: -2px;
 }
 
-.button-choice:hover img {
+.button-choice:hover {
   border-radius: 5px;
-  border-color: #ffbda0;
   background-color: #ffeae1;
 }
 
@@ -389,11 +391,12 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
 .selected-button {
   border-radius: 5px;
   background-color: #ffeae1;
+  border: 2px solid #ffbda0;
+  cursor: auto;
 }
 
 .button-choice img, #button-preview img {
   vertical-align: middle;
-  cursor: pointer;
 }
 
 #code-wrapper {
@@ -507,7 +510,7 @@ pre#button-code-block {
   float: left;
 }
 
-/* Account Page Elements
+/* Tip Page Elements
  *---------------------------- */
 #existing-card {
  margin: 10px 0; 
@@ -521,7 +524,7 @@ pre#button-code-block {
   margin-bottom: 10px;
 }
 
-/* Account Credit Card Form
+/* Tip Credit Card Form
  *---------------------------- */
 form#transaction-form input[type=text], form#transaction-form input[type=submit] {
   display: block;
@@ -691,6 +694,23 @@ h4 {
   margin: 15px 0 5px 0;
 }
 
+form .form-actions {
+  background-color: transparent;
+}
+
+/* SIMPLE_FORM OVERRIDES
+ *---------------------------- */
+
+.simple_form > .control-group.boolean > .controls > label.checkbox {
+  float: left;
+}
+
+.simple_form > .control-group.boolean > .controls > p.help-block {
+  margin-top: 4px;
+}
+
+
+
 /* BOOTSTRAP - DATATABLES
 *---------------------------- */
 
@@ -763,7 +783,7 @@ table.table thead .sorting_desc_disabled {
 #user-profile {
   padding: 20px;
   border: 2px solid #ddd;
-  background-color: white;
+  background-color: #f6f6f6;
   border-radius: 10px;
 }
 
@@ -811,7 +831,7 @@ table.table thead .sorting_desc_disabled {
 #user-profile:hover input, #user-profile:hover textarea.editing, #user-profile input.focused, 
 #user-profile textarea.focused {
   display: block;
-  background-color: #f2f2f2;
+  background-color: white;
   border: 1px solid #ccc;
 }
 
@@ -875,6 +895,13 @@ table.table thead .sorting_desc_disabled {
   background-color: transparent;
 }
 
-.change_profile_url {
-  margin-top: 40px;
+/* USER AGREEMENT
+*---------------------------- */
+
+#user-agreement-container {
+  padding: 20px;
+  margin: 40px 0 20px 0;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #ccc;
 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120713003346) do
+ActiveRecord::Schema.define(:version => 20120718001942) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",        :null => false
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(:version => 20120713003346) do
     t.string   "google_token"
     t.string   "google_refresh_token"
     t.string   "picture_url"
+    t.boolean  "has_agreed",            :default => false
+    t.boolean  "show_donations",        :default => true
   end
 
   add_index "users", ["google_uid"], :name => "index_users_on_google_uid", :unique => true

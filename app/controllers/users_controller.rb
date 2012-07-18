@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :require_signed_in,
-    :only => [ :edit, :update, :change_nickname, :update_nickname, :upload_image, :update_profile ]
+  before_filter :require_signed_in, :except => [ :index, :show, :new, :sign_in, :sign_in_callback, :tip, :confirm_tip]
+  before_filter :check_user_agreement, :except => [ :user_agremeent, :set_user_field, :sign_out ]
   
   # GET /users
   # GET /users.json
@@ -11,6 +11,25 @@ class UsersController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @users }
     end
+  end
+  
+  def user_agreement
+    # user agreement page
+  end
+  
+  def set_user_field
+    if params.has_key?(:field) and params.has_key?(:value)
+      if ['has_agreed', 'is_new', 'auto_refill', 'show_donations'].include?(params[:field])
+        user = self.current_user
+        user.editing = true
+        self.current_user[params[:field]] = params[:value]
+        begin
+          self.current_user.save!
+          user.editing = false
+        end
+      end
+    end
+    render :nothing => true
   end
 
   # GET /users/1

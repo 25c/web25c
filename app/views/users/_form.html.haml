@@ -1,8 +1,18 @@
+= content_for(:js) do
+  :javascript
+    window.setUserFieldUrl = '#{ j set_user_field_url }';
+    $('#user_show_donations').change(function() {
+      var showDonations = false;
+      if ($(this).is(':checked')) showDonations = true;
+      $.post(setUserFieldUrl, { field: 'show_donations', value: showDonations });
+    });
+
 .row
   .span12
     %h3.buffer= t('.title')
     = simple_form_for @user, :url => @user.new_record? ? sign_in_path : home_account_path, 
       :html => { :class => 'form-horizontal' } do |f|
+      / = f.input :show_donations, :hint => t('.show_donations')
       = f.input :nickname, :hint => t('.nickname_url') + link_to(@url, @url)
       = f.input :first_name
       = f.input :last_name

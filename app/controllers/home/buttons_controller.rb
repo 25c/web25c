@@ -1,5 +1,5 @@
 class Home::ButtonsController < Home::HomeController
-  
+
   def index
     @is_new = self.current_user.is_new
     @button = self.current_user.buttons[0]
@@ -36,15 +36,6 @@ class Home::ButtonsController < Home::HomeController
       flash[:alert] = @button.errors.full_messages
     end
     redirect_to home_buttons_path(@button)
-  end
-  
-  def dismiss_welcome
-    @user = self.current_user
-    @user.editing = true
-    self.current_user.is_new = false
-    self.current_user.save
-    @user.editing = false
-    render :nothing => true
   end
   
 end

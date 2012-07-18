@@ -190,7 +190,7 @@ en:
       about_25c_p3: "Clicked once is 25c, twice is two 25c's, ... , and 100,000 times is $25,000. "
       about_more: Show more...
       about_less: Show less...
-      button_description: "Start receiving 25c tips by inserting your own 25c ButtonTM to your content:"
+      button_description: "Start receiving 25c donations by inserting your own 25c ButtonTM to your content:"
       button_more: Get your Button!
       button_less: Hide Button code.
       button_25c_title: Get Your Own 25c Button
@@ -245,10 +245,11 @@ en:
       enter_name: Enter your name here.
       enter_about: Enter information about yourself here.
       edit_url: Change Profile URL
-      tips_title: "'s Tips"
-      no_clicks: No tips given yet.
+      tips_title: "'s Donations"
+      no_clicks: No donations given yet.
     form:
       title: Update Account Settings
+      show_donations: Show donations on my profile page
       edit_password_hint: Leave blank to keep current password.
       nickname_url: "Your nickname determines your public profile URL: "
       submit: Update
@@ -298,3 +299,8 @@ en:
       submit: Update Nickname
       success: You have updated your profile nickname.
       failure: That nickname has been taken. Please choose another.
+    user_agreement:
+      agreement_text: "By clicking <b>Agree and Continue</b>, I agree to the following:"
+      terms: User Terms
+      privacy: Privacy Policy
+      agree: Agree and Continue

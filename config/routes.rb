@@ -38,11 +38,13 @@ Web25c::Application.routes.draw do
   match 'home/account' => 'users#edit', :as => :home_account, :via => :get
   match 'home/account' => 'users#update', :via => :put
   match 'home/profile' => 'users#update_profile', :via => :put, :as => :update_profile
+  # hidden iframe page for ajax-like picture loading
+  match 'home/upload_image' => 'users#upload_image', :as => :upload_image
   match 'home/choose_nickname' => 'users#choose_nickname', :as => :choose_nickname, :via => :get
   match 'home/choose_nickname' => 'users#update_nickname', :as => :choose_nickname, :via => :put, :as => :update_nickname
-  
-  # LJ: trying ajax trickery
-  match 'home/upload_image' => 'users#upload_image', :as => :upload_image
+  match 'home/user_agreement' => 'users#user_agreement', :as => :user_agreement
+  match 'home/update_user_agreement' => 'users#update_user_agreement', :as => :update_user_agreement, :via => :post
+  match 'home/set_user_field' => 'users#set_user_field', :as => :set_user_field, :via => :post
   
   namespace :admin do
     resources :users, :except => [ :new, :create ]

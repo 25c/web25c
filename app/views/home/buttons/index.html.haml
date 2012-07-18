@@ -1,12 +1,12 @@
 = content_for(:js) do
   :javascript
     window.pageTitle = '#{ j t(".title") }';
-    window.dismissWelcomeUrl = '#{ j home_dismiss_welcome_url }';
+    window.setUserFieldUrl = '#{ j set_user_field_url }';
     
     $(document).ready(function(){
       $("#dismiss-welcome").click(function() {
         $this = $(this);
-        $.post(dismissWelcomeUrl, {});
+        $.post(setUserFieldUrl, { field: 'is_new', value: 'false' });
         $container = $this.parent().parent();
         $container.fadeOut('slow', function(){
           $container.parent().html('<h2 class="page-header">' + pageTitle + '</h2>');

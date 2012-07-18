@@ -1,0 +1,22 @@
+= content_for(:js) do
+  :javascript
+    window.setUserFieldUrl = '#{ j set_user_field_url }';
+    window.nextUrl = '#{ j @next_url }';
+    
+    $(document).ready(function(){
+      $("#agree-button").click(function() {
+        $.post(setUserFieldUrl, { field: 'has_agreed', value: 'true' }, function(data) {
+          window.location.href = nextUrl;
+        });
+      });
+    });
+
+.row
+  .span6.offset3
+    #user-agreement-container
+      / %h2= t('.title')
+      %p= raw t('.agreement_text')
+      %p
+        25c #{link_to t('.terms'), terms_path}, #{link_to t('.privacy'), privacy_path}
+    #agree-button-container.center
+      =link_to t('.agree'), '#', :class => 'btn btn-primary', :id => 'agree-button'

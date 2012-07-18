@@ -115,15 +115,6 @@ class Home::AccountController < Home::HomeController
     # Put payout action here -> email to payout@25c.com?
   end
   
-  def set_refill
-    @user = current_user
-    @user.editing = true
-    @user.auto_refill = (params[:auto_refill] == 'true');
-    @user.save
-    @user.editing = false
-    render :nothing => true
-  end
-  
   private
   def get_braintree_info(user)
     card_masked_number = ''

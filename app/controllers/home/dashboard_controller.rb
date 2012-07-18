@@ -1,8 +1,8 @@
 class Home::DashboardController < Home::HomeController
-  
+
   def index
     @user = current_user
-    clicks = @user.clicks.includes(:button => :user).order("created_at DESC")
+    clicks = @user.clicks.includes(:button => :user).find_all_by_state([ 1, 2, 3, 4 ])
     # LJ: placeholder until we know what type of clicks to display in dashboard
     @has_new_clicks = clicks.each.any? { |s| s[:state] == 0 }
     @clicks_given = group_clicks_by_count(clicks)
@@ -13,7 +13,7 @@ class Home::DashboardController < Home::HomeController
   
   def undo_clicks
     @user = current_user
-    @clicks_given = @user.clicks.includes(:button => :user).find_all_by_state([0,1,2])
+    @clicks_given = @user.clicks.includes(:button => :user).find_all_by_state([ 1, 2 ])
   end
   
   def delete_click

@@ -45,25 +45,26 @@
           <a href="https://www.plus25c.com/tip/#{@button.uuid}" class="tip-25c-button" data-size="btn-large">#{@button.title}</a>
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];    if(!d.getElementById(id)){js=d.createElement(s);js.id=id;    js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}    (document,"script","tip-25c-js");</script>
 
-        %h3.table-title
-          = @user.display_name + t('.tips_title')
-        .table-wrapper
-          %table#clicks-given.clicks-table.table.table-condensed.table-striped
-            %thead
-              %tr
-                %th.click-amount= t('.amount')
-                %th.click-provider= t('.provider')
-                %th.click-referrer= t('.referrer')
-            %tbody
-              - if @click_sets.length > 0
-                - @click_sets.each do |set|
-                  %tr
-                    %td.click-amount #{set[0]}
-                    %td.click-user= set[1].button.user.display_name
-                    %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
-              - else
+        - if @user.show_donations
+          %h3.table-title
+            = @user.display_name + t('.tips_title')
+          .table-wrapper
+            %table#clicks-given.clicks-table.table.table-condensed.table-striped
+              %thead
                 %tr
-                  %td.click-amount 0
-                  %td.click-user= t('.no_clicks')
-                  %td.click-referrer
+                  %th.click-amount= t('.amount')
+                  %th.click-provider= t('.provider')
+                  %th.click-referrer= t('.referrer')
+              %tbody
+                - if @click_sets.length > 0
+                  - @click_sets.each do |set|
+                    %tr
+                      %td.click-amount #{set[0]}
+                      %td.click-user= set[1].button.user.display_name
+                      %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
+                - else
+                  %tr
+                    %td.click-amount 0
+                    %td.click-user= t('.no_clicks')
+                    %td.click-referrer
   
