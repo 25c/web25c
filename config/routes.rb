@@ -19,7 +19,6 @@ Web25c::Application.routes.draw do
   
   namespace :home do
     resources :buttons
-    match 'dismiss_welcome' => 'buttons#dismiss_welcome', :as => :dismiss_welcome, :via => :post
     
     # Dashboard
     match '' => 'dashboard#index', :as => :dashboard
@@ -30,7 +29,6 @@ Web25c::Application.routes.draw do
     # Account
     match 'jar' => 'account#jar', :as => :jar
     match 'confirm_payment' => 'account#confirm_payment', :as => :confirm_payment
-    match 'set_refill' => 'account#set_refill', :as => :set_refill, :via => :post
     match 'payout' => 'account#payout', :as => :payout
     match 'confirm_payout' => 'account#confirm_payout', :as => :confirm_payout, :via => :post    
   end
@@ -43,7 +41,6 @@ Web25c::Application.routes.draw do
   match 'home/choose_nickname' => 'users#choose_nickname', :as => :choose_nickname, :via => :get
   match 'home/choose_nickname' => 'users#update_nickname', :as => :choose_nickname, :via => :put, :as => :update_nickname
   match 'home/user_agreement' => 'users#user_agreement', :as => :user_agreement
-  match 'home/update_user_agreement' => 'users#update_user_agreement', :as => :update_user_agreement, :via => :post
   match 'home/set_user_field' => 'users#set_user_field', :as => :set_user_field, :via => :post
   
   namespace :admin do
