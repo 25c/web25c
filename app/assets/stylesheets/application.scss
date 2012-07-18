@@ -412,12 +412,16 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
 }
 
 pre#button-code-block {
-  background-color: white;
+  background-color: #f6f6f6;
   white-space: normal;
   margin: 5px 0 0 0;
   overflow: hidden;
   resize: none;
   cursor: text;
+}
+
+.sub-splash pre#button-code-block {
+  background-color: white;
 }
 
 #code-wrapper #code-overlay {
