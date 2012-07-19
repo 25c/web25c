@@ -1,14 +1,5 @@
 $(document).ready(function(){
   
-  // lookup dictionary for image filenames
-  var imageDict = {
-    'btn-large': '<%= asset_path "25c-btn-large.png" %>',
-    'btn-medium': '<%= asset_path "25c-btn-medium.png" %>',
-    'btn-small': '<%= asset_path "25c-btn-small.png" %>',
-    'icon-large': '<%= asset_path "25c-icon-large.png" %>',
-    'icon-medium': '<%= asset_path "25c-icon-medium.png" %>',
-    'icon-small': '<%= asset_path "25c-icon-small.png" %>'
-  };
 	// lookup dictionary for image sizes
 	var imageSizesDict = {
 		'btn-large': ' width="120" height="60"',
@@ -18,7 +9,7 @@ $(document).ready(function(){
 		'icon-medium': ' width="40" height="40"',
 		'icon-small': ' width="25" height="25"'
 	};
-  
+
   var jsOpen = '<a href="https://www.plus25c.com/tip/' + buttonId + '" class="tip-25c-button" data-size="';
   var jsClose = '</a>\n<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];\
     if(!d.getElementById(id)){js=d.createElement(s);js.id=id;\
@@ -28,43 +19,56 @@ $(document).ready(function(){
 	var iframeMid = '" allowtransparency="true" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"';
   var iframeClose = '></iframe>';
   
-  var buttonSize = $('#button_size').val();
+  var buttonSize = 'btn-large';
   
   var updateButtonCode = function() {
-    if ($('input.radio_buttons:checked').val() == 'javascript') {
+    if ($('input.code-type:checked').val() == 'iframe') {
+      newCode = iframeOpen + buttonSize + iframeMid + imageSizesDict[buttonSize] + iframeClose;
+    } else {
       // newCode = jsOpen + buttonSize + '">' + $('input#button_title').val() + jsClose;
       newCode = jsOpen + buttonSize + '">' + "Click to micro-donate 25c!" + jsClose;
-    } else {
-      newCode = iframeOpen + buttonSize + iframeMid + imageSizesDict[buttonSize] + iframeClose;
     }
     $('#button-code-block').text(newCode);
   };
-  
-  // button click visual feedback
-  // $('.button-choice').click(function() {
-  //     $(this).find("img.unrot").fadeOut(50).delay(50).fadeIn(50);
-  // });
-  
-  $('.button-choice>img[data-size="' + buttonSize + '"]').parent()
-    .addClass('selected-button').find('input[type=radio]').attr('checked', 'checked');
 
   updateButtonCode();
   
   // when input changes, update code
-  $('input.radio_buttons, input#button_title').change(function() {
+  $('input.code-type').change(function() {
     updateButtonCode();
+    var buttonCode = $('input.code-type:checked').val();
+    if (buttonCode == 'javascript' || buttonCode == 'iframe') {
+      $.post(setButtonFieldUrl, { field: 'code_type', value: buttonCode });
+    }
   });
   
-  // when new image changes, update code and process image selection
-  $('.button-choice').click(function() {
+  // update radio buttons by parent div click
+  $('.platform-container, .button-choice, .code-option-container').click(function() {
     $this = $(this);
-    $img = $this.find('img');
-    buttonSize = $img.attr('data-size');
-    updateButtonCode();
-    $('#button-choice-container input[type=radio]').removeAttr('checked');
-    $this.find('input[type=radio]').attr('checked', 'checked');
-    $('#button_size').val(buttonSize);
-    $this.parent().find('.selected-button').removeClass('selected-button');
-    $this.addClass('selected-button');
+    $this.parent().children('input[type=radio]').removeAttr('checked');
+    $this.children('input[type=radio]').attr('checked', 'checked');
+    if ($this.hasClass('button-choice')) {
+      buttonSize = $this.children('img').attr('data-size');
+      $this.parent().find('.selected-button').removeClass('selected-button');
+      $this.addClass('selected-button');
+      updateButtonCode();
+      $.post(setButtonFieldUrl, { field: 'size', value: buttonSize });
+    }
   });
+  
+  $('#button-title').focusout(function(){
+    var buttonTitle = $(this).val();
+    if (buttonTitle != '') {
+      $.post(setButtonFieldUrl, { field: 'title', value: buttonTitle });
+    }
+  });
+
+  // Tutorial step gradual reveal behavior
+  var showNextStep = function() {
+    var step = $(this).parents('.step-container').attr('id').substring(4);
+    $('#step' + (parseInt(step) + 1)).slideDown('fast');
+  };
+
+  $('.platform-container, .button-choice, .code-option-container').click(showNextStep);
+  $('#button-title').focusout(showNextStep);
 });

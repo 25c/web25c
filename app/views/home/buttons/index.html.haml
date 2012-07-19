@@ -1,33 +1,117 @@
 = content_for(:js) do
+  = javascript_include_tag "save-button"
   :javascript
-    window.pageTitle = '#{ j t(".title") }';
-    window.setUserFieldUrl = '#{ j set_user_field_url }';
-    
-    $(document).ready(function(){
-      $("#dismiss-welcome").click(function() {
-        $this = $(this);
-        $.post(setUserFieldUrl, { field: 'is_new', value: 'false' });
-        $container = $this.parent().parent();
-        $container.fadeOut('slow', function(){
-          $container.parent().html('<h2 class="page-header">' + pageTitle + '</h2>');
-          $container.remove();
-        });
-      });
-    });
+    window.buttonId = '#{ @button.uuid }';
+    window.setButtonFieldUrl = '#{ j home_set_button_field_url }';
 
--if @is_new
-  .row
-    .span12
-      #new-user-welcome
-        #welcome-message
-          %h2= t('.welcome_title')
-          %p= t('.welcome_message')
-        .center
-          =link_to t('.dismiss'), '#', :class => 'btn', :id => 'dismiss-welcome'
-      %hr
--else
-  .row
-    .span12
-      %h2.page-header= t('.title')
-=render 'form'
-=render 'platforms'
+.row.main-content
+  .span11.buffer
+    %h2.page-header= t('.title')
+    %p= t('.subtitle')
+  .span11
+  #step1.step-container
+    .span1.step-number 1
+    .span10.step-content
+      %h3.step-title= t('.step1_title')
+      .step-body
+        .pull-left.platform-container
+          %input{:type => 'radio', :name => 'platform'}
+          = image_tag 'logos/web.png', :class => 'web-logo-img'
+          = t('.your website')
+        .pull-left.platform-container
+          %input{:type => 'radio', :name => 'platform'}
+          = image_tag 'logos/wordpress.png', :class => 'platform-logo-img'
+        .pull-left.platform-container
+          %input{:type => 'radio', :name => 'platform'}
+          = image_tag 'logos/tumblr.png', :class => 'platform-logo-img'
+        .pull-left.platform-container
+          %input{:type => 'radio', :name => 'platform'}
+          = image_tag 'logos/posterous.png', :class => 'platform-logo-img'
+        .pull-left.platform-container
+          %input{:type => 'radio', :name => 'platform'}
+          = image_tag 'logos/youtube.png', :class => 'platform-logo-img'
+    .clear
+    
+  #step2.step-container.hide
+    .span1.step-number 2
+    .span10.step-content
+      %h3.step-title= t('.step2_title')
+      .step-body
+        %input#button-title{:type => 'text'}
+        
+  #step3.step-container.hide
+    .span1.step-number 3
+    .span10.step-content
+      %h3.step-title= t('.step3_title')
+      .step-body
+        #button-choice-container
+          .button-choice
+            %input.button-size{:type => 'radio', :name => 'button_size'}
+            %span= t('.btn-large')
+            %img{:src => image_path('25c-btn-large.png'), :'data-size' => 'btn-large'}
+          .button-choice
+            %input.button-size{:type => 'radio', :name => 'button_size'}
+            %span= t('.icon-large')
+            %img{:src => image_path('25c-icon-large.png'), :'data-size' => 'icon-large'}
+          .button-choice
+            %input.button-size{:type => 'radio', :name => 'button_size'}
+            %span= t('.btn-medium')
+            %img{:src => image_path('25c-btn-medium.png'), :'data-size' => 'btn-medium'}
+          .button-choice
+            %input.button-size{:type => 'radio', :name => 'button_size'}
+            %span= t('.icon-medium')
+            %img{:src => image_path('25c-icon-medium.png'), :'data-size' => 'icon-medium'}
+          .button-choice
+            %input.button-size{:type => 'radio', :name => 'button_size'}
+            %span= t('.btn-small')
+            %img{:src => image_path('25c-btn-small.png'), :'data-size' => 'btn-small'}
+          .button-choice
+            %input.button-size{:type => 'radio', :name => 'button_size'}
+            %span= t('.icon-small')
+            %img{:src => image_path('25c-icon-small.png'), :'data-size' => 'icon-small'}
+
+  #step4.step-container.hide
+    .span1.step-number 4
+    .span10.step-content
+      %h3.step-title= t('.step4_title')
+      .step-body.buffer
+        #code-type-container.pull-left
+          %p
+            %b= t('.button_type')
+          %div.code-option-container
+            %input.code-type{:type => 'radio', :name => 'button_code', :value => 'javascript'}
+            %span= t('.javascript')
+          %div.code-option-container
+            %input.code-type{:type => 'radio', :name => 'button_code', :value => 'iframe'}
+            %span= t('.iframe')
+        #code-container.pull-left
+          %p
+            %b= t('.button_code')
+          - if @is_demo
+            #code-wrapper
+              %a{:href => sign_in_path}
+                #code-overlay.lead= t('.sign_in_overlay')
+                %pre#button-code-block
+          - else
+            %pre#button-code-block
+        .clear
+      %h3.step-title.highlight= t('.installation')
+      .step-body
+        %p= raw t('.for_blogs')
+        %p= raw t('.for_website')
+        %p= raw t('.for_youtube')
+        %p= raw t('.problems', :faq => (link_to t('.faq'), faq_path), 
+            :email => (link_to t('application.hello_email'), contact_path))
+    .clear
+  #step5.step-container.hide
+    .span1.step-number 5
+    .span10.step-content
+      %h3.step-title= t('.step5_title')
+      .step-body
+        %p
+          = raw t('.check_donations', :dashboard => (link_to t('.dashboard'), home_dashboard_path),
+            :account => (link_to t('.account'), home_account_path))
+
+          
+          
+          

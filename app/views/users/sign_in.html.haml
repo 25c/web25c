@@ -1,4 +1,5 @@
 - content_for :title, t('.title')
-.span12
-  %h2.page-header= t('.title')
-  =render 'layouts/sign_in_form'
+.row.main-content
+  .span11
+    %h2.page-header= t('.title')
+    =render 'layouts/sign_in_form'

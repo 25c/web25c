@@ -7,11 +7,9 @@
     window.useExistingText = '#{ j t('.use_existing') }';
     window.useDifferentText = '#{ j t('.use_different') }';
 
-.row
-  .span12
+.row.main-content
+  .span11
     %h2.page-header= t('.title')
-.row
-  .span12
     %label{:for => "refill-amount"}= t('.refill_amount')
     %select#refill-amount
       - ['20','40','60'].each do |a|
@@ -34,7 +32,7 @@
         %form{:action => home_confirm_payment_url, :method => 'post' }
           %input.transaction-amount{:type => 'hidden', :name => 'transaction[amount]'}
           %input.payment-type{:type => 'hidden', :name => 'payment_type', :value => 'existing'}
-          %input.btn.btn-primary{:type => 'submit', :value => 'Submit Payment'}
+          %input.btn.btn-warning{:type => 'submit', :value => 'Submit Payment'}
       
       #toggle-card-container
         .btn#toggle-card-button= t('.use_different')
@@ -77,4 +75,4 @@
             =t('.remember_card')
         %input.transaction-amount{:type => 'hidden', :name => 'transaction[amount]'}
         %input.payment-type{:type => 'hidden', :name => 'payment_type', :value => 'new'}
-        %input.btn.btn-primary{:type => 'submit', :value => 'Submit Payment'}
+        %input.btn.btn-warning{:type => 'submit', :value => 'Submit Payment'}

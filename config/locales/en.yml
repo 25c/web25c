@@ -10,7 +10,8 @@ en:
   application:
     title: "25c social micro-donations. One quarter, one click."
     25c_units: "25c's"
-    
+    hello_email: Hello Email
+      
     check_facebook_cookies:
       sign_in: You have been automatically signed in using your Facebook account.
       sign_up: You have successfully linked your Facebook account to 25c!
@@ -135,12 +136,9 @@ en:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
       index: 
-        title: Button Gallery
-        welcome_title: "Getting started: set up your 25c button"
-        welcome_message: Welcome to 25c! Use this page to set your button and begin receiving clicks right away.
-        dismiss: Dismiss This Message
+        title: Get your own 25c Button!
+        sub_title: Follow these 5 easy steps and immediately start receiving donations.
         short_url_title: 25c Short URL
-      platforms:
         title: Supported Platforms
         platform: Platform
         javascript: JavaScript
@@ -151,14 +149,13 @@ en:
         wordpress: WordPress Self-Hosted
         wordpress_note: "25c buttons are not yet supported on Wordpress.com hosted sites."
         posterous: Posterous
-      form:
         button_form: "Select button type:"
         icon-large: "Large icon"
         btn-large: "Large button" 
         icon-medium: "Medium icon"
         btn-medium: "Medium button" 
         icon-small: "Small icon"
-        btn-small: "Small button" 
+        btn-small: "Small button"
         button_name: "Customize tooltip message:"
         button_type: "Button code in:"
         button_preview: "Button preview:"
@@ -167,6 +164,22 @@ en:
         sign_in_button: Create a Free Account
         javascript: JavaScript
         iframe: iFrame
+        step1_title: "Select where this button will be used:"
+        step2_title: "Describe the donation purpose of this tooltip:"
+        step3_title: "Choose a look for your button:"
+        step4_title: "Customize and install your button:"
+        step5_title: "Follow your rewards!"
+        your_website: "Your website"
+        installation: Instructions for installation
+        for_blogs: "<b>For blogs:</b> Paste the code above along the text / images / videos when you 
+          post to your blog."
+        for_website: "<b>For your website:</b> If you have access to your website code, you can set 
+          up this code multiple times per page within any webpage in your site."
+        for_youtube: "<b>For YouTube:</b> Paste this URL into the description of your uploaded Youtube video."
+        problems: <b>Problems?</b> See the %{faq} or email us with questions at %{email}.
+        faq: FAQ
+        check_donations: Check your donations daily through your %{dashboard} or configure your 
+          %{account} to receive an email report at regular intervals!
       short_url:
         input_label: "Use it when sending links to your followers and earn along for resulting donations:"
         input_text: "Paste content URL to encode"
@@ -231,7 +244,7 @@ en:
       
   users:
     show:
-      title: ' - 25c Profile'
+      title: "'s 25c Profile"
       blank_about: 'I use 25c to get rewarded for my content.'
       current_user: 'This is your profile. '
       change_url: 'Click here to change your profile URL.'

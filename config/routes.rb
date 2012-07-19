@@ -18,7 +18,9 @@ Web25c::Application.routes.draw do
   match 'confirm_tip' => 'users#confirm_tip', :as => :confirm_tip
   
   namespace :home do
+    # Buttons
     resources :buttons
+    match 'set_button_field' => 'buttons#set_button_field', :as => :set_button_field, :via => :post
     
     # Dashboard
     match '' => 'dashboard#index', :as => :dashboard

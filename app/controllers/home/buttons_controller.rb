@@ -38,4 +38,15 @@ class Home::ButtonsController < Home::HomeController
     redirect_to home_buttons_path(@button)
   end
   
+  def set_button_field
+    if params.has_key?(:field) and params.has_key?(:value)
+      if ['size', 'title', 'description', 'code_type'].include?(params[:field])
+        button = self.current_user.buttons[0]
+        button[params[:field]] = params[:value]
+        button.save!
+      end
+    end
+    render :nothing => true
+  end
+  
 end

@@ -49,12 +49,12 @@
       %p.lead= raw t('.about_25c_p1')
       %p.lead= raw t('.about_25c_p3')
 
-.sub-splash
-  .row
-    .span11
-      %h2= raw t('.button_25c_title')
-      %p
-      .more-content{:name => 'button'}
-        =render 'home/buttons/form'
-        =render 'home/buttons/platforms'
-      / %p.lead= link_to t('.button_more'), '#button', :class => 'more-link'
+.row.main-content
+  .span11
+    %h2= raw t('.button_25c_title')
+    %p
+    .more-content{:name => 'button'}
+  =render 'home/buttons/form'
+  =render 'home/buttons/platforms'
+  .clear
+  / %p.lead= link_to t('.button_more'), '#button', :class => 'more-link'

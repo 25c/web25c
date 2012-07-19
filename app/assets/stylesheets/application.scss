@@ -42,6 +42,7 @@ hr {
 
 .page-header {
   border-bottom: 2px solid transparent;
+  margin: 0;
 }
 
 .compact-header {
@@ -66,7 +67,11 @@ hr {
 }
 
 .buffer {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.highlight {
+  color: #f26422;
 }
 
 /* Header Nav
@@ -173,12 +178,16 @@ footer.navbar > .navbar-inner > .container {
   min-height: 270px;
 }
 
-.splash, .sub-splash {
-  padding: 38px;
+.splash, .sub-splash, .main-content {
+  padding: 30px;
   margin: 20px 0px;
   background-color: #f6f6f6;
   border-radius: 10px;
   border: 1px solid #ddd;
+}
+
+.main-content {
+  padding: 30px 30px 30px 10px;
 }
 
 .splash .fb-login-button {
@@ -278,11 +287,7 @@ ul.login-buttons > li.login-logo > a > img {
 /* Buttons Home Page
  *---------------------------- */
 #new-user-welcome {
-  padding: 20px;
-  margin-top: 10px;
-  background-color: #f6f6f6;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+
 }
 
 #welcome-message {
@@ -347,7 +352,7 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
   float: left;
   margin: 2px; 
   height: 80px;
-  width: 130px;
+  width: 120px;
   text-align: center;
   cursor: pointer;
 }
@@ -412,16 +417,12 @@ table#platform-table > tbody > tr > td > img.platform-logo-img {
 }
 
 pre#button-code-block {
-  background-color: #f6f6f6;
+  background-color: white;
   white-space: normal;
   margin: 5px 0 0 0;
   overflow: hidden;
   resize: none;
   cursor: text;
-}
-
-.sub-splash pre#button-code-block {
-  background-color: white;
 }
 
 #code-wrapper #code-overlay {
@@ -789,13 +790,13 @@ table.table thead .sorting_desc_disabled {
 }
 
 #profile-container {
-  margin-top: 20px;
+  margin-top: -18px;
 }
 
 #user-profile {
   padding: 20px;
   border: 2px solid #ddd;
-  background-color: #f6f6f6;
+  background-color: white;
   border-radius: 10px;
 }
 
@@ -843,7 +844,7 @@ table.table thead .sorting_desc_disabled {
 #user-profile:hover input, #user-profile:hover textarea.editing, #user-profile input.focused, 
 #user-profile textarea.focused {
   display: block;
-  background-color: white;
+  background-color: #f6f6f6;
   border: 1px solid #ccc;
 }
 
@@ -917,3 +918,69 @@ table.table thead .sorting_desc_disabled {
   border-radius: 10px;
   border: 1px solid #ccc;
 }
+
+/* BUTTON PAGE
+*---------------------------- */
+
+.step-container {
+  clear: both;
+  min-height: 100px;
+  margin-bottom: 40px;
+}
+
+.step-container .step-number {
+  height: 50px;
+  width: 50px;
+  line-height: 48px;
+  font-size: 36px;
+  text-align: center;
+  color: #666;
+  background: transparent url(image_path("tutorial-circle.png")) no-repeat center center;
+}
+
+.step-container .step-title {
+  margin-bottom: 20px;
+}
+
+.step-container .platform-container {
+  width: 130px;
+  padding: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.web-logo-img {
+  height: 23px;
+}
+
+.step-container .platform-container:hover {
+  background-color: #ffeae1;
+}
+
+.step-container .platform-container > img.platform-logo-img {
+  width: 100px;
+}
+
+.step-container .platform-container > input[type=radio] {
+  margin-right: 2px;
+}
+
+.step-container #type-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#code-type-container {
+  width: 120px;
+  margin-right: 20px;
+}
+
+.code-option-container {
+    cursor: pointer;
+}
+
+#code-container {
+  width: 640px;
+}
+

@@ -22,11 +22,9 @@ class UsersController < ApplicationController
       if ['has_agreed', 'is_new', 'auto_refill', 'show_donations'].include?(params[:field])
         user = self.current_user
         user.editing = true
-        self.current_user[params[:field]] = params[:value]
-        begin
-          self.current_user.save!
-          user.editing = false
-        end
+        user[params[:field]] = params[:value]
+        user.save!
+        user.editing = false
       end
     end
     render :nothing => true

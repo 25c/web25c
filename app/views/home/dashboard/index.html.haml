@@ -10,70 +10,68 @@
     window.processClicksUrl = '#{ j home_process_clicks_url }';
     window.hasNewClicks = #{ @has_new_clicks };
 
-.row
-  .span12
+.row.main-content
+  .span11.buffer
     %h2.page-header= t('.title')
-
-.row
-  .span12
     .lead
       %div= t('.contents')
       %div
         %b= @user.balance.to_s + ' ' + t('application.25c_units')
         %span ($#{"%.2f" % (@user.balance.to_f / 4)})
       %p.payout-link-container
-    %a= link_to t('.get_button'), home_buttons_path, :class => 'btn btn-primary'
+    %a= link_to t('.get_button'), home_buttons_path, :class => 'btn btn-warning'
     %a= link_to t('.fill_jar'), home_jar_path, :class => 'btn'
     %a= link_to t('.undo_clicks'), home_undo_clicks_path, :class => 'btn'
-%hr
-%h3.table-title
-  = t('.tips_given_title')
-  (#{@clicks_given.length} #{t('.total')})
-.table-wrapper
-  %table#clicks-given.clicks-table.table.table-condensed.table-striped
-    %thead
-      %tr
-        %th
-        %th.click-amount= t('.amount')
-        %th.click-provider= t('.provider')
-        %th.click-referrer= t('.referrer')
-        %th
-        %th.click-date= t('.date_created')
-    %tbody
-      - @clicks_given.each do |set|
-        %tr
-          %td= set[0]
-          %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
-          %td.click-user= set[1].button.user.display_name
-          %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
-          %td.click-date= set[1].created_at.to_s(:number)
-          %td.click-date= l set[1].created_at, :format => :short
-- if @has_new_clicks
-  %a#process-clicks.btn.btn-primary= t('.process_clicks')
-- else
-  %a#process-clicks.btn{:disabled => true}= t('.process_clicks')
-#process-message.alert.alert-success.hide= t('.clicks_processed')
-%hr
-%h3.table-title
-  = t('.tips_received_title')
-  (#{@clicks_received.length} #{t('.total')})
-.table-wrapper
-  %table#clicks-received.clicks-table.table.table-condensed.table-striped
-    %thead
-      %tr
-        %th
-        %th.click-amount= t('.amount')
-        %th.click-user= t('.clicker')
-        %th.click-referrer= t('.referrer')
-        %th
-        %th= t('.date_created')
-    %tbody
-      - @clicks_received.each do |set|
-        %tr
-          %td= set[0]
-          %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
-          / %td.click-state= t('.state' + click.state.to_s)
-          %td.click-user= set[1].user.display_name
-          %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
-          %td.click-date= set[1].created_at.to_s(:number)
-          %td.click-date= l set[1].created_at, :format => :short
+  .span11
+    %h3.table-title
+      = t('.tips_given_title')
+      (#{@clicks_given.length} #{t('.total')})
+    .table-wrapper
+      %table#clicks-given.clicks-table.table.table-condensed.table-striped
+        %thead
+          %tr
+            %th
+            %th.click-amount= t('.amount')
+            %th.click-provider= t('.provider')
+            %th.click-referrer= t('.referrer')
+            %th
+            %th.click-date= t('.date_created')
+        %tbody
+          - @clicks_given.each do |set|
+            %tr
+              %td= set[0]
+              %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+              %td.click-user= set[1].button.user.display_name
+              %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
+              %td.click-date= set[1].created_at.to_s(:number)
+              %td.click-date= l set[1].created_at, :format => :short
+    - if @has_new_clicks
+      %a#process-clicks.btn.btn-warning= t('.process_clicks')
+    - else
+      %a#process-clicks.btn{:disabled => true}= t('.process_clicks')
+    #process-message.alert.alert-success.hide= t('.clicks_processed')
+.row.main-content
+  .span11
+    %h3.table-title
+      = t('.tips_received_title')
+      (#{@clicks_received.length} #{t('.total')})
+    .table-wrapper
+      %table#clicks-received.clicks-table.table.table-condensed.table-striped
+        %thead
+          %tr
+            %th
+            %th.click-amount= t('.amount')
+            %th.click-user= t('.clicker')
+            %th.click-referrer= t('.referrer')
+            %th
+            %th= t('.date_created')
+        %tbody
+          - @clicks_received.each do |set|
+            %tr
+              %td= set[0]
+              %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+              / %td.click-state= t('.state' + click.state.to_s)
+              %td.click-user= set[1].user.display_name
+              %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
+              %td.click-date= set[1].created_at.to_s(:number)
+              %td.click-date= l set[1].created_at, :format => :short
