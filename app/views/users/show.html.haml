@@ -1,8 +1,4 @@
 - content_for :title, (@user.display_name + t('.title'))
-- content_for :js do
-  / = javascript_include_tag "jquery.dataTables.min"
-  / = javascript_include_tag "paging"
-  / = javascript_include_tag "profile-click-table"
 - if @is_editable
   - content_for :js do
     = javascript_include_tag "edit-profile"
@@ -13,7 +9,8 @@
 #profile-container
   = simple_form_for @user, :url => update_profile_path, :html => { :multipart => true } do |f|
     .row.main-content
-      / =link_to t('.edit_url'), home_account_path, :class => 'btn buffer'
+      .span11
+        %h2.page-header= @user.display_name + t('.title')
       .span4
         #user-profile
           .block
