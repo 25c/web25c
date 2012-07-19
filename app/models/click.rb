@@ -8,6 +8,7 @@ class Click < ActiveRecord::Base
     PROCESSED = 3
     PAID = 4
     REFUNDED = 5
+    DROPPED = 6
   end
   
   belongs_to :button
