@@ -137,7 +137,7 @@ en:
       update_failure: Button update failed. Please try again.
       index: 
         title: Get your own 25c Button!
-        sub_title: Follow these 5 easy steps and immediately start receiving donations.
+        subtitle: Follow these 5 easy steps and immediately start receiving donations!
         short_url_title: 25c Short URL
         title: Supported Platforms
         platform: Platform
