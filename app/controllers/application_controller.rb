@@ -53,7 +53,8 @@ class ApplicationController < ActionController::Base
           self.current_user.update_profile
         end
         if has_tip
-          redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
+          Click.enqueue(self.current_user, params[:button_id], params[:referrer], request)
+          redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
         elsif self.current_user.is_new
           redirect_to_session_redirect_path(home_buttons_path)
         else

@@ -204,7 +204,8 @@ class UsersController < ApplicationController
       user.update_profile if user.picture_file_name.blank? and not user.picture_url.blank?
       state = Rack::Utils.parse_query(params[:state])
       if state['button_id']
-        redirect_to confirm_tip_path(:button_id => state['button_id'], :referrer => state['referrer'])
+        Click.enqueue(self.current_user, state['button_id'], state['referrer'], request)
+        redirect_to tip_path(:button_id => state['button_id'], :referrer => state['referrer'])
       else
         redirect_to home_buttons_path, :notice => notice
       end
@@ -261,6 +262,8 @@ class UsersController < ApplicationController
       # handle page redirecting
       if sign_in_successful
         if has_tip and not alert
+          Click.enqueue(self.current_user, params[:button_id], params[:referrer], request)
+
           redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
         elsif @user.is_new
           redirect_to_session_redirect_path(home_buttons_path)
@@ -294,15 +297,9 @@ class UsersController < ApplicationController
   end
   
   def tip
-    if self.current_user
-      redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
-    else
-      @user = User.new
-      @new = params[:new] ? params[:new] == "true" : true
-      @button_id = params[:button_id]
-      @referrer = params[:referrer]
-      render :layout => "blank"
-    end
+    @button_id = params[:button_id]
+    @referrer = params[:referrer]
+    render :layout => "blank"
   end
   
   def confirm_tip
