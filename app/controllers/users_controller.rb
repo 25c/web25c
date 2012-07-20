@@ -270,8 +270,6 @@ class UsersController < ApplicationController
       end
     # not a post request
     else
-      session.delete(:button_id)
-      session.delete(:referrer)
       if self.current_user
         if self.current_user.is_new
           redirect_to_session_redirect_path(home_buttons_path)
