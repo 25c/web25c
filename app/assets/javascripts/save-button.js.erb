@@ -21,6 +21,7 @@ $(document).ready(function(){
   var iframeClose = '></iframe>';
   
   // State variables
+  var buttonTitle = '';
   var buttonSize = 'btn-large';
   var codeType = 'javascript';
   var newCode = '';
@@ -52,8 +53,7 @@ $(document).ready(function(){
     if (codeType == 'iframe') {
       newCode = iframeOpen + buttonSize + iframeMid + imageSizesDict[buttonSize] + iframeClose;
     } else if (codeType == 'javascript') {
-      // newCode = jsOpen + buttonSize + '">' + $('input#button_title').val() + jsClose;
-      newCode = jsOpen + buttonSize + '">' + "Click to micro-donate 25c!" + jsClose;
+      newCode = jsOpen + buttonSize + '">' + buttonTitle + jsClose;
     } else if (codeType == 'link') {
       var hostname = window.location.hostname;
       if (hostname == 'localhost') hostname += ':3000';
@@ -125,10 +125,9 @@ $(document).ready(function(){
   
   // Save button title
   $('#set-button-title').click(function(){
-    var buttonTitle = $('#button-title').val();
-    if (buttonTitle != '') {
-      $.post(setButtonFieldUrl, { field: 'title', value: buttonTitle });
-    }
+    buttonTitle = $('#button-title').val();
+    $.post(setButtonFieldUrl, { field: 'title', value: buttonTitle });
+    updateButtonCode();
   });
   
   // Assign tutorial step reveal behavior
