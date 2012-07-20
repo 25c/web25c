@@ -176,6 +176,12 @@ class UsersController < ApplicationController
         rescue
           user.reload
         end
+        begin
+          user.nickname = auth['info']['email'].split('@')[0]
+          user.save!
+        rescue
+          user.reload
+        end
       elsif user.google_token.blank? or user.google_refresh_token.blank?
         if auth['credentials']['refresh_token'].blank?
           redirect_to '/auth/google_oauth2?approval_prompt=force'
