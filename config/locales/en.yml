@@ -10,7 +10,7 @@ en:
   application:
     title: "25c social micro-donations. One quarter, one click."
     25c_units: "25c's"
-    hello_email: Hello Email
+    hello_email: hello@25c.com
       
     check_facebook_cookies:
       sign_in: You have been automatically signed in using your Facebook account.
@@ -139,7 +139,6 @@ en:
         title: Get your own 25c Button!
         subtitle: Follow these 5 easy steps and immediately start receiving donations!
         short_url_title: 25c Short URL
-        title: Supported Platforms
         platform: Platform
         javascript: JavaScript
         iframe: iFrame
@@ -157,25 +156,26 @@ en:
         icon-small: "Small icon"
         btn-small: "Small button"
         button_name: "Customize tooltip message:"
-        button_type: "Button code in:"
         button_preview: "Button preview:"
         button_code: "Add this code to your website:"
         sign_in_overlay: Click here to create an account!
         sign_in_button: Create a Free Account
         javascript: JavaScript
         iframe: iFrame
-        step1_title: "Select where this button will be used:"
-        step2_title: "Describe the donation purpose of this tooltip:"
-        step3_title: "Choose a look for your button:"
+        link: Link
+        step1_title: "Where will you use the 25c Button?"
+        step2_title: "Name the donation purpose:"
+        step3_title: "Choose a look:"
         step4_title: "Customize and install your button:"
         step5_title: "Follow your rewards!"
-        your_website: "Your website"
+        website: "Your website"
+        set: Set
         installation: Instructions for installation
-        for_blogs: "<b>For blogs:</b> Paste the code above along the text / images / videos when you 
-          post to your blog."
-        for_website: "<b>For your website:</b> If you have access to your website code, you can set 
-          up this code multiple times per page within any webpage in your site."
-        for_youtube: "<b>For YouTube:</b> Paste this URL into the description of your uploaded Youtube video."
+        no_nickname: '<set-nickname>'
+        set_nickname: Choose a nickname to set your profile URL.
+        for_blogs: "Paste the code above along the text / images / videos when you post to your blog."
+        for_website: "If you have access to your website code, you can set up this code multiple times per page within any webpage in your site."
+        for_youtube: "Paste this URL into the description of your uploaded Youtube video."
         problems: <b>Problems?</b> See the %{faq} or email us with questions at %{email}.
         faq: FAQ
         check_donations: Check your donations daily through your %{dashboard} or configure your 

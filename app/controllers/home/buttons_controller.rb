@@ -1,7 +1,7 @@
 class Home::ButtonsController < Home::HomeController
 
   def index
-    @is_new = self.current_user.is_new
+    @user = self.current_user
     @button = self.current_user.buttons[0]
     @is_demo = false
   end

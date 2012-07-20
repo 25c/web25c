@@ -10,6 +10,7 @@ $(document).ready(function(){
 		'icon-small': ' width="25" height="25"'
 	};
 
+  // Code contents
   var jsOpen = '<a href="https://www.plus25c.com/tip/' + buttonId + '" class="tip-25c-button" data-size="';
   var jsClose = '</a>\n<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];\
     if(!d.getElementById(id)){js=d.createElement(s);js.id=id;\
@@ -19,27 +20,73 @@ $(document).ready(function(){
 	var iframeMid = '" allowtransparency="true" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"';
   var iframeClose = '></iframe>';
   
+  // State variables
   var buttonSize = 'btn-large';
+  var codeType = 'javascript';
+  var newCode = '';
   
+  // jQuery variables
+  var $javascript = $('input.code-type[value=javascript]');
+  var $iframe = $('input.code-type[value=iframe]');
+  var $link = $('input.code-type[value=link]');
+  
+  // Functions
+
+  // Show following tutorial step
+  var showNextStep = function() {
+    step = $(this).parents('.step-container').attr('id').substring(4);
+    if (step == 3) $('#step4, #step5').slideDown('fast');
+    else $('#step' + (parseInt(step) + 1)).slideDown('fast');
+  };
+  
+  // Update button code shown to user
   var updateButtonCode = function() {
-    if ($('input.code-type:checked').val() == 'iframe') {
+    var newCodeType = $('input.code-type:checked').val();
+    if (codeType != newCodeType) {
+      codeType = newCodeType;
+      if (codeType == 'javascript' || codeType == 'iframe') {
+        $.post(setButtonFieldUrl, { field: 'code_type', value: codeType });
+      }
+    }
+    $('#set-nickname-link').hide();
+    if (codeType == 'iframe') {
       newCode = iframeOpen + buttonSize + iframeMid + imageSizesDict[buttonSize] + iframeClose;
-    } else {
+    } else if (codeType == 'javascript') {
       // newCode = jsOpen + buttonSize + '">' + $('input#button_title').val() + jsClose;
       newCode = jsOpen + buttonSize + '">' + "Click to micro-donate 25c!" + jsClose;
+    } else if (codeType == 'link') {
+      var hostname = window.location.hostname;
+      if (hostname == 'localhost') hostname += ':3000';
+      newCode = hostname + '/' + userNickname;
+      $('#set-nickname-link').show();
     }
     $('#button-code-block').text(newCode);
   };
-
-  updateButtonCode();
+  
+  // Show valid code types (js, iframe, link) based on selection
+  var selectCodeTypes = function(javascript, iframe) {
+    $('input.code-type').removeAttr('checked');
+    if (javascript) {
+      $javascript.add($iframe).removeAttr('disabled').parent().removeClass('disabled');
+      $javascript.attr('checked', 'checked');
+    } else {
+      $javascript.attr('disabled', 'disabled').parent().addClass('disabled');
+      if (iframe) {
+        $iframe.removeAttr('disabled').parent().removeClass('disabled');
+        $iframe.attr('checked', 'checked');
+      } else {
+        $iframe.attr('disabled', 'disabled').parent().addClass('disabled');
+        $link.attr('checked', 'checked');
+      }
+    }
+    updateButtonCode();
+  };
+  
+  // Event handlers
   
   // when input changes, update code
   $('input.code-type').change(function() {
     updateButtonCode();
-    var buttonCode = $('input.code-type:checked').val();
-    if (buttonCode == 'javascript' || buttonCode == 'iframe') {
-      $.post(setButtonFieldUrl, { field: 'code_type', value: buttonCode });
-    }
   });
   
   // update radio buttons by parent div click
@@ -54,21 +101,46 @@ $(document).ready(function(){
       updateButtonCode();
       $.post(setButtonFieldUrl, { field: 'size', value: buttonSize });
     }
+    else if ($this.hasClass('platform-container')) {
+      var platform = $this.attr('data-platform');
+      $('.instructions').hide();
+      if (platform == 'html') {
+        selectCodeTypes(true, true);
+        $('#html-instructions').show();
+      } else if (platform == 'wordpress') {
+        selectCodeTypes(true, true);
+        $('#blog-instructions').show();
+      } else if (platform == 'tumblr' || platform == 'posterous') {
+        selectCodeTypes(false, true);
+        $('#blog-instructions').show();
+      } else if (platform == 'youtube') {
+        selectCodeTypes(false, false);
+        $('#youtube-instructions').show();
+      }
+    }
+    else if ($this.hasClass('code-option-container')) {
+      $this.children('input.code-type').change();
+    }
   });
   
-  $('#button-title').focusout(function(){
-    var buttonTitle = $(this).val();
+  // Save button title
+  $('#set-button-title').click(function(){
+    var buttonTitle = $('#button-title').val();
     if (buttonTitle != '') {
       $.post(setButtonFieldUrl, { field: 'title', value: buttonTitle });
     }
   });
-
-  // Tutorial step gradual reveal behavior
-  var showNextStep = function() {
-    var step = $(this).parents('.step-container').attr('id').substring(4);
-    $('#step' + (parseInt(step) + 1)).slideDown('fast');
-  };
-
+  
+  // Assign tutorial step reveal behavior
   $('.platform-container, .button-choice, .code-option-container').click(showNextStep);
-  $('#button-title').focusout(showNextStep);
+  $('#set-button-title').click(showNextStep);
+  $('#button-title').keypress(function(event) {
+    if (event.which == 13) {
+      $('#set-button-title').click();
+    }
+  });
+  
+  // Initialization
+
+  updateButtonCode();
 });
