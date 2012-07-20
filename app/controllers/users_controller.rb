@@ -2,17 +2,6 @@ class UsersController < ApplicationController
   before_filter :require_signed_in, :except => [ :index, :show, :new, :sign_in, :sign_in_callback, :tip, :confirm_tip]
   before_filter :check_user_agreement, :except => [ :user_agremeent, :set_user_field, :sign_out ]
   
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
-  end
-  
   def user_agreement
     # user agreement page
   end
@@ -328,25 +317,29 @@ class UsersController < ApplicationController
       redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
       return
     end
-    button = Button.find_by_uuid(params[:button_id])
-    if not button.nil?
-      data = {
-        :uuid => UUID.new.generate,
-        :user_uuid => @user.uuid,
-        :button_uuid => button.uuid,
-        :referrer => params[:referrer],
-        :user_agent => request.env['HTTP_USER_AGENT'],
-        :ip_address => request.remote_ip,
-        :created_at => Time.new.utc
-      }
-      counter_key = "#{@user.uuid}:#{button.uuid}"
-      DATA_REDIS.multi do
-        DATA_REDIS.lpush 'QUEUE', data.to_json
-        DATA_REDIS.incr counter_key
+    if @user.balance > -40
+      button = Button.find_by_uuid(params[:button_id])
+      if not button.nil?
+        data = {
+          :uuid => UUID.new.generate,
+          :user_uuid => @user.uuid,
+          :button_uuid => button.uuid,
+          :referrer => params[:referrer],
+          :user_agent => request.env['HTTP_USER_AGENT'],
+          :ip_address => request.remote_ip,
+          :created_at => Time.new.utc
+        }
+        counter_key = "#{@user.uuid}:#{button.uuid}"
+        DATA_REDIS.multi do
+          DATA_REDIS.lpush 'QUEUE', data.to_json
+          DATA_REDIS.incr counter_key
+        end
+        notice = t('users.sign_in.click_success')
+      else
+        alert = t('users.sign_in.button_not_found')
       end
-      notice = t('users.sign_in.click_success')
     else
-      alert = t('users.sign_in.button_not_found')
+      alert = "You've reached your limit"
     end
     if alert
       flash.now[:alert] = alert
