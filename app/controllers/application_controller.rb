@@ -100,17 +100,16 @@ class ApplicationController < ActionController::Base
       generator = UUID.new
       key = generator.generate(:compact)
       # in the next-to-impossible chance we collide with an existing one, carefully check
-      previous = REDIS.getset(key, user.uuid)
-      while !previous.nil?
-        # set back to its original value
-        REDIS.set(key, previous)
+      while REDIS.setnx(key, user.uuid) == 0
         # generate new key and try again
         key = generator.generate(:compact)
-        previous = REDIS.getset(key, user.uuid)
       end
-      cookies.permanent.signed[:'_25c_session'] = {
+      # set matching expiration in redis and on cookie
+      REDIS.expire(key, 2.week.to_i)
+      cookies.signed[:'_25c_session'] = {
         :value => key,
         :domain => :all,
+        :expires => 2.week.from_now
       }
     end
   end
