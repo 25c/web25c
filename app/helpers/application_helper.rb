@@ -1,5 +1,14 @@
 module ApplicationHelper
   
+  def auth_google_oauth2_path
+    path = "/auth/google_oauth2"
+    if @button_id
+      state = "button_id=#{@button_id}"
+      state = "#{state}&referrer=#{@referrer}" if @referrer
+      path = "#{path}?state=#{Rack::Utils.escape(state)}"
+    end
+  end
+  
   class BraintreeFormBuilder < ActionView::Helpers::FormBuilder
     include ActionView::Helpers::AssetTagHelper
     include ActionView::Helpers::TagHelper

@@ -196,9 +196,9 @@ class UsersController < ApplicationController
     else
       self.current_user = user
       user.update_profile if user.picture_file_name.blank? and not user.picture_url.blank?
-      if session[:button_id]
-        redirect_to confirm_tip_path(:button_id => session.delete(:button_id), 
-          :referrer => session.delete(:referrer))
+      state = Rack::Utils.parse_query(params[:state])
+      if state['button_id']
+        redirect_to confirm_tip_path(:button_id => state['button_id'], :referrer => state['referrer'])
       else
         redirect_to home_buttons_path, :notice => notice
       end
@@ -297,8 +297,6 @@ class UsersController < ApplicationController
       @new = params[:new] ? params[:new] == "true" : true
       @button_id = params[:button_id]
       @referrer = params[:referrer]
-      session[:button_id] = @button_id
-      session[:referrer] = @referrer
       render :layout => "blank"
     end
   end
