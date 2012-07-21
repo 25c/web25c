@@ -459,7 +459,7 @@ pre#button-code-block {
 #tip-25c-tooltip {
   margin: 1px 0 0;
   position:absolute; 
-  z-index:1000000000; 
+  z-index:10; 
   left:0; 
   top:0; 
   width:180px; 
@@ -976,22 +976,26 @@ table.table thead .sorting_desc_disabled {
   margin-bottom: 5px;
 }
 
-#code-type-container {
-  width: 120px;
+#button-preview-container {
+  width: 200px;
   margin: 0 20px 0 0;
 }
 
-.code-option-container {
-    cursor: pointer;
+#button-preview-container #button-preview-title {
+  margin-bottom: 10px;
 }
 
-.code-option-container.disabled {
-  color: #999;
-  cursor: auto;
+#button-preview-container #button-preview {
+  margin-left: 10px;
+}
+
+#button-preview a, a#preview-link {
+  display: block;
+  margin-top: 18px;
 }
 
 #code-container {
-  width: 640px;
+  width: 560px;
 }
 
 #step2.step-container button.btn {
@@ -1000,5 +1004,24 @@ table.table thead .sorting_desc_disabled {
 
 #set-nickname-link {
   margin: 5px 0;
+}
+
+#tooltip-container {
+  padding: 10px 0;
+}
+
+#preview-tooltip {
+  margin-top: 10px;
+  width:180px; 
+  padding: 15px;
+  min-height:50px; 
+  background-color: rgb(255, 255, 255); 
+  border: 1px solid rgba(0, 0, 0, 0.2); 
+  border-radius: 5px 5px 5px 5px; 
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); 
+  background-clip: padding-box; 
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+  font-size: 13px; 
+  line-height: 18px;
 }
 

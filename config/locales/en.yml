@@ -137,7 +137,7 @@ en:
       update_failure: Button update failed. Please try again.
       index: 
         title: Get your own 25c Button!
-        subtitle: Follow these 5 easy steps and immediately start receiving donations!
+        subtitle: Follow these easy steps and immediately start receiving donations!
         short_url_title: 25c Short URL
         platform: Platform
         javascript: JavaScript
@@ -152,11 +152,10 @@ en:
         icon-large: "Large icon"
         btn-large: "Large button" 
         icon-medium: "Medium icon"
-        btn-medium: "Medium button" 
+        btn-medium: "Medium button"
         icon-small: "Small icon"
         btn-small: "Small button"
         button_name: "Customize tooltip message:"
-        button_preview: "Button preview:"
         button_code: "Add this code to your website:"
         sign_in_overlay: Click here to create an account!
         sign_in_button: Create a Free Account
@@ -169,7 +168,10 @@ en:
         step4_title: "Customize and install your button:"
         step5_title: "Follow your rewards!"
         website: "Your website"
+        tooltip_preview: "This message will appear with your button:"
+        link_preview: "Your button will appear as this link:"
         set: Set
+        button_preview: "Button preview:"
         installation: Instructions for installation
         no_nickname: '<set-nickname>'
         set_nickname: Choose a nickname to set your profile URL.

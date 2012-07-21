@@ -1,9 +1,11 @@
 = content_for(:js) do
-  = javascript_include_tag "save-button"
+  = javascript_include_tag "save-button"                                                          
   :javascript
     window.buttonId = '#{ @button.uuid }';
     window.setButtonFieldUrl = '#{ j home_set_button_field_url }';
     window.userNickname = '#{ @user.nickname.blank? ? t('.no_nickname') : @user.nickname }';
+  / %script{:type => "text/javascript", 
+  /   :src  => "//" + ENV["API25C_URL"] + "/public/javascripts/button.js"}
 
 .row.main-content
   .span11.buffer
@@ -41,7 +43,20 @@
         / %input#button-title{:type => 'text', :value => @button.title ? @button.title : ''}
         %input#button-title{:type => 'text'}
         %button#set-button-title.btn= t('.set')
-        
+        #tooltip-container
+          .if-javascript
+            %div= t('.tooltip_preview')
+            #preview-tooltip
+              %span Donate 25c to
+              %span
+                %b#button-tooltip-text
+          .if-link
+            %div= t('.link_preview')
+            %a{:href => '#'}
+              %span Donate 25c to
+              %span
+                %span#button-link-text
+    .clear        
   #step3.step-container.hide
     .span1.step-number 3
     .span10.step-content
@@ -78,16 +93,11 @@
     .span10.step-content
       %h3.step-title= t('.step4_title')
       .step-body.buffer
-        #code-type-container.pull-left
-          %div.code-option-container
-            %input.code-type{:type => 'radio', :name => 'button_code', :value => 'javascript'}
-            %span= t('.javascript')
-          %div.code-option-container
-            %input.code-type{:type => 'radio', :name => 'button_code', :value => 'iframe'}
-            %span= t('.iframe')
-          %div.code-option-container
-            %input.code-type{:type => 'radio', :name => 'button_code', :value => 'link'}
-            %span= t('.link')
+        #button-preview-container.pull-left
+          #button-preview-title Button Preview:
+          #button-preview
+          
+          
         #code-container.pull-left
           %p
             %b= t('.button_code')
