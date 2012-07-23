@@ -1,8 +1,9 @@
 - model_class = @user.class
 - content_for :title, t('.title')
-.page-header
-  %h2= yield :title
-.row.buffer
-  .span12
+.row.main-content
+  .span11.buffer
+    .page-header
+      %h2= yield :title
     %a= link_to t('.request_payout'), home_payout_path, :class => 'btn'
-= render :partial => "form"
+  .span11
+    = render :partial => "form"

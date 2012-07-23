@@ -10,7 +10,8 @@ en:
   application:
     title: "25c social micro-donations. One quarter, one click."
     25c_units: "25c's"
-    
+    hello_email: hello@25c.com
+      
     check_facebook_cookies:
       sign_in: You have been automatically signed in using your Facebook account.
       sign_up: You have successfully linked your Facebook account to 25c!
@@ -135,13 +136,9 @@ en:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
       index: 
-        title: Button Gallery
-        welcome_title: "Getting started: set up your 25c button"
-        welcome_message: Welcome to 25c! Use this page to set your button and begin receiving clicks right away.
-        dismiss: Dismiss This Message
+        title: Get your own 25c Button!
+        subtitle: Follow these easy steps and immediately start receiving donations!
         short_url_title: 25c Short URL
-      platforms:
-        title: Supported Platforms
         platform: Platform
         javascript: JavaScript
         iframe: iFrame
@@ -151,22 +148,40 @@ en:
         wordpress: WordPress Self-Hosted
         wordpress_note: "25c buttons are not yet supported on Wordpress.com hosted sites."
         posterous: Posterous
-      form:
         button_form: "Select button type:"
         icon-large: "Large icon"
         btn-large: "Large button" 
         icon-medium: "Medium icon"
-        btn-medium: "Medium button" 
+        btn-medium: "Medium button"
         icon-small: "Small icon"
-        btn-small: "Small button" 
+        btn-small: "Small button"
         button_name: "Customize tooltip message:"
-        button_type: "Button code in:"
-        button_preview: "Button preview:"
         button_code: "Add this code to your website:"
         sign_in_overlay: Click here to create an account!
         sign_in_button: Create a Free Account
         javascript: JavaScript
         iframe: iFrame
+        link: Link
+        step1_title: "Where will you use the 25c Button?"
+        step2_title: "Name the donation purpose:"
+        step3_title: "Choose a look:"
+        step4_title: "Customize and install your button:"
+        step5_title: "Follow your rewards!"
+        website: "Your website"
+        tooltip_preview: "This message will appear with your button:"
+        link_preview: "Your button will appear as this link:"
+        set: Set
+        button_preview: "Button preview:"
+        installation: Instructions for installation
+        no_nickname: '<set-nickname>'
+        set_nickname: Choose a nickname to set your profile URL.
+        for_blogs: "Paste the code above along the text / images / videos when you post to your blog."
+        for_website: "If you have access to your website code, you can set up this code multiple times per page within any webpage in your site."
+        for_youtube: "Paste this URL into the description of your uploaded Youtube video."
+        problems: <b>Problems?</b> See the %{faq} or email us with questions at %{email}.
+        faq: FAQ
+        check_donations: Check your donations daily through your %{dashboard} or configure your 
+          %{account} to receive an email report at regular intervals!
       short_url:
         input_label: "Use it when sending links to your followers and earn along for resulting donations:"
         input_text: "Paste content URL to encode"
@@ -231,7 +246,7 @@ en:
       
   users:
     show:
-      title: ' - 25c Profile'
+      title: "'s 25c Profile"
       blank_about: 'I use 25c to get rewarded for my content.'
       current_user: 'This is your profile. '
       change_url: 'Click here to change your profile URL.'

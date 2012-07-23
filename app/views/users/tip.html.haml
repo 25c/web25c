@@ -1,9 +1,35 @@
 =render 'layouts/fb_login'
 
-#tip-center
-  %img#tip-25c-logo{:src => image_path('25c-logo-large.png')}
-  #tip-25c-tagline.lead= t('application.title')
-  = render 'layouts/sign_in_form'
+- if signed_in?
+  = content_for(:js) do
+    :javascript
+      $('body').load(function() {
+        window.open('', '_self', '');
+      });
+      $(document).ready(function() {
+        $('a.btn').click(function() {
+          // setTimeout("self.close();", 100);
+        });
+      });
+
+  #tip-center
+    = render 'layouts/alerts'
+    #tip-thanks
+      - if params[:overdraft]
+        %img#tip-25c-logo{:src => image_path('25c-logo-large.png')}
+        %p You're over your limit!
+      - else
+        %a.tip-25c-button{ :href => "/tip/#{@button_id}", :'data-size' => "btn-large" } Tip me +25c!
+        %p Thank you! Click again to micro-donate another 25c.
+        :javascript
+          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
+    %a= link_to t('.visit_25c'), root_path, :class => 'btn', :target => 'blank'
+    %a= link_to t('.view_account'), home_dashboard_path, :class => 'btn', :target => 'blank'
+- else
+  #tip-center
+    %img#tip-25c-logo{:src => image_path('25c-logo-large.png')}
+    #tip-25c-tagline.lead= t('application.title')
+    = render 'layouts/sign_in_form'
 
 = javascript_include_tag "application"
 = yield(:js)

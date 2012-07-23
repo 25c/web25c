@@ -53,7 +53,8 @@ class ApplicationController < ActionController::Base
           self.current_user.update_profile
         end
         if has_tip
-          redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
+          Click.enqueue(self.current_user, params[:button_id], params[:referrer], request)
+          redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
         elsif self.current_user.is_new
           redirect_to_session_redirect_path(home_buttons_path)
         else
@@ -100,17 +101,16 @@ class ApplicationController < ActionController::Base
       generator = UUID.new
       key = generator.generate(:compact)
       # in the next-to-impossible chance we collide with an existing one, carefully check
-      previous = REDIS.getset(key, user.uuid)
-      while !previous.nil?
-        # set back to its original value
-        REDIS.set(key, previous)
+      while REDIS.setnx(key, user.uuid) == 0
         # generate new key and try again
         key = generator.generate(:compact)
-        previous = REDIS.getset(key, user.uuid)
       end
-      cookies.permanent.signed[:'_25c_session'] = {
+      # set matching expiration in redis and on cookie
+      REDIS.expire(key, 2.week.to_i)
+      cookies.signed[:'_25c_session'] = {
         :value => key,
         :domain => :all,
+        :expires => 2.week.from_now
       }
     end
   end

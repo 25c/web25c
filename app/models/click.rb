@@ -8,6 +8,7 @@ class Click < ActiveRecord::Base
     PROCESSED = 3
     PAID = 4
     REFUNDED = 5
+    DROPPED = 6
   end
   
   belongs_to :button
@@ -87,6 +88,30 @@ class Click < ActiveRecord::Base
       self.connection.execute("COMMIT PREPARED 'process-click-#{self.uuid}'")
     end  
     true  
+  end
+  
+  def self.enqueue(user, button, referrer, request)
+    if user.balance > -40
+      button = Button.find_by_uuid(button) unless button.kind_of?(Button)
+      if not button.nil?
+        data = {
+          :uuid => UUID.new.generate,
+          :user_uuid => user.uuid,
+          :button_uuid => button.uuid,
+          :referrer => referrer,
+          :user_agent => request.env['HTTP_USER_AGENT'],
+          :ip_address => request.remote_ip,
+          :created_at => Time.new.utc
+        }
+        counter_key = "#{user.uuid}:#{button.uuid}"
+        DATA_REDIS.multi do
+          DATA_REDIS.lpush 'QUEUE', data.to_json
+          DATA_REDIS.incr counter_key
+        end
+        return true
+      end
+    end    
+    false
   end
   
 end

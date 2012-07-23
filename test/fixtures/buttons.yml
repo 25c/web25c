@@ -2,14 +2,14 @@
 
 one:
   uuid: <%= UUID.new.generate(:compact) %>
-  size: MyString
+  size: btn-large
   title: MyString
   description: MyText
   user: sylvio
 
 two:
   uuid: <%= UUID.new.generate(:compact) %>
-  size: MyString
+  size: btn-medium
   title: MyString
   description: MyText
-  user: sylvio
+  user: lionel

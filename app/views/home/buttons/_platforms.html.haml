@@ -1,40 +1,42 @@
-%h3.platform-table-title= t('.title')
-%table#platform-table.table.table-striped
-  %thead
-    %tr
-      %th.platform-logo= t('.platform')
-      %th.platform-name
-      %th.platform-code= t('.javascript')
-      %th.platform-code= t('.iframe')
-      %th.platform-note= t('.special')
-  %tbody
-    %tr
-      %td
-      %td.platform-name= t('.html')
-      %td.platform-code
-        %i.icon-ok
-      %td.platform-code
-        %i.icon-ok
-      %td.platform-note
-    %tr
-      %td.platform-logo= image_tag "logos/wordpress.png", :class => "platform-logo-img"
-      %td.platform-name= t('.wordpress')
-      %td.platform-code
-        %i.icon-ok
-      %td.platform-code
-        %i.icon-ok
-      %td.platform-note= t('.wordpress_note')
-    %tr
-      %td.platform-logo= image_tag "logos/tumblr.png", :class => "platform-logo-img"
-      %td.platform-name= t('.tumblr')
-      %td.platform-code
-      %td.platform-code
-        %i.icon-ok
-      %td.platform-note
-    %tr
-      %td.platform-logo= image_tag "logos/posterous.png", :class => "platform-logo-img"
-      %td.platform-name= t('.posterous')
-      %td.platform-code
-      %td.platform-code
-        %i.icon-ok
-      %td.platform-note
+.span11
+  %hr
+  %h3.platform-table-title= t('.title')
+  %table#platform-table.table.table-striped
+    %thead
+      %tr
+        %th.platform-logo= t('.platform')
+        %th.platform-name
+        %th.platform-code= t('.javascript')
+        %th.platform-code= t('.iframe')
+        %th.platform-note= t('.special')
+    %tbody
+      %tr
+        %td
+        %td.platform-name= t('.html')
+        %td.platform-code
+          %i.icon-ok
+        %td.platform-code
+          %i.icon-ok
+        %td.platform-note
+      %tr
+        %td.platform-logo= image_tag "logos/wordpress.png", :class => "platform-logo-img"
+        %td.platform-name= t('.wordpress')
+        %td.platform-code
+          %i.icon-ok
+        %td.platform-code
+          %i.icon-ok
+        %td.platform-note= t('.wordpress_note')
+      %tr
+        %td.platform-logo= image_tag "logos/tumblr.png", :class => "platform-logo-img"
+        %td.platform-name= t('.tumblr')
+        %td.platform-code
+        %td.platform-code
+          %i.icon-ok
+        %td.platform-note
+      %tr
+        %td.platform-logo= image_tag "logos/posterous.png", :class => "platform-logo-img"
+        %td.platform-name= t('.posterous')
+        %td.platform-code
+        %td.platform-code
+          %i.icon-ok
+        %td.platform-note

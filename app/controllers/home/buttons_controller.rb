@@ -1,7 +1,7 @@
 class Home::ButtonsController < Home::HomeController
 
   def index
-    @is_new = self.current_user.is_new
+    @user = self.current_user
     @button = self.current_user.buttons[0]
     @is_demo = false
   end
@@ -36,6 +36,17 @@ class Home::ButtonsController < Home::HomeController
       flash[:alert] = @button.errors.full_messages
     end
     redirect_to home_buttons_path(@button)
+  end
+  
+  def set_button_field
+    if params.has_key?(:field) and params.has_key?(:value)
+      if ['size', 'title', 'description', 'code_type'].include?(params[:field])
+        button = self.current_user.buttons[0]
+        button[params[:field]] = params[:value]
+        button.save!
+      end
+    end
+    render :nothing => true
   end
   
 end

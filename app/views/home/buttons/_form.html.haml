@@ -4,64 +4,55 @@
     window.buttonId = '#{ @button.uuid }';
 
 = simple_form_for @button, :url => home_button_path(@button) do |f|
-  .row
-    .span11
-      %p
-        %b= t('.button_form') 
-      #button-choice-container
-        .button-choice
-          %input.button-radio{:type => 'radio'}
-          %span= t('.btn-large')
-          / %img{:src => image_path('25c-rot-btn-large.png'), :'data-size' => 'btn-large'}
-          %img.unrot{:src => image_path('25c-btn-large.png'), :'data-size' => 'btn-large'}
-        .button-choice
-          %input.button-radio{:type => 'radio'}
-          %span= t('.icon-large')
-          / %img{:src => image_path('25c-rot-icon-large.png'), :'data-size' => 'icon-large'}
-          %img.unrot{:src => image_path('25c-icon-large.png'), :'data-size' => 'icon-large'}
-        .button-choice
-          %input.button-radio{:type => 'radio'}
-          %span= t('.btn-medium')
-          / %img{:src => image_path('25c-rot-btn-medium.png'), :'data-size' => 'btn-medium'}
-          %img.unrot{:src => image_path('25c-btn-medium.png'), :'data-size' => 'btn-medium'}
-        .button-choice
-          %input.button-radio{:type => 'radio'}
-          %span= t('.icon-medium')
-          / %img{:src => image_path('25c-rot-icon-medium.png'), :'data-size' => 'icon-medium'}
-          %img.unrot{:src => image_path('25c-icon-medium.png'), :'data-size' => 'icon-medium'}
-        .button-choice
-          %input.button-radio{:type => 'radio'}
-          %span= t('.btn-small')
-          / %img{:src => image_path('25c-rot-btn-small.png'), :'data-size' => 'btn-small'}
-          %img.unrot{:src => image_path('25c-btn-small.png'), :'data-size' => 'btn-small'}
-        .button-choice
-          %input.button-radio{:type => 'radio'}
-          %span= t('.icon-small')
-          / %img{:src => image_path('25c-rot-icon-small.png'), :'data-size' => 'icon-small'}
-          %img.unrot{:src => image_path('25c-icon-small.png'), :'data-size' => 'icon-small'}
-      .clear
-    .span4
-      / = f.input :title, :required => false, :label => t('.button_name')
-      = f.input :code_type, :required => true, :as => :radio_buttons,
-        :collection => [[t('.javascript'), "javascript"],[t('.iframe'), "iframe"]], 
-        :label => t('.button_type')
-      = f.input :size, :as => :hidden
-    .span7
-      %p
-        %b= t('.button_code')
-      
+  .span11
+    %p
+      %b= t('.button_form') 
+    #button-choice-container
+      .button-choice
+        %input.button-radio{:type => 'radio', :name => 'button_size'}
+        %span= t('.btn-large')
+        %img{:src => image_path('25c-btn-large.png'), :'data-size' => 'btn-large'}
+      .button-choice
+        %input.button-radio{:type => 'radio', :name => 'button_size'}
+        %span= t('.icon-large')
+        %img{:src => image_path('25c-icon-large.png'), :'data-size' => 'icon-large'}
+      .button-choice
+        %input.button-radio{:type => 'radio', :name => 'button_size'}
+        %span= t('.btn-medium')
+        %img{:src => image_path('25c-btn-medium.png'), :'data-size' => 'btn-medium'}
+      .button-choice
+        %input.button-radio{:type => 'radio', :name => 'button_size'}
+        %span= t('.icon-medium')
+        %img{:src => image_path('25c-icon-medium.png'), :'data-size' => 'icon-medium'}
+      .button-choice
+        %input.button-radio{:type => 'radio', :name => 'button_size'}
+        %span= t('.btn-small')
+        %img{:src => image_path('25c-btn-small.png'), :'data-size' => 'btn-small'}
+      .button-choice
+        %input.button-radio{:type => 'radio', :name => 'button_size'}
+        %span= t('.icon-small')
+        %img{:src => image_path('25c-icon-small.png'), :'data-size' => 'icon-small'}
+    .clear
+  .span4
+    / = f.input :title, :required => false, :label => t('.button_name')
+    = f.input :code_type, :required => true, :as => :radio_buttons,
+      :collection => [[t('.javascript'), "javascript"],[t('.iframe'), "iframe"]], 
+      :label => t('.button_type')
+    = f.input :size, :as => :hidden
+  .span7
+    %p
+      %b= t('.button_code')
+    
+    - if @is_demo
+      #code-wrapper
+        %a{:href => sign_in_path}
+          #code-overlay.lead= t('.sign_in_overlay')
+          %pre#button-code-block
+    - else
+      %pre#button-code-block   
+  .span3
+    .submit-container
       - if @is_demo
-        #code-wrapper
-          %a{:href => sign_in_path}
-            #code-overlay.lead= t('.sign_in_overlay')
-            %pre#button-code-block
+        =link_to t('.sign_in_button'), sign_in_path, :class => 'btn btn-warning'
       - else
-        %pre#button-code-block   
-  .row
-    .span3
-      .submit-container
-        - if @is_demo
-          =link_to t('.sign_in_button'), sign_in_path, :class => 'btn btn-primary'
-        - else
-          = f.button :submit, :class => 'btn btn-primary'
-%hr
+        = f.button :submit, :class => 'btn btn-warning'

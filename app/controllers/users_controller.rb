@@ -2,17 +2,6 @@ class UsersController < ApplicationController
   before_filter :require_signed_in, :except => [ :index, :show, :new, :sign_in, :sign_in_callback, :tip, :confirm_tip]
   before_filter :check_user_agreement, :except => [ :user_agremeent, :set_user_field, :sign_out ]
   
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
-  end
-  
   def user_agreement
     # user agreement page
   end
@@ -22,11 +11,9 @@ class UsersController < ApplicationController
       if ['has_agreed', 'is_new', 'auto_refill', 'show_donations'].include?(params[:field])
         user = self.current_user
         user.editing = true
-        self.current_user[params[:field]] = params[:value]
-        begin
-          self.current_user.save!
-          user.editing = false
-        end
+        user[params[:field]] = params[:value]
+        user.save!
+        user.editing = false
       end
     end
     render :nothing => true
@@ -189,6 +176,12 @@ class UsersController < ApplicationController
         rescue
           user.reload
         end
+        begin
+          user.nickname = auth['info']['email'].split('@')[0]
+          user.save!
+        rescue
+          user.reload
+        end
       elsif user.google_token.blank? or user.google_refresh_token.blank?
         if auth['credentials']['refresh_token'].blank?
           redirect_to '/auth/google_oauth2?approval_prompt=force'
@@ -209,9 +202,10 @@ class UsersController < ApplicationController
     else
       self.current_user = user
       user.update_profile if user.picture_file_name.blank? and not user.picture_url.blank?
-      if session[:button_id]
-        redirect_to confirm_tip_path(:button_id => session.delete(:button_id), 
-          :referrer => session.delete(:referrer))
+      state = Rack::Utils.parse_query(params[:state])
+      if state['button_id']
+        Click.enqueue(self.current_user, state['button_id'], state['referrer'], request)
+        redirect_to tip_path(:button_id => state['button_id'], :referrer => state['referrer'])
       else
         redirect_to home_buttons_path, :notice => notice
       end
@@ -268,6 +262,8 @@ class UsersController < ApplicationController
       # handle page redirecting
       if sign_in_successful
         if has_tip and not alert
+          Click.enqueue(self.current_user, params[:button_id], params[:referrer], request)
+
           redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
         elsif @user.is_new
           redirect_to_session_redirect_path(home_buttons_path)
@@ -283,8 +279,6 @@ class UsersController < ApplicationController
       end
     # not a post request
     else
-      session.delete(:button_id)
-      session.delete(:referrer)
       if self.current_user
         if self.current_user.is_new
           redirect_to_session_redirect_path(home_buttons_path)
@@ -303,17 +297,9 @@ class UsersController < ApplicationController
   end
   
   def tip
-    if self.current_user
-      redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
-    else
-      @user = User.new
-      @new = params[:new] ? params[:new] == "true" : true
-      @button_id = params[:button_id]
-      @referrer = params[:referrer]
-      session[:button_id] = @button_id
-      session[:referrer] = @referrer
-      render :layout => "blank"
-    end
+    @button_id = params[:button_id]
+    @referrer = params[:referrer]
+    render :layout => "blank"
   end
   
   def confirm_tip
@@ -324,25 +310,29 @@ class UsersController < ApplicationController
       redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
       return
     end
-    button = Button.find_by_uuid(params[:button_id])
-    if not button.nil?
-      data = {
-        :uuid => UUID.new.generate,
-        :user_uuid => @user.uuid,
-        :button_uuid => button.uuid,
-        :referrer => params[:referrer],
-        :user_agent => request.env['HTTP_USER_AGENT'],
-        :ip_address => request.remote_ip,
-        :created_at => Time.new.utc
-      }
-      counter_key = "#{@user.uuid}:#{button.uuid}"
-      DATA_REDIS.multi do
-        DATA_REDIS.lpush 'QUEUE', data.to_json
-        DATA_REDIS.incr counter_key
+    if @user.balance > -40
+      button = Button.find_by_uuid(params[:button_id])
+      if not button.nil?
+        data = {
+          :uuid => UUID.new.generate,
+          :user_uuid => @user.uuid,
+          :button_uuid => button.uuid,
+          :referrer => params[:referrer],
+          :user_agent => request.env['HTTP_USER_AGENT'],
+          :ip_address => request.remote_ip,
+          :created_at => Time.new.utc
+        }
+        counter_key = "#{@user.uuid}:#{button.uuid}"
+        DATA_REDIS.multi do
+          DATA_REDIS.lpush 'QUEUE', data.to_json
+          DATA_REDIS.incr counter_key
+        end
+        notice = t('users.sign_in.click_success')
+      else
+        alert = t('users.sign_in.button_not_found')
       end
-      notice = t('users.sign_in.click_success')
     else
-      alert = t('users.sign_in.button_not_found')
+      alert = "You've reached your limit"
     end
     if alert
       flash.now[:alert] = alert
