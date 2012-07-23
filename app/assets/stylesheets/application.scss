@@ -214,14 +214,14 @@ footer.navbar > .navbar-inner > .container {
   font-size: 20px;
 }
 
-.circle{
+.circle {
   height: 20px; 
   width: 20px; 
   cursor: pointer;
   background-image: url(image_path("circle.png"));
 }
 
-.selected-circle{ 
+.selected-circle { 
   cursor: auto;
   background-position: 0px 20px;
 }
@@ -242,7 +242,7 @@ footer.navbar > .navbar-inner > .container {
   background-image: -o-linear-gradient($from, $to);
 }
 
-#splash-buttons.login-buttons .btn, #sign-in .login-buttons .btn{
+#splash-buttons.login-buttons .btn, #sign-in .login-buttons .btn {
   margin-bottom: 5px;
   width: 125px;
 }
@@ -514,11 +514,11 @@ pre#button-code-block {
   cursor: auto;
 }
 
-#share-url-container{
+#share-url-container {
   margin-top: 10px;
 }
 
-#share-url-container > #share-url-label{
+#share-url-container > #share-url-label {
   float: left;
   margin: 5px 0 0 0;
   width: 140px;
@@ -557,20 +557,20 @@ form#transaction-form #card-CVV {
   width: 60px;
 }
 
-form#transaction-form #card-expiration-month{
+form#transaction-form #card-expiration-month {
   width: 140px;
 }
 
-form#transaction-form #card-expiration-year{
+form#transaction-form #card-expiration-year {
   margin-left: 6px;
   width: 70px;
 }
 
-.checkbox-container{
+.checkbox-container {
   margin-bottom: 10px;
 }
 
-input[type="checkbox"].checkbox{
+input[type="checkbox"].checkbox {
   margin-bottom: 8px;
 }
 
@@ -591,25 +591,43 @@ form .submit-container {
 
 /* Tip Login
  *---------------------------- */
-#tip-center{
-  width: 600px;
+ 
+#tip-body {
+  padding: 60px;
+}
+
+#tip-center, #tip-confirm-center {
+  width: auto;
   margin: 0 auto;
   text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+}
+
+#tip-center {
+  height: 310px;
+  padding-top: 60px;
+}
+
+#tip-confirm-center {
+  height: 290px;
+  padding-top: 80px;
 }
  
-img#tip-25c-logo{
+img#tip-25c-logo {
   margin-bottom: 10px;
 }
 
-#tip-25c-tagline{
+#tip-25c-tagline {
   margin-bottom: 40px;
 }
 
-#sign-in-or{
+#sign-in-or {
   margin: 10px 0;
 }
 
-#sign-in{
+#sign-in {
   width: 400px;
   min-height: 200px;
   margin: 0 auto 20px auto;
@@ -644,7 +662,11 @@ img#tip-25c-logo{
 }
 
 #tip-thanks {
-  margin-bottom: 20px;
+  margin-bottom: 80px;
+}
+
+#tip-thanks p {
+  margin-top: 20px;
 }
 
 /* FORM OVERRIDES
@@ -790,7 +812,7 @@ table.table thead .sorting_desc_disabled {
 /* USER PROFILE
 *---------------------------- */
 
-#edit-url{
+#edit-url {
   margin-left: 20px;
 }
 
