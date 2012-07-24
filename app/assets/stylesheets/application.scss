@@ -161,6 +161,14 @@ footer.navbar > .navbar-inner > .container {
   width: 960px;
 }
 
+footer.navbar > .navbar-inner > .container > ul {
+  padding-top: 5px;
+}
+
+footer.navbar #foot-copy {
+  margin-left: 10px;
+}
+
 /* Landing Page
  *---------------------------- */
 #landing-image {

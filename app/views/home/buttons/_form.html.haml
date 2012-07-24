@@ -1,7 +1,7 @@
-= content_for(:js) do
-  = javascript_include_tag "save-button"
-  :javascript
-    window.buttonId = '#{ @button.uuid }';
+/ = content_for(:js) do
+/   = javascript_include_tag "save-button"
+/   :javascript
+/     window.buttonId = '#{ @button.uuid }';
 
 = simple_form_for @button, :url => home_button_path(@button) do |f|
   .span11

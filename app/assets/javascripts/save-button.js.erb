@@ -10,11 +10,11 @@ $(document).ready(function(){
 		'icon-small': ' width="24" height="24"'
 	};
 	
-	var hostname = window.location.hostname;
-  if (hostname == 'localhost') hostname += ':3000';
+	var baseurl = window.location.protocol + '//' + window.location.hostname;
+  if (baseurl.indexOf('localhost') != -1) baseurl += ':3000';
 
   // Code contents
-  var jsOpen = '<a href="' + hostname + '/tip/' + buttonId + '" class="tip-25c-button" data-size="';
+  var jsOpen = '<a href="' + baseurl + '/tip/' + buttonId + '" class="tip-25c-button" data-size="';
   var jsClose = '</a>\n<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];\
     if(!d.getElementById(id)){js=d.createElement(s);js.id=id;\
     js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}\
@@ -22,7 +22,7 @@ $(document).ready(function(){
   var iframeOpen = '<iframe src="http://<%= ENV["API25C_URL"] %>/button/' + buttonId + '?size=';
 	var iframeMid = '" allowtransparency="true" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"';
   var iframeClose = '></iframe>';
-  var linkOpen = '<a href="' + hostname + '/' + userNickname + '">' + "Donate 25c to ";
+  var linkOpen = '<a target="_blank" href="' + baseurl + '/' + userNickname + '">' + "Donate 25c to ";
   var linkClose = '</a>';
   
   // State variables
@@ -150,6 +150,7 @@ $(document).ready(function(){
   // Save button title
   $('#set-button-title').click(function(){
     var newButtonTitle = $('#button-title').val();
+    $('#button-tooltip-text, #button-link-text').text(newButtonTitle);
     if (buttonTitle != newButtonTitle) {
       buttonTitle = newButtonTitle;
       $.post(setButtonFieldUrl, { field: 'title', value: buttonTitle });
