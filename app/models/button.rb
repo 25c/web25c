@@ -3,6 +3,8 @@ class Button < ActiveRecord::Base
   
   has_many :clicks
   
+  has_attached_file :picture
+  
   validates :size,
     :inclusion => {
       :in => %w(btn-large btn-medium btn-small icon-large icon-medium icon-small),
@@ -19,7 +21,7 @@ class Button < ActiveRecord::Base
   
   before_validation :assign_defaults
   
-  attr_accessible :size, :title, :description, :code_type
+  attr_accessible :size, :title, :description, :code_type, :picture, :youtube_id
   
   def to_param
     self.uuid

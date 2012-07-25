@@ -4,21 +4,24 @@
     = javascript_include_tag "edit-profile"
     :javascript
       window.updateProfileUrl = '#{ j update_profile_url }';
+      window.youtubeId = '#{ j @button.youtube_id }';
+      window.hasButtonPicture = '#{ @button.picture.exists? }' == 'true';
+      window.buttonUpdateUrl = '#{ j home_update_button_url }';
 
-%iframe#upload-image{:src => upload_image_path }
+%iframe#upload-picture{:src => upload_picture_path }
 #profile-container
   = simple_form_for @user, :url => update_profile_path, :html => { :multipart => true } do |f|
     .row.main-content
-      .span11
-        %h2.page-header= @user.display_name + t('.title')
-      .span4
+      / .span11
+      /   %h2.page-header= @user.display_name + t('.title')
+      .span4.buffer
         #user-profile
           .block
             .input-block
               - if @is_editable
-                #upload-button.btn= t('.image_upload')
-                #image-block
-            = image_tag(@user.picture, :id => 'user-image')
+                #upload-user-picture.btn= t('.picture_upload')
+                #picture-block
+            = image_tag(@user.picture, :id => 'user-picture')
           .block#name-block
             - if @is_editable
               .input-block
@@ -35,13 +38,43 @@
             .input-block
               %textarea{:id => 'about', :name => 'user[about]', :rows => 3}
                 =@user.about.blank? ? t('.enter_about') : @user.about
-      .span7
-        %h2 #{t('.support_title')} #{@user.display_name}.
+      .span7.buffer
         #button-holder
-          <a href="https://www.plus25c.com/tip/#{@button.uuid}" class="tip-25c-button" data-size="btn-large">#{@button.title}</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];    if(!d.getElementById(id)){js=d.createElement(s);js.id=id;    js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}    (document,"script","tip-25c-js");</script>
-
-        - if @user.show_donations
+          <a href="https://www.plus25c.com/tip/#{@button.uuid}" class="tip-25c-button" data-size="btn-large">#{@button.title}</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];    if(!d.getElementById(id)){js=d.createElement(s);js.id=id;    js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}    (document,"script","tip-25c-js");</script>
+        #button-fields
+          #button-title-block.block
+            .input-block
+              Choose a donation purpose:
+              %input{:type => 'text', :name => 'button[title]', 
+              :value => @button.title.blank? ? t('.button_title_default') : @button.title,
+              :id => 'button_title_input'}
+            .content-block
+              %h3#profile-button-title Click the 25c button to donate to #{@button.title}
+        
+        
+        - if not @button.youtube_id.empty?
+          #youtube-embed-container
+          #button-picture-container.hide
+        - elsif @button.picture.exists?
+          #youtube-embed-container.hide
+          #button-picture-container
+            = image_tag(@button.picture, :id => 'button-picture')
+        - elsif @is_editable
+          #youtube-embed-container.hide
+          #button-picture-container.hide
+        - if @is_editable
+          .update-button-field
+            %span#remove-button-video.btn.hide Remove Video
+          .update-button-field
+            %span#remove-button-picture.btn.hide Remove Image
+          .update-button-field
+            #upload-button-picture.btn Upload New Project Image
+          %label Or upload a new Youtube video:
+          %input{:type => 'text', :name => 'button[youtube_link]', :id => 'upload-youtube-url'}
+          #youtube-button.btn Save
+          
+      - if @user.show_donations
+        .span11
           %h3.table-title
             = @user.display_name + t('.tips_title')
           .table-wrapper

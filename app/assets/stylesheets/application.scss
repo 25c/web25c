@@ -136,7 +136,7 @@ hr {
     margin: 7px 5px 5px;
 }
 
-.thumb-image {
+.thumb-picture {
   border-radius: 2px;
   margin: -1px 4px 0 0;
   max-width: 25px;
@@ -835,7 +835,7 @@ table.table thead .sorting_desc_disabled {
   border-radius: 10px;
 }
 
-#user-profile #user-image {
+#user-profile #user-picture {
   width: 260px;
   margin-bottom: 10px;
 }
@@ -848,7 +848,7 @@ table.table thead .sorting_desc_disabled {
   display: block;
 }
 
-#user-profile #image-block {
+#user-profile #picture-block {
   display: none;
 }
 
@@ -872,7 +872,7 @@ table.table thead .sorting_desc_disabled {
 #user-profile textarea {
 }
 
-#user-profile:hover #upload-button {
+#user-profile:hover .btn {
   display: block;
 }
 
@@ -887,7 +887,7 @@ table.table thead .sorting_desc_disabled {
   min-height: 60px;
 }
 
-#user-profile #upload-button {
+#user-profile .btn {
   display: none;
   position: absolute;
   top: 5px;
@@ -899,7 +899,7 @@ table.table thead .sorting_desc_disabled {
   text-align: center;
 }
 
-#image-block .input-block {
+#picture-block .input-block {
   position: absolute;
   width: 100%;
   top: 0;
@@ -932,15 +932,72 @@ table.table thead .sorting_desc_disabled {
 }
 
 #button-holder {
-  min-height: 100px;
-  margin: 40px 0 0 200px;
+  width: 80px;
+  height: 40px;
+  margin: 0 auto 20px auto;
 }
 
-#upload-image {
+#profile-button-title {
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+
+.update-button-field {
+  margin: 10px 0;
+}
+
+#youtube-button.btn {
+  margin-bottom: 9px;
+}
+
+#upload-picture {
   height: 0;
   width: 0;
   border: none;
   background-color: transparent;
+}
+
+#button-picture-container {
+  position: relative;
+}
+
+#button-picture-container > .upload-button-picture {
+  display: none;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+
+#button-picture-container:hover > .upload-button-picture {
+  display: block;
+}
+
+#youtube-embed-container {
+  background-color: black;
+  width: 560px;
+  height: 341px;
+}
+
+#button-fields {
+  height: 80px;
+  border: 1px solid red;
+}
+
+#button-fields .block {
+  position: relative;
+}
+
+#button-fields .block .input-block {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#button-fields .block .content-block {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* USER AGREEMENT

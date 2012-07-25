@@ -11,17 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120718001942) do
+ActiveRecord::Schema.define(:version => 20120724213614) do
 
   create_table "buttons", :force => true do |t|
-    t.string   "uuid",        :null => false
-    t.integer  "user_id",     :null => false
+    t.string   "uuid",                 :null => false
+    t.integer  "user_id",              :null => false
     t.string   "size"
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "code_type"
+    t.string   "youtube_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "buttons", ["user_id"], :name => "index_buttons_on_user_id"

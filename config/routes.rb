@@ -20,7 +20,8 @@ Web25c::Application.routes.draw do
   namespace :home do
     # Buttons
     resources :buttons
-    match 'set_button_field' => 'buttons#set_button_field', :as => :set_button_field, :via => :post
+    match 'update_button' => 'buttons#update_button', :as => :update_button, :via => :post
+    match 'update_button_picture' => 'buttons#update_button_picture', :as => :update_button_picture, :via => :put
     
     # Dashboard
     match '' => 'dashboard#index', :as => :dashboard
@@ -39,7 +40,7 @@ Web25c::Application.routes.draw do
   match 'home/account' => 'users#update', :via => :put
   match 'home/profile' => 'users#update_profile', :via => :put, :as => :update_profile
   # hidden iframe page for ajax-like picture loading
-  match 'home/upload_image' => 'users#upload_image', :as => :upload_image
+  match 'home/upload_picture' => 'users#upload_picture', :as => :upload_picture
   match 'home/choose_nickname' => 'users#choose_nickname', :as => :choose_nickname, :via => :get
   match 'home/choose_nickname' => 'users#update_nickname', :as => :choose_nickname, :via => :put, :as => :update_nickname
   match 'home/user_agreement' => 'users#user_agreement', :as => :user_agreement

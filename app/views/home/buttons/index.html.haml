@@ -2,7 +2,7 @@
   = javascript_include_tag "save-button"                                                          
   :javascript
     window.buttonId = '#{ @button.uuid }';
-    window.setButtonFieldUrl = '#{ j home_set_button_field_url }';
+    window.updateButtonUrl = '#{ j home_update_button_url }';
     window.userNickname = '#{ @user.nickname.blank? ? t('.no_nickname') : @user.nickname }';
   / %script{:type => "text/javascript", 
   /   :src  => "//" + ENV["API25C_URL"] + "/public/javascripts/button.js"}
