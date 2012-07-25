@@ -227,6 +227,7 @@ en:
       account: Account
       profile: Profile
       contact: Contact
+      blog: Blog
       register: Register
       sign_in_with: "Sign in with:"
       or: "Or: "
