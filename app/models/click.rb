@@ -58,6 +58,8 @@ class Click < ActiveRecord::Base
           self.connection.execute("ROLLBACK PREPARED 'undo-click-#{self.uuid}'")
         end
         self.connection.execute("COMMIT PREPARED 'undo-click-#{self.uuid}'")
+        DATA_REDIS.decr "#{self.user.uuid}:#{self.button.uuid}"
+        DATA_REDIS.set "user:#{self.user.uuid}", self.user.balance
       end
     end
     true
@@ -90,14 +92,25 @@ class Click < ActiveRecord::Base
     true  
   end
   
-  def self.enqueue(user, button, referrer, request)
+  def self.enqueue(user, button, referrer, request, cookies)
     if user.balance > -40
       button = Button.find_by_uuid(button) unless button.kind_of?(Button)
       if not button.nil?
+        referrer_user_uuid = nil
+        if cookies['_25c_referrer']
+          referrer_data_str = REDIS.get(cookies['_25c_referrer'])
+          if referrer_data_str
+            referrer_data = JSON.parse(referrer_data_str)
+            if referrer.start_with?(referrer_data['url'])
+              referrer_user_uuid = referrer_data['referrer_user_uuid']
+            end
+          end
+        end
         data = {
           :uuid => UUID.new.generate,
           :user_uuid => user.uuid,
           :button_uuid => button.uuid,
+          :referrer_user_uuid => referrer_user_uuid,
           :referrer => referrer,
           :user_agent => request.env['HTTP_USER_AGENT'],
           :ip_address => request.remote_ip,

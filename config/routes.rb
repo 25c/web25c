@@ -15,7 +15,6 @@ Web25c::Application.routes.draw do
   match 'contact' => 'home#contact', :as => :contact
   
   match 'tip/:button_id' => 'users#tip', :as => :tip
-  match 'confirm_tip' => 'users#confirm_tip', :as => :confirm_tip
   
   namespace :home do
     # Buttons

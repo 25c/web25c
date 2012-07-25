@@ -206,7 +206,7 @@ class UsersController < ApplicationController
       user.update_profile if user.picture_file_name.blank? and not user.picture_url.blank?
       state = Rack::Utils.parse_query(params[:state])
       if state['button_id']
-        Click.enqueue(self.current_user, state['button_id'], state['referrer'], request)
+        Click.enqueue(self.current_user, state['button_id'], state['referrer'], request, cookies)
         redirect_to tip_path(:button_id => state['button_id'], :referrer => state['referrer'])
       else
         redirect_to home_buttons_path, :notice => notice
@@ -264,7 +264,7 @@ class UsersController < ApplicationController
       # handle page redirecting
       if sign_in_successful
         if has_tip and not alert
-          Click.enqueue(self.current_user, params[:button_id], params[:referrer], request)
+          Click.enqueue(self.current_user, params[:button_id], params[:referrer], request, cookies)
 
           redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
         elsif @user.is_new
@@ -301,46 +301,6 @@ class UsersController < ApplicationController
   def tip
     @button_id = params[:button_id]
     @referrer = params[:referrer]
-    render :layout => "blank"
-  end
-  
-  def confirm_tip
-    if self.current_user
-      @user = self.current_user
-    else
-      flash[:alert] = t('users.sign_in.failure')
-      redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
-      return
-    end
-    if @user.balance > -40
-      button = Button.find_by_uuid(params[:button_id])
-      if not button.nil?
-        data = {
-          :uuid => UUID.new.generate,
-          :user_uuid => @user.uuid,
-          :button_uuid => button.uuid,
-          :referrer => params[:referrer],
-          :user_agent => request.env['HTTP_USER_AGENT'],
-          :ip_address => request.remote_ip,
-          :created_at => Time.new.utc
-        }
-        counter_key = "#{@user.uuid}:#{button.uuid}"
-        DATA_REDIS.multi do
-          DATA_REDIS.lpush 'QUEUE', data.to_json
-          DATA_REDIS.incr counter_key
-        end
-        notice = t('users.sign_in.click_success')
-      else
-        alert = t('users.sign_in.button_not_found')
-      end
-    else
-      alert = "You've reached your limit"
-    end
-    if alert
-      flash.now[:alert] = alert
-    else
-      flash.now[:notice] = notice
-    end
     render :layout => "blank"
   end
   
