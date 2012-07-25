@@ -58,6 +58,8 @@ class Click < ActiveRecord::Base
           self.connection.execute("ROLLBACK PREPARED 'undo-click-#{self.uuid}'")
         end
         self.connection.execute("COMMIT PREPARED 'undo-click-#{self.uuid}'")
+        DATA_REDIS.decr "#{self.user.uuid}:#{self.button.uuid}"
+        DATA_REDIS.set "user:#{self.user.uuid}", self.user.balance
       end
     end
     true
