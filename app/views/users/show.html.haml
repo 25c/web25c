@@ -26,7 +26,7 @@
         .block.pull-left
           .input-block
             - if @is_editable
-              #upload-user-picture.btn= t('.picture_upload')
+              #upload-user-picture.btn= t('.upload_user_picture')
           #user-picture-container
             = image_tag(@user.picture, :id => 'user-picture')
         .pull-left
@@ -108,9 +108,9 @@
             .update-button-field
               %span#remove-button-video.btn.hide= t('.remove_video')
             .update-button-field
-              %span#remove-button-picture.btn.hide= t('.remove_picture')
+              %span#remove-button-picture.btn.hide= t('.remove_button_picture')
             .update-button-field
-              #upload-button-picture.btn= t('.upload_picture')
+              #upload-button-picture.btn= t('.upload_button_picture')
             %label= t('.choose_youtube_video')
             %input{:type => 'text', :name => 'button[youtube_link]', :id => 'upload-youtube-url'}
             #youtube-button.btn= t('.save_video')

@@ -254,7 +254,7 @@ en:
       support_title: Please click the 25c Button below to contribute to
       support_title_no_name: Please click the 25c Button below to contribute.
       support_subtitle: Your click shows your appreciation and helps the people who provide great content.
-      image_upload: Upload your image
+      upload_user_picture: Upload Your Image
       submit: Update Profile
       first_name_default: First Name
       last_name_default: Last Name
@@ -264,12 +264,12 @@ en:
       tips_title: "'s Donations"
       no_clicks: No donations given yet.
       button_title_intro: "Click the 25c button to donate to "
-      button_description_default: Use 25c to show your appreciation with a donation.
+      button_description_default: Use 25c to show your appreciation.
       enter_button_title: Name donation purpose
       enter_button_description: Write a description of your donation purpose
       remove_video: Remove Video
-      remove_picture: Remove Image
-      upload_picture: Upload Donation Image
+      remove_button_picture: Remove Image
+      upload_button_picture: Upload Donation Image
       choose_youtube_video: "Or choose a donation YouTube video: "
     form:
       title: Update Account Settings
