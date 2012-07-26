@@ -183,6 +183,17 @@ footer.navbar #foot-copy {
   margin-top: 60px;
 }
 
+.splash #splash-graphics {
+  height: 250px; 
+  width: 500px; 
+  overflow: hidden; 
+  background-image: url(image_path("flow1.png"));
+}
+
+.splash #splash-graphics img {
+  position: relative;
+}
+
 .splash #splash-left {
   position: relative;
   min-height: 270px;

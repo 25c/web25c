@@ -21,6 +21,13 @@
         window.location.hash = target;
       });
       
+      mixpanel.track("Front Page Loaded");
+      $('#action-button').click(function(event) {
+       event.preventDefault();
+       mixpanel.track("Front Page Action"); 
+       window.location = $(this).attr('href');
+      });
+
       // var hash = window.location.hash.substring(1);
       // if ($.inArray(hash, ['button', 'about']) != -1) {
       //   var $link = $('a.more-link[href$="' + hash + '"]');
@@ -41,9 +48,7 @@
         =link_to t('.call_to_action'), sign_in_path, :class => 'lead btn btn-large btn-warning', 
           :id => 'action-button'
     .span7
-      %div{:style => 'height: 250px; width: 500px; overflow: hidden'}
-        #value-div{:style => 'position: relative'}
-          %img#flow1{:src => image_path('flow1.png')}
+      %div#splash-graphics
   .row
     .span11
       %p.lead= raw t('.about_25c_p1')
