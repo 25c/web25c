@@ -1,65 +1,37 @@
 =content_for(:js) do
   :javascript
     $(document).ready(function() {
-      var linkText = {
-        'about_more': '#{ t('.about_more')}',
-        'about_less': '#{ t('.about_less')}',
-        'button_more': '#{ t('.button_more')}',
-        'button_less': '#{ t('.button_less')}',
-        'url_more': '#{ t('.url_more')}',
-        'url_less': '#{ t('.url_less')}'
-      };
-      
-      $('.more-link').click(function(e) {
-        e.preventDefault();
-        var $link = $(this);
-        var target = $link.attr("href").substring(1);
-        $('.more-content[name="' + target + '"]').slideToggle('slow', function() {
-          if ($(this).is(':visible')) $link.text(linkText[target + '_less']);
-          else $link.text(linkText[target + '_more']);
-        });
-        window.location.hash = target;
-      });
-      
       mixpanel.track("Front Page Loaded");
       $('#action-button').click(function(event) {
        event.preventDefault();
        mixpanel.track("Front Page Action"); 
        window.location = $(this).attr('href');
       });
-
-      // var hash = window.location.hash.substring(1);
-      // if ($.inArray(hash, ['button', 'about']) != -1) {
-      //   var $link = $('a.more-link[href$="' + hash + '"]');
-      //   $link.click();
-      //   $(window).scrollTop($link.parent().offset().top - 40) 
-      // }
     });
 
 .splash
-  .row.buffer
-    .span11
-      %h1#splash-title= t('.value_proposition')
-    .span4#splash-left
-      #text1.splash-text
-        %p.lead= raw t('.value_proposition_sub1q')
-        %p.lead= raw t('.value_proposition_sub1a')
-      %div#splash-buttons
-        =link_to t('.call_to_action'), sign_in_path, :class => 'lead btn btn-large btn-warning', 
-          :id => 'action-button'
-    .span7
-      %div#splash-graphics
-  .row
-    .span11
-      %p.lead= raw t('.about_25c_p1')
-      %p.lead= raw t('.about_25c_p3')
-
-.row.main-content
-  .span11
-    %h2= raw t('.button_25c_title')
-    %p
-    .more-content{:name => 'button'}
-  =render 'home/buttons/form'
-  =render 'home/buttons/platforms'
+  #splash-how-it-works.pull-left
+    %h2= t('.how_it_works')
+  #splash-graphics.pull-left
+  #splash-25c-button.pull-left
+    %h2= raw t('.25c_button_legend')
+    .lead= t('.25c_button_legend_sub')
   .clear
-  / %p.lead= link_to t('.button_more'), '#button', :class => 'more-link'
+  %h1.splash-title.center.highlight= t('.collect_title')
+  .splash-column.pull-left.center
+    .lead= t('.create_button_title')
+    =link_to t('.create_button_button'), home_buttons_path, :class => 'btn btn-large btn-warning',
+      :id => 'add-25c-button'
+  .splash-column.pull-left.center
+    .lead= t('.create_profile_title')
+    =link_to t('.create_profile_button'), @profile_path, :class => 'btn btn-large btn-warning',
+:id => 'create-profile'
+  .clear
+  %h1.splash-title.center.highlight= t('.pledge_title')
+  .splash-column.pull-left.center
+    =link_to t('.top_sites_button'), '#', :class => 'btn btn-large btn-warning',
+      :id => 'top-sites-button'
+  .splash-column.pull-left.center
+    =link_to t('.top_profiles_button'), '#', :class => 'btn btn-large btn-warning',
+      :id => 'top-profiles-button'
+  .clear.buffer
