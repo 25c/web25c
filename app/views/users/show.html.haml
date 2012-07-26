@@ -13,6 +13,10 @@
       $(document).ready(function() {
         $('#button-fields .content-block').css('display', 'block');
         $('#user-profile textarea').attr('readonly', 'readonly').css('cursor', 'text');
+        $('#user-profile #user-picture').load(function() {
+          var picOffset = ($('#user-profile #user-picture').height() - 200) / 2;
+          if (picOffset > 0) $('#user-profile #user-picture').css('margin-top', -picOffset);
+        });
       });
 
 - if @is_editable

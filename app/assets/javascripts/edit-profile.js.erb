@@ -52,6 +52,11 @@ $(document).ready(function() {
   }  else if (hasButtonPicture) {
     $('#remove-button-picture.btn').show();
   }
+
+  $('#user-profile #user-picture').load(function() {
+    var picOffset = ($('#user-profile #user-picture').height() - 200) / 2;
+    if (picOffset > 0) $('#user-profile #user-picture').css('margin-top', -picOffset);
+  });
   
   // if ($('#youtube-embed-container:visible').length) {
   //   if (youtubeId) {
