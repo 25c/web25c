@@ -190,30 +190,17 @@ en:
         share_label: "Share Your Link:"
 
     index:
-      or: Or
-      register: Register with 25c
-      value_proposition: Micro-Donations Made Easy
-      value_proposition_sub1q: "Add the <b>25c Button&trade;</b> to your blog, website, Youtube..."
-      value_proposition_sub1a: "Collect 25c a click. "
-      value_proposition_sub2q: "Have a lot of followers?"
-      value_proposition_sub2a: "Use the <b>25c Short URL</b>. Earn along with the creators you help people discover."
-      call_to_action: Start Collecting 25c's Now!
-      about_25c_title: About 25c
-      about_25c_p1: "The 25c Button&trade;: A 'Like' with a 25c donation. "
-      about_25c_p2: "Display the 25c Button&trade; on your blog or Youtube profile by inserting 
-        our snippet of code, and you are ready to collect. "
-      about_25c_p3: "Clicked once is 25c, twice is two 25c's, ... , and 100,000 times is $25,000. "
-      about_more: Show more...
-      about_less: Show less...
-      button_description: "Start receiving 25c donations by inserting your own 25c ButtonTM to your content:"
-      button_more: Get your Button!
-      button_less: Hide Button code.
-      button_25c_title: Get Your Own 25c Button
-      url_25c_title: 25c Short URL
-      url_description: Use the 25c Short URL to refer great content & causes - and earn 5 cents for 
-        each 25c donation generated.
-      url_more: Generate a 25c Short URL!
-      url_less: Hide URL Generator.
+      how_it_works: "How it works:"
+      25c_button_legend: The 25c Button&trade;
+      25c_button_legend_sub: One quarter each click
+      collect_title: Collect 25c Pledges
+      pledge_title: Pledge 25c's
+      create_button_title: "On your website, blog:"
+      create_button_button: Add 25c Button
+      create_profile_title: "On 25c.com:"
+      create_profile_button: Create 25c Profile
+      top_sites_button: Top Sites
+      top_profiles_button: Top Profiles
       
   layouts:
     admin:
@@ -254,7 +241,7 @@ en:
       support_title: Please click the 25c Button below to contribute to
       support_title_no_name: Please click the 25c Button below to contribute.
       support_subtitle: Your click shows your appreciation and helps the people who provide great content.
-      image_upload: Upload your image
+      upload_user_picture: Upload Your Image
       submit: Update Profile
       first_name_default: First Name
       last_name_default: Last Name
@@ -263,6 +250,14 @@ en:
       edit_url: Change Profile URL
       tips_title: "'s Donations"
       no_clicks: No donations given yet.
+      button_title_intro: "Click the 25c button to donate to "
+      button_description_default: Use 25c to show your appreciation.
+      enter_button_title: Name donation purpose
+      enter_button_description: Write a description of your donation purpose
+      remove_video: Remove Video
+      remove_button_picture: Remove Image
+      upload_button_picture: Upload Donation Image
+      choose_youtube_video: "Or choose a donation YouTube video: "
     form:
       title: Update Account Settings
       show_donations: Show donations on my profile page

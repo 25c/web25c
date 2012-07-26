@@ -35,16 +35,32 @@ class Home::ButtonsController < Home::HomeController
     else
       flash[:alert] = @button.errors.full_messages
     end
-    redirect_to home_buttons_path(@button)
+    if params.has_key('ajax')
+      render :nothing => true
+    else
+      redirect_to home_buttons_path(@button)
+    end
   end
   
-  def set_button_field
-    if params.has_key?(:field) and params.has_key?(:value)
-      if ['size', 'title', 'description', 'code_type'].include?(params[:field])
-        button = self.current_user.buttons[0]
-        button[params[:field]] = params[:value]
-        button.save!
+  def update_button_picture
+    @user = self.current_user
+    @button = @user.buttons[0]
+    respond_to do |format|
+      if @button.update_attributes(params[:button])
+        format.html { render template: 'users/upload_picture' }
+        format.json { render json: true, head: :ok }
+      else
+        format.json { render json: @button.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def update_button
+    button = self.current_user.buttons[0]
+    if params[:button].has_key?('picture') and params[:button][:key].blank?
+      button.picture.destroy
+    else
+      button.update_attributes!(params[:button])
     end
     render :nothing => true
   end

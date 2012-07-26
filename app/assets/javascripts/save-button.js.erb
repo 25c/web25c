@@ -70,7 +70,7 @@ $(document).ready(function(){
   // Update button code shown to user
   var updateButtonCode = function() {
     if (codeType == 'javascript' || codeType == 'iframe') {
-      $.post(setButtonFieldUrl, { field: 'code_type', value: codeType });
+      $.post(updateButtonUrl, { 'button[code_type]': codeType });
     }
     $('#set-nickname-link').hide();
     if (codeType == 'iframe') {
@@ -119,7 +119,7 @@ $(document).ready(function(){
         $this.parent().find('.selected-button').removeClass('selected-button');
         $this.addClass('selected-button');
         updateButtonCode();
-        $.post(setButtonFieldUrl, { field: 'size', value: buttonSize });
+        $.post(updateButtonUrl, { 'button[size]': buttonSize });
       }
     } else if ($this.hasClass('platform-container')) {
       var platform = $this.attr('data-platform');
@@ -153,7 +153,7 @@ $(document).ready(function(){
     $('#button-tooltip-text, #button-link-text').text(newButtonTitle);
     if (buttonTitle != newButtonTitle) {
       buttonTitle = newButtonTitle;
-      $.post(setButtonFieldUrl, { field: 'title', value: buttonTitle });
+      $.post(updateButtonUrl, { 'button[title]': buttonTitle });
       updateButtonCode();
     }
   });

@@ -4,17 +4,13 @@ class HomeController < ApplicationController
     # redirect_to home_dashboard_path if self.current_user
     session.delete(:button_id)
     session.delete(:referrer)
-    if self.current_user
-      @button = self.current_user.buttons[0]
-      @is_demo = false
+    
+    user = self.current_user
+    
+    if user and not user.nickname.blank?
+      @profile_path = profile_path(user.nickname)
     else
-      @button = Button.new({
-        :size => "btn-large", 
-        :title => "Please super-like my page!",
-        :code_type => "javascript"
-      })
-      @button.uuid = "0123456789abcdef"
-      @is_demo = true
+      @profile_path = choose_nickname_path
     end
   end
 

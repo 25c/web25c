@@ -31,4 +31,7 @@ jQuery ->
 		return false
 		
 	$(".facebook-btn").click () ->
-    FB.login()
+    FB.login ((response) ->
+        # handle the response
+      ), {scope: 'email,publish_stream'}
+    # FB.login()

@@ -24,8 +24,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_nickname_ci(params[:id])
     @is_editable = self.current_user == @user
-    @user.first_name = @user.email if @user.first_name.blank?
-    @user.about = t('users.show.blank_about') if @user.about.blank?
+    # @user.first_name = @user.email if @user.first_name.blank?
+    # @user.about = t('users.show.blank_about') if @user.about.blank?
     @button = @user.buttons[0]    
     clicks = @user.clicks.includes(:button => :user).order("created_at DESC")
     @click_sets = group_clicks_by_count(clicks)
@@ -83,7 +83,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         if params[:user].include?(:picture)
-          format.html { render action: 'upload_image', notice: t('users.update.success') }
+          @button = @user.buttons[0]
+          format.html { render action: 'upload_picture' }
           format.json { render json: true, head: :ok }
         else
           format.json { render json: true, head: :ok }
@@ -94,8 +95,9 @@ class UsersController < ApplicationController
     end
   end
   
-  def upload_image
+  def upload_picture
     @user = self.current_user
+    @button = @user.buttons[0]
     render :layout => "blank"
   end
   

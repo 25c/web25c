@@ -74,6 +74,10 @@ hr {
   color: #f26422;
 }
 
+.full-span {
+  padding-left: 20px;
+}
+
 /* Header Nav
  *---------------------------- */
 
@@ -136,7 +140,7 @@ hr {
     margin: 7px 5px 5px;
 }
 
-.thumb-image {
+.thumb-picture {
   border-radius: 2px;
   margin: -1px 4px 0 0;
   max-width: 25px;
@@ -171,72 +175,58 @@ footer.navbar #foot-copy {
 
 /* Landing Page
  *---------------------------- */
-#landing-image {
-  margin-top: 20px;
+ 
+ .splash, .sub-splash, .main-content {
+   padding: 30px;
+   margin: 20px 0px;
+   background-color: #f6f6f6;
+   border-radius: 10px;
+   border: 1px solid #ddd;
+   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+ }
+ 
+ .main-content {
+   padding: 30px 30px 30px 10px;
+ }
+ 
+.splash #splash-graphics {
+  height: 250px; 
+  width: 500px;
+  overflow: hidden; 
+  background-image: url(image_path("flow1.png"));
+  margin: 20px auto 0;
 }
 
-.splash #splash-title {
-  margin-bottom: 20px;
+#splash-how-it-works {
+  width: 185px;
+  padding: 130px 0 0 0;
 }
 
-.splash #splash-buttons {
-  margin-top: 60px;
+#splash-25c-button {
+  width: 205px;
+  padding: 195px 0 0 0;
+  margin-left: -20px;
 }
 
-.splash #splash-left {
-  position: relative;
-  min-height: 270px;
+h1.splash-title {
+  margin: 40px 0 10px 0;
+  color: orange;
 }
 
-.splash, .sub-splash, .main-content {
-  padding: 30px;
-  margin: 20px 0px;
-  background-color: #f6f6f6;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+.splash-column {
+  width: 50%;
 }
 
-.main-content {
-  padding: 30px 30px 30px 10px;
+.splash-column > .lead {
+  margin-bottom: 5px;
 }
 
-.splash .fb-login-button {
-  position: relative;
-  top: 2px;
-  display: inline;
-}
-.splash > p > a.btn {
-  font-weight: 400;
-}
-
-.splash .or-block {
-  position: relative;
-  top: 2px;
-}
-
-#action-button {
+.splash-column > .btn {
+  margin: 0;
   width: 250px; 
   font-size: 20px;
-}
-
-.circle {
-  height: 20px; 
-  width: 20px; 
-  cursor: pointer;
-  background-image: url(image_path("circle.png"));
-}
-
-.selected-circle { 
-  cursor: auto;
-  background-position: 0px 20px;
-}
-
-.sub-splash {
-  margin-bottom: 30px;
-  padding: 20px 40px;
 }
 
 /* Login Buttons
@@ -829,15 +819,25 @@ table.table thead .sorting_desc_disabled {
 }
 
 #user-profile {
+  width: 200px;
   padding: 20px;
   border: 2px solid #ddd;
   background-color: white;
   border-radius: 10px;
+  margin: 0 0 20px 20px;
+  min-height: 333px;
 }
 
-#user-profile #user-image {
-  width: 260px;
-  margin-bottom: 10px;
+#user-profile #user-picture-container {
+  width: 200px;
+  height: 200px;
+  margin: 0 20px 5px 0;
+  line-height: 200px;
+  overflow: hidden;
+}
+
+#user-profile #user-picture {
+  width: 200px;
 }
 
 #user-profile .block {
@@ -848,21 +848,17 @@ table.table thead .sorting_desc_disabled {
   display: block;
 }
 
-#user-profile #image-block {
-  display: none;
-}
-
 #user-profile input, #user-profile textarea {
   box-shadow: none;
   background-color: transparent;
   border: 1px solid transparent;
   resize: none;
-  width: 245px;
+  width: 188px;
 }
 
 #user-profile #last_name_input, #user-profile #first_name_input {
   float: left;
-  width: 112px;
+  width: 84px;
 }
 
 #user-profile #first_name_input {
@@ -872,7 +868,7 @@ table.table thead .sorting_desc_disabled {
 #user-profile textarea {
 }
 
-#user-profile:hover #upload-button {
+#user-profile:hover .btn {
   display: block;
 }
 
@@ -887,7 +883,7 @@ table.table thead .sorting_desc_disabled {
   min-height: 60px;
 }
 
-#user-profile #upload-button {
+#user-profile .btn {
   display: none;
   position: absolute;
   top: 5px;
@@ -897,13 +893,6 @@ table.table thead .sorting_desc_disabled {
 #profile-submit {
   margin: 0;
   text-align: center;
-}
-
-#image-block .input-block {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
 }
 
 #name-block {
@@ -931,16 +920,124 @@ table.table thead .sorting_desc_disabled {
   display: block;
 }
 
-#button-holder {
-  min-height: 100px;
-  margin: 40px 0 0 200px;
+#project-container {
+  width: 570px;
+  padding: 20px;
+  border: 2px solid #ddd;
+  background-color: white;
+  border-radius: 10px;
+  margin: 0 0 20px 20px;
+  min-height: 333px;
 }
 
-#upload-image {
+#project-action {
+  border: 2px solid orange;
+  background-color: #FFE7CF;
+  width: 520px;
+  margin: 0 auto 20px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#project-content {
+  
+}
+
+
+#button-holder {
+  width: 80px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+#profile-button-title {
+  line-height: 1.2em;
+  margin-bottom: 5px;
+}
+
+.update-button-field {
+  display: inline;
+}
+
+#youtube-button.btn {
+  margin-bottom: 9px;
+}
+
+#upload-picture {
   height: 0;
   width: 0;
   border: none;
   background-color: transparent;
+}
+
+#button-picture-container {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+#button-picture-container #button-picture {
+  max-width: 520px;
+  max-height: 300px;
+}
+
+#button-picture-container > .upload-button-picture {
+  display: none;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+
+#button-picture-container:hover > .upload-button-picture {
+  display: block;
+}
+
+#youtube-embed-container {
+  margin-left: 4px;
+  background-color: black;
+  width: 560px;
+  height: 341px;
+  margin-bottom: 10px;
+}
+
+#button-fields {
+  width: 420px;
+  min-height: 80px;
+}
+
+#button-fields .block {
+  clear: both;
+  position: relative;
+}
+
+#button-fields .block .input-block {
+  display: none;
+//  position: absolute;
+}
+
+#button-fields .block .content-block {
+//  position: absolute;
+}
+
+#button-fields:hover .block .input-block {
+  display: block;
+}
+
+#button-fields:hover .block .content-block {
+  display: none;
+}
+
+#button-fields .block .input-block input, #button-fields .block .input-block textarea {
+  width: 420px;
+  margin-bottom: 4px;
+}
+
+#button-fields .block .input-block textarea {
+  height: 46px;
+  margin-bottom: -10px;
+}
+
+#project-content label {
+  margin-top: 5px;
 }
 
 /* USER AGREEMENT

@@ -2,29 +2,73 @@ $(document).ready(function() {
 
   $('#name-block .content-block, #user-profile textarea').addClass('editing');
   
-  var $iframe = $('#upload-image');
+  // VARIABLES
   
-  var has_reloaded = false;
-        
-  $iframe.load(function() {
-    if (has_reloaded) {
-      newUrl = $(this).contents().find('#picture-url').attr('data_url');
-      $('#user-profile #user-image').attr('src', newUrl);
-    }
-    
-    var $picture_form = $iframe.contents().find('form');
-    var $picture_input = $picture_form.find('#user_picture');
-      
-    $('#upload-button').unbind('click').click(function() {
-      $picture_input.click();
-      $picture_input.change(function() {
-        $picture_form.submit();
-        has_reloaded = true;
-      });
+  var $iframe = $('#upload-picture');
+  var has_new_user_picture = false;
+  var has_new_button_picture = false;
+  
+  // FUNCTIONS
+  
+  var getYoutubeId = function(url) {
+      var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
+      var match = url.match(regExp);
+      if (match && match[1].length == 11){
+          return match[1];
+      } else {
+          return '';
+      }
+  };
+  
+  var insertYoutubeIframe = function(id) {
+    var $videoIframe = $('<iframe />', {
+      id: 'video-iframe',
+      title: 'YouTube Video Player',
+      width: '560',
+      height: '341',
+      src: 'http://www.youtube.com/embed/' + id,
+      frameborder: '0'
     });
+    $('#youtube-embed-container').empty().show().append($videoIframe);
+  };
+  
+  var removeButtonVideo = function() {
+    $('#youtube-embed-container').empty().hide();
+    $.post(buttonUpdateUrl, { 'button[youtube_id]': '' });
+    $('#remove-button-video').hide();
+  }
+  
+  var removeButtonPicture = function() {
+    $('#button-picture-container').empty().hide();
+    $.post(buttonUpdateUrl, { 'button[picture]': '' });
+    $('#remove-button-picture').hide();
+  }
+  
+  
+  // INITIALIZATION
+  
+  if (youtubeId) {
+    $('#remove-button-video.btn').show();
+  }  else if (hasButtonPicture) {
+    $('#remove-button-picture.btn').show();
+  }
+
+  $('#user-profile #user-picture').load(function() {
+    var picOffset = ($('#user-profile #user-picture').height() - 200) / 2;
+    if (picOffset > 0) $('#user-profile #user-picture').css('margin-top', -picOffset);
   });
   
-  $('input, textarea').change(function() {
+  // if ($('#youtube-embed-container:visible').length) {
+  //   if (youtubeId) {
+  //     insertYoutubeIframe(youtubeId);
+  //   } else {
+  //     // invalid youtube id
+  //   }
+  // }
+  
+  // EVENT HANDLERS
+  
+  $('#user-profile input, #user-profile textarea').change(function() {
     var $this = $(this);
     var key = $this.attr('name').split("[")[1].split("]")[0];
     userData = {};
@@ -37,7 +81,6 @@ $(document).ready(function() {
       contentType: 'application/json',
       dataType: 'json',
       success: function(data) {
-        // console.log(data);
       }
     });
     if (key == 'first_name' || key == 'last_name') {
@@ -46,14 +89,103 @@ $(document).ready(function() {
     }
   });
   
-  $('input, textarea').focusin(function() {
-    $('input, textarea').addClass("focused");
+  $('#user-profile input,#user-profile textarea').focusin(function() {
+    $('#user-profile input, #user-profile textarea').addClass("focused");
     $('#name-block .input-block').css('display', 'block');
-    $('#name-block .content-block').css('display', 'none')
+    $('#name-block .content-block').css('display', 'none');
   }).focusout(function() {
-    $('input, textarea').removeClass("focused");
+    $('#user-profile input, #user-profile textarea').removeClass("focused");
     $('#name-block .input-block').css('display', '');
     $('#name-block .content-block').css('display', '');
   });
   
+  $('#button-fields input, #button-fields textarea').focusin(function() {
+    $('#button-fields .input-block').css('display', 'block');
+    $('#button-fields .content-block').css('display', 'none');
+  }).focusout(function() {
+    $('#button-fields .input-block').css('display', '');
+    $('#button-fields .content-block').css('display', '');
+  });
+  
+  $('#button-fields input, #button-fields textarea').change(function() {
+    var $this = $(this);
+    var buttonParams = {};
+    buttonParams[$this.attr('name')] = $this.val();
+    $.post(buttonUpdateUrl, buttonParams);
+    if ($this.attr('id') == 'button-title-input') {
+      $('#button-title').text($this.val());
+    } else if ($this.attr('id') == 'button-description-input') {
+      $('#button-description').text($this.val());
+    }
+  });
+  
+  $('#youtube-button').click(function() {
+    var newYoutubeId = getYoutubeId($('#upload-youtube-url').val());
+    if (newYoutubeId) {
+      youtubeId = newYoutubeId;
+      insertYoutubeIframe(youtubeId);
+      $.post(buttonUpdateUrl, { 'button[youtube_id]': youtubeId });
+      $('#remove-button-video').show();
+      removeButtonPicture();
+    } else {
+      alert('Invalid Youtube URL.');
+    }
+  });
+  
+  $('#remove-button-video').click(function() {
+    removeButtonVideo();
+  });
+  
+  $('#remove-button-picture').click(function() {
+    removeButtonPicture();
+  });
+  
+  // IFRAME PICTURE UPLOAD FUNCTIONALITY
+  
+  $iframe.load(function() {
+    
+    var $user_form = $iframe.contents().find('form#user-form');
+    var $user_input = $user_form.find('#user_picture');
+    
+    var $button_form = $iframe.contents().find('form#button-form');
+    var $button_input = $button_form.find('#button_picture');
+    
+    if (has_new_user_picture) {
+      newUserPictureUrl = $(this).contents().find('#picture-urls').attr('data_user_url');            
+      $('#user-profile #user-picture').attr('src', newUserPictureUrl);
+    }
+    
+    if (has_new_button_picture) {
+      newButtonPictureUrl = $(this).contents().find('#picture-urls').attr('data_button_url');
+      var $buttonPicture = $('<img />', {
+        id: 'button-picture',
+        src: newButtonPictureUrl
+      });
+      $('#button-picture-container').empty().show().prepend($buttonPicture);
+      if (youtubeId) {
+        removeButtonVideo();
+      }
+      $('#remove-button-picture').show();
+      hasButtonPicture = true;
+    }
+ 
+    $('#upload-user-picture').unbind('click').click(function() {
+      $user_input.click();
+      $user_input.change(function() {
+        $user_form.submit();
+        has_new_user_picture = true;
+      });
+    });
+    
+    $('#upload-button-picture').unbind('click').click(function() {
+      $button_input.click();
+      $button_input.change(function() {
+        $button_form.submit();
+        has_new_button_picture = true;
+      });
+    });
+  });
+  
 });
+
+
