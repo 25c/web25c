@@ -88,7 +88,7 @@
           .clear
         
         #project-content.center
-          - if not @button.youtube_id.empty?
+          - if not @button.youtube_id.blank?
             #youtube-embed-container
               %iframe{ :id => 'video-iframe',
                 :title => 'YouTube Video Player',
