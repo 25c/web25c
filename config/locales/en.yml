@@ -263,6 +263,14 @@ en:
       edit_url: Change Profile URL
       tips_title: "'s Donations"
       no_clicks: No donations given yet.
+      button_title_intro: "Click the 25c button to donate to "
+      button_description_default: Use 25c to show your appreciation with a donation.
+      enter_button_title: Name donation purpose
+      enter_button_description: Write a description of your donation purpose
+      remove_video: Remove Video
+      remove_picture: Remove Image
+      upload_picture: Upload Donation Image
+      choose_youtube_video: "Or choose a donation YouTube video: "
     form:
       title: Update Account Settings
       show_donations: Show donations on my profile page
