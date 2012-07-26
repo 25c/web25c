@@ -5,10 +5,10 @@ Web25c::Application.configure do
     [u, p] == ['user25c', 'sup3rl!k3']
   end
   
-  ENV["API25C_URL"] = 'api.plus25c.com'
+  ENV["API25C_URL"] = 'api.25c.com'
 
   # Settings specified here will take precedence over those in config/application.rb
-  config.action_mailer.default_url_options = { :host => "www.plus25c.com" }
+  config.action_mailer.default_url_options = { :host => "www.25c.com" }
   config.action_mailer.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
