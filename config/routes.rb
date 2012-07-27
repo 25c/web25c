@@ -10,9 +10,9 @@ Web25c::Application.routes.draw do
   
   match 'about' => 'home#about', :as => :about
   match 'faq' => 'home#faq', :as => :faq
+  match 'fees' => 'home#fees', :as => :fees
   match 'terms' => 'home#terms', :as => :terms
   match 'privacy' => 'home#privacy', :as => :privacy
-  match 'contact' => 'home#contact', :as => :contact
   
   match 'tip/:button_id' => 'users#tip', :as => :tip
   
@@ -40,6 +40,7 @@ Web25c::Application.routes.draw do
   match 'home/profile' => 'users#update_profile', :via => :put, :as => :update_profile
   # hidden iframe page for ajax-like picture loading
   match 'home/upload_picture' => 'users#upload_picture', :as => :upload_picture
+  match 'home/choose_nickname' => 'users#choose_nickname', :via => :get, :as => :choose_nickname
   match 'home/choose_nickname' => 'users#update_nickname', :via => :put, :as => :update_nickname
   match 'home/user_agreement' => 'users#user_agreement', :as => :user_agreement
   match 'home/set_user_field' => 'users#set_user_field', :as => :set_user_field, :via => :post
