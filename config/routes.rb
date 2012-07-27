@@ -10,9 +10,9 @@ Web25c::Application.routes.draw do
   
   match 'about' => 'home#about', :as => :about
   match 'faq' => 'home#faq', :as => :faq
+  match 'fees' => 'home#fees', :as => :fees
   match 'terms' => 'home#terms', :as => :terms
   match 'privacy' => 'home#privacy', :as => :privacy
-  match 'contact' => 'home#contact', :as => :contact
   
   match 'tip/:button_id' => 'users#tip', :as => :tip
   
