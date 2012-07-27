@@ -69,7 +69,7 @@ en:
         get_button: Get My Button
         payment: Pay for 25c Pledges
         undo_clicks: Undo Clicks
-        process_clicks: Process my donations now!
+        process_clicks: Process my pledges now!
         tips_given_title: 25c's given
         tips_received_title: 25c pledges received
         tips_given: 25c pledges given
@@ -88,8 +88,8 @@ en:
         clicker: Clicked By
         delete: Undo
         confirm_delete: Are you sure you want to undo this click? The provider will not receive your tip.
-        confirm_process: Are you sure you want to process all your donations?
-        clicks_processed: Your donations have been processed!
+        confirm_process: Are you sure you want to process all your pledges?
+        clicks_processed: Your pledges have been processed!
       undo_clicks:
         title: Cancel Clicks
         dashboard: Back to Dashboard
@@ -105,15 +105,15 @@ en:
         referrer: Content Referrer
         delete: Undo
         confirm_delete: Are you sure you want to undo this click? The provider will not receive your tip.
-        confirm_process: Are you sure you want to process all your donations?
-        clicks_processed: Your donations have been processed!
+        confirm_process: Are you sure you want to process all your pledges?
+        clicks_processed: Your pledges have been processed!
       
     buttons:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
       index: 
         title: Get your own 25c Button!
-        subtitle: Follow these easy steps and immediately start receiving donations!
+        subtitle: Follow these easy steps and immediately start receiving pledges!
         short_url_title: 25c Short URL
         platform: Platform
         javascript: JavaScript
@@ -139,7 +139,7 @@ en:
         iframe: iFrame
         link: Link
         step1_title: "Where will you use the 25c Button?"
-        step2_title: "Name the donation purpose:"
+        step2_title: "Name the pledge purpose:"
         step3_title: "Choose a look:"
         step4_title: "Add this button to your blog or website:"
         step5_title: "Follow your rewards!"
@@ -156,10 +156,10 @@ en:
         for_youtube: "Paste this URL into the description of your uploaded Youtube video."
         problems: <b>Problems?</b> See the %{faq} or email us with questions at %{email}.
         faq: FAQ
-        check_donations: Check your donations daily through your %{dashboard} or configure your 
+        check_donations: Check your pledges daily through your %{dashboard} or configure your 
           %{account} to receive an email report at regular intervals!
       short_url:
-        input_label: "Use it when sending links to your followers and earn along for resulting donations:"
+        input_label: "Use it when sending links to your followers and earn along for resulting pledges:"
         input_text: "Paste content URL to encode"
         output_label: "25c Short URL:"
         get_url: Generate Short URL
@@ -224,19 +224,19 @@ en:
       enter_name: Enter your name here.
       enter_about: Enter information about yourself here.
       edit_url: Change Profile URL
-      tips_title: "'s Donations"
-      no_clicks: No donations given yet.
-      button_title_intro: "Click the 25c button to donate to "
+      tips_title: "'s Pledges"
+      no_clicks: No pledges given yet.
+      button_title_intro: "Click the 25c button to pledge to "
       button_description_default: Use 25c to show your appreciation.
-      enter_button_title: Name donation purpose
-      enter_button_description: Write a description of your donation purpose
+      enter_button_title: Name pledge purpose
+      enter_button_description: Write a description of your pledge purpose
       remove_video: Remove Video
       remove_button_picture: Remove Image
-      upload_button_picture: Upload Donation Image
-      choose_youtube_video: "Or choose a donation YouTube video: "
+      upload_button_picture: Upload Image
+      choose_youtube_video: "Or choose a YouTube video: "
     form:
       title: Update Account Settings
-      show_donations: Show donations on my profile page
+      show_donations: Show pledges on my profile page
       edit_password_hint: Leave blank to keep current password.
       nickname_url: "Your nickname determines your public profile URL: "
       submit: Update
@@ -277,6 +277,10 @@ en:
       tagline: "Please log in with:"
       thanks: "Thank You!"
       pledged_to: You have pledged 25c to %{provider}.
+      pledge_more: Want to pledge additional 25c's? Simply click the 25c button further times.
+      over_limit: "You have reached your maximum number of pledges. You now need to pay for past 
+        pledges before you can make new ones."
+      payment: Pay for Your Pledges
     confirm_tip:
       visit_25c: Go to 25c.com
       view_account: View 25c Account
