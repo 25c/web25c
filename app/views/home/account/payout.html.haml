@@ -1,11 +1,11 @@
 = content_for(:js) do
   = javascript_include_tag "request-payout"
   :javascript
-    window.jarAmount = '#{ @user.balance }';
+    window.userBalance = '#{ @user.balance }';
 
 .row.main-content
   .span11
-    %h2.page-header= t('.empty_jar_title')
+    %h2.page-header= t('.title')
 
   .span11
     .lead
@@ -14,53 +14,19 @@
         %b= @user.balance.to_s() + ' ' + t('application.25c_units')
         %span ($#{"%.2f" % (@user.balance.to_f / 4)})
   .span6
-    %form{:class => 'form-horizontal'}
-      .control-group
-        %label.control-label{:for => "payout-amount"}= t('.payout_amount')
-        .controls
-          %input#payout-amount{:type => 'text', :name => 'payout_amount',
-            :value => @user.balance > 25 ? "%.2f" % (@user.balance - 25) : "%.2f" % 0}
-          %p#amount-help.help-block Must be less than or equal to your jar total.
-  .clear
-  .span6
     %h3.payout-request-title= t('.paypal_title') 
     %form{:action => home_confirm_payout_url, :method => 'post', :class => 'form-horizontal' }
       .control-group
-        %label.control-label{:for => 'paypal_email'}= t('paypal_email')
+        %label.control-label{:for => "payout-amount"}= t('.payout_amount')
+        .controls
+          %input#payout-amount{:type => 'text', :name => 'amount',
+            :value => @user.balance > 25 ? "%.2f" % (@user.balance - 25) : "%.2f" % 0}
+          %p#amount-help.help-block Must be less than or equal to your 25c total.
+      .control-group
+        %label.control-label{:for => 'paypal_email'}= t('.paypal_email')
         .controls
           %input{:type => 'text', :name => 'paypal_email'}
-      %input.payout-amount-hidden{:type => 'hidden', :name => 'amount'}
-      %input.payout-type-hidden{:type => 'hidden', :name => 'type', :value => 'paypal'}
       .submit-container
         %input.btn.btn-warning{:type => 'submit', :value => t(".submit")}
   .clear
-  .span11
-    %h3.payout-request-title= t('.ach_title') 
-  %form{:action => home_confirm_payout_url, :method => 'post', :class => 'form-horizontal' }
-    .span5
-      %h4.info-title= t('.bank_info')
-      .control-group
-        %label.control-label{:for => 'account_type'}= t('account_type')
-        .controls
-          %select{:name => 'account_type'}
-            %option{:selected => "selected", :value => "business"}
-              = t('.account_business')
-            %option{:value => "personal"}
-              = t('.account_personal')
-      - @bank_fields.each do |field|
-        .control-group
-          %label.control-label{:for => field}= t('.' + field)
-          .controls
-            %input{:type => 'text', :name => field}
-    .span5
-      %h4.info-title= t('.contact_info')
-      - @contact_fields.each do |field|
-        .control-group
-          %label.control-label{:for => field}= t('.' + field)
-          .controls
-            %input{:type => 'text', :name => field}
-    %input.payout-amount-hidden{:type => 'hidden', :name => 'amount'}
-    %input.payout-type-hidden{:type => 'hidden', :name => 'type', :value => 'ach'}
-    .submit-container
-      %input.btn.btn-warning{:type => 'submit', :value => t(".submit")}
     

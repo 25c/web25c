@@ -10,19 +10,15 @@
 .row.main-content
   .span11
     %h2.page-header= t('.title')
-    %label{:for => "refill-amount"}= t('.refill_amount')
-    %select#refill-amount
-      - ['20','40','60'].each do |a|
-        - if a == '40'
-          %option{:value => "#{a}",
-            :selected => "selected"} #{a.to_s + ' ' + t('application.25c_units')} ($#{"%.2f" % (Integer(a)/4)})
-        - else
-          %option{:value => "#{a}"} #{a.to_s + ' ' + t('application.25c_units')} ($#{"%.2f" % (Integer(a)/4)})
-    %div.checkbox-container
-      %input.checkbox#auto-refill-checkbox{:type => 'checkbox', 
-        :checked => @user.auto_refill ? "true" : nil,
-        :name => 'auto_refill'} 
-        = t('.auto_refill')
+    %div= t('.amount')
+    %div#refill-amount.buffer
+      %b 40 25c's ($10.00)
+      
+    / %div.checkbox-container
+    /   %input.checkbox#auto-refill-checkbox{:type => 'checkbox', 
+    /     :checked => @user.auto_refill ? "true" : nil,
+    /     :name => 'auto_refill'} 
+    /     = t('.auto_refill')
     -if !@card_masked_number.blank?
       #existing-card
         %p

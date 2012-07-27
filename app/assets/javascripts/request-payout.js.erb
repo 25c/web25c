@@ -6,7 +6,7 @@ $(document).ready(function(){
   
   $payoutAmount.change(function() {
     newAmount = $payoutAmount.val();
-    if (newAmount > jarAmount) {
+    if (newAmount > userBalance) {
       $payoutAmount.focus();
       $('#amount-help').addClass('errors');
       $('input[type="submit"]').attr('disabled', 'disabled');

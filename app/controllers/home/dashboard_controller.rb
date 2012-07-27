@@ -2,12 +2,12 @@ class Home::DashboardController < Home::HomeController
 
   def index
     @user = current_user
-    clicks = @user.clicks.includes(:button => :user).find_all_by_state([ 0, 1, 2, 3, 4 ])
+    clicks = @user.clicks.includes(:button => :user).find_all_by_state([ 1, 2, 3, 4 ])
     # LJ: placeholder until we know what type of clicks to display in dashboard
     @has_new_clicks = clicks.each.any? { |s| s[:state] == 0 }
     @clicks_given = group_clicks_by_count(clicks)
 
-    clicks = Click.where(:button_id => @user.button_ids).includes(:user).find_all_by_state([ 0, 1, 2, 3, 4 ])
+    clicks = Click.where(:button_id => @user.button_ids).includes(:user).find_all_by_state([ 1, 2, 3, 4 ])
     @clicks_received = group_clicks_by_count(clicks)
   end
   

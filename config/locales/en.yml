@@ -22,10 +22,11 @@ en:
   
   home:
     account:
-      jar:
-        title: Refill 25c Jar
+      payment:
+        title: Pay for 25c Pledges
         25c_units: 25c's
-        auto_refill: Automatically refill my 25c Jar if balance drops below $5 (20 25c's).
+        amount: "Payment Amount:"
+        auto_refill: Automatically process my pledges if I have pledged more than 20 25c's ($5.00).
         card_on_file: "Card on file:"
         use_existing: Use existing card
         use_different: Use different card
@@ -43,32 +44,14 @@ en:
         transaction_amount: "Amount:"
         transaction_card_number: "Card Number:"
         transaction_card_type: "Card Type:"
-        return_to_jar: Return to 25c Jar.
-        success: You have successfully added to your 25c Jar.
-        failure: Your account was charged, but there was a problem updating your 25c Jar.
+        success: You have successfully processed payment for your pledges.
+        failure: Your account was charged, but there was a problem updating your balance.
       payout:
-        empty_jar_title: Request a payout from your 25c Jar
-        contents: "Your 25c Jar contains:"
+        title: Request Payout
+        contents: "25c Pledges Received:"
+        payout_amount: "Payout amount"
         paypal_title: Request payment through Paypal
-        paypal_email: Paypal account e-mail*
-        ach_title: Request payment through ACH bank transfer
-        bank_info: Your account information
-        account_type: Account Type*
-        account_business: Business
-        account_personal: Personal
-        account_number: Account Number*
-        routing_number: Routing Number*
-        bank_name: Bank Name*
-        contact_info: Your contact information
-        name: Name*
-        phone: Phone*
-        company: Company
-        line1: Address Line 1*
-        line2: Address Line 2
-        city: City*
-        region: State / Province / Region*
-        zip: Postal Code*
-        country: Country*
+        paypal_email: Paypal account e-mail
         submit: Send Request
       confirm_payout:
         confirm_title: Payout request sent.
@@ -76,28 +59,21 @@ en:
         amount: "Request amount:"
         method: "Method:"
         paypal: Paypal
-        ach: ACH Bank Transfer
         email: "Email:"
-        account_type: "Account Type:"
-        bank_name: "Bank Name:"
-        name: "Name:"
-        company: "Company:"
-        phone: "Phone Number"
-        address: "Address:"
-        return_to_jar: Return to 25c Jar.
+        return_to_account: Return to 25c Account Page.
         failure: "An error occurred and the payout request was not send. Please try again."
     dashboard:
       index:
         title: Dashboard
-        contents: "Your 25c Jar contains:"
+        contents: "Your pledge total is:"
         get_button: Get My Button
-        fill_jar: Fill My 25c Jar
+        payment: Pay for 25c Pledges
         undo_clicks: Undo Clicks
         process_clicks: Process my donations now!
         tips_given_title: 25c's given
-        tips_received_title: 25c's received
-        tips_given: 25c's Given
-        tips_received: 25c's Received
+        tips_received_title: 25c pledges received
+        tips_given: 25c pledges given
+        tips_received: 25c pledges received
         total: Total
         state: State
         state0: New
@@ -165,7 +141,7 @@ en:
         step1_title: "Where will you use the 25c Button?"
         step2_title: "Name the donation purpose:"
         step3_title: "Choose a look:"
-        step4_title: "Customize and install your button:"
+        step4_title: "Add this button to your blog or website:"
         step5_title: "Follow your rewards!"
         website: "Your website"
         tooltip_preview: "This message will appear with your button:"
@@ -222,7 +198,7 @@ en:
       sign_in: Sign In
       sign_out: Sign Out
       buttons: Get 25c Button
-      payments: Load 25c Jar
+      payments: Pay for 25c Pledges
     footer:
       about: About
       faq: FAQ
@@ -277,7 +253,7 @@ en:
       google: You've been signed in automatically using your Google account.
     sign_in:
       title: Sign in with Facebook or Google
-      sign_in_with: "Sign in with:"
+      sign_in_with: "Please sign in with:"
       facebook: Sign In with Facebook
       twitter: Sign In with Twitter
       google: Sign In with Google
@@ -298,6 +274,10 @@ en:
     create:
       success: Your account has been created!
       failure: Your account was not created. Please try again.
+    tip:
+      tagline: "Please log in with:"
+      thanks: "Thank You!"
+      pledged_to: You have pledged 25c to %{provider}.
     confirm_tip:
       visit_25c: Go to 25c.com
       view_account: View 25c Account

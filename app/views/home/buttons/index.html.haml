@@ -117,8 +117,6 @@
         %p#html-instructions.instructions= raw t('.for_website')
         %p#blog-instructions.instructions.hide= raw t('.for_blogs')
         %p#youtube-instructions.instructions.hide= raw t('.for_youtube')
-        %p= raw t('.problems', :faq => (link_to t('.faq'), faq_path), 
-            :email => (link_to t('application.hello_email'), contact_path))
     .clear
   #step5.step-container.hide
     .span1.step-number 5

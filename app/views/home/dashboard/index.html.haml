@@ -20,7 +20,7 @@
         %span ($#{"%.2f" % (@user.balance.to_f / 4)})
       %p.payout-link-container
     %a= link_to t('.get_button'), home_buttons_path, :class => 'btn btn-warning'
-    %a= link_to t('.fill_jar'), home_jar_path, :class => 'btn'
+    %a= link_to t('.payment'), home_payment_path, :class => 'btn'
     %a= link_to t('.undo_clicks'), home_undo_clicks_path, :class => 'btn'
   .span11
     %h3.table-title
