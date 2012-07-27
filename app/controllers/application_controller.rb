@@ -55,8 +55,6 @@ class ApplicationController < ActionController::Base
         if has_tip
           Click.enqueue(self.current_user, params[:button_id], params[:referrer], request, cookies)
           redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
-        elsif self.current_user.is_new
-          redirect_to_session_redirect_path(home_buttons_path)
         else
           redirect_to_session_redirect_path(home_dashboard_path)
         end

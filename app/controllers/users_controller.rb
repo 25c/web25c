@@ -40,12 +40,8 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     if self.current_user
-      if self.current_user.is_new
-        redirect_to_session_redirect_path(home_buttons_path)
-      else
-        redirect_to_session_redirect_path(home_dashboard_path)
-      end
-    else    
+      redirect_to_session_redirect_path(home_dashboard_path)
+    else
       @user = User.new
       @new = true
       respond_to do |format|
@@ -209,7 +205,7 @@ class UsersController < ApplicationController
         Click.enqueue(self.current_user, state['button_id'], state['referrer'], request, cookies)
         redirect_to tip_path(:button_id => state['button_id'], :referrer => state['referrer'])
       else
-        redirect_to home_buttons_path, :notice => notice
+        redirect_to home_dashboard_path, :notice => notice
       end
     end
   end
@@ -267,8 +263,6 @@ class UsersController < ApplicationController
           Click.enqueue(self.current_user, params[:button_id], params[:referrer], request, cookies)
 
           redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
-        elsif @user.is_new
-          redirect_to_session_redirect_path(home_buttons_path)
         else
           redirect_to_session_redirect_path(home_dashboard_path)
         end
@@ -282,11 +276,7 @@ class UsersController < ApplicationController
     # not a post request
     else
       if self.current_user
-        if self.current_user.is_new
-          redirect_to_session_redirect_path(home_buttons_path)
-        else
-          redirect_to_session_redirect_path(home_dashboard_path)
-        end
+        redirect_to_session_redirect_path(home_dashboard_path)
       else
         @user = User.new
       end
