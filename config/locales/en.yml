@@ -141,7 +141,7 @@ en:
         step1_title: "Where will you use the 25c Button?"
         step2_title: "Name the donation purpose:"
         step3_title: "Choose a look:"
-        step4_title: "Customize and install your button:"
+        step4_title: "Add this button to your blog or website:"
         step5_title: "Follow your rewards!"
         website: "Your website"
         tooltip_preview: "This message will appear with your button:"
@@ -252,7 +252,7 @@ en:
       google: You've been signed in automatically using your Google account.
     sign_in:
       title: Sign in with Facebook or Google
-      sign_in_with: "Sign in with:"
+      sign_in_with: "Please sign in with:"
       facebook: Sign In with Facebook
       twitter: Sign In with Twitter
       google: Sign In with Google
@@ -273,6 +273,10 @@ en:
     create:
       success: Your account has been created!
       failure: Your account was not created. Please try again.
+    tip:
+      tagline: "Please log in with:"
+      thanks: "Thank You!"
+      pledged_to: You have pledged 25c to %{provider}.
     confirm_tip:
       visit_25c: Go to 25c.com
       view_account: View 25c Account
