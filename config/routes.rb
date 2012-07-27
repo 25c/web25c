@@ -29,7 +29,7 @@ Web25c::Application.routes.draw do
     match 'process_clicks' => 'dashboard#process_clicks', :as => :process_clicks, :via => :post
     
     # Account
-    match 'jar' => 'account#jar', :as => :jar
+    match 'payment' => 'account#payment', :as => :payment
     match 'confirm_payment' => 'account#confirm_payment', :as => :confirm_payment
     match 'payout' => 'account#payout', :as => :payout
     match 'confirm_payout' => 'account#confirm_payout', :as => :confirm_payout, :via => :post    

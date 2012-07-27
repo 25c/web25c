@@ -1,43 +1,18 @@
-.row
-  .span12
+.row.main-content
+
+  .span11
     %h2.page-header= t('.confirm_title')
-.row
-  .span12
+  
+  .span11
     %p
       = t('.amount')
       $#{"%.2f" % @result[:amount]}
     %p
       = t('.method')
-      = t(@method)
-    - if @method == 'paypal'
-      %p
-        = t('.email')
-        = @result[:paypal_email]
-    - else
-      %p 
-        = t('.account_type')
-        = @result[:account_type]
-      %p 
-        = t('.bank_name')
-        = @result[:bank_name]
-      %p 
-        = t('.name')
-        = @result[:name]
-      %p
-        = t('.company')
-        = @result[:company]
-      %p
-        = t('.phone')
-        = @result[:phone]
-      %p
-        = t('.address')
-        = @result[:line1]
-        = @result[:line2]
-        = @result[:city]
-        = @result[:region]
-        = @result[:zip]
-        = @result[:country]
-%hr
-.row
-  .span12
-    = link_to t('.return_to_jar'), home_jar_path
+      = t('.paypal')
+    %p.buffer
+      = t('.email')
+      = @result[:paypal_email]
+    %p
+      = link_to t('.return_to_account'), home_account_path
+  .clear

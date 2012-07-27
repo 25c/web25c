@@ -1,10 +1,10 @@
 class Home::AccountController < Home::HomeController
   
   def index
-    render :jar
+    render :payment
   end
   
-  def jar
+  def payment
     @user = current_user
     braintree_info = get_braintree_info(@user)
     @card_masked_number = braintree_info[:card_masked_number]
@@ -29,8 +29,8 @@ class Home::AccountController < Home::HomeController
         @result = Braintree::TransparentRedirect.confirm(request.query_string)
       rescue
         # something went wrong - not a new or existing card
-        flash[:notice] = t('home.account.jar.payment_failure')
-        redirect_to home_jar_path
+        flash[:notice] = t('home.account.payment.payment_failure')
+        redirect_to home_payment_path
         return nil
       end
     end
@@ -79,7 +79,7 @@ class Home::AccountController < Home::HomeController
       @card_masked_number = braintree_info[:card_masked_number]
       is_on_braintree = braintree_info[:is_on_braintree]
       @bt_data = get_bt_data(@user, is_on_braintree)
-      render :action => "jar"
+      render :action => "payment"
     end
   end
   
@@ -92,25 +92,10 @@ class Home::AccountController < Home::HomeController
   def confirm_payout
     @result = params
     puts params.inspect
-    if params[:type] == 'paypal'
-      @method = 'paypal'
-      if params[:paypal_email].empty?
-        flash[:alert] = t('home.account.confirm_payout.complete_required')
-        redirect_to home_payout_path
-        return
-      end
-    elsif params[:type] == 'ach'
-      @method = 'ach'
-      params.each do |key, value|
-        if key != "line2" && key != "company" && value.blank?
-          flash[:alert] = t('home.account.confirm_payout.complete_required')
-          redirect_to home_payout_path
-          return
-        end
-      end
-    else
+    if params[:paypal_email].empty?
       flash[:alert] = t('home.account.confirm_payout.complete_required')
       redirect_to home_payout_path
+      return
     end
     # Put payout action here -> email to payout@25c.com?
   end
