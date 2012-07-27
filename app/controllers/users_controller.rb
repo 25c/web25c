@@ -289,9 +289,10 @@ class UsersController < ApplicationController
   end
   
   def tip
+    # @referrer = params[:referrer]
     # @button_id = params[:button_id]
+    @user = self.current_user
     @button = Button.find_by_uuid(params[:button_id])
-    @referrer = params[:referrer]
     render :layout => "blank"
   end
   

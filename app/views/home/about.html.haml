@@ -15,9 +15,18 @@
      
     #about-button-container
       .button-choice
-        %img{:src => image_path('25c-rot-btn-medium.png'), :'data-size' => 'btn-large'}
-        %img.unrot{:src => image_path('25c-btn-medium.png'), :'data-size' => 'btn-large'}
-    .clear
+        %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+          :class => "tip-25c-button", :"data-size" => "btn-large"}
+          #{@button.title}
+        :javascript 
+          !function(d,s,id){
+            var js,fjs=d.getElementsByTagName(s)[0];
+            if(!d.getElementById(id)){
+              js=d.createElement(s);js.id=id;
+              js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
+              fjs.parentNode.insertBefore(js,fjs);
+            }
+          } (document,"script","tip-25c-js");
 
     %p A page view is a page view for an advertiser. But for people certain page views have a lot more value than others. Like that one comment that saved you hours of hassle. Or that truly inspiring video.
 

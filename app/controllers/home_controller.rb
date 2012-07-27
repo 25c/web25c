@@ -26,5 +26,9 @@ class HomeController < ApplicationController
 
   def contact
   end
+  
+  def about
+    @button = User.find_by_email('corp@25.com').
+  end
 
 end

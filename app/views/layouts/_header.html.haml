@@ -8,7 +8,7 @@
         %span.icon-bar
       %a#nav-logo.pull-left(href=root_path)
         %img{:src => image_path('25c-logo-medium.png')}
-      %span#nav-tagline.navbar-text= t('.tagline')
+      %span#nav-tagline.navbar-text= t('application.title')
       .nav-collapse.pull-right
         - if signed_in?
           %ul.nav.pull-right
