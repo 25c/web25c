@@ -32,6 +32,6 @@ jQuery ->
 		
 	$(".facebook-btn").click () ->
     FB.login ((response) ->
-        # handle the response
+        mixpanel.track("LogIn", {"Account": "Facebook"});
       ), {scope: 'email,publish_stream'}
     # FB.login()

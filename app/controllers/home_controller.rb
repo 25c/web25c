@@ -23,12 +23,14 @@ class HomeController < ApplicationController
 
   def terms
   end
-
-  def contact
-  end
   
   def about
-    @button = User.find_by_email('corp@25.com').
+    if Rails.env.production?
+      @button = User.find_by_email('rmr@25.com').buttons[0]
+    else
+      # dev placeholder for about page button
+      @button = Button.first
+    end
   end
 
 end
