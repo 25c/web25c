@@ -26,11 +26,15 @@ class HomeController < ApplicationController
   
   def about
     if Rails.env.production?
-      @button = User.find_by_email('rmr@25.com').buttons[0]
+      @button = User.find_by_email('rmr@25c.com').buttons[0]
     else
       # dev placeholder for about page button
       @button = Button.first
     end
+  end
+  
+  def fb_share_callback
+    render :layout => "blank"
   end
 
 end

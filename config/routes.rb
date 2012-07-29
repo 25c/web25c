@@ -15,6 +15,7 @@ Web25c::Application.routes.draw do
   match 'privacy' => 'home#privacy', :as => :privacy
   
   match 'tip/:button_id' => 'users#tip', :as => :tip
+  match 'fb_share_callback' => 'home#fb_share_callback'
   
   namespace :home do
     # Buttons
@@ -51,7 +52,7 @@ Web25c::Application.routes.draw do
   end
   
   # the profile wildcard route must be last
-  match ':id' => 'users#show', :as => :profile
+  match ':id' => 'users#show', :constraints => { :id => /.*/ }, :as => :profile
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
