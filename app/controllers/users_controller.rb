@@ -285,7 +285,11 @@ class UsersController < ApplicationController
   
   def sign_out
     self.current_user = nil
-    redirect_to root_path
+    if request.referrer.include? 'blog/header'
+      redirect_to request.referrer
+    else
+      redirect_to root_path
+    end
   end
   
   def tip
