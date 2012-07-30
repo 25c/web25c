@@ -36,5 +36,13 @@ class HomeController < ApplicationController
   def fb_share_callback
     render :layout => "blank"
   end
+  
+  def blog_header
+    render :layout => "blank"
+  end
+  
+  def blog_footer
+    render :layout => "blank"
+  end
 
 end
