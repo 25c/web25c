@@ -1,2 +1,4 @@
 = render 'layouts/header'
+= content_for(:head) do
+  %base{:target => "_parent"}
 = javascript_include_tag "application"
