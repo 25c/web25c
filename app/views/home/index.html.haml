@@ -1,31 +1,31 @@
 =content_for(:js) do
   :javascript
     $(document).ready(function() {
-      mixpanel.track("Front Page Loaded");
+      <!-- mixpanel.track("Front Page Loaded"); -->
 
-      $('#add-25c-button').click(function(event) {
-       event.preventDefault();
-       mixpanel.track("Front Page Action", {"Create": "Button"});
-       window.location = $(this).attr('href');
-      });
+      <!-- $('#add-25c-button').click(function(event) { -->
+      <!--  event.preventDefault(); -->
+      <!--  mixpanel.track("Front Page Action", {"Create": "Button"}); -->
+      <!--  window.location = $(this).attr('href'); -->
+      <!-- }); -->
 
-      $('#create-profile').click(function(event) {
-       event.preventDefault();
-       mixpanel.track("Front Page Action", {"Create": "Profile"});
-       window.location = $(this).attr('href');
-      });
+      <!-- $('#create-profile').click(function(event) { -->
+      <!--  event.preventDefault(); -->
+      <!--  mixpanel.track("Front Page Action", {"Create": "Profile"}); -->
+      <!--  window.location = $(this).attr('href'); -->
+      <!-- }); -->
 
-      $('#top-sites-button').click(function(event) {
-       event.preventDefault();
-       mixpanel.track("Front Page Action", {"Top": "Sites"});
-       window.location = $(this).attr('href');
-      });
+      <!-- $('#top-sites-button').click(function(event) { -->
+      <!--  event.preventDefault(); -->
+      <!--  mixpanel.track("Front Page Action", {"Top": "Sites"}); -->
+      <!--  window.location = $(this).attr('href'); -->
+      <!-- }); -->
 
-      $('#top-profiles-button').click(function(event) {
-       event.preventDefault();
-       mixpanel.track("Front Page Action", {"Top": "Profiles"});
-       window.location = $(this).attr('href');
-      });
+      <!-- $('#top-profiles-button').click(function(event) { -->
+      <!--  event.preventDefault(); -->
+      <!--  mixpanel.track("Front Page Action", {"Top": "Profiles"}); -->
+      <!--  window.location = $(this).attr('href'); -->
+      <!-- }); -->
     });
 
 .splash
