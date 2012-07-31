@@ -1,62 +1,57 @@
-.row.main-content
-  .span11
-    %h2.page-header About 25c Inc.
-  .span11.buffer
-    %p 25c Inc. simplifies social micro-donations.
+<div class="row main-content">
+<div class="span11">
+<h2 class="page-header">About 25c Inc.</h2>
+</div>
+<div class="span11 buffer">
 
-    %p 
-      Anyone who has a website, blog, or Youtube video can 
-      easily embed the +25c Button&trade;  following on our step-by-step
-      instructions and immediately start receiving 25c
-      pledges.  Those who don't have their own website can also simply create a profile page on 
-      25c.com to collect 25c pledges.
+<p>25c Inc. simplifies social micro-donations.</p>
 
-    %p 
-      The +25c Button empowers people to easily & directly support
-      what they value.  Effectively a “Super Like” button, the
-      +25c Button combines a "Like" with a 25c pledge.  Or multiples
-      thereof because the +25c Button is “multi-one-click”: each click pledges 25 cents.
+<p>Anyone who has a website, blog, or Youtube video caneasily embed the +25c Button&trade;  following on our step-by-step instructions and immediately start receiving 25c pledges.  Those who don't have their own website can also simply create a profile page on 25c.com to collect 25c pledges.</p>
 
-    %p 
-      25c Inc. is a privately held company located in San Francisco,
-      California.  Founded by Sylvio Drouin, Lionel Jingles, Francis Li, Ruza
-      Markov, and Martin Roscheisen, the company operates a social value graph and micro-payment
-      pledge processing service and owns a patent portfolio around social micro-donations.
+<p>The +25c Button empowers people to easily & directly support what they value.  Effectively a “Super Like” button, the +25c Button combines a "Like" with a 25c pledge.  Or multiplesthereof because the +25c Button is “multi-one-click”: each click pledges 25 cents.</p>
 
-    %p 
-      With our service, we hope to help shift the incentive system towards compensating for 
-      "value to a user" more than "value to a third party" (such as advertisers).
-      
-  .span6
-    %h3 Contact
+<p>25c Inc. is a privately held company located in San Francisco, California.  Founded by Sylvio Drouin, Lionel Jingles, Francis Li, Ruza Markov, and Martin Roscheisen, the company operates a social value graph and micro-payment pledge processing service and owns a patent portfolio around social micro-donations.</p>
 
-    %p The best way to reach us is to send email to <b>hello@25c.com</b>. 
+<p> With our service, we hope to help shift the incentive system towards compensating for "value to a user" more than "value to a third party" (such as advertisers).</p>
 
-    %p We check email frequently and will process responses mostly quickly via email.
+</div>
 
-    %h3 Address:
-    %p 
-      25c Inc.
-      %br/
-      660 York St
-      %br/
-      San Francisco, CA 94110
-      %br/
-      (415) 745-2605
-  
-  .span5.center
-    %h3.buffer Pledge to Us
-    #about-button-container
-      %a{ :href => "https://www.25c.com/tip/" +  "b8641d40aed0012fa1c848bcc89ac444", 
-        # :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
-        :class => "tip-25c-button", :"data-size" => "btn-large"}
-        /#{@button.title}
-      :javascript 
-        !function(d,s,id){
-          var js,fjs=d.getElementsByTagName(s)[0];
-          if(!d.getElementById(id)){
-            js=d.createElement(s);js.id=id;
-            js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
-            fjs.parentNode.insertBefore(js,fjs);
-          }
-        } (document,"script","tip-25c-js");
+<div class="span6">
+
+<h3>Contact</h3>
+
+<p>The best way to reach us is to send email to <b>hello@25c.com</b>.</p>
+
+<p>We check email frequently and will process responses mostly quickly via email.</p>
+
+<h3>Address:</h3>
+
+<p>25c Inc.<br />
+660 York St<br />
+San Francisco, CA 94110<br />
+(415) 745-2605</p>
+
+</div>
+
+<div class="span5 center">
+
+<h3 class="buffer">Pledge to Us</h3>
+
+<div id ="about-button-container">
+
+<a href="https://www.25c.com/tip/ + #{@button.uuid.to_s}" class="tip-25c-button" data-size="btn-large">#{@button.title}</a>
+
+<script>
+!function(d,s,id){
+var js,fjs=d.getElementsByTagName(s)[0];
+if(!d.getElementById(id)){
+js=d.createElement(s);js.id=id;
+js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
+fjs.parentNode.insertBefore(js,fjs);
+}
+} (document,"script","tip-25c-js");
+</script>
+
+</div>
+</div>
+</div>
