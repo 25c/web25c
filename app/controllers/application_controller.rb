@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
               redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
               return
             else
-              if request.referrer.include? 'blog/header'
+              if not request.referrer.blank? and request.referrer.include? 'blog/header'
                 redirect_to request.referrer
               else
                 redirect_to sign_in_path
@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
           Click.enqueue(self.current_user, params[:button_id], params[:referrer], request, cookies)
           redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
         else
-          if request.referrer.include? 'blog/header'
+          if not request.referrer.blank? and request.referrer.include? 'blog/header'
             redirect_to request.referrer
           else
             redirect_to_session_redirect_path(home_dashboard_path)
