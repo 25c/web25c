@@ -86,15 +86,17 @@ en:
         referrer: At Location
         clicker: Pledged By
         delete: Undo
-        confirm_delete: Are you sure you want to undo this pledge?  (Your pledgee will be disappointed!)
-        undo_clicks: Are you sure you want to undo this pledge?  (Your pledgee will be disappointed!)
+        undo_clicks: Undo Pledges
         title: Cancel Pledges
         dashboard: Back to Dashboard
         date_created: Pledged On
         provider: Pledged To
         referrer: At Location
-        delete: Undo
-        confirm_delete: Are you sure you want to undo this pledge?  (Your pledgee will be disappointed!)
+      undo_clicks:
+        title: Undo Pledges
+        undo: Undo Pledge
+        confirm_undo: Are you sure you want to undo this pledge?  (Your pledgee will be disappointed!)
+        dashboard: Back to Dashboard
       
     buttons:
       button_updated: Your button has been updated.
@@ -214,7 +216,7 @@ en:
       edit_url: Change Profile URL
       tips_title: "'s Pledges"
       no_clicks: No pledges given yet.
-      button_title_intro: "<-- Click to pledge to "
+      button_title_intro: "<-- Click to pledge "
       button_description_default: Use 25c to show your appreciation.
       enter_button_title: Name the purpose of the pledge (who/what this is for)
       enter_button_description: "Describe your pledge: "
