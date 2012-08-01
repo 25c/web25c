@@ -13,28 +13,28 @@
       });
 
   %body#tip-body
+  - if params[:overdraft]
+    #tip-overdraft-center.main-content
+      / %img#tip-25c-logo{:src => image_path('25c-logo-large.png')}
+      %p.buffer= t('.over_limit')
+      = link_to t('.payment'), home_payment_path, :class => 'btn btn-warning', :target => '_blank'
+  - else
     #tip-confirm-center.main-content
       / = render 'layouts/alerts'
-      #tip-thanks
-        - if params[:overdraft]
-          %img#tip-25c-logo{:src => image_path('25c-logo-large.png')}
-          %p.buffer= t('.over_limit')
-          = link_to t('.payment'), home_payment_path, :class => 'btn btn-warning', :target => '_blank'
-        - else
-          %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } Tip me +25c!
-          :javascript
-            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
-            if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
-            js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
-            fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
-            
-          %p= t('.thanks')
-          .tip-button-container
-            %span= t('.pledged_to', :provider => @button.user.display_name)
-            %a= link_to t('.view_pledges'), home_dashboard_path, :class => 'btn', :target => 'blank'
-          .tip-button-container
-            %span= t('.pledge_more')
-          = link_to t('.done'), '#', :class => 'btn', :id => 'close'
+      %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
+        #{@button.title}
+      :javascript
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
+        js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
+        fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
+      %p.confirm-thanks= t('.thanks')
+      .tip-button-container
+        %span= t('.pledged_to', :provider => @button.user.display_name)
+        %a= link_to t('.view_pledges'), home_dashboard_path, :class => 'btn', :target => 'blank'
+      .tip-button-container
+        %span= t('.pledge_more')
+      = link_to t('.done'), '#', :class => 'btn', :id => 'close'
 
 - else
   %body#tip-body

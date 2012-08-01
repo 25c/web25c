@@ -40,8 +40,7 @@
     .span10.step-content
       %h3.step-title= t('.step2_title')
       .step-body
-        %input#button-title{:type => 'text', :value => 'to '}
-        / %input#button-title{:type => 'text'}
+        %input#button-title{:type => 'text', :value => 'to / for'}
         %button#set-button-title.btn= t('.set')
         #tooltip-container
           .if-javascript
@@ -49,13 +48,13 @@
             #preview-tooltip
               %span Pledge 25c 
               %span
-                %b#button-tooltip-text
+                %b#button-tooltip-text to / for
           .if-link
             %div= t('.link_preview')
             %a{:href => '#'}
               %span Pledge 25c 
               %span
-                %span#button-link-text
+                %span#button-link-text to / for
     .clear        
   #step3.step-container.hide
     .span1.step-number 3

@@ -35,6 +35,14 @@ class UsersController < ApplicationController
       format.json { render json: @user }
     end
   end
+  
+  def profile
+    if self.current_user.nickname.blank?
+      redirect_to choose_nickname_path
+    else
+      redirect_to profile_path(current_user.nickname)
+    end
+  end
 
   # GET /users/new
   # GET /users/new.json
@@ -100,20 +108,19 @@ class UsersController < ApplicationController
   def choose_nickname
     @user = self.current_user
     @url = get_profile_url(@user)
-  end
-  
-  def update_nickname
-    @user = self.current_user
-    @user.editing = true
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-        format.html { redirect_to profile_path(:id => @user.nickname), notice: t('users.choose_nickname.success') }
-        format.json { render json: true, head: :ok }
-      else
-        @user.reload
-        @url = get_profile_url(@user)
-        format.html { redirect_to choose_nickname_path, alert: t('users.choose_nickname.failure')}
-        # format.json { render json: @user.errors, status: :unprocessable_entity }
+    if request.method == 'PUT' or request.method == 'POST'
+      @user = self.current_user
+      @user.editing = true
+      respond_to do |format|
+        if @user.update_attributes(params[:user])
+          format.html { redirect_to profile_path(:id => @user.nickname), notice: t('users.choose_nickname.success') }
+          format.json { render json: true, head: :ok }
+        else
+          @user.reload
+          @url = get_profile_url(@user)
+          format.html { redirect_to choose_nickname_path, alert: t('users.choose_nickname.failure')}
+          # format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

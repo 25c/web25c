@@ -4,7 +4,7 @@
   = javascript_include_tag "paging"
   = javascript_include_tag "undo-clicks"
   :javascript
-    window.confirmDelete = '#{ j t('.confirm_delete') }';
+    window.confirmDelete = '#{ j t('.confirm_undo') }';
     window.deleteClickUrl = '#{ j home_delete_click_url }';
 
 .row.main-content
@@ -29,4 +29,4 @@
               %td= click.created_at.to_s(:number)
               %td.click-date= l click.created_at, :format => :short
               %td.click-delete.center
-                %a.delete-click.btn.btn-warning{:"data-click_id" => click.uuid}= t('.delete')
+                %a.delete-click.btn.btn-warning{:"data-click_id" => click.uuid}= t('.undo')
