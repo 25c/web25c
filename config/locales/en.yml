@@ -87,7 +87,7 @@ en:
         clicker: Pledged By
         delete: Undo
         confirm_delete: Are you sure you want to undo this pledge?  (Your pledgee will be disappointed!)
-	      undo_clicks: Are you sure you want to undo this pledge?  (Your pledgee will be disappointed!)
+        undo_clicks: Are you sure you want to undo this pledge?  (Your pledgee will be disappointed!)
         title: Cancel Pledges
         dashboard: Back to Dashboard
         date_created: Pledged On
@@ -217,7 +217,7 @@ en:
       button_title_intro: "<-- Click to pledge to "
       button_description_default: Use 25c to show your appreciation.
       enter_button_title: Name the purpose of the pledge (who/what this is for)
-      enter_button_description: Describe your pledge:
+      enter_button_description: "Describe your pledge: "
       remove_video: Remove Video
       remove_button_picture: Remove Image
       upload_button_picture: Upload Pledge Image
