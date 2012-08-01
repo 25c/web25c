@@ -15,7 +15,7 @@
     %h3.table-title
       = t('.tips_given_title')
       = @clicks_given_total.to_s + ' '
-      ($#{"%.2f" % (@clicks_given_total / 4)})
+      ($#{"%.2f" % (@clicks_given_total.to_f / 4)})
     %a= link_to t('.payment'), home_payment_path, :class => 'btn'
     %a= link_to t('.undo_clicks'), home_undo_clicks_path, :class => 'btn'
     .table-wrapper
@@ -43,7 +43,7 @@
     %h3.table-title
       = t('.tips_received_title')
       = @clicks_received_total.to_s + ' '
-      ($#{"%.2f" % (@clicks_received_total / 4)})
+      ($#{"%.2f" % (@clicks_received_total.to_f / 4)})
     %a= link_to t('.payout'), home_payout_path, :class => 'btn'
     .table-wrapper
       %table#clicks-received.clicks-table.table.table-condensed.table-striped
