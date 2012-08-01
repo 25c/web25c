@@ -198,7 +198,7 @@ class UsersController < ApplicationController
       end
       if user.picture_file_name.blank? and not auth['info']['image'].blank?
         user.picture_url = auth['info']['image']
-        user.save!   
+        user.save!
       end
       notice = t('users.sign_in_callback.google')
     end
@@ -300,7 +300,7 @@ class UsersController < ApplicationController
   end
   
   def tip
-    # @referrer = params[:referrer]
+    @referrer = params[:referrer]
     # @button_id = params[:button_id]
     @user = self.current_user
     @button = Button.find_by_uuid(params[:button_id])

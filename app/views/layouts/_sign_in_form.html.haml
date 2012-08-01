@@ -13,6 +13,11 @@
   .lead.compact-lead= t('users.sign_in.sign_in_with')
   .login-buttons
     %a.facebook-btn.pointer= image_tag "logos/facebook.png"
-    / = link_to image_tag("logos/twitter.png"), "/auth/twitter"
-    = link_to image_tag("logos/google.png"), '/auth/google_oauth2'
-    
+    - if @button
+      = link_to image_tag("logos/google.png"), 
+        '/auth/google_oauth2?state=button_id=' + @button.uuid + '&referrer=' + @referrer
+      / = link_to image_tag("logos/twitter.png"),
+      /   '/auth/twitter?state=button_id=' + @button.uuid + '&referrer=' + @referrer
+    - else
+      = link_to image_tag("logos/google.png"), '/auth/google_oauth2'
+      / = link_to image_tag("logos/twitter.png"), "/auth/twitter"

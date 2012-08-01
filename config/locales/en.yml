@@ -85,13 +85,6 @@ en:
         provider: Pledged To
         referrer: At Location
         clicker: Pledged By
-        delete: Undo
-        undo_clicks: Undo Pledges
-        title: Cancel Pledges
-        dashboard: Back to Dashboard
-        date_created: Pledged On
-        provider: Pledged To
-        referrer: At Location
       undo_clicks:
         title: Undo Pledges
         undo: Undo Pledge

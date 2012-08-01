@@ -13,7 +13,25 @@
 */
 
 body {
-  background-color: white;
+  background-image: url(image_path("rough_diagonal.png"));
+}
+
+body, p, strong, h4, ul.plist > li {
+  color: #333;
+  font-size: 15px;
+  line-height: 1.2em;
+  font-family: Helvetica, Arial, Sans-Serif;
+  font-weight: 200;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dropdown-menu a {
+  font-weight: 200;
+}
+
+b, strong, h4 {
+  font-weight: 600;
 }
 
 img {
@@ -84,7 +102,11 @@ hr {
   padding: 6px 0 6px 0;
   height: 50px;
   background-image: none;
-  background-color: #f6f6f6;
+  background-color: white;
+  min-width: 960px;
+  border-radius: 0;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 .navbar #nav-tagline {
   color: #999;
@@ -104,7 +126,7 @@ hr {
 
 .navbar .navbar-text {
   line-height: 50px;
-  font-size: 15px;
+//  font-size: 15px;
 }
 
 #nav-logo {
@@ -131,7 +153,7 @@ hr {
 }
 
 .navbar .nav li.dropdown .dropdown-toogle {
-  background-color: #ddd;
+  background-color: white;
 }
 
 .navbar .nav > li.dropdown > a {
@@ -149,14 +171,14 @@ hr {
 /* Footer
  *---------------------------- */
 footer.navbar {
-  background-color: #f6f6f6;
-  margin: 100px 0 0 0;
+  background-color: white;
+  margin: 60px 0 0 0;
 }
 
 footer.navbar > .navbar-inner {
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   border-top: 1px solid #eee;
 }
 
@@ -179,12 +201,12 @@ footer.navbar #foot-copy {
  .splash, .sub-splash, .main-content {
    padding: 30px;
    margin: 20px 0px;
-   background-color: #f6f6f6;
-   border-radius: 10px;
+   background-color: white;
+   border-radius: 5px;
    border: 1px solid #ddd;
-   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
  }
  
  .main-content {
@@ -283,7 +305,7 @@ ul.login-buttons > li.login-logo > a > img {
 }
 .navbar .nav > li > a.btn:hover {
   color: #333;
-  background-color: #e3e3e3;
+  background-color: #eee;
 }
 
 
@@ -465,7 +487,7 @@ pre#button-code-block {
   min-height:50px; 
   background-color: rgb(255, 255, 255); 
   border: 1px solid rgba(0, 0, 0, 0.2); 
-  border-radius: 5px 5px 5px 5px; 
+  border-radius: 5px; 
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); 
   background-clip: padding-box; 
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
@@ -746,17 +768,16 @@ form .form-actions {
   background-image: url(image_path("glyphicons-halflings.png"));
 }
 
-p, strong, h4, ul.plist > li {
-  font-size: 15px;
-  line-height: 1.2em;
-}
-
 h4 {
   margin: 15px 0 5px 0;
 }
 
 form .form-actions {
   background-color: transparent;
+}
+
+.alert {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 /* SIMPLE_FORM OVERRIDES
@@ -844,9 +865,9 @@ table.table thead .sorting_desc_disabled {
 #user-profile {
   width: 200px;
   padding: 20px;
-  border: 2px solid #ddd;
+//  border: 2px solid #ddd;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 0 0 20px 20px;
   min-height: 333px;
 }
@@ -946,9 +967,9 @@ table.table thead .sorting_desc_disabled {
 #project-container {
   width: 570px;
   padding: 20px;
-  border: 2px solid #ddd;
+//  border: 2px solid #ddd;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 0 0 20px 20px;
   min-height: 333px;
 }
@@ -1070,7 +1091,7 @@ table.table thead .sorting_desc_disabled {
   padding: 20px;
   margin: 40px 0 20px 0;
   background-color: #f6f6f6;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid #ccc;
 }
 
@@ -1167,7 +1188,7 @@ table.table thead .sorting_desc_disabled {
   min-height:50px; 
   background-color: rgb(255, 255, 255); 
   border: 1px solid rgba(0, 0, 0, 0.2); 
-  border-radius: 5px 5px 5px 5px; 
+  border-radius: 5px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); 
   background-clip: padding-box; 
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
