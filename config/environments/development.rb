@@ -10,7 +10,7 @@ Web25c::Application.configure do
     :user_name            => 'developer@25c.com',
     :password             => 'superlike25',
     :authentication       => 'plain',
-    :enable_starttls_auto => true  
+    :enable_starttls_auto => true
   }
   
   ENV["REDISTOGO_URL"] = 'redis://localhost:6379'

@@ -4,13 +4,13 @@
     %p
       = t('.instructions')
     %p.buffer
-      - if @user.nickname
-        = t('.user_url')
-        = link_to(@url, @url)
-      - else
+      - if @user.nickname.blank?
         = t('.example')
         = @url
-    = simple_form_for @user, :url => update_nickname_path, 
+      - else
+        = t('.user_url')
+        = link_to(@url, @url)
+    = simple_form_for @user, :url => choose_nickname_path, 
       :html => { :class => 'form-horizontal' } do |f|
       = f.input :nickname
       .form-actions

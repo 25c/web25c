@@ -8,11 +8,12 @@ class User < ActiveRecord::Base
   has_attached_file :picture, :styles => { :thumb => ["50x50#", :jpg], :profile => ["1000x500>", :jpg] }
   
   attr_writer :editing
-  attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, :last_name, :picture, :show_donations
+  attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, :last_name, :picture, :show_donations, :paypal_email
   attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, :last_name, :picture, :is_admin, :show_donations, :as => :admin
   
   validates :email, :presence => true, :if => 'not linked?'
   validates :email, :uniqueness => { :case_sensitive => false }, :allow_nil => true
+  validates :paypal_email, :uniqueness => { :case_sensitive => false }, :allow_nil => true
   
   validates :nickname, :uniqueness => { :case_sensitive => false }, :allow_nil => true
 
@@ -21,7 +22,9 @@ class User < ActiveRecord::Base
   
   before_validation :preprocess_fields
   before_create :generate_uuid
+  
   after_create :create_default_button
+  after_save :send_welcome_email
   
   def refresh_facebook_access_token(code, force_refresh = false)
     begin
@@ -126,6 +129,16 @@ class User < ActiveRecord::Base
   
   def create_default_button
     self.buttons.create!
+  end
+  
+  def send_welcome_email
+    if self.is_new and not self.email.blank?
+      UserMailer.welcome(self).deliver
+      self.editing = true
+      self.is_new = false
+      self.save!
+      self.editing = false
+    end
   end
 
 end

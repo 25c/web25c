@@ -592,6 +592,7 @@ form .submit-container {
  
 #tip-body {
   padding: 60px;
+  height: 100%;
 }
 
 #tip-center, #tip-confirm-center {
@@ -600,17 +601,28 @@ form .submit-container {
   text-align: center;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 5px;
+  padding-bottom: 30px;
+  padding: 60px 30px 30px 30px;
+  height: 100%;
+}
+
+#tip-overdraft-center {
+  width: auto;
+  margin: 0 auto;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+}
+
+#tip-confirm-center .confirm-thanks {
+  padding-top: 10px;
 }
 
 #tip-center {
-  height: 310px;
+//  height: 310px;
+  height: 100%;
   padding-top: 60px;
-}
-
-#tip-confirm-center {
-  height: 290px;
-  padding-top: 80px;
 }
  
 img#tip-25c-logo {
@@ -626,9 +638,8 @@ img#tip-25c-logo {
 }
 
 #sign-in {
-  width: 400px;
-  min-height: 200px;
-  margin: 0 auto 20px auto;
+  width: 100%;
+  min-height: 100px;
   text-align: center;
 }
 

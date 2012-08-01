@@ -68,10 +68,11 @@ en:
         contents: "Your pledge total is:"
         get_button: Get My Button
         payment: Pay for 25c Pledges
-        undo_clicks: Undo Clicks
+        undo_clicks: Undo Pledges
+        payout: Request Payout
         process_clicks: Process my pledges now!
-        tips_given_title: 25c's given
-        tips_received_title: 25c pledges received
+        tips_given_title: "25c's pledged:"
+        tips_received_title: "25c's received:"
         tips_given: 25c pledges given
         tips_received: 25c pledges received
         total: Total
@@ -141,10 +142,10 @@ en:
         step1_title: "Where will you use the 25c Button?"
         step2_title: "Name the pledge purpose:"
         step3_title: "Choose a look:"
-        step4_title: "Add this button to your blog or website:"
+        step4_title: "Embed the button with your web content:"
         step5_title: "Follow your rewards!"
         website: "Your website"
-        tooltip_preview: "This message will appear with your button:"
+        tooltip_preview: "Here's how it will look like with your button:"
         link_preview: "Your button will appear as this link:"
         set: Set
         button_preview: "Button preview:"
@@ -156,8 +157,7 @@ en:
         for_youtube: "Paste this URL into the description of your uploaded Youtube video."
         problems: <b>Problems?</b> See the %{faq} or email us with questions at %{email}.
         faq: FAQ
-        check_donations: Check your pledges daily through your %{dashboard} or configure your 
-          %{account} to receive an email report at regular intervals!
+        check_donations: Check your pledges daily through your %{dashboard}. Once you have received a minimum amount of $10, you will receive or can request a pay-out.
       short_url:
         input_label: "Use it when sending links to your followers and earn along for resulting pledges:"
         input_text: "Paste content URL to encode"
@@ -204,8 +204,7 @@ en:
       faq: FAQ
       terms: Terms
       privacy: Privacy
-      contact: Contact
-      
+      contact: Contact      
     mailer:
       recipient: "This message was sent to: %{recipient}"
       
@@ -240,6 +239,8 @@ en:
       show_donations: Show pledges on my profile page
       edit_password_hint: Leave blank to keep current password.
       nickname_url: "Your nickname determines your public profile URL: "
+      paypal_email: "Paypal Email"
+      paypal_email_hint: "Your Paypal email is used for sending and receiving payments for pledges."
       submit: Update
     edit:
       title: Account
@@ -282,6 +283,8 @@ en:
       over_limit: "You have reached your maximum number of pledges. You now need to pay for past 
         pledges before you can make new ones."
       payment: Pay for Your Pledges
+      done: Done
+      view_pledges: View Pledges
     confirm_tip:
       visit_25c: Go to 25c.com
       view_account: View 25c Account
@@ -300,3 +303,7 @@ en:
       terms: User Terms
       privacy: Privacy Policy
       agree: Agree and Continue
+
+  user_mailer:
+    welcome:
+      

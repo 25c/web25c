@@ -13,62 +13,10 @@
     %div= t('.amount')
     %div#refill-amount.buffer
       %b 40 25c's ($10.00)
-      
-    / %div.checkbox-container
-    /   %input.checkbox#auto-refill-checkbox{:type => 'checkbox', 
-    /     :checked => @user.auto_refill ? "true" : nil,
-    /     :name => 'auto_refill'} 
-    /     = t('.auto_refill')
-    -if !@card_masked_number.blank?
-      #existing-card
-        %p
-          = t('.card_on_file')
-          %b
-            = @card_masked_number
-        %form{:action => home_confirm_payment_url, :method => 'post' }
-          %input.transaction-amount{:type => 'hidden', :name => 'transaction[amount]'}
-          %input.payment-type{:type => 'hidden', :name => 'payment_type', :value => 'existing'}
-          %input.btn.btn-warning{:type => 'submit', :value => 'Submit Payment'}
-      
-      #toggle-card-container
-        .btn#toggle-card-button= t('.use_different')
-
-    #new-card.hide
-      -if @result
-        .errors
-          %h4 #{@result.errors.size} error(s):
-          - @result.errors.each do |error|
-            %p.errors #{error.message}
-      = form_for :transaction,
-          :params => @result && @result.params[:transaction],
-          :errors => @result && @result.errors.for(:transaction),
-          :builder => ApplicationHelper::BraintreeFormBuilder,
-          :url => Braintree::TransparentRedirect.url,
-          :html => {:id => "transaction-form", :autocomplete => "off"} do |f|
-        %label{:for => "cardholder_name"}= t('.card_name')
-        %input{:type => 'text', :size => 40, :name => 'transaction[credit_card][cardholder_name]'}
-        %div.pull-left
-          %label{:for => "number"}= t('.card_number')
-          %input#card-number{:type => 'text', :size=>40, 
-            :name => 'transaction[credit_card][number]'}
-        %label{:for => "CVV"}= t('.card_cvv')
-        %input#card-CVV{:type => 'text', :size => 40, :name => 'transaction[credit_card][cvv]'}
-        %label{:for => "expiration_date"}= t('.expiration_date')
-        %select#card-expiration-month{:name => 'transaction[credit_card][expiration_month]'}
-          %option{:selected => "selected", :disabled => "disabled", :value => ""}
-            = t('.select_month')
-          - (1..12).each do |month|
-            %option{:value => "#{month}"} #{Date::MONTHNAMES[month]}
-        %select#card-expiration-year{:name => 'transaction[credit_card][expiration_year]'}
-          %option{:selected => "selected", :disabled => "disabled", :value => ""}
-            = t('.select_year')
-          - (Date.today.year..10.years.from_now.year).each do |year|
-            %option{:value => "#{year.to_s()[2,2]}"} #{year.to_s()}
-        = hidden_field_tag :tr_data, @bt_data
-        %div.checkbox-container
-          %input.checkbox{:type => 'checkbox', :checked => 'true', :value => 'true',
-            :name => 'transaction[options][store_in_vault_on_success]'}
-            =t('.remember_card')
-        %input.transaction-amount{:type => 'hidden', :name => 'transaction[amount]'}
-        %input.payment-type{:type => 'hidden', :name => 'payment_type', :value => 'new'}
-        %input.btn.btn-warning{:type => 'submit', :value => 'Submit Payment'}
+  .span11
+    / %h3.buffer= t('.title')
+    = simple_form_for @user, :url => @user.new_record? ? sign_in_path : home_account_path, 
+      :html => { :class => 'form-horizontal' } do |f|
+      = f.input :paypal_email, :label => t("users.form.paypal_email"), :hint => t('users.form.paypal_email_hint')
+      .form-actions
+        = f.button :submit, :class => 'btn-warning', :value => t('users.form.submit')
