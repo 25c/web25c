@@ -13,9 +13,10 @@ Web25c::Application.configure do
     :address        => 'smtp.sendgrid.net',
     :port           => '587',
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com'
+    :user_name      => 'corp25c',
+    :password       => 'sup3rl!k3',
+    :domain         => '25c.com',
+    :enable_starttls_auto => true
   }
   config.action_mailer.delivery_method = :smtp
 
