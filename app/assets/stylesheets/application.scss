@@ -16,8 +16,17 @@ body {
   background-image: url(image_path("rough_diagonal.png"));
 }
 
-body, p, strong, h4, ul.plist > li, label, input, button, select, textarea, .btn {
+body, p, strong, h4, ul.plist > li, label, input, button, select, textarea {
   color: #333;
+  font-size: 15px;
+  line-height: 1.2em;
+  font-family: Helvetica, Arial, Sans-Serif;
+  font-weight: 200;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn {
   font-size: 15px;
   line-height: 1.2em;
   font-family: Helvetica, Arial, Sans-Serif;
