@@ -12,6 +12,7 @@
     :javascript
       $(document).ready(function() {
         $('#button-fields .content-block').css('display', 'block');
+        $('#project-action').css('background-color', 'transparent');
         $('#user-profile textarea').attr('readonly', 'readonly').css('cursor', 'text');
         $('#user-profile #user-picture').load(function() {
           var picOffset = ($('#user-profile #user-picture').height() - 200) / 2;
@@ -52,8 +53,50 @@
                 =@user.about.blank? ? t('.enter_about') : @user.about
         .clear
       #project-container.pull-left
-        #project-action
-          #button-holder.pull-left
+        #project-action            
+          #button-fields
+            #button-title-block.block
+              - if @is_editable
+                .input-block
+                  / %label= t('.button_title_label')
+                  %input{:type => 'text', :name => 'button[title]', 
+                  :value => @button.title.blank? ? t('.enter_button_title') : @button.title,
+                  :id => 'button-title-input'}
+              .content-block
+                #profile-button-title
+                  = t('.button_title_intro')
+                  %span#button-title= @button.title.blank? ? 'to ' + @user.display_name : @button.title
+                                    
+            - if not @button.youtube_id.blank?
+              #youtube-embed-container
+                %iframe{ :id => 'video-iframe',
+                  :title => 'YouTube Video Player',
+                  :width => '560',
+                  :height => '341',
+                  :src => 'http://www.youtube.com/embed/' + @button.youtube_id,
+                  :frameborder => '0' }
+              #button-picture-container.hide
+            - elsif @button.picture.exists?
+              #youtube-embed-container.hide
+              #button-picture-container
+                = image_tag(@button.picture, :id => 'button-picture')
+            - elsif @is_editable
+              #youtube-embed-container.hide
+              #button-picture-container.hide
+            #button-description-block.block
+              - if @is_editable
+                .input-block
+                  / %label= t('button_description_label')
+                  %textarea{:id => 'button-description-input', :name => 'button[description]', 
+                    :rows => 1}
+                    =@button.description.blank? ? t('.enter_button_description') : @button.description
+              .content-block
+                #button-description
+                  = @button.description.blank? ? t('.button_description_default') : @button.description
+          .clear
+        
+        #project-content.center
+          #button-holder.center.buffer
             %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
               :class => "tip-25c-button", :"data-size" => "btn-large"}
               #{@button.title}
@@ -66,58 +109,20 @@
                   fjs.parentNode.insertBefore(js,fjs);
                 }
               } (document,"script","tip-25c-js");
-            
-          #button-fields.pull-left
-            #button-title-block.block
-              - if @is_editable
-                .input-block
-                  / %label= t('.button_title_label')
-                  %input{:type => 'text', :name => 'button[title]', 
-                  :value => @button.title.blank? ? t('.enter_button_title') : @button.title,
-                  :id => 'button-title-input'}
-              .content-block
-                %h3#profile-button-title
-                  = t('.button_title_intro')
-                  %span#button-title= @button.title.blank? ? 'to ' + @user.display_name : @button.title
-            #button-description-block.block
-              - if @is_editable
-                .input-block
-                  / %label= t('button_description_label')
-                  %textarea{:id => 'button-description-input', :name => 'button[description]', 
-                    :rows => 2}
-                    =@button.description.blank? ? t('.enter_button_description') : @button.description
-              .content-block
-                #button-description
-                  = @button.description.blank? ? t('.button_description_default') : @button.description
-          .clear
-        
-        #project-content.center
-          - if not @button.youtube_id.blank?
-            #youtube-embed-container
-              %iframe{ :id => 'video-iframe',
-                :title => 'YouTube Video Player',
-                :width => '560',
-                :height => '341',
-                :src => 'http://www.youtube.com/embed/' + @button.youtube_id,
-                :frameborder => '0' }
-            #button-picture-container.hide
-          - elsif @button.picture.exists?
-            #youtube-embed-container.hide
-            #button-picture-container
-              = image_tag(@button.picture, :id => 'button-picture')
-          - elsif @is_editable
-            #youtube-embed-container.hide
-            #button-picture-container.hide
           - if @is_editable
-            .update-button-field
-              %span#remove-button-video.btn.hide= t('.remove_video')
-            .update-button-field
-              %span#remove-button-picture.btn.hide= t('.remove_button_picture')
-            .update-button-field
-              #upload-button-picture.btn= t('.upload_button_picture')
-            %label= t('.choose_youtube_video')
-            %input{:type => 'text', :name => 'button[youtube_link]', :id => 'upload-youtube-url'}
-            #youtube-button.btn= t('.save_video')
+            #project-edit
+              #edit-content-title= t('.add_project_content')
+              .update-button-field
+                %span#remove-button-video.btn.hide= t('.remove_video')
+              .update-button-field
+                %span#remove-button-picture.btn.hide= t('.remove_button_picture')
+              .update-button-field
+                #upload-button-picture.btn= t('.upload_button_picture')
+              / %label= t('.choose_youtube_video')
+              #youtube-input
+                %input{:type => 'text', :name => 'button[youtube_link]', 
+                  :id => 'upload-youtube-url'}
+                #youtube-button.btn= t('.save_video')
           
       - if @user.show_donations
         .span11

@@ -16,7 +16,7 @@ body {
   background-image: url(image_path("rough_diagonal.png"));
 }
 
-body, p, strong, h4, ul.plist > li {
+body, p, strong, h4, ul.plist > li, label, input, button, select, textarea, .btn {
   color: #333;
   font-size: 15px;
   line-height: 1.2em;
@@ -106,7 +106,7 @@ hr {
   min-width: 960px;
   border-radius: 0;
   border-bottom: 1px solid #ddd;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
 }
 .navbar #nav-tagline {
   color: #999;
@@ -172,7 +172,7 @@ hr {
  *---------------------------- */
 footer.navbar {
   background-color: white;
-  margin: 60px 0 0 0;
+  margin: 20px 0 0 0;
 }
 
 footer.navbar > .navbar-inner {
@@ -726,6 +726,10 @@ form .form-actions {
   margin-bottom: 20px;
 }
 
+.btn {
+  font-weight: normal;
+}
+
 /* USER DASHBOARD
  *---------------------------- */
 
@@ -917,7 +921,8 @@ table.table thead .sorting_desc_disabled {
 }
 
 #user-profile:hover input, #user-profile:hover textarea.editing, #user-profile input.focused, 
-#user-profile textarea.focused {
+#user-profile textarea.focused, #button-fields:hover input, #button-fields:hover textarea.editing, 
+#button-fields input.focused, #button-fields textarea.focused {
   display: block;
   background-color: #f6f6f6;
   border: 1px solid #ccc;
@@ -968,33 +973,44 @@ table.table thead .sorting_desc_disabled {
   width: 570px;
   padding: 20px;
 //  border: 2px solid #ddd;
-  background-color: white;
-  border-radius: 5px;
+//  background-color: white;
+//  border-radius: 5px;
   margin: 0 0 20px 20px;
   min-height: 333px;
 }
 
 #project-action {
-  border: 2px solid orange;
-  background-color: #FFE7CF;
-  width: 520px;
-  margin: 0 auto 20px;
-  padding: 20px;
-  border-radius: 5px;
+//  border: 2px solid orange;
+//  background-color: #FFE7CF;
+//  border-radius: 5px;
+//  width: 520px;
+  margin: 0 auto;
+//  padding: 20px;
 }
+
+//#project-action:hover, #project-action.hovering {
+//  background-color: #eee;
+//}
 
 #project-content {
   
 }
 
+#edit-content-title {
+  text-align: left;
+  margin-bottom: 10px;
+}
 
 #button-holder {
-  width: 80px;
+  clear: both;
+//  width: 80px;
   height: 40px;
-  margin-right: 20px;
+  margin-top: 20px;
 }
 
 #profile-button-title {
+  font-size: 20px;
+  font-weight: bold;
   line-height: 1.2em;
   margin-bottom: 5px;
 }
@@ -1015,8 +1031,9 @@ table.table thead .sorting_desc_disabled {
 }
 
 #button-picture-container {
+  text-align: center;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 #button-picture-container #button-picture {
@@ -1040,12 +1057,20 @@ table.table thead .sorting_desc_disabled {
   background-color: black;
   width: 560px;
   height: 341px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+#button-title-block {
+  min-height: 40px;
+}
+
+#button-description-block {
+  min-height: 40px;
 }
 
 #button-fields {
-  width: 420px;
-  min-height: 80px;
+//  width: 420px;
+  min-height: 40px;
 }
 
 #button-fields .block {
@@ -1071,17 +1096,31 @@ table.table thead .sorting_desc_disabled {
 }
 
 #button-fields .block .input-block input, #button-fields .block .input-block textarea {
-  width: 420px;
+  width: 560px;
   margin-bottom: 4px;
 }
 
 #button-fields .block .input-block textarea {
-  height: 46px;
-  margin-bottom: -10px;
+  min-height: 40px;
+//  margin-bottom: -10px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #project-content label {
   margin-top: 5px;
+}
+
+#project-edit {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+#youtube-input {
+  margin-top: 10px;
 }
 
 /* USER AGREEMENT

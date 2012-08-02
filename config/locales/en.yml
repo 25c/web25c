@@ -209,8 +209,10 @@ en:
       edit_url: Change Profile URL
       tips_title: "'s Pledges"
       no_clicks: No pledges given yet.
-      button_title_intro: "<-- Click to pledge "
+      button_title_intro: "Click to pledge "
       button_description_default: Use 25c to show your appreciation.
+      add_project_content: "Add an image or video to your pledge purpose:"
+      save_video: Link Pledge Video
       enter_button_title: Name the purpose of the pledge (who/what this is for)
       enter_button_description: "Describe your pledge: "
       remove_video: Remove Video
