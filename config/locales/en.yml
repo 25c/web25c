@@ -85,6 +85,7 @@ en:
         provider: Pledged To
         referrer: At Location
         clicker: Pledged By
+        payout: Request Payout
       undo_clicks:
         title: Undo Pledges
         undo: Undo Pledge
