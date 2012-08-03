@@ -92,6 +92,7 @@ en:
         payout: Request Payout
         no_referrer: None
         profile_link: "%{provider}'s Profile"
+        no_referrer: None
       undo_clicks:
         title: Undo Pledges
         undo: Undo Pledge
