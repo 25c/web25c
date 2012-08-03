@@ -11,7 +11,7 @@
   - content_for :js do
     :javascript
       $(document).ready(function() {
-        $('#button-fields .content-block').css('display', 'block');
+        $('#button-fields .content-block').css({display: 'block', visibility: 'visible'});
         $('#project-action').css('background-color', 'transparent');
         $('#user-profile textarea').attr('readonly', 'readonly').css('cursor', 'text');
         $('#user-profile #user-picture').load(function() {
@@ -123,11 +123,11 @@
                 %input{:type => 'text', :name => 'button[youtube_link]', 
                   :id => 'upload-youtube-url'}
                 #youtube-button.btn= t('.save_video')
-          
+
       - if @user.show_donations
         .span11
           %h3.table-title
-            = @user.display_name + t('.tips_title')
+            = t('.tips_title')
           .table-wrapper
             %table#clicks-given.clicks-table.table.table-condensed.table-striped
               %thead
@@ -141,7 +141,14 @@
                     %tr
                       %td.click-amount #{set[0]}
                       %td.click-user= set[1].button.user.display_name
-                      %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
+                      - if set[1].referrer.blank?
+                        %td.click-referrer= t('.no_referrer')
+                      - elsif set[1].referrer.include?(request.host)
+                        %td.click-referrer
+                          = link_to t('.profile_link', :provider => set[1].button.user.display_name),
+                            set[1].referrer, :target => "_blank"
+                      - else
+                        %td.click-referrer= link_to set[1].referrer, :target => "_blank"
                 - else
                   %tr
                     %td.click-amount 0

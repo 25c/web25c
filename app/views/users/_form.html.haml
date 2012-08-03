@@ -15,8 +15,9 @@
       / = f.input :show_donations, :hint => t('.show_donations')
       - if @user.nickname.blank?
         = f.input :nickname, :hint => t('.nickname_url') + @url
-      - else
-        = f.input :nickname, :hint => t('.nickname_url') + link_to(@url, @url)
+      / - else
+      /   = @user.nickname
+      /   = f.input :nickname, :hint => t('.nickname_url') + link_to(@url, @url)
       = f.input :first_name
       = f.input :last_name
       = f.input :email, :label => t("users.sign_in.email")

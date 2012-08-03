@@ -122,6 +122,8 @@ class UsersController < ApplicationController
           # format.json { render json: @user.errors, status: :unprocessable_entity }
         end
       end
+    elsif not @user.nickname.blank?
+      redirect_to home_account_path
     end
   end
   

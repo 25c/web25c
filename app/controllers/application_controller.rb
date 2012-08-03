@@ -136,6 +136,9 @@ class ApplicationController < ActionController::Base
       if click_sets[id]
         click_sets[id][0] += 1
       else
+        # if click.referrer.include?(request.fullpath)
+        #   click.referrer = 
+        # end
         click_set = [1, click]
         click_sets[id] = click_set
       end

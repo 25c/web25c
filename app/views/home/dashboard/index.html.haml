@@ -34,7 +34,14 @@
               %td= set[0]
               %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
               %td.click-user= set[1].button.user.display_name
-              %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
+              - if set[1].referrer.blank?
+                %td.click-referrer= t('.no_referrer')
+              - elsif set[1].referrer.include?(request.host)
+                %td.click-referrer
+                  = link_to t('.profile_link', :provider => set[1].button.user.display_name),
+                    set[1].referrer, :target => "_blank"
+              - else
+                %td.click-referrer= link_to set[1].referrer, :target => "_blank"
               %td.click-date= set[1].created_at.to_s(:number)
               %td.click-date= l set[1].created_at, :format => :short
     #process-message.alert.alert-success.hide= t('.clicks_processed')
@@ -60,8 +67,14 @@
             %tr
               %td= set[0]
               %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
-              / %td.click-state= t('.state' + click.state.to_s)
               %td.click-user= set[1].user.display_name
-              %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
+              - if set[1].referrer.blank?
+                %td.click-referrer= t('.no_referrer')
+              - elsif set[1].referrer.include?(request.host)
+                %td.click-referrer
+                  = link_to t('.profile_link', :provider => set[1].button.user.display_name),
+                    set[1].referrer, :target => "_blank"
+              - else
+                %td.click-referrer= link_to set[1].referrer, :target => "_blank"
               %td.click-date= set[1].created_at.to_s(:number)
               %td.click-date= l set[1].created_at, :format => :short

@@ -85,19 +85,19 @@ class Home::AccountController < Home::HomeController
   
   def payout
     @user = current_user
-    @bank_fields = ["account_number", "routing_number", "bank_name"]
-    @contact_fields = [ "name", "company", "phone", "line1", "line2", "city", "region", "zip" ]
-  end
-  
-  def confirm_payout
-    @result = params
-    puts params.inspect
-    if params[:paypal_email].empty?
-      flash[:alert] = t('home.account.confirm_payout.complete_required')
-      redirect_to home_payout_path
-      return
+    # TODO: replace this lookup with balance fields in the User model
+    clicks = @user.clicks.find_all_by_state([ 1, 2 ])
+    @total = clicks.length
+    @funded = clicks.count{ |click| click.state == 2 }
+    if request.method == 'POST'
+      if params.has_key?(:paypal_email)
+          # TODO: verify Paypal email before saving
+          @user.editing = true
+          @user.paypal_email = params[:paypal_email]
+          @user.save!
+          @user.editing = false
+      end
     end
-    # Put payout action here -> email to payout@25c.com?
   end
   
   private

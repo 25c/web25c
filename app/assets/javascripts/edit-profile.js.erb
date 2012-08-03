@@ -101,10 +101,10 @@ $(document).ready(function() {
   
   $('#button-fields input, #button-fields textarea').focusin(function() {
     $('#button-fields .input-block').css('display', 'block');
-    $('#button-fields .content-block').css('display', 'none');
+    $('#button-fields .content-block').css('visibility', 'hidden');
   }).focusout(function() {
     $('#button-fields .input-block').css('display', '');
-    $('#button-fields .content-block').css('display', '');
+    $('#button-fields .content-block').css('visibility', '');
   });
   
   $('#button-fields input, #button-fields textarea').change(function() {
@@ -115,7 +115,7 @@ $(document).ready(function() {
     if ($this.attr('id') == 'button-title-input') {
       $('#button-title').text($this.val());
     } else if ($this.attr('id') == 'button-description-input') {
-      $('#button-description').text($this.val());
+      $('#button-description').html($this.val());
     }
   });
   

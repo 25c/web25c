@@ -12,36 +12,40 @@
         });
       });
 
-  %body#tip-body
-  - if params[:overdraft]
-    #tip-overdraft-center.main-content
+%body#tip-body
+  #tip-center.main-content
+    #tip-logo-bar
       / %img#tip-25c-logo{:src => image_path('25c-logo-large.png')}
-      %p.buffer= t('.over_limit')
-      = link_to t('.payment'), home_payment_path, :class => 'btn btn-warning', :target => '_blank'
-  - else
-    #tip-confirm-center.main-content
-      / = render 'layouts/alerts'
-      %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
-        #{@button.title}
-      :javascript
-        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
-        if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
-        js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
-        fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
-      %p.confirm-thanks= t('.thanks')
-      .tip-button-container
-        %span= t('.pledged_to', :provider => @button.user.display_name)
-        %a= link_to t('.view_pledges'), home_dashboard_path, :class => 'btn', :target => 'blank'
-      .tip-button-container
-        %span= t('.pledge_more')
-      = link_to t('.done'), '#', :class => 'btn', :id => 'close'
-
-- else
-  %body#tip-body
-    #tip-center.main-content
-      %img#tip-25c-logo{:src => image_path('25c-logo-large.png')}
       / #tip-25c-tagline.lead= t('.tagline')
+      %a.pull-left{:href => root_path, :target => '_blank'}
+        %img{:src => image_path('25c-logo-small.png')}
+      #tip-tagline.pull-left= t('application.title')
+      .clear
+    - if signed_in?
+      - if params[:overdraft]
+        / %img#tip-25c-logo{:src => image_path('25c-logo-large.png')}
+        %p.buffer= t('.over_limit')
+        = link_to t('.payment'), home_payment_path, :class => 'btn btn-warning', 
+          :target => '_blank'
+      - else
+        / = render 'layouts/alerts'
+        %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
+          #{@button.title}
+        :javascript
+          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
+          if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
+          js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
+          fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
+        .tip-button-container
+          %div= t('.pledged_to', :provider => @button.user.display_name)
+          %a= link_to t('.view_pledges'), home_dashboard_path, :class => 'btn', :target => 'blank'
+        .tip-button-container
+          %div= t('.pledge_more')
+          = link_to t('.done'), '#', :class => 'btn', :id => 'close'
+    - else
       = render 'layouts/sign_in_form'
 
 = javascript_include_tag "application"
 = yield(:js)
+
+

@@ -51,8 +51,12 @@ en:
         contents: "25c Pledges Received:"
         payout_amount: "Payout amount"
         paypal_title: Request payment through Paypal
-        paypal_email: Paypal account e-mail
+        paypal_email: Paypal E-mail
         submit: Send Request
+        received: You have received %{total} ($%{total_amount}) 25c pledges, of which %{funded} ($%{funded_amount}) have so far been funded. 
+        too_low: "The minimum pay-out amount is $50 of funded pledges.  Once you have reached this amount, you can receive a pay-out into your PayPal account."
+        provide_paypal_email: "Please provide us with your PayPal email ID (required for all pay-outs):"
+        sent: You have been queued for receiving a pay-out of your funded pledges. You should be receiving the amount within 48 hours.  Please check your PayPal account.
       confirm_payout:
         confirm_title: Payout request sent.
         complete_required: "Please complete all the required fields."
@@ -86,6 +90,8 @@ en:
         referrer: At Location
         clicker: Pledged By
         payout: Request Payout
+        no_referrer: None
+        profile_link: "%{provider}'s Profile"
       undo_clicks:
         title: Undo Pledges
         undo: Undo Pledge
@@ -208,7 +214,6 @@ en:
       enter_name: Enter your name here.
       enter_about: Enter information about yourself here.
       edit_url: Change Profile URL
-      tips_title: "'s Pledges"
       no_clicks: No pledges given yet.
       button_title_intro: "Click to pledge "
       button_description_default: Use 25c to show your appreciation.
@@ -220,6 +225,11 @@ en:
       remove_button_picture: Remove Image
       upload_button_picture: Upload Pledge Image
       choose_youtube_video: "Or Show a Pledge Video from Youtube: "
+      tips_title: My Pledges
+      amount: "25c's"
+      provider: To
+      referrer: Link 
+      profile_link: "%{provider}'s Profile"
     form:
       title: Update Account Settings
       show_donations: Show pledges on my profile page
@@ -263,10 +273,9 @@ en:
       failure: Your account was not created. Please try again.
     tip:
       tagline: "Please log in with:"
-      thanks: "Thank You!"
-      pledged_to: You have pledged 25c to %{provider}.
-      pledge_more: Want to pledge additional 25c's? Simply click +25c further times.
-      over_limit: "You have reached your maximum number of pledges. You now need to pay for past pledges before you can make new ones."
+      pledged_to: You have pledged 25c to %{provider}. Thank you!
+      pledge_more: Want to pledge additional 25c's? Click +25c further times.
+      over_limit: "You have reached your maximum number of pledges. You now need to pay for past pledges before you can make new ones."
       payment: Pay for Pledges You Made
       done: Done
       view_pledges: View Pledges
