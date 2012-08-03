@@ -86,6 +86,13 @@
             %input.button-size{:type => 'radio', :name => 'button_size'}
             %span= t('.icon-small')
             %img{:src => image_path('25c-icon-small.png'), :'data-size' => 'icon-small'}
+          .button-choice
+            %input.button-size{:type => 'radio', :name => 'button_size'}
+            %span= t('.icon-text')
+            #icon-text-container
+              %img{:src => image_path('25c-icon-text.png'), :'data-size' => 'icon-text'}
+              %span#icon-text 25c
+          .clear
 
   #step4.step-container.hide
     .span1.step-number 4

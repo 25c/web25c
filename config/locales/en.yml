@@ -122,6 +122,7 @@ en:
         btn-medium: "Medium button"
         icon-small: "Small icon"
         btn-small: "Small button"
+        icon-text: "Icon & text"
         button_name: "Customize tooltip message:"
         button_code: "HTML Code for Your Own +25c Button:"
         sign_in_overlay: Click here to create an account!

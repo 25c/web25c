@@ -7,7 +7,8 @@ $(document).ready(function(){
 		'btn-small': ' width="40" height="20"',
 		'icon-large': ' width="40" height="40"',
 		'icon-medium': ' width="30" height="30"',
-		'icon-small': ' width="20" height="20"'
+		'icon-small': ' width="20" height="20"',
+		'icon-text': ' width="60" height="20"'
 	};
 	
 	var baseurl = window.location.protocol + '//' + window.location.hostname;
@@ -113,15 +114,17 @@ $(document).ready(function(){
     $this.parent().children('input[type=radio]').removeAttr('checked');
     $this.children('input[type=radio]').attr('checked', 'checked');
     if ($this.hasClass('button-choice')) {
-      var newButtonSize = $this.children('img').attr('data-size');
+      var newButtonSize = $this.find('img').attr('data-size');
       if (buttonSize != newButtonSize) {
         buttonSize = newButtonSize;
-        $this.parent().find('.selected-button').removeClass('selected-button');
-        $this.addClass('selected-button');
+        $this.parent().find('.selected-option').removeClass('selected-option');
+        $this.addClass('selected-option');
         updateButtonCode();
         $.post(updateButtonUrl, { 'button[size]': buttonSize });
       }
     } else if ($this.hasClass('platform-container')) {
+      $this.parent().find('.selected-option').removeClass('selected-option');
+      $this.addClass('selected-option');
       var platform = $this.attr('data-platform');
       $('.instructions').hide();
       if (platform == 'html') {
