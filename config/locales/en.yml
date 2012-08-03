@@ -8,7 +8,7 @@ en:
         title: Admin Dashboard
   
   application:
-    title: "25c social micro-donations. One quarter, one click."
+    title: "25c social micro-donations"
     25c_units: "25c's"
     hello_email: hello@25c.com
       
@@ -23,10 +23,10 @@ en:
   home:
     account:
       payment:
-        title: Pay for Pledges You Made
+        title: Fund Pledges You Made
         25c_units: 25c's
         amount: "Payment Amount:"
-        auto_refill: Automatically pay for my pledges when I have made 40 25c pledges ($10.00).
+        auto_refill: Automatically fund my pledges when I have made 40 25c pledges ($10.00).
         card_on_file: "Card on file:"
         use_existing: Use existing card
         use_different: Use different card
@@ -71,9 +71,9 @@ en:
         title: Dashboard
         contents: "Your pledge total is:"
         get_button: Get Your Own +25c Button
-        payment: Pay for Past Pledges
+        payment: Fund Pledges
         undo_clicks: Undo Pledges
-        tips_given_title: "25c Pledged Given: "
+        tips_given_title: "25c Pledges Made: "
         tips_received_title: "25c Pledges Received: "
         tips_given: 25c Pledges Given
         tips_received: 25c Pledges Received
@@ -85,9 +85,9 @@ en:
         state3: Processed
         state4: Paid
         state5: Refunded
-        date_created: Most Recent
+        date_created: Date
         provider: Pledged To
-        referrer: At Location
+        referrer: Link
         clicker: Pledged By
         payout: Request Payout
         no_referrer: None
@@ -104,7 +104,7 @@ en:
       update_failure: Button update failed. Please try again.
       index: 
         title: Get your own +25c Button!
-        subtitle: Follow these simple steps and instantly start receiving pledges!
+        subtitle: Start receiving pledges on your own website/blog/video -- simply follow these steps:
         short_url_title: 25c Short URL
         platform: Platform
         javascript: JavaScript
@@ -130,7 +130,7 @@ en:
         iframe: iFrame
         link: Link
         step1_title: "Where will you use the +25c Button?"
-        step2_title: "Name the purpose of the donation -- who or what will it go to:"
+        step2_title: "Name the purpose -- who or what will the donation go to:"
         step3_title: "Choose a look:"
         step4_title: "Now embed this code into your blog or website:"
         step5_title: "Track your rewards!"
@@ -156,12 +156,12 @@ en:
 
     index:
       how_it_works: ""
-      25c_button_legend: The +25c Button&trade;
+      25c_button_legend: The&npsb;+25c&nbsp;Button&trade;
       25c_button_legend_sub: One quarter each click
       pledge_title: Pledge 25c's
       collect_title: Receive 25c Pledges
       create_button_title: "On your website, blog, Youtube:"
-      create_button_button: Embed Your Own +25c Button
+      create_button_button: Embed Your Own +25c
       create_profile_title: "On 25c.com:"
       create_profile_button: Create a Profile
       top_sites_button: Top Receivers
@@ -173,7 +173,7 @@ en:
       dashboard: Dashboard
       
     header:
-      tagline: "Social micro-donations. One quarter, one click."
+      tagline: "social micro-donations. one quarter, one click."
       home: Home
       about: About
       blog: Blog
@@ -187,7 +187,7 @@ en:
       sign_in: Sign In
       sign_out: Sign Out
       buttons: Get Your Own Button
-      payments: Pay for Pledges You Made
+      payments: Fund Pledges You Made
     footer:
       about: About
       faq: FAQ
@@ -202,7 +202,7 @@ en:
   users:
     show:
       title: "'s 25c Profile"
-      blank_about: 'I use 25c to get rewarded for my content.'
+      blank_about: 'I use 25c to receive pledges.'
       current_user: 'This is your profile. '
       change_url: 'Click here to change your profile URL.'
       support_title: Please click the 25c Button below to contribute to
@@ -219,14 +219,14 @@ en:
       button_title_intro: "Click to pledge "
       button_description_default: Use 25c to show your appreciation.
       add_project_content: "Add an image or video to your pledge purpose:"
-      save_video: Link Pledge Video
+      save_video: Link Pledge Youtube
       enter_button_title: Name the purpose of the pledge (who/what this is for)
       enter_button_description: "Describe your pledge: "
       remove_video: Remove Video
       remove_button_picture: Remove Image
       upload_button_picture: Upload Pledge Image
       choose_youtube_video: "Or Show a Pledge Video from Youtube: "
-      tips_title: My Pledges
+      tips_title: Pledges I Have Made:
       amount: "25c's"
       provider: To
       referrer: Link 
@@ -234,10 +234,10 @@ en:
     form:
       title: Update Account Settings
       show_donations: Show pledges on my profile page
-      edit_password_hint: Leave blank to keep current password.
+      edit_password_hint: Leave blank to keep current.
       nickname_url: "Your nickname determines the URL of your public profile: "
       paypal_email: "Paypal Email"
-      paypal_email_hint: "Your Paypal email is used for sending and receiving payments for pledges."
+      paypal_email_hint: "We use PayPal to process payments."
       submit: Update
     edit:
       title: Account
@@ -275,10 +275,10 @@ en:
     tip:
       tagline: "Please log in with:"
       pledged_to: You have pledged 25c to %{provider}. Thank you!
-      pledge_more: Want to pledge additional 25c's? Click +25c further times.
-      over_limit: "You have reached your maximum number of pledges. You now need to pay for past pledges before you can make new ones."
-      payment: Pay for Pledges You Made
-      done: Done
+      pledge_more: Want to pledge additional 25c's? Re-click +25c above.
+      over_limit: "You have reached your maximum number of pledges. You now need to fund past pledges before you can make new ones."
+      payment: Fund Pledges You Made
+      done: Close
       view_pledges: View Pledges
     confirm_tip:
       visit_25c: Go to 25c.com
