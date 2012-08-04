@@ -7,6 +7,7 @@ class Home::DashboardController < Home::HomeController
     # @has_new_clicks = clicks.each.any? { |s| s[:state] == 0 }
     @clicks_given = group_clicks_by_count(clicks)
     @clicks_given_total = clicks.length
+    @clicks_unfunded_total = clicks.count{ |click| click.state < 2 }
 
     clicks = Click.where(:button_id => @user.button_ids).includes(:user).find_all_by_state([ 1, 2, 3, 4 ])
     @clicks_received = group_clicks_by_count(clicks)

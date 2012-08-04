@@ -16,6 +16,11 @@
       = t('.tips_given_title')
       = @clicks_given_total.to_s + ' '
       ($#{"%.2f" % (@clicks_given_total.to_f / 4)})
+    %p
+      = t('.not_funded')
+      = @clicks_unfunded_total.to_s + ' '
+      ($#{"%.2f" % (@clicks_unfunded_total.to_f / 4)})
+    %p= t('.funded_note')
     %a= link_to t('.payment'), home_payment_path, :class => 'btn'
     %a= link_to t('.undo_clicks'), home_undo_clicks_path, :class => 'btn'
     .table-wrapper

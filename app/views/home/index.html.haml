@@ -35,8 +35,8 @@
   #splash-25c-button.pull-left
     %h2= raw t('.25c_button_legend')
     .lead= t('.25c_button_legend_sub')
-  .clear
-  %h1.splash-title.center.highlight= t('.collect_title')
+  .clear.buffer
+  .lead.splash-title.center= t('.collect_title')
   .splash-column.pull-left.center
     .lead= t('.create_button_title')
     =link_to t('.create_button_button'), home_buttons_path, :class => 'btn btn-large btn-warning',

@@ -93,6 +93,8 @@ en:
         no_referrer: None
         profile_link: "%{provider}'s Profile"
         no_referrer: None
+        not_funded: "Not yet funded:"
+        funded_note: "Note: you can't undo funded pledges."
       undo_clicks:
         title: Undo Pledges
         undo: Undo Pledge
@@ -104,7 +106,7 @@ en:
       update_failure: Button update failed. Please try again.
       index: 
         title: Get your own +25c Button!
-        subtitle: Start receiving pledges on your own website/blog/video -- simply follow these steps:
+        subtitle: "Start receiving pledges on your own website/blog/video -- simply follow these steps:"
         short_url_title: 25c Short URL
         platform: Platform
         javascript: JavaScript
@@ -227,7 +229,7 @@ en:
       remove_button_picture: Remove Image
       upload_button_picture: Upload Pledge Image
       choose_youtube_video: "Or Show a Pledge Video from Youtube: "
-      tips_title: Pledges I Have Made:
+      tips_title: "Pledges I Have Made:"
       amount: "25c's"
       provider: To
       referrer: Link 
