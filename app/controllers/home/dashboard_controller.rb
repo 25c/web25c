@@ -5,12 +5,12 @@ class Home::DashboardController < Home::HomeController
     clicks = @user.clicks.includes(:button => :user).find_all_by_state([ 1, 2, 3, 4 ])
     # LJ: placeholder until we know what type of clicks to display in dashboard
     # @has_new_clicks = clicks.each.any? { |s| s[:state] == 0 }
-    @clicks_given = group_clicks_by_count(clicks)
+    @clicks_given = group_clicks_by_count(clicks, true)
     @clicks_given_total = clicks.length
     @clicks_unfunded_total = clicks.count{ |click| click.state < 2 }
 
     clicks = Click.where(:button_id => @user.button_ids).includes(:user).find_all_by_state([ 1, 2, 3, 4 ])
-    @clicks_received = group_clicks_by_count(clicks)
+    @clicks_received = group_clicks_by_count(clicks, true)
     @clicks_received_total = clicks.length
     
     puts @clicks_received.inspect

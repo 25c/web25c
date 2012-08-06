@@ -129,16 +129,19 @@ class ApplicationController < ActionController::Base
     @url_base
   end
   
-  def group_clicks_by_count(clicks)
+  def group_clicks_by_count(clicks, splitByState)
     click_sets = {}
     clicks.each do |click|
-      id = click.button.id
+      if splitByState
+        id = click.button.id.to_s
+        id += click.state < 2 ? '_0' : '_1'
+      else
+        id = click.button.id.to_s
+      end
+      puts id
       if click_sets[id]
         click_sets[id][0] += 1
       else
-        # if click.referrer.include?(request.fullpath)
-        #   click.referrer = 
-        # end
         click_set = [1, click]
         click_sets[id] = click_set
       end

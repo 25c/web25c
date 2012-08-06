@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     # @user.about = t('users.show.blank_about') if @user.about.blank?
     @button = @user.buttons[0]    
     clicks = @user.clicks.includes(:button => :user).order("created_at DESC")
-    @click_sets = group_clicks_by_count(clicks)
+    @click_sets = group_clicks_by_count(clicks, false)
     
     respond_to do |format|
       format.html # show.html.erb
