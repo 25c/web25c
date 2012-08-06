@@ -129,16 +129,16 @@ $(document).ready(function(){
       $('.instructions').hide();
       if (platform == 'html') {
         var newCodeType = "javascript";
-        $('#html-instructions').show();
+        $('.html-instructions').show();
       } else if (platform == 'wordpress') {
         var newCodeType = "javascript";
-        $('#blog-instructions').show();
+        $('.blog-instructions').show();
       } else if (platform == 'tumblr' || platform == 'posterous') {
         var newCodeType = "iframe";
-        $('#blog-instructions').show();
+        $('.blog-instructions').show();
       } else if (platform == 'youtube') {
         var newCodeType = "link";
-        $('#youtube-instructions').show();
+        $('.youtube-instructions').show();
       }
       if (codeType != newCodeType) {
         codeType = newCodeType;

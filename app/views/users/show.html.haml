@@ -64,7 +64,7 @@
                   :id => 'button-title-input'}
               .content-block
                 #profile-button-title
-                  = t('.button_title_intro')
+                  / = t('.button_title_intro')
                   %span#button-title= @button.title.blank? ? 'to ' + @user.display_name : @button.title
                                     
             - if not @button.youtube_id.blank?

@@ -95,6 +95,8 @@ en:
         no_referrer: None
         not_funded: "Not yet funded:"
         funded_note: "Note: you can't undo funded pledges."
+        funded: Funded
+        to_be: To be
       undo_clicks:
         title: Undo Pledges
         undo: Undo Pledge
@@ -135,7 +137,9 @@ en:
         step1_title: "Where will you use the +25c Button?"
         step2_title: "Name the purpose -- who or what will the donation go to:"
         step3_title: "Choose a look:"
-        step4_title: "Now embed this code into your blog or website:"
+        step4_title_blog: "Now embed this code into your blog:"
+        step4_title_website: "Now embed this code into your website:"
+        step4_title_youtube: "Now insert this code into your Youtube video description:"
         step5_title: "Track your rewards!"
         website: "Your website"
         tooltip_preview: "The name you choose will show up as a customized call for action when people click on (or hover their mouse over) your button:"

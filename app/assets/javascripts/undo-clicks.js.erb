@@ -32,4 +32,12 @@ $(document).ready(function(){
   });
   
   $(".dataTables_paginate > ul > li.disabled").parent().parent().hide();
+  
+  $('.dataTables_wrapper').each(function() {
+    var $this = $(this);
+    if ($this.children('table').children('tbody').children().length < 100) {
+      $this.find('.dataTables_info').hide();
+    }
+  });
+  
 });

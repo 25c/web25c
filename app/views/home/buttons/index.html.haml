@@ -40,7 +40,7 @@
     .span10.step-content
       %h3.step-title= t('.step2_title')
       .step-body
-        %input#button-title{:type => 'text', :value => 'to / for'}
+        %input#button-title{:type => 'text', :value => 'for this'}
         %button#set-button-title.btn= t('.set')
         #tooltip-container
           .if-javascript
@@ -48,13 +48,13 @@
             #preview-tooltip
               %span Pledge 25c 
               %span
-                %b#button-tooltip-text to / for
+                %b#button-tooltip-text for this
           .if-link
             %div= t('.link_preview')
             %a{:href => '#'}
-              %span Pledge 25c 
+              %span Pledge 25c
               %span
-                %span#button-link-text to / for
+                %span#button-link-text for this
     .clear        
   #step3.step-container.hide
     .span1.step-number 3
@@ -97,7 +97,9 @@
   #step4.step-container.hide
     .span1.step-number 4
     .span10.step-content
-      %h3.step-title= t('.step4_title')
+      %h3.step-title.blog-instructions.instructions.hide= t('.step4_title_blog')
+      %h3.step-title.html-instructions.instructions.hide= t('.step4_title_website')
+      %h3.step-title.youtube-instructions.instructions.hide= t('.step4_title_youtube')
       .step-body.buffer
         #button-preview-container.pull-left
           #button-preview-title Button Preview:
@@ -120,9 +122,9 @@
         .clear
       %h3.step-title= t('.installation')
       .step-body
-        %p#html-instructions.instructions= raw t('.for_website')
-        %p#blog-instructions.instructions.hide= raw t('.for_blogs')
-        %p#youtube-instructions.instructions.hide= raw t('.for_youtube')
+        %p.html-instructions.instructions= raw t('.for_website')
+        %p.blog-instructions.instructions.hide= raw t('.for_blogs')
+        %p.youtube-instructions.instructions.hide= raw t('.for_youtube')
     .clear
   #step5.step-container.hide
     .span1.step-number 5

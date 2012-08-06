@@ -33,6 +33,8 @@
             %th.click-referrer= t('.referrer')
             %th
             %th.click-date= t('.date_created')
+            %th
+            %th.click-funded= t('.funded')
         %tbody
           - @clicks_given.each do |set|
             %tr
@@ -47,8 +49,14 @@
                     set[1].referrer, :target => "_blank"
               - else
                 %td.click-referrer= link_to set[1].referrer, :target => "_blank"
-              %td.click-date= set[1].created_at.to_s(:number)
+              %td= set[1].created_at.to_s(:number)
               %td.click-date= l set[1].created_at, :format => :short
+              - if set[1].state > 2
+                %td= set[1].created_at.to_s(:number)
+                %td.click-funded= l set[1].updated_at, :format => :short
+              - else
+                %td 0
+                %td.click-funded= t('.to_be')
     #process-message.alert.alert-success.hide= t('.clicks_processed')
 .row.main-content
   .span11
@@ -67,6 +75,8 @@
             %th.click-referrer= t('.referrer')
             %th
             %th= t('.date_created')
+            %th
+            %th.click-funded= t('.funded')
         %tbody
           - @clicks_received.each do |set|
             %tr
@@ -83,3 +93,9 @@
                 %td.click-referrer= link_to set[1].referrer, :target => "_blank"
               %td.click-date= set[1].created_at.to_s(:number)
               %td.click-date= l set[1].created_at, :format => :short
+              - if set[1].state > 2
+                %td= set[1].created_at.to_s(:number)
+                %td.click-funded= l set[1].updated_at, :format => :short
+              - else
+                %td 0
+                %td.click-funded= t('.to_be')

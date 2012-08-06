@@ -1,5 +1,5 @@
 $.extend( $.fn.dataTableExt.oStdClasses, {
-    "sWrapper": "dataTables_wrapper form-inline"
+    'sWrapper': 'dataTables_wrapper form-inline'
 } );
 
 $(document).ready(function(){
@@ -7,29 +7,29 @@ $(document).ready(function(){
   // activate data tables
   $('table.clicks-table').dataTable({
     // sizing and style
-    "sDom": "t<'row'<'span6'i><'span6'p>>",
-    "iDisplayLength": 100,
-    "sPaginationType": "bootstrap",
-    "aaSorting": [[ 1, "desc" ]],   // start with sorting by first col (date), descending
-    "aoColumns": [                  // define setting for each col
-      {"bVisible": false},          // invisible sortable count col
-      {"iDataSort": 0},              // click count - sorting linked to raw number
+    'sDom': 't<"row"<"span6"i><"span6"p>>',
+    'iDisplayLength': 100,
+    'sPaginationType': 'bootstrap',
+    'aaSorting': [[ 1, 'desc' ]],   // start with sorting by first col (date), descending
+    'aoColumns': [                  // define setting for each col
+      {'bVisible': false},          // invisible sortable count col
+      {'iDataSort': 0},              // click count - sorting linked to raw number
       null,
       null,
-      {"bVisible": false},          // invisible sortable date col
-      {"iDataSort": 5},              // visible readable date - sorting linked to raw date
+      {'bVisible': false},          // invisible sortable created_at date col
+      {'iDataSort': 5},              // visible readable date - sorting linked to raw date
+      {'bVisible': false},          // invisible sortable updated_at date col
+      {'iDataSort': 7},             // funded date - 0 if not funded
     ]
   });
+    
+  $('.dataTables_paginate > ul > li.disabled').parent().parent().hide();
   
-  // bind process all action to button
-  $("#process-clicks").click(function() {
-    if (hasNewClicks && confirm(confirmProcess)) {
-      $this = $(this);
-      $.post(processClicksUrl, {});
-      $('#process-message').show().delay('3000').fadeOut('fast');
-      $this.removeClass('btn-warning').attr('disabled', 'disabled');
+  $('.dataTables_wrapper').each(function() {
+    var $this = $(this);
+    if ($this.children('table').children('tbody').children().length < 100) {
+      $this.find('.dataTables_info').hide();
     }
   });
   
-  $(".dataTables_paginate > ul > li.disabled").parent().parent().hide();
 });
