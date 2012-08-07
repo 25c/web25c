@@ -13,10 +13,10 @@
       = f.input :last_name
       = f.input :email, :label => t("users.sign_in.email")
       = f.input :paypal_email, :label => t(".paypal_email"), :hint => t('.paypal_email_hint')
-      = f.input :password, :label => t("users.sign_in.new_password"), 
-        :input_html => {:autocomplete => 'off'},
-        :hint => @user.new_record? ? false : t('.edit_password_hint')
-      = f.input :password_confirmation, :label => t("users.sign_in.confirm_password"),
-        :input_html => {:autocomplete => 'off'}
+      / = f.input :password, :label => t("users.sign_in.new_password"), 
+      /   :input_html => {:autocomplete => 'off'},
+      /   :hint => @user.new_record? ? false : t('.edit_password_hint')
+      / = f.input :password_confirmation, :label => t("users.sign_in.confirm_password"),
+      /   :input_html => {:autocomplete => 'off'}
       .form-actions
         = f.button :submit, :class => 'btn-warning', :value => t('.submit')
