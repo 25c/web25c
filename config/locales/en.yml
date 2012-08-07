@@ -251,7 +251,7 @@ en:
       paypal_email_hint: "We use PayPal to process payments."
       submit: Update
     edit:
-      title: Account
+      title: 25c Account
       request_payout: "Request Payout"
     update:
       success: Your account has been updated.
