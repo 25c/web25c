@@ -138,7 +138,6 @@ class ApplicationController < ActionController::Base
       else
         id = click.button.id.to_s
       end
-      puts id
       if click_sets[id]
         click_sets[id][0] += 1
       else

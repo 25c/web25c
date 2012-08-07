@@ -173,6 +173,10 @@ en:
       create_profile_button: Create a Profile
       top_sites_button: Top Receivers
       top_profiles_button: Top Givers
+    
+    not_found:
+      title: Page Not Found
+      no_page_found: "The page <b>%{path}</b> was not found on this server. Please check the URL and try again."
       
   layouts:
     admin:

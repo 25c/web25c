@@ -71,7 +71,7 @@ $(document).ready(function(){
   // Update button code shown to user
   var updateButtonCode = function() {
     if (codeType == 'javascript' || codeType == 'iframe') {
-      $.post(updateButtonUrl, { 'button[code_type]': codeType });
+      putButton('code_type', codeType);
     }
     $('#set-nickname-link').hide();
     if (codeType == 'iframe') {
@@ -101,6 +101,22 @@ $(document).ready(function(){
     }
   };
   
+  // Update button with PUT request
+  var putButton = function(key, value) {
+    buttonData = {};
+    buttonData[key] = value;
+    var updates = { button: buttonData };
+    $.ajax({
+      type: "PUT",
+      url: updateButtonUrl,
+      data: JSON.stringify(updates),
+      contentType: 'application/json',
+      dataType: 'json',
+      success: function(data) {
+      }
+    });
+  }
+  
   // Event handlers
   
   // when input changes, update code
@@ -120,7 +136,7 @@ $(document).ready(function(){
         $this.parent().find('.selected-option').removeClass('selected-option');
         $this.addClass('selected-option');
         updateButtonCode();
-        $.post(updateButtonUrl, { 'button[size]': buttonSize });
+        putButton('size', buttonSize);
       }
     } else if ($this.hasClass('platform-container')) {
       $this.parent().find('.selected-option').removeClass('selected-option');
@@ -156,7 +172,7 @@ $(document).ready(function(){
     $('#button-tooltip-text, #button-link-text').text(newButtonTitle);
     if (buttonTitle != newButtonTitle) {
       buttonTitle = newButtonTitle;
-      $.post(updateButtonUrl, { 'button[title]': buttonTitle });
+      putButton('title', buttonTitle);
       updateButtonCode();
     }
   });

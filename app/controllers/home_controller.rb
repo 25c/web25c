@@ -33,6 +33,10 @@ class HomeController < ApplicationController
     end
   end
   
+  def not_found
+    render "not_found", :status => 404
+  end
+  
   def fb_share_callback
     render :layout => "blank"
   end

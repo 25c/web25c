@@ -8,8 +8,11 @@ class User < ActiveRecord::Base
   has_attached_file :picture, :styles => { :thumb => ["50x50#", :jpg], :profile => ["1000x500>", :jpg] }
   
   attr_writer :editing
-  attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, :last_name, :picture, :show_donations, :paypal_email
-  attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, :last_name, :picture, :is_admin, :show_donations, :as => :admin
+  attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, 
+    :last_name, :picture, :show_donations, :has_agreed, :is_new, :auto_refill, :paypal_email
+  attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, 
+    :last_name, :picture, :show_donations, :has_agreed, :is_new, :auto_refill, :is_admin, 
+    :show_donations, :as => :admin
   
   validates :email, :presence => true, :if => 'not linked?'
   validates :email, :uniqueness => { :case_sensitive => false }, :allow_nil => true

@@ -4,12 +4,12 @@ Web25c::Application.configure do
   config.action_mailer.default_url_options = { :host => "localhost", :port => 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => '25c.com',
-    :user_name            => 'developer@25c.com',
-    :password             => 'superlike25',
-    :authentication       => 'plain',
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => 'corp25c',
+    :password       => 'sup3rl!k3',
+    :domain         => '25c.com',
     :enable_starttls_auto => true
   }
   

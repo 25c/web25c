@@ -1,9 +1,9 @@
 #picture-urls{:data_user_url => @user.picture, :data_button_url => @button.picture}
 
-= simple_form_for @user, :url => update_profile_path, :html => { :id => "user-form"} do |f|
+= simple_form_for @user, :url => home_account_path, :html => { :id => "user-form"} do |f|
   =f.input :picture
 
-= simple_form_for @button, :url => home_update_button_picture_path, :html => { :id => "button-form"} do |f|
+= simple_form_for @button, :url => home_update_button_path, :html => { :id => "button-form"} do |f|
   = f.input :picture
 
 = javascript_include_tag "application"

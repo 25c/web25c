@@ -12,8 +12,6 @@ class Home::DashboardController < Home::HomeController
     clicks = Click.where(:button_id => @user.button_ids).includes(:user).find_all_by_state([ 1, 2, 3, 4 ])
     @clicks_received = group_clicks_by_count(clicks, true)
     @clicks_received_total = clicks.length
-    
-    puts @clicks_received.inspect
   end
   
   def undo_clicks

@@ -1,12 +1,3 @@
-= content_for(:js) do
-  :javascript
-    window.setUserFieldUrl = '#{ j set_user_field_url }';
-    $('#user_show_donations').change(function() {
-      var showDonations = false;
-      if ($(this).is(':checked')) showDonations = true;
-      $.post(setUserFieldUrl, { field: 'show_donations', value: showDonations });
-    });
-
 .row
   .span11
     / %h3.buffer= t('.title')

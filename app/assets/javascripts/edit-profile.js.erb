@@ -34,14 +34,29 @@ $(document).ready(function() {
   
   var removeButtonVideo = function() {
     $('#youtube-embed-container').empty().hide();
-    $.post(buttonUpdateUrl, { 'button[youtube_id]': '' });
+    putButton('youtube_id', '');
     $('#remove-button-video').hide();
   }
   
   var removeButtonPicture = function() {
     $('#button-picture-container').empty().hide();
-    $.post(buttonUpdateUrl, { 'button[picture]': '' });
+    putButton('picture', '');
     $('#remove-button-picture').hide();
+  }
+  
+  var putButton = function(key, value) {
+    buttonData = {};
+    buttonData[key] = value;
+    var updates = { button: buttonData };
+    $.ajax({
+      type: "PUT",
+      url: updateButtonUrl,
+      data: JSON.stringify(updates),
+      contentType: 'application/json',
+      dataType: 'json',
+      success: function(data) {
+      }
+    });
   }
   
   
@@ -73,10 +88,10 @@ $(document).ready(function() {
     var key = $this.attr('name').split("[")[1].split("]")[0];
     userData = {};
     userData[key] = $this.val();
-    var updates = { user: userData };
+    var updates = { user: userData, async: true };
     $.ajax({
       type: "PUT",
-      url: updateProfileUrl,
+      url: updateUserUrl,
       data: JSON.stringify(updates),
       contentType: 'application/json',
       dataType: 'json',
@@ -105,13 +120,10 @@ $(document).ready(function() {
   }).focusout(function() {
     $('#button-fields .input-block').css('display', '');
     $('#button-fields .content-block').css('visibility', '');
-  });
-  
-  $('#button-fields input, #button-fields textarea').change(function() {
+    
+    // Should be in a change event, but doesnt register for some reason.
     var $this = $(this);
-    var buttonParams = {};
-    buttonParams[$this.attr('name')] = $this.val();
-    $.post(buttonUpdateUrl, buttonParams);
+    putButton($this.attr('name'), $this.val());
     if ($this.attr('id') == 'button-title-input') {
       $('#button-title').text($this.val());
     } else if ($this.attr('id') == 'button-description-input') {
@@ -124,7 +136,7 @@ $(document).ready(function() {
     if (newYoutubeId) {
       youtubeId = newYoutubeId;
       insertYoutubeIframe(youtubeId);
-      $.post(buttonUpdateUrl, { 'button[youtube_id]': youtubeId });
+      putButton('youtube_id', youtubeId);
       $('#remove-button-video').show();
       removeButtonPicture();
     } else {

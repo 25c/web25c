@@ -3,10 +3,10 @@
   - content_for :js do
     = javascript_include_tag "edit-profile"
     :javascript
-      window.updateProfileUrl = '#{ j update_profile_url }';
+      window.updateUserUrl = '#{ j home_account_url }';
       window.youtubeId = '#{ j @button.youtube_id }';
       window.hasButtonPicture = '#{ @button.picture.exists? }' == 'true';
-      window.buttonUpdateUrl = '#{ j home_update_button_url }';
+      window.updateButtonUrl = '#{ j home_update_button_url }';
 - else
   - content_for :js do
     :javascript
@@ -23,7 +23,7 @@
 - if @is_editable
   %iframe#upload-picture{:src => upload_picture_path }
 #profile-container
-  = simple_form_for @user, :url => update_profile_path, :html => { :multipart => true } do |f|
+  = simple_form_for @user, :url => home_account_path, :html => { :multipart => true } do |f|
     .row.main-content
       / .span11
       /   %h2.page-header= @user.display_name + t('.title')
@@ -59,7 +59,7 @@
               - if @is_editable
                 .input-block
                   / %label= t('.button_title_label')
-                  %input{:type => 'text', :name => 'button[title]', 
+                  %input{:type => 'text', :name => 'title', 
                   :value => @button.title.blank? ? t('.enter_button_title') : @button.title,
                   :id => 'button-title-input'}
               .content-block
@@ -87,7 +87,7 @@
               - if @is_editable
                 .input-block
                   / %label= t('button_description_label')
-                  %textarea{:id => 'button-description-input', :name => 'button[description]', 
+                  %textarea{:id => 'button-description-input', :name => 'description', 
                     :rows => 1}
                     =@button.description.blank? ? t('.enter_button_description') : @button.description
               .content-block
@@ -120,7 +120,7 @@
                 #upload-button-picture.btn= t('.upload_button_picture')
               / %label= t('.choose_youtube_video')
               #youtube-input
-                %input{:type => 'text', :name => 'button[youtube_link]', 
+                %input{:type => 'text', :name => 'youtube_link', 
                   :id => 'upload-youtube-url'}
                 #youtube-button.btn= t('.save_video')
 

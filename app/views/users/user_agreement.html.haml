@@ -1,18 +1,28 @@
 = content_for(:js) do
   :javascript
-    window.setUserFieldUrl = '#{ j set_user_field_url }';
+    window.updateUserUrl = '#{ j home_account_url }';
     window.nextUrl = '#{ j @next_url }';
     
     $(document).ready(function(){
-      $("#agree-button").click(function() {
-        $.post(setUserFieldUrl, { field: 'has_agreed', value: 'true' }, function(data) {
-          window.location.href = nextUrl;
+      $('#agree-button').click(function() {
+        userData = {};
+        userData['has_agreed'] = true;
+        var updates = { user: userData, async: 'true' };
+        $.ajax({
+          type: 'PUT',
+          url: updateUserUrl,
+          data: JSON.stringify(updates),
+          contentType: 'application/json',
+          dataType: 'json',
+          success: function(data) {
+            location.reload();
+          }
         });
       });
     });
 
 .row
-  .span6.offset3
+  .span11.main-content
     #user-agreement-container
       / %h2= t('.title')
       %p= raw t('.agreement_text')

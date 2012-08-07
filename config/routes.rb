@@ -22,9 +22,8 @@ Web25c::Application.routes.draw do
   namespace :home do
     # Buttons
     resources :buttons
-    match 'update_button' => 'buttons#update_button', :as => :update_button, :via => :post
-    match 'update_button_picture' => 'buttons#update_button_picture', :as => :update_button_picture, :via => :put
-    
+    match 'update_button' => 'buttons#update_button', :as => :update_button, :via => :put
+        
     # Dashboard
     match '' => 'dashboard#index', :as => :dashboard
     match 'undo_clicks' => 'dashboard#undo_clicks', :as => :undo_clicks
@@ -40,14 +39,11 @@ Web25c::Application.routes.draw do
   
   match 'home/account' => 'users#edit', :as => :home_account, :via => :get
   match 'home/account' => 'users#update', :via => :put
-  match 'home/profile' => 'users#update_profile', :via => :put, :as => :update_profile
   # hidden iframe page for ajax-like picture loading
   match 'home/upload_picture' => 'users#upload_picture', :as => :upload_picture
   match 'home/profile' => 'users#profile', :as => :home_profile
   match 'home/choose_nickname' => 'users#choose_nickname', :as => :choose_nickname
-  # match 'home/choose_nickname' => 'users#update_nickname', :via => :put, :as => :update_nickname
   match 'home/user_agreement' => 'users#user_agreement', :as => :user_agreement
-  match 'home/set_user_field' => 'users#set_user_field', :as => :set_user_field, :via => :post
   
   namespace :admin do
     resources :users, :except => [ :new, :create ]
@@ -56,6 +52,9 @@ Web25c::Application.routes.draw do
   
   # the profile wildcard route must be last
   match ':id' => 'users#show', :constraints => { :id => /.*/ }, :as => :profile
+  
+  # catch-all 404 page for unknown routes
+  match '*a' => 'home#not_found', :as => :not_found
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,38 +1,27 @@
 class UsersController < ApplicationController
   before_filter :require_signed_in, :except => [ :index, :show, :new, :sign_in, :sign_in_callback, :tip, :confirm_tip]
-  before_filter :check_user_agreement, :except => [ :user_agremeent, :set_user_field, :sign_out ]
+  before_filter :check_user_agreement, :except => [ :user_agremeent, :update, :sign_out ]
   
   def user_agreement
     # user agreement page
-  end
-  
-  def set_user_field
-    if params.has_key?(:field) and params.has_key?(:value)
-      if ['has_agreed', 'is_new', 'auto_refill', 'show_donations'].include?(params[:field])
-        user = self.current_user
-        user.editing = true
-        user[params[:field]] = params[:value]
-        user.save!
-        user.editing = false
-      end
-    end
-    render :nothing => true
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @user = User.find_by_nickname_ci(params[:id])
-    @is_editable = self.current_user == @user
-    # @user.first_name = @user.email if @user.first_name.blank?
-    # @user.about = t('users.show.blank_about') if @user.about.blank?
-    @button = @user.buttons[0]    
-    clicks = @user.clicks.includes(:button => :user).order("created_at DESC")
-    @click_sets = group_clicks_by_count(clicks, false)
     
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
+    if @user
+      @is_editable = self.current_user == @user
+      @button = @user.buttons[0]    
+      clicks = @user.clicks.includes(:button => :user).order("created_at DESC")
+      @click_sets = group_clicks_by_count(clicks, false)
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @user }
+      end
+    else
+      render "home/not_found", :status => 404
     end
   end
   
@@ -70,30 +59,21 @@ class UsersController < ApplicationController
     @user.editing = true
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to home_account_path, notice: t('users.update.success') }
-        format.json { head :no_content }
-      else
-        # @user.reload
-        @url = get_profile_url(@user)
-        format.html { render action: "edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-  
-  def update_profile
-    @user = self.current_user
-    @user.editing = true
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
+        format.json { render json: true, head: :ok }
         if params[:user].include?(:picture)
           @button = @user.buttons[0]
           format.html { render action: 'upload_picture' }
-          format.json { render json: true, head: :ok }
         else
-          format.json { render json: true, head: :ok }
+          unless params.include?('async') && params['async'] == "true"
+            format.html { redirect_to home_account_path, notice: t('users.update.success') }
+          end
         end
       else
+        # @user.reload
+        @url = get_profile_url(@user)
+        unless params.include?('async') && params['async'] == "true"
+          format.html { render action: "edit" }
+        end
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
