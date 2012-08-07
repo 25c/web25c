@@ -15,20 +15,16 @@
 %body#tip-body
   #tip-center.main-content
     #tip-logo-bar
-      / %img#tip-25c-logo{:src => image_path('25c-logo-large.png')}
-      / #tip-25c-tagline.lead= t('.tagline')
       %a.pull-left{:href => root_path, :target => '_blank'}
         %img{:src => image_path('25c-logo-small.png')}
-      #tip-tagline.pull-left= t('application.title')
+      #tip-tagline.pull-left= t('layouts.header.tagline')
       .clear
     - if signed_in?
       - if params[:overdraft]
-        / %img#tip-25c-logo{:src => image_path('25c-logo-large.png')}
         %p.buffer= t('.over_limit')
         = link_to t('.payment'), home_payment_path, :class => 'btn btn-warning', 
           :target => '_blank'
       - else
-        / = render 'layouts/alerts'
         %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
           #{@button.title}
         :javascript

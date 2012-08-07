@@ -115,7 +115,9 @@ hr {
   min-width: 960px;
   border-radius: 0;
   border-bottom: 1px solid #aaa;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
 }
 .navbar .nav > li > a {
   color: #333;
@@ -633,7 +635,10 @@ form .form-actions {
 }
 
 .alert {
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  border: 1px solid #aaa;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
 }
 
 /* SIMPLE_FORM OVERRIDES
@@ -970,10 +975,11 @@ table.table thead .sorting_desc_disabled {
 
 #user-agreement-container {
   padding: 20px;
-  margin: 40px 0 20px 0;
-  background-color: #f6f6f6;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  margin: 20px auto 20px auto;
+  width: 400px;
+//  background-color: #f6f6f6;
+//  border-radius: 5px;
+//  border: 1px solid #ccc;
 }
 
 /* BUTTON PAGE
@@ -1117,8 +1123,10 @@ pre#button-code-block {
   min-height:50px; 
   background-color: rgb(255, 255, 255); 
   border: 1px solid rgba(0, 0, 0, 0.2); 
-  border-radius: 5px; 
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); 
+  border-radius: 5px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   background-clip: padding-box; 
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
   font-size: 13px;
@@ -1230,7 +1238,9 @@ pre#button-code-block {
   background-color: rgb(255, 255, 255); 
   border: 1px solid rgba(0, 0, 0, 0.2); 
   border-radius: 5px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); 
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
   background-clip: padding-box; 
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
   font-size: 13px; 

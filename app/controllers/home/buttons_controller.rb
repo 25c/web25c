@@ -41,28 +41,21 @@ class Home::ButtonsController < Home::HomeController
       redirect_to home_buttons_path(@button)
     end
   end
-  
-  def update_button_picture
+
+  def update_button
     @user = self.current_user
     @button = @user.buttons[0]
     respond_to do |format|
-      if @button.update_attributes(params[:button])
-        format.html { render template: 'users/upload_picture' }
+      if params[:button].include?('picture') and params[:button][:picture].blank?
+        @button.picture.destroy
         format.json { render json: true, head: :ok }
+      elsif @button.update_attributes(params[:button])
+          format.json { render json: true, head: :ok }
+          format.html { render template: 'users/upload_picture' } if params[:button].include?('picture')
       else
         format.json { render json: @button.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def update_button
-    button = self.current_user.buttons[0]
-    if params[:button].has_key?('picture') and params[:button][:key].blank?
-      button.picture.destroy
-    else
-      button.update_attributes!(params[:button])
-    end
-    render :nothing => true
   end
   
 end
