@@ -53,8 +53,8 @@ en:
         paypal_title: Request payment through Paypal
         paypal_email: Paypal E-mail
         submit: Send Request
-        received: You have received %{total} ($%{total_amount}) 25c pledges, of which %{funded} ($%{funded_amount}) have so far been funded. 
-        too_low: "The minimum pay-out amount is $50 of funded pledges.  Once you have reached this amount, you can receive a pay-out into your PayPal account."
+        received: You have received %{total} 25c pledges ($%{total_amount}), of which %{funded} ($%{funded_amount}) have so far been funded.  The various givers are expected to fund them over time.
+        too_low: "In order to minimize transactional expense, the minimum pay-out amount is $50 of funded pledges.  (Email us if this limit is too high for your purpose.)  Once you have reached the minimum, you may request a pay-out and will receive it in your PayPal account.<P>In order to receive more 25c pledges, consider the following promotional steps: add more +25 Buttons to more pages in more salient locations; advertise your pages; tell your friends about your pages on Facebook, Twitter, or email lists.  25c provides a transactional platform but it is up to you to promote your cause."
         provide_paypal_email: "Please provide us with your PayPal email ID (required for all pay-outs):"
         sent: You have been queued for receiving a pay-out of your funded pledges. You should be receiving the amount within 48 hours.  Please check your PayPal account.
       confirm_payout:
@@ -166,11 +166,11 @@ en:
       25c_button_legend: The +25c Button&trade;
       25c_button_legend_sub: One quarter each click
       pledge_title: Pledge 25c's
-      collect_title: Receive 25c Pledges
-      create_button_title: "On your website, blog, Youtube:"
+      collect_title: "<b>Receive 25c Pledges</b>"
+      create_button_title: "...on your website, blog, Youtube:"
       create_button_button: Embed Your Own +25c
-      create_profile_title: "On 25c.com:"
-      create_profile_button: Create a Profile
+      create_profile_title: "...on 25c.com:"
+      create_profile_button: Create a Page
       top_sites_button: Top Receivers
       top_profiles_button: Top Givers
     
@@ -184,7 +184,7 @@ en:
       dashboard: Dashboard
       
     header:
-      tagline: "social micro-donations. One quarter, one click."
+      tagline: "Social micro-donations. One quarter, one click."
       home: Home
       about: About
       blog: Blog
@@ -237,7 +237,7 @@ en:
       remove_button_picture: Remove Image
       upload_button_picture: Upload Pledge Image
       choose_youtube_video: "Or Show a Pledge Video from Youtube: "
-      tips_title: "Pledges I Have Made:"
+      tips_title: "Pledges Made:"
       amount: "25c's"
       provider: To
       referrer: Link 
