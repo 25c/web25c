@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :buttons, :dependent => :destroy
   has_many :clicks, :dependent => :destroy
-  has_many :received_clicks, :through => :buttons, :source => :clicks
+  has_many :payments
   
   has_attached_file :picture, :styles => { :thumb => ["50x50#", :jpg], :profile => ["1000x500>", :jpg] }
   

@@ -13,9 +13,11 @@ class UsersController < ApplicationController
     
     if @user
       @is_editable = self.current_user == @user
-      @button = @user.buttons[0]    
-      clicks = @user.clicks.includes(:button => :user).order("created_at DESC")
-      @click_sets = group_clicks_by_count(clicks, false)
+      @button = @user.buttons[0]
+      clicks = @user.clicks.includes(:button => :user).order("created_at DESC").find_all_by_state([
+        Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
+      ])
+      @click_sets = group_clicks(clicks, true, false)
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @user }

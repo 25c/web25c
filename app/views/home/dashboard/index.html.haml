@@ -51,7 +51,7 @@
                 %td.click-referrer= link_to set[1].referrer, :target => "_blank"
               %td= set[1].created_at.to_s(:number)
               %td.click-date= l set[1].created_at, :format => :short
-              - if set[1].state > 2
+              - if set[1].state > Click::State::DEDUCTED
                 %td= set[1].created_at.to_s(:number)
                 %td.click-funded= l set[1].updated_at, :format => :short
               - else
@@ -93,7 +93,7 @@
                 %td.click-referrer= link_to set[1].referrer, :target => "_blank"
               %td.click-date= set[1].created_at.to_s(:number)
               %td.click-date= l set[1].created_at, :format => :short
-              - if set[1].state > 2
+              - if set[1].state > Click::State::DEDUCTED
                 %td= set[1].created_at.to_s(:number)
                 %td.click-funded= l set[1].updated_at, :format => :short
               - else

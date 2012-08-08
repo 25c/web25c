@@ -57,7 +57,6 @@ module Web25c
     config.assets.precompile += ['jquery.dataTables.min.js']
     config.assets.precompile += ['paging.js']
     config.assets.precompile += ['profile-click-table.js']
-    config.assets.precompile += ['request-payout.js']
     config.assets.precompile += ['save-button.js']
     config.assets.precompile += ['sign-in-form.js']
     config.assets.precompile += ['submit-payment.js']

@@ -38,14 +38,12 @@ en:
         select_year: Year...
         remember_card: Remember this card for future use.
         payment_failure: Payment failed. Please check the credit card fields and try again.
-      confirm_payment:
-        confirm_title: Payment confirmed.
-        transaction_id: "Transaction ID:"
-        transaction_amount: "Amount:"
-        transaction_card_number: "Card Number:"
-        transaction_card_type: "Card Type:"
-        success: You have successfully processed payment for your pledges.
-        failure: Your account was charged, but there was a problem updating your balance.
+      payment_success:
+        title: Payment Successful
+        success_message: You have successfully made a payment.
+      payment_failure:
+        title: Payment Not Successful
+        failure_message: The payment was not successful.
       payout:
         title: Request Payout
         contents: "25c Pledges Received:"
@@ -57,15 +55,6 @@ en:
         too_low: "The minimum pay-out amount is $50 of funded pledges.  Once you have reached this amount, you can receive a pay-out into your PayPal account."
         provide_paypal_email: "Please provide us with your PayPal email ID (required for all pay-outs):"
         sent: You have been queued for receiving a pay-out of your funded pledges. You should be receiving the amount within 48 hours.  Please check your PayPal account.
-      confirm_payout:
-        confirm_title: Payout request sent.
-        complete_required: "Please complete all the required fields."
-        amount: "Request amount:"
-        method: "Method:"
-        paypal: Paypal
-        email: "Email:"
-        return_to_account: Return to 25c Account Page.
-        failure: "An error occurred and the payout request was not send. Please try again."
     dashboard:
       index:
         title: Dashboard

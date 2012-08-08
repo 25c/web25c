@@ -129,14 +129,22 @@ class ApplicationController < ActionController::Base
     @url_base
   end
   
-  def group_clicks_by_count(clicks, splitByState)
+  def group_clicks(clicks, sortByButtonId, splitByState)
     click_sets = {}
     clicks.each do |click|
       if splitByState
-        id = click.button.id.to_s
-        id += click.state < 2 ? '_0' : '_1'
+        if sortByButtonId
+          id = click.button.id.to_s
+        else
+          id = click.user_id.to_s
+        end
+        id += click.state == Click::State::DEDUCTED ? '_0' : '_1'
       else
-        id = click.button.id.to_s
+        if sortByButtonId
+          id = click.button.id.to_s
+        else
+          id = click.user_id.to_s
+        end
       end
       if click_sets[id]
         click_sets[id][0] += 1
