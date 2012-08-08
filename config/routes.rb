@@ -48,6 +48,7 @@ Web25c::Application.routes.draw do
   namespace :admin do
     resources :users, :except => [ :new, :create ]
     match '' => 'dashboard#index', :as => :dashboard
+    match 'process_payment' => 'dashboard#process_payment', :as => :process_payment, :via => :post
   end
   
   # the profile wildcard route must be last

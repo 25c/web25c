@@ -32,14 +32,13 @@ ActiveRecord::Schema.define(:version => 20120807211950) do
   add_index "buttons", ["user_id"], :name => "index_buttons_on_user_id"
 
   create_table "payments", :force => true do |t|
-    t.string   "uuid",                             :null => false
-    t.integer  "user_id",                          :null => false
-    t.string   "user_paypal_email"
+    t.string   "uuid",                        :null => false
+    t.integer  "user_id",                     :null => false
     t.integer  "amount"
-    t.integer  "state",             :default => 0, :null => false
-    t.string   "payment_type",                     :null => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.integer  "state",        :default => 0, :null => false
+    t.string   "payment_type",                :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   add_index "payments", ["user_id"], :name => "index_payments_on_user_id"

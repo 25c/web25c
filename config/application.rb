@@ -62,6 +62,7 @@ module Web25c
     config.assets.precompile += ['submit-payment.js']
     config.assets.precompile += ['undo-clicks.js']
     config.assets.precompile += ['update-dashboard.js']
+    config.assets.precompile += ['process-payments.js']
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

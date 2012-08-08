@@ -1,3 +1,34 @@
 - content_for :title, t('.title')
-.page-header
-  %h1= yield :title
+= content_for(:js) do
+  = javascript_include_tag "jquery.dataTables.min"
+  = javascript_include_tag "paging"
+  = javascript_include_tag "process-payments"
+  :javascript
+    window.confirmPayment = '#{ j t('.confirm_process') }';
+    window.processPaymentUrl = '#{ j admin_process_payment_url }';
+
+.row.main-content
+  .span11
+    %h2.page-header= t('.title')
+  .span11
+    .table-wrapper
+      %table.payments-table.table.table-condensed.table-striped
+        %thead
+          %tr
+            %th.payment-user-name= t('.name')
+            %th.payment-user-paypal-email= t('paypal_email')
+            %th.payment-amount= t('amount')
+            %th
+            %th.payment-date= t('.date_created')
+            %th
+        %tbody
+          - @payments.each do |payment|
+            %tr
+              %td.payment-user= payment.user.display_name
+              %td.payment-user-paypal-email= mail_to(payment.user.paypal_email)
+              %td.payment-amount $#{"%.2f" % payment.amount}
+              %td= payment.created_at.to_s(:number)
+              %td.payment-date= l payment.created_at, :format => :short
+              %td.payment-button.center
+                %a.process-payment.btn.btn-success{:"data-payment_uuid" => payment.uuid}
+                  = t('.process')

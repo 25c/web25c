@@ -5,7 +5,6 @@ class CreatePayments < ActiveRecord::Migration
     create_table :payments do |t|
       t.string :uuid, :null => false
       t.integer :user_id, :null => false
-      t.string :user_paypal_email
       t.integer :amount
       t.integer :state, :default => 0, :null => false
       t.string :payment_type, :null => false

@@ -2,7 +2,9 @@ class Payment < ActiveRecord::Base
   
   module State
     NEW = 0
-    # TODO: add payment states based on transaction steps
+    PROCESSING = 1
+    PAID = 2
+    # TODO: add payment states if more steps
   end
 
   belongs_to :user
@@ -13,10 +15,17 @@ class Payment < ActiveRecord::Base
       :message => "%{value} is not a valid payment type"
     }
   
-  attr_accessible :user_paypal_email, :amount, :state, :payment_type
+  attr_accessible :amount, :state, :payment_type
   
   before_create :generate_uuid
-
+  
+  def process
+    # TODO: process Paypal payment after admin approval
+    
+    # Set state to processing
+    # self.update_attribute(:state, State::PROCESSING)
+  end
+  
   private
   
   def generate_uuid

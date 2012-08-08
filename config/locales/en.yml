@@ -2,10 +2,6 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  admin:
-    dashboard:
-      index:
-        title: Admin Dashboard
   
   application:
     title: "25c social micro-donations"
@@ -169,7 +165,7 @@ en:
       
   layouts:
     admin:
-      admin: Admin
+      admin: "Admin Pages:"
       dashboard: Dashboard
       
     header:
@@ -301,4 +297,15 @@ en:
 
   user_mailer:
     welcome:
+      
+  admin:
+    dashboard:
+      index:
+        title: Process Pending Payouts
+        name: User Name
+        paypal_email: User Paypal E-mail
+        amount: Amount
+        date_created: Date
+        process: Process
+        confirm_process: Are you sure you'd like to process this payment? 
       

@@ -7,7 +7,7 @@
       :total => @total, :total_amount => "%.2f" % (@total.to_f / 4),
       :funded => @funded, :funded_amount => "%.2f" % (@funded.to_f / 4))
       
-    - if @funded < 200
+    - if not @has_payout
       %p= t('.too_low')
 
     - elsif @user.paypal_email.blank?

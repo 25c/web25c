@@ -1,0 +1,43 @@
+$.extend( $.fn.dataTableExt.oStdClasses, {
+    "sWrapper": "dataTables_wrapper form-inline"
+} );
+
+$(document).ready(function(){
+  
+  // activate data tables
+  $('table.payments-table').dataTable({
+    // sizing and style
+    "sDom": "t<'row'<'span6'i><'span6'p>>",
+    "iDisplayLength": 100,
+    "sPaginationType": "bootstrap",
+    "aaSorting": [[ 3, "asc" ]],    // start with sorting by date
+    "aoColumns": [                  // define setting for each col
+      null,
+      null,
+      null,
+      {"bVisible": false},          // invisible sortable date col
+      {"iDataSort": 3},             // visible readable date - sorting linked to col 3
+      {"bSortable": false}          // don't sort by process button
+    ]
+  });
+
+  // bind payment process action to buttons
+  $(".process-payment").click(function() {
+    if (confirm(confirmPayment)) {
+      $this = $(this);
+      $.post(processPaymentUrl, { payment_uuid: $this.attr('data-payment_uuid') });
+      $this.parent().parent().find('td, a').css('color', '#bbb');
+      $this.fadeOut('fast');
+    }
+  });
+  
+  $(".dataTables_paginate > ul > li.disabled").parent().parent().hide();
+  
+  $('.dataTables_wrapper').each(function() {
+    var $this = $(this);
+    if ($this.children('table').children('tbody').children().length < 100) {
+      $this.find('.dataTables_info').hide();
+    }
+  });
+  
+});

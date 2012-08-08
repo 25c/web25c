@@ -5,14 +5,13 @@
   %body
     = render 'layouts/header'
     .container
-      .row
-        .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list
-              %li.nav-header= t('.admin')
-              %li= link_to t('.dashboard'), admin_dashboard_path
-              %li= link_to User.model_name.human.pluralize, admin_users_path
-        .span9
-          = render 'layouts/alerts'
-          = yield
+      .row.admin-nav
+        #admin-nav-title.pull-left= t('.admin')
+        %ul.nav.pull-left
+          %li.nav-link.pull-left= link_to t('.dashboard'), admin_dashboard_path
+          %li.nav-link.pull-left= link_to User.model_name.human.pluralize, admin_users_path
+      .clear
+    .container
+      = render 'layouts/alerts'
+      = yield
     = render 'layouts/footer'
