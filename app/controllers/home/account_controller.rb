@@ -40,15 +40,16 @@ class Home::AccountController < Home::HomeController
     
   def payout
     @user = current_user
+    
     if request.method == 'POST'
-      if params.has_key?(:paypal_email)
-          # TODO: verify Paypal email before saving
-          @user.editing = true
-          @user.paypal_email = params[:paypal_email]
-          @user.save!
-          @user.editing = false
+      auth = request.env['omniauth.auth']
+      user = nil
+      if auth['provider'] == 'paypal'
+        puts auth.inspect
       end
+      
     end
+    
     # TODO: replace this lookup with balance fields in the User model
     clicks = Click.where(:button_id => @user.button_ids).find_all_by_state([ 
       Click::State::DEDUCTED, Click::State::FUNDED

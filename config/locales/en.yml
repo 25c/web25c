@@ -42,8 +42,9 @@ en:
         paypal_email: Paypal E-mail
         submit: Send Request
         received: You have received %{total} 25c pledges ($%{total_amount}), of which %{funded} ($%{funded_amount}) have so far been funded.  The various givers are expected to fund them over time.
-        too_low: "In order to minimize transactional expense, the minimum pay-out amount is $50 of funded pledges.  (Email us if this limit is too high for your purpose.)  Once you have reached the minimum, you may request a pay-out and will receive it in your PayPal account.<P>In order to receive more 25c pledges, consider the following promotional steps: add more +25 Buttons to more pages in more salient locations; advertise your pages; tell your friends about your pages on Facebook, Twitter, or email lists.  25c provides a transactional platform but it is up to you to promote your cause."
-        provide_paypal_email: "Please provide us with your PayPal email ID (required for all pay-outs):"
+        too_low_p1: "In order to minimize transactional expense, the minimum pay-out amount is $50 of funded pledges.  (Email us if this limit is too high for your purpose.)  Once you have reached the minimum, you may request a pay-out and will receive it in your PayPal account."
+        too_low_p2: "In order to receive more 25c pledges, consider the following promotional steps: add more +25 Buttons to more pages in more salient locations; advertise your pages; tell your friends about your pages on Facebook, Twitter, or email lists.  25c provides a transactional platform but it is up to you to promote your cause."
+        provide_paypal_email: "Please verify your Paypal Account (required for all pay-outs):"
         sent: You have been queued for receiving a pay-out of your funded pledges. You should be receiving the amount within 48 hours.  Please check your PayPal account.
     dashboard:
       index:

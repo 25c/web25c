@@ -7,20 +7,14 @@
       :total => @total, :total_amount => "%.2f" % (@total.to_f / 4),
       :funded => @funded, :funded_amount => "%.2f" % (@funded.to_f / 4))
       
-    - if not @has_payout
-      %p= t('.too_low')
+    / - if not @has_payout
+    - if false
+      %p= t('.too_low_p1')
+      %p= t('.too_low_p2')
 
     - elsif @user.paypal_email.blank?
       %p.buffer= t('.provide_paypal_email')
-      .span6
-        %form{:action => home_payout_url, :method => 'post', :class => 'form-horizontal' }
-          .control-group
-            %label.control-label{:for => 'paypal_email'}= t('.paypal_email')
-            .controls
-              %input{:type => 'text', :name => 'paypal_email'}
-          .submit-container
-            %input.btn.btn-warning{:type => 'submit', :value => t(".submit")}
+      = link_to 'Verify PayPal Account', '/auth/paypal', :class => 'btn btn-primary'
     - else
       %p= t('.sent')
   .clear
-    
