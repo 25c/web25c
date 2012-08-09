@@ -4,9 +4,7 @@
   = javascript_include_tag "paging"
   = javascript_include_tag "update-dashboard"
   :javascript
-    window.deleteClickUrl = '#{ j home_delete_click_url }';
-    window.confirmProcess = '#{ j t('.confirm_process') }';
-    window.processClicksUrl = '#{ j home_process_clicks_url }';
+    window.noPledgesText = '#{ j t('.no_pledges') }';
 
 .row.main-content
   .span11
@@ -17,12 +15,13 @@
       = @clicks_given_total.to_s + ' '
       ($#{"%.2f" % (@clicks_given_total.to_f / 4)})
     %p
+      %a= link_to t('.payment'), home_payment_path, :class => 'btn dashboard-action'
       = t('.not_funded')
       = @clicks_unfunded_total.to_s + ' '
       ($#{"%.2f" % (@clicks_unfunded_total.to_f / 4)})
-    %p= t('.funded_note')
-    %a= link_to t('.payment'), home_payment_path, :class => 'btn'
-    %a= link_to t('.undo_clicks'), home_undo_clicks_path, :class => 'btn'
+    %p
+      %a= link_to t('.undo_clicks'), home_undo_clicks_path, :class => 'btn dashboard-action'
+      = t('.funded_note')
     .table-wrapper
       %table#clicks-given.clicks-table.table.table-condensed.table-striped
         %thead

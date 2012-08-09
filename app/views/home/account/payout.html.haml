@@ -15,5 +15,6 @@
       %p.buffer= t('.provide_paypal_email')
       = link_to 'Verify PayPal Account', '/auth/paypal', :class => 'btn btn-primary'
     - else
-      %p= t('.sent')
+      %p.buffer= t('.sent')
+      %a= link_to t('.dashboard'), home_dashboard_path, :class => 'btn'
   .clear

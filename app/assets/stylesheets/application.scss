@@ -115,9 +115,12 @@ hr {
   min-width: 960px;
   border-radius: 0;
   border-bottom: 1px solid #aaa;
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-          box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+//  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+//     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+//          box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
 }
 .navbar .nav > li > a {
   color: #333;
@@ -184,9 +187,9 @@ footer.navbar {
 }
 
 footer.navbar > .navbar-inner {
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-          box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+//  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+//     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+//          box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
   border-top: 1px solid #aaa;
 }
 
@@ -653,6 +656,10 @@ form .form-actions {
 
 #process-message {
   margin-top: 20px;
+}
+
+.dashboard-action {
+  margin-right: 5px;
 }
 
 /* BOOTSTRAP OVERRIDES
