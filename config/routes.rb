@@ -6,6 +6,7 @@ Web25c::Application.routes.draw do
   
   match 'sign-in' => 'users#sign_in', :as => :sign_in
   match 'sign-out' => 'users#sign_out', :as => :sign_out
+  match 'auth/paypal/callback' => 'home/account#payout'
   match 'auth/:provider/callback' => 'users#sign_in_callback'
   
   match 'about' => 'home#about', :as => :about
@@ -32,9 +33,10 @@ Web25c::Application.routes.draw do
     
     # Account
     match 'payment' => 'account#payment', :as => :payment
-    match 'confirm_payment' => 'account#confirm_payment', :as => :confirm_payment
+    match 'payment/success' => 'account#payment_success', :as => :payment_sucess
+    match 'payment/failure' => 'account#payment_failure', :as => :payment_failure
     match 'payout' => 'account#payout', :as => :payout
-    match 'confirm_payout' => 'account#confirm_payout', :as => :confirm_payout, :via => :post    
+    match 'create_payment' => 'account#create_payment', :as => :create_payment, :via => :post
   end
   
   match 'home/account' => 'users#edit', :as => :home_account, :via => :get
@@ -48,6 +50,7 @@ Web25c::Application.routes.draw do
   namespace :admin do
     resources :users, :except => [ :new, :create ]
     match '' => 'dashboard#index', :as => :dashboard
+    match 'process_payment' => 'dashboard#process_payment', :as => :process_payment, :via => :post
   end
   
   # the profile wildcard route must be last

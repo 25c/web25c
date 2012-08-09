@@ -115,9 +115,12 @@ hr {
   min-width: 960px;
   border-radius: 0;
   border-bottom: 1px solid #aaa;
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-          box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+//  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+//     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+//          box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
 }
 .navbar .nav > li > a {
   color: #333;
@@ -184,9 +187,9 @@ footer.navbar {
 }
 
 footer.navbar > .navbar-inner {
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-          box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+//  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+//     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+//          box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
   border-top: 1px solid #aaa;
 }
 
@@ -204,7 +207,43 @@ footer.navbar #foot-copy {
   margin-left: 10px;
 }
 
-/* Landing Page
+/* Admin Nav
+ *---------------------------- */
+ 
+.admin-nav {
+   padding: 15px 30px;
+   margin: 15px 0 15px 0;
+   background-image: none;
+   background-color: white;
+   min-width: 870px;
+   border-radius: 5px;
+   border-bottom: 1px solid #aaa;
+   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+      -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+           box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+}
+ 
+.admin-nav > ul.nav {
+ margin: 0;
+}
+
+.admin-nav > ul.nav > li.nav-link {
+ margin-left: 20px;
+}
+
+/* ADMIN DASHBOARD
+*---------------------------- */
+
+.payments-table > tbody > tr > td {
+ line-height: 28px;
+}
+
+.payments-table .process-payment {
+ margin-top: -3px;
+}
+
+
+/* LANDING PAGE
  *---------------------------- */
  
  .splash, .sub-splash, .main-content {
@@ -619,6 +658,10 @@ form .form-actions {
   margin-top: 20px;
 }
 
+.dashboard-action {
+  margin-right: 5px;
+}
+
 /* BOOTSTRAP OVERRIDES
 *---------------------------- */
 
@@ -720,7 +763,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 #profile-container {
-  margin-top: -18px;
+//  margin-top: -18px;
 }
 
 #user-profile {

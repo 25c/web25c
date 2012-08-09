@@ -5,10 +5,9 @@ class Click < ActiveRecord::Base
     NEW = 0
     DEDUCTED = 1
     FUNDED = 2
-    PROCESSED = 3
-    PAID = 4
-    REFUNDED = 5
-    DROPPED = 6
+    PAID = 3
+    REFUNDED = 4
+    DROPPED = 5
   end
   
   belongs_to :button
@@ -25,42 +24,27 @@ class Click < ActiveRecord::Base
   def undo
     self.with_lock do
       # ensure this click is in an undo-able state
-      return false unless self.state > State::NEW and self.state < State::PROCESSED
-      
-      # lock and check user balance
-      self.user.with_lock do
-        # check for credit transfer condition first
-        if self.state == State::FUNDED and self.user.balance <= 0
-          # search for a deducted click to transfer this funded credit to
-          click = Click.where(:user_id => self.user.id, :state => State::DEDUCTED).order('created_at ASC').lock(true).first
-          unless click.nil?
-            # no user balance change necessary, just change the states of these clicks
-            self.update_attribute(:state, State::REFUNDED)
-            click.update_attribute(:state, State::FUNDED)
-            # return the new funded click
-            return click
-          end
-        end
+      return false unless self.state == State::DEDUCTED
         
-        # in this case, we can just change click state and increment balance
-        self.update_attribute(:state, State::REFUNDED)
-        self.connection.execute("PREPARE TRANSACTION 'undo-click-#{self.uuid}'")
+      # change click state and increment balance
+      self.update_attribute(:state, State::REFUNDED)
+      self.connection.execute("PREPARE TRANSACTION 'undo-click-#{self.uuid}'")
+      begin
+        self.user.update_attribute(:balance, self.user.balance + 1)
+        self.user.connection.execute("PREPARE TRANSACTION 'undo-user-#{self.uuid}'")
         begin
-          self.user.update_attribute(:balance, self.user.balance + 1)
-          self.user.connection.execute("PREPARE TRANSACTION 'undo-user-#{self.uuid}'")
-          begin
-            self.user.connection.execute("COMMIT PREPARED 'undo-user-#{self.uuid}'")
-          rescue
-            self.user.connection.execute("ROLLBACK PREPARED 'undo-user-#{self.uuid}'")
-            raise $!
-          end
+          self.user.connection.execute("COMMIT PREPARED 'undo-user-#{self.uuid}'")
         rescue
-          self.connection.execute("ROLLBACK PREPARED 'undo-click-#{self.uuid}'")
+          self.user.connection.execute("ROLLBACK PREPARED 'undo-user-#{self.uuid}'")
+          raise $!
         end
-        self.connection.execute("COMMIT PREPARED 'undo-click-#{self.uuid}'")
-        DATA_REDIS.decr "#{self.user.uuid}:#{self.button.uuid}"
-        DATA_REDIS.set "user:#{self.user.uuid}", self.user.balance
+      rescue
+        self.connection.execute("ROLLBACK PREPARED 'undo-click-#{self.uuid}'")
       end
+      self.connection.execute("COMMIT PREPARED 'undo-click-#{self.uuid}'")
+      
+      DATA_REDIS.decr "#{self.user.uuid}:#{self.button.uuid}"
+      DATA_REDIS.set "user:#{self.user.uuid}", self.user.balance
     end
     true
   end
@@ -68,14 +52,14 @@ class Click < ActiveRecord::Base
   def process
     self.with_lock do
       # ensure this click is in a processable state first
-      return false unless self.state == State::FUNDED
+      return false unless self.state == State::DEDUCTED
       
-      # update state and increment button provider balance
-      self.update_attribute(:state, State::PROCESSED)
+      # update state and increment user balance
+      self.update_attribute(:state, State::FUNDED)
       self.connection.execute("PREPARE TRANSACTION 'process-click-#{self.uuid}'")
       begin
         self.button.user.with_lock do
-          self.button.user.update_attribute(:balance, self.button.user.balance + 1)
+          self.user.update_attribute(:balance, self.user.balance + 1)
           self.button.user.connection.execute("PREPARE TRANSACTION 'process-user-#{self.uuid}'")
           begin
             self.button.user.connection.execute("COMMIT PREPARED 'process-user-#{self.uuid}'")
@@ -88,7 +72,11 @@ class Click < ActiveRecord::Base
         self.connection.execute("ROLLBACK PREPARED 'process-click-#{self.uuid}'")
       end
       self.connection.execute("COMMIT PREPARED 'process-click-#{self.uuid}'")
-    end  
+      
+      # update user balance and user click per button caches
+      DATA_REDIS.decr "#{self.user.uuid}:#{self.button.uuid}"
+      DATA_REDIS.set "user:#{self.user.uuid}", self.user.balance
+    end
     true  
   end
   
@@ -123,7 +111,9 @@ class Click < ActiveRecord::Base
         end
         return true
       end
-    end    
+    else
+      # TODO: notify user of overdraft
+    end
     false
   end
   

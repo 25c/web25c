@@ -24,6 +24,7 @@ $(document).ready(function(){
   });
     
   $('.dataTables_paginate > ul > li.disabled').parent().parent().hide();
+  $('.dataTables_empty').text(noPledgesText);
   
   $('.dataTables_wrapper').each(function() {
     var $this = $(this);

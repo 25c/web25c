@@ -2,10 +2,6 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  admin:
-    dashboard:
-      index:
-        title: Admin Dashboard
   
   application:
     title: "25c social micro-donations"
@@ -24,28 +20,20 @@ en:
     account:
       payment:
         title: Fund Pledges You Made
-        25c_units: 25c's
-        amount: "Payment Amount:"
-        auto_refill: Automatically fund my pledges when I have made 40 25c pledges ($10.00).
-        card_on_file: "Card on file:"
-        use_existing: Use existing card
-        use_different: Use different card
-        card_name: "Name on card:"
-        card_number: "Card number:"
-        card_cvv: "Card CVV:"
-        expiration_date: "Expiration date:"
-        select_month: Month...
-        select_year: Year...
-        remember_card: Remember this card for future use.
-        payment_failure: Payment failed. Please check the credit card fields and try again.
-      confirm_payment:
-        confirm_title: Payment confirmed.
-        transaction_id: "Transaction ID:"
-        transaction_amount: "Amount:"
-        transaction_card_number: "Card Number:"
-        transaction_card_type: "Card Type:"
-        success: You have successfully processed payment for your pledges.
-        failure: Your account was charged, but there was a problem updating your balance.
+        given: You have made %{total} 25c pledges or a total commitment of $%{total_amount}.
+        click_more_p1: "Feel free to make up to forty (40) 25c pledges at your leisure.  (Click on other +25 Buttons, or click the same +25c Button multiple times for a pledge of corresponding multiple of 25c's.)"
+        click_more_p2: "Once you have reached a pledge amount of $10 by having made 40 25c pledges, we will ask you to fund the pledges you made -- so we can also pay your pledgees."
+        dashboard: Go to Dashboard
+        amount: "Payment Amount: $10"
+      payment_success:
+        title: Payment Completed
+        message_p1: Your $10 payment has been successfully processed.
+        message_p2: Thank you for funding your past pledges.
+        message_p3: Your pledgees appreciate it greatly!
+      payment_failure:
+        title: Payment Error
+        message_p1: PayPal has been unable to process your payment.
+        message_p2: Please go back and try again.
       payout:
         title: Request Payout
         contents: "25c Pledges Received:"
@@ -54,18 +42,11 @@ en:
         paypal_email: Paypal E-mail
         submit: Send Request
         received: You have received %{total} 25c pledges ($%{total_amount}), of which %{funded} ($%{funded_amount}) have so far been funded.  The various givers are expected to fund them over time.
-        too_low: "In order to minimize transactional expense, the minimum pay-out amount is $50 of funded pledges.  (Email us if this limit is too high for your purpose.)  Once you have reached the minimum, you may request a pay-out and will receive it in your PayPal account.<P>In order to receive more 25c pledges, consider the following promotional steps: add more +25 Buttons to more pages in more salient locations; advertise your pages; tell your friends about your pages on Facebook, Twitter, or email lists.  25c provides a transactional platform but it is up to you to promote your cause."
-        provide_paypal_email: "Please provide us with your PayPal email ID (required for all pay-outs):"
+        too_low_p1: "In order to minimize transactional expense, the minimum pay-out amount is $50 of funded pledges.  (Email us if this limit is too high for your purpose.)  Once you have reached the minimum, you may request a pay-out and will receive it in your PayPal account."
+        too_low_p2: "In order to receive more 25c pledges, consider the following promotional steps: add more +25 Buttons to more pages in more salient locations; advertise your pages; tell your friends about your pages on Facebook, Twitter, or email lists.  25c provides a transactional platform but it is up to you to promote your cause."
+        provide_paypal_email: "Please verify your Paypal Account (required for all pay-outs):"
         sent: You have been queued for receiving a pay-out of your funded pledges. You should be receiving the amount within 48 hours.  Please check your PayPal account.
-      confirm_payout:
-        confirm_title: Payout request sent.
-        complete_required: "Please complete all the required fields."
-        amount: "Request amount:"
-        method: "Method:"
-        paypal: Paypal
-        email: "Email:"
-        return_to_account: Return to 25c Account Page.
-        failure: "An error occurred and the payout request was not send. Please try again."
+        dashboard: Back to Dashboard
     dashboard:
       index:
         title: Dashboard
@@ -97,6 +78,7 @@ en:
         funded_note: "Note: You cannot undo funded pledges."
         funded: Funded
         to_be: To be
+        no_pledges: No pledges.
       undo_clicks:
         title: Undo Pledges
         undo: Undo Pledge
@@ -180,7 +162,7 @@ en:
       
   layouts:
     admin:
-      admin: Admin
+      admin: "Admin Pages:"
       dashboard: Dashboard
       
     header:
@@ -312,4 +294,15 @@ en:
 
   user_mailer:
     welcome:
+      
+  admin:
+    dashboard:
+      index:
+        title: Process Pending Payouts
+        name: User Name
+        paypal_email: User Paypal E-mail
+        amount: Amount
+        date_created: Date
+        process: Process
+        confirm_process: Are you sure you'd like to process this payment? 
       
