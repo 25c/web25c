@@ -262,7 +262,7 @@ en:
       google: You've been signed in automatically using your Google account.
     sign_in:
       title: Sign in with Facebook or Google
-      sign_in_with: "Please sign in with:"
+      sign_in_with: "Please sign in:"
       facebook: Sign In with Facebook
       twitter: Sign In with Twitter
       google: Sign In with Google
