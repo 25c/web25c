@@ -10,11 +10,11 @@ class Button < ActiveRecord::Base
       :in => %w(btn-large btn-medium btn-small icon-large icon-medium icon-small icon-text),
       :message => "%{value} is not a valid button size" 
     }
-  
+
   validates :code_type,
-    :inclusion => { 
+    :inclusion => {
       :in => %w(javascript iframe),
-      :message => "%{value} is not a valid button size" 
+      :message => "%{value} is not a valid button size"
     }
     
   before_create :generate_uuid
