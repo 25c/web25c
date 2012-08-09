@@ -1,57 +1,15 @@
-$(document).ready(function(){
-
-  var $newCard = $('#new-card');
-  
-  if (hasCard) {  
-    var useExisting = true;
-    var $existingCard = $('#existing-card');
-    var $toggleCardButton = $('#toggle-card-button');
-    
-    $toggleCardButton.click(function() {
-      if (useExisting) {
-        useExisting = false;
-        $existingCard.hide();
-        $newCard.show();
-        $toggleCardButton.text(useExistingText);
-      } else {
-        useExisting = true;
-        $existingCard.show();
-        $newCard.hide();
-        $toggleCardButton.text(useDifferentText);
-      }
-    });
-    if (hasResult) $toggleCardButton.click();
-  } else {
-    $newCard.show();
-  }
-  
-  $('input[type="submit"]').click(function() {
-    // $(this).attr('disabled', 'disabled');
-  });
-  
-  var $refillAmount = $('#refill-amount');
-  var $transactionAmount = $('.transaction-amount');
-  $transactionAmount.val($refillAmount.val() / 4);
-  
-  $refillAmount.change(function() {
-    $transactionAmount.val($refillAmount.val() / 4);
-  });
-    
-  $('#auto-refill-checkbox').change(function() {
-    var autoRefill = false;
-    if ($(this).is(':checked')) autoRefill = true;
-    userData = {};
-    userData['auto_refill'] = autoRefill;
-    var updates = { user: userData, async: true };
-    $.ajax({
-      type: "PUT",
-      url: updateUserUrl,
-      data: JSON.stringify(updates),
-      contentType: 'application/json',
-      dataType: 'json',
-      success: function(data) {
-      }
+$(document).ready(function() {
+  $form = $('form');
+  $form.one('submit', function(event) {
+    event.preventDefault();
+    $.post(createPaymentUrl).success(function(data) {
+      var paymentUuid = data.uuid;
+      $form.append($('<input />', {
+        type: 'hidden',
+        name: 'invoice',
+        value: paymentUuid
+      }));
+      $form.submit();
     });
   });
-  
 });

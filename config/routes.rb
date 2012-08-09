@@ -35,6 +35,7 @@ Web25c::Application.routes.draw do
     match 'payment/success' => 'account#payment_success', :as => :payment_sucess
     match 'payment/failure' => 'account#payment_failure', :as => :payment_failure
     match 'payout' => 'account#payout', :as => :payout
+    match 'create_payment' => 'account#create_payment', :as => :create_payment, :via => :post
   end
   
   match 'home/account' => 'users#edit', :as => :home_account, :via => :get

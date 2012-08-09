@@ -20,26 +20,20 @@ en:
     account:
       payment:
         title: Fund Pledges You Made
-        25c_units: 25c's
-        amount: "Payment Amount:"
-        auto_refill: Automatically fund my pledges when I have made 40 25c pledges ($10.00).
-        card_on_file: "Card on file:"
-        use_existing: Use existing card
-        use_different: Use different card
-        card_name: "Name on card:"
-        card_number: "Card number:"
-        card_cvv: "Card CVV:"
-        expiration_date: "Expiration date:"
-        select_month: Month...
-        select_year: Year...
-        remember_card: Remember this card for future use.
-        payment_failure: Payment failed. Please check the credit card fields and try again.
+        given: You have made %{total} 25c pledges or a total commitment of $%{total_amount}.
+        click_more_p1: "Feel free to make up to forty (40) 25c pledges at your leisure.  (Click on other +25 Buttons, or click the same +25c Button multiple times for a pledge of corresponding multiple of 25c's.)"
+        click_more_p2: "Once you have reached a pledge amount of $10 by having made 40 25c pledges, we will ask you to fund the pledges you made -- so we can also pay your pledgees."
+        dashboard: Go to Dashboard
+        amount: "Payment Amount: $10"
       payment_success:
-        title: Payment Successful
-        success_message: You have successfully made a payment.
+        title: Payment Completed
+        message_p1: Your $10 payment has been successfully processed.
+        message_p2: Thank you for funding your past pledges.
+        message_p3: Your pledgees appreciate it greatly!
       payment_failure:
-        title: Payment Not Successful
-        failure_message: The payment was not successful.
+        title: Payment Error
+        message_p1: PayPal has been unable to process your payment.
+        message_p2: Please go back and try again.
       payout:
         title: Request Payout
         contents: "25c Pledges Received:"

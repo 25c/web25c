@@ -1,22 +1,37 @@
 class Home::AccountController < Home::HomeController
   
   def index
-    render :payment
+    # unreachable
   end
   
   def payment
     @user = current_user
+    # TODO: replace this lookup with balance fields in the User model
+    clicks = @user.clicks.find_all_by_state([ 
+      Click::State::DEDUCTED
+    ])
+    @total = clicks.length
+    @has_payin = @total >= 40
+  end
+  
+  def create_payment
+    @user = current_user
+    openPayments = @user.payments.where(:state => Payment::State::NEW, :payment_type => 'payin')
+    if openPayments.empty?
+      payment = @user.payments.create!({ :amount => 10, :payment_type => 'payin' })
+    elsif openPayments.length == 1
+      payment = openPayments[0]
+    else
+      # error: multiple open payouts
+    end
+    respond_to do |format|
+      format.json { render :json => { uuid: payment.uuid } }
+      format.html { render :nothing => true }
+    end
   end
   
   def payment_success
     @user = current_user
-    if @user.balance <= -40
-      @user.balance = @user.balance + 40
-      # TODO: dispatch a background job that will do this
-      current_user.clicks.where(:state => Click::State::DEDUCTED).find_each do |click|
-        click.process
-      end
-    end
   end
   
   def payment_failure
@@ -48,13 +63,13 @@ class Home::AccountController < Home::HomeController
       unless @user.paypal_email.blank?
         # Create or update payment object
         amount = (@funded.to_f / 4).round(2)
-        openPayments = @user.payments.find_all_by_state(Payment::State::NEW)
+        openPayments = @user.payments.where(:state => Payment::State::NEW, :payment_type => 'payout')
         if openPayments.empty?
           @user.payments.create!({:amount => amount, :payment_type => 'payout'})
         elsif openPayments.length == 1
           openPayments[0].update_attribute(:amount, amount) unless openPayments[0].amount == amount
         else
-          # error: multiple open payouts - might need to notify admin
+          # error: multiple open payouts
         end
       end
     end
