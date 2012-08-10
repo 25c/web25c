@@ -109,6 +109,11 @@
                   fjs.parentNode.insertBefore(js,fjs);
                 }
               } (document,"script","tip-25c-js");
+          / #profile-share-container
+          /   %p
+          /     = t('.share_profile')
+          /     #fb-share= image_tag("logos/facebook.png")
+          /     #tw-share= image_tag("logos/twitter.png")
           - if @is_editable
             #project-edit
               #edit-content-title= t('.add_project_content')
@@ -129,7 +134,7 @@
           %h3.table-title
             = t('.tips_title')
           .table-wrapper
-            %table#clicks-given.clicks-table.table.table-condensed.table-striped
+            %table#profile-clicks-table.clicks-table.table.table-condensed.table-striped
               %thead
                 %tr
                   %th.click-amount= t('.amount')
@@ -148,7 +153,8 @@
                           = link_to t('.profile_link', :provider => set[1].button.user.display_name),
                             set[1].referrer, :target => "_blank"
                       - else
-                        %td.click-referrer= link_to set[1].referrer, :target => "_blank"
+                        %td.click-referrer= link_to set[1].referrer, set[1].referrer, 
+                          :target => "_blank"
                 - else
                   %tr
                     %td.click-amount 0

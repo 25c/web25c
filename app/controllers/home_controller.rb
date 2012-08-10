@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     # redirect_to home_dashboard_path if self.current_user
     session.delete(:button_id)
     session.delete(:referrer)
-    
+    # session.delete(:has_seen_agreement_text)
     user = self.current_user
     
     if user and not user.nickname.blank?

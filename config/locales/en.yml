@@ -70,6 +70,7 @@ en:
         provider: Pledged To
         referrer: Link
         clicker: Pledged By
+        share: Share
         payout: Request Payout
         no_referrer: None
         profile_link: "%{provider}'s Profile"
@@ -79,10 +80,14 @@ en:
         funded: Funded
         to_be: To be
         no_pledges: No pledges.
+        fb_share_button_title: "I just pledged 25c %{button_title}!"
+        fb_share_user_title: "I just pledged 25c to %{user_name}!"
+        fb_share_description: Use 25c pledges to reward and support great causes!
       undo_clicks:
         title: Undo Pledges
         undo: Undo Pledge
         confirm_undo: Are you sure you want to undo this pledge?  (Your pledgee will be disappointed!)
+        profile_link: "%{provider}'s Profile"
         dashboard: Back to Dashboard
       
     buttons:
@@ -164,7 +169,6 @@ en:
     admin:
       admin: "Admin Pages:"
       dashboard: Dashboard
-      
     header:
       tagline: "Social micro-donations. One quarter, one click."
       home: Home
@@ -188,9 +192,13 @@ en:
       fees: Fees
       terms: Terms
       privacy: Privacy
-      
     mailer:
       recipient: "This message was sent to: %{recipient}"
+    sign_in_form:
+      works_with: 25c pledges work with Facebook or Google login.
+      agreement_text: "By clicking one of the links above, I agree to the following:"
+      terms: User Terms
+      privacy: Privacy Policy
       
   users:
     show:
@@ -273,6 +281,17 @@ en:
       payment: Fund Pledges You Made
       done: Close
       view_pledges: View Pledges
+      new_welcome: "Congratulations -- you are now successfully registered at %{home_url} with your %{account} ID."
+      new_p1: "You can now start making social micro-donations to easily & directly support what you value. Wherever you see the +25c Button on the web, clicking it pledges 25 cents from you to the cause. It's just a quarter but it adds up for the receivers!"
+      new_button: "Try it out by clicking this +25c Button to pledge 25c to %{provider}:"
+      new_p2: Each click pledges one quarter. (Multiple clicks encouraged!)
+      new_p3: "Make forty (40) pledges at your leisure. Then we will ask you to fund them through a $10 charge to your credit card. Once funded, a 25c pledge is eligible for pay-out."
+      new_undo: "You may %{undo_button} pledges at any time up to the point when you funded them." 
+      undo_button: Undo Pledges
+      new_p4: "Thank you for participating. Changing the internet one quarter one click."
+      facebook: Facebook
+      google: Google
+      bottom_tagline: Thank you for participating. Changing the Internet one quarter one click. Incentivizing "value to you" beyond "value to advertiser".
     confirm_tip:
       visit_25c: Go to 25c.com
       view_account: View 25c Account

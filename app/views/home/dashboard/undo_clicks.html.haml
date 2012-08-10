@@ -26,7 +26,16 @@
           - @clicks_given.each do |click|
             %tr
               %td.click-user= click.button.user.display_name
-              %td.click-referrer= link_to click.referrer, click.referrer, :target => "_blank"
+              
+              - if click.referrer.blank?
+                %td.click-referrer= t('.no_referrer')
+              - elsif click.referrer.include?(request.host)
+                %td.click-referrer
+                  = link_to t('.profile_link', :provider => click.button.user.display_name),
+                    click.referrer, :target => "_blank"
+              - else
+                %td.click-referrer= link_to click.referrer, click.referrer, :target => "_blank"
+                            
               %td= click.created_at.to_s(:number)
               %td.click-date= l click.created_at, :format => :short
               %td.click-delete.center

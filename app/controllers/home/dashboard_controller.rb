@@ -2,7 +2,7 @@ class Home::DashboardController < Home::HomeController
 
   def index
     @user = current_user
-    clicks = @user.clicks.includes(:button => :user).find_all_by_state([ 
+    clicks = @user.clicks.includes(:button => :user).order("created_at DESC").find_all_by_state([ 
       Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
     ])
     
@@ -10,7 +10,7 @@ class Home::DashboardController < Home::HomeController
     @clicks_given_total = clicks.length
     @clicks_unfunded_total = clicks.count{ |click| click.state == Click::State::DEDUCTED }
 
-    clicks = Click.where(:button_id => @user.button_ids).includes(:user).find_all_by_state([ 
+    clicks = Click.where(:button_id => @user.button_ids).includes(:user).order("created_at DESC").find_all_by_state([ 
       Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
     ])
     @clicks_received = group_clicks(clicks, false, true)

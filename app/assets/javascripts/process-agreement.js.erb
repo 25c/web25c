@@ -1,0 +1,17 @@
+$(document).ready(function(){
+  $('#agree-button').click(function() {
+    userData = {};
+    userData['has_agreed'] = true;
+    var updates = { user: userData, async: 'true' };
+    $.ajax({
+      type: 'PUT',
+      url: updateUserUrl,
+      data: JSON.stringify(updates),
+      contentType: 'application/json',
+      dataType: 'json',
+      success: function(data) {
+        location.reload();
+      }
+    });
+  });
+});

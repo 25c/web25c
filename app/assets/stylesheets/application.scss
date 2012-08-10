@@ -331,6 +331,10 @@ ul.login-buttons > li.login-logo > a > img {
   margin: 0 5px;
 }
 
+.user-agreement-message {
+  margin-top: 35px;
+}
+
 /* Facebook Login
  *---------------------------- */
 .nav .fb-login-button {
@@ -501,6 +505,7 @@ form .submit-container {
 }
 
 #tip-center {
+  position: relative;
   width: auto;
   margin: 0 auto;
   text-align: center;
@@ -548,7 +553,7 @@ img#tip-25c-logo {
 }
 
 #sign-in {
-  margin-top: 40px;
+//  margin-top: 40px;
   width: 100%;
   min-height: 100px;
   text-align: center;
@@ -601,6 +606,14 @@ img#tip-25c-logo {
   margin-right: 5px;
 }
 
+#bottom-tagline {
+  font-size: 13px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+}
+
 /* FORM OVERRIDES
  *---------------------------- */
 form .form-actions {
@@ -621,32 +634,42 @@ form .form-actions {
 
 /* USER DASHBOARD
  *---------------------------- */
+ 
+table.dataTable {
+  table-layout: fixed;
+}
+ 
+table.dataTable td, table#profile-clicks-table td {
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+}
 
 .table-wrapper {
   margin: 20px 0;
 }
 
-.clicks-table .click-amount {
+table#profile-clicks-table {
+  table-layout: fixed;
+}
+
+table#profile-clicks-table .click-amount {
   width: 100px;
 }
 
-.clicks-table .click-date {
-  width: 120px;
-}
-
-.clicks-table .click-provider, .clicks-table .click-user {
+table#profile-clicks-table .click-provider {
   width: 200px;
 }
 
-.clicks-table .click-referrer {
-  width: 300px;
+table#profile-clicks-table .click-referrer {
+  width: 500px;
 }
 
-.clicks-table > tbody > tr > td {
+table.clicks-table > tbody > tr > td {
   line-height: 28px;
 }
 
-.clicks-table .delete-click {
+table.clicks-table .delete-click {
   margin-top: -3px;
 }
 
@@ -660,6 +683,18 @@ form .form-actions {
 
 .dashboard-action {
   margin-right: 5px;
+}
+
+table.clicks-table #fb-share, table.clicks-table #tw-share {
+  cursor:pointer;
+  padding-top:5px;
+  margin-left:5px;
+  display: inline;
+}
+
+table.clicks-table #fb-share img, table.clicks-table #tw-share img {
+  height:20px;
+  width:20px;
 }
 
 /* BOOTSTRAP OVERRIDES

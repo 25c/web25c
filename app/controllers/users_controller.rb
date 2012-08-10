@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :require_signed_in, :except => [ :index, :show, :new, :sign_in, :sign_in_callback, :tip, :confirm_tip]
-  before_filter :check_user_agreement, :except => [ :user_agremeent, :update, :sign_out ]
   
-  def user_agreement
-    # user agreement page
-  end
+  before_filter :require_signed_in, :except => [ :index, :show, :new, :sign_in, :sign_in_callback, :tip, :confirm_tip]
+  before_filter :check_user_agreement, :except => [ :user_agremeent, :update, :sign_in, :sign_out, :sign_in_callback, :tip ]
 
   # GET /users/1
   # GET /users/1.json
@@ -112,11 +109,15 @@ class UsersController < ApplicationController
   def sign_in_callback
     auth = request.env['omniauth.auth']
     user = nil
+    @redirect_url = sign_in_path
+    @is_tip_page = false
+    new_account = ''
     case auth['provider']
     when 'twitter'
       user = User.find_by_twitter_uid(auth['uid'])
       if user.nil?
         user = User.new
+        new_account = 'twitter'
         user.password = SecureRandom.hex
         user.twitter_uid = auth['uid']
         user.twitter_username = auth['info']['nickname']
@@ -151,6 +152,7 @@ class UsersController < ApplicationController
       user = User.find_by_google_uid(auth['uid'])
       if user.nil?
         user = User.new
+        new_account = 'google'
         user.password = SecureRandom.hex
         user.google_uid = auth['uid']
         user.google_token = auth['credentials']['token']
@@ -173,8 +175,8 @@ class UsersController < ApplicationController
         end
       elsif user.google_token.blank? or user.google_refresh_token.blank?
         if auth['credentials']['refresh_token'].blank?
-          redirect_to '/auth/google_oauth2?approval_prompt=force'
-          return
+          @redirect_url = '/auth/google_oauth2?approval_prompt=force'
+          # return
         end
         user.google_token = auth['credentials']['token']
         user.google_refresh_token = auth['credentials']['refresh_token']        
@@ -186,19 +188,28 @@ class UsersController < ApplicationController
       end
       notice = t('users.sign_in_callback.google')
     end
-    if user.nil?
-      redirect_to sign_in_path
-    else
+    unless user.nil?
+      if session.delete(:has_seen_agreement_text)
+        current_user.has_agreed = true
+        current_user.save!
+      end
       self.current_user = user
       user.update_profile if user.picture_file_name.blank? and not user.picture_url.blank?
       state = Rack::Utils.parse_query(params[:state])
       if state['button_id']
         Click.enqueue(self.current_user, state['button_id'], state['referrer'], request, cookies)
-        redirect_to tip_path(:button_id => state['button_id'], :referrer => state['referrer'])
+        @redirect_url = tip_path(
+          :button_id => state['button_id'], 
+          :referrer => state['referrer'],
+          :new_account => new_account
+          )
+        @is_tip_page = true
       else
-        redirect_to home_dashboard_path, :notice => notice
+        @redirect_url = home_dashboard_path
+        flash[:notice] = notice
       end
     end
+    render :layout => "blank"
   end
   
   def sign_in
@@ -266,6 +277,7 @@ class UsersController < ApplicationController
       end
     # not a post request
     else
+      session[:has_seen_agreement_text] = true
       if self.current_user
         redirect_to_session_redirect_path(home_dashboard_path)
       else
@@ -284,8 +296,15 @@ class UsersController < ApplicationController
   end
   
   def tip
+    session[:has_seen_agreement_text] = true
+    redirect_path = session.delete(:redirect_path)
     @referrer = params[:referrer]
     # @button_id = params[:button_id]
+    @new_account = params[:new_account]
+    
+    # LJ: DEBUG
+    @new_account = ''
+    
     @user = self.current_user
     @button = Button.find_by_uuid(params[:button_id])
     render :layout => "blank"

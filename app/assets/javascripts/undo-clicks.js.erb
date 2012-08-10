@@ -1,5 +1,5 @@
 $.extend( $.fn.dataTableExt.oStdClasses, {
-    "sWrapper": "dataTables_wrapper form-inline"
+    'sWrapper': 'dataTables_wrapper form-inline'
 } );
 
 $(document).ready(function(){
@@ -7,21 +7,21 @@ $(document).ready(function(){
   // activate data tables
   $('table.clicks-table').dataTable({
     // sizing and style
-    "sDom": "t<'row'<'span6'i><'span6'p>>",
-    "iDisplayLength": 100,
-    "sPaginationType": "bootstrap",
-    "aaSorting": [[ 0, "desc" ]],   // start with sorting by first col (date), descending
-    "aoColumns": [                  // define setting for each col
-      null,
-      null,
-      {"bVisible": false},          // invisible sortable date col
-      {"iDataSort": 2},              // visible readable date - sorting linked to col 4
-      {"bSortable": false}          // don't sort by cancel button
+    'sDom': 't<"row"<"span6"i><"span6"p>>',
+    'iDisplayLength': 100,
+    'sPaginationType': 'bootstrap',
+    'aaSorting': [[ 0, 'desc' ]],   // start with sorting by first col (date), descending
+    'aoColumns': [                  // define setting for each col
+      {'sWidth': '120px'},
+      {'sWidth': '300px'},
+      {'bVisible': false},          // invisible sortable date col
+      {'sWidth': '120px', 'iDataSort': 2},              // visible readable date - sorting linked to col 4
+      {'sWidth': '120px', 'bSortable': false}          // don't sort by cancel button
     ]
   });
 
   // bind click deleting action to buttons
-  $(".delete-click").click(function() {
+  $('.delete-click').click(function() {
     if (confirm(confirmDelete)) {
       $this = $(this);
       $.post(deleteClickUrl, { click_id: $this.attr('data-click_id') });
@@ -31,7 +31,7 @@ $(document).ready(function(){
     }
   });
   
-  $(".dataTables_paginate > ul > li.disabled").parent().parent().hide();
+  $('.dataTables_paginate > ul > li.disabled').parent().parent().hide();
   $('.dataTables_empty').text(noPledgesText);
   
   $('.dataTables_wrapper').each(function() {

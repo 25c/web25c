@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   before_filter :check_facebook_cookies
-  
   helper_method :signed_in?, :current_user, :url_base
   
   protected
@@ -10,6 +9,7 @@ class ApplicationController < ActionController::Base
   def check_facebook_cookies
     has_signed_in = false
     signed_request = cookies["fbsr_#{FACEBOOK_SETTINGS['app_id']}"]
+    new_account = ''
     unless signed_request.blank?
       oauth = Koala::Facebook::OAuth.new(FACEBOOK_SETTINGS['app_id'], FACEBOOK_SETTINGS['app_secret'])
       @_facebook_session = oauth.parse_signed_request(signed_request)
@@ -48,6 +48,7 @@ class ApplicationController < ActionController::Base
         else
           # register new user
           user = User.new
+          new_account = 'facebook'
           user.facebook_uid = @_facebook_session['user_id']
           user.password = SecureRandom.hex
           user.save!
@@ -56,9 +57,17 @@ class ApplicationController < ActionController::Base
           # self.current_user.update_profile_from_facebook
           self.current_user.update_profile
         end
+        if session.delete(:has_seen_agreement_text)
+          current_user.has_agreed = true
+          current_user.save!
+        end
         if has_tip
           Click.enqueue(self.current_user, params[:button_id], params[:referrer], request, cookies)
-          redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
+          redirect_to tip_path(
+            :button_id => params[:button_id], 
+            :referrer => params[:referrer], 
+            :new_account => new_account
+          )
         else
           if not request.referrer.blank? and request.referrer.include? 'blog/header'
             redirect_to request.referrer
@@ -131,26 +140,28 @@ class ApplicationController < ActionController::Base
   
   def group_clicks(clicks, sortByButtonId, splitByState)
     click_sets = {}
-    clicks.each do |click|
-      if splitByState
-        if sortByButtonId
-          id = click.button.id.to_s
+    if clicks
+      clicks.each do |click|
+        if splitByState
+          if sortByButtonId
+            id = click.button.id.to_s
+          else
+            id = click.user_id.to_s
+          end
+          id += click.state == Click::State::DEDUCTED ? '_0' : '_1'
         else
-          id = click.user_id.to_s
+          if sortByButtonId
+            id = click.button.id.to_s
+          else
+            id = click.user_id.to_s
+          end
         end
-        id += click.state == Click::State::DEDUCTED ? '_0' : '_1'
-      else
-        if sortByButtonId
-          id = click.button.id.to_s
+        if click_sets[id]
+          click_sets[id][0] += 1
         else
-          id = click.user_id.to_s
+          click_set = [1, click]
+          click_sets[id] = click_set
         end
-      end
-      if click_sets[id]
-        click_sets[id][0] += 1
-      else
-        click_set = [1, click]
-        click_sets[id] = click_set
       end
     end
     return click_sets.values.sort_by { |set| -set[0]  }
@@ -164,4 +175,5 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
 end
