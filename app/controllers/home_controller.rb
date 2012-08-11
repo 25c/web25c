@@ -64,12 +64,6 @@ class HomeController < ApplicationController
     puts payment.inspect
     if payment and notify.acknowledge
       begin
-        puts "*********** trying to save payment"
-        # if notify.complete? and payment.amount == notify.amount
-        puts "**********"
-        puts payment.amount
-        puts "**********"
-        puts notify.amount
         if notify.complete?
           puts "*********** processing payment"
           payment.process
