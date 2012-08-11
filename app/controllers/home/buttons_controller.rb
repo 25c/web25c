@@ -36,7 +36,7 @@ class Home::ButtonsController < Home::HomeController
       flash[:alert] = @button.errors.full_messages
     end
     if params.has_key('ajax')
-      render :nothing => true
+      render :nothing => true, :status => 200, :content_type => 'text/html'
     else
       redirect_to home_buttons_path(@button)
     end

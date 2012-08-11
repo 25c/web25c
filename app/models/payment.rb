@@ -4,6 +4,7 @@ class Payment < ActiveRecord::Base
     NEW = 0
     PROCESSING = 1
     PAID = 2
+    REFUNDED = 3
     # TODO: add payment states if more steps
   end
 
@@ -20,10 +21,14 @@ class Payment < ActiveRecord::Base
   before_create :generate_uuid
   
   def process
-    # TODO: process Paypal payment after admin approval
-    
-    # Set state to processing
-    # self.update_attribute(:state, State::PROCESSING)
+    if self.payment_type == 'payin'
+      if self.state == State::NEW or self.state == State::PROCESSING
+        return true if self.update_attribute(:state, State::PAID)
+      end
+    elsif self.payment_type == 'payout'
+    # process payouts after 25c admin approval
+    # self.update_attribute(:state, State::PAID)
+    end
   end
   
   private

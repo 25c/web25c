@@ -23,6 +23,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-paypal', :git => 'git://github.com/surferdwa/omniauth-paypal.git'
 gem 'airbrake'
+gem 'activemerchant', :require => 'active_merchant'
 
 # Gems used only for assets and not required
 # in production environments by default.

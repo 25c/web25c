@@ -6,7 +6,7 @@ class Admin::DashboardController < Admin::AdminController
   
   def process_payment
     Payment.find_by_uuid(params[:payment_uuid]).process
-    render :nothing => true
+    render :nothing => true, :status => 200, :content_type => 'text/html'
   end
   
 end

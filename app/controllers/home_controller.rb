@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
   
+  include ActiveMerchant::Billing::Integrations
+  skip_before_filter :check_facebook_cookies, :only => :paypal_process
+  
   def index
     # redirect_to home_dashboard_path if self.current_user
     session.delete(:button_id)
@@ -47,6 +50,27 @@ class HomeController < ApplicationController
   
   def blog_footer
     render :layout => "blank"
+  end
+  
+  def paypal_process
+    notify = Paypal::Notification.new(request.raw_post)
+    uuid = notify.invoice
+    payment = Payment.includes(:user => :clicks).find_by_uuid(uuid)
+    if payment and notify.acknowledge 
+      begin
+        if notify.complete? and payment.amount == notify.amount
+          payment.process
+          payment.user.clicks.each { |click| click.process }
+          render :nothing => true, :status => 200, :content_type => 'text/html'
+          return
+        else
+          logger.error("Failed to verify Paypal's notification, please investigate")
+        end
+      rescue => e
+        raise "Payin processing from Paypal failed"
+      end
+    end
+  render "home/not_found", :status => 404
   end
 
 end

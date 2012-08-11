@@ -1,5 +1,7 @@
 class Home::AccountController < Home::HomeController
   
+  include ActiveMerchant::Billing::Integrations
+  
   def index
     # unreachable
   end
@@ -26,7 +28,7 @@ class Home::AccountController < Home::HomeController
     end
     respond_to do |format|
       format.json { render :json => { uuid: payment.uuid } }
-      format.html { render :nothing => true }
+      format.html { render :nothing => true, :status => 200, :content_type => 'text/html'}
     end
   end
   
@@ -74,7 +76,6 @@ class Home::AccountController < Home::HomeController
         end
       end
     end
-    
   end
   
 end

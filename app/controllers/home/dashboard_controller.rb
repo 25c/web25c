@@ -24,7 +24,7 @@ class Home::DashboardController < Home::HomeController
   
   def delete_click
     current_user.clicks.find_by_uuid(params[:click_id]).undo
-    render :nothing => true
+    render :nothing => true, :status => 200, :content_type => 'text/html'
   end
 
 end
