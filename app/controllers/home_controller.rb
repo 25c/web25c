@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   
   include ActiveMerchant::Billing::Integrations
-  ActiveMerchant::Billing::Base.mode = :test
   skip_before_filter :check_facebook_cookies, :only => :paypal_process
   
   def index
