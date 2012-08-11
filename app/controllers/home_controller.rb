@@ -53,6 +53,7 @@ class HomeController < ApplicationController
   end
   
   def paypal_process
+    return_ok = false
     puts "*********** Calling Paypal process"
     puts request.raw_post
     notify = Paypal::Notification.new(request.raw_post)
@@ -65,21 +66,28 @@ class HomeController < ApplicationController
       begin
         puts "*********** trying to save payment"
         # if notify.complete? and payment.amount == notify.amount
+        puts "**********"
+        puts payment.amount
+        puts "**********"
+        puts notify.amount
         if notify.complete?
           puts "*********** processing payment"
           payment.process
           payment.user.clicks.each { |click| click.process }
           puts "*********** payment, user and clicks processed"
-          # render :nothing => true, :status => 200, :content_type => 'text/html'
-          # return
         else
           puts "*********** Failed to verify Paypal's notification"          
         end
       rescue => e
         raise "Payin processing from Paypal failed"
       end
+      return_ok = true
     end
-  render "home/not_found", :status => 404
+    if return_ok
+      render :nothing => true, :status => 200, :content_type => 'text/html'
+    else
+      render "home/not_found", :status => 404
+    end
   end
 
 end
