@@ -64,13 +64,14 @@ class HomeController < ApplicationController
     if payment and notify.acknowledge
       begin
         puts "*********** trying to save payment"
-        if notify.complete? and payment.amount == notify.amount
+        # if notify.complete? and payment.amount == notify.amount
+        if notify.complete?
           puts "*********** processing payment"
           payment.process
           payment.user.clicks.each { |click| click.process }
           puts "*********** payment, user and clicks processed"
-          render :nothing => true, :status => 200, :content_type => 'text/html'
-          return
+          # render :nothing => true, :status => 200, :content_type => 'text/html'
+          # return
         else
           puts "*********** Failed to verify Paypal's notification"          
         end
