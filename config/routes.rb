@@ -16,7 +16,7 @@ Web25c::Application.routes.draw do
   match 'privacy' => 'home#privacy', :as => :privacy
   
   match 'tip/:button_id' => 'users#tip', :as => :tip
-  match 'fb_share_callback' => 'home#fb_share_callback'
+  match 'fb_share_callback' => 'home#fb_share_callback', :as => :fb_share_callback
   match 'blog/header' => 'home#blog_header'
   match 'blog/footer' => 'home#blog_footer'
   

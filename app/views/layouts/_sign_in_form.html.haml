@@ -14,10 +14,18 @@
   .login-buttons
     %a.facebook-btn.pointer= image_tag "logos/facebook.png"
     - if @button
-      = link_to image_tag("logos/google.png"), 
-        '/auth/google_oauth2?state=button_id=' + @button.uuid + '&referrer=' + @referrer
+      = link_to image_tag("logos/google.png"),
+        '/auth/google_oauth2?state=button_id=' + @button.uuid + '&referrer=' + @referrer,
+        :class => 'google-btn'
       / = link_to image_tag("logos/twitter.png"),
       /   '/auth/twitter?state=button_id=' + @button.uuid + '&referrer=' + @referrer
     - else
-      = link_to image_tag("logos/google.png"), '/auth/google_oauth2'
+      = link_to image_tag("logos/google.png"), '/auth/google_oauth2', :class => 'google-btn'
       / = link_to image_tag("logos/twitter.png"), "/auth/twitter"
+  .user-agreement-message
+    %p= raw t('.works_with')
+    %p
+      = raw t('.agreement_text')
+      25c #{link_to t('.terms'), terms_path}, 
+      #{link_to t('.privacy'), privacy_path}
+    

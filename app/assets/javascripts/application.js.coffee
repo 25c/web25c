@@ -19,19 +19,27 @@ jQuery ->
   $(".tooltip").tooltip()
   $("a[rel=tooltip]").tooltip()
 
-	$("#sign-out").click () ->
-		pathname = $(this).attr('href')
-		result = FB.getLoginStatus ((response) ->
-			if response.status == 'connected'
-				FB.logout () ->
-					window.location.pathname = pathname
-			else
-				window.location.pathname = pathname
-		), true
-		return false
-		
-	$(".facebook-btn").click () ->
+  $("#sign-out").click () ->
+    pathname = $(this).attr('href')
+    result = FB.getLoginStatus ((response) ->
+      if response.status == 'connected'
+        FB.logout () ->
+          window.location.pathname = pathname
+      else
+        window.location.pathname = pathname
+    ), true
+    return false
+
+  $(".facebook-btn").click () ->
     FB.login ((response) ->
         mixpanel.track("LogIn", {"Account": "Facebook"});
       ), {scope: 'email,publish_stream'}
     # FB.login()
+    
+  $("a.google-btn").click (event) ->
+    event.preventDefault()
+    width = 580
+    height = 400
+    left = (screen.width / 2) - (width / 2)
+    top = (screen.height / 2) - (height / 2)
+    window.open($(this).attr('href'), 'name', 'width = ' + width + ', height = ' + height + ', top = ' + top + ', left = ' + left)

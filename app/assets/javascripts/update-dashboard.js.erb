@@ -2,7 +2,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
     'sWrapper': 'dataTables_wrapper form-inline'
 } );
 
-$(document).ready(function(){
+$(document).ready(function() {
   
   // activate data tables
   $('table.clicks-table').dataTable({
@@ -10,16 +10,18 @@ $(document).ready(function(){
     'sDom': 't<"row"<"span6"i><"span6"p>>',
     'iDisplayLength': 100,
     'sPaginationType': 'bootstrap',
+    'bAutoWidth': false,
     'aaSorting': [[ 1, 'desc' ]],   // start with sorting by first col (date), descending
     'aoColumns': [                  // define setting for each col
       {'bVisible': false},          // invisible sortable count col
-      {'iDataSort': 0},              // click count - sorting linked to raw number
-      null,
-      null,
-      {'bVisible': false},          // invisible sortable created_at date col
-      {'iDataSort': 5},              // visible readable date - sorting linked to raw date
-      {'bVisible': false},          // invisible sortable updated_at date col
-      {'iDataSort': 7},             // funded date - 0 if not funded
+      {'sWidth': '100px', 'iDataSort': 0},    // click count - sorting linked to raw number
+      {'sWidth': '120px'},
+      {'sWidth': '300px'},
+      {'bVisible': false},                    // invisible sortable created_at date col
+      {'sWidth': '100px', 'iDataSort': 5},    // visible readable date - sorting linked to raw date
+      {'bVisible': false},                    // invisible sortable updated_at date col
+      {'sWidth': '100px', 'iDataSort': 7},    // funded date - 0 if not funded
+      {'sWidth': '100px', 'bSortable': false}
     ]
   });
     
@@ -31,6 +33,33 @@ $(document).ready(function(){
     if ($this.children('table').children('tbody').children().length < 100) {
       $this.find('.dataTables_info').hide();
     }
+  });
+  
+  function openPopup(href, name, width, height) {
+	  var width = width || 580;
+    var height = height || 400;
+    var left = (screen.width / 2) - (width / 2);
+    var top = (screen.height / 2) - (height / 2);
+    window.open(href, name, 'width = ' + width + ', height = ' + height + ', top = ' + top + ', left = ' + left);
+  }
+  
+  $('#fb-share').click(function() {
+    var $this = $(this);
+    var fbShareHref = "https://www.facebook.com/dialog/feed?display=popup"
+		  + "&app_id=<%= FACEBOOK_SETTINGS['app_id'] %>"
+		  + "&link=" + $this.attr('data-referrer')
+      + "&picture=" + "http://assets.25c.com.s3.amazonaws.com/logos/25c-logo-medium.png"
+		  + "&name=" + encodeURI($this.attr('data-title'))
+      + "&caption=" + " "
+		  + "&description=" + encodeURI(fbShareDescriptionText)
+		  + "&redirect_uri=" + fbShareCallbackUrl;
+    openPopup(fbShareHref, "Share on Facebook");
+	});
+
+  $('#tw-share').click(function() {
+    var $this = $(this);
+		var twShareHref = "https://twitter.com/share?url=" + encodeURIComponent($this.attr('data-referrer'));
+		openPopup(twShareHref, "Share on Twitter");
   });
   
 });

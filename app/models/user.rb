@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   
   validates :email, :presence => true, :if => 'not linked?'
   validates :email, :uniqueness => { :case_sensitive => false }, :allow_nil => true
-  validates :paypal_email, :uniqueness => { :case_sensitive => false }, :allow_nil => true
+  # validates :paypal_email, :uniqueness => { :case_sensitive => false }, :allow_nil => true
   
   validates :nickname, :uniqueness => { :case_sensitive => false }, :allow_nil => true
 

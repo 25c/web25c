@@ -32,4 +32,5 @@
             %li.login-logo
               %a.facebook-btn= image_tag "logos/facebook.png"
             / %li.login-logo= link_to image_tag("logos/twitter.png"), '/auth/twitter'
-            %li.login-logo= link_to image_tag("logos/google.png"), '/auth/google_oauth2'
+            %li.login-logo= link_to image_tag("logos/google.png"), '/auth/google_oauth2', 
+              :class => 'google-btn'

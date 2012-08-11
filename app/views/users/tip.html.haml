@@ -24,7 +24,7 @@
         %p.buffer= t('.over_limit')
         = link_to t('.payment'), home_payment_path, :class => 'btn btn-warning', 
           :target => '_blank'
-      - else
+      - elsif @new_account.blank?
         %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
           #{@button.title}
         :javascript
@@ -38,6 +38,25 @@
         .tip-button-container
           %div= t('.pledge_more')
           = link_to t('.done'), '#', :class => 'btn', :id => 'close'
+        / #bottom-tagline= t('.bottom_tagline')
+      - else
+        %p= raw t('.new_welcome', :home_url => link_to('25c.com', root_path, :target => '_blank') , 
+          :account => t('.' + @new_account))
+        %p= t('.new_p1')
+        %p= t('.new_button', :provider => @button.user.display_name)
+        %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
+          #{@button.title}
+        :javascript
+          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
+          if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
+          js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
+          fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
+        %p= t('.new_p2')
+        %p= t('.new_p3')
+        %p= raw t('.new_undo', :undo_button => link_to(t('.undo_button'), home_undo_clicks_path, 
+          :class => 'btn', :target => '_blank'))
+        %p= t('.new_p4')
+        
     - else
       = render 'layouts/sign_in_form'
 

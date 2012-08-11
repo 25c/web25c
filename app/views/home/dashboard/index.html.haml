@@ -5,6 +5,9 @@
   = javascript_include_tag "update-dashboard"
   :javascript
     window.noPledgesText = '#{ j t('.no_pledges') }';
+    window.userDisplayName = '#{ j @user.display_name}';
+    window.fbShareCallbackUrl = '#{ j fb_share_callback_url }';
+    window.fbShareDescriptionText = '#{ j t('.fb_share_description') }';
 
 .row.main-content
   .span11
@@ -34,6 +37,7 @@
             %th.click-date= t('.date_created')
             %th
             %th.click-funded= t('.funded')
+            %th.click-share= t('.share')
         %tbody
           - @clicks_given.each do |set|
             %tr
@@ -47,7 +51,7 @@
                   = link_to t('.profile_link', :provider => set[1].button.user.display_name),
                     set[1].referrer, :target => "_blank"
               - else
-                %td.click-referrer= link_to set[1].referrer, :target => "_blank"
+                %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
               %td= set[1].created_at.to_s(:number)
               %td.click-date= l set[1].created_at, :format => :short
               - if set[1].state > Click::State::DEDUCTED
@@ -56,6 +60,19 @@
               - else
                 %td 0
                 %td.click-funded= t('.to_be')
+              %td.click-share
+                - if set[1].button.title.blank?
+                  #fb-share{:"data-referrer" => set[1].referrer,
+                    :"data-title" => t('.fb_share_user_title', 
+                      :user_name => set[1].button.user.display_name) }
+                    = image_tag("logos/facebook.png")
+                - else
+                  #fb-share{:"data-referrer" => set[1].referrer,
+                    :"data-title" => t('.fb_share_button_title', 
+                      :button_title => set[1].button.title) }
+                    = image_tag("logos/facebook.png")
+                #tw-share{:"data-referrer" => set[1].referrer}= image_tag("logos/twitter.png")
+                
     #process-message.alert.alert-success.hide= t('.clicks_processed')
 .row.main-content
   .span11
@@ -76,6 +93,7 @@
             %th= t('.date_created')
             %th
             %th.click-funded= t('.funded')
+            %th.hide
         %tbody
           - @clicks_received.each do |set|
             %tr
@@ -89,7 +107,7 @@
                   = link_to t('.profile_link', :provider => set[1].button.user.display_name),
                     set[1].referrer, :target => "_blank"
               - else
-                %td.click-referrer= link_to set[1].referrer, :target => "_blank"
+                %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
               %td.click-date= set[1].created_at.to_s(:number)
               %td.click-date= l set[1].created_at, :format => :short
               - if set[1].state > Click::State::DEDUCTED
@@ -98,3 +116,4 @@
               - else
                 %td 0
                 %td.click-funded= t('.to_be')
+              %td.hide
