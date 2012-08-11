@@ -19,7 +19,7 @@ Web25c::Application.routes.draw do
   match 'blog/header' => 'home#blog_header'
   match 'blog/footer' => 'home#blog_footer'
   match 'fb_share_callback' => 'home#fb_share_callback', :as => :fb_share_callback
-  match 'paypal_process' => 'home#paypal_process', :via => [ :get, :post ]
+  match 'paypal_process' => 'home#paypal_process'
   
   namespace :home do
     # Buttons
