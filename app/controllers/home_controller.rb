@@ -54,26 +54,17 @@ class HomeController < ApplicationController
   
   def paypal_process
     return_ok = false
-    puts "*********** Calling Paypal process"
-    puts request.raw_post
     notify = Paypal::Notification.new(request.raw_post)
     uuid = notify.invoice
-    puts notify.inspect
     payment = Payment.includes(:user => :clicks).find_by_uuid(uuid)
-    puts "********* Payment object:"
-    puts payment.inspect
     if payment and notify.acknowledge
       begin
         if notify.complete?
-          puts "*********** processing payment"
           payment.process
           payment.user.clicks.each { |click| click.process }
-          puts "*********** payment, user and clicks processed"
-        else
-          puts "*********** Failed to verify Paypal's notification"          
         end
       rescue => e
-        raise "Payin processing from Paypal failed"
+        raise "Pay-in processing from Paypal failed"
       end
       return_ok = true
     end

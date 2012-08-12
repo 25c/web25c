@@ -44,20 +44,19 @@ class Home::AccountController < Home::HomeController
     @user = current_user
     
     if request.method == 'POST'
-      auth = request.env['omniauth.auth']
-      user = nil
-      if auth['provider'] == 'paypal'
-        puts auth.inspect
+      @user.editing = true
+      unless @user.update_attributes(params[:user])
+        # TODO: handle bad paypal email
       end
-      
     end
     
     # TODO: replace this lookup with balance fields in the User model
     clicks = Click.where(:button_id => @user.button_ids).find_all_by_state([ 
-      Click::State::DEDUCTED, Click::State::FUNDED
+      Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
     ])
+    funded_clicks = clicks.select{ |click| click.state > Click::State::DEDUCTED }
     @total = clicks.length
-    @funded = clicks.count{ |click| click.state == Click::State::FUNDED }
+    @funded = funded_clicks.length
     
     if @funded < 200
       @has_payout = false
@@ -68,12 +67,17 @@ class Home::AccountController < Home::HomeController
         amount = (@funded.to_f / 4).round(2)
         openPayments = @user.payments.where(:state => Payment::State::NEW, :payment_type => 'payout')
         if openPayments.empty?
-          @user.payments.create!({:amount => amount, :payment_type => 'payout'})
+          payment = @user.payments.new({:amount => amount, :payment_type => 'payout'})
         elsif openPayments.length == 1
-          openPayments[0].update_attribute(:amount, amount) unless openPayments[0].amount == amount
+          payment = openPayments[0]
+          payment.amount = amount unless openPayments[0].amount == amount
         else
           # error: multiple open payouts
+          raise "User #{@user.id} has multiple open payout request"
         end
+        payment.save
+        # TODO make this click processing a background task
+        funded_clicks.each{|click| click.queue_for_payout }
       end
     end
   end

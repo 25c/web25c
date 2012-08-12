@@ -5,9 +5,10 @@ class Click < ActiveRecord::Base
     NEW = 0
     DEDUCTED = 1
     FUNDED = 2
-    PAID = 3
-    REFUNDED = 4
-    DROPPED = 5
+    QUEUED = 3
+    PAID = 4
+    REFUNDED = 5
+    DROPPED = 6
   end
   
   belongs_to :button
@@ -78,6 +79,26 @@ class Click < ActiveRecord::Base
       DATA_REDIS.set "user:#{self.user.uuid}", self.user.balance
     end
     true  
+  end
+  
+  def queue_for_payout
+    self.with_lock do
+      # ensure this click is in the right state
+      return false unless self.state == State::FUNDED
+      # change click state
+      self.update_attribute(:state, State::QUEUED)
+    end
+    true
+  end
+  
+  def set_paid
+    self.with_lock do
+      # ensure this click is in the right state
+      return false unless self.state == State::QUEUED
+      # change click state
+      self.update_attribute(:state, State::PAID)
+    end
+    true
   end
   
   def self.enqueue(user, button, referrer, request, cookies)
