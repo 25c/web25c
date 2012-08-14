@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   
+  http_basic_authenticate_with :name => "user25c", :password => "sup3rl!k3", :except => :paypal_process
+  
   include ActiveMerchant::Billing::Integrations
   skip_before_filter :check_facebook_cookies, :only => :paypal_process
   

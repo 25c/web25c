@@ -1,9 +1,9 @@
 Web25c::Application.configure do
   
   # basic http authentication to hide page from public
-  config.middleware.insert_after(::Rack::Lock, "::Rack::Auth::Basic", "Staging") do |u, p|
-    [u, p] == ['user25c', 'sup3rl!k3']
-  end
+  #config.middleware.insert_after(::Rack::Lock, "::Rack::Auth::Basic", "Staging") do |u, p|
+  #  [u, p] == ['user25c', 'sup3rl!k3']
+  #end
   
   ENV["API25C_URL"] = 'api.25c.com'
 

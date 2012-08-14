@@ -190,8 +190,8 @@ class UsersController < ApplicationController
     end
     unless user.nil?
       if session.delete(:has_seen_agreement_text)
-        current_user.has_agreed = true
-        current_user.save!
+        user.has_agreed = true
+        user.save!
       end
       self.current_user = user
       user.update_profile if user.picture_file_name.blank? and not user.picture_url.blank?
