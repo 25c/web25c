@@ -58,7 +58,7 @@ class Home::AccountController < Home::HomeController
     @total = clicks.length
     @funded = funded_clicks.length
     
-    if @funded < 200
+    if @funded < 40
       @has_payout = false
     else
       @has_payout = true
