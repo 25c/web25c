@@ -20,9 +20,9 @@ en:
     account:
       payment:
         title: Fund Pledges You Made
-        given: You have made %{total} 25c pledges or a total commitment of $%{total_amount}.
-        click_more_p1: "Feel free to make up to forty (40) 25c pledges at your leisure.  (Click on other +25 Buttons, or click the same +25c Button multiple times for a pledge of corresponding multiple of 25c's.)"
-        click_more_p2: "Once you have reached a pledge amount of $10 by having made 40 25c pledges, we will ask you to fund the pledges you made -- so we can also pay your pledgees."
+        given: You have fewer than forty unfunded 25c pledges (%{total}) or a total commitment of $%{total_amount}.
+        click_more_p1: "Feel free to make up to forty (40) 25c pledges at your leisure:  Click on other +25 Buttons, or click the same +25c Button multiple times for a pledge of corresponding multiple of 25c's."
+        click_more_p2: "Once you have reached a pledge amount of $10 by having made forty 25c pledges, we will ask you to fund the pledges you made -- so we can also pay your pledgees."
         dashboard: Go to Dashboard
         amount: "Payment Amount: $10"
       payment_success:
@@ -76,8 +76,8 @@ en:
         no_referrer: None
         profile_link: "%{provider}'s Profile"
         no_referrer: None
-        not_funded: "Yet to be funded:"
-        funded_note: "Note: You cannot undo funded pledges."
+        not_funded: "Unfunded 25c pledges:"
+        funded_note: "You may undo 25c pledges until you fund them."
         funded: Funded
         to_be: To be
         no_pledges: No pledges.
@@ -95,8 +95,8 @@ en:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
       index: 
-        title: Start Collecting Micro-Donations
-        subtitle: "In just a few simple steps, set up ways to collect micro-donations:"
+        title: Collect micro-donations
+        subtitle: "In just a few simple steps, you are ready to go:"
         short_url_title: 25c Short URL
         platform: Platform
         javascript: JavaScript
@@ -113,31 +113,31 @@ en:
         iframe: iFrame
         link: Link
         
-        describe_cause_title: "Describe the purpose or cause to your audience:"
-        button_title_label: I am collecting microdonations to go...
-        button_description_label: Because...
-        enter_title: (to this purpose)
-        enter_description: (describe your cause or purpose)
-        set_button_info: Save Microdonation Info
+        describe_cause_title: "Describe what your micro-donation collections are about and who they go to:"
+        button_title_label: You ask: Pledge 25c 
+        enter_title: for (this cause) / to (this person or org)
+        button_description_label: Description:
+        enter_description: (describe what the collections are about)
+        set_button_info: Continue
         
-        describe_user_title: "Tell people a bit about who you are:"
-        user_picture_label: "Your picture:"
+        describe_user_title: "Tell people a bit more about who the funds go to:"
+        user_picture_label: "Photo:"
         user_nickname_label: "Your user nickname:"
-        user_about_label: "Describe yourself (or your organization):"
-        upload_picture: Upload Picture
+        user_about_label: "Description:"
+        upload_picture: Upload
         picture_uploading: Picture uploading...
         picture_link: Your current user picture
         user_nickname_hint: "This determines your profile URL, such as: http://www.25c.com/example"
-        enter_about: (your description)
-        set_user_info: Save User Info
+        enter_about: (describe who the funds go to)
+        set_user_info: Continue
         nickname_taken: That nickname has been taken by another user. Please choose another and try again.
         nickname_blank: Please choose a non-blank nickname.
         
         choose_platform_title: "Where do you want to collect micro-donations?"
         website: "Your website"
-        no_platform: "I don’t have any of these. Just use my profile on 25c.com."
+        no_platform: "Skip.  For now, just create my 25c.com page for collecting 25c pledges."
         
-        choose_button_title: "Choose a look for your button:"
+        choose_button_title: "Choose a look for your +25c Button:"
         icon-large: "Large icon"
         btn-large: "Large button" 
         icon-medium: "Medium icon"
@@ -145,9 +145,9 @@ en:
         icon-small: "Small icon"
         btn-small: "Small button"
         icon-text: "Icon & text"
-        get_code_title_blog: "Now embed this code into your blog:"
-        get_code_title_website: "Now embed this code into your website:"
-        get_code_title_youtube: "Now insert this code into your Youtube video description:"
+        get_code_title_blog: "Copy & embed this code into your blog:"
+        get_code_title_website: "Copy & embed this code into your website:"
+        get_code_title_youtube: "Copy & insert this link into your Youtube video description:"
         button_code: "HTML Code for Your Own +25c Button:"
         sign_in_overlay: Click here to create an account!
         set_nickname: Choose a nickname to set your profile URL.
@@ -157,18 +157,18 @@ en:
         for_youtube: "Paste this URL into the description of your uploaded Youtube video."
         button_preview: "Button preview:"
         
-        share_cause_title: Tell your network about your cause!
-        profile_link: Your profile is available at %{link}
-        share_cause_label: "Send a message via:"
+        share_cause_title: Tell people you know about your cause!
+        profile_link: You now have a 25c.com page at: %{link}
+        share_cause_label: "Tell your friends by sending a message via:"
         share_facebook: Share on Facebook
         fb_share_description: Use 25c pledges to reward and support great causes.
         fb_share_title: I just create a 25c account!
         share_twitter: Share on Twitter
-        share_email: Share by Email
+        share_email: Email
         share_email_subject: I just joined 25c!
         share_email_body: Please click the link above to check out my 25c profile and support my cause with micro-donations.
-        share_cause_note_p1: "Note:  25c.com makes it easy for you to transact micro-donations but it’s entirely up to you to make your cause known to others.  Unless you tell people about it, no-one will know about it!"
-        share_cause_note_p2: "Embedding the 25c Button in websites with user traffic is key.  Embed as many 25c Buttons as you like – you may add more at any time."
+        share_cause_note_p1: "Unless you tell people about your cause, no-one will know about it!  25c only makes it easy for you to transact micro-donations.  But it’s entirely up to you to make your cause known to others."
+        share_cause_note_p2: "Make sure to embed the +25c Button in websites with user traffic.  Embed as many +25c Buttons as you like – you may add more at any time."
         
         enhance_profile_title: "Finally, enhance your 25c.com profile"
         enhance_profile: Check out your profile to provide more background about yourself or upload an image or video about your micro-donation cause.
@@ -202,20 +202,20 @@ en:
       admin: "Admin Pages:"
       dashboard: Dashboard
     header:
-      tagline: "Social micro-donations. One quarter, one click."
+      tagline: "Social micro-donations. One click, one quarter."
       home: Home
       about: About
       blog: Blog
       fees: Fees
       account: Update Account Settings
-      profile: View/Edit Public Profile
+      profile: View/Edit Pledge Profile
       contact: Contact
       register: Register
       sign_in_with: "Sign in with:"
       or: "Or: "
       sign_in: Sign In
       sign_out: Sign Out
-      buttons: Receive Pledges
+      buttons: Collect Pledges
       payments: Fund Pledges You Made
       dashboard: Dashboard
     footer:
@@ -228,10 +228,10 @@ en:
     mailer:
       recipient: "This message was sent to: %{recipient}"
     sign_in_form:
-      works_with: 25c pledges work with Facebook or Google login.
-      agreement_text: "By clicking one of the links above, I agree to the following:"
+      works_with: 25c works with your Facebook or your Google sign-in.
+      agreement_text: "By continuing, you agree to the "
       terms: User Terms
-      privacy: Privacy Policy
+      privacy: Privacy Policy.
       
   users:
     show:
@@ -260,20 +260,20 @@ en:
       remove_button_picture: Remove Image
       upload_button_picture: Upload Pledge Image
       choose_youtube_video: "Or Show a Pledge Video from Youtube: "
-      tips_title: "Pledges Made:"
-      amount: "25c's"
-      provider: To
+      tips_title: "25c Pledges Made:"
+      amount: "Amount"
+      provider: Pledged To
       referrer: Link 
       profile_link: "%{provider}'s Profile"
-      share_profile: "Share this profile:"
+      share_profile: "Share this page on:"
       fb_share_button_title: "I just pledged 25c %{button_title}!"
       fb_share_user_title: "I just pledged 25c to %{user_name}!"
-      fb_share_description: Use 25c pledges to reward and support great causes!
+      fb_share_description: Using 25c to pledge one quarter one click.
     form:
       title: Update Account Settings
       show_donations: Show pledges on my profile page
       edit_password_hint: Leave blank to keep current.
-      nickname_url: "Your nickname determines the URL of your public profile: "
+      nickname_url: "Your nickname determines the URL of your pledge profile: "
       paypal_email: "Paypal Email"
       paypal_email_hint: "We use PayPal to process payments."
       submit: Update
@@ -288,14 +288,11 @@ en:
       twitter: You've been signed in automatically using your Twitter account.
       google: You've been signed in automatically using your Google account.
     sign_in:
-      title: Sign in with Facebook or Google
-      sign_in_with: "Please sign in:"
+      title: Please Sign In
+      sign_in_with: "Choose to sign in via Facebook or Google:"
       facebook: Sign In with Facebook
       twitter: Sign In with Twitter
       google: Sign In with Google
-      or: "Or use a 25c account:"
-      new_account: I am a new user.
-      existing_account: I already have a 25c account.
       email: Email
       password: Password
       new_password: New Password
@@ -303,7 +300,7 @@ en:
       submit_new: Create Free Account
       submit_existing: Sign In
       failure: "Sorry, your email and/or password were incorrect."
-      click_success: "Your click has been recorded."
+      click_success: "Your pledge has been recorded."
       click_failure: "Something went wrong. Your click was not processed."
       sign_in_failure: "Something went wrong with the sign in process. Please try again."
       button_not_found: "The button was not found."
