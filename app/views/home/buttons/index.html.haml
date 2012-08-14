@@ -13,8 +13,6 @@
     window.shareEmailSubject = '#{ t('.share_email_subject') }';
     window.shareEmailBody = '#{ t('.share_email_body') }';
 
-%iframe#upload-picture{ :src => upload_picture_path }
-
 .row.main-content
   .span11.buffer
     %h2.page-header= t('.title')
@@ -192,3 +190,5 @@
         %p= t('.enhance_profile')
         =link_to(home_profile_url)
     .clear
+    
+%iframe#upload-picture{ :src => upload_picture_path }
