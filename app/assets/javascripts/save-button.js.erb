@@ -159,12 +159,13 @@ $(document).ready(function(){
       if (platform == 'none') {
         $('#get-code, #choose-button').attr('data-skip', true);
         $('#enhance-profile').removeAttr('data-skip');
-        $('.if-javascript, .if-iframe').hide();
+        $('.if-button').hide();
         recomputeSteps();
         showNextStep(5);
       } else {
         $('#get-code').removeAttr('data-skip');
         $('#enhance-profile').attr('data-skip', true);
+        $('.if-button').show();
         if (codeType != newCodeType) {
           codeType = newCodeType;
           updateButtonCode();
