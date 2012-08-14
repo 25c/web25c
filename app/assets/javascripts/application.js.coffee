@@ -38,8 +38,13 @@ jQuery ->
     
   $("a.google-btn").click (event) ->
     event.preventDefault()
-    width = 580
-    height = 400
-    left = (screen.width / 2) - (width / 2)
-    top = (screen.height / 2) - (height / 2)
-    window.open($(this).attr('href'), 'name', 'width = ' + width + ', height = ' + height + ', top = ' + top + ', left = ' + left)
+    openPopup($(this).attr('href'), 'Facebook')
+    
+openPopup = (href, name, width, height) ->
+  width = width || 580
+  height = height || 400
+  left = (screen.width / 2) - (width / 2)
+  top = (screen.height / 2) - (height / 2)
+  window.open(href, name, 'width = ' + width + ', height = ' + height + ', top = ' + top + ', left = ' + left)
+  
+window.openPopup = openPopup

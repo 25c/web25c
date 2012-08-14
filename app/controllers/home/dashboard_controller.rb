@@ -15,6 +15,12 @@ class Home::DashboardController < Home::HomeController
     ])
     @clicks_received = group_clicks(clicks, false, true)
     @clicks_received_total = clicks.length
+    
+    clicks = Click.where(:referrer_user_id => @user.id).includes(:user).order("created_at DESC").find_all_by_state([ 
+      Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
+    ])
+    @clicks_referred = group_clicks(clicks, false, true)
+    @clicks_referred_total = clicks.length
   end
   
   def undo_clicks

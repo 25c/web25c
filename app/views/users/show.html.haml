@@ -1,24 +1,33 @@
 - content_for :title, (@user.display_name + t('.title'))
-- if @is_editable
-  - content_for :js do
+- content_for :js do
+  - if @is_editable
     = javascript_include_tag "edit-profile"
     :javascript
       window.updateUserUrl = '#{ j home_account_url }';
       window.youtubeId = '#{ j @button.youtube_id }';
       window.hasButtonPicture = '#{ @button.picture.exists? }' == 'true';
-      window.updateButtonUrl = '#{ j home_update_button_url }';
-- else
-  - content_for :js do
+      window.updateButtonUrl = '#{ j home_update_button_url }'; 
+  - else
+    - content_for :js do
+      :javascript
+        $(document).ready(function() {
+          $('#button-fields .content-block').css({display: 'block', visibility: 'visible'});
+          $('#project-action').css('background-color', 'transparent');
+          $('#user-profile textarea').attr('readonly', 'readonly').css('cursor', 'text');
+          $('#user-profile #user-picture').load(function() {
+            var picOffset = ($('#user-profile #user-picture').height() - 200) / 2;
+            if (picOffset > 0) $('#user-profile #user-picture').css('margin-top', -picOffset);
+          });
+        });      
+  :javascript
+    window.fbShareDescription = '#{ t('.fb_share_description') }';
+    window.fbShareCallbackUrl = '#{ j fb_share_callback_url }';
+  - if @button.title.blank?
     :javascript
-      $(document).ready(function() {
-        $('#button-fields .content-block').css({display: 'block', visibility: 'visible'});
-        $('#project-action').css('background-color', 'transparent');
-        $('#user-profile textarea').attr('readonly', 'readonly').css('cursor', 'text');
-        $('#user-profile #user-picture').load(function() {
-          var picOffset = ($('#user-profile #user-picture').height() - 200) / 2;
-          if (picOffset > 0) $('#user-profile #user-picture').css('margin-top', -picOffset);
-        });
-      });
+      window.fbShareText = '#{ t('.fb_share_user_title', :user_name => @user.display_name) }';
+  - else
+    :javascript
+      window.fbShareText = '#{ t('.fb_share_button_title', :button_title => @button.title) }';
 
 - if @is_editable
   %iframe#upload-picture{:src => upload_picture_path }
@@ -109,11 +118,10 @@
                   fjs.parentNode.insertBefore(js,fjs);
                 }
               } (document,"script","tip-25c-js");
-          / #profile-share-container
-          /   %p
-          /     = t('.share_profile')
-          /     #fb-share= image_tag("logos/facebook.png")
-          /     #tw-share= image_tag("logos/twitter.png")
+          #profile-share-container.buffer
+            = t('.share_profile')
+            #fb-share= image_tag("logos/facebook.png")
+            #tw-share= image_tag("logos/twitter.png")
           - if @is_editable
             #project-edit
               #edit-content-title= t('.add_project_content')
@@ -150,7 +158,8 @@
                         %td.click-referrer= t('.no_referrer')
                       - elsif set[1].referrer.include?(request.host)
                         %td.click-referrer
-                          = link_to t('.profile_link', :provider => set[1].button.user.display_name),
+                          = link_to t('.profile_link', 
+                            :provider => set[1].button.user.display_name),
                             set[1].referrer, :target => "_blank"
                       - else
                         %td.click-referrer= link_to set[1].referrer, set[1].referrer, 

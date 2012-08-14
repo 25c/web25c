@@ -56,6 +56,7 @@ en:
         undo_clicks: Undo Pledges
         tips_given_title: "25c Pledges Made: "
         tips_received_title: "25c Pledges Received: "
+        tips_referred_title: "25c Pledges Referred: "
         tips_given: 25c Pledges Given
         tips_received: 25c Pledges Received
         total: Total
@@ -94,8 +95,8 @@ en:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
       index: 
-        title: Get your own +25c Button!
-        subtitle: "Start receiving pledges on your own website/blog/video -- simply follow these steps:"
+        title: Start Collecting Micro-Donations
+        subtitle: "In just a few simple steps, set up ways to collect micro-donations:"
         short_url_title: 25c Short URL
         platform: Platform
         javascript: JavaScript
@@ -106,7 +107,37 @@ en:
         wordpress: WordPress Self-Hosted
         wordpress_note: "25c buttons are not yet supported on Wordpress.com hosted sites."
         posterous: Posterous
-        button_form: "Select button type:"
+        button_name: "Customize tooltip message:"
+        sign_in_button: Create a Free Account
+        javascript: JavaScript
+        iframe: iFrame
+        link: Link
+        
+        describe_cause_title: "Describe the purpose or cause to your audience:"
+        button_title_label: I am collecting microdonations to go...
+        button_description_label: Because...
+        enter_title: (to this purpose)
+        enter_description: (describe your cause or purpose)
+        set_button_info: Save Microdonation Info
+        
+        describe_user_title: "Tell people a bit about who you are:"
+        user_picture_label: "Your picture:"
+        user_nickname_label: "Your user nickname:"
+        user_about_label: "Describe yourself (or your organization):"
+        upload_picture: Upload Picture
+        picture_uploading: Picture uploading...
+        picture_link: Your current user picture
+        user_nickname_hint: "This determines your profile URL, such as: http://www.25c.com/example"
+        enter_about: (your description)
+        set_user_info: Save User Info
+        nickname_taken: That nickname has been taken by another user. Please choose another and try again.
+        nickname_blank: Please choose a non-blank nickname.
+        
+        choose_platform_title: "Where do you want to collect micro-donations?"
+        website: "Your website"
+        no_platform: "I don’t have any of these. Just use my profile on 25c.com."
+        
+        choose_button_title: "Choose a look for your button:"
         icon-large: "Large icon"
         btn-large: "Large button" 
         icon-medium: "Medium icon"
@@ -114,33 +145,34 @@ en:
         icon-small: "Small icon"
         btn-small: "Small button"
         icon-text: "Icon & text"
-        button_name: "Customize tooltip message:"
+        get_code_title_blog: "Now embed this code into your blog:"
+        get_code_title_website: "Now embed this code into your website:"
+        get_code_title_youtube: "Now insert this code into your Youtube video description:"
         button_code: "HTML Code for Your Own +25c Button:"
         sign_in_overlay: Click here to create an account!
-        sign_in_button: Create a Free Account
-        javascript: JavaScript
-        iframe: iFrame
-        link: Link
-        step1_title: "Where will you use the +25c Button?"
-        step2_title: "Name the purpose -- who or what will the donation go to:"
-        step3_title: "Choose a look:"
-        step4_title_blog: "Now embed this code into your blog:"
-        step4_title_website: "Now embed this code into your website:"
-        step4_title_youtube: "Now insert this code into your Youtube video description:"
-        step5_title: "Track your rewards!"
-        website: "Your website"
-        tooltip_preview: "The name you choose will show up as a customized call for action when people click on (or hover their mouse over) your button:"
-        link_preview: "Your button will appear as this link:"
-        set: Set
-        button_preview: "Button preview:"
-        installation: "Installation Instructions:"
-        no_nickname: '<set-nickname>'
         set_nickname: Choose a nickname to set your profile URL.
+        installation: "Installation Instructions:"
         for_blogs: "Paste the code above along the text / images / videos when you post to your blog."
         for_website: "Access your website and embed the above code.  You can embed it multiple times per page within any webpage of your site."
         for_youtube: "Paste this URL into the description of your uploaded Youtube video."
-        faq: FAQ
-        check_donations: Check your pledges regularly via your %{dashboard}.  Once you have received a minimum number of pledges, you may request a pay-out.
+        button_preview: "Button preview:"
+        
+        share_cause_title: Tell your network about your cause!
+        profile_link: Your profile is available at %{link}
+        share_cause_label: "Send a message via:"
+        share_facebook: Share on Facebook
+        fb_share_description: Use 25c pledges to reward and support great causes.
+        fb_share_title: I just create a 25c account!
+        share_twitter: Share on Twitter
+        share_email: Share by Email
+        share_email_subject: I just joined 25c!
+        share_email_body: Please click the link above to check out my 25c profile and support my cause with micro-donations.
+        share_cause_note_p1: "Note:  25c.com makes it easy for you to transact micro-donations but it’s entirely up to you to make your cause known to others.  Unless you tell people about it, no-one will know about it!"
+        share_cause_note_p2: "Embedding the 25c Button in websites with user traffic is key.  Embed as many 25c Buttons as you like – you may add more at any time."
+        
+        enhance_profile_title: "Finally, enhance your 25c.com profile"
+        enhance_profile: Check out your profile to provide more background about yourself or upload an image or video about your micro-donation cause.
+        
       short_url:
         input_label: "Use it when sending links to your followers and earn along for resulting pledges:"
         input_text: "Paste content URL to encode"
@@ -185,6 +217,7 @@ en:
       sign_out: Sign Out
       buttons: Get Your Own Button
       payments: Fund Pledges You Made
+      dashboard: Dashboard
     footer:
       about: About
       faq: FAQ
@@ -232,6 +265,10 @@ en:
       provider: To
       referrer: Link 
       profile_link: "%{provider}'s Profile"
+      share_profile: "Share this profile:"
+      fb_share_button_title: "I just pledged 25c %{button_title}!"
+      fb_share_user_title: "I just pledged 25c to %{user_name}!"
+      fb_share_description: Use 25c pledges to reward and support great causes!
     form:
       title: Update Account Settings
       show_donations: Show pledges on my profile page

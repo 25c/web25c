@@ -35,8 +35,12 @@ body, p, strong, h4, ul.plist > li, label, input, button, select, textarea {
   -webkit-font-smoothing: antialiased;
 }
 
-.dropdown-menu a {
-  font-weight: 400;
+ul.dropdown-menu > li {
+  margin: 2px 0;
+}
+
+.dropdown-menu {
+  
 }
 
 b, strong, h4 {
@@ -1056,6 +1060,21 @@ table.table thead .sorting_desc_disabled {
   margin-top: 10px;
 }
 
+#profile-share-container {
+  text-align: left;
+}
+
+#profile-share-container #fb-share, #profile-share-container #tw-share {
+  margin-left: 10px;
+  display: inline;
+}
+
+#profile-share-container #fb-share img, #profile-share-container #tw-share img {
+  height: 40px;
+  width: 40px;
+}
+
+
 /* USER AGREEMENT
 *---------------------------- */
 
@@ -1238,7 +1257,7 @@ pre#button-code-block {
 }
 
 .step-container .step-title {
-  margin-bottom: 20px;
+  margin: 10px 0 30px;
 }
 
 .step-container .platform-container {
@@ -1265,6 +1284,25 @@ pre#button-code-block {
   height: 23px;
 }
 
+#set-button-info, #set-user-info {
+  width: 180px;
+  display: block;
+  margin: 10px auto 0 auto;
+}
+
+#user-picture-uploading, #user-picture-link {
+  margin-bottom: 10px;
+}
+
+#upload-picture-fields {
+  margin-top: -10px;
+}
+
+#upload-picture-fields > .btn {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
 .step-container .platform-container:hover {
   background-color: #ffeae1;
 }
@@ -1277,9 +1315,35 @@ pre#button-code-block {
   margin-right: 2px;
 }
 
+.step-container #no-platform.platform-container {
+  width: auto;
+  margin-top: 10px;
+}
+
 .step-container #type-title {
   font-weight: bold;
   margin-bottom: 5px;
+}
+
+.step-container .label-column {
+  width: 300px;
+}
+
+.step-container .label-column label {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.step-container .input-column {
+  width: 500px;
+}
+
+.step-container .input-column .btn {
+  margin-bottom: 10px;
+}
+
+.step-container .input-column input, .step-container .input-column textarea {
+  width: 480px;
 }
 
 #button-preview-container {
@@ -1333,4 +1397,35 @@ pre#button-code-block {
   font-weight: 400;
   line-height: 18px;
 }
+
+#user-picture-uploading, #upload-user-picture {
+  
+}
+
+.step-container #fb-share, .step-container #tw-share {
+  cursor: pointer;
+  margin-left: 10px;
+  display: inline;
+}
+
+.step-container #fb-share img, .step-container #tw-share img {
+  height: 40px;
+  width: 40px;
+}
+
+.step-container #email-share {
+  margin-left: 10px;
+}
+
+#button-preview > iframe {
+  height: 80px;
+}
+
+
+
+
+
+
+
+
 

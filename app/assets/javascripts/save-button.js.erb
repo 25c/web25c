@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  
+    
 	// lookup dictionary for image sizes
 	var imageSizesDict = {
 		'btn-large': ' width="80" height="40"',
@@ -26,72 +26,65 @@ $(document).ready(function(){
   var linkOpen = '<a target="_blank" href="' + baseurl + '/' + userNickname + '">' + "Pledge 25c ";
   var linkClose = '</a>';
   
+  // jQuery objects
+  var $iframe = $('#upload-picture');
+  
   // State variables
+  var has_new_user_picture = false;
   var buttonTitle = '';
   var buttonSize = '';
   var codeType = '';
   var newCode = '';
-  var step = 0;
+  var step = 1;
   
-  // Functions
-
-  // Show following tutorial step
-  var showNextStep = function() {
-    var newStep = parseInt($(this).parents('.step-container').attr('id').substring(4)) + 1;
-    if (newStep > step) {
-      step = newStep;
-      if (step == 4 || (step == 3 && codeType == 'link')) $('#step4, #step5').slideDown('fast');
-      else $('#step' + step).slideDown('fast');
+  // Show next step in sequence
+  var showNextStep = function(limit) {
+    if (!limit || step < limit) {
+      step++;
+      var $nextStep = $('.step-container:hidden[data-skip!="true"]:first');
+      $nextStep.first().slideDown('fast');
+      $nextStep.children('.step-number').text(step);
+      if ($nextStep.attr('id') == 'get-code' || $nextStep.attr('id') == 'share-cause') {
+        showNextStep();
+      }
     }
   };
   
-  // Toggle showing step 3
-  var showStep3 = function(state) {
-    if (state) {
-      if (step >= 3) {
-        $('#step3').show();
-        if (!$('input.button-size:checked').length) {
-          step = 3;
-          $('#step4, #step5').hide();
-        }
-      }
-      $('#step4 > .step-number').text('4');
-      $('#step5 > .step-number').text('5');
-    } else {
-      $('#step3').hide();
-      if (step == 3) {
-        step = 2;
-        $('#set-button-title').click();
-      }
-      $('#step4 > .step-number').text('3');
-      $('#step5 > .step-number').text('4');
-    }
+  // Correct step numbers and hide / show non-relevant steps
+  var recomputeSteps = function(state) {
+    $('.step-container:visible[data-skip=true]').hide();
+    $('.step-container:visible').prevAll('[data-skip!="true"]').show();
+    step = 0;
+    $('.step-container:visible').each(function() {
+      step++;
+      $(this).children('.step-number').text(step);
+    });
   }
   
   // Update button code shown to user
   var updateButtonCode = function() {
     if (codeType == 'javascript' || codeType == 'iframe') {
-      putButton('code_type', codeType);
+      putUpdate(true, { code_type: codeType });
     }
     $('#set-nickname-link').hide();
     if (codeType == 'iframe') {
       newCode = iframeOpen + buttonSize + iframeMid + imageSizesDict[buttonSize] + iframeClose;
       $('.if-javascript').show();
       $('.if-link').hide();
-      showStep3(true);
+      $('#choose-button').removeAttr('data-skip');
     } else if (codeType == 'javascript') {
       newCode = jsOpen + buttonSize + '">' + buttonTitle + jsClose;
       $('.if-javascript').show();
       $('.if-link').hide();
-      showStep3(true);
+      $('#choose-button').removeAttr('data-skip');
     } else if (codeType == 'link') {
       newCode = linkOpen + buttonTitle + linkClose;
       $('#set-nickname-link').show();
       $('.if-javascript').hide();
       $('.if-link').show();
-      showStep3(false);
+      $('#choose-button').attr('data-skip', true);
     }
-    
+        
     $('#button-code-block').text(newCode);
     $('#button-preview').html(newCode);
     
@@ -101,20 +94,26 @@ $(document).ready(function(){
     }
   };
   
-  // Update button with PUT request
-  var putButton = function(key, value) {
-    buttonData = {};
-    buttonData[key] = value;
-    var updates = { button: buttonData };
+  // Update button or user with PUT request
+  var putUpdate = function(isButton, data, successCallback, errorCallback) {
+    var updates = isButton ? { button: data } : { user: data };
+    putUrl = isButton ? updateButtonUrl : updateUserUrl;
     $.ajax({
       type: "PUT",
-      url: updateButtonUrl,
+      url: putUrl,
       data: JSON.stringify(updates),
       contentType: 'application/json',
       dataType: 'json',
-      success: function(data) {
-      }
+      success: successCallback,
+      error: errorCallback
     });
+  }
+  
+  var profileUrl = function() {
+    var new_profile_url = window.location.protocol + '//' + window.location.hostname;
+    if (new_profile_url.indexOf('localhost') != -1) new_profile_url += ':3000';
+    new_profile_url += '/' + userNickname;
+    return new_profile_url;
   }
   
   // Event handlers
@@ -136,8 +135,9 @@ $(document).ready(function(){
         $this.parent().find('.selected-option').removeClass('selected-option');
         $this.addClass('selected-option');
         updateButtonCode();
-        putButton('size', buttonSize);
+        putUpdate(true, { 'size': buttonSize });
       }
+      showNextStep(5);
     } else if ($this.hasClass('platform-container')) {
       $this.parent().find('.selected-option').removeClass('selected-option');
       $this.addClass('selected-option');
@@ -156,42 +156,120 @@ $(document).ready(function(){
         var newCodeType = "link";
         $('.youtube-instructions').show();
       }
-      if (codeType != newCodeType) {
-        codeType = newCodeType;
-        updateButtonCode();
+      if (platform == 'none') {
+        $('#get-code, #choose-button').attr('data-skip', true);
+        $('#enhance-profile').removeAttr('data-skip');
+        $('.if-javascript, .if-iframe').hide();
+        recomputeSteps();
+        showNextStep(5);
+      } else {
+        $('#get-code').removeAttr('data-skip');
+        $('#enhance-profile').attr('data-skip', true);
+        if (codeType != newCodeType) {
+          codeType = newCodeType;
+          updateButtonCode();
+        }
+        recomputeSteps();
+        showNextStep(4);
       }
-    }
-    else if ($this.hasClass('code-option-container')) {
+    } else if ($this.hasClass('code-option-container')) {
       $this.children('input.code-type').change();
     }
   });
   
-  // Save button title
-  $('#set-button-title').click(function(){
-    var newButtonTitle = $('#button-title').val();
-    $('#button-tooltip-text, #button-link-text').text(newButtonTitle);
-    if (buttonTitle != newButtonTitle) {
-      buttonTitle = newButtonTitle;
-      putButton('title', buttonTitle);
-      updateButtonCode();
-    }
+  // Save button info
+  $('#set-button-info').click(function(){
+    buttonTitle = $('#button-title').val();
+    var buttonDescription = $('#button-description').val();
+    $('#button-tooltip-text, #button-link-text').text(buttonTitle);
+    putUpdate(true, { title: buttonTitle, description: buttonDescription });
+    updateButtonCode();
+    showNextStep(2);
   });
   
-  $('#button-title').focusout(function(){
-    $('#set-button-title').click();
+  $('#button-description').focusout(function(){
+    $('#set-button-info').click();
   });
   
-  // Assign tutorial step reveal behavior
-  $('.platform-container, .button-choice, .code-option-container').click(showNextStep);
-  $('#set-button-title').click(showNextStep);
-  $('#button-title').keypress(function(event) {
-    if (event.which == 13) {
-      $('#set-button-title').click();
+  // Upload user picture
+  $('#upload-picture-button').click();
+  
+  // Save user info
+  $('#set-user-info').click(function(){
+    var userAbout = $('#user-about').val();
+    if (userNickname) {
+      putUpdate(false, { about: userAbout });
+      showNextStep(3);
     } else {
-      setTimeout(function() {
-        $('#button-tooltip-text, #button-link-text').text($('#button-title').val());
-      }, 0);
+      if ($('#user-nickname').val()) {
+        userNickname = $('#user-nickname').val();
+        putUpdate(false, { nickname: userNickname, about: userAbout }, function(response) {
+          $('#profile-link > a').attr('href', profileUrl()).text(profileUrl());
+          $('#user-nickname').parent().add($('#user-nickname').parent().prev()).hide();
+          $('#profile-link > a').attr('href', profileUrl()).text(profileUrl());
+          showNextStep(3);
+        }, function() {
+          alert(nicknameTaken);
+          userNickname = '';
+        });
+      } else {
+        alert(nicknameBlank);
+      }
     }
+  });
+  
+  $('#user-about').focusout(function(){
+    $('#set-user-info').click();
   });
 
+  // Handle picture upload functionality
+  $iframe.load(function() {
+    var $user_form = $iframe.contents().find('form#user-form');
+    var $user_input = $user_form.find('#user_picture');
+    if (has_new_user_picture) {
+      newUserPictureUrl = $(this).contents().find('#picture-urls').attr('data_user_url');            
+      $('#user-picture-link').attr('href', newUserPictureUrl).show();
+      $('#user-picture-uploading').hide();
+    }
+    $('#upload-user-picture').unbind('click').click(function() {
+      $user_input.click();
+      $user_input.change(function() {
+        $user_form.submit();
+        has_new_user_picture = true;
+        $('#user-picture-link').hide();
+        $('#user-picture-uploading').show();
+      });
+    });
+  });
+  
+  $('#fb-share').click(function() {
+    var fbShareHref = "https://www.facebook.com/dialog/feed?display=popup"
+		  + "&app_id=<%= FACEBOOK_SETTINGS['app_id'] %>"
+		  + "&link=" + profileUrl()
+      + "&picture=" + "http://assets.25c.com.s3.amazonaws.com/logos/25c-logo-medium.png"
+		  + "&name=" + fbShareTitle
+      + "&caption=" + " "
+		  + "&description=" + fbShareDescription
+		  + "&redirect_uri=" + fbShareCallbackUrl;
+    openPopup(fbShareHref, "Share on Facebook");
+	});
+
+  $('#tw-share').click(function() {
+    var $this = $(this);
+		var twShareHref = "https://twitter.com/share?url=" + encodeURIComponent(profileUrl());
+		openPopup(twShareHref, "Share on Twitter");
+  });
+  
+  $('#email-share').click(function() {
+    var email_string = 'mailto:?body=' + encodeURIComponent(profileUrl() + '\n\n' + shareEmailBody)
+      + '&subject=' + encodeURIComponent(shareEmailSubject);
+    $(this).attr('href', email_string);
+  });
+  
+  $('#profile-link > a').attr('href', profileUrl()).text(profileUrl());
+
 });
+
+
+
+

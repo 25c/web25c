@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     @user.editing = true
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.json { render json: true, head: :ok }
+        format.json { render json: { :user => @user }, head: :ok }
         if params[:user].include?(:picture)
           @button = @user.buttons[0]
           format.html { render action: 'upload_picture' }

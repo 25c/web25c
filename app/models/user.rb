@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :if => 'not linked?'
   validates :email, :uniqueness => { :case_sensitive => false }, :allow_nil => true, :email => true
 
-  validates :paypal_email, :presence => true, :uniqueness => { :case_sensitive => false }, 
+  validates :paypal_email, :uniqueness => { :case_sensitive => false },
     :allow_nil => true, :email => true, :confirmation => true
   validates_confirmation_of :paypal_email
   
@@ -112,9 +112,11 @@ class User < ActiveRecord::Base
   end
   
   def get_thumb
-    picture = self.picture(:thumb) ? self.picture(:thumb)
-      : ( self.picture ? self.picture : 'http://i50.tinypic.com/5y6ljo.png')
-    picture
+    if self.picture_updated_at
+      picture = self.picture(:thumb) ? self.picture(:thumb) : self.picture
+    else
+      picture = 'http://i50.tinypic.com/5y6ljo.png'
+    end
   end
   
   private
