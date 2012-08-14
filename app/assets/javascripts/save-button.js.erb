@@ -196,7 +196,7 @@ $(document).ready(function(){
   $('#upload-picture-button').click();
   
   // Save user info
-  $('#set-user-info').click(function(){
+  $('#set-user-info').click(function() {
     var userAbout = $('#user-about').val();
     if (userNickname) {
       putUpdate(false, { about: userAbout });
@@ -219,7 +219,7 @@ $(document).ready(function(){
     }
   });
   
-  $('#user-about').focusout(function(){
+  $('#user-about').focusout(function() {
     $('#set-user-info').click();
   });
 
