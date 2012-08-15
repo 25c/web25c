@@ -1,33 +1,3 @@
-=content_for(:js) do
-  :javascript
-    $(document).ready(function() {
-      <!-- mixpanel.track("Front Page Loaded"); -->
-
-      <!-- $('#add-25c-button').click(function(event) { -->
-      <!--  event.preventDefault(); -->
-      <!--  mixpanel.track("Front Page Action", {"Create": "Button"}); -->
-      <!--  window.location = $(this).attr('href'); -->
-      <!-- }); -->
-
-      <!-- $('#create-profile').click(function(event) { -->
-      <!--  event.preventDefault(); -->
-      <!--  mixpanel.track("Front Page Action", {"Create": "Profile"}); -->
-      <!--  window.location = $(this).attr('href'); -->
-      <!-- }); -->
-
-      <!-- $('#top-sites-button').click(function(event) { -->
-      <!--  event.preventDefault(); -->
-      <!--  mixpanel.track("Front Page Action", {"Top": "Sites"}); -->
-      <!--  window.location = $(this).attr('href'); -->
-      <!-- }); -->
-
-      <!-- $('#top-profiles-button').click(function(event) { -->
-      <!--  event.preventDefault(); -->
-      <!--  mixpanel.track("Front Page Action", {"Top": "Profiles"}); -->
-      <!--  window.location = $(this).attr('href'); -->
-      <!-- }); -->
-    });
-
 .splash
   #splash-how-it-works.pull-left
     %h2= t('.how_it_works')
@@ -39,18 +9,10 @@
   .lead.splash-title.center= raw t('.collect_title')
   .splash-column.pull-left.center
     .lead= t('.create_button_title')
-    =link_to t('.create_button_button'), home_buttons_path, :class => 'btn btn-large btn-warning',
+    =link_to t('.create_button_button'), home_get_button_path, :class => 'btn btn-large btn-warning',
       :id => 'add-25c-button'
   .splash-column.pull-left.center
     .lead= t('.create_profile_title')
     =link_to t('.create_profile_button'), @profile_path, :class => 'btn btn-large btn-warning',
       :id => 'create-profile'
-  / .clear
-  / %h1.splash-title.center.highlight= t('.pledge_title')
-  / .splash-column.pull-left.center
-  /   =link_to t('.top_sites_button'), '#', :class => 'btn btn-large btn-warning',
-  /     :id => 'top-sites-button'
-  / .splash-column.pull-left.center
-  /   =link_to t('.top_profiles_button'), '#', :class => 'btn btn-large btn-warning',
-  /     :id => 'top-profiles-button'
   .clear.buffer
