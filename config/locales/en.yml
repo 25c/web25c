@@ -114,9 +114,9 @@ en:
         link: Link
         
         describe_cause_title: "Describe what your micro-donation collections are about and who they go to:"
-        button_title_label: You ask: Pledge 25c 
+        button_title_label: "You ask: Pledge 25c"
         enter_title: for (this cause) / to (this person or org)
-        button_description_label: Description:
+        button_description_label: "Description:"
         enter_description: (describe what the collections are about)
         set_button_info: Continue
         
@@ -158,7 +158,7 @@ en:
         button_preview: "Button preview:"
         
         share_cause_title: Tell people you know about your cause!
-        profile_link: You now have a 25c.com page at: %{link}
+        profile_link: "You now have a 25c.com page at: %{link}"
         share_cause_label: "Tell your friends by sending a message via:"
         share_facebook: Share on Facebook
         fb_share_description: Use 25c pledges to reward and support great causes.
