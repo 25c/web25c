@@ -213,7 +213,8 @@ en:
       or: "Or: "
       sign_in: Sign In
       sign_out: Sign Out
-      buttons: Collect Pledges
+      receive_pledges: Receive Pledges
+      get_button: Get Button Code
       payments: Fund Pledges You Made
       dashboard: Dashboard
     footer:
