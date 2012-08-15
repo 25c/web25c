@@ -32,12 +32,12 @@ class Click < ActiveRecord::Base
       self.connection.execute("PREPARE TRANSACTION 'undo-click-#{self.uuid}'")
       begin
         self.user.update_attribute(:balance, self.user.balance + 1)
-        self.user.connection.execute("PREPARE TRANSACTION 'undo-user-#{self.uuid}'")
+        # self.user.connection.execute("PREPARE TRANSACTION 'undo-user-#{self.uuid}'")
         begin
-          self.user.connection.execute("COMMIT PREPARED 'undo-user-#{self.uuid}'")
+          # self.user.connection.execute("COMMIT PREPARED 'undo-user-#{self.uuid}'")
         rescue
-          self.user.connection.execute("ROLLBACK PREPARED 'undo-user-#{self.uuid}'")
-          raise $!
+          # self.user.connection.execute("ROLLBACK PREPARED 'undo-user-#{self.uuid}'")
+          # raise $!
         end
       rescue
         self.connection.execute("ROLLBACK PREPARED 'undo-click-#{self.uuid}'")

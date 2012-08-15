@@ -308,8 +308,8 @@ en:
       failure: Your account was not created. Please try again.
     tip:
       tagline: "Please log in with:"
-      pledged_to: You have pledged 25c to %{provider}. Thank you!
-      pledge_more: Want to pledge additional 25c's? Re-click +25c above.
+      pledge_to: "Pledge 25c to %{provider} by clicking the following button:"
+      pledge_more: Thank you! (Click again to pledge another 25c.)
       over_limit: "You have reached a total of 40 unfunded 25c pledges.  Please now fund these pledges.  It's just $10 -- 40 quarters. Your pledgees are looking forward to your funding your past pledges -- because that's what will get them paid."
       payment: Fund Pledges You Made
       done: Close
@@ -321,7 +321,7 @@ en:
       new_p3: "Make forty (40) pledges at your leisure. Then we will ask you to fund them through a $10 charge to your credit card. Once funded, a 25c pledge is eligible for pay-out."
       new_undo: "You may %{undo_button} pledges at any time up to the point when you funded them." 
       undo_button: Undo Pledges
-      new_p4: "Thank you for participating. Changing the internet one quarter one click."
+      new_bottom_tagline: "Thank you for participating. Changing the internet one quarter one click."
       facebook: Facebook
       google: Google
       bottom_tagline: Thank you for participating. Changing the Internet one quarter one click. Incentivizing "value to you" beyond "value to advertiser".
