@@ -12,9 +12,41 @@
  *= require_self
 */
 
+
+/* NEW DESIGN
+*---------------------------- */
+
 body {
-  background-image: url(image_path("rough_diagonal.png"));
+  background-color: #eee;
+  padding: 30px 0;
 }
+
+
+#outer-container {
+  width: 960px;
+  margin: 0 auto;
+  border-radius: 20px;
+  background-color: #f26422;
+  padding: 2px;
+}
+
+#inner-container {
+  border-radius: 20px;
+  background-color: white;
+}
+
+#header-container {
+  color: white;
+  height: 30px;
+  padding-top: 10px;
+}
+
+
+
+
+
+
+
 
 body, p, strong, h4, ul.plist > li, label, input, button, select, textarea {
   color: #333;
@@ -149,7 +181,6 @@ hr {
   margin-right: 20px;
 }
 #nav-tagline {
-  color: #333;
   margin-right: 10px;
 }
 
@@ -1458,10 +1489,5 @@ pre#button-code-block {
 #upload-picture-fields #current-picture-checkbox {
   margin-top: 0;
 }
-
-
-
-
-
 
 
