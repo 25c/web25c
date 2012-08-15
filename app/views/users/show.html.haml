@@ -137,7 +137,7 @@
                   :id => 'upload-youtube-url'}
                 #youtube-button.btn= t('.save_video')
 
-      - if @user.show_donations
+      - if @user.show_donations and @click_sets.length > 0
         .span11
           %h3.table-title
             = t('.tips_title')

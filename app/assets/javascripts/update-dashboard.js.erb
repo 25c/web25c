@@ -26,7 +26,11 @@ $(document).ready(function() {
   });
     
   $('.dataTables_paginate > ul > li.disabled').parent().parent().hide();
-  $('.dataTables_empty').text(noPledgesText);
+  
+  console.log($('#clicks-received .dataTables_empty'));
+  $('#clicks-given .dataTables_empty').html(noPledgesGivenText);
+  $('#clicks-received .dataTables_empty').html(noPledgesReceivedText);
+  $('#clicks-referred .dataTables_empty').html(noPledgesReferredText);
   
   $('.dataTables_wrapper').each(function() {
     var $this = $(this);

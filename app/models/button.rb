@@ -7,8 +7,8 @@ class Button < ActiveRecord::Base
   
   validates :size,
     :inclusion => {
-      :in => %w(btn-large btn-medium btn-small icon-large icon-medium icon-small icon-text),
-      :message => "%{value} is not a valid button size" 
+      :in => %w(btn-large btn-medium btn-small icon-large icon-medium icon-small round-large round-medium round-small icon-text),
+      :message => "%{value} is not a valid button size"
     }
 
   validates :code_type,

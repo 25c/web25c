@@ -46,12 +46,20 @@
         .input-column.pull-left
           #upload-picture-fields
             #upload-user-picture.btn= t('.upload_picture')
-            %span#user-picture-uploading.hide= t('.picture_uploading')
+
             - if @user.picture_updated_at
-              %a#user-picture-link{ :target => '_blank', :href => @user.picture }
-                = t('.picture_link')
+              %span#current-picture-container
+                %input#current-picture-checkbox{ :type => 'checkbox', :checked => true }
+                %span#current-picture-link
+                  = t('.picture_link')
+                  = image_tag(current_user.get_thumb, :class => 'thumb-picture')
             - else
-              %a#user-picture-link.hide{ :target => '_blank', :href => '#' }= t('.picture_link')
+              %span#current-picture-container.hide
+                %input#current-picture-radio{ :type => 'radio', :checked => true }
+                %span#current-picture-link
+                  = t('.picture_link')
+                  = image_tag(current_user.get_thumb, :class => 'thumb-picture')
+
         - if @user.nickname.blank?
           .clear.label-column.pull-left
             %label.buffer= t('.user_nickname_label')
@@ -112,6 +120,7 @@
             %input.button-size{ :type => 'radio', :name => 'button_size' }
             %span= t('.btn-medium')
             %img{ :src => image_path('25c-btn-medium.png'), :'data-size' => 'btn-medium' }
+
           .button-choice
             %input.button-size{ :type => 'radio', :name => 'button_size' }
             %span= t('.icon-medium')
@@ -124,12 +133,27 @@
             %input.button-size{ :type => 'radio', :name => 'button_size' }
             %span= t('.icon-small')
             %img{ :src => image_path('25c-icon-small.png'), :'data-size' => 'icon-small' }
+
           .button-choice
             %input.button-size{ :type => 'radio', :name => 'button_size' }
             %span= t('.icon-text')
             #icon-text-container
               %img{ :src => image_path('25c-icon-text.png'), :'data-size' => 'icon-text' }
               %span#icon-text 25c
+          
+          .button-choice
+            %input.button-size{ :type => 'radio', :name => 'button_size' }
+            %span= t('.round-large')
+            %img{ :src => image_path('25c-round-large.png'), :'data-size' => 'round-large' }
+          .button-choice
+            %input.button-size{ :type => 'radio', :name => 'button_size' }
+            %span= t('.round-medium')
+            %img{ :src => image_path('25c-round-medium.png'), :'data-size' => 'round-medium' }
+          .button-choice
+            %input.button-size{ :type => 'radio', :name => 'button_size' }
+            %span= t('.round-small')
+            %img{ :src => image_path('25c-round-small.png'), :'data-size' => 'round-small' }
+
           .clear
     .clear
 
@@ -173,22 +197,21 @@
         #profile-link.buffer= raw t('.profile_link', :link => link_to('', '#', :target => '_blank'))
         #share-cause.buffer
           = t('.share_cause_label')
-          / #share-facebook.btn=t('.share_facebook')
-          / #share-twitter.btn=t('.share_twitter')
           #fb-share= image_tag("logos/facebook.png")
           #tw-share= image_tag("logos/twitter.png")
-          =mail_to '', t('.share_email'), :id => 'email-share', :class => 'btn'
         %p= t('.share_cause_note_p1')
-        %p.if-button.hide= t('.share_cause_note_p2')
+        %p= t('.share_cause_note_p2')
     .clear
-            
-  #enhance-profile.step-container.hide
+
+  #view-dashboard.step-container.hide
     .span1.step-number
     .span10.step-content
-      %h2.step-title= t('.enhance_profile_title')
+      %h2.step-title= t('.view_dashboard_title')
       .step-body
-        %p= t('.enhance_profile')
-        =link_to(home_profile_url)
+        %p= raw t('.check_dashboard', :link => link_to(t('.check_dashboard_link'), home_dashboard_path))
+        %p= t('.request_payout')
+        %p= raw t('.enhance_profile_repeat', 
+          :link => link_to(t('.enhance_profile_link'), home_profile_path))
     .clear
     
 %iframe#upload-picture{ :src => upload_picture_path }

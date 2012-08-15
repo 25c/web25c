@@ -3,7 +3,16 @@ class Home::ButtonsController < Home::HomeController
   def index
     @user = self.current_user
     @button = self.current_user.buttons[0]
-    @is_demo = false
+  end
+  
+  def receive_pledges
+    @user = self.current_user
+    @button = self.current_user.buttons[0]
+  end
+  
+  def get_button
+    @user = self.current_user
+    @button = self.current_user.buttons[0]
   end
   
   def new

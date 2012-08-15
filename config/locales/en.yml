@@ -80,7 +80,11 @@ en:
         funded_note: "You may undo 25c pledges until you fund them."
         funded: Funded
         to_be: To be
-        no_pledges: No pledges.
+        no_pledges_given: You have not given any 25c pledges.
+        no_pledges_received: You have not received any 25c pledges.  In order to receive 25c pledges, %{profile_link}, %{button_link}, and/or Share pledge links.
+        no_pledges_profile_link: enhance your 25.com profile page
+        no_pledges_button_link: embed a +25c Button
+        no_pledges_referred: "You have not yet sent out pledge links via Share so far or have not had anyone make a 25c pledge to you based on such Share links distributed."
         fb_share_button_title: "I just pledged 25c %{button_title}!"
         fb_share_user_title: "I just pledged 25c to %{user_name}!"
         fb_share_description: Use 25c pledges to reward and support great causes!
@@ -90,11 +94,12 @@ en:
         confirm_undo: Are you sure you want to undo this pledge?  (Your pledgee will be disappointed!)
         profile_link: "%{provider}'s Profile"
         dashboard: Back to Dashboard
+        no_pledges: You have not given any 25c pledges.
       
     buttons:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
-      index: 
+      receive_pledges: 
         title: Collect micro-donations
         subtitle: "In just a few simple steps, you are ready to go:"
         short_url_title: 25c Short URL
@@ -126,7 +131,7 @@ en:
         user_about_label: "Description:"
         upload_picture: Upload
         picture_uploading: Picture uploading...
-        picture_link: Your current user picture
+        picture_link: "Use this picture:"
         user_nickname_hint: "This determines your profile URL, such as: http://www.25c.com/example"
         enter_about: (describe who the funds go to)
         set_user_info: Continue
@@ -138,16 +143,9 @@ en:
         no_platform: "Skip.  For now, just create my 25c.com page for collecting 25c pledges."
         
         choose_button_title: "Choose a look for your +25c Button:"
-        icon-large: "Large icon"
-        btn-large: "Large button" 
-        icon-medium: "Medium icon"
-        btn-medium: "Medium button"
-        icon-small: "Small icon"
-        btn-small: "Small button"
-        icon-text: "Icon & text"
-        get_code_title_blog: "Copy & embed this code into your blog:"
-        get_code_title_website: "Copy & embed this code into your website:"
-        get_code_title_youtube: "Copy & insert this link into your Youtube video description:"
+        get_code_title_blog: "Now embed this code into your blog:"
+        get_code_title_website: "Now embed this code into your website:"
+        get_code_title_youtube: "Now insert this code into your Youtube video description:"
         button_code: "HTML Code for Your Own +25c Button:"
         sign_in_overlay: Click here to create an account!
         set_nickname: Choose a nickname to set your profile URL.
@@ -170,15 +168,15 @@ en:
         share_cause_note_p1: "Unless you tell people about your cause, no-one will know about it!  25c only makes it easy for you to transact micro-donations.  But it’s entirely up to you to make your cause known to others."
         share_cause_note_p2: "Make sure to embed the +25c Button in websites with user traffic.  Embed as many +25c Buttons as you like – you may add more at any time."
         
-        enhance_profile_title: "Finally, enhance your 25c.com profile"
-        enhance_profile: Check out your profile to provide more background about yourself or upload an image or video about your micro-donation cause.
-        
-      short_url:
-        input_label: "Use it when sending links to your followers and earn along for resulting pledges:"
-        input_text: "Paste content URL to encode"
-        output_label: "25c Short URL:"
-        get_url: Generate Short URL
-        share_label: "Share Your Link:"
+        view_dashboard_title: View your stats and collections
+        view_dashboard: "Check your %{link} to view who has pledged 25c's to you."
+        view_dashboard_link: dashboard
+        request_payout: Once you have reached the minimum pay-out amount (of $50), request a pay-out.
+        enhance_profile: Finally, %{link} and don't forget to make 25c pledges yourself on a website near you!
+        enhance_profile_link: enhance your 25c.com profile page
+      get_button:
+        title: Get your +25c Button Code
+        subtitle: Follow these easy steps to get your +25c button code and start receiving pledges right away!
 
     index:
       how_it_works: ""

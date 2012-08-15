@@ -25,6 +25,8 @@ Web25c::Application.routes.draw do
     # Buttons
     resources :buttons
     match 'update_button' => 'buttons#update_button', :as => :update_button, :via => :put
+    match 'get_button' => 'buttons#get_button', :as => :get_button
+    match 'receive_pledges' => 'buttons#receive_pledges', :as => :receive_pledges
         
     # Dashboard
     match '' => 'dashboard#index', :as => :dashboard

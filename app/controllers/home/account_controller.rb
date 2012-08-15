@@ -68,9 +68,11 @@ class Home::AccountController < Home::HomeController
         openPayments = @user.payments.where(:state => Payment::State::NEW, :payment_type => 'payout')
         if openPayments.empty?
           payment = @user.payments.new({:amount => amount, :payment_type => 'payout'})
+          ApplicationMailer.new_payout_request(@user, payment).deliver
         elsif openPayments.length == 1
           payment = openPayments[0]
           payment.amount = amount unless openPayments[0].amount == amount
+          ApplicationMailer.updated_payout_request(@user, payment).deliver
         else
           # error: multiple open payouts
           raise "User #{@user.id} has multiple open payout request"

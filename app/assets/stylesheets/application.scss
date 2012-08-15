@@ -176,7 +176,7 @@ hr {
     margin: 7px 5px 5px;
 }
 
-.thumb-picture {
+.dropdown-toggle .thumb-picture {
   border-radius: 2px;
   margin: -1px 4px 0 0;
   max-width: 25px;
@@ -709,6 +709,10 @@ table.clicks-table #fb-share img, table.clicks-table #tw-share img {
   width:20px;
 }
 
+table.dataTable td.dataTables_empty { 
+ white-space: normal;
+}
+
 /* BOOTSTRAP OVERRIDES
 *---------------------------- */
 
@@ -1099,7 +1103,7 @@ table.table thead .sorting_desc_disabled {
   position: relative;
   float: left;
   height: 80px;
-  width: 108px;
+  width: 120px;
   text-align: center;
   cursor: pointer;
   padding-top: 5px;
@@ -1118,18 +1122,8 @@ table.table thead .sorting_desc_disabled {
   margin-top: 30px;
 }
 
-.button-choice img[data-size="icon-large"] {
-  margin-left: -20px;
-  margin-top: 30px;
-}
-
 .button-choice img[data-size="btn-medium"] {
   margin-left: -30px;
-  margin-top: 35px;
-}
-
-.button-choice img[data-size="icon-medium"] {
-  margin-left: -15px;
   margin-top: 35px;
 }
 
@@ -1138,7 +1132,17 @@ table.table thead .sorting_desc_disabled {
   margin-top: 40px;
 }
 
-.button-choice img[data-size="icon-small"] {
+.button-choice img[data-size="icon-large"], .button-choice img[data-size="round-large"] {
+  margin-left: -20px;
+  margin-top: 30px;
+}
+
+.button-choice img[data-size="icon-medium"], .button-choice img[data-size="round-medium"] {
+  margin-left: -15px;
+  margin-top: 35px;
+}
+
+.button-choice img[data-size="icon-small"], .button-choice img[data-size="round-small"] {
   margin-left: -10px;
   margin-top: 40px;
 }
@@ -1257,7 +1261,8 @@ pre#button-code-block {
 }
 
 .step-container .step-title {
-  margin: 10px 0 30px;
+  font-size: 20px;
+  margin: 13px 0 30px;
 }
 
 .step-container .platform-container {
@@ -1342,7 +1347,7 @@ pre#button-code-block {
   margin-bottom: 10px;
 }
 
-.step-container .input-column input, .step-container .input-column textarea {
+.step-container .input-column input[type=text], .step-container .input-column textarea {
   width: 480px;
 }
 
@@ -1421,7 +1426,21 @@ pre#button-code-block {
   height: 80px;
 }
 
+#upload-picture-fields .thumb-picture {
+  margin-left: 5px;
+  border-radius: 2px;
+  max-width: 40px;
+  max-height: 40px;
+  
+}
 
+#upload-picture-fields #current-picture-link {
+  cursor: pointer;
+}
+
+#upload-picture-fields #current-picture-checkbox {
+  margin-top: 0;
+}
 
 
 
