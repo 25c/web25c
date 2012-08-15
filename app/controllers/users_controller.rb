@@ -300,7 +300,7 @@ class UsersController < ApplicationController
     redirect_path = session.delete(:redirect_path)
     @referrer = params[:referrer]
     # @button_id = params[:button_id]
-    @new_account = params[:new_account]    
+    @new_account = params[:new_account]
     @user = self.current_user
     @button = Button.find_by_uuid(params[:button_id])
     render :layout => "blank"
