@@ -314,6 +314,8 @@ en:
       payment: Fund Pledges You Made
       done: Close
       view_pledges: View Pledges
+      undo_pledges: Undo Pledges
+      visit_25c: Go to 25c.com
       new_welcome: "Congratulations -- you are now successfully registered at %{home_url} with your %{account} ID."
       new_p1: "You can now start making social micro-donations to easily & directly support what you value. Wherever you see the +25c Button on the web, clicking it pledges 25 cents from you to the cause. It's just a quarter but it adds up for the receivers!"
       new_button: "Try it out by clicking this +25c Button to pledge 25c to %{provider}:"
@@ -326,7 +328,6 @@ en:
       google: Google
       bottom_tagline: Thank you for participating. Changing the Internet one quarter one click. Incentivizing "value to you" beyond "value to advertiser".
     confirm_tip:
-      visit_25c: Go to 25c.com
       view_account: View 25c Account
       close_window: Close this window
     choose_nickname:
