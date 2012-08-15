@@ -22,7 +22,7 @@ class Home::ButtonsController < Home::HomeController
   def create
     @button = self.current_user.buttons.build(params[:button])
     if @button.save
-      redirect_to home_buttons_path
+      redirect_to home_get_button_path
     else
       render :new
     end
@@ -30,7 +30,7 @@ class Home::ButtonsController < Home::HomeController
   
   def show
     @button = self.current_user.buttons.find_by_uuid(params[:id])
-    redirect_to home_buttons_path
+    redirect_to home_get_button_path
   end
   
   def edit
@@ -47,7 +47,7 @@ class Home::ButtonsController < Home::HomeController
     if params.has_key('ajax')
       render :nothing => true, :status => 200, :content_type => 'text/html'
     else
-      redirect_to home_buttons_path(@button)
+      redirect_to home_get_button_path(@button)
     end
   end
 
