@@ -28,7 +28,7 @@
               %td.payment-user-paypal-email= mail_to(payment.user.paypal_email)
               %td.payment-amount $#{"%.2f" % payment.amount}
               %td= payment.created_at.to_s(:number)
-              %td.payment-date= l payment.created_at, :format => :short
+              %td.payment-date= l payment.created_at, :format => "%d %b %y"
               %td.payment-button.center
                 %a.process-payment.btn.btn-success{:"data-payment_uuid" => payment.uuid}
                   = t('.process')

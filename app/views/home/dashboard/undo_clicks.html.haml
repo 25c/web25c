@@ -37,6 +37,6 @@
                 %td.click-referrer= link_to click.referrer, click.referrer, :target => "_blank"
                             
               %td= click.created_at.to_s(:number)
-              %td.click-date= l click.created_at, :format => :short
+              %td.click-date= l click.created_at, :format => "%d %b %y"
               %td.click-delete.center
                 %a.delete-click.btn.btn-warning{:"data-click_id" => click.uuid}= t('.undo')
