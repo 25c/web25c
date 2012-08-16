@@ -163,11 +163,11 @@ ul#nav-login > li.login-logo img {
 }
 
 ul.dropdown-menu > li > a {
-  color: #f98a61;
+  color: #f26422;
 }
 
 ul.dropdown-menu > li > a:hover {
-  background-color: transparent;
+  background-color: #eee;
   color: #f26422;
 }
 
@@ -1001,17 +1001,13 @@ table.table thead .sorting_desc_disabled {
   margin-left: 20px;
 }
 
-#profile-container {
-//  margin-top: -18px;
-}
-
 #user-profile {
   width: 200px;
   padding: 20px;
 //  border: 2px solid #ddd;
   background-color: white;
   border-radius: 5px;
-  margin: 0 0 20px 20px;
+  margin: 0 0 20px 0;
   min-height: 333px;
 }
 
@@ -1442,6 +1438,7 @@ pre#button-code-block {
   float: left;
   height: 50px;
   width: 50px;
+  margin-right: 20px;
   line-height: 56px;
   font-size: 36px;
   text-align: center;

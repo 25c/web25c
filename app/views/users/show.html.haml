@@ -31,33 +31,32 @@
 
 - if @is_editable
   %iframe#upload-picture{:src => upload_picture_path }
-#profile-container
-  = simple_form_for @user, :url => home_account_path, :html => { :multipart => true } do |f|
-#user-profile.pull-left
-  .block.pull-left
-    .input-block
-      - if @is_editable
-        #upload-user-picture.btn= t('.upload_user_picture')
-    #user-picture-container
-      = image_tag(@user.picture, :id => 'user-picture')
-  .pull-left
-    .block#name-block
-      - if @is_editable
-        .input-block
-          %input{:type => 'text', :name => 'user[first_name]', 
-            :value => @user.first_name.blank? ? t('.first_name_default') : @user.first_name,
-            :id => 'first_name_input'}
-          %input{:type => 'text', :name => 'user[last_name]', 
-          :value => @user.last_name.blank? ? t('.last_name_default') : @user.last_name,
-          :id => 'last_name_input'}
-      %p.content-block.emphasis
-        =@user.first_name.blank? ? t('.enter_name') :  @user.first_name
-        =@user.last_name.blank? ? '' : @user.last_name
-    .block#about-block.clear
+#profile-container.pull-left
+  #user-profile.pull-left
+    .block.pull-left
       .input-block
-        %textarea{:id => 'about', :name => 'user[about]', :rows => 3}
-          =@user.about.blank? ? t('.enter_about') : @user.about
-  .clear
+        - if @is_editable
+          #upload-user-picture.btn= t('.upload_user_picture')
+      #user-picture-container
+        = image_tag(@user.picture, :id => 'user-picture')
+    .pull-left
+      .block#name-block
+        - if @is_editable
+          .input-block
+            %input{:type => 'text', :name => 'user[first_name]', 
+              :value => @user.first_name.blank? ? t('.first_name_default') : @user.first_name,
+              :id => 'first_name_input'}
+            %input{:type => 'text', :name => 'user[last_name]', 
+            :value => @user.last_name.blank? ? t('.last_name_default') : @user.last_name,
+            :id => 'last_name_input'}
+        %p.content-block.emphasis
+          =@user.first_name.blank? ? t('.enter_name') :  @user.first_name
+          =@user.last_name.blank? ? '' : @user.last_name
+      .block#about-block.clear
+        .input-block
+          %textarea{:id => 'about', :name => 'user[about]', :rows => 3}
+            =@user.about.blank? ? t('.enter_about') : @user.about
+    .clear
 #project-container.pull-left
   #project-action
     #button-fields
@@ -166,3 +165,4 @@
               %td.click-amount 0
               %td.click-user= t('.no_clicks')
               %td.click-referrer
+.clear

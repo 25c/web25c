@@ -9,7 +9,8 @@
     window.noPledgesText = '#{ j t('.no_pledges') }';
 
 %h2.page-header= t('.title')
-%a= link_to t('.dashboard'), home_dashboard_path, :class => 'btn'
+%p.buffer
+  %a= link_to t('.dashboard'), home_dashboard_path, :class => 'btn'
 .table-wrapper
   %table#clicks-given.clicks-table.table.table-condensed.table-striped
     %thead

@@ -8,11 +8,11 @@
     window.buttonSize = '#{ @button.size.blank? ? '' : @button.size }';
 
 %h2.page-header= t('.title')
-%p= t('.subtitle')
+%p.buffer= t('.subtitle')
 
 #choose-platform.step-container
-  .span1.step-number 1
-  .span10.step-content
+  .step-number 1
+  .step-content
     %h3.step-title= t('home.buttons.receive_pledges.choose_platform_title')
     .step-body
       .pull-left.platform-container{ :'data-platform' => 'html' }
@@ -35,8 +35,8 @@
   .clear
 
 #choose-button.step-container
-  .span1.step-number 2
-  .span10.step-content
+  .step-number 2
+  .step-content
     %h3.step-title= t('home.buttons.receive_pledges.choose_button_title')
     .step-body
       #button-choice-container
@@ -90,8 +90,8 @@
   .clear
 
 #get-code.step-container
-  .span1.step-number 3
-  .span10.step-content
+  .step-number 3
+  .step-content
     %h3.step-title.blog-instructions.instructions.hide= t('home.buttons.receive_pledges.get_code_title_blog')
     %h3.step-title.html-instructions.instructions.hide= t('home.buttons.receive_pledges.get_code_title_website')
     %h3.step-title.youtube-instructions.instructions.hide= t('home.buttons.receive_pledges.get_code_title_youtube')

@@ -24,7 +24,7 @@
   = t('.not_funded')
   = @clicks_unfunded_total.to_s + ' '
   ($#{"%.2f" % (@clicks_unfunded_total.to_f / 4)})
-%p
+%p.buffer
   %a= link_to t('.undo_clicks'), home_undo_clicks_path, :class => 'btn dashboard-action'
   = t('.funded_note')
 .table-wrapper
@@ -81,7 +81,8 @@
   = t('.tips_received_title')
   = @clicks_received_total.to_s + ' '
   ($#{"%.2f" % (@clicks_received_total.to_f / 4)})
-%a= link_to t('.payout'), home_payout_path, :class => 'btn'
+%p.buffer
+  %a= link_to t('.payout'), home_payout_path, :class => 'btn'
 .table-wrapper
   %table#clicks-received.clicks-table.table.table-condensed.table-striped
     %thead
