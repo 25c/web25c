@@ -190,17 +190,22 @@ en:
         subtitle: Follow these easy steps to get your +25c button code and start receiving pledges right away!
 
     index:
-      how_it_works: ""
-      25c_button_legend: The +25c Button&trade;
-      25c_button_legend_sub: One quarter each click
-      pledge_title: Pledge 25c's
-      collect_title: "<b>Receive 25c Pledges</b>"
-      create_button_title: "...on your website, blog, Youtube:"
-      create_button_button: Embed Your Own +25c
-      create_profile_title: "...on 25c.com:"
-      create_profile_button: Create a Profile
-      top_sites_button: Top Receivers
-      top_profiles_button: Top Givers
+      title_top: Social micro-donations.
+      title_bottom: One click, one quarter.
+      button_title: The +25c Button&trade;
+      legend_p1: Tap once = 25 cents
+      legend_p2: Tap twice = 50 cents
+      legend_p3: ...
+      legend_p4: 10,000 = $25,000
+      pledge_to: Pledge 25c to
+      cause: YOUR CAUSE
+      share: "Share:"
+      set_up: <b>Get Set Up</b> to receive social micro-donations
+      explain_p1: "* Takes 60 seconds"
+      explain_p2: "* It's upside only, no downside"
+      explain_p3: "* Incremental revenue"
+      facebook_share_title: 25c - Social micro-donations. One click, one quarter.
+      facebook_share_description: 25c makes it easy to pledge micro-donations!
     
     not_found:
       title: Page Not Found
