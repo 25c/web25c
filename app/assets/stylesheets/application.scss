@@ -48,6 +48,9 @@ body {
   background-color: #f26422;
   z-index: -30;
   position: relative;
+  -webkit-box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+     -moz-box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+          box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
 #inner-container {
