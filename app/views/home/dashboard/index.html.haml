@@ -14,154 +14,148 @@
     window.fbShareCallbackUrl = '#{ j fb_share_callback_url }';
     window.fbShareDescriptionText = '#{ j t('.fb_share_description') }';
 
-.row.main-content
-  .span11
-    %h2.page-header= t('.title')
-  .span11
-    %h3.table-title
-      = t('.tips_given_title')
-      = @clicks_given_total.to_s + ' '
-      ($#{"%.2f" % (@clicks_given_total.to_f / 4)})
-    %p
-      %a= link_to t('.payment'), home_payment_path, :class => 'btn dashboard-action'
-      = t('.not_funded')
-      = @clicks_unfunded_total.to_s + ' '
-      ($#{"%.2f" % (@clicks_unfunded_total.to_f / 4)})
-    %p
-      %a= link_to t('.undo_clicks'), home_undo_clicks_path, :class => 'btn dashboard-action'
-      = t('.funded_note')
-    .table-wrapper
-      %table#clicks-given.clicks-table.table.table-condensed.table-striped
-        %thead
-          %tr
-            %th
-            %th.click-amount= t('.amount')
-            %th.click-provider= t('.provider')
-            %th.click-referrer= t('.referrer')
-            %th
-            %th.click-date= t('.date_created')
-            %th
-            %th.click-funded= t('.funded')
-            %th.click-share= t('.share')
-        %tbody
-          - @clicks_given.each do |set|
-            %tr
-              %td= set[0]
-              %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
-              %td.click-user= set[1].button.user.display_name
-              - if set[1].referrer.blank?
-                %td.click-referrer= t('.no_referrer')
-              - elsif set[1].referrer.include?(request.host)
-                %td.click-referrer
-                  = link_to t('.profile_link', :provider => set[1].button.user.display_name),
-                    set[1].referrer, :target => "_blank"
-              - else
-                %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
-              %td= set[1].created_at.to_s(:number)
-              %td.click-date= l set[1].created_at, :format => "%d %b %y"
-              - if set[1].state > Click::State::DEDUCTED
-                %td= set[1].created_at.to_s(:number)
-                %td.click-funded= l set[1].updated_at, :format => "%d %b %y"
-              - else
-                %td 0
-                %td.click-funded= t('.to_be')
-              %td.click-share
-                - if set[1].button.title.blank?
-                  #fb-share{:"data-referrer" => set[1].referrer,
-                    :"data-title" => t('.fb_share_user_title', 
-                      :user_name => set[1].button.user.display_name) }
-                    = image_tag("logos/facebook.png")
-                - else
-                  #fb-share{:"data-referrer" => set[1].referrer,
-                    :"data-title" => t('.fb_share_button_title', 
-                      :button_title => set[1].button.title) }
-                    = image_tag("logos/facebook.png")
-                #tw-share{:"data-referrer" => set[1].referrer}= image_tag("logos/twitter.png")
-                
-    #process-message.alert.alert-success.hide= t('.clicks_processed')
-.row.main-content
-  .span11
-    %h3.table-title
-      = t('.tips_received_title')
-      = @clicks_received_total.to_s + ' '
-      ($#{"%.2f" % (@clicks_received_total.to_f / 4)})
-    %a= link_to t('.payout'), home_payout_path, :class => 'btn'
-    .table-wrapper
-      %table#clicks-received.clicks-table.table.table-condensed.table-striped
-        %thead
-          %tr
-            %th
-            %th.click-amount= t('.amount')
-            %th.click-user= t('.clicker')
-            %th.click-referrer= t('.referrer')
-            %th
-            %th= t('.date_created')
-            %th
-            %th.click-funded= t('.funded')
-            %th.hide
-        %tbody
-          - @clicks_received.each do |set|
-            %tr
-              %td= set[0]
-              %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
-              %td.click-user= set[1].user.display_name
-              - if set[1].referrer.blank?
-                %td.click-referrer= t('.no_referrer')
-              - elsif set[1].referrer.include?(request.host)
-                %td.click-referrer
-                  = link_to t('.profile_link', :provider => set[1].button.user.display_name),
-                    set[1].referrer, :target => "_blank"
-              - else
-                %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
-              %td.click-date= set[1].created_at.to_s(:number)
-              %td.click-date= l set[1].created_at, :format => "%d %b %y"
-              - if set[1].state > Click::State::DEDUCTED
-                %td= set[1].created_at.to_s(:number)
-                %td.click-funded= l set[1].updated_at, :format => "%d %b %y"
-              - else
-                %td 0
-                %td.click-funded= t('.to_be')
-              %td.hide
+%h2.page-header= t('.title')
+%h3.table-title
+  = t('.tips_given_title')
+  = @clicks_given_total.to_s + ' '
+  ($#{"%.2f" % (@clicks_given_total.to_f / 4)})
+%p
+  %a= link_to t('.payment'), home_payment_path, :class => 'btn dashboard-action'
+  = t('.not_funded')
+  = @clicks_unfunded_total.to_s + ' '
+  ($#{"%.2f" % (@clicks_unfunded_total.to_f / 4)})
+%p
+  %a= link_to t('.undo_clicks'), home_undo_clicks_path, :class => 'btn dashboard-action'
+  = t('.funded_note')
+.table-wrapper
+  %table#clicks-given.clicks-table.table.table-condensed.table-striped
+    %thead
+      %tr
+        %th
+        %th.click-amount= t('.amount')
+        %th.click-provider= t('.provider')
+        %th.click-referrer= t('.referrer')
+        %th
+        %th.click-date= t('.date_created')
+        %th
+        %th.click-funded= t('.funded')
+        %th.click-share= t('.share')
+    %tbody
+      - @clicks_given.each do |set|
+        %tr
+          %td= set[0]
+          %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+          %td.click-user= set[1].button.user.display_name
+          - if set[1].referrer.blank?
+            %td.click-referrer= t('.no_referrer')
+          - elsif set[1].referrer.include?(request.host)
+            %td.click-referrer
+              = link_to t('.profile_link', :provider => set[1].button.user.display_name),
+                set[1].referrer, :target => "_blank"
+          - else
+            %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
+          %td= set[1].created_at.to_s(:number)
+          %td.click-date= l set[1].created_at, :format => "%d %b %y"
+          - if set[1].state > Click::State::DEDUCTED
+            %td= set[1].created_at.to_s(:number)
+            %td.click-funded= l set[1].updated_at, :format => "%d %b %y"
+          - else
+            %td 0
+            %td.click-funded= t('.to_be')
+          %td.click-share
+            - if set[1].button.title.blank?
+              #fb-share{:"data-referrer" => set[1].referrer,
+                :"data-title" => t('.fb_share_user_title', 
+                  :user_name => set[1].button.user.display_name) }
+                = image_tag("logos/facebook.png")
+            - else
+              #fb-share{:"data-referrer" => set[1].referrer,
+                :"data-title" => t('.fb_share_button_title', 
+                  :button_title => set[1].button.title) }
+                = image_tag("logos/facebook.png")
+            #tw-share{:"data-referrer" => set[1].referrer}= image_tag("logos/twitter.png")
+            
+#process-message.alert.alert-success.hide= t('.clicks_processed')
 
-.row.main-content
-  .span11
-    %h3.table-title
-      = t('.tips_referred_title')
-      = @clicks_referred_total.to_s + ' '
-      ($#{"%.2f" % (@clicks_referred_total.to_f / 4)})
-    .table-wrapper
-      %table#clicks-referred.clicks-table.table.table-condensed.table-striped
-        %thead
-          %tr
-            %th
-            %th.click-amount= t('.amount')
-            %th.click-user= t('.clicker')
-            %th.click-referrer= t('.referrer')
-            %th
-            %th= t('.date_created')
-            %th
-            %th.click-funded= t('.funded')
-            %th.hide
-        %tbody
-          - @clicks_referred.each do |set|
-            %tr
-              %td= set[0]
-              %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
-              %td.click-user= set[1].user.display_name
-              - if set[1].referrer.blank?
-                %td.click-referrer= t('.no_referrer')
-              - elsif set[1].referrer.include?(request.host)
-                %td.click-referrer
-                  = link_to t('.profile_link', :provider => set[1].button.user.display_name),
-                    set[1].referrer, :target => "_blank"
-              - else
-                %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
-              %td.click-date= set[1].created_at.to_s(:number)
-              %td.click-date= l set[1].created_at, :format => "%d %b %y"
-              - if set[1].state > Click::State::DEDUCTED
-                %td= set[1].created_at.to_s(:number)
-                %td.click-funded= l set[1].updated_at, :format => "%d %b %y"
-              - else
-                %td 0
-                %td.click-funded= t('.to_be')
-              %td.hide
+%h3.table-title
+  = t('.tips_received_title')
+  = @clicks_received_total.to_s + ' '
+  ($#{"%.2f" % (@clicks_received_total.to_f / 4)})
+%a= link_to t('.payout'), home_payout_path, :class => 'btn'
+.table-wrapper
+  %table#clicks-received.clicks-table.table.table-condensed.table-striped
+    %thead
+      %tr
+        %th
+        %th.click-amount= t('.amount')
+        %th.click-user= t('.clicker')
+        %th.click-referrer= t('.referrer')
+        %th
+        %th= t('.date_created')
+        %th
+        %th.click-funded= t('.funded')
+        %th.hide
+    %tbody
+      - @clicks_received.each do |set|
+        %tr
+          %td= set[0]
+          %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+          %td.click-user= set[1].user.display_name
+          - if set[1].referrer.blank?
+            %td.click-referrer= t('.no_referrer')
+          - elsif set[1].referrer.include?(request.host)
+            %td.click-referrer
+              = link_to t('.profile_link', :provider => set[1].button.user.display_name),
+                set[1].referrer, :target => "_blank"
+          - else
+            %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
+          %td.click-date= set[1].created_at.to_s(:number)
+          %td.click-date= l set[1].created_at, :format => "%d %b %y"
+          - if set[1].state > Click::State::DEDUCTED
+            %td= set[1].created_at.to_s(:number)
+            %td.click-funded= l set[1].updated_at, :format => "%d %b %y"
+          - else
+            %td 0
+            %td.click-funded= t('.to_be')
+          %td.hide
+
+%h3.table-title
+  = t('.tips_referred_title')
+  = @clicks_referred_total.to_s + ' '
+  ($#{"%.2f" % (@clicks_referred_total.to_f / 4)})
+.table-wrapper
+  %table#clicks-referred.clicks-table.table.table-condensed.table-striped
+    %thead
+      %tr
+        %th
+        %th.click-amount= t('.amount')
+        %th.click-user= t('.clicker')
+        %th.click-referrer= t('.referrer')
+        %th
+        %th= t('.date_created')
+        %th
+        %th.click-funded= t('.funded')
+        %th.hide
+    %tbody
+      - @clicks_referred.each do |set|
+        %tr
+          %td= set[0]
+          %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+          %td.click-user= set[1].user.display_name
+          - if set[1].referrer.blank?
+            %td.click-referrer= t('.no_referrer')
+          - elsif set[1].referrer.include?(request.host)
+            %td.click-referrer
+              = link_to t('.profile_link', :provider => set[1].button.user.display_name),
+                set[1].referrer, :target => "_blank"
+          - else
+            %td.click-referrer= link_to set[1].referrer, set[1].referrer, :target => "_blank"
+          %td.click-date= set[1].created_at.to_s(:number)
+          %td.click-date= l set[1].created_at, :format => "%d %b %y"
+          - if set[1].state > Click::State::DEDUCTED
+            %td= set[1].created_at.to_s(:number)
+            %td.click-funded= l set[1].updated_at, :format => "%d %b %y"
+          - else
+            %td 0
+            %td.click-funded= t('.to_be')
+          %td.hide

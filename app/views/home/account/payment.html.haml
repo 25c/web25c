@@ -3,26 +3,23 @@
   :javascript
     window.createPaymentUrl = '#{ j home_create_payment_url }';
 
-.row.main-content
-  .span11
-    %h2.page-header= t('.title')
-  .span11
-    -if @has_payin
-      %p.buffer= t('users.tip.over_limit')
-      %p.buffer= t('.amount')
-      
-      %form{ :action => "https://www.sandbox.paypal.com/cgi-bin/webscr", :method => "post" }
-        %input{ :type => "hidden", :name => "cmd", :value => "_s-xclick" }
-        %input{ :type => "hidden", :name => "hosted_button_id", :value => "R4T4G5JDLD3LY" }
-        %input{ :type => "image", :src => "https://www.sandbox.paypal.com/en_US/i/btn/btn_paynowCC_LG.gif", :border => "0",  :name => "submit", :alt => "PayPal - The safer, easier way to pay online!" }
-        %img{ :alt => "", :border => "0", :src => "https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif",  :width => "1",  :height => "1" }
+%h2.page-header= t('.title')
+-if @has_payin
+  %p.buffer= t('users.tip.over_limit')
+  %p.buffer= t('.amount')
   
-    - else
-      %p= t('.given', :total => @total, :total_amount => "%.2f" % (@total.to_f / 4))
-      %p= t('.click_more_p1')
-      %p.buffer= t('.click_more_p2')
-      
-      %a= link_to t('.dashboard'), home_dashboard_path, :class => 'btn'
+  %form{ :action => "https://www.sandbox.paypal.com/cgi-bin/webscr", :method => "post" }
+    %input{ :type => "hidden", :name => "cmd", :value => "_s-xclick" }
+    %input{ :type => "hidden", :name => "hosted_button_id", :value => "R4T4G5JDLD3LY" }
+    %input{ :type => "image", :src => "https://www.sandbox.paypal.com/en_US/i/btn/btn_paynowCC_LG.gif", :border => "0",  :name => "submit", :alt => "PayPal - The safer, easier way to pay online!" }
+    %img{ :alt => "", :border => "0", :src => "https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif",  :width => "1",  :height => "1" }
+
+- else
+  %p= t('.given', :total => @total, :total_amount => "%.2f" % (@total.to_f / 4))
+  %p= t('.click_more_p1')
+  %p.buffer= t('.click_more_p2')
+  
+  %a= link_to t('.dashboard'), home_dashboard_path, :class => 'btn'
       
       
       
