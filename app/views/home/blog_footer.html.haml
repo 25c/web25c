@@ -1,4 +1,9 @@
 = content_for(:head) do
   %base{:target => "_parent"}
+  :css
+    body {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
 %body{:style => "background-image: none; background-color: transparent;"}
   = render 'layouts/footer'
