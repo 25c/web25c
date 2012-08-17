@@ -1,8 +1,7 @@
 class Home::ButtonsController < Home::HomeController
 
   def index
-    @user = self.current_user
-    @button = self.current_user.buttons[0]
+    redirect_to home_get_button_path
   end
   
   def receive_pledges

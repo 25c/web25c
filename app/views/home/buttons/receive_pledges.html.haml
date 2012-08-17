@@ -29,7 +29,7 @@
         %textarea#button-description{ :name => 'button[description]', :rows => 3 }
           = @button.description.blank? ? t('.enter_description') : @button.description
       .clear
-      #set-button-info.btn.btn-warning= t('.set_button_info')
+      #set-button-info.btn.btn-strong= t('.set_button_info')
   .clear
   
 #describe-user.step-container.hide
@@ -68,7 +68,7 @@
         %textarea#user-about{ :name => 'user[about]', :rows => 3 }
           = @user.about.blank? ? t('.enter_about') : @user.about
       .clear
-      #set-user-info.clear.btn.btn-warning= t('.set_user_info')
+      #set-user-info.clear.btn.btn-strong= t('.set_user_info')
   .clear
 
 #choose-platform.step-container.hide

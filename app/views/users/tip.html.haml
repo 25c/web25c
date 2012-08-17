@@ -11,68 +11,69 @@
           setTimeout(function() { window.close(); }, 100);
         });
       });
-  - if not @new_account.blank?
+  - unless @new_account.blank?
     :javascript
       var width = 700;
-      var height = 490;
+      var height = 480;
       var left = (screen.width - width) / 2;
       var top = (screen.height - height) / 2;
       window.resizeTo(width, height);
       window.moveTo(left, top);
 
 %body#tip-body
-  #tip-center.main-content
-    #tip-logo-bar
-      %a.pull-left{:href => root_path, :target => '_blank'}
-        %img{:src => image_path('25c-logo-small.png')}
-      #tip-tagline.pull-left= t('layouts.header.tagline')
+  #tip-outer-container
+    #tip-header-container
+      %a#tip-nav-logo.pull-left{ :href => root_path }
+        %img{ :src => image_path('logo-incline-01.png') }
+      #tip-nav-tagline.pull-left= t('layouts.header.tagline')
       .clear
+    #tip-inner-container
+      #tip-center.main-content
+        - if signed_in?
+          - if params[:overdraft]
+            #tip-overdraft.center
+              %p.buffer= t('.over_limit')
+              = link_to t('.payment'), home_payment_path, :class => 'btn btn-strong', 
+                :target => '_blank'
+          - elsif @new_account.blank?
+            .center
+              %p= t('.pledge_to', :provider => @button.user.display_name)
+              #tip-button-holder.center
+                %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
+                  #{@button.title}
+                :javascript
+                  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
+                  if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
+                  js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
+                  fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
+              %p= t('.pledge_more')
+              %a= link_to t('.view_pledges'), home_dashboard_path, :class => 'btn', :target => 'blank'
+              %a= link_to t('.undo_pledges'), home_undo_clicks_path, :class => 'btn', :target => 'blank'
+              %a= link_to t('.visit_25c'), root_path, :class => 'btn', :target => 'blank'
+              .tip-close-container
+                %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
+              %p#bottom-tagline= t('.bottom_tagline')
+          - else
+            %p= raw t('.new_welcome', :home_url => link_to('25c.com', root_path, :target => '_blank') , 
+              :account => t('.' + @new_account))
+            %p= t('.new_p1')
+            %p= t('.new_button', :provider => @button.user.display_name)
+            #tip-button-holder.center
+              %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
+                #{@button.title}
+              :javascript
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
+                if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
+                js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
+                fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
+            %p= t('.new_p2')
+            %p= t('.new_p3')
+            %p= raw t('.new_undo', :undo_button => link_to(t('.undo_button'), home_undo_clicks_path, 
+              :class => 'btn', :target => '_blank'))
+            %p#bottom-tagline.center= t('.new_bottom_tagline')
 
-    - if signed_in?
-      - if params[:overdraft]
-        .center
-          %p.buffer= t('.over_limit')
-          = link_to t('.payment'), home_payment_path, :class => 'btn btn-warning', 
-            :target => '_blank'
-      - elsif @new_account.blank?
-        .center
-          %p= t('.pledge_to', :provider => @button.user.display_name)
-          #tip-button-holder.center
-            %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
-              #{@button.title}
-            :javascript
-              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
-              if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
-              js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
-              fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
-          %p= t('.pledge_more')
-          %a= link_to t('.view_pledges'), home_dashboard_path, :class => 'btn', :target => 'blank'
-          %a= link_to t('.undo_pledges'), home_undo_clicks_path, :class => 'btn', :target => 'blank'
-          %a= link_to t('.visit_25c'), root_path, :class => 'btn', :target => 'blank'
-          .tip-close-container
-            %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
-          %p#bottom-tagline= t('.bottom_tagline')
-      - else
-        %p= raw t('.new_welcome', :home_url => link_to('25c.com', root_path, :target => '_blank') , 
-          :account => t('.' + @new_account))
-        %p= t('.new_p1')
-        %p= t('.new_button', :provider => @button.user.display_name)
-        #tip-button-holder.center
-          %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
-            #{@button.title}
-          :javascript
-            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
-            if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
-            js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
-            fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
-        %p= t('.new_p2')
-        %p= t('.new_p3')
-        %p= raw t('.new_undo', :undo_button => link_to(t('.undo_button'), home_undo_clicks_path, 
-          :class => 'btn', :target => '_blank'))
-        %p#bottom-tagline.center= t('.new_bottom_tagline')
-
-    - else
-      = render 'layouts/sign_in_form'
+        - else
+          = render 'layouts/sign_in_form'
 
 = javascript_include_tag "application"
 = yield(:js)
