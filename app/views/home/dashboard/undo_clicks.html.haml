@@ -8,35 +8,33 @@
     window.deleteClickUrl = '#{ j home_delete_click_url }';
     window.noPledgesText = '#{ j t('.no_pledges') }';
 
-.row.main-content
-  .span11.buffer
-    %h2.page-header= t('.title')
-    %a= link_to t('.dashboard'), home_dashboard_path, :class => 'btn'
-  .span11
-    .table-wrapper
-      %table#clicks-given.clicks-table.table.table-condensed.table-striped
-        %thead
-          %tr
-            %th.click-provider= t('.provider')
-            %th.click-referrer= t('.referrer')
-            %th
-            %th.click-date= t('.date_created')
-            %th
-        %tbody
-          - @clicks_given.each do |click|
-            %tr
-              %td.click-user= click.button.user.display_name
-              
-              - if click.referrer.blank?
-                %td.click-referrer= t('.no_referrer')
-              - elsif click.referrer.include?(request.host)
-                %td.click-referrer
-                  = link_to t('.profile_link', :provider => click.button.user.display_name),
-                    click.referrer, :target => "_blank"
-              - else
-                %td.click-referrer= link_to click.referrer, click.referrer, :target => "_blank"
-                            
-              %td= click.created_at.to_s(:number)
-              %td.click-date= l click.created_at, :format => :short
-              %td.click-delete.center
-                %a.delete-click.btn.btn-warning{:"data-click_id" => click.uuid}= t('.undo')
+%h2.page-header= t('.title')
+%p.buffer
+  %a= link_to t('.dashboard'), home_dashboard_path, :class => 'btn'
+.table-wrapper
+  %table#clicks-given.clicks-table.table.table-condensed.table-striped
+    %thead
+      %tr
+        %th.click-provider= t('.provider')
+        %th.click-referrer= t('.referrer')
+        %th
+        %th.click-date= t('.date_created')
+        %th
+    %tbody
+      - @clicks_given.each do |click|
+        %tr
+          %td.click-user= click.button.user.display_name
+          
+          - if click.referrer.blank?
+            %td.click-referrer= t('.no_referrer')
+          - elsif click.referrer.include?(request.host)
+            %td.click-referrer
+              = link_to t('.profile_link', :provider => click.button.user.display_name),
+                click.referrer, :target => "_blank"
+          - else
+            %td.click-referrer= link_to click.referrer, click.referrer, :target => "_blank"
+                        
+          %td= click.created_at.to_s(:number)
+          %td.click-date= l click.created_at, :format => "%d %b %y"
+          %td.click-delete.center
+            %a.delete-click.btn.btn-strong{:"data-click_id" => click.uuid}= t('.undo')

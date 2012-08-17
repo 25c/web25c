@@ -1,56 +1,46 @@
-=content_for(:js) do
-  :javascript
-    $(document).ready(function() {
-      <!-- mixpanel.track("Front Page Loaded"); -->
-
-      <!-- $('#add-25c-button').click(function(event) { -->
-      <!--  event.preventDefault(); -->
-      <!--  mixpanel.track("Front Page Action", {"Create": "Button"}); -->
-      <!--  window.location = $(this).attr('href'); -->
-      <!-- }); -->
-
-      <!-- $('#create-profile').click(function(event) { -->
-      <!--  event.preventDefault(); -->
-      <!--  mixpanel.track("Front Page Action", {"Create": "Profile"}); -->
-      <!--  window.location = $(this).attr('href'); -->
-      <!-- }); -->
-
-      <!-- $('#top-sites-button').click(function(event) { -->
-      <!--  event.preventDefault(); -->
-      <!--  mixpanel.track("Front Page Action", {"Top": "Sites"}); -->
-      <!--  window.location = $(this).attr('href'); -->
-      <!-- }); -->
-
-      <!-- $('#top-profiles-button').click(function(event) { -->
-      <!--  event.preventDefault(); -->
-      <!--  mixpanel.track("Front Page Action", {"Top": "Profiles"}); -->
-      <!--  window.location = $(this).attr('href'); -->
-      <!-- }); -->
+= content_for(:js) do
+  :javascript    
+    $('#fb-share').click(function() {
+      var fbShareHref = "https://www.facebook.com/dialog/feed?display=popup"
+        + "&app_id=#{ FACEBOOK_SETTINGS['app_id'] }"
+        + "&link=#{ root_url }"
+        + "&picture=http://assets.25c.com.s3.amazonaws.com/logos/25c-logo-medium.png"
+        + "&name=#{ j t('.facebook_share_title') }"
+        + "&caption=" + " "
+        + "&description=#{ j t('.facebook_share_description') }"
+        + "&redirect_uri=#{ j fb_share_callback_url }";
+      openPopup(fbShareHref, "Share on Facebook");
+    });
+    $('#tw-share').click(function() {
+      var twShareHref = "https://twitter.com/share?url=" + encodeURIComponent("#{ root_url }");
+      openPopup(twShareHref, "Share on Twitter");
     });
 
-.splash
-  #splash-how-it-works.pull-left
-    %h2= t('.how_it_works')
-  #splash-graphics.pull-left
-  #splash-25c-button.pull-left
-    %h2= raw t('.25c_button_legend')
-    .lead= t('.25c_button_legend_sub')
-  .clear.buffer
-  .lead.splash-title.center= raw t('.collect_title')
-  .splash-column.pull-left.center
-    .lead= t('.create_button_title')
-    =link_to t('.create_button_button'), home_buttons_path, :class => 'btn btn-large btn-warning',
-      :id => 'add-25c-button'
-  .splash-column.pull-left.center
-    .lead= t('.create_profile_title')
-    =link_to t('.create_profile_button'), @profile_path, :class => 'btn btn-large btn-warning',
-      :id => 'create-profile'
-  / .clear
-  / %h1.splash-title.center.highlight= t('.pledge_title')
-  / .splash-column.pull-left.center
-  /   =link_to t('.top_sites_button'), '#', :class => 'btn btn-large btn-warning',
-  /     :id => 'top-sites-button'
-  / .splash-column.pull-left.center
-  /   =link_to t('.top_profiles_button'), '#', :class => 'btn btn-large btn-warning',
-  /     :id => 'top-profiles-button'
-  .clear.buffer
+
+#splash-title-top.highlight= t('.title_top')
+#splash-title-bottom.highlight.center= t('.title_bottom')
+
+#splash-arrows.center= image_tag 'front/arrows-01.png'
+
+#splash-container
+  #splash-button-title.center= raw t('.button_title')
+  #splash-legend.pull-left
+    %div= t('.legend_p1')
+    %div= t('.legend_p2')
+    %div= t('.legend_p3')
+    %div= t('.legend_p4')
+  #splash-button.center.pull-left= image_tag 'front/button-01.png'
+  #splash-tooltip.pull-left
+    = t('.pledge_to')
+    %span.highlight= t('.cause')
+    #splash-tooltip-share
+      = t('.share')
+      #fb-share= image_tag("logos/facebook.png")
+      #tw-share= image_tag("logos/twitter.png")
+  #splash-arrow.center.clear= image_tag 'front/arrow-01.png'
+  %a#splash-call.btn.highlight.pull-left{ :href => home_receive_pledges_path }= raw t('.set_up')
+  #splash-explain.highlight.pull-left
+    %div= t('.explain_p1')
+    %div= t('.explain_p2')
+    %div= t('.explain_p3')
+  .clear

@@ -10,7 +10,7 @@
   .hide
     .fb-login-button(data-scope="email,publish_actions")
       = t('users.sign_in.facebook')
-  .lead.compact-lead= t('users.sign_in.sign_in_with')
+  #sign_in_title.lead= t('users.sign_in.sign_in_with')
   .login-buttons
     %a.facebook-btn.pointer= image_tag "logos/facebook.png"
     - if @button

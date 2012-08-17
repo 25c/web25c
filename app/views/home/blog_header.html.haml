@@ -1,5 +1,18 @@
 = content_for(:head) do
   %base{:target => "_parent"}
+  :css
+    #corner-cover {
+      height: 40px;
+      width: 20px;
+      background-color: white;
+      position: absolute;
+      right: 0px;
+      top: 90px;
+      border-right: 1px solid #f26422;
+      border-top: 1px solid #f26422;
+      border-top-right-radius: 20px;
+    }
 %body{:style => "background-image: none; background-color: transparent;"}
   = render 'layouts/header'
+  #corner-cover
   = javascript_include_tag "application"

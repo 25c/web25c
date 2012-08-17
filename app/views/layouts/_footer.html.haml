@@ -1,18 +1,20 @@
-%footer.navbar
-  .navbar-inner
-    .container
-      #foot-copy.navbar-text.pull-left &copy; 25c, Inc. 2012
-      %ul.nav.pull-right
-        %li= link_to t('.about'), about_path
-        %li= link_to t('.faq'), faq_path
-        %li= link_to t('.blog'), 'http://blog.25c.com'
-        %li= link_to t('.fees'), fees_path
-        %li= link_to t('.terms'), terms_path
-        %li= link_to t('.privacy'), privacy_path
-         
-/
-  Javascripts
-  \==================================================
-/ Placed at the end of the document so the pages load faster
+%footer#footer-container
+  #footer-copy.pull-left &copy; 25c, Inc. 2012
+  %ul#footer-nav.pull-right
+    %li.pull-left= link_to t('.about'), about_path
+    .pull-left &#124;
+    %li.pull-left= link_to t('.blog'), 'http://blog.25c.com'    
+    .pull-left &#124;
+    %li.pull-left= link_to t('.faq'), faq_path
+    .pull-left &#124;
+    %li.pull-left= link_to t('.fees'), fees_path
+    .pull-left &#124;
+    %li.pull-left= link_to t('.privacy'), privacy_path
+    .pull-left &#124;
+    %li.pull-left= link_to t('.terms'), terms_path
+    .clear
+  .clear
+
+/ Javascripts - bottom of page to load faster
 = javascript_include_tag "application"
 = yield(:js)

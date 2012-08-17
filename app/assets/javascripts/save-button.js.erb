@@ -18,7 +18,7 @@ $(document).ready(function(){
   if (baseurl.indexOf('localhost') != -1) baseurl += ':3000';
 
   // Code contents
-  var jsOpen = '<a href="' + baseurl + '/tip/' + buttonId + '" class="tip-25c-button" data-size="';
+  var jsOpen = '<a href="' + baseurl + '/tip/' + buttonId + '" class="tip-25c-button" ';
   var jsClose = '</a>\n<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];\
     if(!d.getElementById(id)){js=d.createElement(s);js.id=id;\
     js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}\
@@ -35,7 +35,7 @@ $(document).ready(function(){
   // State variables
   var has_new_user_picture = false;
   var buttonTitle = '';
-  var buttonSize = window.buttonSize || '';
+  var buttonSize = window.buttonSize || 'btn-large';
   var codeType = '';
   var newCode = '';
   var step = 1;
@@ -77,7 +77,11 @@ $(document).ready(function(){
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
     } else if (codeType == 'javascript') {
-      newCode = jsOpen + buttonSize + '">' + buttonTitle + jsClose;
+      newCode = jsOpen 
+        + 'data-size="' + buttonSize 
+        + '" data-user="' + userDisplayName
+        + '" data-profile="' + profileUrl
+        + '">' + buttonTitle + jsClose;
       $('.if-javascript').show();
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
@@ -88,10 +92,10 @@ $(document).ready(function(){
       $('.if-link').show();
       $('#choose-button').attr('data-skip', true);
     }
-        
+
     $('#button-code-block').text(newCode);
     $('#button-preview').html(newCode);
-    
+
     if (codeType == 'javascript') {
       $('#button-js').remove();
       $('head').append('<script id="button-js" type="text/javascript" src="//<%= ENV["API25C_URL"] %>/public/javascripts/button.js">');
@@ -113,11 +117,15 @@ $(document).ready(function(){
     });
   }
   
-  var profileUrl = function() {
-    var new_profile_url = window.location.protocol + '//' + window.location.hostname;
-    if (new_profile_url.indexOf('localhost') != -1) new_profile_url += ':3000';
-    new_profile_url += '/' + userNickname;
-    return new_profile_url;
+  var getProfileUrl = function() {
+    if (userNickname) {
+      var new_profile_url = window.location.protocol + '//' + window.location.hostname;
+      if (new_profile_url.indexOf('localhost') != -1) new_profile_url += ':3000';
+      new_profile_url += '/' + userNickname;
+      return new_profile_url;
+    } else {
+      return '';
+    }
   }
   
   // Event handlers
@@ -207,10 +215,11 @@ $(document).ready(function(){
       if ($('#user-nickname').val()) {
         userNickname = $('#user-nickname').val();
         putUpdate(false, { nickname: userNickname, about: userAbout }, function(response) {
-          $('#profile-link > a').attr('href', profileUrl()).text(profileUrl());
+          $('#profile-link > a').attr('href', profileUrl).text(profileUrl);
           $('#user-nickname').parent().add($('#user-nickname').parent().prev()).hide();
-          $('#profile-link > a').attr('href', profileUrl()).text(profileUrl());
+          $('#profile-link > a').attr('href', profileUrl).text(profileUrl);
           showNextStep(3);
+          profileUrl = getProfileUrl();
         }, function() {
           alert(nicknameTaken);
           userNickname = '';
@@ -248,7 +257,7 @@ $(document).ready(function(){
   $('#fb-share').click(function() {
     var fbShareHref = "https://www.facebook.com/dialog/feed?display=popup"
 		  + "&app_id=<%= FACEBOOK_SETTINGS['app_id'] %>"
-		  + "&link=" + profileUrl()
+		  + "&link=" + profileUrl
       + "&picture=" + "http://assets.25c.com.s3.amazonaws.com/logos/25c-logo-medium.png"
 		  + "&name=" + fbShareTitle
       + "&caption=" + " "
@@ -259,7 +268,7 @@ $(document).ready(function(){
 
   $('#tw-share').click(function() {
     var $this = $(this);
-		var twShareHref = "https://twitter.com/share?url=" + encodeURIComponent(profileUrl());
+		var twShareHref = "https://twitter.com/share?url=" + encodeURIComponent(profileUrl);
 		openPopup(twShareHref, "Share on Twitter");
   });
   
@@ -267,8 +276,9 @@ $(document).ready(function(){
     $('#upload-picture-fields #current-picture-checkbox').click();
   });
   
-  $('#profile-link > a').attr('href', profileUrl()).text(profileUrl());
-  
+  // Initialization
+  var profileUrl = getProfileUrl();
+  $('#profile-link > a').attr('href', profileUrl).text(profileUrl);
   if (isButtonPage) {
     $('.platform-container[data-platform=html]').click();
     if (buttonSize) {

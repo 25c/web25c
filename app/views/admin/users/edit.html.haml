@@ -1,7 +1,5 @@
 - model_class = @user.class
 - content_for :title, t('.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human, :default => "Edit #{model_class.model_name.human}"))
-.row.main-content
-  .span11
-    %h2.page-header= t('.title')
-  .span11
-    = render :partial => "form"
+
+%h2.page-header= t('.title')
+= render :partial => "form"

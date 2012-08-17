@@ -33,18 +33,35 @@ class Payment < ActiveRecord::Base
       end
     elsif self.payment_type == 'payout'
     
-      url = "https://svcs.sandbox.paypal.com/AdaptivePayments/Pay"
+   sandbox_url = "https://svcs.sandbox.paypal.com/AdaptivePayments/Pay"
+   live_url = "https://svcs.paypal.com/AdaptivePayments/Pay"
+   
+   url = live_url
 
+   #   This is a sandbox request data with sandboxed credentials
+   #   request_data = {
+   #      :API_USER => "corp10_1344372396_biz_api1.25c.com",
+   #      :USER => "corp10_1344372396_biz@25c.com",
+   #     :PWD => "1344372419",
+   #      :SIGNATURE => "AFcWxV21C7fd0v3bYYYRCpSSRl31AjasVw9HF5loQn8PpkZelxreg.Nh",
+   #     :APPID => "APP-80W284485P519543T",
+   #    :AMT => "%.2f" % self.amount,
+   #    :RETURNURL => "http://www.25c.com/home/payout/succeed",
+   #     :CANCELURL => "http://www.25c.com/home/payout/fail"
+   #  }
+
+   # This is the live credentials for request data
       request_data = {
-        :USER => "corp10_1344372396_biz_api1.25c.com",
-        :PWD => "1344372419",
-        :SIGNATURE => "AFcWxV21C7fd0v3bYYYRCpSSRl31AjasVw9HF5loQn8PpkZelxreg.Nh",
-        :APPID => "APP-80W284485P519543T",
+        :API_USER => "corp_api1.25c.com",
+        :SENDER => "corp@25c.com",
+        :PWD => "ABWF85B6K2NGBHZ9",
+        :SIGNATURE => "A2GcOZdfyYPyC2hXDhVVJJnGE66vA6JqyJnYzOs2R7pbJrqhZ9aTfqM1",
+        :APPID => "APP-9UL86141TG297463L",
+        :ENDPOINT => "svcs.paypal.com",
         :AMT => "%.2f" % self.amount,
         :RETURNURL => "http://www.25c.com/home/payout/succeed",
         :CANCELURL => "http://www.25c.com/home/payout/fail"
-      }
-
+     }
       post_data = ''
 
       builder = ::Builder::XmlMarkup.new :target => post_data, :indent => 2
@@ -59,7 +76,7 @@ class Payment < ActiveRecord::Base
           x.applicationId request_data[:APPID]
           x.partnerName '25c'
         end
-        x.senderEmail 'corp10_1344372396_biz@25c.com'
+        x.senderEmail request_data[:SENDER]
         x.actionType 'PAY'
         x.feesPayer 'EACHRECEIVER'
         x.cancelUrl request_data[:CANCELURL]
@@ -83,7 +100,7 @@ class Payment < ActiveRecord::Base
       headers = {
         "X-PAYPAL-REQUEST-DATA-FORMAT" => "XML",
         "X-PAYPAL-RESPONSE-DATA-FORMAT" => "XML",
-        "X-PAYPAL-SECURITY-USERID" => request_data[:USER],
+        "X-PAYPAL-SECURITY-USERID" => request_data[:API_USER],
         "X-PAYPAL-SECURITY-PASSWORD" => request_data[:PWD],
         "X-PAYPAL-SECURITY-SIGNATURE" => request_data[:SIGNATURE],
         "X-PAYPAL-SERVICE-VERSION" => "1.1.0",
@@ -96,7 +113,7 @@ class Payment < ActiveRecord::Base
 
       # get a server handle
       port = 443
-      http_server = Net::HTTP.new("svcs.sandbox.paypal.com", port)
+      http_server = Net::HTTP.new(request_data[:ENDPOINT], port)
       http_server.use_ssl = true
 
       # get the response XML

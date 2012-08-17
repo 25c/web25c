@@ -31,142 +31,138 @@
 
 - if @is_editable
   %iframe#upload-picture{:src => upload_picture_path }
-#profile-container
-  = simple_form_for @user, :url => home_account_path, :html => { :multipart => true } do |f|
-    .row.main-content
-      / .span11
-      /   %h2.page-header= @user.display_name + t('.title')
-      #user-profile.pull-left
-        .block.pull-left
+#profile-container.pull-left
+  #user-profile.pull-left
+    .block.pull-left
+      .input-block
+        - if @is_editable
+          #upload-user-picture.btn= t('.upload_user_picture')
+      #user-picture-container
+        = image_tag(@user.picture, :id => 'user-picture')
+    .pull-left
+      .block#name-block
+        - if @is_editable
           .input-block
-            - if @is_editable
-              #upload-user-picture.btn= t('.upload_user_picture')
-          #user-picture-container
-            = image_tag(@user.picture, :id => 'user-picture')
-        .pull-left
-          .block#name-block
-            - if @is_editable
-              .input-block
-                %input{:type => 'text', :name => 'user[first_name]', 
-                  :value => @user.first_name.blank? ? t('.first_name_default') : @user.first_name,
-                  :id => 'first_name_input'}
-                %input{:type => 'text', :name => 'user[last_name]', 
-                :value => @user.last_name.blank? ? t('.last_name_default') : @user.last_name,
-                :id => 'last_name_input'}
-            %p.content-block.emphasis
-              =@user.first_name.blank? ? t('.enter_name') :  @user.first_name
-              =@user.last_name.blank? ? '' : @user.last_name
-          .block#about-block.clear
-            .input-block
-              %textarea{:id => 'about', :name => 'user[about]', :rows => 3}
-                =@user.about.blank? ? t('.enter_about') : @user.about
-        .clear
-      #project-container.pull-left
-        #project-action
-          #button-fields
-            #button-title-block.block
-              - if @is_editable
-                .input-block
-                  / %label= t('.button_title_label')
-                  %input{:type => 'text', :name => 'title', 
-                  :value => @button.title.blank? ? t('.enter_button_title') : @button.title,
-                  :id => 'button-title-input'}
-              .content-block
-                #profile-button-title
-                  / = t('.button_title_intro')
-                  %span#button-title= @button.title.blank? ? 'to ' + @user.display_name : @button.title
-                                    
-            - if not @button.youtube_id.blank?
-              #youtube-embed-container
-                %iframe{ :id => 'video-iframe',
-                  :title => 'YouTube Video Player',
-                  :width => '560',
-                  :height => '341',
-                  :src => 'http://www.youtube.com/embed/' + @button.youtube_id,
-                  :frameborder => '0' }
-              #button-picture-container.hide
-            - elsif @button.picture.exists?
-              #youtube-embed-container.hide
-              #button-picture-container
-                = image_tag(@button.picture, :id => 'button-picture')
-            - elsif @is_editable
-              #youtube-embed-container.hide
-              #button-picture-container.hide
-            #button-description-block.block
-              - if @is_editable
-                .input-block
-                  / %label= t('button_description_label')
-                  %textarea{:id => 'button-description-input', :name => 'description', 
-                    :rows => 1}
-                    =@button.description.blank? ? t('.enter_button_description') : @button.description
-              .content-block
-                #button-description
-                  = @button.description.blank? ? t('.button_description_default') : @button.description
-          .clear
-        
-        #project-content.center
-          #button-holder.center.buffer
-            %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
-              :class => "tip-25c-button", :"data-size" => "btn-large"}
-              #{@button.title}
-            :javascript 
-              !function(d,s,id){
-                var js,fjs=d.getElementsByTagName(s)[0];
-                if(!d.getElementById(id)){
-                  js=d.createElement(s);js.id=id;
-                  js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
-                  fjs.parentNode.insertBefore(js,fjs);
-                }
-              } (document,"script","tip-25c-js");
-          #profile-share-container.buffer
-            = t('.share_profile')
-            #fb-share= image_tag("logos/facebook.png")
-            #tw-share= image_tag("logos/twitter.png")
-          - if @is_editable
-            #project-edit
-              #edit-content-title= t('.add_project_content')
-              .update-button-field
-                %span#remove-button-video.btn.hide= t('.remove_video')
-              .update-button-field
-                %span#remove-button-picture.btn.hide= t('.remove_button_picture')
-              .update-button-field
-                #upload-button-picture.btn= t('.upload_button_picture')
-              / %label= t('.choose_youtube_video')
-              #youtube-input
-                %input{:type => 'text', :name => 'youtube_link', 
-                  :id => 'upload-youtube-url'}
-                #youtube-button.btn= t('.save_video')
-
-      - if @user.show_donations and @click_sets.length > 0
-        .span11
-          %h3.table-title
-            = t('.tips_title')
-          .table-wrapper
-            %table#profile-clicks-table.clicks-table.table.table-condensed.table-striped
-              %thead
-                %tr
-                  %th.click-amount= t('.amount')
-                  %th.click-provider= t('.provider')
-                  %th.click-referrer= t('.referrer')
-              %tbody
-                - if @click_sets.length > 0
-                  - @click_sets.each do |set|
-                    %tr
-                      %td.click-amount #{set[0]}
-                      %td.click-user= set[1].button.user.display_name
-                      - if set[1].referrer.blank?
-                        %td.click-referrer= t('.no_referrer')
-                      - elsif set[1].referrer.include?(request.host)
-                        %td.click-referrer
-                          = link_to t('.profile_link', 
-                            :provider => set[1].button.user.display_name),
-                            set[1].referrer, :target => "_blank"
-                      - else
-                        %td.click-referrer= link_to set[1].referrer, set[1].referrer, 
-                          :target => "_blank"
-                - else
-                  %tr
-                    %td.click-amount 0
-                    %td.click-user= t('.no_clicks')
-                    %td.click-referrer
+            %input{:type => 'text', :name => 'user[first_name]', 
+              :value => @user.first_name.blank? ? t('.first_name_default') : @user.first_name,
+              :id => 'first_name_input'}
+            %input{:type => 'text', :name => 'user[last_name]', 
+            :value => @user.last_name.blank? ? t('.last_name_default') : @user.last_name,
+            :id => 'last_name_input'}
+        %p.content-block.emphasis
+          =@user.first_name.blank? ? t('.enter_name') :  @user.first_name
+          =@user.last_name.blank? ? '' : @user.last_name
+      .block#about-block.clear
+        .input-block
+          %textarea{:id => 'about', :name => 'user[about]', :rows => 3}
+            =@user.about.blank? ? t('.enter_about') : @user.about
+    .clear
+#project-container.pull-left
+  #project-action
+    #button-fields
+      #button-title-block.block
+        - if @is_editable
+          .input-block
+            / %label= t('.button_title_label')
+            %input{:type => 'text', :name => 'title', 
+            :value => @button.title.blank? ? t('.enter_button_title') : @button.title,
+            :id => 'button-title-input'}
+        .content-block
+          #profile-button-title
+            / = t('.button_title_intro')
+            %span#button-title= @button.title.blank? ? 'to ' + @user.display_name : @button.title
+                              
+      - if not @button.youtube_id.blank?
+        #youtube-embed-container
+          %iframe{ :id => 'video-iframe',
+            :title => 'YouTube Video Player',
+            :width => '560',
+            :height => '341',
+            :src => 'http://www.youtube.com/embed/' + @button.youtube_id,
+            :frameborder => '0' }
+        #button-picture-container.hide
+      - elsif @button.picture.exists?
+        #youtube-embed-container.hide
+        #button-picture-container
+          = image_tag(@button.picture, :id => 'button-picture')
+      - elsif @is_editable
+        #youtube-embed-container.hide
+        #button-picture-container.hide
+      #button-description-block.block
+        - if @is_editable
+          .input-block
+            / %label= t('button_description_label')
+            %textarea{:id => 'button-description-input', :name => 'description', 
+              :rows => 1}
+              =@button.description.blank? ? t('.enter_button_description') : @button.description
+        .content-block
+          #button-description
+            = @button.description.blank? ? t('.button_description_default') : @button.description
+    .clear
   
+  #project-content.center
+    #button-holder.center.buffer
+      %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+        :class => "tip-25c-button", :"data-size" => "btn-large"}
+        #{@button.title}
+      :javascript 
+        !function(d,s,id){
+          var js,fjs=d.getElementsByTagName(s)[0];
+          if(!d.getElementById(id)){
+            js=d.createElement(s);js.id=id;
+            js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
+            fjs.parentNode.insertBefore(js,fjs);
+          }
+        } (document,"script","tip-25c-js");
+    #profile-share-container.buffer
+      = t('.share_profile')
+      #fb-share= image_tag("logos/facebook.png")
+      #tw-share= image_tag("logos/twitter.png")
+    - if @is_editable
+      #project-edit
+        #edit-content-title= t('.add_project_content')
+        .update-button-field
+          %span#remove-button-video.btn.hide= t('.remove_video')
+        .update-button-field
+          %span#remove-button-picture.btn.hide= t('.remove_button_picture')
+        .update-button-field
+          #upload-button-picture.btn= t('.upload_button_picture')
+        / %label= t('.choose_youtube_video')
+        #youtube-input
+          %input{:type => 'text', :name => 'youtube_link', 
+            :id => 'upload-youtube-url'}
+          #youtube-button.btn= t('.save_video')
+
+- if @user.show_donations and @click_sets.length > 0
+  .span11
+    %h3.table-title
+      = t('.tips_title')
+    .table-wrapper
+      %table#profile-clicks-table.clicks-table.table.table-condensed.table-striped
+        %thead
+          %tr
+            %th.click-amount= t('.amount')
+            %th.click-provider= t('.provider')
+            %th.click-referrer= t('.referrer')
+        %tbody
+          - if @click_sets.length > 0
+            - @click_sets.each do |set|
+              %tr
+                %td.click-amount #{set[0]}
+                %td.click-user= set[1].button.user.display_name
+                - if set[1].referrer.blank?
+                  %td.click-referrer= t('.no_referrer')
+                - elsif set[1].referrer.include?(request.host)
+                  %td.click-referrer
+                    = link_to t('.profile_link', 
+                      :provider => set[1].button.user.display_name),
+                      set[1].referrer, :target => "_blank"
+                - else
+                  %td.click-referrer= link_to set[1].referrer, set[1].referrer, 
+                    :target => "_blank"
+          - else
+            %tr
+              %td.click-amount 0
+              %td.click-user= t('.no_clicks')
+              %td.click-referrer
+.clear

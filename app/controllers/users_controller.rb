@@ -301,10 +301,6 @@ class UsersController < ApplicationController
     @referrer = params[:referrer]
     # @button_id = params[:button_id]
     @new_account = params[:new_account]
-    
-    # LJ: DEBUG
-    @new_account = ''
-    
     @user = self.current_user
     @button = Button.find_by_uuid(params[:button_id])
     render :layout => "blank"
