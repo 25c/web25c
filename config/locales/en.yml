@@ -130,8 +130,8 @@ en:
         icon-text: With Text
         
         describe_cause_title: "Describe what your micro-donation collections are about and who they go to:"
-        button_title_label: "You ask: Pledge 25c"
-        enter_title: for (this cause) / to (this person or org)
+        button_title_label: "You ask: Pledge 25c for"
+        enter_title: (your cause)
         button_description_label: "Description:"
         enter_description: (describe what the collections are about)
         set_button_info: Continue

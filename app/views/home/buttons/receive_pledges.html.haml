@@ -5,6 +5,7 @@
     window.updateButtonUrl = '#{ j home_update_button_url }';
     window.updateUserUrl = '#{ j home_account_url }';
     window.userNickname = '#{ @user.nickname.blank? ? '' : @user.nickname }';
+    window.userDisplayName = '#{ @user.display_name }';
     window.fbShareDescription = '#{ t('.fb_share_description') }';
     window.fbShareCallbackUrl = '#{ j fb_share_callback_url }';
     window.fbShareTitle = '#{ t('.fb_share_title') }';
@@ -22,12 +23,19 @@
     .step-body
       .label-column.pull-left
         %label= t('.button_title_label')
-        %label= t('.button_description_label')
       .input-column.pull-left
         %input#button-title{ :type => 'text', :name => 'button[title]',
           :value => @button.title.blank? ? t('.enter_title') : @button.title }
+      .label-column.clear.pull-left
+        %label= t('.button_description_label')
+      .input-column.pull-left
         %textarea#button-description{ :name => 'button[description]', :rows => 3 }
           = @button.description.blank? ? t('.enter_description') : @button.description
+      / .label-column.pull-left
+      /   %label= t('.button_link_label')
+      / .input-column.pull-left
+      /   %input#button-link{ :type => 'text', :name => 'button[link]',
+      /     :value => @button.link.blank? ? t('.enter_link') : @button.link }
       .clear
       #set-button-info.btn.btn-strong= t('.set_button_info')
   .clear
