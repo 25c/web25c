@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = self.current_user
-    @url = get_profile_url(@user)
+    @url = @user.profile_url
   end
   
   def update
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
         end
       else
         # @user.reload
-        @url = get_profile_url(@user)
+        @url = @user.profile_url
         unless params.include?('async') && params['async'] == "true"
           format.html { render action: "edit" }
         end
@@ -86,7 +86,7 @@ class UsersController < ApplicationController
   
   def choose_nickname
     @user = self.current_user
-    @url = get_profile_url(@user)
+    @url = @user.profile_url
     if request.method == 'PUT' or request.method == 'POST'
       @user = self.current_user
       @user.editing = true
@@ -96,7 +96,7 @@ class UsersController < ApplicationController
           format.json { render json: true, head: :ok }
         else
           @user.reload
-          @url = get_profile_url(@user)
+          @url = @user.profile_url
           format.html { redirect_to choose_nickname_path, alert: t('users.choose_nickname.failure')}
           # format.json { render json: @user.errors, status: :unprocessable_entity }
         end
@@ -304,20 +304,6 @@ class UsersController < ApplicationController
     @user = self.current_user
     @button = Button.find_by_uuid(params[:button_id])
     render :layout => "blank"
-  end
-  
-  private
-  
-  def get_profile_url(user)
-    url = 'http://' + request.domain
-    url += ':3000' if request.domain == 'localhost'
-    url += '/'
-    if user and not user.nickname.blank?
-      url += user.nickname
-    else
-      url += t('users.choose_nickname.nickname')
-    end
-    return url
   end
     
 end

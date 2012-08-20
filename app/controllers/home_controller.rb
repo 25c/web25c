@@ -31,11 +31,13 @@ class HomeController < ApplicationController
   
   def about
     if Rails.env.production?
-      @button = User.find_by_email('rmr@25c.com').buttons[0]
+      user = User.find_by_email('rmr@25c.com')
     else
       # dev placeholder for about page button
-      @button = Button.first
+      user = User.first
     end
+    @button = user.buttons[0]
+    @profile_url = user.profile_url
   end
   
   def not_found

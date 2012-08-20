@@ -119,6 +119,19 @@ class User < ActiveRecord::Base
     end
   end
   
+  def profile_url
+    if Rails.env.production?
+      url = 'https://www.25c.com/'
+    else
+      url = 'http://localhost:3000/'
+    end
+    if self.nickname.blank?
+      url = ''
+    else
+      url += self.nickname
+    end
+  end
+  
   private
   
   def preprocess_fields
