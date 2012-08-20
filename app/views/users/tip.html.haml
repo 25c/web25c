@@ -36,23 +36,25 @@
               = link_to t('.payment'), home_payment_path, :class => 'btn btn-strong', 
                 :target => '_blank'
           - elsif @new_account.blank?
-            .center
-              %p= t('.pledge_to', :provider => @button.user.display_name)
-              #tip-button-holder.center
-                %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
-                  #{@button.title}
-                :javascript
-                  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
-                  if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
-                  js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
-                  fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
-              %p= t('.pledge_more')
-              %a= link_to t('.view_pledges'), home_dashboard_path, :class => 'btn', :target => 'blank'
-              %a= link_to t('.undo_pledges'), home_undo_clicks_path, :class => 'btn', :target => 'blank'
-              %a= link_to t('.visit_25c'), root_path, :class => 'btn', :target => 'blank'
-              .tip-close-container
-                %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
-              %p#bottom-tagline= t('.bottom_tagline')
+            - if @source == 'javascript'
+              #tip-result.center
+                %p.buffer= t('.signed_in')
+                .tip-close-container
+                  %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
+            - else
+              #tip-result.center
+                %p= t('.pledge_to', :provider => @button.user.display_name)
+                %p= t('.pledge_more')
+                #tip-button-holder.center
+                  %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
+                    #{@button.title}
+                  :javascript
+                    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
+                    if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
+                    js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
+                    fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
+                .tip-close-container
+                  %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
           - else
             %p= raw t('.new_welcome', :home_url => link_to('25c.com', root_path, :target => '_blank') , 
               :account => t('.' + @new_account))
@@ -70,7 +72,6 @@
             %p= t('.new_p3')
             %p= raw t('.new_undo', :undo_button => link_to(t('.undo_button'), home_undo_clicks_path, 
               :class => 'btn', :target => '_blank'))
-            %p#bottom-tagline.center= t('.new_bottom_tagline')
 
         - else
           = render 'layouts/sign_in_form'
