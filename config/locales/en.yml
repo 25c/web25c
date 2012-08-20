@@ -22,14 +22,14 @@ en:
         title: Fund Pledges You Made
         given: You have fewer than forty unfunded 25c pledges (exactly: %{total}) or a total commitment of $%{total_amount}.
         click_more_p1: "Feel free to make up to forty (40) 25c pledges at your leisure:  Click on other +25 Buttons, or click the same +25c Button multiple times for a pledge of corresponding multiple of 25c's."
-        click_more_p2: "Once you have reached a pledge amount of $10 by having made forty 25c pledges, we will ask you to fund the pledges you made -- so we can also pay your pledgees."
+        click_more_p2: "Once you have made forty (40) 25c pledges, we will ask you to pay $10."
         dashboard: Go to Dashboard
         amount: "Payment Amount: $10"
       payment_success:
         title: Payment Completed
         message_p1: Your $10 payment has been successfully processed.
-        message_p2: Thank you for funding your past pledges.
-        message_p3: Your pledgees appreciate it greatly!
+        message_p2: Thank you for paying $10.
+        message_p3: Greatly appreciated!
       payment_failure:
         title: Payment Error
         message_p1: PayPal has been unable to process your payment.
@@ -325,7 +325,7 @@ en:
     tip:
       pledge_to: "Pledge 25c to %{provider} by clicking the following button:"
       pledge_more: Thank you! (Click again to pledge another 25c.)
-      over_limit: "You have reached a total of 40 unfunded 25c pledges.  Please now fund these pledges.  It's just $10 -- 40 quarters. Your pledgees are looking forward to your funding your past pledges -- because that's what will get them paid."
+      over_limit: "You have reached a total of 40 unfunded 25c pledges.  Please now make a payment of $10 to proceed further."
       payment: Fund Pledges You Made
       done: Close
       view_pledges: View Pledges
@@ -335,7 +335,7 @@ en:
       new_p1: "You can now start making social micro-donations to easily & directly support what you value. Wherever you see the +25c Button on the web, clicking it pledges 25 cents from you to the cause. It's just a quarter but it adds up for the receivers!"
       new_button: "Try it out by clicking this +25c Button to pledge 25c to %{provider}:"
       new_p2: Each click pledges one quarter. (Multiple clicks encouraged!)
-      new_p3: "Make forty (40) pledges at your leisure. Then we will ask you to pay through a $10 charge to your credit card. Once funded, a 25c pledge is eligible for pay-out."
+      new_p3: "Make forty (40) pledges at your leisure. Then we will ask you to pay through a $10 charge to your credit card."
       new_undo: "You may %{undo_button} pledges at any time up to the point when you funded them." 
       undo_button: Undo Pledges
       new_bottom_tagline: "Thank you for participating. Changing the internet one quarter one click."
