@@ -11,7 +11,12 @@
     window.fbShareTitle = '#{ t('.fb_share_title') }';
     window.nicknameTaken = '#{ t('.nickname_taken') }';
     window.nicknameBlank = '#{ t('.nickname_blank') }';
+    window.invalidUrl = '#{ t('.invalid_url') }';
     window.isButtonPage = false;
+    window.buttonTitleDefault = '#{ t('.enter_title') }';
+    window.buttonDescriptionDefault = '#{ t('.enter_description') }';
+    //window.buttonInfoUrlDefault = '#{ t('.enter_info_url') }';
+    window.userAboutDefault = '#{ t('.enter_about') }';
 
 %h2.page-header= t('.title')
 %p.buffer= t('.subtitle')
@@ -32,10 +37,10 @@
         %textarea#button-description{ :name => 'button[description]', :rows => 3 }
           = @button.description.blank? ? t('.enter_description') : @button.description
       / .label-column.pull-left
-      /   %label= t('.button_link_label')
+      /   %label= t('.button_info_url_label')
       / .input-column.pull-left
-      /   %input#button-link{ :type => 'text', :name => 'button[link]',
-      /     :value => @button.link.blank? ? t('.enter_link') : @button.link }
+      /   %input#button-info-url{ :type => 'text', :name => 'button[info_url]',
+      /     :value => @button.info_url.blank? ? t('.enter_info_url') : @button.info_url }
       .clear
       #set-button-info.btn.btn-strong= t('.set_button_info')
   .clear

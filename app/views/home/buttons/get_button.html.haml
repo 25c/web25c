@@ -6,6 +6,7 @@
     window.userNickname = '#{ @user.nickname.blank? ? '' : @user.nickname }';
     window.isButtonPage = true;
     window.buttonSize = '#{ @button.size.blank? ? '' : @button.size }';
+    window.userDisplayName = '#{ @user.display_name }';
 
 %h2.page-header= t('.title')
 %p.buffer= t('.subtitle')

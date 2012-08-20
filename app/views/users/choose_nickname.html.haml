@@ -4,7 +4,6 @@
 %p.buffer
   - if @user.nickname.blank?
     = t('.example')
-    = @url
   - else
     = t('.user_url')
     = link_to(@url, @url)

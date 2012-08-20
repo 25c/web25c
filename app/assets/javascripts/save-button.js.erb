@@ -35,6 +35,7 @@ $(document).ready(function(){
   // State variables
   var has_new_user_picture = false;
   var buttonTitle = '';
+  var buttonInfoUrl = '';
   var buttonSize = window.buttonSize || 'btn-large';
   var codeType = '';
   var newCode = '';
@@ -81,6 +82,7 @@ $(document).ready(function(){
         + 'data-size="' + buttonSize 
         + '" data-user="' + userDisplayName
         + '" data-profile="' + profileUrl
+        // + '" data-info-url="' + buttonInfoUrl
         + '">' + buttonTitle + jsClose;
       $('.if-javascript').show();
       $('.if-link').hide();
@@ -142,6 +144,7 @@ $(document).ready(function(){
     $this.children('input[type=radio]').attr('checked', 'checked');
     if ($this.hasClass('button-choice')) {
       var newButtonSize = $this.find('img').attr('data-size');
+      $this.addClass('selected-option');
       if (buttonSize != newButtonSize) {
         buttonSize = newButtonSize;
         $this.parent().find('.selected-option').removeClass('selected-option');
@@ -192,7 +195,18 @@ $(document).ready(function(){
   $('#set-button-info').click(function(){
     buttonTitle = $('#button-title').val();
     var buttonDescription = $('#button-description').val();
-    $('#button-tooltip-text, #button-link-text').text(buttonTitle);
+    // buttonInfoUrl = $('#button-info-url').val();
+    
+    if (buttonTitle == buttonTitleDefault) buttonTitle = "";
+    if (buttonDescription == buttonDescriptionDefault) buttonDescription = "";
+    
+    // if (buttonInfoUrl == buttonInfoUrlDefault) buttonInfoUrl = "";
+    // else if (!(/^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(buttonInfoUrl))) {
+    //   alert(invalidUrl);
+    //   return;
+    // }
+    
+    // putUpdate(true, { title: buttonTitle, description: buttonDescription, info_url: buttonInfoUrl });
     putUpdate(true, { title: buttonTitle, description: buttonDescription });
     updateButtonCode();
     showNextStep(2);
@@ -208,6 +222,7 @@ $(document).ready(function(){
   // Save user info
   $('#set-user-info').click(function() {
     var userAbout = $('#user-about').val();
+    if (userAbout == userAboutDefault) userAbout = "";
     if (userNickname) {
       putUpdate(false, { about: userAbout });
       showNextStep(3);

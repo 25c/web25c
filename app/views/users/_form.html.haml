@@ -5,7 +5,7 @@
       :html => { :class => 'form-horizontal' } do |f|
       / = f.input :show_donations, :hint => t('.show_donations')
       - if @user.nickname.blank?
-        = f.input :nickname, :hint => t('.nickname_url') + @url
+        = f.input :nickname, :hint => t('.nickname_url')
       / - else
       /   = @user.nickname
       /   = f.input :nickname, :hint => t('.nickname_url') + link_to(@url, @url)

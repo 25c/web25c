@@ -135,6 +135,9 @@ en:
         button_description_label: "Description:"
         enter_description: (describe what the collections are about)
         set_button_info: Continue
+        button_info_url_label: "Optional URL:"
+        enter_info_url: (URL to a webpage with more info about your cause)
+        invalid_url: That URL is invalid. Please check it and try again.
         
         describe_user_title: "Tell people a bit more about who the funds go to:"
         user_picture_label: "Photo:"
@@ -288,7 +291,7 @@ en:
       title: Update Account Settings
       show_donations: Show pledges on my profile page
       edit_password_hint: Leave blank to keep current.
-      nickname_url: "Your nickname determines the URL of your pledge profile: "
+      nickname_url: "Your nickname determines the URL of your pledge profile, such as: https://www.25c.com/example"
       paypal_email: "Paypal Email"
       paypal_email_hint: "We use PayPal to process payments."
       submit: Update
@@ -349,7 +352,7 @@ en:
       title: Choose User Nickname
       instructions: "Your Nickname determines the URL of your user profile."
       user_url: "Your current URL is: "
-      example: "For example: "
+      example: "For example: http://www.25c.com/example"
       nickname: user_nickname
       submit: Update Nickname
       success: You have updated your profile nickname.
