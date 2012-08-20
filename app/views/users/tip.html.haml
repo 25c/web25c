@@ -13,8 +13,8 @@
       });
   - unless @new_account.blank?
     :javascript
-      var width = 700;
-      var height = 480;
+      var width = 620;
+      var height = 470;
       var left = (screen.width - width) / 2;
       var top = (screen.height - height) / 2;
       window.resizeTo(width, height);
@@ -42,11 +42,14 @@
                 .tip-close-container
                   %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
             - else
-              #tip-result.center
+              .center
                 %p= t('.pledge_to', :provider => @button.user.display_name)
                 %p= t('.pledge_more')
                 #tip-button-holder.center
-                  %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
+                  %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", 
+                  :'data-size' => "btn-large",
+                  :'data-user' => @button.user.display_name, 
+                  :'data-profile' => @button.user.profile_url } 
                     #{@button.title}
                   :javascript
                     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
@@ -55,13 +58,18 @@
                     fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
                 .tip-close-container
                   %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
+                #more-info-buttons.small
+                  %p= raw t('.view_pledges', :link => link_to('25c.com', home_dashboard_path, :target => '_blank'))
           - else
             %p= raw t('.new_welcome', :home_url => link_to('25c.com', root_path, :target => '_blank') , 
               :account => t('.' + @new_account))
             %p= t('.new_p1')
             %p= t('.new_button', :provider => @button.user.display_name)
             #tip-button-holder.center
-              %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", :'data-size' => "btn-large" } 
+              %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", 
+              :'data-size' => "btn-large",
+              :'data-user' => @button.user.display_name, 
+              :'data-profile' => @button.user.profile_url }
                 #{@button.title}
               :javascript
                 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];

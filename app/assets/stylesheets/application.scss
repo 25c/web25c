@@ -46,6 +46,14 @@ b, strong, h4 {
   font-weight: 600;
 }
 
+.small {
+  font-size: 13px;
+}
+
+.small p {
+  font-size: 13px;
+}
+
 
 /* NEW LAYOUT - MASTER
 *---------------------------- */
@@ -540,6 +548,10 @@ ul.login-buttons > li.login-logo > a > img {
 
 #tip-center #tip-result {
   margin-top: 40px;
+}
+
+#tip-center #more-info-buttons {
+  margin-top: 50px;
 }
 
 #tip-overdraft {

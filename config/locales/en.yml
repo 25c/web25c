@@ -331,9 +331,8 @@ en:
       over_limit: "You have reached a total of 40 unfunded 25c pledges.  Please now make a payment of $10 to proceed further."
       payment: Fund Pledges You Made
       done: Close
-      view_pledges: View Pledges
-      undo_pledges: Undo Pledges
-      visit_25c: Go to 25c.com
+      view_pledges: "Go to %{link} to view or undo 25c pledges you made."
+      view_pledges_link: 25c.com
       new_welcome: "Congratulations -- you are now successfully registered at %{home_url} with your %{account} ID."
       new_p1: "You can now start making social micro-donations to easily & directly support what you value. Wherever you see the +25c Button on the web, clicking it pledges 25 cents from you to the cause. It's just a quarter but it adds up for the receivers!"
       new_button: "Try it out by clicking this +25c Button to pledge 25c to %{provider}:"

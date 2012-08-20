@@ -103,7 +103,10 @@
   #project-content.center
     #button-holder.center.buffer
       %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
-        :class => "tip-25c-button", :"data-size" => "btn-large"}
+        :class => "tip-25c-button",
+        :'data-size' => "btn-large",
+        :'data-user' => @button.user.display_name, 
+        :'data-profile' => @button.user.profile_url }
         #{@button.title}
       :javascript 
         !function(d,s,id){
