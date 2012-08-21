@@ -189,10 +189,12 @@ class UsersController < ApplicationController
       notice = t('users.sign_in_callback.google')
     end
     unless user.nil?
-      if session.delete(:has_seen_agreement_text)
-        user.has_agreed = true
-        user.save!
-      end
+      # if session.delete(:has_seen_agreement_text)
+      #   user.has_agreed = true
+      #   user.save!
+      # end
+      user.has_agreed = true
+      user.save!
       self.current_user = user
       user.update_profile if user.picture_file_name.blank? and not user.picture_url.blank?
       
