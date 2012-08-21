@@ -197,10 +197,12 @@ class UsersController < ApplicationController
       user.update_profile if user.picture_file_name.blank? and not user.picture_url.blank?
       
       unless params[:state].blank?
-        state = params[:state].split('|')
-        button_id = state[0]
-        referrer = state[1]
-        source = state[2]
+        if params[:state].include? 'button_info:'
+          state = params[:state].split('button_info:')[1].split("|")
+          button_id = state[0]
+          referrer = state[1]
+          source = state[2]
+        end
       end
       
       if button_id
