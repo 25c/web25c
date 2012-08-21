@@ -15,10 +15,10 @@
   %table#clicks-given.clicks-table.table.table-condensed.table-striped
     %thead
       %tr
-        %th.click-provider= t('.provider')
-        %th.click-referrer= t('.referrer')
+        %th.click-provider= t('home.dashboard.index.provider')
+        %th.click-referrer= t('home.dashboard.index.referrer')
         %th
-        %th.click-date= t('.date_created')
+        %th.click-date= t('home.dashboard.index.date_created')
         %th
     %tbody
       - @clicks_given.each do |click|
@@ -26,10 +26,10 @@
           %td.click-user= click.button.user.display_name
           
           - if click.referrer.blank?
-            %td.click-referrer= t('.no_referrer')
+            %td.click-referrer= t('home.dashboard.index.no_referrer')
           - elsif click.referrer.include?(request.host)
             %td.click-referrer
-              = link_to t('.profile_link', :provider => click.button.user.display_name),
+              = link_to t('home.dashboard.index.profile_link', :provider => click.button.user.display_name),
                 click.referrer, :target => "_blank"
           - else
             %td.click-referrer= link_to click.referrer, click.referrer, :target => "_blank"

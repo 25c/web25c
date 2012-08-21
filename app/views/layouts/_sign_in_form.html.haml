@@ -15,7 +15,7 @@
     %a.facebook-btn.pointer= image_tag "logos/facebook.png"
     - if @button
       = link_to image_tag("logos/google.png"),
-        '/auth/google_oauth2?state=button_id=' + @button.uuid + '&referrer=' + @referrer,
+        '/auth/google_oauth2?state=' + @button.uuid + '|' + @referrer + '|' + @source,
         :class => 'google-btn'
       / = link_to image_tag("logos/twitter.png"),
       /   '/auth/twitter?state=button_id=' + @button.uuid + '&referrer=' + @referrer

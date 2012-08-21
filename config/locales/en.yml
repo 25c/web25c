@@ -197,7 +197,7 @@ en:
       title_bottom: One click, one quarter.
       button_title: The +25c Button&trade;
       legend_p1: Tap once = 25 cents
-      legend_p2: Tap twice = 50 cents
+      legend_p2: twice = 50 cents
       legend_p3: ...
       legend_p4: 10,000 = $25,000
       pledge_to: Pledge 25c to
@@ -326,14 +326,13 @@ en:
       success: Your account has been created!
       failure: Your account was not created. Please try again.
     tip:
-      pledge_to: "Pledge 25c to %{provider} by clicking the following button:"
-      pledge_more: Thank you! (Click again to pledge another 25c.)
+      pledge_to: "You have pledged 25c to %{provider}."
+      pledge_more: "Thank you! Click the following button to pledge another 25c:"
       over_limit: "You have reached a total of 40 unfunded 25c pledges.  Please now make a payment of $10 to proceed further."
       payment: Fund Pledges You Made
       done: Close
-      view_pledges: View Pledges
-      undo_pledges: Undo Pledges
-      visit_25c: Go to 25c.com
+      view_pledges: "Go to %{link} to view or undo 25c pledges you made."
+      view_pledges_link: 25c.com
       new_welcome: "Congratulations -- you are now successfully registered at %{home_url} with your %{account} ID."
       new_p1: "You can now start making social micro-donations to easily & directly support what you value. Wherever you see the +25c Button on the web, clicking it pledges 25 cents from you to the cause. It's just a quarter but it adds up for the receivers!"
       new_button: "Try it out by clicking this +25c Button to pledge 25c to %{provider}:"
@@ -344,7 +343,7 @@ en:
       new_bottom_tagline: "Thank you for participating. Changing the internet one quarter one click."
       facebook: Facebook
       google: Google
-      bottom_tagline: Thank you for participating. Changing the Internet one quarter one click. Incentivizing "value to you" beyond "value to advertiser".
+      signed_in: You are now signed in.  Please return to the +25c Button to make a 25c pledge.
     confirm_tip:
       view_account: View 25c Account
       close_window: Close this window

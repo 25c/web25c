@@ -34,7 +34,11 @@ class ApplicationController < ActionController::Base
             self.current_user = nil
             flash[:alert] = t('application.check_facebook_cookies.failure');
             if has_tip 
-              redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
+              redirect_to tip_path(
+                :button_id => params[:button_id], 
+                :referrer => params[:referrer],
+                :source => params[:source]
+              )
               return
             else
               if not request.referrer.blank? and request.referrer.include? 'blog/header'
@@ -65,7 +69,8 @@ class ApplicationController < ActionController::Base
           Click.enqueue(self.current_user, params[:button_id], params[:referrer], request, cookies)
           redirect_to tip_path(
             :button_id => params[:button_id], 
-            :referrer => params[:referrer], 
+            :referrer => params[:referrer],
+            :source => params[:source],
             :new_account => new_account
           )
         else

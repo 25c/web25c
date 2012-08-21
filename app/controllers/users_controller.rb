@@ -195,12 +195,22 @@ class UsersController < ApplicationController
       end
       self.current_user = user
       user.update_profile if user.picture_file_name.blank? and not user.picture_url.blank?
-      state = Rack::Utils.parse_query(params[:state])
-      if state['button_id']
-        Click.enqueue(self.current_user, state['button_id'], state['referrer'], request, cookies)
+      
+      unless params[:state].blank?
+        state = params[:state].split('|')
+        button_id = state[0]
+        referrer = state[1]
+        source = state[2]
+      end
+      
+      if button_id
+        if new_account.blank?
+          Click.enqueue(self.current_user, button_id, referrer, request, cookies)
+        end
         @redirect_url = tip_path(
-          :button_id => state['button_id'], 
-          :referrer => state['referrer'],
+          :button_id => button_id,
+          :referrer => referrer,
+          :source => source,
           :new_account => new_account
           )
         @is_tip_page = true
@@ -213,76 +223,9 @@ class UsersController < ApplicationController
   end
   
   def sign_in
-    if request.method == 'POST'
-      
-      sign_in_successful = false
-      has_tip = params.has_key?(:button_id)
-      
-      # new user
-      if params[:user_account] == 'new'
-        @new = true
-        @user = User.new(params[:user])
-        if @user.save
-          sign_in_successful = true
-          notice = t('users.create.success')
-        else
-          if @user.errors
-            alert = ""
-            @user.errors.full_messages.uniq.each do |message|
-              if not message.include? "digest"
-                alert += message
-                alert += ", " if message != @user.errors.full_messages.last
-              end
-            end
-            alert += "."
-          else
-            alert = t('users.create.failure')
-          end     
-          @user = nil
-        end
-      # existing user
-      else
-        @new = false
-        @user = User.find_by_email(params[:user][:email]).try(:authenticate, params[:user][:password])
-        if @user
-          sign_in_successful = true
-        else
-          alert = t('users.sign_in.failure')
-        end
-      end
-      if @user
-        self.current_user = @user
-        # if there is a tip to process, make sure it gets logged
-      end
-      if alert
-        flash[:alert] = alert
-      else
-        flash[:notice] = notice
-      end
-      # handle page redirecting
-      if sign_in_successful
-        if has_tip and not alert
-          Click.enqueue(self.current_user, params[:button_id], params[:referrer], request, cookies)
-
-          redirect_to confirm_tip_path(:button_id => params[:button_id], :referrer => params[:referrer])
-        else
-          redirect_to_session_redirect_path(home_dashboard_path)
-        end
-        return
-      else
-        @user = User.new if not @user
-        if has_tip
-          redirect_to tip_path(:button_id => params[:button_id], :referrer => params[:referrer], :new => @new)
-        end
-      end
-    # not a post request
-    else
-      session[:has_seen_agreement_text] = true
-      if self.current_user
-        redirect_to_session_redirect_path(home_dashboard_path)
-      else
-        @user = User.new
-      end
+    session[:has_seen_agreement_text] = true
+    if self.current_user
+      redirect_to_session_redirect_path(home_dashboard_path)
     end
   end
   
@@ -301,6 +244,8 @@ class UsersController < ApplicationController
     @referrer = params[:referrer]
     # @button_id = params[:button_id]
     @new_account = params[:new_account]
+    # @new_account = 'google'
+    @source = params[:source]
     @user = self.current_user
     @button = Button.find_by_uuid(params[:button_id])
     render :layout => "blank"

@@ -12,6 +12,18 @@
  *= require_self
 */
 
+/* MIXINS *
+*---------------------------- */
+
+// GRADIENT SHORTCUT - usage: @include gradient(#fff, #ccc);
+@mixin gradient($from, $to) {
+  background-color: $to;
+  background-image: -moz-linear-gradient(center top, $from, $to);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+  background-image: -webkit-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+}
+
 
 /* NEW TYPOGRAPHY
 *---------------------------- */
@@ -32,6 +44,14 @@ h1, h2, h3, h4, .highlight {
 
 b, strong, h4 {
   font-weight: 600;
+}
+
+.small {
+  font-size: 13px;
+}
+
+.small p {
+  font-size: 13px;
 }
 
 
@@ -176,11 +196,13 @@ ul#nav-login > li.login-logo img {
 
 ul.dropdown-menu > li > a {
   color: #f26422;
+  padding-top: 5px;
 }
 
 ul.dropdown-menu > li > a:hover {
-  background-color: #eee;
   color: #f26422;
+  background-color: #FEE5DD;
+  border-radius: 5px;
 }
 
 a {
@@ -207,8 +229,16 @@ ul#footer-nav {
   list-style: none outside none;
 }
 
-ul#footer-nav > li {
-  margin: 0 10px;
+ul#footer-nav > li > a {
+  display: block;
+  padding: 6px 5px 4px 5px;
+  margin: -6px 5px -4px 5px;
+  border-radius: 5px;
+}
+
+ul#footer-nav > li > a:hover {
+  text-decoration: none;
+  background-color: #f98a61;
 }
 
 ul#footer-nav, ul#footer-nav > li > a {
@@ -326,7 +356,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 .btn.btn-strong {
   color: white;
   background-color: #f26422;
-  background-image: -moz-linear-gradient(center top , #f98a61, #f26422);
+  @include gradient(#f98a61, #f26422);
   background-repeat: repeat-x;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.1);
@@ -410,14 +440,6 @@ img {
 
 /* SIGN IN PAGE
  *---------------------------- */
- 
-@mixin gradient($from, $to) {
-  background-color: $to;
-  background-image: -moz-linear-gradient(center top, $from, $to);
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
-  background-image: -webkit-linear-gradient($from, $to);
-  background-image: -o-linear-gradient($from, $to);
-}
 
 ul.login-buttons > li.login-logo > a {
   margin-top: 5px;
@@ -522,6 +544,14 @@ ul.login-buttons > li.login-logo > a > img {
 
 #tip-center .btn {
 //  font-size: 13px;
+}
+
+#tip-center #tip-result {
+  margin-top: 40px;
+}
+
+#tip-center #more-info-buttons {
+  margin-top: 50px;
 }
 
 #tip-overdraft {
