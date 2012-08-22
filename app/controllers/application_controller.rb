@@ -61,10 +61,8 @@ class ApplicationController < ActionController::Base
           # self.current_user.update_profile_from_facebook
           self.current_user.update_profile
         end
-        if session.delete(:has_seen_agreement_text)
-          current_user.has_agreed = true
-          current_user.save!
-        end
+        current_user.has_agreed = true
+        current_user.save!
         if has_tip
           Click.enqueue(self.current_user, params[:button_id], params[:referrer], request, cookies)
           redirect_to tip_path(
