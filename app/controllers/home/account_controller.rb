@@ -1,13 +1,8 @@
 class Home::AccountController < Home::HomeController
   
   # include ActiveMerchant::Billing::Integrations
-  # require 'rubygems'
-  # require 'pp'
-  # require 'sinatra'
-  
-  # require 'dwolla'
+
   require 'dwolla.rb'
-  
   DwollaClient = Dwolla::Client.new(DWOLLA_SETTINGS[:app_key], DWOLLA_SETTINGS[:app_secret])
   
   def index
@@ -74,7 +69,7 @@ class Home::AccountController < Home::HomeController
       @has_payout = false
     else
       @has_payout = true
-      @authUrl = DwollaClient.auth_url(dwolla_auth_callback_url)
+      # @authUrl = DwollaClient.auth_url(dwolla_auth_callback_url)
       
       # unless @user.paypal_email.blank?
       #   # Create or update payment object
