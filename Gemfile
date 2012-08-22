@@ -21,10 +21,11 @@ gem 'curb'												# libcurl bindings
 gem 'resque', '~>1.20.0'					# redis-backed jobs queuing system
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
-gem 'omniauth-paypal', :git => 'git://github.com/surferdwa/omniauth-paypal.git'
+# gem 'omniauth-paypal', :git => 'git://github.com/surferdwa/omniauth-paypal.git'
 gem 'airbrake'
 gem 'activemerchant', :require => 'active_merchant'
 gem 'valid_email'
+# gem 'dwolla', '0.0.15'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -8,17 +8,16 @@
   %p= t('.too_low_p1')
   %p= t('.too_low_p2')
 
-- elsif @user.paypal_email.blank?
-  %p.buffer= t('.provide_paypal_email')
-  / = link_to 'Verify PayPal Account', '/auth/paypal', :class => 'btn btn-primary'
-  = simple_form_for @user, :url => home_payout_path, 
-    :html => { :class => 'form-horizontal', :id => 'paypal-email-form' } do |f|
-    = f.input :paypal_email, :label => t(".paypal_email"), :hint => t('.paypal_email_hint')
-    = f.input :paypal_email_confirmation, :label => t(".paypal_email_confirmation"),
+- elsif @user.dwolla_email.blank?
+  %p.buffer= t('.provide_dwolla_email')
+  / = link_to 'Link Dwolla Account', @authUrl, :class => 'btn btn-strong'
+  = simple_form_for @user, :url => home_payout_path,
+    :html => { :class => 'form-horizontal', :id => 'dwolla-email-form' } do |f|
+    = f.input :dwolla_email, :label => t(".dwolla_email")
+    = f.input :dwolla_email_confirmation, :label => t(".dwolla_email_confirmation"),
       :input_html => {:autocomplete => 'off'}
     .form-actions
       = f.button :submit, :class => 'btn-strong', :value => t('.submit')
-  
   
 - else
   %p.buffer= t('.sent')
