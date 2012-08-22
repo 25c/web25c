@@ -70,7 +70,7 @@
         .content-block
           #profile-button-title
             / = t('.button_title_intro')
-            %span#button-title= @button.title.blank? ? 'to ' + @user.display_name : @button.title
+            %span#button-title= @button.title.blank? ? @user.display_name : @button.title
                               
       - if not @button.youtube_id.blank?
         #youtube-embed-container
