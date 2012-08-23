@@ -193,8 +193,8 @@ en:
         subtitle: "Follow these easy steps to get your +25c button code:"
 
     index:
-      title_top: Micro-Donations 
-      title_bottom: Made Easy.  
+      title_top: Micro-Donations Made Easy.
+      title_bottom:
       button_title: The +25c Button
       legend_p1: Tap once %{img} 25 cents
       legend_p2: twice %{img} 50 cents
@@ -203,13 +203,23 @@ en:
       pledge_to: Pledge 25c to
       cause: YOUR CAUSE
       share: "Share:"
-      set_up: <b>Get Set Up to Collect Micro-donations</b>
-      explain_p1: "The +25c Button combines a \'Like\' with<BR>a <b>25-cent pledge</b>."
+      set_up: Get Set Up to Collect Micro-donations
+      explain_p1: "The +25c Button combines a \'Like\' with a <b>25-cent pledge</b>."
       explain_p2: "Embed it into your blog, photos, videos."
       explain_p3: 
       explain_p4: "* No strings attached"
       explain_p5: "* Easy to do"
       explain_p6: "* Connect with your fans"
+      
+      below_p1: "Have a website, blog, photo collection, or video?  Earn money by collecting small contributions from lots of people."
+      below_p2: "It's easy to do, there's no downside to enabling it, and it can add up!"
+      below_p3: "Simply embed the customized +25c Button or link provided by us."
+      below_p4: "The +25c Button is designed to be responsively multi-click: Each click pledges 25 cents."
+      below_p5: "See something you value?  Click the +25c Button to show your appreciation."
+      below_p6: "Make forty 25c pledges at your leisure.  Pay later through a $10 charge to your credit card."
+      below_p7: "You may undo your 25c pledges at any time up to the point of the (non-refundable) payment."
+      below_p8: "Help shift media economics from \"value to advertiser\" to \"value to you\"."
+      read_more: "Read more..."
 
       facebook_share_title: 25c social micro-donations.
       facebook_share_description: Supporting what you value one quarter each click.
