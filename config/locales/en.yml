@@ -193,26 +193,26 @@ en:
         subtitle: "Follow these easy steps to get your +25c button code:"
 
     index:
-      title_top: Social micro-donations.
-      title_bottom: One click, one quarter.
-      button_title: The +25c Button&trade;
+      title_top: Micro-Donations 
+      title_bottom: Made Easy.  
+      button_title: The +25c Button
       legend_p1: Tap once %{img} 25 cents
       legend_p2: twice %{img} 50 cents
       legend_p3: ...
-      legend_p4: 10,000 %{img} $25,000
+      legend_p4: 10,000 %{img} $2,500
       pledge_to: Pledge 25c to
       cause: YOUR CAUSE
       share: "Share:"
-      set_up: <b>Get Set Up</b> to receive social micro-donations      
-      explain_p1: "Shifting media economics from \"value to advertiser\" to \"value to you\"."
-      explain_p2: "The +25c Button™ combines a \"Like\" with a 25-cent pledge."
-      explain_p3: "Embed it into your blog, photos, videos for incremental revenue."
-      explain_p4: "* It's upside only, no downside"
-      explain_p5: "* Takes 60 seconds"
-      explain_p6: "* Build relationship with fans"
-      
-      facebook_share_title: 25c - Social micro-donations. One click, one quarter.
-      facebook_share_description: 25c makes it easy to pledge micro-donations!
+      set_up: <b>Get Set Up to Collect Micro-donations</b>
+      explain_p1: "The +25c Button combines a \'Like\' with<BR>a <b>25-cent pledge</b>."
+      explain_p2: "Embed it into your blog, photos, videos."
+      explain_p3: 
+      explain_p4: "* No strings attached"
+      explain_p5: "* Easy to do"
+      explain_p6: "* Connect with your fans"
+
+      facebook_share_title: 25c social micro-donations.
+      facebook_share_description: Supporting what you value one quarter each click.
     
     not_found:
       title: Page Not Found
