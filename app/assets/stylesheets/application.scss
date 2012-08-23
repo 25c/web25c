@@ -29,13 +29,14 @@
 *---------------------------- */
 
 body, p, strong, h4, ul.plist > li, label, input, button, select, textarea {
-  color: #766356;
-  font-size: 15px;
+//  color: #766356;
+  color: #666;
+  font-size: 17px;
   line-height: 1.2em;
   font-family: Helvetica, Arial, Sans-Serif;
-  font-weight: 400;
+  font-weight: 200;
   font-smooth: always;
-  -webkit-font-smoothing: antialiased;
+//  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, .highlight {
@@ -53,6 +54,17 @@ b, strong, h4 {
 .small p {
   font-size: 13px;
 }
+
+// BLUE!
+
+#about-container {
+  color: #4d658d;
+}
+
+#about-container p {
+  color: #4d658d;
+}
+
 
 
 /* NEW LAYOUT - MASTER
@@ -249,11 +261,11 @@ ul#footer-nav, ul#footer-nav > li > a {
 *---------------------------- */
 
 #splash-title-top, #splash-title-bottom {
-  font-size: 36px;
+  font-size: 48px;
 }
 
 #splash-title-top {
-  margin: 0 0 0 0;
+  margin: 20px 0 50px 0;
 }
 
 #splash-title-bottom {
@@ -265,22 +277,27 @@ ul#footer-nav, ul#footer-nav > li > a {
   margin: 0 0 20px 0;
 }
 
+#splash-arrows img {
+  width: 200px;
+}
+
 #splash-main {
   width: 500px;
 }
 
 #splash-side-text {
-  width: 400px;
+  width: 430px;
   margin-left: -100px;
-  margin-top: 10px;
 }
 
 #splash-side-text p {
-  font-size: 18px;
-  color: #4d658d;
+  margin-bottom: 12px;
+  font-size: 22px;
+//  color: #4d658d;
 }
 
 #splash-container {
+  position: relative;
   width: 500px;
   margin: 0 auto 40px auto;
 }
@@ -290,15 +307,9 @@ ul#footer-nav, ul#footer-nav > li > a {
   margin-bottom: 10px;
 }
 
-#splash-legend, #splash-tooltip {
-  width: 155px;
-}
-
-#splash-tooltip {
-  margin-right: -100px;
-}
-
 #splash-legend {
+  font-size: 15px;
+  width: 160px;
   text-align: right; 
   line-height: 23px;
 }
@@ -312,7 +323,10 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #splash-tooltip {
-  width: 198px;
+  position: absolute;
+  top: 105px;
+  left: 230px;
+  width: 228px;
   margin-right: 10px;
   padding: 15px;
   background-color: white; 
@@ -341,10 +355,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #splash-people > img {
-  width: 360px;
-}
-
-#side-text {
+  width: 240px;
 }
 
 #splash-arrow {
@@ -355,22 +366,34 @@ ul#footer-nav, ul#footer-nav > li > a {
 
 
 #splash-call {
-  color: #f26422;
-  margin: -20px 0 0 0;
-  font-size: 18px;
-  width: 200px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+//  color: #f26422;
+//  font-weight: bold;
+  padding: 12px 20px 8px 20px;
+  margin: 20px 0 0 0;
+  font-size: 22px;
+//  width: 400px;
 }
 
 #splash-call:hover {
-  color: #f26422;
+  //  color: #f26422;
+  -webkit-box-shadow: 0 0 15px rgba(242, 100, 34, 0.7);
+     -moz-box-shadow: 0 0 15px rgba(242, 100, 34, 0.7);
+          box-shadow: 0 0 15px rgba(242, 100, 34, 0.7);
 }
 
 #splash-explain {
   width: 300px;
   margin: -50px 0 0 90px;
   line-height: 23px;
+}
+
+#splash-below {
+  margin-top: 60px;
+}
+
+#splash-below p {
+  margin-bottom: 20px;
+  font-size: 22px;
 }
 
 
@@ -398,9 +421,9 @@ ul#footer-nav, ul#footer-nav > li > a {
   font-size: 15px;
   line-height: 1.2em;
   font-family: Helvetica, Arial, Sans-Serif;
-  font-weight: 400;
+  font-weight: 200;
   font-smooth: always;
-  -webkit-font-smoothing: antialiased;
+//  -webkit-font-smoothing: antialiased;
 }
 
 /* OTHER
@@ -510,8 +533,30 @@ ul.login-buttons > li.login-logo > a > img {
 }
 
 
-/* ABOUT PAGE BUTTON
+/* ABOUT PAGE
  *---------------------------- */
+
+#action-container {
+  padding: 20px;
+  margin: 10px 0 30px 0;
+  background-color: #ffeae1;
+  border-radius: 20px;
+//  border: 1px solid #f26422;
+}
+
+#action-container > #splash-call {
+  margin: 0;
+}
+
+ 
+#action-question{
+  display: inline-block;
+  font-size: 22px;
+  margin-right: 20px;
+  position: relative;
+  top: 2px;
+}
+
 #about-button-container {
   margin-left: auto;
   margin-right: auto;
@@ -667,10 +712,6 @@ form .form-actions {
 
 .simple_form .control-group {
   margin-bottom: 20px;
-}
-
-.btn {
-  font-weight: normal;
 }
 
 /* USER DASHBOARD

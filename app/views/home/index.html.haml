@@ -15,9 +15,29 @@
       var twShareHref = "https://twitter.com/share?url=" + encodeURIComponent("#{ root_url }");
       openPopup(twShareHref, "Share on Twitter");
     });
+    
+    var timer = null;
+    
+    $('#splash-button').hover(function() {
+      clearTimeout(timer);
+      $('#splash-tooltip').fadeIn('fast');
+    }, function() {
+      clearTimeout(timer);
+      timer = setTimeout(function() {
+        $('#splash-tooltip').fadeOut('fast');
+      }, 500);
+    });
+    
+    $('#splash-tooltip').hover(function() {
+      clearTimeout(timer);
+    }, function() {
+    clearTimeout(timer);
+    timer = setTimeout(function() {
+      $('#splash-tooltip').fadeOut('fast');
+    }, 500);
+    });
 
 #splash-title-top.highlight.center= t('.title_top')
-#splash-title-bottom.highlight= t('.title_bottom')
 
 #splash-main.pull-left
   #splash-people.center= image_tag 'front/people-01.png'
@@ -28,25 +48,35 @@
       %div= raw t('.legend_p1', :img => image_tag('front/legend-arrow-01.png'))    
       %div= raw t('.legend_p2', :img => image_tag('front/legend-arrow-01.png'))    
       %div= t('.legend_p3')
-      %div= raw t('.legend_p4', :img => image_tag('front/legend-arrow-01.png'))    
-    #splash-button.center.pull-left= image_tag 'front/button-01.png'
-    .pull-left{:style => "width: 0;"}
-      #splash-tooltip
-        = t('.pledge_to')
-        %span.highlight= t('.cause')
-        #splash-tooltip-share
-          = t('.share')
-          #fb-share= image_tag("logos/facebook.png")
-          #tw-share= image_tag("logos/twitter.png")
-    #splash-arrow.center.clear= image_tag 'front/arrow-02.png'
-    .center
-      %a#splash-call.btn.highlight{ :href => home_receive_pledges_path }= raw t('.set_up')
+      %div= raw t('.legend_p4', :img => image_tag('front/legend-arrow-01.png'))
+     
+    %a#splash-button.center.pull-left{:href => home_receive_pledges_path}
+      = image_tag 'front/button-01.png'
+    #splash-tooltip.hide
+      = t('.pledge_to')
+      %span.highlight= t('.cause')
+      #splash-tooltip-share
+        = t('.share')
+        #fb-share= image_tag("logos/facebook.png")
+        #tw-share= image_tag("logos/twitter.png")
 
 #splash-side-text.pull-right
-  %p= t('.explain_p1')
+  %p= raw t('.explain_p1')
   %p= t('.explain_p2')
-  %p= t('.explain_p3')
+  / %p= t('.explain_p3')
   %p{:style => "margin-left: 20px;"}= t('.explain_p4')
   %p{:style => "margin-left: 20px;"}= t('.explain_p5')
   %p{:style => "margin-left: 20px;"}= t('.explain_p6')
+  %a#splash-call.btn.btn-strong{ :href => home_receive_pledges_path }= raw t('.set_up')
 .clear
+
+#splash-below
+  %p= t('.below_p1')
+  %p= t('.below_p2')
+  %p= t('.below_p3')
+  %p= t('.below_p4')
+  %p= t('.below_p5')
+  %p= t('.below_p6')
+  %p= t('.below_p7')
+  %p= t('.below_p8')
+  %p=link_to t('.read_more'), about_path
