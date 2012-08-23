@@ -1,6 +1,9 @@
 class Home::AccountController < Home::HomeController
   
-  include ActiveMerchant::Billing::Integrations
+  # include ActiveMerchant::Billing::Integrations
+
+  require 'dwolla.rb'
+  DwollaClient = Dwolla::Client.new(DWOLLA_SETTINGS[:app_key], DWOLLA_SETTINGS[:app_secret])
   
   def index
     # unreachable
@@ -44,9 +47,12 @@ class Home::AccountController < Home::HomeController
     @user = current_user
     
     if request.method == 'POST'
+      # if Dwolla code
+      # code = params['code']
+      # dwolla_token = DwollaClient.request_token(code, redirect_uri)
       @user.editing = true
       unless @user.update_attributes(params[:user])
-        # TODO: handle bad paypal email
+        # TODO: handle bad Dwolla email
       end
     end
     
@@ -58,29 +64,31 @@ class Home::AccountController < Home::HomeController
     @total = clicks.length
     @funded = funded_clicks.length
     
-    if @funded < 40
+    if @funded < 200
       @has_payout = false
     else
       @has_payout = true
-      unless @user.paypal_email.blank?
-        # Create or update payment object
-        amount = (@funded.to_f / 4).round(2)
-        openPayments = @user.payments.where(:state => Payment::State::NEW, :payment_type => 'payout')
-        if openPayments.empty?
-          payment = @user.payments.new({:amount => amount, :payment_type => 'payout'})
-          ApplicationMailer.new_payout_request(@user, payment).deliver
-        elsif openPayments.length == 1
-          payment = openPayments[0]
-          payment.amount = amount unless openPayments[0].amount == amount
-          ApplicationMailer.updated_payout_request(@user, payment).deliver
-        else
-          # error: multiple open payouts
-          raise "User #{@user.id} has multiple open payout request"
-        end
-        payment.save
-        # TODO make this click processing a background task
-        funded_clicks.each{|click| click.queue_for_payout }
-      end
+      # @authUrl = DwollaClient.auth_url(dwolla_auth_callback_url)
+      
+      # unless @user.paypal_email.blank?
+      #   # Create or update payment object
+      #   amount = (@funded.to_f / 4).round(2)
+      #   openPayments = @user.payments.where(:state => Payment::State::NEW, :payment_type => 'payout')
+      #   if openPayments.empty?
+      #     payment = @user.payments.new({:amount => amount, :payment_type => 'payout'})
+      #     ApplicationMailer.new_payout_request(@user, payment).deliver
+      #   elsif openPayments.length == 1
+      #     payment = openPayments[0]
+      #     payment.amount = amount unless openPayments[0].amount == amount
+      #     ApplicationMailer.updated_payout_request(@user, payment).deliver
+      #   else
+      #     # error: multiple open payouts
+      #     raise "User #{@user.id} has multiple open payout request"
+      #   end
+      #   payment.save
+      #   # TODO make this click processing a background task
+      #   funded_clicks.each{|click| click.queue_for_payout }
+      # end
     end
   end
   

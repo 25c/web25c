@@ -1,0 +1,11 @@
+development:
+  app_key: bzxH5qSmufh5Ng7M7jhqXyawWCUgNAV7izJmQCS/X86EcZ0t4/
+  app_secret: dV5Md9LpVLnN332vXSIiq33kbAaV0eIGuXi4CkNFwUIVjYj+8M
+  
+test:
+  app_id: bzxH5qSmufh5Ng7M7jhqXyawWCUgNAV7izJmQCS/X86EcZ0t4/
+  app_secret: dV5Md9LpVLnN332vXSIiq33kbAaV0eIGuXi4CkNFwUIVjYj+8M
+  
+production:
+  consumer_key: bzxH5qSmufh5Ng7M7jhqXyawWCUgNAV7izJmQCS/X86EcZ0t4/
+  consumer_secret: dV5Md9LpVLnN332vXSIiq33kbAaV0eIGuXi4CkNFwUIVjYj+8M

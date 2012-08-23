@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120807211950) do
+ActiveRecord::Schema.define(:version => 20120822203903) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",                 :null => false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20120807211950) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.string   "info_url"
   end
 
   add_index "buttons", ["user_id"], :name => "index_buttons_on_user_id"
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20120807211950) do
     t.boolean  "has_agreed",            :default => false
     t.boolean  "show_donations",        :default => true
     t.string   "paypal_email"
+    t.string   "dwolla_email"
   end
 
   add_index "users", ["google_uid"], :name => "index_users_on_google_uid", :unique => true

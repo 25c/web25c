@@ -646,6 +646,17 @@ img#tip-25c-logo {
 
 /* FORM OVERRIDES
  *---------------------------- */
+ 
+.form-horizontal .control-label {
+  float: left;
+  width: 200px;
+  padding-top: 5px;
+  text-align: right;
+}
+.form-horizontal .controls {
+  margin-left: 220px;
+}
+ 
 form .form-actions {
   border-top: 0px none transparent;
 } 

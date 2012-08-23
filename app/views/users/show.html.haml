@@ -70,7 +70,7 @@
         .content-block
           #profile-button-title
             / = t('.button_title_intro')
-            %span#button-title= @button.title.blank? ? @user.display_name : @button.title
+            %span#button-title= @button.title.blank? ? t('.pledge_to', :name => @user.display_name) : @button.title
                               
       - if not @button.youtube_id.blank?
         #youtube-embed-container
@@ -94,7 +94,7 @@
             / %label= t('button_description_label')
             %textarea{:id => 'button-description-input', :name => 'description', 
               :rows => 1}
-              =@button.description.blank? ? t('.enter_button_description') : @button.description
+              = @button.description.blank? ? t('.enter_button_description') : @button.description
         .content-block
           #button-description
             = @button.description.blank? ? t('.button_description_default') : @button.description
