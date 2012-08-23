@@ -203,26 +203,25 @@ en:
       pledge_to: Pledge 25c to
       cause: YOUR CAUSE
       share: "Share:"
-      set_up: Get Set Up to Collect Micro-donations
+      set_up: Get Set Up to Collect Micro-Donations
       explain_p1: "The +25c Button combines a \'Like\' with a <b>25-cent pledge</b>."
       explain_p2: "Embed it into your blog, photos, videos."
       explain_p3: 
       explain_p4: "* No strings attached"
       explain_p5: "* Easy to do"
-      explain_p6: "* Connect with your fans"
+      explain_p6: "* Locate your fans"
       
-      below_p1: "Have a website, blog, photo collection, or video?  Earn money by collecting small contributions from lots of people."
-      below_p2: "It's easy to do, there's no downside to enabling it, and it can add up!"
-      below_p3: "Simply embed the customized +25c Button or link provided by us."
-      below_p4: "The +25c Button is designed to be responsively multi-click: Each click pledges 25 cents."
+      below_p1: "What if there were an easy way to collect 25-cent contributions from fans of your website, blog, photo collection, videos?"
+      below_p2: "Now there is!  Simply embed the customized +25c Button or link provided by us."
+      below_p3: "Doesn't sound like much?  It can add up!  Consider that people click 'Like' three billion times every day.  And 10,000 25c's is $2,500."
       below_p5: "See something you value?  Click the +25c Button to show your appreciation."
       below_p6: "Make forty 25c pledges at your leisure.  Pay later through a $10 charge to your credit card."
-      below_p7: "You may undo your 25c pledges at any time up to the point of the (non-refundable) payment."
-      below_p8: "Help shift media economics from \"value to advertiser\" to \"value to you\"."
+      below_p7: "Feel free to undo your 25c pledges any time until you paid."
+      below_p8: "Be the customer not the product.  Support what you value one quarter a click."
       read_more: "Read more..."
 
       facebook_share_title: 25c social micro-donations.
-      facebook_share_description: Supporting what you value one quarter each click.
+      facebook_share_description: Supporting value one quarter a click.  Be the customer not the product.
     
     not_found:
       title: Page Not Found
