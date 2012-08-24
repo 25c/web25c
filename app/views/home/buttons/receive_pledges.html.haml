@@ -5,7 +5,7 @@
     window.updateButtonUrl = '#{ j home_update_button_url }';
     window.updateUserUrl = '#{ j home_account_url }';
     window.userNickname = '#{ @user.nickname.blank? ? '' : @user.nickname }';
-    window.userDisplayName = '#{ @user.display_name }';
+    window.userPledgeName = '#{ @user.pledge_name.blank? ? @user.display_name : @user.pledge_name }';
     window.fbShareDescription = '#{ t('.fb_share_description') }';
     window.fbShareCallbackUrl = '#{ j fb_share_callback_url }';
     window.fbShareTitle = '#{ t('.fb_share_title') }';
@@ -14,9 +14,9 @@
     window.invalidUrl = '#{ t('.invalid_url') }';
     window.isButtonPage = false;
     window.buttonTitleDefault = '#{ t('.enter_title') }';
-    window.buttonDescriptionDefault = '#{ t('.enter_description') }';
-    //window.buttonInfoUrlDefault = '#{ t('.enter_info_url') }';
-    window.userAboutDefault = '#{ t('.enter_about') }';
+    // window.buttonDescriptionDefault = '#{ t('.enter_description') }';
+    // window.buttonInfoUrlDefault = '#{ t('.enter_info_url') }';
+    // window.userAboutDefault = '#{ t('.enter_about') }';
 
 %h2.page-header= t('.title')
 %p.buffer= t('.subtitle')
@@ -26,31 +26,27 @@
   .step-content
     %h3.step-title= t('.describe_cause_title')
     .step-body
+    
       .label-column.pull-left
         %label= t('.button_title_label')
       .input-column.pull-left
         %input#button-title{ :type => 'text', :name => 'button[title]',
           :value => @button.title.blank? ? t('.enter_title') : @button.title }
-      .label-column.clear.pull-left
-        %label= t('.button_description_label')
+
+      - if @user.nickname.blank?
+        .clear.label-column.pull-left
+          %label.buffer= t('.user_nickname_label')
+        .input-column.pull-left
+          %input#user-nickname
+          %p= t('.user_nickname_hint')
+          
+      .clear.label-column.clear.pull-left
+        %label= t('.user_pledge_name_label')
       .input-column.pull-left
-        %textarea#button-description{ :name => 'button[description]', :rows => 3 }
-          = @button.description.blank? ? t('.enter_description') : @button.description
-      / .label-column.pull-left
-      /   %label= t('.button_info_url_label')
-      / .input-column.pull-left
-      /   %input#button-info-url{ :type => 'text', :name => 'button[info_url]',
-      /     :value => @button.info_url.blank? ? t('.enter_info_url') : @button.info_url }
-      .clear
-      #set-button-info.btn.btn-strong= t('.set_button_info')
-  .clear
-  
-#describe-user.step-container.hide
-  .step-number
-  .step-content
-    %h3.step-title= t('.describe_user_title')
-    .step-body
-      .label-column.pull-left
+        %input#user-pledge-name{ :type => 'text', :name => 'user[pledge_name]',
+          :value => @user.pledge_name.blank? ? @user.display_name : @user.pledge_name }
+           
+      .clear.label-column.pull-left
         %label= t('.user_picture_label')
       .input-column.pull-left
         #upload-picture-fields
@@ -68,18 +64,6 @@
               %span#current-picture-link
                 = t('.picture_link')
                 = image_tag(current_user.get_thumb, :class => 'thumb-picture')
-
-      - if @user.nickname.blank?
-        .clear.label-column.pull-left
-          %label.buffer= t('.user_nickname_label')
-        .input-column.pull-left
-          %input#user-nickname
-          %p= t('.user_nickname_hint')
-      .clear.label-column.pull-left
-        %label= t('.user_about_label')
-      .input-column.pull-left
-        %textarea#user-about{ :name => 'user[about]', :rows => 3 }
-          = @user.about.blank? ? t('.enter_about') : @user.about
       .clear
       #set-user-info.clear.btn.btn-strong= t('.set_user_info')
   .clear
@@ -106,9 +90,6 @@
         %input{ :type => 'radio', :name => 'platform' }
         = image_tag 'logos/youtube.png', :class => 'platform-logo-img'
       .clear
-      #no-platform.pull-left.platform-container{ :'data-platform' => 'none' }
-        %input{ :type => 'radio', :name => 'platform' }
-        %span.platform-text= t('.no_platform')
   .clear
 
 #choose-button.step-container.hide

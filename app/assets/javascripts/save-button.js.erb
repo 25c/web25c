@@ -52,6 +52,9 @@ $(document).ready(function(){
         || $nextStep.attr('id') == 'share-cause') {
         showNextStep();
       }
+      if ($nextStep.attr('id') == 'share-cause') {
+        putUpdate(false, { has_seen_receive_page: true });
+      }
     }
   };
   
@@ -80,7 +83,7 @@ $(document).ready(function(){
     } else if (codeType == 'javascript') {
       newCode = jsOpen 
         + 'data-size="' + buttonSize 
-        + '" data-user="' + userDisplayName
+        + '" data-user="' + userPledgeName
         + '" data-profile="' + profileUrl
         // + '" data-info-url="' + buttonInfoUrl
         + '">' + buttonTitle + jsClose;
@@ -198,20 +201,8 @@ $(document).ready(function(){
   // Save button info
   $('#set-button-info').click(function(){
     buttonTitle = $('#button-title').val();
-    var buttonDescription = $('#button-description').val();
-    // buttonInfoUrl = $('#button-info-url').val();
-    
     if (buttonTitle == buttonTitleDefault) buttonTitle = "";
-    if (buttonDescription == buttonDescriptionDefault) buttonDescription = "";
-    
-    // if (buttonInfoUrl == buttonInfoUrlDefault) buttonInfoUrl = "";
-    // else if (!(/^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(buttonInfoUrl))) {
-    //   alert(invalidUrl);
-    //   return;
-    // }
-    
-    // putUpdate(true, { title: buttonTitle, description: buttonDescription, info_url: buttonInfoUrl });
-    putUpdate(true, { title: buttonTitle, description: buttonDescription });
+    putUpdate(true, { title: buttonTitle });
     updateButtonCode();
     showNextStep(2);
   });
@@ -225,15 +216,25 @@ $(document).ready(function(){
   
   // Save user info
   $('#set-user-info').click(function() {
-    var userAbout = $('#user-about').val();
-    if (userAbout == userAboutDefault) userAbout = "";
+    // get user pledge name
+    userPledgeName = $('#user-pledge-name').val();
+        
+    // get user button title info
+    buttonTitle = $('#button-title').val();
+    if (buttonTitle == buttonTitleDefault) {
+      buttonTitle = "";
+    } else {
+      putUpdate(true, { title: buttonTitle });
+      updateButtonCode();
+    }
+    
     if (userNickname) {
-      putUpdate(false, { about: userAbout });
+      putUpdate(false, { pledge_name: userPledgeName });
       showNextStep(3);
     } else {
       if ($('#user-nickname').val()) {
         userNickname = $('#user-nickname').val();
-        putUpdate(false, { nickname: userNickname, about: userAbout }, function(response) {
+        putUpdate(false, { nickname: userNickname, pledge_name: userPledgeName }, function(response) {
           $('#profile-link > a').attr('href', profileUrl).text(profileUrl);
           $('#user-nickname').parent().add($('#user-nickname').parent().prev()).hide();
           $('#profile-link > a').attr('href', profileUrl).text(profileUrl);

@@ -4,9 +4,9 @@
     window.buttonId = '#{ @button.uuid }';
     window.updateButtonUrl = '#{ j home_update_button_url }';
     window.userNickname = '#{ @user.nickname.blank? ? '' : @user.nickname }';
+    window.userPledgeName = '#{ @user.pledge_name.blank? ? @user.display_name : @user.pledge_name }';
     window.isButtonPage = true;
     window.buttonSize = '#{ @button.size.blank? ? '' : @button.size }';
-    window.userDisplayName = '#{ @user.display_name }';
 
 %h2.page-header= t('.title')
 %p.buffer= t('.subtitle')

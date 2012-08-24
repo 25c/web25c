@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.find_by_nickname_ci(params[:id])
     
     if @user
-      @is_editable = self.current_user == @user
+      @is_editable = self.current_user == @user unless params[:edit] == 'no'
       @button = @user.buttons[0]
       clicks = @user.clicks.includes(:button => :user).order("created_at DESC").find_all_by_state([
         Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
@@ -113,41 +113,6 @@ class UsersController < ApplicationController
     @is_tip_page = false
     new_account = ''
     case auth['provider']
-    when 'twitter'
-      user = User.find_by_twitter_uid(auth['uid'])
-      if user.nil?
-        user = User.new
-        new_account = 'twitter'
-        user.password = SecureRandom.hex
-        user.twitter_uid = auth['uid']
-        user.twitter_username = auth['info']['nickname']
-        user.twitter_token = auth['credentials']['token']
-        user.twitter_token_secret = auth['credentials']['secret']
-        unless auth['info']['image'].blank?
-          user.picture_url = auth['info']['image'].dup.gsub(/_normal(\.(?i:gif)|\.(?i:jpe?g)|\.(?i:png))$/, "\\1")
-        end
-        unless auth['info']['name'].blank?
-          names = auth['info']['name'].strip.split(" ")
-          user.first_name = names[0]
-          user.last_name = names[1..-1].join(" ") if names.length > 1
-        end
-        user.save!
-        begin
-          user.nickname = auth['info']['nickname']
-          user.save!
-        rescue
-          user.reload
-        end
-      elsif user.twitter_token.blank? or user.twitter_token_secret.blank?
-        user.twitter_token = auth['credentials']['token']
-        user.twitter_token_secret = auth['credentials']['secret']
-        user.save!
-      end
-      if user.picture_file_name.blank? and not auth['info']['image'].blank?
-        user.picture_url = auth['info']['image'].dup.gsub(/_normal(\.(?i:gif)|\.(?i:jpe?g)|\.(?i:png))$/, "\\1")
-        user.save!
-      end
-      notice = t('users.sign_in_callback.twitter')
     when 'google_oauth2'
       user = User.find_by_google_uid(auth['uid'])
       if user.nil?
@@ -208,7 +173,7 @@ class UsersController < ApplicationController
       end
       
       if button_id
-        if new_account.blank?
+        if new_account.blank? && source == 'iframe'
           Click.enqueue(self.current_user, button_id, referrer, request, cookies)
         end
         @redirect_url = tip_path(
@@ -219,7 +184,11 @@ class UsersController < ApplicationController
           )
         @is_tip_page = true
       else
-        @redirect_url = home_dashboard_path
+        if user.has_seen_receive_page
+          @redirect_url = home_dashboard_path
+        else
+          @redirect_url = home_receive_pledges_path
+        end
         flash[:notice] = notice
       end
     end

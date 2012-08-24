@@ -24,6 +24,15 @@ $(document).ready(function() {
       {'sWidth': '100px', 'bSortable': false}
     ]
   });
+  
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  
+  $('td.convert-date').each(function() {
+    var $this = $(this);
+    correctedTime = $this.text();
+    var d = new Date(correctedTime * 1000);
+    $this.text(d.getDate() + ' ' + months[d.getMonth()] + ' ' + (d.getFullYear() - 2000));
+  });
     
   $('.dataTables_paginate > ul > li.disabled').parent().parent().hide();
   

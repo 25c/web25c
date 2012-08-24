@@ -29,8 +29,7 @@
 *---------------------------- */
 
 body, p, strong, h4, ul.plist > li, label, input, button, select, textarea {
-//  color: #766356;
-  color: #666;
+  color: #766356;
   font-size: 17px;
   line-height: 1.2em;
   font-family: Helvetica, Arial, Sans-Serif;
@@ -54,18 +53,6 @@ b, strong, h4 {
 .small p {
   font-size: 13px;
 }
-
-// BLUE!
-
-#about-container {
-  color: #4d658d;
-}
-
-#about-container p {
-  color: #4d658d;
-}
-
-
 
 /* NEW LAYOUT - MASTER
 *---------------------------- */
@@ -261,11 +248,11 @@ ul#footer-nav, ul#footer-nav > li > a {
 *---------------------------- */
 
 #splash-title-top, #splash-title-bottom {
-  font-size: 48px;
+  font-size: 42px;
 }
 
 #splash-title-top {
-  margin: 20px 0 50px 0;
+  margin: 20px 0 40px 0;
 }
 
 #splash-title-bottom {
@@ -282,12 +269,12 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #splash-main {
-  width: 500px;
+//  width: 400px;
 }
 
 #splash-side-text {
-  width: 430px;
-  margin-left: -100px;
+  margin-top: 10px;
+  width: 480px;
 }
 
 #splash-side-text p {
@@ -298,7 +285,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 
 #splash-container {
   position: relative;
-  width: 500px;
+  width: 350px;
   margin: 0 auto 40px auto;
 }
 
@@ -325,7 +312,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 #splash-tooltip {
   position: absolute;
   top: 105px;
-  left: 230px;
+  left: 180px;
   width: 228px;
   margin-right: 10px;
   padding: 15px;
@@ -388,12 +375,36 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #splash-below {
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 #splash-below p {
   margin-bottom: 20px;
-  font-size: 22px;
+//  font-size: 22px;
+}
+
+#splash-below > .splash-col {
+  width: 420px;
+}
+
+#splash-below .col-title {
+//  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#splash-below .learn-more {
+  margin-top: 20px;
+  font-weight: bold; 
+}
+
+
+/* PAYMENT PAGES
+*---------------------------- */
+
+#use-dwolla > img {
+  vertical-align: bottom;
+  margin-right: 10px;
 }
 
 
@@ -418,7 +429,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 .btn {
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.2em;
   font-family: Helvetica, Arial, Sans-Serif;
   font-weight: 200;
@@ -537,6 +548,7 @@ ul.login-buttons > li.login-logo > a > img {
  *---------------------------- */
 
 #action-container {
+//  font-size: 18px;
   padding: 20px;
   margin: 10px 0 30px 0;
   background-color: #ffeae1;
@@ -544,14 +556,16 @@ ul.login-buttons > li.login-logo > a > img {
 //  border: 1px solid #f26422;
 }
 
-#action-container > #splash-call {
+#action-container > #action-button {
+  //  font-size: 18px;
+  padding: 7px 15px 3px 15px;
   margin: 0;
 }
 
  
-#action-question{
+#action-container > #action-question {
+  font-weight: bold;
   display: inline-block;
-  font-size: 22px;
   margin-right: 20px;
   position: relative;
   top: 2px;
@@ -583,8 +597,8 @@ ul.login-buttons > li.login-logo > a > img {
 }
 
 #tip-inner-container {
-  min-height: 256px;
-  padding: 30px 20px 0 20px;
+  min-height: 236px;
+  padding: 50px 20px 0 20px;
   border: 1px solid #f26422;
   border-radius: 20px;
   background-color: white;
@@ -624,15 +638,15 @@ ul.login-buttons > li.login-logo > a > img {
 }
 
 #tip-center #tip-result {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 #tip-center #more-info-buttons {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 #tip-overdraft {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 #tip-overdraft-center {
@@ -919,6 +933,8 @@ table.table thead .sorting_desc_disabled {
   width: 84px;
 }
 
+
+
 #user-profile #first_name_input {
   margin-right: 11px;
 }
@@ -1137,6 +1153,10 @@ table.table thead .sorting_desc_disabled {
   width: 40px;
 }
 
+#no-edit {
+  margin-top: 20px;
+}
+
 
 /* USER AGREEMENT
 *---------------------------- */
@@ -1321,7 +1341,7 @@ pre#button-code-block {
 #set-button-info, #set-user-info {
   width: 180px;
   display: block;
-  margin: 10px auto 0 auto;
+  margin: 20px auto 0 auto;
 }
 
 #user-picture-uploading, #user-picture-link {

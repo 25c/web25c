@@ -43,15 +43,19 @@
       .block#name-block
         - if @is_editable
           .input-block
-            %input{:type => 'text', :name => 'user[first_name]', 
-              :value => @user.first_name.blank? ? t('.first_name_default') : @user.first_name,
-              :id => 'first_name_input'}
-            %input{:type => 'text', :name => 'user[last_name]', 
-            :value => @user.last_name.blank? ? t('.last_name_default') : @user.last_name,
-            :id => 'last_name_input'}
+            / %input{:type => 'text', :name => 'user[first_name]', 
+            /   :value => @user.first_name.blank? ? t('.first_name_default') : @user.first_name,
+            /   :id => 'first_name_input'}
+            / %input{:type => 'text', :name => 'user[last_name]', 
+            / :value => @user.last_name.blank? ? t('.last_name_default') : @user.last_name,
+            / :id => 'last_name_input'}
+            %input{:type => 'text', :name => 'user[pledge_name]', 
+            :value => @user.pledge_name.blank? ? @user.display_name : @user.pledge_name,
+            :id => 'pledge_name_input'}
         %p.content-block.emphasis
-          =@user.first_name.blank? ? t('.enter_name') :  @user.first_name
-          =@user.last_name.blank? ? '' : @user.last_name
+          / =@user.first_name.blank? ? t('.enter_name') :  @user.first_name
+          / =@user.last_name.blank? ? '' : @user.last_name
+          =@user.pledge_name.blank? ? @user.display_name : @user.pledge_name
       .block#about-block.clear
         .input-block
           %textarea{:id => 'about', :name => 'user[about]', :rows => 3}
@@ -135,6 +139,7 @@
           %input{:type => 'text', :name => 'youtube_link', 
             :id => 'upload-youtube-url'}
           #youtube-button.btn= t('.save_video')
+        #no-edit= link_to(t('.no_edit'), '?edit=no', :target => '_blank')
 
 - if @user.show_donations and @click_sets.length > 0
   .span11

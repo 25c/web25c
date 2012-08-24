@@ -2,7 +2,6 @@ class Admin::DashboardController < Admin::AdminController
   
   def index
     @payments = Payment.includes(:user).where(:payment_type => 'payout').find_all_by_state(Payment::State::NEW)
-    puts @payments.inspect
   end
   
   def process_payment

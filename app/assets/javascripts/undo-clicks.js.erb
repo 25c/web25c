@@ -20,9 +20,20 @@ $(document).ready(function(){
     ]
   });
 
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    
+  $('td.convert-date').each(function() {
+    var $this = $(this);
+    correctedTime = $this.text();
+    var d = new Date(correctedTime * 1000);
+    $this.text(d.getDate() + ' ' + months[d.getMonth()] + ' ' + (d.getFullYear() - 2000));
+  });
+
   // bind click deleting action to buttons
+  var hasConfirmed = false;
   $('.delete-click').click(function() {
-    if (confirm(confirmDelete)) {
+    if (hasConfirmed || confirm(confirmDelete)) {
+      hasConfirmed = true;
       $this = $(this);
       $.post(deleteClickUrl, { click_id: $this.attr('data-click_id') });
       // $this.parent().parent().fadeOut('slow');

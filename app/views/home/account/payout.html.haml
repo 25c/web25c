@@ -18,8 +18,14 @@
       :input_html => {:autocomplete => 'off'}
     .form-actions
       = f.button :submit, :class => 'btn-strong', :value => t('.submit')
+  %p#use-dwolla
+    =image_tag 'logos/dwolla.png'
+    = t('.use_dwolla')
   
 - else
   %p.buffer= t('.sent')
-  %a= link_to t('.dashboard'), home_dashboard_path, :class => 'btn'
+  %a.buffer= link_to t('.dashboard'), home_dashboard_path, :class => 'btn'
+  %p#use-dwolla
+    =image_tag 'logos/dwolla.png'
+    = t('.use_dwolla')
 .clear

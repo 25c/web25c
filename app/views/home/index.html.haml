@@ -44,14 +44,9 @@
   #splash-arrows.center= image_tag 'front/arrows-02.png'
   #splash-container
     #splash-button-title.center= raw t('.button_title')
-    #splash-legend.pull-left
-      %div= raw t('.legend_p1', :img => image_tag('front/legend-arrow-01.png'))    
-      %div= raw t('.legend_p2', :img => image_tag('front/legend-arrow-01.png'))    
-      %div= t('.legend_p3')
-      %div= raw t('.legend_p4', :img => image_tag('front/legend-arrow-01.png'))
-     
-    %a#splash-button.center.pull-left{:href => home_receive_pledges_path}
-      = image_tag 'front/button-01.png'
+    .center
+      %a#splash-button{:href => home_receive_pledges_path}
+        = image_tag 'front/button-01.png'
     #splash-tooltip.hide
       = t('.pledge_to')
       %span.highlight= t('.cause')
@@ -71,12 +66,17 @@
 .clear
 
 #splash-below
-  %p= t('.below_p1')
-  %p= t('.below_p2')
-  %p= t('.below_p3')
-  %p= t('.below_p4')
-  %p= t('.below_p5')
-  %p= t('.below_p6')
-  %p= t('.below_p7')
-  %p= t('.below_p8')
-  %p=link_to t('.read_more'), about_path
+  .splash-col.pull-left
+    .col-title= t('.publisher_title')
+    %p= t('.publisher_p1')
+    %p= t('.publisher_p2')
+    %p= t('.publisher_p3')
+    %p= t('.publisher_p4')
+  .splash-col.pull-right
+    .col-title= t('.pledger_title')
+    %p= t('.pledger_p1')
+    %p= t('.pledger_p2')
+    %p= t('.pledger_p3')
+    %p= t('.pledger_p4')
+  .clear
+  %p.center.learn-more=link_to t('.read_more'), about_path

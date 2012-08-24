@@ -18,13 +18,13 @@ class ApplicationMailer < ActionMailer::Base
   def new_payout_request(user, payment)
     @user = user
     @payment = payment
-    mail :to => 'sylvio@25c.com', :subject => 'New Payout Request'
+    mail :to => 'lionel@25c.com', :subject => 'New Payout Request'
   end
   
   def updated_payout_request(user, payment)
     @user = user
     @payment = payment
-    mail :to => 'sylvio@25c.com', :subject => 'Updated Payout Request'
+    mail :to => 'lionel@25c.com', :subject => 'Updated Payout Request'
   end
   
 end

@@ -75,7 +75,11 @@ class ApplicationController < ActionController::Base
           if not request.referrer.blank? and request.referrer.include? 'blog/header'
             redirect_to request.referrer
           else
-            redirect_to_session_redirect_path(home_dashboard_path)
+            if user.has_seen_receive_page
+              redirect_to_session_redirect_path(home_dashboard_path)
+            else
+              redirect_to_session_redirect_path(home_receive_pledges_path)
+            end
           end
         end
       end
@@ -161,6 +165,9 @@ class ApplicationController < ActionController::Base
         end
         if click_sets[id]
           click_sets[id][0] += 1
+          if click.created_at > click_sets[id][1].created_at
+            click_sets[id][1].created_at = click.created_at
+          end
         else
           click_set = [1, click]
           click_sets[id] = click_set

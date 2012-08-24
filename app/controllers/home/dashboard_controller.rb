@@ -1,7 +1,10 @@
 class Home::DashboardController < Home::HomeController
 
   def index
+    
+    Time.zone = "Pacific Time (US & Canada)"
     @user = current_user
+    
     clicks = @user.clicks.includes(:button => :user).order("created_at DESC").find_all_by_state([ 
       Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
     ])

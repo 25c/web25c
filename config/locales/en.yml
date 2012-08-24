@@ -48,6 +48,7 @@ en:
         provide_dwolla_email: "Please verify your Dwolla Account (required for all pay-outs):"
         sent: You have been queued for receiving a pay-out of your funded pledges. You should be receiving the amount within 48 hours.  Please check your Dwolla account.
         dashboard: Back to Dashboard
+        use_dwolla: We use the payment network Dwolla to save you money on your pay-outs.
     dashboard:
       index:
         title: Dashboard
@@ -143,7 +144,7 @@ en:
         describe_user_title: "Tell people a bit more about yourself:"
         user_picture_label: "Photo:"
         user_nickname_label: "Your user nickname:"
-        user_about_label: "Description:"
+        user_pledge_name_label: "Who pledges go to:"
         upload_picture: Upload
         picture_uploading: Picture uploading...
         picture_link: "Use this picture:"
@@ -154,8 +155,7 @@ en:
         nickname_blank: Please choose a non-blank nickname.
         
         choose_platform_title: "Where do you want to collect micro-donations?"
-        website: "Your website"
-        no_platform: "Skip.  For now, just create my 25c.com page for collecting 25c pledges."
+        website: "Website"
         
         choose_button_title: "Choose a look for your +25c Button:"
         get_code_title_blog: "Now embed this code into your blog:"
@@ -205,22 +205,25 @@ en:
       cause: YOUR CAUSE
       share: "Share:"
       set_up: Get Set Up to Collect Micro-donations
-      explain_p1: "The +25c Button combines a \'Like\' with a <b>25-cent pledge</b>."
+      explain_p1: "The +25c Button combines a \'Like\' with <br>a <b>25-cent pledge</b>."
       explain_p2: "Embed it into your blog, photos, videos."
       explain_p3: 
       explain_p4: "* No strings attached"
       explain_p5: "* Easy to do"
       explain_p6: "* Connect with your fans"
       
-      below_p1: "Have a website, blog, photo collection, or video?  Earn money by collecting small contributions from lots of people."
-      below_p2: "It's easy to do, there's no downside to enabling it, and it can add up!"
-      below_p3: "Simply embed the customized +25c Button or link provided by us."
-      below_p4: "The +25c Button is designed to be responsively multi-click: Each click pledges 25 cents."
-      below_p5: "See something you value?  Click the +25c Button to show your appreciation."
-      below_p6: "Make forty 25c pledges at your leisure.  Pay later through a $10 charge to your credit card."
-      below_p7: "You may undo your 25c pledges at any time up to the point of the (non-refundable) payment."
-      below_p8: "Help shift media economics from \"value to advertiser\" to \"value to you\"."
-      read_more: "Read more..."
+      publisher_title: "Have a website, blog, photo collection, or video?"
+      publisher_p1: "Earn money by collecting small contributions from lots of people."
+      publisher_p2: "It's easy to do, there's no downside to enabling it, and it can add up!"
+      publisher_p3: "Simply embed the customized +25c Button or link provided by us."
+      publisher_p4: "The +25c Button is designed to be responsively multi-click: Each click pledges 25 cents."
+      
+      pledger_title: "See something you value?"
+      pledger_p1: "Click the +25c Button to show your appreciation."
+      pledger_p2: "Make forty 25c pledges at your leisure.  Pay later through a $10 charge to your credit card."
+      pledger_p3: "You may undo your 25c pledges at any time up to the point of the (non-refundable) payment."
+      pledger_p4: "Help shift media economics from \"value to advertiser\" to \"value to you\"."
+      read_more: "Learn more about 25c..."
 
       facebook_share_title: 25c social micro-donations.
       facebook_share_description: Supporting what you value one quarter each click.
@@ -294,6 +297,7 @@ en:
       remove_button_picture: Remove Image
       upload_button_picture: Upload Pledge Image
       choose_youtube_video: "Or Show a Pledge Video from Youtube: "
+      no_edit: See your profile as other users see it
       tips_title: "25c Pledges Made:"
       amount: "Amount"
       provider: Pledged To
@@ -344,12 +348,12 @@ en:
     tip:
       pledge_to: "You have pledged 25c to %{provider}."
       pledge_more: "Thank you! Click the following button to pledge another 25c:"
-      over_limit: "You have reached a total of 40 unfunded 25c pledges.  Please now make a payment of $10 to proceed further."
-      payment: Fund Pledges You Made
+      over_limit: "You have made over forty (40) 25c pledges. Please make a payment of $10 via PayPal to continue:"
+      payment: Fund Your Pledges
       done: Close
       view_pledges: "Go to %{link} to view or undo 25c pledges you made."
       view_pledges_link: 25c.com
-      new_welcome: "Congratulations -- you are now successfully registered at %{home_url} with your %{account} ID."
+      new_welcome: "Congratulations! You are now successfully registered at %{home_url} with your %{account} ID."
       new_p1: "You can now start making social micro-donations to easily & directly support what you value. Wherever you see the +25c Button on the web, clicking it pledges 25 cents from you to the cause. It's just a quarter but it adds up for the receivers!"
       new_button: "Try it out by clicking this +25c Button to pledge 25c to %{provider}:"
       new_p2: Each click pledges one quarter. (Multiple clicks encouraged!)
@@ -389,6 +393,6 @@ en:
         paypal_email: User Dwolla E-mail
         amount: Amount
         date_created: Date
-        process: Process
-        confirm_process: Are you sure you'd like to process this payment? 
+        process: Remove
+        confirm_process: "WARNING: This only removes the payment from this screen - you must manually process the Dwolla payout. Are you sure you'd like to remove this payment?"
       

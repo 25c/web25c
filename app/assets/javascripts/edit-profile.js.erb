@@ -98,9 +98,12 @@ $(document).ready(function() {
       success: function(data) {
       }
     });
-    if (key == 'first_name' || key == 'last_name') {
-      var name = $('#first_name_input').val() + ' ' + $('#last_name_input').val();
-      $('#name-block .content-block').text(name);
+    // if (key == 'first_name' || key == 'last_name') {
+    //   var name = $('#first_name_input').val() + ' ' + $('#last_name_input').val();
+    //   $('#name-block .content-block').text(name);
+    // }
+    if (key == 'pledge_name') {
+      $('#name-block .content-block').text($('#pledge_name_input').val());
     }
   });
   

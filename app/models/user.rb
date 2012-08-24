@@ -13,10 +13,10 @@ class User < ActiveRecord::Base
   attr_writer :editing
   attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, 
     :last_name, :picture, :show_donations, :has_agreed, :is_new, :auto_refill, :dwolla_email,
-    :dwolla_email_confirmation
+    :dwolla_email_confirmation, :pledge_name, :has_seen_receive_page
   attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, 
     :last_name, :picture, :show_donations, :has_agreed, :is_new, :auto_refill, :dwolla_email,
-    :dwolla_email_confirmation, :is_admin, :as => :admin
+    :dwolla_email_confirmation, :pledge_name, :has_seen_receive_page, :is_admin, :as => :admin
   
   validates :email, :presence => true, :if => 'not linked?'
   validates :email, :uniqueness => { :case_sensitive => false }, :allow_nil => true, :email => true

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120822203903) do
+ActiveRecord::Schema.define(:version => 20120824172406) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",                 :null => false
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(:version => 20120822203903) do
     t.boolean  "show_donations",        :default => true
     t.string   "paypal_email"
     t.string   "dwolla_email"
+    t.string   "pledge_name"
+    t.boolean  "has_seen_receive_page", :default => false
   end
 
   add_index "users", ["google_uid"], :name => "index_users_on_google_uid", :unique => true
