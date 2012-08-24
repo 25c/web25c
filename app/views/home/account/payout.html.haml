@@ -5,8 +5,9 @@
   :funded => @funded, :funded_amount => "%.2f" % (@funded.to_f / 4))
     
 - if not @has_payout
-  %p= t('.too_low_p1')
-  %p= t('.too_low_p2')
+  %p= raw t('.too_low_p1')
+  %p.buffer= raw t('.too_low_p2')
+  %a= link_to t('.dashboard'), home_dashboard_path, :class => 'btn'
 
 - elsif @user.dwolla_email.blank?
   %p.buffer= t('.provide_dwolla_email')
@@ -19,13 +20,12 @@
     .form-actions
       = f.button :submit, :class => 'btn-strong', :value => t('.submit')
   %p#use-dwolla
-    =image_tag 'logos/dwolla.png'
+    %a{ :href => 'http://www.dwolla.com', :target => 'new' }=image_tag 'logos/dwolla.png'
     = t('.use_dwolla')
   
 - else
   %p.buffer= t('.sent')
-  %a.buffer= link_to t('.dashboard'), home_dashboard_path, :class => 'btn'
+  .buffer= link_to t('.dashboard'), home_dashboard_path, :class => 'btn'
   %p#use-dwolla
-    =image_tag 'logos/dwolla.png'
+    %a{ :href => 'http://www.dwolla.com', :target => 'new' }=image_tag 'logos/dwolla.png'
     = t('.use_dwolla')
-.clear
