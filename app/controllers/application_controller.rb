@@ -75,7 +75,7 @@ class ApplicationController < ActionController::Base
           if not request.referrer.blank? and request.referrer.include? 'blog/header'
             redirect_to request.referrer
           else
-            if user.has_seen_receive_page
+            if current_user.has_seen_receive_page
               redirect_to_session_redirect_path(home_dashboard_path)
             else
               redirect_to_session_redirect_path(home_receive_pledges_path)
