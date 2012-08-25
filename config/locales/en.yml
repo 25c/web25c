@@ -79,12 +79,12 @@ en:
         profile_link: "%{provider}'s Profile"
         no_referrer: None
         not_funded: "Unfunded 25c pledges:"
-        funded_note: "You may undo 25c pledges until you fund them."
+        funded_note: "You may undo 25c pledges until you paid."
         funded: Funded
         to_be: To be
         no_pledges_given: You have not yet made any 25c pledges.
         no_pledges_received: You have not received any 25c pledges.  In order to receive 25c pledges, %{profile_link} or %{button_link}.
-        no_pledges_profile_link: enhance your 25.com profile page
+        no_pledges_profile_link: enhance your 25c.com pledge profile
         no_pledges_button_link: embed a +25c Button
         no_pledges_referred: "Your sharing your pledge activity has not yet resulted in any 25c pledge(s) been made by others."
         fb_share_button_title: "I just pledged 25c %{button_title}!"
@@ -249,7 +249,7 @@ en:
       sign_out: Sign Out
       receive_pledges: Receive 25c Pledges
       get_button: Get +25c Button Code
-      payments: Fund 25c Pledges You Made
+      payments: Fund Pledges You Made
       dashboard: Dashboard
     footer:
       about: About
