@@ -360,7 +360,7 @@ en:
       new_bottom_tagline: " "
       facebook: Facebook
       google: Google
-      signed_in: You are now signed in.  Please return to the +25c Button to make a 25c pledge.
+      signed_in: "You are now signed in.  Please now return to the +25c Button and make a 25c pledge.  <P>Make 40 pledges at your leisure.  Then fund them.  You may undo any 25c pledge until you fund it."
     confirm_tip:
       view_account: View 25c Account
       close_window: Close this window
