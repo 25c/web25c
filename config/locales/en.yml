@@ -79,12 +79,12 @@ en:
         profile_link: "%{provider}'s Profile"
         no_referrer: None
         not_funded: "Unfunded 25c pledges:"
-        funded_note: "You may undo 25c pledges until you paid."
+        funded_note: "You may undo 25c pledges until you fund them."
         funded: Funded
         to_be: To be
         no_pledges_given: You have not yet made any 25c pledges.
         no_pledges_received: You have not received any 25c pledges.  In order to receive 25c pledges, %{profile_link} or %{button_link}.
-        no_pledges_profile_link: enhance your 25c.com pledge profile
+        no_pledges_profile_link: enhance your 25.com profile page
         no_pledges_button_link: embed a +25c Button
         no_pledges_referred: "Your sharing your pledge activity has not yet resulted in any 25c pledge(s) been made by others."
         fb_share_button_title: "I just pledged 25c %{button_title}!"
@@ -203,24 +203,25 @@ en:
       pledge_to: Pledge 25c to
       cause: YOUR CAUSE
       share: "Share:"
-      set_up: Get Set Up to Collect Micro-Donations
-      explain_p1: "The +25c Button combines a \'Like\' <br>&nbsp;&nsbpwith a <b>25-cent pledge</b>."
+      set_up: Get Set Up to Collect Micro-donations
+      explain_p1: "The +25c Button combines a \'Like\' with <br>a <b>25-cent pledge</b>."
       explain_p2: "Embed it into your blog, photos, videos."
       explain_p3: 
-      explain_p4: "* Easy to do"
-      explain_p5: "* It's upside only"
+      explain_p4: "* No strings attached"
+      explain_p5: "* Easy to do"
       explain_p6: "* Locate your fans"
       
       publisher_title: "Have a website, blog, photo collection, or video?"
-      publisher_p1: "What if there were an easy way to turn 'Likes' into simultaneous 25-cent contributions?"
-      publisher_p2: "Now there is: Simply embed our +25c Button."
-      publisher_p3: "Doesn't sound like much?  Consider it's purely incremental and it can add up!  There's three billion 'Likes' every day. Some fraction of these love it more than 'Like'."
+      publisher_p1: "What if there were an easy way to collect 25-cent contributions from fans of your website, blog, photo collection, videos?"
+      publisher_p2: "Now there is!  Simply embed the customized +25c Button or link provided by us."
+      publisher_p3: "Doesn't sound like much?  It can add up!  Consider that people click 'Like' three billion times every day.  And 10,000 25c's is $2,500."
+      
       pledger_title: "See something you value?"
       pledger_p1: "Click the +25c Button to show your appreciation."
-      pledger_p2: "You may make forty 25c pledges at your leisure. Then pay later through a $10 charge to your credit card. Feel free to undo any 25c pledge until you paid."
-      pledger_p3: "Use Small Change for Big Change."
-      pledger_p4:
-      read_more: "Learn more..."
+      pledger_p2: "Make forty 25c pledges at your leisure.  Pay later through a $10 charge to your credit card."
+      pledger_p3: "Feel free to undo your 25c pledges any time until you have paid."
+      pledger_p4: "Be the customer not the product.  Support what you value one quarter a click."
+      read_more: "Learn more about 25c..."
 
       facebook_share_title: 25c social micro-donations.
       facebook_share_description: Supporting value one quarter a click.  Be the customer not the product.
@@ -249,7 +250,7 @@ en:
       sign_out: Sign Out
       receive_pledges: Receive 25c Pledges
       get_button: Get +25c Button Code
-      payments: Fund Pledges You Made
+      payments: Fund 25c Pledges You Made
       dashboard: Dashboard
     footer:
       about: About

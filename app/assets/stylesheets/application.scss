@@ -526,9 +526,15 @@ ul.login-buttons > li.login-logo > a > img {
   margin-top: 35px;
 }
 
+.user-agreement-message p {
+  font-size: 13px;
+}
+
 #sign_in_title {
   margin-top: 20px;
 }
+
+
 
 
 /* FACEBOOK LOGIN
@@ -597,8 +603,8 @@ ul.login-buttons > li.login-logo > a > img {
 }
 
 #tip-inner-container {
-  min-height: 226px;
-  padding: 50px 20px 10px 20px;
+  min-height: 246px;
+  padding: 30px 20px 10px 20px;
   border: 1px solid #f26422;
   border-radius: 20px;
   background-color: white;

@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
             # uh-oh, shared computer? clear out
             self.current_user = nil
             flash[:alert] = t('application.check_facebook_cookies.failure');
-            if has_tip 
+            if has_tip
               redirect_to tip_path(
                 :button_id => params[:button_id], 
                 :referrer => params[:referrer],
@@ -64,13 +64,25 @@ class ApplicationController < ActionController::Base
         current_user.has_agreed = true
         current_user.save!
         if has_tip
-          Click.enqueue(self.current_user, params[:button_id], params[:referrer], request, cookies)
+          if new_account.blank? && params[:source] == 'iframe'
+            unless Click.enqueue(self.current_user, params[:button_id], params[:referrer], request, cookies)
+              redirect_to tip_path(
+                :button_id => params[:button_id],
+                :referrer => params[:referrer],
+                :source => params[:source],
+                :new_account => new_account,
+                :overdraft => true
+              )
+              return
+            end
+          end
           redirect_to tip_path(
-            :button_id => params[:button_id], 
+            :button_id => params[:button_id],
             :referrer => params[:referrer],
             :source => params[:source],
             :new_account => new_account
           )
+          return
         else
           if not request.referrer.blank? and request.referrer.include? 'blog/header'
             redirect_to request.referrer
