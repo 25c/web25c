@@ -6,7 +6,11 @@
       window.updateUserUrl = '#{ j home_account_url }';
       window.youtubeId = '#{ j @button.youtube_id }';
       window.hasButtonPicture = '#{ @button.picture.exists? }' == 'true';
-      window.updateButtonUrl = '#{ j home_update_button_url }'; 
+      window.updateButtonUrl = '#{ j home_update_button_url }';
+      window.enterUserAboutText = '#{ j t('.enter_about') }';
+      window.enterButtonDescriptionText = '#{ j t('.enter_button_description') }';
+      window.enterButtonTitleText = '#{ j t('.enter_button_title') }';
+      
   - else
     - content_for :js do
       :javascript
@@ -18,7 +22,7 @@
             var picOffset = ($('#user-profile #user-picture').height() - 200) / 2;
             if (picOffset > 0) $('#user-profile #user-picture').css('margin-top', -picOffset);
           });
-        });      
+        });
   :javascript
     window.fbShareDescription = '#{ t('.fb_share_description') }';
     window.fbShareCallbackUrl = '#{ j fb_share_callback_url }';
@@ -40,26 +44,26 @@
       #user-picture-container
         = image_tag(@user.picture, :id => 'user-picture')
     .pull-left
-      .block#name-block
-        - if @is_editable
+      - if @is_editable
+        .block#name-block
           .input-block
-            / %input{:type => 'text', :name => 'user[first_name]', 
-            /   :value => @user.first_name.blank? ? t('.first_name_default') : @user.first_name,
-            /   :id => 'first_name_input'}
-            / %input{:type => 'text', :name => 'user[last_name]', 
-            / :value => @user.last_name.blank? ? t('.last_name_default') : @user.last_name,
-            / :id => 'last_name_input'}
             %input{:type => 'text', :name => 'user[pledge_name]', 
             :value => @user.pledge_name.blank? ? @user.display_name : @user.pledge_name,
             :id => 'pledge_name_input'}
-        %p.content-block.emphasis
-          / =@user.first_name.blank? ? t('.enter_name') :  @user.first_name
-          / =@user.last_name.blank? ? '' : @user.last_name
-          =@user.pledge_name.blank? ? @user.display_name : @user.pledge_name
-      .block#about-block.clear
-        .input-block
-          %textarea{:id => 'about', :name => 'user[about]', :rows => 3}
-            =@user.about.blank? ? t('.enter_about') : @user.about
+          %p.content-block.emphasis
+            =@user.pledge_name.blank? ? @user.display_name : @user.pledge_name
+        .block#about-block.clear
+          .input-block
+            %textarea{:id => 'about', :name => 'user[about]', :rows => 3}
+              =@user.about.blank? ? t('.enter_about') : @user.about
+      - else
+        .block#name-block
+          %p.content-block.emphasis
+            =@user.pledge_name.blank? ? @user.display_name : @user.pledge_name
+        .block#about-block.clear
+          .input-block
+            %textarea{:id => 'about', :name => 'user[about]', :rows => 3}
+              =@user.about.blank? ? '' : @user.about
     .clear
 #project-container.pull-left
   #project-action
