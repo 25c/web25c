@@ -262,7 +262,7 @@ en:
     mailer:
       recipient: "This message was sent to: %{recipient}"
     sign_in_form:
-      works_with: 25c works with your Facebook or your Google sign-in.
+      works_with: +25c combines a 'Like' with a 25-cent pledge.  Make 40 pledges and then fund them.  Undo any 25c pledge any time until you paid.
       agreement_text: "By continuing, you agree to the "
       terms: User Terms
       privacy: Privacy Policy.
@@ -325,7 +325,7 @@ en:
       google: You've been signed in automatically using your Google account.
     sign_in:
       title: Please Sign In
-      sign_in_with: "Choose to sign in via Facebook or Google:"
+      sign_in_with: "Please sign in via Facebook or Google:"
       facebook: Sign In with Facebook
       twitter: Sign In with Twitter
       google: Sign In with Google
@@ -351,14 +351,14 @@ en:
       done: Close
       view_pledges: "Go to %{link} to view or undo 25c pledges you made."
       view_pledges_link: 25c.com
-      new_welcome: "Congratulations! You are now successfully registered at %{home_url} with your %{account} ID."
-      new_p1: "You can now start making social micro-donations to easily & directly support what you value. Wherever you see the +25c Button on the web, clicking it pledges 25 cents from you to the cause. It's just a quarter but it adds up for the receivers!"
-      new_button: "Try it out by clicking this +25c Button to pledge 25c to %{provider}:"
-      new_p2: Each click pledges one quarter. (Multiple clicks encouraged!)
-      new_p3: "Make forty (40) pledges at your leisure. Then we will ask you to pay through a $10 charge to your credit card."
-      new_undo: "You may %{undo_button} pledges at any time up to the point when you funded them." 
+      new_welcome: "Congratulations! You are now ready to make 25-cent micro-donations."
+      new_p1: ""
+      new_button: ""
+      new_p2: Click the +25c button to pledge a quarter. 
+      new_p3: "Make forty (40) pledges at your leisure.  Pay later."
+      new_undo: "You may undo 25c pledges any time until you pay." 
       undo_button: Undo Pledges
-      new_bottom_tagline: "Thank you for participating. Changing the internet one quarter one click."
+      new_bottom_tagline: ""
       facebook: Facebook
       google: Google
       signed_in: You are now signed in.  Please return to the +25c Button to make a 25c pledge.
