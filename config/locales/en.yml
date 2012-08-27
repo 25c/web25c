@@ -204,7 +204,7 @@ en:
       cause: YOUR CAUSE
       share: "Share:"
       set_up: Get Set Up to Collect Micro-Donations
-      explain_p1: "The +25c Button combines a \'Like\' <br>&nbsp;&nsbpwith a <b>25-cent pledge</b>."
+      explain_p1: "The +25c Button combines a \'Like\' <br>&nbsp;&nbsp;with a <b>25-cent pledge</b>."
       explain_p2: "Embed it into your blog, photos, videos."
       explain_p3: 
       explain_p4: "* Easy to do"
@@ -219,7 +219,7 @@ en:
       pledger_p1: "Click the +25c Button to show your appreciation."
       pledger_p2: "You may make forty 25c pledges at your leisure. Then pay later through a $10 charge to your credit card. Feel free to undo any 25c pledge until you paid."
       pledger_p3: "Use Small Change for Big Change."
-      pledger_p4:
+      pledger_p4:  
       read_more: "Learn more..."
 
       facebook_share_title: 25c social micro-donations.
