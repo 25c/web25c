@@ -284,7 +284,7 @@ en:
       edit_url: Change Profile URL
       no_clicks: No pledges given yet.
       button_title_intro: "Click to pledge "
-      button_description_default: "Enter description."
+      button_description_default: "Pledge 25c to show your support."
       add_project_content: "Add an image or video to your pledge purpose:"
       save_video: Link Pledge Youtube
       pledge_to: Pledge 25c to %{name}
