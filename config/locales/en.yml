@@ -15,7 +15,7 @@ en:
       
   form:
     submit: Submit
-  
+
   home:
     account:
       payment:
@@ -69,6 +69,7 @@ en:
         state3: Processed
         state4: Paid
         state5: Refunded
+        amount: Amount
         date_created: Date
         provider: Pledged To
         referrer: Link
@@ -102,7 +103,7 @@ en:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
       receive_pledges: 
-        title: Collect micro-donations
+        title: Collect Micro-Donations
         subtitle: "In just a few simple steps, you are ready to collect micro-donations:"
         short_url_title: 25c Short URL
         platform: Platform
@@ -194,7 +195,6 @@ en:
 
     index:
       title_top: Micro-Donations Made Easy.
-      title_bottom:
       button_title: The +25c Button
       legend_p1: Tap once %{img} 25 cents
       legend_p2: twice %{img} 50 cents
