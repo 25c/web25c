@@ -344,8 +344,8 @@ en:
       failure: Your account was not created. Please try again.
     tip:
       pledge_to: "You have pledged 25c to %{provider}."
-      pledge_more: "Click the following button to pledge 25 cents."
-      over_limit: "You have reached a total of 40 unfunded 25c pledges.  Please now make a payment of $10 to proceed further."
+      pledge_more: "Click the following button to pledge another 25c."
+      over_limit: "You have reached a total of 40 unfunded 25c pledges.  Please now make a payment of $10!"
       payment: Fund Pledges You Made
       done: Close
       view_pledges: "Go to %{link} to view or undo 25c pledges you made."
@@ -354,7 +354,7 @@ en:
       new_p1: " "
       new_button: " "
       new_p2: Click +25c to pledge 25 cents. 
-      new_p3: "Make forty 25c pledges at your leisure. Fund them later."
+      new_p3: "Make forty 25c pledges at your leisure. Fund them later on 25c.com."
       new_undo: "Feel free to undo 25c pledges any time until you paid."
       undo_button: Undo Pledges
       new_bottom_tagline: " "
