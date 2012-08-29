@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :signed_in?, :current_user, :url_base
   
   protected
-      
+
   def check_facebook_cookies
     has_signed_in = false
     signed_request = cookies["fbsr_#{FACEBOOK_SETTINGS['app_id']}"]

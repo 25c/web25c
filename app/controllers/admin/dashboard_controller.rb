@@ -9,4 +9,12 @@ class Admin::DashboardController < Admin::AdminController
     render :nothing => true, :status => 200, :content_type => 'text/html'
   end
   
+  def test
+    @button = Button.first
+    if @button.user == current_user
+      @button = Button.all[1]
+    end
+    @user = current_user
+  end
+  
 end

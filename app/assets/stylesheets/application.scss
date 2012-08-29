@@ -606,8 +606,8 @@ ul.login-buttons > li.login-logo > a > img {
 }
 
 #tip-inner-container {
-  min-height: 246px;
-  padding: 30px 20px 10px 20px;
+  min-height: 256px;
+  padding: 20px 20px 10px 20px;
   border: 1px solid #f26422;
   border-radius: 20px;
   background-color: white;
@@ -647,7 +647,7 @@ ul.login-buttons > li.login-logo > a > img {
 }
 
 #tip-center #tip-result {
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 #tip-center #more-info-buttons {
@@ -655,7 +655,7 @@ ul.login-buttons > li.login-logo > a > img {
 }
 
 #tip-overdraft {
-  margin-top: 20px;
+  margin-top: 60px;
 }
 
 #tip-overdraft-center {
@@ -672,7 +672,7 @@ ul.login-buttons > li.login-logo > a > img {
 }
 
 #tip-button-holder {
-  min-height: 45px;
+  min-height: 46px;
   margin: 10px 0 10px 0;
 }
  
@@ -700,7 +700,7 @@ img#tip-25c-logo {
 }
 
 .tip-close-container {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 #bottom-tagline {
@@ -1501,4 +1501,8 @@ pre#button-code-block {
   margin-top: 0;
 }
 
+.test-button-holder {
+  float: left;
+  width: 120px;
+}
 

@@ -1,0 +1,137 @@
+%h2.page-header Admin Test Page
+
+%p Logged in user: #{ @user.display_name }
+%p.buffer Starting balance: #{ @user.balance }
+
+%h3 Buttons
+%p.buffer Button owner: #{ @button.user.display_name }
+%h3 Javascript:
+#test-javascript.buffer
+  .test-button-holder
+    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+      :class => "tip-25c-button",
+      :'data-size' => "btn-large",
+      :'data-user' => @button.user.display_name, 
+      :'data-profile' => @button.user.profile_url }
+      #{@button.title}
+  .test-button-holder
+    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+      :class => "tip-25c-button",
+      :'data-size' => "btn-medium",
+      :'data-user' => @button.user.display_name, 
+      :'data-profile' => @button.user.profile_url }
+      #{@button.title}
+  .test-button-holder
+    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+      :class => "tip-25c-button",
+      :'data-size' => "btn-small",
+      :'data-user' => @button.user.display_name, 
+      :'data-profile' => @button.user.profile_url }
+      #{@button.title}
+  .test-button-holder
+    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+      :class => "tip-25c-button",
+      :'data-size' => "icon-large",
+      :'data-user' => @button.user.display_name, 
+      :'data-profile' => @button.user.profile_url }
+      #{@button.title}
+  .test-button-holder
+    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+      :class => "tip-25c-button",
+      :'data-size' => "icon-medium",
+      :'data-user' => @button.user.display_name, 
+      :'data-profile' => @button.user.profile_url }
+      #{@button.title}
+  .test-button-holder
+    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+      :class => "tip-25c-button",
+      :'data-size' => "icon-small",
+      :'data-user' => @button.user.display_name, 
+      :'data-profile' => @button.user.profile_url }
+      #{@button.title}
+  .test-button-holder
+    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+      :class => "tip-25c-button",
+      :'data-size' => "icon-text",
+      :'data-user' => @button.user.display_name, 
+      :'data-profile' => @button.user.profile_url }
+      #{@button.title}
+  .clear
+    :javascript 
+      !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+          js=d.createElement(s);js.id=id;
+          js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
+          fjs.parentNode.insertBefore(js,fjs);
+        }
+      } (document,"script","tip-25c-js");
+
+%h3 IFrame:
+#test-iframe.buffer
+  .test-button-holder
+    %iframe{:src => "http://#{ENV['API25C_URL']}/button/#{@button.uuid.to_s}?size=btn-large",
+      :allowtransparency => "true",
+      :frameborder => "0",
+      :scrolling => "no",
+      :marginwidth => "0",
+      :marginheight => "0",
+      :width => "114",
+      :height => "40"}
+  .test-button-holder
+    %iframe{:src => "http://#{ENV['API25C_URL']}/button/#{@button.uuid.to_s}?size=btn-medium",
+      :allowtransparency => "true",
+      :frameborder => "0",
+      :scrolling => "no",
+      :marginwidth => "0",
+      :marginheight => "0",
+      :width => "88",
+      :height => "30"}
+  .test-button-holder
+    %iframe{:src => "http://#{ENV['API25C_URL']}/button/#{@button.uuid.to_s}?size=btn-small",
+      :allowtransparency => "true",
+      :frameborder => "0",
+      :scrolling => "no",
+      :marginwidth => "0",
+      :marginheight => "0",
+      :width => "70",
+      :height => "20"}
+  .test-button-holder
+    %iframe{:src => "http://#{ENV['API25C_URL']}/button/#{@button.uuid.to_s}?size=icon-large",
+      :allowtransparency => "true",
+      :frameborder => "0",
+      :scrolling => "no",
+      :marginwidth => "0",
+      :marginheight => "0",
+      :width => "82",
+      :height => "40"}
+  .test-button-holder
+    %iframe{:src => "http://#{ENV['API25C_URL']}/button/#{@button.uuid.to_s}?size=icon-medium",
+      :allowtransparency => "true",
+      :frameborder => "0",
+      :scrolling => "no",
+      :marginwidth => "0",
+      :marginheight => "0",
+      :width => "64",
+      :height => "30"}
+  .test-button-holder
+    %iframe{:src => "http://#{ENV['API25C_URL']}/button/#{@button.uuid.to_s}?size=icon-small",
+      :allowtransparency => "true",
+      :frameborder => "0",
+      :scrolling => "no",
+      :marginwidth => "0",
+      :marginheight => "0",
+      :width => "56",
+      :height => "20"}
+  .test-button-holder
+    %iframe{:src => "http://#{ENV['API25C_URL']}/button/#{@button.uuid.to_s}?size=icon-text",
+      :allowtransparency => "true",
+      :frameborder => "0",
+      :scrolling => "no",
+      :marginwidth => "0",
+      :marginheight => "0",
+      :width => "84",
+      :height => "20"}
+  .clear
+      
+      

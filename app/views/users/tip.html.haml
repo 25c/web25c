@@ -11,15 +11,7 @@
           setTimeout(function() { window.close(); }, 100);
         });
       });
-  - unless @new_account.blank?
-    :javascript
-      var width = 720;
-      var height = 486;
-      var left = (screen.width - width) / 2;
-      var top = (screen.height - height) / 2;
-      window.resizeTo(width, height);
-      window.moveTo(left, top);
-
+      
 %body#tip-body
   #tip-outer-container
     #tip-header-container
@@ -38,7 +30,8 @@
           - elsif @new_account.blank?
             - if @source == 'javascript'
               #tip-result.center
-                %p.buffer= t('.signed_in')
+                %p= t('.signed_in_p1')
+                %p.buffer= t('.signed_in_p2')
                 .tip-close-container
                   %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
             - else
@@ -61,14 +54,12 @@
                 #more-info-buttons.small
                   %p= raw t('.view_pledges', :link => link_to('25c.com', home_dashboard_path, :target => '_blank'))
           - else
-            %p= raw t('.new_welcome', :home_url => link_to('25c.com', root_path, :target => '_blank') , 
-              :account => t('.' + @new_account))
+            %p= raw t('.new_welcome', :account => t('.' + @new_account))
             %p= t('.new_p1')
-            %p= t('.new_button', :provider => @button.user.display_name)
             #tip-button-holder.center
               %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", 
               :'data-size' => "btn-large",
-              :'data-user' => @button.user.display_name, 
+              :'data-user' => @button.user.display_name,
               :'data-profile' => @button.user.profile_url }
                 #{@button.title}
               :javascript
@@ -76,11 +67,11 @@
                 if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
                 js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
                 fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
-            %p= t('.new_p2')
-            %p= t('.new_p3')
+            %p= raw t('.new_p2', :home_link => link_to('25c.com', root_path, :target => '_blank'))
             %p= raw t('.new_undo', :undo_button => link_to(t('.undo_button'), home_undo_clicks_path, 
               :class => 'btn', :target => '_blank'))
-
+            .tip-close-container.center
+              %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
         - else
           = render 'layouts/sign_in_form'
 
