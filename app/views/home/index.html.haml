@@ -56,9 +56,11 @@
         #tw-share= image_tag("logos/twitter.png")
 
 #splash-side-text.pull-right
-  %p= raw t('.explain_p1')
-  %p= t('.explain_p2')
-  / %p= t('.explain_p3')
+  %p
+    = raw t('.explain_p1')
+    %br
+    %span{:style => "margin-left:20px;"}= raw t('.explain_p2')
+  %p= t('.explain_p3')
   %p{:style => "margin-left: 20px;"}= t('.explain_p4')
   %p{:style => "margin-left: 20px;"}= t('.explain_p5')
   %p{:style => "margin-left: 20px;"}= t('.explain_p6')
