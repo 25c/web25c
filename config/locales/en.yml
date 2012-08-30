@@ -344,7 +344,7 @@ en:
       failure: Your account was not created. Please try again.
     tip:
       pledge_to: "You have pledged 25c to %{provider}."
-      pledge_more: "Click the following button to pledge 25 cents."
+      pledge_more: "Click the following button to pledge another 25c."
       over_limit: "You have reached a total of 40 unfunded 25c pledges.  Please now make a payment of $10!"
       payment: Fund Pledges You Made
       done: Close
