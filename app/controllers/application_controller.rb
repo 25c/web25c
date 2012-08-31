@@ -161,6 +161,9 @@ class ApplicationController < ActionController::Base
     click_sets = {}
     if clicks
       clicks.each do |click|
+        
+        next if click.button.nil?
+        
         if splitByState
           if sortByButtonId
             id = click.button.id.to_s
