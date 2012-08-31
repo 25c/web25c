@@ -2,31 +2,34 @@ $(document).ready(function(){
     
 	// lookup dictionary for image sizes
 	var imageSizesDict = {
-		'btn-large': ' width="72" height="40"',
-		'btn-medium': ' width="54" height="30"',
-		'btn-small': ' width="36" height="20"',
-		'icon-large': ' width="40" height="40"',
-		'icon-medium': ' width="30" height="30"',
-		'icon-small': ' width="20" height="20"',
-		'round-large': ' width="40" height="40"',
-		'round-medium': ' width="30" height="30"',
-		'round-small': ' width="20" height="20"',
-		'icon-text': ' width="60" height="20"'
+		'btn-large': ' width="114" height="40"',
+		'btn-medium': ' width="88" height="30"',
+		'btn-small': ' width="70" height="20"',
+		'icon-large': ' width="82" height="40"',
+		'icon-medium': ' width="64" height="30"',
+		'icon-small': ' width="70" height="20"',
+		'round-large': ' width="82" height="40"',
+		'round-medium': ' width="64" height="30"',
+		'round-small': ' width="70" height="20"',
+		'icon-text': ' width="84" height="20"'
 	};
 	
-	var baseurl = window.location.protocol + '//' + window.location.hostname;
-  if (baseurl.indexOf('localhost') != -1) baseurl += ':3000';
+	var webUrl = window.location.protocol + '//' + window.location.hostname;
+  if (webUrl.indexOf('localhost') != -1) webUrl += ':3000';
+  
+  var apiUrl = window.location.protocol + '//' + '<%= ENV["API25C_URL"] %>'
+  
 
   // Code contents
-  var jsOpen = '<a href="' + baseurl + '/tip/' + buttonId + '" class="tip-25c-button" ';
+  var jsOpen = '<a href="' + webUrl + '/tip/' + buttonId + '" class="tip-25c-button" ';
   var jsClose = '</a>\n<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];\
     if(!d.getElementById(id)){js=d.createElement(s);js.id=id;\
     js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}\
     (document,"script","tip-25c-js");</script>';
-  var iframeOpen = '<iframe src="http://<%= ENV["API25C_URL"] %>/button/' + buttonId + '?size=';
+  var iframeOpen = '<iframe src="//<%= ENV["API25C_URL"] %>/button/' + buttonId + '?size=';
 	var iframeMid = '" allowtransparency="true" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"';
   var iframeClose = '></iframe>';
-  var linkOpen = '<a target="_blank" href="' + baseurl + '/' + userNickname + '">' + "Pledge 25c ";
+  var linkOpen = '<a target="_blank" href="' + webUrl + '/' + userNickname + '">' + "Pledge 25c ";
   var linkClose = '</a>';
   
   // jQuery objects

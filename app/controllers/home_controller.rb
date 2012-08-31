@@ -1,9 +1,17 @@
 class HomeController < ApplicationController
   
-  http_basic_authenticate_with :name => "user25c", :password => "sup3rl!k3", :except => :paypal_process
+  before_filter :authenticate, :except => :paypal_process
   
   include ActiveMerchant::Billing::Integrations
   skip_before_filter :check_facebook_cookies, :only => :paypal_process
+  
+  def authenticate
+    if Rails.env.production?
+      authenticate_or_request_with_http_basic do |username, password|
+        (username == "user25c" && password == "sup3rl!k3") || (username == "guest" && password == "123456")
+      end 
+    end
+  end
   
   def index
     # redirect_to home_dashboard_path if self.current_user

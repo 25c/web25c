@@ -15,7 +15,7 @@ en:
       
   form:
     submit: Submit
-  
+
   home:
     account:
       payment:
@@ -69,6 +69,7 @@ en:
         state3: Processed
         state4: Paid
         state5: Refunded
+        amount: Amount
         date_created: Date
         provider: Pledged To
         referrer: Link
@@ -102,7 +103,7 @@ en:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
       receive_pledges: 
-        title: Collect micro-donations
+        title: Collect Micro-Donations
         subtitle: "In just a few simple steps, you are ready to collect micro-donations:"
         short_url_title: 25c Short URL
         platform: Platform
@@ -194,7 +195,6 @@ en:
 
     index:
       title_top: Micro-Donations Made Easy.
-      title_bottom:
       button_title: The +25c Button
       legend_p1: Tap once %{img} 25 cents
       legend_p2: twice %{img} 50 cents
@@ -204,9 +204,9 @@ en:
       cause: YOUR CAUSE
       share: "Share:"
       set_up: Get Set Up to Collect Micro-Donations
-      explain_p1: "The +25c Button combines a \'Like\' <br>&nbsp;&nbsp;with a <b>25-cent pledge</b>."
-      explain_p2: "Embed it into your blog, photos, videos."
-      explain_p3: 
+      explain_p1: "The +25c Button combines a \'Like\'"
+      explain_p2: with a <b>25-cent pledge</b>.
+      explain_p3: "Embed it into your blog, photos, videos."
       explain_p4: "* Easy to do"
       explain_p5: "* It's upside only"
       explain_p6: "* Locate your fans"
@@ -351,16 +351,15 @@ en:
       view_pledges: "Go to %{link} to view or undo 25c pledges you made."
       view_pledges_link: 25c.com
       new_welcome: "Congratulations! You are now ready to make one-click 25-cent micro-donations."
-      new_p1: " "
-      new_button: " "
-      new_p2: Click +25c to pledge 25 cents. 
-      new_p3: "Make forty 25c pledges at your leisure. Fund them later on 25c.com."
+      new_p1: Click +25c to pledge 25 cents. 
+      new_p2: "Make forty 25c pledges at your leisure. Fund them later on %{home_link}."
       new_undo: "Feel free to undo 25c pledges any time until you paid."
       undo_button: Undo Pledges
       new_bottom_tagline: " "
       facebook: Facebook
       google: Google
-      signed_in: "You are now signed in.  Please now return to the +25c Button and make a 25c pledge.  <P>Make 40 pledges at your leisure.  Then fund them.  You may undo any 25c pledge until you fund it."
+      signed_in_p1: "You are now signed in.  Please now return to the +25c Button and make a 25c pledge."
+      signed_in_p2: "Make 40 pledges at your leisure.  Then fund them.  You may undo any 25c pledge until you fund it."
     confirm_tip:
       view_account: View 25c Account
       close_window: Close this window
