@@ -53,9 +53,12 @@ module Web25c
     # Enable the asset pipeline
     config.assets.enabled = true
     
-    config.assets.precompile += ['edit-profile.js']
+    # jQuery dataTables plugin for table functions
     config.assets.precompile += ['jquery.dataTables.min.js']
     config.assets.precompile += ['paging.js']
+    
+    # Page specific Javascript
+    config.assets.precompile += ['edit-profile.js']
     config.assets.precompile += ['profile-click-table.js']
     config.assets.precompile += ['save-button.js']
     config.assets.precompile += ['sign-in-form.js']

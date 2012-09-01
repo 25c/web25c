@@ -24,6 +24,24 @@
   background-image: -o-linear-gradient($from, $to);
 }
 
+@mixin radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin radius-side($side, $radius) {
+  border-#{$side}-radius: $radius;
+  -moz-border-radius-#{$side}: $radius;
+  -webkit-border-#{$side}-radius: $radius;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+  -webkit-box-shadow: $top $left $blur $color #{$inset};
+  -moz-box-shadow: $top $left $blur $color #{$inset};
+  box-shadow: $top $left $blur $color #{$inset};
+}
+
 
 /* NEW TYPOGRAPHY
 *---------------------------- */
@@ -63,29 +81,27 @@ b, strong, h4 {
 
 body {
   position: relative;
-  z-index: -50;
   background-color: #d5dfe3;
   padding: 50px 0 30px 0;
 }
 
 
 #outer-container {
+  position: relative;
   width: 960px;
   margin: 0 auto;
-  border-radius: 20px;
+  @include radius(20px);
   background-color: #f26422;
-  z-index: -30;
-  position: relative;
-  -webkit-box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-     -moz-box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-          box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  @include box-shadow(0, 0, 15px, rgba(255, 255, 255, 0.5));
 }
 
 #inner-container {
+  position: relative;
+  z-index: 10;
   min-height: 400px;
   padding: 40px;
   border: 1px solid #f26422;
-  border-radius: 20px;
+  @include radius(20px);
   background-color: white;
 }
 
@@ -115,8 +131,10 @@ body {
   width: 300px;
   height: 34px;
   margin-top: 6px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  @include radius-side(topleft, 20px);
+  @include radius-side(topright, 20px);
+  @include radius-side(top-left, 20px);
+  @include radius-side(top-right, 20px);
   background-color: #f98a61;
 }
 
@@ -126,7 +144,6 @@ body {
   width: 20px;
   height: 40px;
   background-color: #f98a61;
-  z-index: -5;
 }
 
 #nav-logo {
@@ -168,7 +185,7 @@ ul#nav-login > li.login-logo img {
 }
 
 #nav-image img {
-  border-radius: 2px;
+  @include radius(2px);
   margin: 5px 20px 0 0;
   max-width: 25px;
   max-height: 25px;
@@ -188,11 +205,14 @@ ul#nav-login > li.login-logo img {
   width: 269px;
   margin: -1px -30px 0 0;
   padding: 5px 15px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  @include radius-side(topleft, 0);
+  @include radius-side(topright, 0);
+  @include radius-side(bottomleft, 20px);
+  @include radius-side(bottomright, 20px);
+  @include radius-side(top-left, 0);
+  @include radius-side(top-right, 0);
+  @include radius-side(bottom-left, 20px);
+  @include radius-side(bottom-right, 20px);
   border-top: 1px solid #f98a61;
   color: #f98a61;
 }
@@ -206,7 +226,7 @@ ul.dropdown-menu > li > a {
 ul.dropdown-menu > li > a:hover {
   color: #f26422;
   background-color: #FEE5DD;
-  border-radius: 5px;
+  @include radius(5px);
 }
 
 a {
@@ -237,7 +257,7 @@ ul#footer-nav > li > a {
   display: block;
   padding: 6px 5px 4px 5px;
   margin: -6px 5px -4px 5px;
-  border-radius: 5px;
+  @include radius(5px);
 }
 
 ul#footer-nav > li > a:hover {
@@ -323,10 +343,8 @@ ul#footer-nav, ul#footer-nav > li > a {
   padding: 15px;
   background-color: white; 
   border: 1px solid rgba(0, 0, 0, 0.2); 
-  border-radius: 5px;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  @include radius(5px);
+  @include box-shadow(0, 5px, 10px, rgba(0, 0, 0, 0.2));
   background-clip: padding-box;
 }
 
@@ -368,9 +386,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 
 #splash-call:hover {
   //  color: #f26422;
-  -webkit-box-shadow: 0 0 15px rgba(242, 100, 34, 0.7);
-     -moz-box-shadow: 0 0 15px rgba(242, 100, 34, 0.7);
-          box-shadow: 0 0 15px rgba(242, 100, 34, 0.7);
+  @include box-shadow(0, 0, 15px, rgba(242, 100, 34, 0.7));
 }
 
 #splash-explain {
@@ -561,7 +577,7 @@ ul.login-buttons > li.login-logo > a > img {
   padding: 20px;
   margin: 10px 0 30px 0;
   background-color: #ffeae1;
-  border-radius: 20px;
+  @include radius(5px);
 //  border: 1px solid #f26422;
 }
 
@@ -598,18 +614,16 @@ ul.login-buttons > li.login-logo > a > img {
 
 
 #tip-outer-container {
-  border-radius: 20px;
+  @include radius(20px);
   background-color: #f26422;
-  -webkit-box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-     -moz-box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-          box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  @include box-shadow(0, 0, 15px, rgba(255, 255, 255, 0.5));
 }
 
 #tip-inner-container {
   min-height: 256px;
   padding: 20px 20px 10px 20px;
   border: 1px solid #f26422;
-  border-radius: 20px;
+  @include radius(20px);
   background-color: white;
 }
 
@@ -904,7 +918,7 @@ table.table thead .sorting_desc_disabled {
   padding: 20px;
 //  border: 2px solid #ddd;
   background-color: white;
-  border-radius: 5px;
+  @include radius(5px);
   margin: 0 0 20px 0;
   min-height: 333px;
 }
@@ -930,7 +944,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 #user-profile input, #user-profile textarea {
-  box-shadow: none;
+  @include box-shadow(0, 0, 0, transparent);
   background-color: transparent;
   border: 1px solid transparent;
   resize: none;
@@ -1139,7 +1153,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 #project-edit {
-  border-radius: 5px;
+  @include radius(5px);
   border: 1px solid #ccc;
   padding: 20px;
 }
@@ -1254,7 +1268,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 .button-choice:hover {
-  border-radius: 5px;
+  @include radius(5px);
   background-color: #ffeae1;
 }
 
@@ -1278,19 +1292,17 @@ pre#button-code-block {
 
 #tip-25c-tooltip {
   margin: 1px 0 0;
-  position:absolute; 
-  z-index:10; 
-  left:0; 
-  top:0; 
-  width:180px; 
+  position: absolute; 
+  z-index: 20; 
+  left: 0; 
+  top: 0; 
+  width: 180px; 
   padding: 15px;
-  min-height:50px; 
+  min-height: 50px; 
   background-color: rgb(255, 255, 255); 
   border: 1px solid rgba(0, 0, 0, 0.2); 
-  border-radius: 5px;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  @include radius(5px);
+  @include box-shadow(0, 5px, 10px, rgba(0, 0, 0, 0.2));
   background-clip: padding-box; 
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
   font-size: 13px;
@@ -1329,7 +1341,7 @@ pre#button-code-block {
   padding: 5px;
   margin-right: 10px;
   cursor: pointer;
-  border-radius: 5px;
+  @include radius(5px);
 }
 
 .step-container .step-content {
@@ -1338,7 +1350,7 @@ pre#button-code-block {
 }
 
 .step-container .platform-container.selected-option, .button-choice.selected-option {
-  border-radius: 5px;
+  @include radius(5px);
   background-color: #ffeae1;
   border: 1px solid #ffbda0;
   cursor: auto;
@@ -1444,28 +1456,6 @@ pre#button-code-block {
   padding: 10px 0;
 }
 
-#preview-tooltip {
-  margin-top: 10px;
-  width:180px; 
-  padding: 15px;
-  min-height:50px; 
-  background-color: rgb(255, 255, 255); 
-  border: 1px solid rgba(0, 0, 0, 0.2); 
-  border-radius: 5px;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-     -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
-  background-clip: padding-box; 
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
-  font-size: 13px; 
-  font-weight: 400;
-  line-height: 18px;
-}
-
-#user-picture-uploading, #upload-user-picture {
-  
-}
-
 .step-container #fb-share, .step-container #tw-share {
   cursor: pointer;
   margin-left: 10px;
@@ -1487,10 +1477,9 @@ pre#button-code-block {
 
 #upload-picture-fields .thumb-picture {
   margin-left: 5px;
-  border-radius: 2px;
+  @include radius(5px);
   max-width: 40px;
   max-height: 40px;
-  
 }
 
 #upload-picture-fields #current-picture-link {
