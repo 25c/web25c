@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   
-  before_filter :authenticate, :except => :paypal_process
+  # before_filter :authenticate, :except => :paypal_process
   
   include ActiveMerchant::Billing::Integrations
   skip_before_filter :check_facebook_cookies, :only => :paypal_process
