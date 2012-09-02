@@ -194,7 +194,7 @@ en:
         subtitle: "Follow these easy steps to get your +25c button code:"
 
     index:
-      title_top: Micro-Donations Made Easy.
+      title_top: Micro-Donations Made Easy
       button_title: The +25c Button
       legend_p1: Tap once %{img} 25 cents
       legend_p2: twice %{img} 50 cents
@@ -359,7 +359,7 @@ en:
       facebook: Facebook
       google: Google
       signed_in_p1: "You are signed in and ready to make 25c pledges -- anywhere you see the +25c button.  Please now return and re-click +25c to make a pledge."
-      signed_in_p2: "You may make 40 25c pledges at your leisure. Then we ask you to fund them. You may undo any 25c pledge until you fund it. So click ahead!"
+      signed_in_p2: "You may make forty 25c pledges at your leisure. Then we ask you to fund them. You may undo any 25c pledge until you fund it. So click ahead!"
     confirm_tip:
       view_account: View 25c Account
       close_window: Close this window
