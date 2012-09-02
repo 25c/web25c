@@ -51,9 +51,9 @@ body, p, strong, h4, ul.plist > li, label, input, button, select, textarea {
   font-size: 17px;
   line-height: 1.2em;
   font-family: Helvetica, Arial, Sans-Serif;
-  font-weight: 200;
+  font-weight: 400;
   font-smooth: always;
-  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, .highlight {
@@ -152,7 +152,7 @@ body {
 }
 
 #nav-tagline {
-  font-size: 18px;
+  font-size: 17px;
   padding-top: 18px;
 }
 
@@ -218,7 +218,7 @@ ul#nav-login > li.login-logo img {
 }
 
 ul.dropdown-menu > li > a {
-  font-weight: 200;
+  font-weight: 400;
   color: #f26422;
   padding-top: 5px;
 }
@@ -438,7 +438,7 @@ ul#footer-nav, ul#footer-nav > li > a {
   font-size: 17px;
   line-height: 1.2em;
   font-family: Helvetica, Arial, Sans-Serif;
-  font-weight: 200;
+  font-weight: 400;
   font-smooth: always;
   //  -webkit-font-smoothing: antialiased;
 }
