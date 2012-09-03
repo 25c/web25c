@@ -1,8 +1,13 @@
 %h2.page-header= t('.title')
 
-%p= t('.received', 
-  :total => @total, :total_amount => "%.2f" % (@total.to_f / 4),
-  :funded => @funded, :funded_amount => "%.2f" % (@funded.to_f / 4))
+- if @total == 1
+  %p= t('.received_one', 
+    :total => @total, :total_amount => "%.2f" % (@total.to_f / 4),
+    :funded => @funded, :funded_amount => "%.2f" % (@funded.to_f / 4))
+- else
+  %p= t('.received_many', 
+    :total => @total, :total_amount => "%.2f" % (@total.to_f / 4),
+    :funded => @funded, :funded_amount => "%.2f" % (@funded.to_f / 4))
     
 - if not @has_payout
   %p= raw t('.too_low_p1')

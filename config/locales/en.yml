@@ -42,7 +42,8 @@ en:
         dwolla_email: Dwolla E-mail
         dwolla_email_confirmation: Confirm Dwolla E-mail
         submit: Send Request
-        received: You have received %{total} 25c pledges ($%{total_amount}), of which %{funded} ($%{funded_amount}) have so far been funded.
+        received_one: You have received one 25c pledge ($0.25), of which %{funded} ($%{funded_amount}) have so far been funded.
+        received_many: You have received %{total} 25c pledges ($%{total_amount}), of which %{funded} ($%{funded_amount}) have so far been funded.
         too_low_p1: "Once you have reached a good number of <i>funded</i> 25c pledges, get set up to receive pay-outs."
         too_low_p2: "In order to receive more 25c pledges, consider the following: add more +25 Buttons to more pages in more prominent locations; advertise your pages; tell your friends about your pages on Facebook, Twitter, or email lists.  (25c provides a transactional platform but it is up to you to promote your cause!)"
         provide_dwolla_email: "We use the service Dwolla to deliver pay-outs with minimal transactional expense.  It is FREE to maintain an account with Dwolla and micro-transactions are FREE on Dwolla.  Please provide and verify your Dwolla Account:"
