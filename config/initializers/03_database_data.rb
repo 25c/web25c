@@ -5,6 +5,7 @@ if ENV["DATABASE_DATA_URL"]
     "host" => uri.host,
     "username" => uri.user,
     "password" => uri.password,
-    "database" => uri.path[1..-1]
+    "database" => uri.path[1..-1],
+    "port" => uri.port
   }
 end

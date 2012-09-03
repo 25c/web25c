@@ -37,7 +37,7 @@
     }, 500);
     });
 
-#splash-title-top.highlight.center= t('.title_top')
+#splash-title-top.highlight= t('.title_top')
 
 #splash-main.pull-left
   #splash-people.center= image_tag 'front/people-01.png'
@@ -59,11 +59,15 @@
   %p
     = raw t('.explain_p1')
     %br
-    %span{:style => "margin-left:20px;"}= raw t('.explain_p2')
-  %p= t('.explain_p3')
-  %p{:style => "margin-left: 20px;"}= t('.explain_p4')
-  %p{:style => "margin-left: 20px;"}= t('.explain_p5')
-  %p{:style => "margin-left: 20px;"}= t('.explain_p6')
+    = raw t('.explain_p2')
+  %p
+    = t('.explain_p3')
+    %br
+    %span{:style => "margin-left: 20px;"}= raw t('.explain_p4')
+    %br
+    %span{:style => "margin-left: 20px;"}= raw t('.explain_p5')
+    %br
+    %span{:style => "margin-left: 20px;"}= raw t('.explain_p6')
   %a#splash-call.btn.btn-strong{ :href => home_receive_pledges_path }= raw t('.set_up')
 .clear
 
@@ -81,4 +85,4 @@
     %p= t('.pledger_p3')
     / %p= t('.pledger_p4')
   .clear
-  %p.center.learn-more=link_to t('.read_more'), about_path
+  %p.center.learn-more=link_to t('.read_more'), faq_path

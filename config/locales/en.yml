@@ -45,7 +45,7 @@ en:
         received: You have received %{total} 25c pledges ($%{total_amount}), of which %{funded} ($%{funded_amount}) have so far been funded.
         too_low_p1: "Once you have reached a good number of <i>funded</i> 25c pledges, get set up to receive pay-outs."
         too_low_p2: "In order to receive more 25c pledges, consider the following: add more +25 Buttons to more pages in more prominent locations; advertise your pages; tell your friends about your pages on Facebook, Twitter, or email lists.  (25c provides a transactional platform but it is up to you to promote your cause!)"
-        provide_dwolla_email: "We use the Internet bank Dwolla to deliver pay-outs with minimal transactional expense.  It is FREE to maintain an account with Dwolla and micro-transactions are FREE on Dwolla.  Please provide and verify your Dwolla Account:"
+        provide_dwolla_email: "We use the service Dwolla to deliver pay-outs with minimal transactional expense.  It is FREE to maintain an account with Dwolla and micro-transactions are FREE on Dwolla.  Please provide and verify your Dwolla Account:"
         sent: You have been queued for receiving a pay-out of your funded pledges.  You should be receiving the amount within 30 days provided no funder withdraws their funding during this time period.  Please check your Dwolla account.
         dashboard: Back to Dashboard
         use_dwolla: We use the payment network Dwolla to save you money on your pay-outs.
@@ -207,9 +207,9 @@ en:
       explain_p1: "The +25c Button combines a \'Like\'"
       explain_p2: with a <b>25-cent pledge</b>.
       explain_p3: "Embed it into your blog, photos, videos."
-      explain_p4: "* Easy to do"
-      explain_p5: "* It's upside only"
-      explain_p6: "* Locate your fans"
+      explain_p4: "&#8226; Easy to do"
+      explain_p5: "&#8226; It's upside only"
+      explain_p6: "&#8226; Locate your fans"
       
       publisher_title: "Have a website, blog, photo collection, or video?"
       publisher_p1: "What if there were an easy way to turn 'Likes' into simultaneous 25-cent contributions?"
