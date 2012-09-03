@@ -145,7 +145,7 @@ en:
         describe_user_title: "Provide some information about yourself:"
         user_picture_label: "Photo:"
         user_nickname_label: "Your user nickname:"
-        user_pledge_name_label: "Who pledges go to:"
+        user_pledge_name_label: "Who the pledges go to:"
         upload_picture: Upload
         picture_uploading: Picture uploading...
         picture_link: "Use this picture:"
