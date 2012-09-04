@@ -223,8 +223,8 @@ en:
       pledger_p4:  
       read_more: "Learn more..."
 
-      facebook_share_title: 25c social micro-donations.
-      facebook_share_description: Supporting value one quarter a click.  Be the customer not the product.
+      fb_share_title: 25c social micro-donations.
+      fb_share_description: Supporting value one quarter a click.  Be the customer not the product.
     
     not_found:
       title: Page Not Found
