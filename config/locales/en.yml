@@ -91,7 +91,7 @@ en:
         no_pledges_referred: "Your sharing your pledge activity has not yet resulted in any 25c pledge(s) been made by others."
         fb_share_button_title: "I just pledged 25c %{button_title}!"
         fb_share_user_title: "I just pledged 25c to %{user_name}!"
-        fb_share_description: Use 25c pledges to reward and support great causes!
+        fb_share_description: Using 25c to pledge one quarter one click.
       undo_clicks:
         title: Undo Pledges
         undo: Undo Pledge
@@ -176,7 +176,7 @@ en:
         profile_link: "You now also have a 25c.com page at: %{link}"
         share_cause_label: "Tell your friends by sharing via:"
         share_facebook: Share on Facebook
-        fb_share_description: Use 25c pledges to reward and support great causes.
+        fb_share_description: Using 25c to pledge one quarter one click.
         fb_share_title: I just created a 25c account!
         share_twitter: Share on Twitter
         share_email: Email
