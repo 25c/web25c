@@ -5,9 +5,9 @@
         + "&app_id=#{ FACEBOOK_SETTINGS['app_id'] }"
         + "&link=#{ root_url }"
         + "&picture=http://assets.25c.com.s3.amazonaws.com/logos/25c-logo-medium.png"
-        + "&name=#{ j t('.facebook_share_title') }"
+        + "&name=#{ j t('.fb_share_title') }"
         + "&caption=" + " "
-        + "&description=#{ j t('.facebook_share_description') }"
+        + "&description=#{ j t('.fb_share_description') }"
         + "&redirect_uri=#{ j fb_share_callback_url }";
       openPopup(fbShareHref, "Share on Facebook");
     });

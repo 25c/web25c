@@ -88,10 +88,10 @@ en:
         no_pledges_received: You have not received any 25c pledges.  In order to receive 25c pledges, %{profile_link} or %{button_link}.
         no_pledges_profile_link: enhance your 25c.com pledge profile
         no_pledges_button_link: embed a +25c Button
-        no_pledges_referred: "Your sharing your pledge activity has not yet resulted in any 25c pledge(s) been made by others."
-        fb_share_button_title: "I just pledged 25c %{button_title}!"
+        no_pledges_referred: "Your sharing your pledge activity has not yet resulted in any 25c pledge(s) being made by others."
+        fb_share_button_title: "I just pledged 25c to %{button_title}!"
         fb_share_user_title: "I just pledged 25c to %{user_name}!"
-        fb_share_description: Use 25c pledges to reward and support great causes!
+        fb_share_description: Using 25c to pledge one quarter one click.
       undo_clicks:
         title: Undo Pledges
         undo: Undo Pledge
@@ -176,7 +176,7 @@ en:
         profile_link: "You now also have a 25c.com page at: %{link}"
         share_cause_label: "Tell your friends by sharing via:"
         share_facebook: Share on Facebook
-        fb_share_description: Use 25c pledges to reward and support great causes.
+        fb_share_description: Using 25c to pledge one quarter one click.
         fb_share_title: I just created a 25c account!
         share_twitter: Share on Twitter
         share_email: Email
@@ -223,8 +223,8 @@ en:
       pledger_p4:  
       read_more: "Learn more..."
 
-      facebook_share_title: 25c social micro-donations.
-      facebook_share_description: Supporting value one quarter a click.  Be the customer not the product.
+      fb_share_title: 25c social micro-donations.
+      fb_share_description: Supporting value one quarter a click.  Be the customer not the product.
     
     not_found:
       title: Page Not Found
@@ -302,7 +302,7 @@ en:
       referrer: Link 
       profile_link: "%{provider}'s Profile"
       share_profile: "Share this page on:"
-      fb_share_button_title: "I just pledged 25c %{button_title}!"
+      fb_share_button_title: "I just pledged 25c to %{button_title}!"
       fb_share_user_title: "I just pledged 25c to %{user_name}!"
       fb_share_description: Using 25c to pledge one quarter one click.
     form:

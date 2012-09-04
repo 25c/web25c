@@ -201,28 +201,6 @@ $(document).ready(function() {
     });
   });
   
-  var profile_url = window.location.protocol + '//' + window.location.hostname;
-  if (profile_url.indexOf('localhost') != -1) profile_url += ':3000';
-  profile_url += window.location.pathname;
-  
-  $('#fb-share').click(function() {
-    var fbShareHref = "https://www.facebook.com/dialog/feed?display=popup"
-		  + "&app_id=<%= FACEBOOK_SETTINGS['app_id'] %>"
-		  + "&link=" + profile_url
-      + "&picture=" + "http://assets.25c.com.s3.amazonaws.com/logos/25c-logo-medium.png"
-		  + "&name=" + fbShareText
-      + "&caption=" + " "
-		  + "&description=" + fbShareDescription
-		  + "&redirect_uri=" + fbShareCallbackUrl;
-    openPopup(fbShareHref, "Share on Facebook");
-	});
-
-  $('#tw-share').click(function() {
-    var $this = $(this);
-		var twShareHref = "https://twitter.com/share?url=" + encodeURIComponent(profile_url);
-		openPopup(twShareHref, "Share on Twitter");
-  });
-  
 });
 
 
