@@ -5,6 +5,10 @@ development:
 test:
   client_id: 302358520756.apps.googleusercontent.com
   client_secret: QsVRaJxqIdwSBDRR3wpC5fq5
+  
+staging:
+  client_id: 302358520756-a9k6cn927bmt71077h7l8ce4udo83v5a.apps.googleusercontent.com
+  client_secret: AWEsYKrRd84Y0vDNS7uc-q08
 
 production:
   client_id: 302358520756-0kcdmmgo4gnbuaj8qngikejadv5aft1i.apps.googleusercontent.com

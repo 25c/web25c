@@ -69,11 +69,3 @@ test_data:
   pool: 5
   username: superuser
   password:
-
-production_data:
-  adapter: postgresql
-  encoding: unicode
-  database: data25c_production
-  pool: 5
-  username: superuser
-  password:

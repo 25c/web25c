@@ -5,7 +5,11 @@ development:
 test:
   consumer_key: 9eUvxMPuNTCjg5dcFRBw
   consumer_secret: dvja0RDVJvUH1onMbwg3hgQQyOEouim4ej1IfgzLo
+    
+staging:
+  consumer_key: uJwxb8MRfYKr8a8HTIc3tg
+  consumer_secret: oYkorOxWuQkGkMfhxD9LqnbCrxjBbqqnH5rD17zAus
   
 production:
-  consumer_key: 9eUvxMPuNTCjg5dcFRBw
-  consumer_secret: dvja0RDVJvUH1onMbwg3hgQQyOEouim4ej1IfgzLo
+  consumer_key: Jg1XyxOSNVilzDJcLLpYQ
+  consumer_secret: SK4vn7yEity6teQlFFseQFn7egrBUBDoP8zv8P7e8
