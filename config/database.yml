@@ -46,6 +46,14 @@ test:
   username: superuser
   password:
 
+staging:
+  adapter: postgresql
+  encoding: unicode
+  database: web25c_staging
+  pool: 5
+  username: web25c
+  password:
+
 production:
   adapter: postgresql
   encoding: unicode
@@ -66,6 +74,22 @@ test_data:
   adapter: postgresql
   encoding: unicode
   database: data25c_test
+  pool: 5
+  username: superuser
+  password:
+
+staging_data:
+  adapter: postgresql
+  encoding: unicode
+  database: data25c_staging
+  pool: 5
+  username: superuser
+  password:
+
+production_data:
+  adapter: postgresql
+  encoding: unicode
+  database: data25c_production
   pool: 5
   username: superuser
   password:
