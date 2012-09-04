@@ -26,6 +26,28 @@
   :javascript
     window.fbShareDescription = '#{ t('.fb_share_description') }';
     window.fbShareCallbackUrl = '#{ j fb_share_callback_url }';
+    var profile_url = window.location.protocol + '//' + window.location.hostname;
+    if (profile_url.indexOf('localhost') != -1) profile_url += ':3000';
+    profile_url += window.location.pathname;
+
+    $('#fb-share').click(function() {
+      var fbShareHref = "https://www.facebook.com/dialog/feed?display=popup"
+        + "&app_id=#{ FACEBOOK_SETTINGS['app_id'] }"
+        + "&link=" + profile_url
+        + "&picture=" + "http://assets.25c.com.s3.amazonaws.com/logos/25c-logo-medium.png"
+        + "&name=" + fbShareText
+        + "&caption=" + " "
+        + "&description=" + fbShareDescription
+        + "&redirect_uri=" + fbShareCallbackUrl;
+      openPopup(fbShareHref, "Share on Facebook");
+    });
+
+    $('#tw-share').click(function() {
+      var $this = $(this);
+      var twShareHref = "https://twitter.com/share?url=" + encodeURIComponent(profile_url);
+      openPopup(twShareHref, "Share on Twitter");
+    });
+    
   - if @button.title.blank?
     :javascript
       window.fbShareText = '#{ t('.fb_share_user_title', :user_name => @user.display_name) }';
@@ -78,7 +100,7 @@
         .content-block
           #profile-button-title
             / = t('.button_title_intro')
-            %span#button-title= @button.title.blank? ? t('.pledge_to', :name => @user.display_name) : @button.title
+            %span#button-title= @button.title.blank? ? @user.display_name : @button.title
                               
       - if not @button.youtube_id.blank?
         #youtube-embed-container
