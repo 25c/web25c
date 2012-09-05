@@ -26,7 +26,7 @@ $(document).ready(function(){
     if(!d.getElementById(id)){js=d.createElement(s);js.id=id;\
     js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}\
     (document,"script","tip-25c-js");</script>';
-  var iframeOpen = '<iframe src="//<%= ENV["API25C_URL"] %>/button/' + buttonId + '?size=';
+  var iframeOpen = '<iframe src="' + apiUrl + '/button/' + buttonId + '?size=';
 	var iframeMid = '" allowtransparency="true" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"';
   var iframeClose = '></iframe>';
   var linkOpen = '<a target="_blank" href="' + webUrl + '/' + userNickname + '">' + "Pledge 25c ";
@@ -281,7 +281,7 @@ $(document).ready(function(){
     var fbShareHref = "https://www.facebook.com/dialog/feed?display=popup"
 		  + "&app_id=<%= FACEBOOK_SETTINGS['app_id'] %>"
 		  + "&link=" + profileUrl
-      + "&picture=" + "http://assets.25c.com.s3.amazonaws.com/logos/25c-logo-medium.png"
+      + "&picture=" + "http://assets.25c.com.s3.amazonaws.com/logos/icon-50.png"
 		  + "&name=" + fbShareTitle
       + "&caption=" + " "
 		  + "&description=" + fbShareDescription

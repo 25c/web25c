@@ -1,0 +1,1 @@
+DWOLLA_SETTINGS = HashWithIndifferentAccess.new(YAML::load(File.open("#{Rails.root}/config/dwolla.yml"))[Rails.env])

@@ -28,31 +28,11 @@
               = link_to t('.payment'), home_payment_path, :class => 'btn btn-strong', 
                 :target => '_blank'
           - elsif @new_account.blank?
-            - if @source == 'javascript'
-              #tip-result.center
-                %p= t('.signed_in_p1')
-                %p.buffer= t('.signed_in_p2')
-                .tip-close-container
-                  %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
-            - else
-              .center
-                %p= t('.pledge_to', :provider => @button.user.display_name)
-                %p= t('.pledge_more')
-                #tip-button-holder.center
-                  %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", 
-                  :'data-size' => "btn-large",
-                  :'data-user' => @button.user.display_name, 
-                  :'data-profile' => @button.user.profile_url } 
-                    #{@button.title}
-                  :javascript
-                    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
-                    if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
-                    js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
-                    fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
-                .tip-close-container
-                  %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
-                #more-info-buttons.small
-                  %p= raw t('.view_pledges', :link => link_to('25c.com', home_dashboard_path, :target => '_blank'))
+            #tip-result.center
+              %p= t('.signed_in_p1')
+              %p.buffer= t('.signed_in_p2')
+              .tip-close-container
+                %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
           - else
             %p= raw t('.new_welcome', :account => t('.' + @new_account))
             %p= t('.new_p1')
