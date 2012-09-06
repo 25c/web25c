@@ -11,8 +11,8 @@ test:
   worker_min_count: 0
 
 production:
-  username: "developer@25c.com"
-  password: "412e3cfcd9e2f28a49766b3552c4d539c9b662c1"
+  username: "dev@25c.com"
+  password: "3ca58924a123e1eb86c46403db3c0605e8001255"
   application: "web25c"
   worker_min_count: 1
   
