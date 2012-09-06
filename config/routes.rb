@@ -6,7 +6,6 @@ Web25c::Application.routes.draw do
   
   match 'sign-in' => 'users#sign_in', :as => :sign_in
   match 'sign-out' => 'users#sign_out', :as => :sign_out
-  # match 'auth/paypal/callback' => 'home/account#payout'
   match 'auth/dwolla/callback' => 'home/account#payout', :as => :dwolla_auth_callback
   match 'auth/:provider/callback' => 'users#sign_in_callback'
   

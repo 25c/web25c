@@ -21,7 +21,6 @@ gem 'curb'												# libcurl bindings
 gem 'resque', '~>1.20.0'					# redis-backed jobs queuing system
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
-# gem 'omniauth-paypal', :git => 'git://github.com/surferdwa/omniauth-paypal.git'
 gem 'airbrake'
 gem 'activemerchant', :require => 'active_merchant'
 gem 'valid_email'
