@@ -115,7 +115,7 @@ class User < ActiveRecord::Base
     if self.picture_updated_at
       picture = self.picture(:thumb) ? self.picture(:thumb) : self.picture
     else
-      picture = 'http://i50.tinypic.com/5y6ljo.png'
+      picture = 'https://s3.amazonaws.com/assets.25c.com/users/pictures/no_pic.png'
     end
   end
   
