@@ -173,17 +173,17 @@ class UsersController < ApplicationController
       end
       
       if button_id
-        if new_account.blank? && params[:source] == 'iframe'
-          unless Click.enqueue(self.current_user, button_id, referrer, request, cookies)
-            @redirect_url = tip_path(
-              :button_id => button_id,
-              :referrer => referrer,
-              :source => source,
-              :new_account => new_account,
-              :overdraft => true
-            )
-          end
-        end
+        # if new_account.blank? && params[:source] == 'iframe'
+        #   unless Click.enqueue(self.current_user, button_id, referrer, request, cookies)
+        #     @redirect_url = tip_path(
+        #       :button_id => button_id,
+        #       :referrer => referrer,
+        #       :source => source,
+        #       :new_account => new_account,
+        #       :overdraft => true
+        #     )
+        #   end
+        # end
         @redirect_url = tip_path(
           :button_id => button_id,
           :referrer => referrer,

@@ -64,18 +64,6 @@ class ApplicationController < ActionController::Base
         current_user.has_agreed = true
         current_user.save!
         if has_tip
-          if new_account.blank? && params[:source] == 'iframe'
-            unless Click.enqueue(self.current_user, params[:button_id], params[:referrer], request, cookies)
-              redirect_to tip_path(
-                :button_id => params[:button_id],
-                :referrer => params[:referrer],
-                :source => params[:source],
-                :new_account => new_account,
-                :overdraft => true
-              )
-              return
-            end
-          end
           redirect_to tip_path(
             :button_id => params[:button_id],
             :referrer => params[:referrer],
