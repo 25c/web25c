@@ -84,12 +84,13 @@ $(document).ready(function(){
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
     } else if (codeType == 'javascript') {
+      var linkText = (!buttonTitle || /^\s*$/.test(buttonTitle)) ? "&nbsp;" : buttonTitle;
       newCode = jsOpen 
         + 'data-size="' + buttonSize 
         + '" data-user="' + userPledgeName
         + '" data-profile="' + profileUrl
         // + '" data-info-url="' + buttonInfoUrl
-        + '">' + buttonTitle + jsClose;
+        + '">' + linkText + jsClose;
       $('.if-javascript').show();
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
