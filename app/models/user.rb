@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
     rescue
       puts $!.inspect
       # on error, dispatch a job to retry
-      Resque.enqueue(BackgroundJob, 'User', self.id, 'update_picture')      
+      # Resque.enqueue(BackgroundJob, 'User', self.id, 'update_picture')      
     ensure
       FileUtils.remove_entry_secure(file.path) unless file.nil?
     end
