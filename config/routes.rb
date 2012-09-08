@@ -56,6 +56,7 @@ Web25c::Application.routes.draw do
     match 'process_payment' => 'dashboard#process_payment', :as => :process_payment, :via => :post
     match 'test' => 'dashboard#test', :as => :test
   end
+  mount Resque::Server.new, :at => "/admin/resque/frame"
   
   # the profile wildcard route must be last
   match ':id' => 'users#show', :constraints => { :id => /.*/ }, :as => :profile
