@@ -72,14 +72,14 @@ class Home::AccountController < Home::HomeController
       
       unless @user.dwolla_email.blank?
         # Create or update payment object
-        amount = (@funded.to_f / 4).round(2)
+        amount = @funded.to_f / 4 * 100
         openPayments = @user.payments.where(:state => Payment::State::NEW, :payment_type => 'payout')
         if openPayments.empty?
           payment = @user.payments.new({:amount => amount, :payment_type => 'payout'})
           ApplicationMailer.new_payout_request(@user, payment).deliver
         elsif openPayments.length == 1
           payment = openPayments[0]
-          payment.amount = amount unless openPayments[0].amount == amount
+          payment.amount = amount.to_i unless openPayments[0].amount == amount.to_i
           ApplicationMailer.updated_payout_request(@user, payment).deliver
         else
           # error: multiple open payouts

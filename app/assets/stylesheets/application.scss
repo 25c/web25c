@@ -68,13 +68,14 @@ b, strong, h4 {
   font-weight: 600;
 }
 
-.small {
+.small, .small p {
   font-size: 13px;
 }
 
-.small p {
-  font-size: 13px;
+.large, .large p {
+  font-size: 20px;
 }
+
 
 /* NEW LAYOUT - MASTER
 *---------------------------- */
@@ -519,10 +520,6 @@ img {
  line-height: 28px;
 }
 
-.payments-table .process-payment {
- margin-top: -3px;
-}
-
 /* SIGN IN PAGE
  *---------------------------- */
 
@@ -788,8 +785,9 @@ table.clicks-table > tbody > tr > td {
   line-height: 28px;
 }
 
-table.clicks-table .delete-click {
-  margin-top: -3px;
+table.clicks-table .delete-click, table.payments-table .process-payment {
+  margin-top: -5px;
+  margin-bottom: -2px;
 }
 
 .table-title {

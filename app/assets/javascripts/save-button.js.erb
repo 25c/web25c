@@ -29,7 +29,7 @@ $(document).ready(function(){
   var iframeOpen = '<iframe src="' + apiUrl + '/button/' + buttonId + '?size=';
 	var iframeMid = '" allowtransparency="true" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"';
   var iframeClose = '></iframe>';
-  var linkOpen = '<a target="_blank" href="' + webUrl + '/' + userNickname + '">' + "Pledge 25c ";
+  var linkOpen = '<a target="_blank" href="' + webUrl + '/' + userNickname + '">' + "Pledge 25c to";
   var linkClose = '</a>';
   
   // jQuery objects
@@ -85,7 +85,7 @@ $(document).ready(function(){
       $('#choose-button').removeAttr('data-skip');
     } else if (codeType == 'javascript') {
       var linkText = (!buttonTitle || /^\s*$/.test(buttonTitle)) ? "&nbsp;" : buttonTitle;
-      newCode = jsOpen 
+      newCode = jsOpen
         + 'data-size="' + buttonSize 
         + '" data-user="' + userPledgeName
         + '" data-profile="' + profileUrl
@@ -163,7 +163,7 @@ $(document).ready(function(){
         updateButtonCode();
         putUpdate(true, { 'size': buttonSize });
       }
-      showNextStep(5);
+      showNextStep(4);
     } else if ($this.hasClass('platform-container')) {
       $this.parent().find('.selected-option').removeClass('selected-option');
       $this.addClass('selected-option');
@@ -172,47 +172,27 @@ $(document).ready(function(){
       if (platform == 'html') {
         var newCodeType = "javascript";
         $('.html-instructions').show();
-      } else if (platform == 'wordpress') {
+      } else if (platform == 'wordpress' || platform == 'tumblr') {
         var newCodeType = "javascript";
         $('.blog-instructions').show();
-      } else if (platform == 'tumblr' || platform == 'posterous') {
+      } else if (platform == 'posterous') {
         var newCodeType = "iframe";
         $('.blog-instructions').show();
       } else if (platform == 'youtube') {
         var newCodeType = "link";
         $('.youtube-instructions').show();
       }
-      if (platform == 'none') {
-        $('#get-code, #choose-button').attr('data-skip', true);
-        $('.if-button').hide();
-        recomputeSteps();
-        showNextStep(5);
-      } else {
-        $('#get-code').removeAttr('data-skip');
-        $('.if-button').show();
-        if (codeType != newCodeType) {
-          codeType = newCodeType;
-          updateButtonCode();
-        }
-        recomputeSteps();
-        showNextStep(4);
+      $('#get-code').removeAttr('data-skip');
+      $('.if-button').show();
+      if (codeType != newCodeType) {
+        codeType = newCodeType;
+        updateButtonCode();
       }
+      recomputeSteps();
+      showNextStep(3);
     } else if ($this.hasClass('code-option-container')) {
       $this.children('input.code-type').change();
     }
-  });
-  
-  // Save button info
-  $('#set-button-info').click(function(){
-    buttonTitle = $('#button-title').val();
-    if (buttonTitle == buttonTitleDefault) buttonTitle = "";
-    putUpdate(true, { title: buttonTitle });
-    updateButtonCode();
-    showNextStep(2);
-  });
-  
-  $('#button-description').focusout(function(){
-    $('#set-button-info').click();
   });
   
   // Upload user picture
@@ -234,7 +214,7 @@ $(document).ready(function(){
     
     if (userNickname) {
       putUpdate(false, { pledge_name: userPledgeName });
-      showNextStep(3);
+      showNextStep(2);
     } else {
       if ($('#user-nickname').val()) {
         userNickname = $('#user-nickname').val();
@@ -242,7 +222,7 @@ $(document).ready(function(){
           $('#profile-link > a').attr('href', profileUrl).text(profileUrl);
           $('#user-nickname').parent().add($('#user-nickname').parent().prev()).hide();
           $('#profile-link > a').attr('href', profileUrl).text(profileUrl);
-          showNextStep(3);
+          showNextStep(2);
           profileUrl = getProfileUrl();
         }, function() {
           alert(nicknameTaken);

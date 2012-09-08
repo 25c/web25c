@@ -3,9 +3,9 @@ class Home::DashboardController < Home::HomeController
 
   def index
     
-    @user = current_user    
+    @user = current_user
     clicks = @user.clicks.includes(:button => :user).order("created_at DESC").find_all_by_state([ 
-      Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
+      Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED, Click::State::PAID
     ])
     
     @clicks_given = group_clicks(clicks, true, true)
@@ -22,13 +22,13 @@ class Home::DashboardController < Home::HomeController
     DATA_REDIS.set "user:#{@user.uuid}", @user.balance
     
     clicks = Click.where(:button_id => @user.button_ids).includes(:user).order("created_at DESC").find_all_by_state([ 
-      Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
+      Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
     ])
     @clicks_received = group_clicks(clicks, false, true)
     @clicks_received_total = clicks.length
     
     clicks = Click.where(:referrer_user_id => @user.id).includes(:user).order("created_at DESC").find_all_by_state([ 
-      Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
+      Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
     ])
     @clicks_referred = group_clicks(clicks, false, true)
     @clicks_referred_total = clicks.length
