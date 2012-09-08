@@ -28,7 +28,7 @@ module Heroku
     end
 
     def after_enqueue_scale_up(*args)
-      return unless Rails.env.staging? or Rails.env.production?
+      return #unless Rails.env.staging? or Rails.env.production?
     
       [
         {
