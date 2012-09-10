@@ -155,12 +155,15 @@
     %h3.step-title.youtube-instructions.instructions.hide= t('.get_code_title_youtube')
     .step-body.buffer
       #button-preview-container.pull-left
-        #button-preview-title=('.button_preview')
+        #button-preview-title
+          .if-javascript= t('.button_preview')
+          .if-link.hide=t('.link_preview')
         #button-preview
         
       #code-container.pull-left
         %p
-          %b= t('.button_code')
+          %b.if-javascript= t('.button_code')
+          %b.if-link.hide= t('.link_code')
         %pre#button-code-block
         - if @user.nickname.blank?
           #set-nickname-link.hide

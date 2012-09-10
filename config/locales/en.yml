@@ -164,6 +164,7 @@ en:
         get_code_title_website: "Now embed this code into your website:"
         get_code_title_youtube: "Now insert this code into your Youtube video description:"
         button_code: "HTML Code for Your Own +25c Button:"
+        link_code: "URL to Use:"
         sign_in_overlay: Click here to create an account!
         set_nickname: Choose a nickname to set your profile URL.
         installation: "Installation Instructions:"
@@ -171,6 +172,7 @@ en:
         for_website: "Access your website and embed the above code as HTML.  You can reuse this code any number of times within your website."
         for_youtube: "Paste this URL into the description of your uploaded Youtube video."
         button_preview: "Button preview:"
+        link_preview: "Link preview:"
         
         share_cause_title: Tell people you know about your cause!
         profile_link: "You now also have a 25c.com page at: %{link}"
