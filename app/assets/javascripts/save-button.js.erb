@@ -29,7 +29,8 @@ $(document).ready(function(){
   var iframeOpen = '<iframe src="' + apiUrl + '/button/' + buttonId + '?size=';
 	var iframeMid = '" allowtransparency="true" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"';
   var iframeClose = '></iframe>';
-  var linkOpen = '<a target="_blank" href="' + webUrl + '/' + userNickname + '">' + "Pledge 25c to";
+  // var linkOpen = '<a target="_blank" href="' + webUrl + '/' + userNickname + '">' + "Pledge 25c to";
+  var linkOpen = '<a class="small" target="_blank" href="' + webUrl + '/' + userNickname + '">';
   var linkClose = '</a>';
   
   // jQuery objects
@@ -95,7 +96,8 @@ $(document).ready(function(){
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
     } else if (codeType == 'link') {
-      newCode = linkOpen + buttonTitle + linkClose;
+      // newCode = linkOpen + buttonTitle + linkClose;
+      newCode = webUrl + '/' + userNickname;
       $('#set-nickname-link').show();
       $('.if-javascript').hide();
       $('.if-link').show();
@@ -103,7 +105,12 @@ $(document).ready(function(){
     }
 
     $('#button-code-block').text(newCode);
-    $('#button-preview').html(newCode);
+    
+    if (codeType == 'link') {
+      $('#button-preview').html(linkOpen + newCode + linkClose);
+    } else {
+      $('#button-preview').html(newCode);
+    }
 
     if (codeType == 'javascript') {
       $('#tip-25c-tooltip').remove();
