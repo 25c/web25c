@@ -46,16 +46,6 @@ class Home::AccountController < Home::HomeController
   def payout
     @user = current_user
     
-    if request.method == 'POST'
-      # if Dwolla code
-      # code = params['code']
-      # dwolla_token = DwollaClient.request_token(code, redirect_uri)
-      @user.editing = true
-      unless @user.update_attributes(params[:user])
-        # TODO: handle bad Dwolla email
-      end
-    end
-    
     # TODO: replace this lookup with balance fields in the User model
     clicks = Click.where(:button_id => @user.button_ids).find_all_by_state([ 
       Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
@@ -68,8 +58,23 @@ class Home::AccountController < Home::HomeController
       @has_payout = false
     else
       @has_payout = true
-      # @authUrl = DwollaClient.auth_url(dwolla_auth_callback_url)
       
+      if request.method == 'POST'
+        # if Dwolla code
+        # code = params['code']
+        # dwolla_token = DwollaClient.request_token(code, redirect_uri)
+        @user.editing = true
+        unless @user.update_attributes(params[:user])
+          respond_to do |format|
+            format.html { flash.now[:alert] = t('home.account.payout.dwolla_warning') }
+            format.json { render json: @user.errors, status: :unprocessable_entity }
+          end
+          @user.reload
+          return
+        end
+      end
+      
+      # @authUrl = DwollaClient.auth_url(dwolla_auth_callback_url)
       unless @user.dwolla_email.blank?
         # Create or update payment object
         amount = @funded.to_f / 4 * 100

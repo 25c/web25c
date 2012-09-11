@@ -50,6 +50,7 @@ en:
         sent: You have been queued for receiving a pay-out of your funded pledges.  You should be receiving the amount within 30 days provided no funder withdraws their funding during this time period.  Please check your Dwolla account.
         dashboard: Back to Dashboard
         use_dwolla: We use the payment network Dwolla to save you money on your pay-outs.
+        dwolla_warning: Your Dwolla e-mail is invalid. Please try again.
     dashboard:
       index:
         title: Dashboard
