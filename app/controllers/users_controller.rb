@@ -222,11 +222,9 @@ class UsersController < ApplicationController
   def tip
     session[:has_seen_agreement_text] = true
     redirect_path = session.delete(:redirect_path)
-    @referrer = params[:referrer]
-    # @button_id = params[:button_id]
-    @new_account = params[:new_account]
-    # @new_account = 'google'
-    @source = params[:source]
+    @referrer = params[:referrer].nil? ? '' : params[:referrer]
+    @new_account = params[:new_account].nil? ? '' : params[:new_account]
+    @source = params[:source].nil? ? '' : params[:source]
     @user = self.current_user
     @button = Button.find_by_uuid(params[:button_id])
     render :layout => "blank"

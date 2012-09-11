@@ -79,9 +79,10 @@ class User < ActiveRecord::Base
         self.save!
       end
     rescue
-      puts $!.inspect
+      Airbrake.notify($!)
+      # puts $!.inspect
       # on error, dispatch a job to retry
-      Resque.enqueue(BackgroundJob, 'User', self.id, 'update_picture')      
+      # Resque.enqueue(BackgroundJob, 'User', self.id, 'update_picture')      
     ensure
       FileUtils.remove_entry_secure(file.path) unless file.nil?
     end
@@ -106,8 +107,9 @@ class User < ActiveRecord::Base
         end
       end
     rescue
+      Airbrake.notify($!)
       # on error, dispatch a job to retry
-      Resque.enqueue(BackgroundJob, 'User', self.id, 'update_profile')      
+      # Resque.enqueue(BackgroundJob, 'User', self.id, 'update_profile')      
     end
   end
   
