@@ -1,0 +1,83 @@
+- unless Rails.env.production?
+  %p *** TEST EMAIL FROM DEVELOPMENT / STAGING
+
+%h2 Daily Report for 25c - #{ @day }
+
+%h3{:style => "margin-top: 20px;"} Last full day (#{ @day }):
+%table
+  %tr
+    %td{:width => "200"} Visitors
+    %td{:width => "100"}= @visits[:day][:www]
+  %tr
+    %td{:width => "200"} Button Views
+    %td{:width => "100"}= @visits[:day][:api]
+  %tr
+    %td{:width => "200"} New Users
+    %td{:width => "100"}= @users[:day]
+  %tr
+    %td{:width => "200"} Active Buttons
+    %td{:width => "100"}= @buttons[:day]
+  %tr
+    %td{:width => "200"} Clicks
+    %td{:width => "100"}= @clicks[:day]
+    
+%p Click sources:
+%ul
+  - @referrers.each do |referrer|
+    %li= referrer
+    
+%h3{:style => "margin-top: 20px;"} This week so far:
+%table
+  %tr
+    %td{:width => "200"} Visitors
+    %td{:width => "100"}= @visits[:week][:www]
+  %tr
+    %td{:width => "200"} Button Views
+    %td{:width => "100"}= @visits[:week][:api]
+  %tr
+    %td{:width => "200"} New Users
+    %td{:width => "100"}= @users[:week]
+  %tr
+    %td{:width => "200"} Active Buttons
+    %td{:width => "100"}= @buttons[:week]
+  %tr
+    %td{:width => "200"} Clicks
+    %td{:width => "100"}= @clicks[:week]
+    
+    
+    
+%h3{:style => "margin-top: 20px;"} This month so far:
+%table
+  %tr
+    %td{:width => "200"} Visitors
+    %td{:width => "100"}= @visits[:month][:www]
+  %tr
+    %td{:width => "200"} Button Views
+    %td{:width => "100"}= @visits[:month][:api]
+  %tr
+    %td{:width => "200"} New Users
+    %td{:width => "100"}= @users[:month]
+  %tr
+    %td{:width => "200"} Active Buttons
+    %td{:width => "100"}= @buttons[:month]
+  %tr
+    %td{:width => "200"} Clicks
+    %td{:width => "100"}= @clicks[:month]
+    
+%h3{:style => "margin-top: 20px;"} Total:
+%table
+  %tr
+    %td{:width => "200"} Visitors
+    %td{:width => "100"}= @visits[:total][:www]
+  %tr
+    %td{:width => "200"} Button Views
+    %td{:width => "100"}= @visits[:total][:api]
+  %tr
+    %td{:width => "200"} New Users
+    %td{:width => "100"}= @users[:total]
+  %tr
+    %td{:width => "200"} Active Buttons
+    %td{:width => "100"}= @buttons[:total]
+  %tr
+    %td{:width => "200"} Clicks
+    %td{:width => "100"}= @clicks[:total]
