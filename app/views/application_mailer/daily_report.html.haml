@@ -3,7 +3,7 @@
 
 %h2 Daily Report for 25c - #{ @day }
 
-%h3{:style => "margin-top: 20px;"} Last full day (#{ @day }):
+%h3{:style => "margin-top: 30px;"} Last full day (#{ @day }):
 %table
   %tr
     %td{:width => "200"} Visitors
@@ -15,18 +15,18 @@
     %td{:width => "200"} New Users
     %td{:width => "100"}= @users[:day]
   %tr
-    %td{:width => "200"} Active Buttons
+    %td{:width => "200"} New Active Buttons
     %td{:width => "100"}= @buttons[:day]
   %tr
     %td{:width => "200"} Clicks
     %td{:width => "100"}= @clicks[:day]
     
-%p Click sources:
+%p URLs Clicked:
 %ul
   - @referrers.each do |referrer|
     %li= referrer
     
-%h3{:style => "margin-top: 20px;"} This week so far:
+%h3{:style => "margin-top: 30px;"} This week so far:
 %table
   %tr
     %td{:width => "200"} Visitors
@@ -38,7 +38,7 @@
     %td{:width => "200"} New Users
     %td{:width => "100"}= @users[:week]
   %tr
-    %td{:width => "200"} Active Buttons
+    %td{:width => "200"} New Active Buttons
     %td{:width => "100"}= @buttons[:week]
   %tr
     %td{:width => "200"} Clicks
@@ -46,7 +46,7 @@
     
     
     
-%h3{:style => "margin-top: 20px;"} This month so far:
+%h3{:style => "margin-top: 30px;"} This month so far:
 %table
   %tr
     %td{:width => "200"} Visitors
@@ -58,13 +58,13 @@
     %td{:width => "200"} New Users
     %td{:width => "100"}= @users[:month]
   %tr
-    %td{:width => "200"} Active Buttons
+    %td{:width => "200"} New Active Buttons
     %td{:width => "100"}= @buttons[:month]
   %tr
     %td{:width => "200"} Clicks
     %td{:width => "100"}= @clicks[:month]
     
-%h3{:style => "margin-top: 20px;"} Total:
+%h3{:style => "margin-top: 30px;"} Total:
 %table
   %tr
     %td{:width => "200"} Visitors
@@ -73,7 +73,7 @@
     %td{:width => "200"} Button Views
     %td{:width => "100"}= @visits[:total][:api]
   %tr
-    %td{:width => "200"} New Users
+    %td{:width => "200"} Users
     %td{:width => "100"}= @users[:total]
   %tr
     %td{:width => "200"} Active Buttons
