@@ -295,7 +295,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #splash-main {
-//  width: 400px;
+  margin-bottom: 30px;
 }
 
 #splash-side-text {
@@ -396,30 +396,46 @@ ul#footer-nav, ul#footer-nav > li > a {
   line-height: 23px;
 }
 
-#splash-below {
-  margin-top: 30px;
+.splash-below {
+  margin-bottom: 30px;
 }
 
-#splash-below p {
+.splash-below p {
   margin-bottom: 20px;
 //  font-size: 22px;
 }
 
-#splash-below > .splash-col {
+.splash-col {
   width: 420px;
 }
 
-#splash-below .col-title {
+.splash-below .col-title {
 //  font-size: 22px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-#splash-below .learn-more {
-  margin-top: 20px;
+.splash-below .learn-more {
+  margin-top: 10px;
   font-weight: bold; 
 }
 
+.featured-col {
+  margin-bottom: 40px;
+}
+
+.featured-image {
+  margin-right: 15px;
+}
+
+.featured-image img {
+  width: 150px;
+  border: 1px solid #d5dfe3;
+}
+
+.featured-text {
+  width: 240px;
+}
 
 /* PAYMENT PAGES
 *---------------------------- */

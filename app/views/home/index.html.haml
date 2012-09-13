@@ -71,7 +71,7 @@
   %a#splash-call.btn.btn-strong{ :href => home_receive_pledges_path }= raw t('.set_up')
 .clear
 
-#splash-below
+.splash-below
   .splash-col.pull-left
     .col-title= t('.publisher_title')
     %p= t('.publisher_p1')
@@ -86,3 +86,22 @@
     / %p= t('.pledger_p4')
   .clear
   %p.center.learn-more=link_to t('.read_more'), faq_path
+
+.splash-below
+  %h2.buffer= t('.featured_title')
+  .splash-col.featured-col.pull-left
+    .col-title=link_to "mariefaubert.com", "http://www.mariefaubert.com"
+    .featured-image.pull-left=link_to image_tag('featured/marie-faubert.png'), "http://www.mariefaubert.com"
+    .featured-text.pull-left This blog is featured. Say some nice things about this blog here.
+    .clear
+  .splash-col.pull-right
+    .col-title=link_to "nayezpaspeur.ca", "http://www.nayezpaspeur.ca/blog/"
+    .featured-image.pull-left=link_to image_tag('featured/nayez-pas-peur.png'), "http://www.nayezpaspeur.ca/blog/"
+    .featured-text.pull-left This blog is featured. Say some nice things about this blog here.
+    .clear
+  .splash-col.pull-left.clear
+    .col-title=link_to "justia.com", "http://www.justia.com"
+    .featured-image.pull-left=link_to image_tag('featured/justia.png'), "http://www.justia.com"
+    .featured-text.pull-left This blog is featured. Say some nice things about this blog here.
+    .clear
+  .clear
