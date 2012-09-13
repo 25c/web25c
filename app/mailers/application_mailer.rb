@@ -97,8 +97,7 @@ class ApplicationMailer < ActionMailer::Base
 
     # Get referrers from latest day
     puts "Getting last day's referrers..."
-    # clicks = Click.where(:created_at => day..(day + 1))
-    clicks = Click.all
+    clicks = Click.where(:created_at => day..(day + 1))
     @referrers = []
     clicks.each do |click|
       unless click.referrer.blank? or @referrers.include? click.referrer
