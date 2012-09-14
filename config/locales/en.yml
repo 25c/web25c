@@ -232,7 +232,7 @@ en:
     not_found:
       title: Page Not Found
       no_page_found: "The page <b>%{path}</b> was not found on this server. Please check the URL and try again."
-      
+
   layouts:
     admin:
       admin: "Admin Pages:"
