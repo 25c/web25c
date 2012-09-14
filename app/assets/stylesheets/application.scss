@@ -295,7 +295,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #splash-main {
-  margin-bottom: 30px;
+//  margin-bottom: 30px;
 }
 
 #splash-side-text {
@@ -312,7 +312,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 #splash-container {
   position: relative;
   width: 350px;
-  margin: 0 auto 40px auto;
+  margin: 0 auto 20px auto;
 }
 
 #splash-button-title {
@@ -397,7 +397,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 .splash-below {
-  margin-bottom: 30px;
+  margin: 50px 0;
 }
 
 .splash-below p {
@@ -436,6 +436,12 @@ ul#footer-nav, ul#footer-nav > li > a {
 .featured-text {
   width: 240px;
 }
+
+#supported-blogs img {
+  height: 32px;
+  margin: 10px 30px;
+}
+
 
 /* PAYMENT PAGES
 *---------------------------- */
@@ -1398,7 +1404,7 @@ pre#button-code-block {
 }
 
 .step-container .platform-container > img.platform-logo-img {
-  width: 100px;
+  height: 24px;
 }
 
 .step-container .platform-container > input[type=radio] {

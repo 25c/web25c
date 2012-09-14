@@ -225,6 +225,8 @@ en:
       fb_share_title: 25c social micro-donations.
       fb_share_description: Supporting value one quarter a click.  Be the customer not the product.
       
+      works_with: "The +25c Button Works With:"
+      
       featured_title: Featured Buttons
     
     not_found:

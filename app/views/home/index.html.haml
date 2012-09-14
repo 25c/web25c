@@ -88,6 +88,18 @@
   %p.center.learn-more=link_to t('.read_more'), faq_path
 
 .splash-below
+  %h2.buffer= t('.works_with')
+  #supported-blogs.center
+    =link_to image_tag('logos/wordpress.png'), home_receive_pledges_path
+    =link_to image_tag('logos/tumblr.png'), home_receive_pledges_path
+    =link_to image_tag('logos/posterous.png'), home_receive_pledges_path
+    =link_to image_tag('logos/youtube.png'), home_receive_pledges_path
+    =link_to image_tag('logos/blog-com.png'), home_receive_pledges_path
+    =link_to image_tag('logos/blogger.png'), home_receive_pledges_path
+    =link_to image_tag('logos/jux.png'), home_receive_pledges_path
+    =link_to image_tag('logos/weebly.png'), home_receive_pledges_path
+
+.splash-below
   %h2.buffer= t('.featured_title')
   .splash-col.featured-col.pull-left
     .col-title=link_to "mariefaubert.com", "http://www.mariefaubert.com"
