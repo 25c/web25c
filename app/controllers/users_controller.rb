@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   before_filter :require_signed_in, :except => [ :index, :show, :new, :sign_in, :sign_in_callback, :tip, :confirm_tip]
-  before_filter :check_user_agreement, :except => [ :user_agremeent, :update, :sign_in, :sign_out, :sign_in_callback, :tip ]
+  before_filter :check_user_email, :except => [ :user_agremeent, :update, :sign_in, :sign_out, :sign_in_callback, :tip ]
 
   # GET /users/1
   # GET /users/1.json
@@ -73,6 +73,7 @@ class UsersController < ApplicationController
         unless params.include?('async') && params['async'] == "true"
           format.html { render action: "edit" }
         end
+        puts @user.errors.inspect
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -88,7 +89,6 @@ class UsersController < ApplicationController
     @user = self.current_user
     @url = @user.profile_url
     if request.method == 'PUT' or request.method == 'POST'
-      @user = self.current_user
       @user.editing = true
       respond_to do |format|
         if @user.update_attributes(params[:user])
@@ -173,17 +173,6 @@ class UsersController < ApplicationController
       end
       
       if button_id
-        # if new_account.blank? && params[:source] == 'iframe'
-        #   unless Click.enqueue(self.current_user, button_id, referrer, request, cookies)
-        #     @redirect_url = tip_path(
-        #       :button_id => button_id,
-        #       :referrer => referrer,
-        #       :source => source,
-        #       :new_account => new_account,
-        #       :overdraft => true
-        #     )
-        #   end
-        # end
         @redirect_url = tip_path(
           :button_id => button_id,
           :referrer => referrer,
@@ -221,7 +210,7 @@ class UsersController < ApplicationController
   
   def tip
     session[:has_seen_agreement_text] = true
-    redirect_path = session.delete(:redirect_path)
+    session.delete(:redirect_path)
     @referrer = params[:referrer].nil? ? '' : params[:referrer]
     @new_account = params[:new_account].nil? ? '' : params[:new_account]
     @source = params[:source].nil? ? '' : params[:source]

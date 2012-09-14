@@ -1,22 +1,19 @@
-.row
-  .span11
-    / %h3.buffer= t('.title')
-    = simple_form_for @user, :url => @user.new_record? ? sign_in_path : home_account_path, 
-      :html => { :class => 'form-horizontal' } do |f|
-      / = f.input :show_donations, :hint => t('.show_donations')
-      - if @user.nickname.blank?
-        = f.input :nickname, :hint => t('.nickname_url')
-      / - else
-      /   = @user.nickname
-      /   = f.input :nickname, :hint => t('.nickname_url') + link_to(@url, @url)
-      = f.input :first_name
-      = f.input :last_name
-      = f.input :email, :label => t("users.sign_in.email")
-      / = f.input :paypal_email, :label => t(".paypal_email"), :hint => t('.paypal_email_hint')
-      / = f.input :password, :label => t("users.sign_in.new_password"), 
-      /   :input_html => {:autocomplete => 'off'},
-      /   :hint => @user.new_record? ? false : t('.edit_password_hint')
-      / = f.input :password_confirmation, :label => t("users.sign_in.confirm_password"),
-      /   :input_html => {:autocomplete => 'off'}
-      .form-actions
-        = f.button :submit, :class => 'btn-strong', :value => t('.submit')
+= simple_form_for @user, :url => @user.new_record? ? sign_in_path : home_account_path, 
+  :html => { :class => 'form-horizontal' } do |f|
+  / = f.input :show_donations, :hint => t('.show_donations')
+  - if @user.nickname.blank?
+    = f.input :nickname, :hint => t('.nickname_url')
+  / - else
+  /   = @user.nickname
+  /   = f.input :nickname, :hint => t('.nickname_url') + link_to(@url, @url)
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :email, :label => t("users.sign_in.email")
+  / = f.input :paypal_email, :label => t(".paypal_email"), :hint => t('.paypal_email_hint')
+  / = f.input :password, :label => t("users.sign_in.new_password"), 
+  /   :input_html => {:autocomplete => 'off'},
+  /   :hint => @user.new_record? ? false : t('.edit_password_hint')
+  / = f.input :password_confirmation, :label => t("users.sign_in.confirm_password"),
+  /   :input_html => {:autocomplete => 'off'}
+  .form-actions
+    = f.button :submit, :class => 'btn-strong', :value => t('.submit')

@@ -376,11 +376,12 @@ en:
       submit: Update Nickname
       success: You have updated your profile nickname.
       failure: That nickname has been taken. Please choose another.
-    user_agreement:
-      agreement_text: "By clicking <b>Agree and Continue</b>, I agree to the following:"
-      terms: User Terms
-      privacy: Privacy Policy
-      agree: Agree and Continue
+    choose_email:
+      title: Account Email
+      email_instructions: "Each account requires a valid email address. Please provide your e-mail address to proceed:"
+      submit_email: "Submit"
+      email_taken: "That e-mail address has been taken. Please choose another."
+      email_invalid: "That e-mail address is not valid."
 
   user_mailer:
     welcome:

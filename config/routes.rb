@@ -48,7 +48,6 @@ Web25c::Application.routes.draw do
   match 'home/upload_picture' => 'users#upload_picture', :as => :upload_picture
   match 'home/profile' => 'users#profile', :as => :home_profile
   match 'home/choose_nickname' => 'users#choose_nickname', :as => :choose_nickname
-  match 'home/user_agreement' => 'users#user_agreement', :as => :user_agreement
   
   namespace :admin do
     resources :users, :except => [ :new, :create ]

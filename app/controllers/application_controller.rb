@@ -180,11 +180,11 @@ class ApplicationController < ActionController::Base
     return click_sets.values.sort_by { |set| -set[0]  }
   end
   
-  def check_user_agreement
+  def check_user_email
     if signed_in?
-      unless self.current_user.has_agreed
+      if self.current_user.email.blank?
         @next_url = request.url
-        render "users/user_agreement"
+        render "users/choose_email"
       end
     end
   end
