@@ -42,8 +42,8 @@
 #splash-main
   #splash-people.center= image_tag 'front/people-01.png'
   #splash-arrows.center= image_tag 'front/arrows-02.png'
-  #splash-container
-    #splash-button-title.center= raw t('.button_title')
+  #splash-container.center
+    #splash-button-title= raw t('.button_title')
     .center
       %a#splash-button{:href => home_receive_pledges_path}
         = image_tag 'front/button-01.png'
