@@ -184,8 +184,13 @@ ul#nav-login > li.login-logo img {
 }
 
 #nav-username {
+  float: left;
   color: white;
   margin: 13px 0 0 0;
+}
+
+#nav-image {
+  float: right;
 }
 
 #nav-image img {
@@ -196,6 +201,7 @@ ul#nav-login > li.login-logo img {
 }
 
 #nav-menu-container .caret {
+  float: right;
   border-top-color: transparent;
   border: 0px none transparent;
   margin-top: 5px;

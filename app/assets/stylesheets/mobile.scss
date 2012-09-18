@@ -50,7 +50,7 @@ body, p, strong, h4, ul.plist > li, label, input, button, select, textarea {
   font-weight: 400;
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
+//  -webkit-text-size-adjust: 100%;
 }
 
 h1, h2, h3, h4, .highlight {
@@ -108,7 +108,7 @@ body {
 }
 
 .side-col {
-  margin-top: 60px;
+  margin-top: 40px;
   width: 100%;
 //  width: 300px;
 }
@@ -196,23 +196,29 @@ ul#nav-login > li.login-logo img {
 
 #nav-menu-container .dropdown-toggle {
 //  height: 45px;
-  padding: 10px 100px;
+  padding: 10px 20px;
   display: block;
 }
 
 #nav-username {
+  float: right;
   color: white;
   margin: 16px 0 0 0;
 }
 
+#nav-image {
+  float: right;
+}
+
 #nav-image img {
   @include radius(2px);
-  margin: 0px 20px 0 0;
+  margin: 0px 10px 0 10px;
 //  max-width: 25px;
 //  max-height: 25px;
 }
 
 #nav-menu-container .caret {
+  float: right;
   border-top-color: transparent;
   border: 0px none transparent;
   margin-top: 12px;
@@ -266,7 +272,7 @@ footer#footer-container {
 }
 
 #footer-copy {
-  margin-top: 60px;
+  margin-top: 40px;
   text-align: center;
   color: #fdccbb;
 }
@@ -311,7 +317,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #splash-title-top {
-  margin: 20px 0 40px 0;
+  margin: 20px 0 20px 0;
 }
 
 #splash-title-bottom {
@@ -474,7 +480,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #supported-blogs img {
-  height: 48px;
+  height: 32px;
   margin: 10px 30px;
 }
 
@@ -648,9 +654,8 @@ ul.login-buttons > li.login-logo > a > img {
 }
 
 #about-button-container {
-  margin-left: auto;
-  margin-right: auto;
-  height: 140px;
+  margin: 10px auto 0 auto;
+  height: 80px;
   width: 120px;
 } 
 
@@ -981,106 +986,12 @@ table.table thead .sorting_desc_disabled {
 }
 
 #user-profile {
-//  width: 200px;
-  padding: 20px;
-//  border: 2px solid #ddd;
-  background-color: white;
-  @include radius(5px);
-  margin: 0 0 20px 0;
-//  min-height: 333px;
-}
-
-#user-profile #user-picture-container {
-  margin: 0 20px 5px 0;
-  line-height: 200px;
-  overflow: hidden;
-}
-
-#user-profile #user-picture {
-  width: 200px;
-}
-
-#user-profile .block {
-  position: relative;
-}
-
-#user-profile:hover input {
-  display: block;
-}
-
-#user-profile input, #user-profile textarea {
-  @include box-shadow(0, 0, 0, transparent);
-  background-color: transparent;
-  border: 1px solid transparent;
-  resize: none;
-  width: 100%;
-}
-
-#user-profile #first_name_input {
-  margin-right: 11px;
-}
-
-#user-profile textarea {
-}
-
-#user-profile:hover .btn {
-  display: block;
-}
-
-#user-profile:hover input, #user-profile:hover textarea.editing, #user-profile input.focused, 
-#user-profile textarea.focused, #button-fields:hover input, #button-fields:hover textarea.editing, 
-#button-fields input.focused, #button-fields textarea.focused {
-  display: block;
-  background-color: #f6f6f6;
-  border: 1px solid #ccc;
-}
-
-#about-block {
-  min-height: 60px;
-}
-
-#user-profile .btn {
   display: none;
-  position: absolute;
-  top: 5px;
-  left: 5px;
-}
-
-#profile-submit {
-  margin: 0;
-  text-align: center;
-}
-
-#name-block {
-  height: 40px;
-}
-
-#name-block .emphasis {
-  font-weight: bold;
-  font-size: 20px;
-}
-#name-block .content-block {
-  padding: 5px;
-  color: #555;
-}
-
-#user-profile:hover #name-block .content-block.editing {
-  display:none;
-}
-
-#user-profile #name-block .input-block {
-  display:none;
-}
-
-#user-profile:hover #name-block .input-block {
-  display: block;
 }
 
 #project-container {
 //  width: 100%;
-  padding: 20px;
-  margin: 20px 0 0 0;
-  min-height: 333px;
+//  padding: 20px;
 }
 
 #project-action {
@@ -1131,7 +1042,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 #button-picture-container #button-picture {
-  max-width: 520px;
+  max-width: 300px;
   max-height: 300px;
 }
 
@@ -1149,7 +1060,7 @@ table.table thead .sorting_desc_disabled {
 #youtube-embed-container {
   margin-left: 4px;
   background-color: black;
-  width: 480px;
+  width: 300px;
   height: 341px;
   margin-bottom: 20px;
 }

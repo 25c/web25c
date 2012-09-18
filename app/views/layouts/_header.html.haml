@@ -9,9 +9,9 @@
       %ul
         %li.dropdown
           %a.dropdown-toggle{ :href => '#', :'data-toggle' => 'dropdown' }
-            #nav-username.pull-left= current_user.display_name
-            %b.pull-right.caret
-            #nav-image.pull-right= image_tag(current_user.get_thumb, :class => 'thumb-picture')
+            %b.caret
+            #nav-image= image_tag(current_user.get_thumb, :class => 'thumb-picture')
+            #nav-username= current_user.display_name
             .clear
           %ul.dropdown-menu
             %li= link_to t('.dashboard'), home_dashboard_path
