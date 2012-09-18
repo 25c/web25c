@@ -53,6 +53,9 @@ module Web25c
     # Enable the asset pipeline
     config.assets.enabled = true
     
+    # Mobile CSS
+    config.assets.precompile += ['mobile.css']
+    
     # jQuery dataTables plugin for table functions
     config.assets.precompile += ['jquery.dataTables.min.js']
     config.assets.precompile += ['paging.js']
