@@ -1393,7 +1393,7 @@ pre#button-code-block {
   border: 1px solid transparent;
   width: 138px;
   padding: 5px;
-  margin-right: 10px;
+  margin: 0 10px 10px 0;
   cursor: pointer;
   @include radius(5px);
 }
