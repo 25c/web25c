@@ -50,6 +50,7 @@ body, p, strong, h4, ul.plist > li, label, input, button, select, textarea {
   font-weight: 400;
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
 }
 
 h1, h2, h3, h4, .highlight {
@@ -147,7 +148,7 @@ body {
 }
 
 #nav-tagline {
-  display: none;
+//  display: none;
   font-size: 15px;
   padding-top: 18px;
 }
