@@ -1,16 +1,12 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *  CSS Stylesheet for mobile websites.
  *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap
  *= require_self
 */
+
 
 /* MIXINS *
 *---------------------------- */
@@ -48,7 +44,7 @@
 
 body, p, strong, h4, ul.plist > li, label, input, button, select, textarea {
   color: #766356;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.2em;
   font-family: Helvetica, Arial, Sans-Serif;
   font-weight: 400;
@@ -69,11 +65,11 @@ b, strong, h4 {
 }
 
 .small, .small p {
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .large, .large p {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 
@@ -83,13 +79,13 @@ b, strong, h4 {
 body {
   position: relative;
   background-color: #d5dfe3;
-  padding: 50px 0 30px 0;
+  padding: 50px 0 500px 0;
 }
 
 
 #outer-container {
   position: relative;
-  width: 960px;
+  width: 100%;
   margin: 0 auto;
   @include radius(20px);
   background-color: #f26422;
@@ -99,7 +95,6 @@ body {
 #inner-container {
   position: relative;
   z-index: 10;
-  min-height: 400px;
   padding: 40px;
   border: 1px solid #f26422;
   @include radius(20px);
@@ -107,13 +102,14 @@ body {
 }
 
 .main-col {
-  float: left;
-  width: 500px;
+  width: 100%;
+//  width: 500px;
 }
 
 .side-col {
-  float: right;
-  width: 300px;
+  margin-top: 60px;
+  width: 100%;
+//  width: 300px;
 }
 
 .side-col-title {
@@ -127,13 +123,13 @@ body {
 #header-container {
   position: relative;
   color: white;
-  height: 40px;
+  height: 120px;
 }
 
 #header-container #nav-menu-container {
-  width: 300px;
-  height: 34px;
-  margin-top: 6px;
+  width: 100%;
+  height: 100px;
+  text-align: center;
   @include radius-side(topleft, 20px);
   @include radius-side(topright, 20px);
   @include radius-side(top-left, 20px);
@@ -142,62 +138,69 @@ body {
 }
 
 #nav-menu-container-cover {
-  position: absolute;
-  right: 0;
-  width: 20px;
-  height: 40px;
-  background-color: #f98a61;
+  display: none;
 }
 
 #nav-logo {
-  margin: -32px 20px 0 30px;
+  margin: -31px 20px 0 30px;
   margin-right: 25px;
 }
 
 #nav-tagline {
-  font-size: 17px;
+  font-size: 15px;
   padding-top: 18px;
 }
 
 #nav-menu-container ul {
   list-style: none outside none;
-  margin: 0 30px 0 30px;
+//  margin: 0 30px 0 30px;
+  margin: 0 auto;
+//  width: 260px;
+}
+
+ul#nav-login {
+  width: 300px;
 }
 
 ul#nav-login > li#nav-login-text {
-  margin: 13px 15px 0 0;
+  margin: 30px 0 0 0;
 }
 
 ul#nav-login > li.login-logo img {
-  width: 25px;
-  margin: 5px 0 0 10px;
+  width: 48px;
+  margin: 15px 0 0 20px;
   cursor: pointer;
 }
 
-#nav-menu-container .dropdown-toggle {
+#nav-menu-container .dropdown {
   width: 100%;
-  height: 35px;
-  margin: 0 -30px;
-  padding: 0 30px;
+//  padding: 15px 0;
+  font-size: 24px;
+}
+
+
+#nav-menu-container .dropdown-toggle {
+  height: 45px;
+  padding: 15px 100px;
   display: block;
 }
 
 #nav-username {
   color: white;
-  margin: 13px 0 0 0;
+  margin: 16px 0 0 0;
 }
 
 #nav-image img {
   @include radius(2px);
-  margin: 5px 20px 0 0;
-  max-width: 25px;
-  max-height: 25px;
+  margin: 0px 20px 0 0;
+//  max-width: 25px;
+//  max-height: 25px;
 }
 
 #nav-menu-container .caret {
   border-top-color: transparent;
   border: 0px none transparent;
-  margin-top: 5px;
+  margin-top: 12px;
   opacity: 1;
   height: 25px;
   width: 25px;
@@ -205,9 +208,9 @@ ul#nav-login > li.login-logo img {
 }
 
 #nav-menu-container ul.dropdown-menu {
-  width: 269px;
-  margin: -1px -30px 0 0;
-  padding: 5px 15px;
+  width: 100%;
+  margin: 2px 0 0 0;
+  padding: 5px 0;
   @include radius-side(topleft, 0);
   @include radius-side(topright, 0);
   @include radius-side(bottomleft, 20px);
@@ -223,7 +226,7 @@ ul#nav-login > li.login-logo img {
 ul.dropdown-menu > li > a {
   font-weight: 400;
   color: #f26422;
-  padding-top: 5px;
+  padding: 20px 0;
 }
 
 ul.dropdown-menu > li > a:hover {
@@ -248,26 +251,28 @@ footer#footer-container {
 }
 
 #footer-copy {
+  margin-top: 60px;
+  text-align: center;
   color: #fdccbb;
 }
 
 ul#footer-nav {
-  float: right;
   margin: 0;
   list-style: none outside none;
+  text-align: center;
 }
 
 ul#footer-nav > li {
-  float: left;
+  margin: 10px 0 10px 0;
 }
 
 ul#footer-nav > .footer-separator {
-  float: left;
+  display: none;
 }
 
 ul#footer-nav > li > a {
   display: block;
-  padding: 6px 5px 4px 5px;
+  padding: 10px 5px 10px 5px;
   margin: -6px 5px -4px 5px;
   @include radius(5px);
 }
@@ -285,6 +290,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 *---------------------------- */
 
 #splash-title-top, #splash-title-bottom {
+  text-align: center;
   font-size: 42px;
 }
 
@@ -306,20 +312,20 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #splash-main {
-  float: left;
 //  margin-bottom: 30px;
 }
 
 #splash-side-text {
-  float: right;
   margin-top: 10px;
-  width: 480px;
+  width: 100%;
+  text-align: center;
 }
 
 #splash-side-text p {
   margin-bottom: 12px;
   font-size: 22px;
 //  color: #4d658d;
+  text-align: left;
 }
 
 #splash-container {
@@ -418,14 +424,8 @@ ul#footer-nav, ul#footer-nav > li > a {
 //  font-size: 22px;
 }
 
-.splash-col-left {
-  float: left;
-  width: 420px;
-}
-
-.splash-col-right {
-  float: right;
-  width: 420px;
+.splash-col-left, .splash-col-right {
+  margin-bottom: 60px;
 }
 
 .splash-below .col-title {
@@ -444,13 +444,12 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 .featured-col {
-  float: left;
-  width: 240px;
-  margin: 0px 19px 40px 19px;
+  width: 100%;
+  margin-bottom: 60px;
 }
 
 .featured-image img {
-  width: 200px;
+//  width: 300px;
   border: 1px solid #d5dfe3;
 }
 
@@ -459,7 +458,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #supported-blogs img {
-  height: 32px;
+  height: 48px;
   margin: 10px 30px;
 }
 
@@ -477,9 +476,9 @@ ul#footer-nav, ul#footer-nav > li > a {
 *---------------------------- */
 
 .btn {
-//  padding: 6px 10px 2px 10px;
+  padding: 10px 20px 12px 20px;
   color: #766356;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.2em;
   font-family: Helvetica, Arial, Sans-Serif;
   font-weight: 400;
@@ -613,25 +612,21 @@ ul.login-buttons > li.login-logo > a > img {
  *---------------------------- */
 
 #action-container {
-//  font-size: 18px;
   padding: 20px;
   margin: 10px 0 30px 0;
   background-color: #ffeae1;
   @include radius(5px);
-//  border: 1px solid #f26422;
 }
 
 #action-container > #action-button {
-  //  font-size: 18px;
-//  padding: 7px 15px 3px 15px;
   margin: 0;
 }
 
  
 #action-container > #action-question {
+  display: block;
   font-weight: bold;
-  display: inline-block;
-  margin-right: 20px;
+  margin: 0 20px 20px 0;
   position: relative;
 //  top: 2px;
 }
@@ -803,7 +798,8 @@ form .form-actions {
  *---------------------------- */
  
 table.dataTable {
-  table-layout: fixed;
+//  table-layout: fixed;
+  width: 100% !important;
 }
  
 table.dataTable td, table#profile-clicks-table td {
@@ -821,15 +817,15 @@ table#profile-clicks-table {
 }
 
 table#profile-clicks-table .click-amount {
-  width: 100px;
+//  width: 100px;
 }
 
 table#profile-clicks-table .click-provider {
-  width: 200px;
+//  width: 200px;
 }
 
 table#profile-clicks-table .click-referrer {
-  width: 500px;
+//  width: 500px;
 }
 
 table.clicks-table > tbody > tr > td {
@@ -839,6 +835,12 @@ table.clicks-table > tbody > tr > td {
 table.clicks-table .delete-click, table.payments-table .process-payment {
   margin-top: -5px;
   margin-bottom: -2px;
+}
+
+table#undo-clicks td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 50px;
 }
 
 .table-title {
@@ -958,27 +960,21 @@ table.table thead .sorting_desc_disabled {
 /* USER PROFILE
 *---------------------------- */
 
-#profile-container {
-  float: left;
-}
-
 #edit-url {
   margin-left: 20px;
 }
 
 #user-profile {
-  width: 200px;
+//  width: 200px;
   padding: 20px;
 //  border: 2px solid #ddd;
   background-color: white;
   @include radius(5px);
   margin: 0 0 20px 0;
-  min-height: 333px;
+//  min-height: 333px;
 }
 
 #user-profile #user-picture-container {
-  width: 200px;
-  height: 200px;
   margin: 0 20px 5px 0;
   line-height: 200px;
   overflow: hidden;
@@ -1001,15 +997,8 @@ table.table thead .sorting_desc_disabled {
   background-color: transparent;
   border: 1px solid transparent;
   resize: none;
-  width: 188px;
+  width: 100%;
 }
-
-#user-profile #last_name_input, #user-profile #first_name_input {
-  float: left;
-  width: 84px;
-}
-
-
 
 #user-profile #first_name_input {
   margin-right: 11px;
@@ -1072,10 +1061,9 @@ table.table thead .sorting_desc_disabled {
 }
 
 #project-container {
-  float: left;
-  width: 570px;
+//  width: 100%;
   padding: 20px;
-  margin: 0 0 20px 20px;
+  margin: 20px 0 0 0;
   min-height: 333px;
 }
 
@@ -1145,7 +1133,7 @@ table.table thead .sorting_desc_disabled {
 #youtube-embed-container {
   margin-left: 4px;
   background-color: black;
-  width: 560px;
+  width: 480px;
   height: 341px;
   margin-bottom: 20px;
 }
@@ -1173,6 +1161,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 #button-fields .block .input-block {
+  width: 100%;
   display: none;
   position: absolute;
 }
@@ -1182,6 +1171,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 #button-fields:hover .block .input-block {
+  width: 100%;
   display: block;
 }
 
@@ -1190,7 +1180,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 #button-fields .block .input-block input, #button-fields .block .input-block textarea {
-  width: 560px;
+  width: 100%;
   margin-bottom: 4px;
 }
 
@@ -1372,10 +1362,9 @@ pre#button-code-block {
 }
 
 .step-container .step-number {
-  float: left;
   height: 50px;
   width: 50px;
-  margin-right: 20px;
+  margin: 0 auto;
   line-height: 56px;
   font-size: 36px;
   text-align: center;
@@ -1392,15 +1381,15 @@ pre#button-code-block {
   font-size: 15px;
   border: 1px solid transparent;
   width: 138px;
-  padding: 5px;
-  margin-right: 10px;
+  padding: 12px;
+  margin: 10px;
   cursor: pointer;
   @include radius(5px);
 }
 
 .step-container .step-content {
   float: left;
-  width: 800px;
+//  width: 800px;
 }
 
 .step-container .platform-container.selected-option, .button-choice.selected-option {
@@ -1415,7 +1404,7 @@ pre#button-code-block {
 }
 
 #set-button-info, #set-user-info {
-  width: 180px;
+//  width: 180px;
   display: block;
   margin: 20px auto 0 auto;
 }
@@ -1477,9 +1466,9 @@ pre#button-code-block {
 }
 
 #button-preview-container {
-  float: left;
   width: 200px;
-  margin: 0 20px 0 0;
+  margin: 0 auto 60px auto;
+  text-align: center;
 }
 
 #button-preview-container #button-preview-title div {
@@ -1501,7 +1490,6 @@ pre#button-code-block {
 }
 
 #code-container {
-  float: left;
   width: 560px;
 }
 

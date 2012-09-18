@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   before_filter :check_facebook_cookies
-  helper_method :signed_in?, :current_user, :url_base
+  helper_method :signed_in?, :current_user, :url_base, :mobile_device?
   
   protected
 
@@ -143,6 +143,10 @@ class ApplicationController < ActionController::Base
     port = ActionMailer::Base.default_url_options[:port]
     @url_base = "#{url_base}:#{port}" unless port.blank? or port == 80
     @url_base
+  end
+  
+  def mobile_device?
+    request.user_agent =~ /Mobile|webOS/
   end
   
   def group_clicks(clicks, sortByButtonId, splitByState)

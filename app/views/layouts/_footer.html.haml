@@ -1,18 +1,18 @@
 %footer#footer-container
-  #footer-copy.pull-left &copy; 25c, Inc. 2012
-  %ul#footer-nav.pull-right
-    %li.pull-left= link_to t('.about'), about_path
-    .pull-left &#124;
-    %li.pull-left= link_to t('.blog'), 'http://blog.25c.com'    
-    .pull-left &#124;
-    %li.pull-left= link_to t('.faq'), faq_path
-    .pull-left &#124;
-    %li.pull-left= link_to t('.fees'), fees_path
-    .pull-left &#124;
-    %li.pull-left= link_to t('.privacy'), privacy_path
-    .pull-left &#124;
-    %li.pull-left= link_to t('.terms'), terms_path
+  %ul#footer-nav
+    %li= link_to t('.about'), about_path
+    .footer-separator &#124;
+    %li= link_to t('.blog'), 'http://blog.25c.com'    
+    .footer-separator &#124;
+    %li= link_to t('.faq'), faq_path
+    .footer-separator &#124;
+    %li= link_to t('.fees'), fees_path
+    .footer-separator &#124;
+    %li= link_to t('.privacy'), privacy_path
+    .footer-separator &#124;
+    %li= link_to t('.terms'), terms_path
     .clear
+  #footer-copy &copy; 25c, Inc. 2012
   .clear
 
 / Javascripts - bottom of page to load faster

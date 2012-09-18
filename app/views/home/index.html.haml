@@ -39,7 +39,7 @@
 
 #splash-title-top.highlight= t('.title_top')
 
-#splash-main.pull-left
+#splash-main
   #splash-people.center= image_tag 'front/people-01.png'
   #splash-arrows.center= image_tag 'front/arrows-02.png'
   #splash-container
@@ -55,7 +55,7 @@
         #fb-share= image_tag("logos/facebook.png")
         #tw-share= image_tag("logos/twitter.png")
 
-#splash-side-text.pull-right
+#splash-side-text
   %p
     = raw t('.explain_p1')
     %br
@@ -72,13 +72,13 @@
 .clear
 
 .splash-below
-  .splash-col.pull-left
+  .splash-col-left
     .col-title= t('.publisher_title')
     %p= t('.publisher_p1')
     %p= t('.publisher_p2')
     %p= t('.publisher_p3')
     / %p= t('.publisher_p4')
-  .splash-col.pull-right
+  .splash-col-right
     .col-title= t('.pledger_title')
     %p= t('.pledger_p1')
     %p= t('.pledger_p2')
