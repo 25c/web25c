@@ -150,11 +150,12 @@ body {
 }
 
 #nav-logo {
-  margin: -32px 20px 0 30px;
-  margin-right: 25px;
+  float: left;
+  margin: -32px 25px 0 30px;
 }
 
 #nav-tagline {
+  float: left;
   font-size: 17px;
   padding-top: 18px;
 }
