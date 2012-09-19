@@ -27,28 +27,28 @@
     %h3.step-title= t('.describe_cause_title')
     .step-body
     
-      .label-column.pull-left
+      .label-column
         %label= t('.button_title_label')
-      .input-column.pull-left
+      .input-column
         %input#button-title{ :type => 'text', :name => 'button[title]',
           :value => @button.title.blank? ? t('.enter_title') : @button.title }
 
       - if @user.nickname.blank?
-        .clear.label-column.pull-left
+        .clear.label-column
           %label.buffer= t('.user_nickname_label')
-        .input-column.pull-left
+        .input-column
           %input#user-nickname
           %p= t('.user_nickname_hint')
           
-      .clear.label-column.clear.pull-left
+      .clear.label-column.clear
         %label= t('.user_pledge_name_label')
-      .input-column.pull-left
+      .input-column
         %input#user-pledge-name{ :type => 'text', :name => 'user[pledge_name]',
           :value => @user.pledge_name.blank? ? @user.display_name : @user.pledge_name }
            
-      .clear.label-column.pull-left
+      .clear.label-column
         %label= t('.user_picture_label')
-      .input-column.pull-left
+      .input-column
         #upload-picture-fields
           #upload-user-picture.btn= t('.upload_picture')
 

@@ -1279,7 +1279,7 @@ pre#button-code-block {
   height: 50px;
   width: 50px;
   margin: 0 auto;
-  line-height: 56px;
+  line-height: 48px;
   font-size: 36px;
   text-align: center;
   color: #666;
@@ -1318,9 +1318,9 @@ pre#button-code-block {
 }
 
 #set-button-info, #set-user-info {
-//  width: 180px;
+  width: 200px;
   display: block;
-  margin: 20px auto 0 auto;
+  margin: 20px auto;
 }
 
 #user-picture-uploading, #user-picture-link {
@@ -1359,7 +1359,7 @@ pre#button-code-block {
 }
 
 .step-container .label-column {
-  width: 300px;
+//  width: 300px;
 }
 
 .step-container .label-column label {
@@ -1368,7 +1368,8 @@ pre#button-code-block {
 }
 
 .step-container .input-column {
-  width: 500px;
+//  width: 500px;
+  margin-bottom: 30px;
 }
 
 .step-container .input-column .btn {
@@ -1376,7 +1377,8 @@ pre#button-code-block {
 }
 
 .step-container .input-column input[type=text], .step-container .input-column textarea {
-  width: 480px;
+  width: 100%;
+  margin-right: 20px;
 }
 
 #button-preview-container {
