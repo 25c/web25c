@@ -3,81 +3,45 @@
 
 %h2 Daily Report for 25c - #{ @day }
 
-%h3{:style => "margin-top: 30px;"} Last full day (#{ @day }):
-%table
+%table{ :style => "text-align: center;" }
+  %tr{ :style => "font-size: 11px; font-weight: bold;" }
+    %th{ :width => "100" } Time Frame
+    %th{ :width => "100" } Visitors
+    %th{ :width => "100" } Button Views
+    %th{ :width => "100" } New Users
+    %th{ :width => "100" } New Active Buttons
+    %th{ :width => "100" } Clicks
   %tr
-    %td{:width => "200"} Visitors
-    %td{:width => "100"}= @visits[:day][:www]
+    %td{ :style => "text-align: left;" } Last full day
+    %td= report_number @visits[:day][:www]
+    %td= report_number @visits[:day][:api]
+    %td= report_number @users[:day]
+    %td= report_number @buttons[:day]
+    %td= report_number @clicks[:day]
   %tr
-    %td{:width => "200"} Button Views
-    %td{:width => "100"}= @visits[:day][:api]
+    %td{ :style => "text-align: left;" } Trailing week
+    %td= report_number @visits[:week][:www]
+    %td= report_number @visits[:week][:api]
+    %td= report_number @users[:week]
+    %td= report_number @buttons[:week]
+    %td= report_number @clicks[:week]
   %tr
-    %td{:width => "200"} New Users
-    %td{:width => "100"}= @users[:day]
+    %td{ :style => "text-align: left;" } Trailing month
+    %td= report_number @visits[:month][:www]
+    %td= report_number @visits[:month][:api]
+    %td= report_number @users[:month]
+    %td= report_number @buttons[:month]
+    %td= report_number @clicks[:month]
   %tr
-    %td{:width => "200"} New Active Buttons
-    %td{:width => "100"}= @buttons[:day]
-  %tr
-    %td{:width => "200"} Clicks
-    %td{:width => "100"}= @clicks[:day]
-    
-%p URLs Clicked:
+    %td{ :style => "text-align: left;" } Total
+    %td= report_number @visits[:total][:www]
+    %td= report_number @visits[:total][:api]
+    %td= report_number @users[:total]
+    %td= report_number @buttons[:total]
+    %td= report_number @clicks[:total]
+
+%p URLs Clicked Today:
 %ul
   - @referrers.each do |referrer|
     %li= referrer
-    
-%h3{:style => "margin-top: 30px;"} This week so far:
-%table
-  %tr
-    %td{:width => "200"} Visitors
-    %td{:width => "100"}= @visits[:week][:www]
-  %tr
-    %td{:width => "200"} Button Views
-    %td{:width => "100"}= @visits[:week][:api]
-  %tr
-    %td{:width => "200"} New Users
-    %td{:width => "100"}= @users[:week]
-  %tr
-    %td{:width => "200"} New Active Buttons
-    %td{:width => "100"}= @buttons[:week]
-  %tr
-    %td{:width => "200"} Clicks
-    %td{:width => "100"}= @clicks[:week]
-    
-    
-    
-%h3{:style => "margin-top: 30px;"} This month so far:
-%table
-  %tr
-    %td{:width => "200"} Visitors
-    %td{:width => "100"}= @visits[:month][:www]
-  %tr
-    %td{:width => "200"} Button Views
-    %td{:width => "100"}= @visits[:month][:api]
-  %tr
-    %td{:width => "200"} New Users
-    %td{:width => "100"}= @users[:month]
-  %tr
-    %td{:width => "200"} New Active Buttons
-    %td{:width => "100"}= @buttons[:month]
-  %tr
-    %td{:width => "200"} Clicks
-    %td{:width => "100"}= @clicks[:month]
-    
-%h3{:style => "margin-top: 30px;"} Total:
-%table
-  %tr
-    %td{:width => "200"} Visitors
-    %td{:width => "100"}= @visits[:total][:www]
-  %tr
-    %td{:width => "200"} Button Views
-    %td{:width => "100"}= @visits[:total][:api]
-  %tr
-    %td{:width => "200"} Users
-    %td{:width => "100"}= @users[:total]
-  %tr
-    %td{:width => "200"} Active Buttons
-    %td{:width => "100"}= @buttons[:total]
-  %tr
-    %td{:width => "200"} Clicks
-    %td{:width => "100"}= @clicks[:total]
+
