@@ -1,6 +1,10 @@
 class ApplicationMailer < ActionMailer::Base
+  
   default from: "no-reply@25c.com"
   layout "mailer"
+  
+  include ActionView::Helpers::NumberHelper
+  helper_method :report_number
   
   class Visits
     extend Garb::Model
@@ -44,10 +48,10 @@ class ApplicationMailer < ActionMailer::Base
       :start_date => day, 
       :end_date => day))
     visits_week = sort_visits(Visits.results(profile, 
-      :start_date => day.beginning_of_week, 
+      :start_date => day.weeks_ago(1) + 1,
       :end_date => day))
     visits_month = sort_visits(Visits.results(profile, 
-      :start_date => day.beginning_of_month, 
+      :start_date => day.months_ago(1) + 1, 
       :end_date => day))
     visits_total = sort_visits(Visits.results(profile, 
       :start_date => Date.new(2012, 9, 6), 
@@ -63,8 +67,8 @@ class ApplicationMailer < ActionMailer::Base
     puts "Getting user counts..."
     @users = {
       :day => User.where(:created_at => day..(day + 1)).count,
-      :week => User.where(:created_at => (day.beginning_of_week)..(day + 1)).count,
-      :month => User.where(:created_at => (day.beginning_of_month)..(day + 1)).count,
+      :week => User.where(:created_at => (day.weeks_ago(1) + 1)..(day + 1)).count,
+      :month => User.where(:created_at => (day.months_ago(1) + 1)..(day + 1)).count,
       :total => User.where("created_at < ?", day + 1).count
     }
     
@@ -72,8 +76,8 @@ class ApplicationMailer < ActionMailer::Base
     puts "Getting click counts..."    
     @clicks = {
       :day => Click.where(:created_at => day..(day + 1)).count,
-      :week => Click.where(:created_at => (day.beginning_of_week)..(day + 1)).count,
-      :month => Click.where(:created_at => (day.beginning_of_month)..(day + 1)).count,
+      :week => Click.where(:created_at => (day.weeks_ago(1) + 1)..(day + 1)).count,
+      :month => Click.where(:created_at => (day.months_ago(1) + 1)..(day + 1)).count,
       :total => Click.where("created_at < ?", day + 1).count
     }
     
@@ -88,8 +92,8 @@ class ApplicationMailer < ActionMailer::Base
     buttons.each do |button|
       if button.clicks.count > 0
         b_day += 1 if button.created_at > day
-        b_week += 1 if button.created_at > day.beginning_of_week
-        b_month += 1 if button.created_at > day.beginning_of_month
+        b_week += 1 if button.created_at > day.weeks_ago(1) + 1
+        b_month += 1 if button.created_at > day.months_ago(1) + 1
         b_total += 1
       end
     end
@@ -107,7 +111,8 @@ class ApplicationMailer < ActionMailer::Base
     
     # Send email to stats distribution list
     puts "Sending daily report email..."
-    mail :to => 'reports@25c.com', :subject => "25c Report - #{day}"
+    # mail :to => 'reports@25c.com', :subject => "25c Report - #{day}"
+    mail :to => 'lionel@25c.com', :subject => "Testy McTest"
     
     puts "Email sent."
   end
@@ -124,6 +129,19 @@ class ApplicationMailer < ActionMailer::Base
       end
     end
     return visits
+  end
+  
+  def report_number(number)
+    number = number.to_f
+    if number > 1000
+      number = number_with_precision(number / 1000, :precision => 2, :delimiter => ',') + " K"
+    elsif number > 1000000
+      number = number_with_precision(number / 1000000, :precision => 2, :delimiter => ',') + " M"
+    elsif number > 1000000000
+      number = number_with_precision(number / 1000000000, :precision => 2, :delimiter => ',') + " B"
+    else
+      number.to_i
+    end
   end
   
 end
