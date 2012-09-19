@@ -24,8 +24,8 @@ $(document).ready(function() {
     var $videoIframe = $('<iframe />', {
       id: 'video-iframe',
       title: 'YouTube Video Player',
-      width: '560',
-      height: '341',
+      width: youtubeSize[0],
+      height: youtubeSize[1],
       src: 'http://www.youtube.com/embed/' + id,
       frameborder: '0'
     });

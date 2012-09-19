@@ -23,13 +23,15 @@
       .field-container
         .field-title= t('home.dashboard.index.amount')
         .field-value #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+        .clear
       
       .field-container
         .field-title= t('home.dashboard.index.provider')
         - if set[1].button.user.profile_url.blank?
           .field-value= set[1].button.user.display_name
-          - else
+        - else
           .field-value= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
+        .clear
 
       .field-container
         .field-title= t('home.dashboard.index.referrer')
@@ -40,11 +42,13 @@
             = link_to t('home.dashboard.index.profile_link', :provider => set[1].button.user.display_name), set[1].referrer, :target => "_blank"
           - else
             = link_to set[1].referrer, set[1].referrer, :target => "_blank"
+        .clear
       
       .field-container
         .field-title= t('home.dashboard.index.date_created')
         .field-value
           .convert-date= set[1].created_at.to_f()
+        .clear
       
       .field-container
         .field-title= t('home.dashboard.index.funded')
@@ -53,6 +57,7 @@
             .convert-date= set[1].updated_at.to_f()
           - else
             = t('home.dashboard.index.to_be')
+        .clear
 
       .field-container
         .field-title= t('home.dashboard.index.share')
@@ -87,10 +92,12 @@
       .field-container
         .field-title= t('home.dashboard.index.amount')
         .field-value #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+        .clear
 
       .field-container
         .field-title= t('home.dashboard.index.clicker')
         .field-value= set[1].user.display_name
+        .clear
 
       .field-container
         .field-title= t('home.dashboard.index.referrer')
@@ -101,11 +108,13 @@
             = link_to t('home.dashboard.index.profile_link', :provider => set[1].button.user.display_name), set[1].referrer, :target => "_blank"
           - else
             = link_to set[1].referrer, set[1].referrer, :target => "_blank"
+        .clear
 
       .field-container
         .field-title= t('home.dashboard.index.date_created')
         .field-value
           .convert-date= set[1].created_at.to_f()
+        .clear
 
       .field-container
         .field-title= t('home.dashboard.index.funded')
@@ -114,6 +123,7 @@
             .convert-date= set[1].updated_at.to_f()
           - else
             = t('home.dashboard.index.to_be')
+        .clear
 
 %h3.table-title
   = t('home.dashboard.index.tips_referred_title')
@@ -129,10 +139,12 @@
       .field-container
         .field-title= t('home.dashboard.index.amount')
         .field-value #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+        .clear
 
       .field-container
         .field-title= t('home.dashboard.index.clicker')
         .field-value= set[1].user.display_name
+        .clear
 
       .field-container
         .field-title= t('home.dashboard.index.referrer')
@@ -143,11 +155,13 @@
             = link_to t('home.dashboard.index.profile_link', :provider => set[1].button.user.display_name), set[1].referrer, :target => "_blank"
           - else
             = link_to set[1].referrer, set[1].referrer, :target => "_blank"
+        .clear
 
       .field-container
         .field-title= t('home.dashboard.index.date_created')
         .field-value
           .convert-date= set[1].created_at.to_f()
+        .clear
 
       .field-container
         .field-title= t('home.dashboard.index.funded')
@@ -156,3 +170,4 @@
             .convert-date= set[1].updated_at.to_f()
           - else
             = t('home.dashboard.index.to_be')
+        .clear

@@ -55,6 +55,14 @@
     :javascript
       window.fbShareText = '#{ t('.fb_share_button_title', :button_title => @button.title) }';
 
+  - if mobile_device?
+    :javascript
+      window.youtubeSize = [ 430, 280 ];
+  - else
+    :javascript
+      window.youtubeSize = [ 560, 341 ];
+    
+
 - if @is_editable
   %iframe#upload-picture{:src => upload_picture_path }
 #profile-container
