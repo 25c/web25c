@@ -818,79 +818,50 @@ form .form-actions {
 /* USER DASHBOARD
  *---------------------------- */
  
-table.dataTable {
-//  table-layout: fixed;
-  width: 100% !important;
+h3.table-title {
+  margin-bottom: 10px;
+}
+
+.mobile-clicks-container {
+  margin-bottom: 60px;
+}
+
+
+.mobile-clicks-container .click-container {
+//  margin-bottom: 20px;
+  border-top: 2px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.mobile-clicks-container .click-container .field-container {
+  border-bottom: 1px solid #eee;
+  padding: 5px 10px;
+  clear: both;
 }
  
-table.dataTable td, table#profile-clicks-table td {
- overflow: hidden;
- text-overflow: ellipsis;
- white-space: nowrap;
+.mobile-clicks-container .click-container .field-container .field-title {
+  float: left;
+  width: 150px;
+  font-weight: bold;
 }
 
-.table-wrapper {
-  margin: 20px 0;
+.mobile-clicks-container .click-container .field-container .field-content {
+  float: left;
 }
 
-table#profile-clicks-table {
-  table-layout: fixed;
+.mobile-clicks-container .click-container .field-container .field-value #fb-share {
+  margin-right: 20px;
 }
 
-table#profile-clicks-table .click-amount {
-//  width: 100px;
+.mobile-clicks-container .click-container .field-container .field-value #fb-share, 
+.mobile-clicks-container .click-container .field-container .field-value #tw-share {
+  float: left;
+  cursor: pointer;
 }
 
-table#profile-clicks-table .click-provider {
-//  width: 200px;
-}
 
-table#profile-clicks-table .click-referrer {
-//  width: 500px;
-}
 
-table.clicks-table > tbody > tr > td {
-  line-height: 28px;
-}
 
-table.clicks-table .delete-click, table.payments-table .process-payment {
-  margin-top: -5px;
-  margin-bottom: -2px;
-}
-
-table#undo-clicks td {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  line-height: 50px;
-}
-
-.table-title {
-  margin: 10px 0;
-}
-
-#process-message {
-  margin-top: 20px;
-}
-
-.dashboard-action {
-  margin-right: 5px;
-}
-
-table.clicks-table #fb-share, table.clicks-table #tw-share {
-  cursor:pointer;
-  padding-top:5px;
-  margin-left:5px;
-  display: inline;
-}
-
-table.clicks-table #fb-share img, table.clicks-table #tw-share img {
-  height:20px;
-  width:20px;
-}
-
-table.dataTable td.dataTables_empty { 
- white-space: normal;
-}
 
 /* BOOTSTRAP OVERRIDES
 *---------------------------- */

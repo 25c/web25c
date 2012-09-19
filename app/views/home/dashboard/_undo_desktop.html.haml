@@ -1,0 +1,28 @@
+.table-wrapper
+  %table#undo-clicks.clicks-table.table.table-condensed.table-striped
+    %thead
+      %tr
+        %th.click-provider= t('home.dashboard.index.provider')
+        %th.click-referrer= t('home.dashboard.index.referrer')
+        %th
+        %th.click-date= t('home.dashboard.index.date_created')
+        %th
+    %tbody
+      - @clicks_given.each do |click|
+        %tr
+          %td.click-user= click.button.user.display_name
+          
+          - if click.referrer.blank?
+            %td.click-referrer= t('home.dashboard.index.no_referrer')
+          - elsif click.referrer.include?(request.host)
+            %td.click-referrer
+              = link_to t('home.dashboard.index.profile_link', :provider => click.button.user.display_name),
+                click.referrer, :target => "_blank"
+          - else
+            %td.click-referrer= link_to click.referrer, click.referrer, :target => "_blank"
+                        
+          %td= click.created_at.to_s(:number)
+          %td.click-date.convert-date= click.created_at.to_f()
+          / %td.click-date= l click.created_at, :format => "%d %b %y"
+          %td.click-delete.center
+            %a.delete-click.btn.btn-strong{:"data-click_id" => click.uuid}= t('.undo')
