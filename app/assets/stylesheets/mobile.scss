@@ -992,7 +992,8 @@ table.table thead .sorting_desc_disabled {
 }
 
 .update-button-field {
-  display: inline;
+//  display: inline;
+  margin-bottom: 20px;
 }
 
 #youtube-button.btn {
@@ -1013,7 +1014,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 #button-picture-container #button-picture {
-  max-width: 300px;
+  max-width: 400px;
   max-height: 300px;
 }
 
@@ -1029,10 +1030,10 @@ table.table thead .sorting_desc_disabled {
 }
 
 #youtube-embed-container {
-  margin-left: 4px;
+  margin: 0 auto;
   background-color: black;
-  width: 300px;
-  height: 341px;
+  width: 430px;
+  height: 280px;
   margin-bottom: 20px;
 }
 
@@ -1121,6 +1122,10 @@ table.table thead .sorting_desc_disabled {
 
 #no-edit {
   margin-top: 20px;
+}
+
+#remove-button-video {
+  margin-bottom: 20px;
 }
 
 /* USER AGREEMENT

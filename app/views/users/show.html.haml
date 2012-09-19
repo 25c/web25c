@@ -105,12 +105,20 @@
                               
       - if not @button.youtube_id.blank?
         #youtube-embed-container
-          %iframe{ :id => 'video-iframe',
-            :title => 'YouTube Video Player',
-            :width => '560',
-            :height => '341',
-            :src => 'https://www.youtube.com/embed/' + @button.youtube_id,
-            :frameborder => '0' }
+          - if mobile_device?
+            %iframe{ :id => 'video-iframe',
+              :title => 'YouTube Video Player',
+              :width => '430',
+              :height => '280',
+              :src => 'https://www.youtube.com/embed/' + @button.youtube_id,
+              :frameborder => '0' }
+          - else
+            %iframe{ :id => 'video-iframe',
+              :title => 'YouTube Video Player',
+              :width => '560',
+              :height => '341',
+              :src => 'https://www.youtube.com/embed/' + @button.youtube_id,
+              :frameborder => '0' }
         #button-picture-container.hide
       - elsif @button.picture.exists?
         #youtube-embed-container.hide
