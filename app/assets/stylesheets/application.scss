@@ -73,7 +73,7 @@ b, strong, h4 {
 }
 
 .large, .large p {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 
@@ -150,11 +150,12 @@ body {
 }
 
 #nav-logo {
-  margin: -32px 20px 0 30px;
-  margin-right: 25px;
+  float: left;
+  margin: -32px 25px 0 30px;
 }
 
 #nav-tagline {
+  float: left;
   font-size: 17px;
   padding-top: 18px;
 }
@@ -183,8 +184,13 @@ ul#nav-login > li.login-logo img {
 }
 
 #nav-username {
+  float: left;
   color: white;
   margin: 13px 0 0 0;
+}
+
+#nav-image {
+  float: right;
 }
 
 #nav-image img {
@@ -195,6 +201,7 @@ ul#nav-login > li.login-logo img {
 }
 
 #nav-menu-container .caret {
+  float: right;
   border-top-color: transparent;
   border: 0px none transparent;
   margin-top: 5px;

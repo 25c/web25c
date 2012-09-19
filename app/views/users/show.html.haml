@@ -55,6 +55,19 @@
     :javascript
       window.fbShareText = '#{ t('.fb_share_button_title', :button_title => @button.title) }';
 
+  - if mobile_device?
+    :javascript
+      window.youtubeSize = [ 430, 280 ];
+  - else
+    :javascript
+      window.youtubeSize = [ 560, 341 ];
+
+= content_for(:head) do
+  :css
+    body{ min-width: 480px; }
+
+    
+
 - if @is_editable
   %iframe#upload-picture{:src => upload_picture_path }
 #profile-container
@@ -105,12 +118,20 @@
                               
       - if not @button.youtube_id.blank?
         #youtube-embed-container
-          %iframe{ :id => 'video-iframe',
-            :title => 'YouTube Video Player',
-            :width => '560',
-            :height => '341',
-            :src => 'https://www.youtube.com/embed/' + @button.youtube_id,
-            :frameborder => '0' }
+          - if mobile_device?
+            %iframe{ :id => 'video-iframe',
+              :title => 'YouTube Video Player',
+              :width => '430',
+              :height => '280',
+              :src => 'https://www.youtube.com/embed/' + @button.youtube_id,
+              :frameborder => '0' }
+          - else
+            %iframe{ :id => 'video-iframe',
+              :title => 'YouTube Video Player',
+              :width => '560',
+              :height => '341',
+              :src => 'https://www.youtube.com/embed/' + @button.youtube_id,
+              :frameborder => '0' }
         #button-picture-container.hide
       - elsif @button.picture.exists?
         #youtube-embed-container.hide
@@ -169,34 +190,8 @@
         #no-edit= link_to(t('.no_edit'), '?edit=no', :target => '_blank')
 
 - if @user.show_donations and @click_sets.length > 0
-  %h3.table-title
-    = t('.tips_title')
-  .table-wrapper
-    %table#profile-clicks-table.clicks-table.table.table-condensed.table-striped
-      %thead
-        %tr
-          %th.click-amount= t('.amount')
-          %th.click-provider= t('.provider')
-          %th.click-referrer= t('.referrer')
-      %tbody
-        - if @click_sets.length > 0
-          - @click_sets.each do |set|
-            %tr
-              %td.click-amount #{set[0]}
-              %td.click-user= set[1].button.user.display_name
-              - if set[1].referrer.blank?
-                %td.click-referrer= t('.no_referrer')
-              - elsif set[1].referrer.include?(request.host)
-                %td.click-referrer
-                  = link_to t('.profile_link', 
-                    :provider => set[1].button.user.display_name),
-                    set[1].referrer, :target => "_blank"
-              - else
-                %td.click-referrer= link_to set[1].referrer, set[1].referrer, 
-                  :target => "_blank"
-        - else
-          %tr
-            %td.click-amount 0
-            %td.click-user= t('.no_clicks')
-            %td.click-referrer
+  - if mobile_device?
+    = render :partial => "donations_mobile"
+  - else
+    = render :partial => "donations_desktop"
 .clear

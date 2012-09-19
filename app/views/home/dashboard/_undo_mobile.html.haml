@@ -1,0 +1,33 @@
+.mobile-clicks-container
+  - if @clicks_given.length == 0
+    .click-container
+      .field-container= t('home.dashboard.index.no_pledges_given')
+
+  - @clicks_given.each do |click|
+    .click-container
+      .field-container
+        .field-title= t('home.dashboard.index.provider')
+        .field-value= click.button.user.display_name
+        .clear
+
+      .field-container
+        .field-title= t('home.dashboard.index.referrer')
+        .field-value
+          - if click.referrer.blank?
+            = t('home.dashboard.index.no_referrer')
+          - elsif click.referrer.include?(request.host)
+            = link_to t('home.dashboard.index.profile_link', :provider => click.button.user.display_name), click.referrer, :target => "_blank"
+          - else
+            = link_to click.referrer, click.referrer, :target => "_blank"
+        .clear
+
+      .field-container
+        .field-title= t('home.dashboard.index.date_created')
+        .field-value
+          .convert-date= click.created_at.to_f()
+        .clear
+
+      .field-container
+        .field-button.center
+          %a.delete-click.btn.btn-strong{:"data-click_id" => click.uuid}= t('home.dashboard.undo_clicks.undo')
+        .clear

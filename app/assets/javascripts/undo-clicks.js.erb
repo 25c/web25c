@@ -22,7 +22,7 @@ $(document).ready(function(){
 
   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     
-  $('td.convert-date').each(function() {
+  $('.convert-date').each(function() {
     var $this = $(this);
     correctedTime = $this.text();
     var d = new Date(correctedTime * 1000);
@@ -38,6 +38,7 @@ $(document).ready(function(){
       $.post(deleteClickUrl, { click_id: $this.attr('data-click_id') });
       // $this.parent().parent().fadeOut('slow');
       $this.parent().parent().find('td, a').css('color', '#bbb');
+      $this.parent().parent().parent().find('.field-title, .field-value, .field-value a').css('color', '#bbb');
       $this.fadeOut('fast');
     }
   });

@@ -1,0 +1,173 @@
+%p
+  %a= link_to t('home.dashboard.index.payment'), home_payment_path, :class => 'btn dashboard-action'
+%p.buffer
+  = t('home.dashboard.index.not_funded')
+  = @clicks_unfunded_total.to_s + ' '
+  ($#{"%.2f" % (@clicks_unfunded_total.to_f / 4)})
+%p
+  %a= link_to t('home.dashboard.index.undo_clicks'), home_undo_clicks_path, :class => 'btn dashboard-action'
+%p.buffer
+  = t('home.dashboard.index.funded_note')
+
+%h3.table-title
+  = t('home.dashboard.index.tips_given_title')
+  = @clicks_given_total.to_s + ' '
+  ($#{"%.2f" % (@clicks_given_total.to_f / 4)})
+
+.mobile-clicks-container
+  - if @clicks_given.length == 0
+    .click-container
+      .field-container=t('.no_pledges_given')
+  - @clicks_given.each do |set|
+    .click-container
+      .field-container
+        .field-title= t('home.dashboard.index.amount')
+        .field-value #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+        .clear
+      
+      .field-container
+        .field-title= t('home.dashboard.index.provider')
+        - if set[1].button.user.profile_url.blank?
+          .field-value= set[1].button.user.display_name
+        - else
+          .field-value= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
+        .clear
+
+      .field-container
+        .field-title= t('home.dashboard.index.referrer')
+        .field-value
+          - if set[1].referrer.blank?
+            = t('home.dashboard.index.no_referrer')
+          - elsif set[1].referrer.include?(request.host)
+            = link_to t('home.dashboard.index.profile_link', :provider => set[1].button.user.display_name), set[1].referrer, :target => "_blank"
+          - else
+            = link_to set[1].referrer, set[1].referrer, :target => "_blank"
+        .clear
+      
+      .field-container
+        .field-title= t('home.dashboard.index.date_created')
+        .field-value
+          .convert-date= set[1].created_at.to_f()
+        .clear
+      
+      .field-container
+        .field-title= t('home.dashboard.index.funded')
+        .field-value
+          - if set[1].state > Click::State::DEDUCTED
+            .convert-date= set[1].updated_at.to_f()
+          - else
+            = t('home.dashboard.index.to_be')
+        .clear
+
+      .field-container
+        .field-title= t('home.dashboard.index.share')
+        .field-value
+          - if set[1].button.title.blank?
+            #fb-share{:"data-referrer" => set[1].referrer,
+              :"data-title" => t('home.dashboard.index.fb_share_user_title', 
+                :user_name => set[1].button.user.display_name) }
+              = image_tag("logos/facebook.png")
+          - else
+            #fb-share{:"data-referrer" => set[1].referrer,
+              :"data-title" => t('home.dashboard.index.fb_share_button_title', 
+                :button_title => set[1].button.title) }
+              = image_tag("logos/facebook.png")
+          #tw-share{:"data-referrer" => set[1].referrer}= image_tag("logos/twitter.png")
+        .clear
+
+%p.buffer
+  %a= link_to t('home.dashboard.index.payout'), home_payout_path, :class => 'btn'
+%h3.table-title
+  = t('home.dashboard.index.tips_received_title')
+  = @clicks_received_total.to_s + ' '
+  ($#{"%.2f" % (@clicks_received_total.to_f / 4)})
+  
+.mobile-clicks-container
+  - if @clicks_received.length == 0
+    .click-container
+      .field-container= t('home.dashboard.index.no_pledges_given')
+
+  - @clicks_received.each do |set|
+    .click-container
+      .field-container
+        .field-title= t('home.dashboard.index.amount')
+        .field-value #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+        .clear
+
+      .field-container
+        .field-title= t('home.dashboard.index.clicker')
+        .field-value= set[1].user.display_name
+        .clear
+
+      .field-container
+        .field-title= t('home.dashboard.index.referrer')
+        .field-value
+          - if set[1].referrer.blank?
+            = t('home.dashboard.index.no_referrer')
+          - elsif set[1].referrer.include?(request.host)
+            = link_to t('home.dashboard.index.profile_link', :provider => set[1].button.user.display_name), set[1].referrer, :target => "_blank"
+          - else
+            = link_to set[1].referrer, set[1].referrer, :target => "_blank"
+        .clear
+
+      .field-container
+        .field-title= t('home.dashboard.index.date_created')
+        .field-value
+          .convert-date= set[1].created_at.to_f()
+        .clear
+
+      .field-container
+        .field-title= t('home.dashboard.index.funded')
+        .field-value
+          - if set[1].state > Click::State::DEDUCTED
+            .convert-date= set[1].updated_at.to_f()
+          - else
+            = t('home.dashboard.index.to_be')
+        .clear
+
+%h3.table-title
+  = t('home.dashboard.index.tips_referred_title')
+  = @clicks_referred_total.to_s + ' '
+  ($#{"%.2f" % (@clicks_referred_total.to_f / 4)})
+.mobile-clicks-container
+  - if @clicks_referred.length == 0
+    .click-container
+      .field-container= t('home.dashboard.index.no_pledges_given')
+
+  - @clicks_referred.each do |set|
+    .click-container
+      .field-container
+        .field-title= t('home.dashboard.index.amount')
+        .field-value #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+        .clear
+
+      .field-container
+        .field-title= t('home.dashboard.index.clicker')
+        .field-value= set[1].user.display_name
+        .clear
+
+      .field-container
+        .field-title= t('home.dashboard.index.referrer')
+        .field-value
+          - if set[1].referrer.blank?
+            = t('home.dashboard.index.no_referrer')
+          - elsif set[1].referrer.include?(request.host)
+            = link_to t('home.dashboard.index.profile_link', :provider => set[1].button.user.display_name), set[1].referrer, :target => "_blank"
+          - else
+            = link_to set[1].referrer, set[1].referrer, :target => "_blank"
+        .clear
+
+      .field-container
+        .field-title= t('home.dashboard.index.date_created')
+        .field-value
+          .convert-date= set[1].created_at.to_f()
+        .clear
+
+      .field-container
+        .field-title= t('home.dashboard.index.funded')
+        .field-value
+          - if set[1].state > Click::State::DEDUCTED
+            .convert-date= set[1].updated_at.to_f()
+          - else
+            = t('home.dashboard.index.to_be')
+        .clear

@@ -27,7 +27,7 @@ $(document).ready(function() {
   
   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   
-  $('td.convert-date').each(function() {
+  $('.convert-date').each(function() {
     var $this = $(this);
     correctedTime = $this.text();
     var d = new Date(correctedTime * 1000);
