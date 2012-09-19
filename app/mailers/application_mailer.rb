@@ -111,9 +111,7 @@ class ApplicationMailer < ActionMailer::Base
     
     # Send email to stats distribution list
     puts "Sending daily report email..."
-    # mail :to => 'reports@25c.com', :subject => "25c Report - #{day}"
-    mail :to => 'lionel@25c.com', :subject => "Testy McTest"
-    
+    mail :to => 'reports@25c.com', :subject => "25c Report - #{day}"    
     puts "Email sent."
   end
   
