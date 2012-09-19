@@ -61,6 +61,11 @@
   - else
     :javascript
       window.youtubeSize = [ 560, 341 ];
+
+= content_for(:head) do
+  :css
+    body{ min-width: 480px; }
+
     
 
 - if @is_editable

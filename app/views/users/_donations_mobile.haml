@@ -1,4 +1,4 @@
-%h3.table-title
+%h3#donations-title.table-title
   = t('users.show.tips_title')
 .mobile-clicks-container
   - if @click_sets.length == 0
@@ -10,6 +10,7 @@
       .field-container
         .field-title= t('users.show.amount')
         .field-value #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+        .clear
 
       .field-container
         .field-title= t('home.dashboard.index.provider')
@@ -17,6 +18,7 @@
           .field-value= set[1].button.user.display_name
           - else
           .field-value= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
+        .clear
 
       .field-container
         .field-title= t('users.show.referrer')
@@ -27,3 +29,4 @@
             = link_to t('users.show.profile_link', :provider => set[1].button.user.display_name), set[1].referrer, :target => "_blank"
           - else
             = link_to set[1].referrer, set[1].referrer, :target => "_blank"
+        .clear
