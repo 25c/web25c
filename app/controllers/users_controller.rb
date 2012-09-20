@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :require_signed_in, :except => [ :index, :show, :new, :sign_in, :sign_in_callback, :tip, :confirm_tip]
+  before_filter :require_signed_in, :except => [:show, :new, :sign_in, :sign_in_callback, :tip]
   before_filter :check_user_email, :except => [ :user_agremeent, :update, :sign_in, :sign_out, :sign_in_callback, :tip ]
 
   # GET /users/1

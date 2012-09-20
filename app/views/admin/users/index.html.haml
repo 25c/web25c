@@ -1,5 +1,5 @@
 - model_class = User.new.class
-- content_for :title, t('.title', :default => model_class.model_name.human.pluralize)
+- content_for :title, '25c - ' + t('.title', :default => model_class.model_name.human.pluralize)
 
 %h2.page-header= t('.title')
 %table.table.table-striped

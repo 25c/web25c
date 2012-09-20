@@ -14,26 +14,9 @@ class Home::ButtonsController < Home::HomeController
     @button = self.current_user.buttons[0]
   end
   
-  def new
-    @button = self.current_user.buttons.build
-  end
-  
-  def create
-    @button = self.current_user.buttons.build(params[:button])
-    if @button.save
-      redirect_to home_get_button_path
-    else
-      render :new
-    end
-  end
-  
   def show
     @button = self.current_user.buttons.find_by_uuid(params[:id])
     redirect_to home_get_button_path
-  end
-  
-  def edit
-    @button = self.current_user.buttons.find_by_uuid(params[:id])
   end
   
   def update

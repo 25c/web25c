@@ -236,6 +236,10 @@ en:
       get_button:
         title: Get your +25c Button Code
         subtitle: "Follow these easy steps to get your +25c button code:"
+      blog_header: 
+        title: 25c Blog
+      blog_footer: 
+        title: 25c Blog
 
     index:
       title_top: Micro-Donations Made Easy
@@ -250,7 +254,6 @@ en:
       explain_p4: "&#8226; Easy to do"
       explain_p5: "&#8226; It's upside only"
       explain_p6: "&#8226; Connect with fans"
-      
       publisher_title: "Have a website, blog, photo collection, or video?"
       publisher_p1: "What if there were an easy way to turn 'Likes' into simultaneous 25-cent contributions?"
       publisher_p2: "Now there is: Simply embed our +25c Button."
@@ -261,17 +264,24 @@ en:
       pledger_p3: "Small Change for Big Change."
       pledger_p4:  
       read_more: "Learn more..."
-
       fb_share_title: 25c social micro-donations.
       fb_share_description: Supporting value one quarter a click.  Be the customer not the product.
-      
       works_with: "The +25c Button Works With:"
-      
       featured_title: "Who's Using +25c?  A few examples:"
     
     not_found:
       title: Page Not Found
       no_page_found: "The page <b>%{path}</b> was not found on this server. Please check the URL and try again."
+    about:
+      title: About 25c Inc
+    faq:
+      title: 25c - Frequently Asked Questions
+    fees:
+      title: 25c - Fees
+    privacy:
+      title: 25c - Privacy
+    terms:
+      title: 25c - Terms
 
   layouts:
     admin:
@@ -404,9 +414,6 @@ en:
       google: Google
       signed_in_p1: "You are signed in and ready to make 25c pledges -- anywhere you see the +25c button.  Please now return and re-click +25c to make a pledge."
       signed_in_p2: "You may make forty 25c pledges at your leisure. Then we ask you to fund them. You may undo any 25c pledge until you fund it. So click ahead!"
-    confirm_tip:
-      view_account: View 25c Account
-      close_window: Close this window
     choose_nickname:
       title: Choose User Nickname
       instructions: "Your Nickname determines the URL of your user profile."
@@ -417,7 +424,7 @@ en:
       success: You have updated your profile nickname.
       failure: That nickname has been taken. Please choose another.
     choose_email:
-      title: Account Email
+      title: Choose Account Email
       email_instructions: "Each account requires a valid email address. Please provide your e-mail address to proceed:"
       submit_email: "Submit"
       email_taken: "That e-mail address has been taken. Please choose another."

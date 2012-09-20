@@ -1,4 +1,5 @@
-- content_for :title, t('.title')
+- content_for :title, '25c - ' + t('.title')
+
 = content_for(:js) do
   = javascript_include_tag "jquery.dataTables.min"
   = javascript_include_tag "paging"
