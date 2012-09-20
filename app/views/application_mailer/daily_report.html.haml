@@ -6,39 +6,39 @@
 %table{ :style => "text-align: center;", :cellspacing => "10" }
   %tr{ :style => "font-weight: bold;" }
     %th{ :width => "100" }
-    %th{ :width => "100" } Visitors
     %th{ :width => "100" } Button Views
+    %th{ :width => "100" } Clicks
+    %th{ :width => "100" } Visitors
     %th{ :width => "100" } New Users
     %th{ :width => "100" } New Buttons
-    %th{ :width => "100" } Clicks
   %tr
     %td{ :style => "text-align: left; font-weight: bold;" } #{ @day }
-    %td= report_number @visits[:day][:www]
     %td= report_number @visits[:day][:api]
+    %td= report_number @clicks[:day]
+    %td= report_number @visits[:day][:www]
     %td= report_number @users[:day]
     %td= report_number @buttons[:day]
-    %td= report_number @clicks[:day]
   %tr
     %td{ :style => "text-align: left; font-weight: bold;" } Trailing week
-    %td= report_number @visits[:week][:www]
     %td= report_number @visits[:week][:api]
+    %td= report_number @clicks[:week]
+    %td= report_number @visits[:week][:www]
     %td= report_number @users[:week]
     %td= report_number @buttons[:week]
-    %td= report_number @clicks[:week]
   %tr
     %td{ :style => "text-align: left; font-weight: bold;" } Trailing month
-    %td= report_number @visits[:month][:www]
     %td= report_number @visits[:month][:api]
+    %td= report_number @clicks[:month]
+    %td= report_number @visits[:month][:www]
     %td= report_number @users[:month]
     %td= report_number @buttons[:month]
-    %td= report_number @clicks[:month]
   %tr
     %td{ :style => "text-align: left; font-weight: bold;" } Total
-    %td= report_number @visits[:total][:www]
     %td= report_number @visits[:total][:api]
+    %td= report_number @clicks[:total]
+    %td= report_number @visits[:total][:www]
     %td= report_number @users[:total]
     %td= report_number @buttons[:total]
-    %td= report_number @clicks[:total]
 
 %p URLs Clicked Today:
 %ul

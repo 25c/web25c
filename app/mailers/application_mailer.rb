@@ -130,15 +130,15 @@ class ApplicationMailer < ActionMailer::Base
   end
   
   def report_number(number)
-    number = number.to_f
+    number = number.to_i
     if number > 1000
-      number = number_with_precision(number / 1000, :precision => 2, :delimiter => ',') + " K"
+      number = (number / 1000).to_s + " K"
     elsif number > 1000000
-      number = number_with_precision(number / 1000000, :precision => 2, :delimiter => ',') + " M"
+      number = (number / 1000000).to_s  + " M"
     elsif number > 1000000000
-      number = number_with_precision(number / 1000000000, :precision => 2, :delimiter => ',') + " B"
+      number = (number / 1000000000).to_s  + " B"
     else
-      number.to_i
+      number.to_s
     end
   end
   

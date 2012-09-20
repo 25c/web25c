@@ -175,7 +175,7 @@ en:
         
         for_wordpress_1: "<b>Note: The +25c Button works on self-hosted Wordpress sites, not on Wordpress.com hosted sites.</b>"
         for_wordpress_2: "1. You\'ll need to use the Wordpress plugin \"Raw HTML\" to enable the +25c Button. Get the code from <a target=\"blank\" href=\"http://wordpress.org/extend/plugins/raw-html/installation/\">http://wordpress.org/extend/plugins/raw-html/installation/</a> and follow the installation instructions."
-        for_wordpress_3: "2. Once the plugin is installed, insert the +25c Button code into the tags, such as: <br>&lt;!--raw--&gt; (Your +25c Button code goes here) &lt;!--/raw--&gt;"
+        for_wordpress_3: "2. Once the plugin is installed, insert the +25c Button code into the \"Raw HTML\" tags, such as: <br>&lt;!--raw--&gt; (Your +25c Button code goes here) &lt;!--/raw--&gt;"
         for_wordpress_4: "3. Enter the code with the tags into in a blog post. Your +25c Button will appear when you publish!"
         
         for_tumblr_1: "1. On your <a target=\"_blank\" href=\"http://www.tumblr.com/dashboard\">Tumblr Dashboard</a> click <b>Aa Text</b> to create a new text post."
