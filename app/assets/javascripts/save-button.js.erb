@@ -174,20 +174,18 @@ $(document).ready(function(){
     } else if ($this.hasClass('platform-container')) {
       $this.parent().find('.selected-option').removeClass('selected-option');
       $this.addClass('selected-option');
-      var platform = $this.attr('data-platform');
-      $('.instructions').hide();
+      var platform = $this.attr('data-platform') || 'html';
+      $('#install-instructions').children().hide();
+      $('#' + platform + '-instructions').show();
       if (platform == 'html') {
         var newCodeType = "javascript";
-        $('.html-instructions').show();
       } else if (platform == 'wordpress' || platform == 'tumblr' || platform == 'blogger' || platform == 'weebly') {
         var newCodeType = "javascript";
-        $('.blog-instructions').show();
-      } else if (platform == 'posterous' || platform == 'blog.com' || platform == 'jux') {
+      } else if (platform == 'posterous' || platform == 'blog-com' || platform == 'jux') {
         var newCodeType = "iframe";
         $('.blog-instructions').show();
       } else if (platform == 'youtube') {
         var newCodeType = "link";
-        $('.youtube-instructions').show();
       }
       $('#get-code').removeAttr('data-skip');
       $('.if-button').show();
