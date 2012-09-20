@@ -181,9 +181,9 @@ en:
         for_tumblr_1: "1. On your <a target=\"_blank\" href=\"http://www.tumblr.com/dashboard\">Tumblr Dashboard</a> click <b>Aa Text</b> to create a new text post."
         for_tumblr_2: "2. If using the Rich Text editor:"
         for_tumblr_3: "&nbsp;&nbsp;&nbsp;&nbsp;- Click on the <b>HTML</b> button in the editor bar."
-        for_tumblr_4: "&nbsp;&nbsp;&nbsp;&nbsp;- Paste the +25c Button code in the HTML window and click Update."
-        for_tumblr_5: "3. If using the HTML editor, paste the +25c Button code directly into the Post editor."
-        for_tumblr_6: "4. Click <b>Create Post</b>. The button will appear on your main Tumblr site (username.tumblr.com) but will not appear in the dashboard view or preview of the post."
+        for_tumblr_4: "&nbsp;&nbsp;&nbsp;&nbsp;- Paste the +25c Button code in the HTML window and click <b>Update</b>."
+        for_tumblr_5: "3. If using the HTML editor, paste the +25c Button code directly into the editor."
+        for_tumblr_6: "4. When you\'re finished with your blog post, click <b>Create Post</b>. The button will appear on your main Tumblr site (username.tumblr.com) but will not appear in the dashboard view or preview of the post."
         
         for_posterous_1: "1. In your <a target=\"_blank\" href=\"http://posterous.com/\">Posterous</a> Space view, click <b>Create a Post</b>."
         for_posterous_2: "2. Click the <b>HTML</b> button in the editor toolbar."
