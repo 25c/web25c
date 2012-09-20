@@ -1,6 +1,10 @@
 require 'rubygems'
 require 'sitemap_generator'
 
+ActiveRecord::Base.establish_connection(
+  "postgres://u7g6vdgi7sgeeo:patrc5sbhsm6kva0b1ngd0hm3a2@ec2-107-22-253-159.compute-1.amazonaws.com:5762/d5k5gklo3defjr"
+)
+
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "https://www.25c.com"
 

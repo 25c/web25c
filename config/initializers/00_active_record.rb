@@ -1,4 +1,4 @@
-# monkey-patch ActiveRecord::Base to include case-insenstive finders
+# monkey-patch ActiveRecord::Base to include case-insensitive finders
 class ActiveRecord::Base
   # the new method has to be a class method
   # note that it refers to the default implementation as 
