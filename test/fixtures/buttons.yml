@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  uuid: <%= UUID.new.generate(:compact) %>
+button_sylvio:
+  uuid: 9a7ba1b0dff9012f5efc60c5470a09c8
   size: btn-large
+  code_type: javascript
   title: MyString
   description: MyText
   user: sylvio
 
-two:
-  uuid: <%= UUID.new.generate(:compact) %>
+button_lionel:
+  uuid: a4b16a40dff9012f5efd60c5470a09c8
   size: btn-medium
+  code_type: javascript
   title: MyString
   description: MyText
   user: lionel

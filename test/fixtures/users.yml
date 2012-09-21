@@ -1,15 +1,19 @@
 sylvio:
   uuid: 3dd80d107941012f5e2c60c5470a09c8
   email: sylviod@me.com
+  password_digest: $2a$10$fitziG2ZPEWRKEJPghcZV.9mD9kzIC7EM918/dEt8GieDemcNBxPW
   
 lionel:
   uuid: 439bdb807941012f5e2d60c5470a09c8
   email: mrjingles@gmail.com
+  password_digest: $2a$10$fitziG2ZPEWRKEJPghcZV.9mD9kzIC7EM918/dEt8GieDemcNBxPW
   
 francis:
   uuid: 476da1c07941012f5e2e60c5470a09c8
   email: mail@francisli.com
+  password_digest: $2a$10$fitziG2ZPEWRKEJPghcZV.9mD9kzIC7EM918/dEt8GieDemcNBxPW
   
 martin:
   uuid: 4b7172007941012f5e2f60c5470a09c8
   email: rmr@rmartinr.com
+  password_digest: $2a$10$fitziG2ZPEWRKEJPghcZV.9mD9kzIC7EM918/dEt8GieDemcNBxPW
