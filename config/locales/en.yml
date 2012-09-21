@@ -19,7 +19,7 @@ en:
   home:
     account:
       payment:
-        title: Fund Pledges You Made
+        title: Fund Pledges You Have Made
         given: "You have fewer than forty unfunded 25c pledges (exactly: %{total}) or a total commitment of $%{total_amount}."
         click_more_p1: "Feel free to make up to forty 25c pledges at your leisure:  Click on other +25 Buttons, or click the same +25c Button multiple times for a pledge of corresponding multiple of 25c's.  (You may undo unfunded 25c pledges any time.)"
         click_more_p2: "Once you have made forty 25c pledges, we will ask you to pay $10."
@@ -238,10 +238,13 @@ en:
         subtitle: "Follow these easy steps to get your +25c button code:"
       blog_header: 
         title: 25c Blog
+        meta_description: Get the latest news about 25c on the blog.
       blog_footer: 
         title: 25c Blog
-
+        meta_description: Get the latest news about 25c on the blog.
     index:
+      title: 25c - Microdonations Made Easy
+      meta_description: 25c simplifies social micro-donations. One click, one quarter.
       title_top: Micro-Donations Made Easy
       button_title: The +25c Button
       pledge_to: Pledge 25c to
@@ -271,17 +274,8 @@ en:
     
     not_found:
       title: Page Not Found
-      no_page_found: "The page <b>%{path}</b> was not found on this server. Please check the URL and try again."
-    about:
-      title: About 25c Inc
-    faq:
-      title: 25c - Frequently Asked Questions
-    fees:
-      title: 25c - Fees
-    privacy:
-      title: 25c - Privacy
-    terms:
-      title: 25c - Terms
+      no_page_found: "The page <b>%{path}</b> was not found on this server. Please check the URL and try again, or %{return_home}."
+      return_home: click here to return to the homepage
 
   layouts:
     admin:

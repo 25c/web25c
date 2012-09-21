@@ -1,5 +1,7 @@
 %meta(charset="utf-8")
 %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+- if content_for?(:meta_description)
+  %meta(name="description" content="#{ yield(:meta_description) }")
 %title= content_for?(:title) ? yield(:title) : t('application.title')
 %link{ :rel => "shortcut icon", :href => image_path("favicon.ico") + '?v=1' }
 = csrf_meta_tags

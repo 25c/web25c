@@ -1,4 +1,5 @@
 - content_for :title, '25c - ' + t('.title')
 
 %h2.page-header= t('.title')
-%p= raw t('.no_page_found', :path => request.fullpath)
+%p= raw t('.no_page_found', :path => request.fullpath, 
+  :return_home => link_to(t('.return_home'), root_url))
