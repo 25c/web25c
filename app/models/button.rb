@@ -21,7 +21,7 @@ class Button < ActiveRecord::Base
   
   before_validation :assign_defaults
   
-  attr_accessible :size, :title, :description, :code_type, :picture, :youtube_id
+  attr_accessible :size, :title, :description, :code_type, :picture, :youtube_id, :pledge_message
   
   def to_param
     self.uuid

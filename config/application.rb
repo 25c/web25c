@@ -60,6 +60,9 @@ module Web25c
     config.assets.precompile += ['jquery.dataTables.min.js']
     config.assets.precompile += ['paging.js']
     
+    # sprintf implementation
+    config.assets.precompile += ['sprintf-0.6.js']
+    
     # Page specific Javascript
     config.assets.precompile += ['edit-profile.js']
     config.assets.precompile += ['profile-click-table.js']

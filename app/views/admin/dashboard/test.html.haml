@@ -10,17 +10,18 @@
 %h3 Javascript:
 #test-javascript.buffer
   .test-button-holder
-    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+    THIS ONE:
+    %a{ :href => @button.user.profile_url, 
       :class => "tip-25c-button",
+      :'data-id' => @button.uuid.to_s,
       :'data-size' => "btn-large",
-      :'data-user' => @button.user.display_name, 
-      :'data-profile' => @button.user.profile_url }
+      :'data-user' => @button.user.display_name}
       #{@button.title}
   .test-button-holder
     %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
       :class => "tip-25c-button",
       :'data-size' => "btn-medium",
-      :'data-user' => @button.user.display_name, 
+      :'data-user' => @button.user.display_name,
       :'data-profile' => @button.user.profile_url }
       #{@button.title}
   .test-button-holder

@@ -5,20 +5,26 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
+  
   def show
     @user = User.find_by_nickname_ci(params[:id])
-    
     if @user
-      @is_editable = self.current_user == @user unless params[:edit] == 'no'
-      @button = @user.buttons[0]
-      clicks = @user.clicks.includes(:button => :user).order("created_at DESC").find_all_by_state([
-        Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
-      ])
-      @click_sets = group_clicks(clicks, true, false)
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @user }
+      if Rails.env.development? or request.subdomain == "tip"
+        @is_editable = self.current_user == @user unless params[:edit] == 'no'
+        @button = @user.buttons[0]
+        clicks = @user.clicks.includes(:button => :user).order("created_at DESC").find_all_by_state([
+          Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
+        ])
+        @click_sets = group_clicks(clicks, true, false)
+        respond_to do |format|
+          format.html # show.html.erb
+          format.json { render json: @user }
+        end
+      else
+        redirect_to params.merge({:subdomain => 'tip'})
       end
+    elsif request.subdomain == "tip"
+      redirect_to params.merge({:subdomain => 'www'})
     else
       render "home/not_found", :status => 404
     end

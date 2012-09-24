@@ -1,4 +1,8 @@
 Web25c::Application.routes.draw do
+  
+  # profile wildcard with tip subdomain
+  match ':id' => 'users#show', :constraints => { :id => /.*/, :subdomain => 'tip' }, :as => :profile
+  
   root :to => 'home#index'
   
   # match 'register' => 'users#new', :via => :get, :as => :register
@@ -27,6 +31,7 @@ Web25c::Application.routes.draw do
     match 'update_button' => 'buttons#update_button', :as => :update_button, :via => :put
     match 'get_button' => 'buttons#get_button', :as => :get_button
     match 'receive_pledges' => 'buttons#receive_pledges', :as => :receive_pledges
+    match 'choose_pledge_message' => 'buttons#choose_pledge_message', :as => :choose_pledge_message
         
     # Dashboard
     match '' => 'dashboard#index', :as => :dashboard
@@ -58,8 +63,8 @@ Web25c::Application.routes.draw do
   
   mount Resque::Server.new, :at => "/admin/resque/frame"
   
-  # the profile wildcard route must be last
-  match ':id' => 'users#show', :constraints => { :id => /.*/ }, :as => :profile
+  # profile wildcard without tip subdomain
+  match ':id' => 'users#show', :constraints => { :id => /.*/ }
   
   # catch-all 404 page for unknown routes
   match '*a' => 'home#not_found', :as => :not_found

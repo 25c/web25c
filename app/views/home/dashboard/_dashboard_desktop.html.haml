@@ -67,8 +67,11 @@
   = t('home.dashboard.index.tips_received_title')
   = @clicks_received_total.to_s + ' '
   ($#{"%.2f" % (@clicks_received_total.to_f / 4)})
-%p.buffer
+%p
   %a= link_to t('home.dashboard.index.payout'), home_payout_path, :class => 'btn'
+%p.buffer
+  %a= link_to t('home.dashboard.index.pledge_message'), home_choose_pledge_message_path, :class => 'btn'
+  = t('home.dashboard.index.pledge_message_note')
 .table-wrapper
   %table#clicks-received.clicks-table.table.table-condensed.table-striped
     %thead

@@ -18,20 +18,10 @@ $(document).ready(function(){
   if (webUrl.indexOf('localhost') != -1) webUrl += ':3000';
   
   var apiUrl = window.location.protocol + '//' + '<%= ENV["API25C_URL"] %>'
-  
 
   // Code contents
-  var jsOpen = '<a href="' + webUrl + '/tip/' + buttonId + '" class="tip-25c-button" ';
-  var jsClose = '</a>\n<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];\
-    if(!d.getElementById(id)){js=d.createElement(s);js.id=id;\
-    js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}\
-    (document,"script","tip-25c-js");</script>';
-  var iframeOpen = '<iframe src="' + apiUrl + '/button/' + buttonId + '?size=';
-	var iframeMid = '" allowtransparency="true" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"';
-  var iframeClose = '></iframe>';
-  // var linkOpen = '<a target="_blank" href="' + webUrl + '/' + userNickname + '">' + "Pledge 25c to";
-  var linkOpen = '<a class="small" target="_blank" href="' + webUrl + '/' + userNickname + '">';
-  var linkClose = '</a>';
+  var jsCode = '<a href="%s" class="tip-25c-button" target="_blank" data-id="%s" data-size="%s" data-user="%s">%s</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");</script>';
+  var iframeCode = '<iframe src="' + apiUrl + '/button/' + buttonId + '?size=%s" allowtransparency="true" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" %s></iframe>';  
   
   // jQuery objects
   var $iframe = $('#upload-picture');
@@ -80,24 +70,19 @@ $(document).ready(function(){
     }
     $('#set-nickname-link').hide();
     if (codeType == 'iframe') {
-      newCode = iframeOpen + buttonSize + iframeMid + imageSizesDict[buttonSize] + iframeClose;
+      newCode = sprintf(iframeCode, buttonSize, imageSizesDict[buttonSize]);
       $('.if-javascript').show();
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
     } else if (codeType == 'javascript') {
       var linkText = (!buttonTitle || /^\s*$/.test(buttonTitle)) ? "&nbsp;" : buttonTitle;
-      newCode = jsOpen
-        + 'data-size="' + buttonSize 
-        + '" data-user="' + userPledgeName
-        + '" data-profile="' + profileUrl
-        // + '" data-info-url="' + buttonInfoUrl
-        + '">' + linkText + jsClose;
+      newCode = sprintf(jsCode, profileUrl, buttonId, buttonSize, userPledgeName, linkText);
+      console.log(newCode);
       $('.if-javascript').show();
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
     } else if (codeType == 'link') {
-      // newCode = linkOpen + buttonTitle + linkClose;
-      newCode = webUrl + '/' + userNickname;
+      $('.profile-link').html('<a href="' + profileUrl + '" target="_blank">' + profileUrl + '</a>');
       $('#set-nickname-link').show();
       $('.if-javascript').hide();
       $('.if-link').show();
@@ -139,8 +124,11 @@ $(document).ready(function(){
   
   var getProfileUrl = function() {
     if (userNickname) {
-      var new_profile_url = window.location.protocol + '//' + window.location.hostname;
-      if (new_profile_url.indexOf('localhost') != -1) new_profile_url += ':3000';
+      if (window.location.hostname.indexOf('localhost') != -1) {
+        var new_profile_url = 'http://localhost:3000';
+      } else {
+        var new_profile_url = 'https://' + window.location.hostname.replace('www.', 'tip.');
+      }
       new_profile_url += '/' + userNickname;
       return new_profile_url;
     } else {
@@ -176,15 +164,14 @@ $(document).ready(function(){
       $this.addClass('selected-option');
       var platform = $this.attr('data-platform') || 'html';
       $('#install-instructions').children().hide();
-      $('#' + platform + '-instructions').show();
+      $('.' + platform + '-instructions').show();
       if (platform == 'html') {
         var newCodeType = "javascript";
       } else if (platform == 'wordpress' || platform == 'tumblr' || platform == 'blogger' || platform == 'weebly') {
         var newCodeType = "javascript";
       } else if (platform == 'posterous' || platform == 'blog-com' || platform == 'jux') {
         var newCodeType = "iframe";
-        $('.blog-instructions').show();
-      } else if (platform == 'youtube') {
+      } else if (platform == 'youtube' || platform == 'pinterest') {
         var newCodeType = "link";
       }
       $('#get-code').removeAttr('data-skip');

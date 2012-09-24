@@ -49,4 +49,8 @@ class Home::ButtonsController < Home::HomeController
     end
   end
   
+  def choose_pledge_message
+    @button = self.current_user.buttons[0]
+  end
+  
 end

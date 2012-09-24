@@ -78,6 +78,8 @@ en:
         clicker: Pledged By
         share: Share
         payout: Request Payout
+        pledge_message: Pledge Message
+        pledge_message_note: Write a custom message to people that have unfunded pledges to you.
         no_referrer: None
         profile_link: "%{provider}'s Profile"
         no_referrer: None
@@ -161,9 +163,8 @@ en:
         website: "Website"
         website: "Your website"
         choose_button_title: "Choose a look for your +25c Button:"
-        get_code_title_blog: "Now embed this code into your blog:"
-        get_code_title_website: "Now embed this code into your website:"
-        get_code_title_youtube: "Now insert this code into your Youtube video description:"
+        get_code_title: "Use the code below to embed your button:"
+        get_link_title: "Follow these instructions:"
         button_code: "HTML Code for Your Own +25c Button:"
         link_code: "URL to Use:"
         sign_in_overlay: Click here to create an account!
@@ -210,7 +211,11 @@ en:
         for_weebly_3: "3. Click the section labeled <b>Click to Set Custom HTML</b> and paste in your +25c Button code."
         for_weebly_4: "4. Your +25c Button will appear immediately. Click <b>Publish</b> when you\'re finished."
         
-        for_youtube: "Paste this URL into the description of your Youtube video."
+        for_youtube_1: "Edit the description of your Youtube video and paste this text in the first line:"
+        for_youtube_2: "Click to tip 25 cents: "
+        
+        for_pinterest_1: "When creating a new Pin or editing an existing Pin, enter the following in the description:"
+        for_pinterest_2: "Click to tip 25 cents: "
         
         button_preview: "Button preview:"
         link_preview: "Link preview:"
@@ -221,7 +226,7 @@ en:
         share_facebook: Share on Facebook
         fb_share_description: Using 25c to pledge one quarter one click.
         fb_share_title: I just created a 25c account!
-        share_twitter: Share on Twitter
+        share_twitter: Share on Twitters
         share_email: Email
         share_email_subject: I just joined 25c!
         share_email_body: Please click the link above to check out my 25c profile and support my cause with micro-donations.
@@ -236,6 +241,12 @@ en:
       get_button:
         title: Get your +25c Button Code
         subtitle: "Follow these easy steps to get your +25c button code:"
+      choose_pledge_message:
+        title: Choose a Pledge Message
+        instructions: "25c will send reminder messages to people that haven't yet funded their pledges. Enter a custom message for people that have pledged to you:"
+        default_message: "Thank you for supporting my cause.\n\nI noticed that you have not yet funded the pledge you made - any chance you could?\n\nYou can do so at www.25c.com/home/payment\n\nThank you!"
+        submit: Save
+        saved: Message Saved.
       blog_header: 
         title: 25c Blog
         meta_description: Get the latest news about 25c on the blog.
