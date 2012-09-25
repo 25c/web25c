@@ -7,7 +7,7 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'													# postgres database
-gem 'heroku'											# heroku tools and config
+gem 'heroku-api'									# heroku api library
 gem 'thin'												# thin application server
 gem 'haml'												# haml template engine
 gem 'simple_form'									# simple form helpers

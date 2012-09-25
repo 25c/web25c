@@ -4,14 +4,14 @@ module Heroku
   module ResqueScaler
     module Scaler
       class << self
-        @@heroku = Heroku::Client.new(HEROKU_SETTINGS['username'], HEROKU_SETTINGS['password'])
+        @@heroku = Heroku::API.new(:api_key => HEROKU_SETTINGS['api_key'])
 
         def workers
-          @@heroku.ps(HEROKU_SETTINGS['application']).count { |a| a["process"] =~ /worker/ }
+          @@heroku.get_ps(HEROKU_SETTINGS['application']).body.count { |a| a["process"] =~ /worker/ }
         end
 
         def workers=(qty)
-          @@heroku.ps_scale(HEROKU_SETTINGS['application'], :type=>'worker', :qty=>qty)
+          @@heroku.post_ps_scale(HEROKU_SETTINGS['application'], 'worker', qty)
         end
 
         def job_count

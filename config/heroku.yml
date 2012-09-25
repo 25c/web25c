@@ -1,24 +1,20 @@
 development:
-  username: ""
-  password: ""
+  api_key: ""
   application: ""
   worker_min_count: 0
 
 test:
-  username: ""
-  password: ""
-  application: ""
+  api_key: "3ca58924a123e1eb86c46403db3c0605e8001255"
+  application: "web25c-test"
   worker_min_count: 0
 
 staging:
-  username: "developer@25c.com"
-  password: "3ca58924a123e1eb86c46403db3c0605e8001255"
+  api_key: "3ca58924a123e1eb86c46403db3c0605e8001255"
   application: "web25c-stage"
   worker_min_count: 1
   
 production:
-  username: "dev@25c.com"
-  password: "3ca58924a123e1eb86c46403db3c0605e8001255"
+  api_key: "3ca58924a123e1eb86c46403db3c0605e8001255"
   application: "web25c"
   worker_min_count: 1
   
