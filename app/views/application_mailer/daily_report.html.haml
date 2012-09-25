@@ -5,12 +5,12 @@
 
 %table{ :style => "text-align: center;", :cellspacing => "10" }
   %tr{ :style => "font-weight: bold;" }
-    %th{ :width => "100" }
-    %th{ :width => "100" } Button Views
-    %th{ :width => "100" } Clicks
-    %th{ :width => "100" } Visitors
-    %th{ :width => "100" } New Users
-    %th{ :width => "100" } New Buttons
+    %th{ :width => "180" }
+    %th{ :width => "80" } Button Views
+    %th{ :width => "80" } Clicks
+    %th{ :width => "80" } Visitors
+    %th{ :width => "80" } New Users
+    %th{ :width => "80" } New Buttons
   %tr
     %td{ :style => "text-align: left; font-weight: bold;" } #{ @day }
     %td= report_number @visits[:day][:api]
@@ -25,6 +25,13 @@
     %td= report_number @visits[:week][:www]
     %td= report_number @users[:week]
     %td= report_number @buttons[:week]
+  %tr
+    %td{ :style => "text-align: left; font-weight: bold;" } Projected week (6%)
+    %td= report_number @expected_views_week
+    %td
+    %td
+    %td
+    %td
   %tr
     %td{ :style => "text-align: left; font-weight: bold;" } Trailing month
     %td= report_number @visits[:month][:api]

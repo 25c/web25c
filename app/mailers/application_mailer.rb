@@ -28,18 +28,21 @@ class ApplicationMailer < ActionMailer::Base
   def new_payout_request(user, payment)
     @user = user
     @payment = payment
-    mail :to => 'lionel@25c.com', :subject => 'New Payout Request'
+    mail :to => Rails.env.production? ? 'payout@25c.com' : 'lionel@25c.com', :subject => 'New Payout Request'
   end
   
   def updated_payout_request(user, payment)
     @user = user
     @payment = payment
-    mail :to => 'lionel@25c.com', :subject => 'Updated Payout Request'
+    mail :to => Rails.env.production? ? 'payout@25c.com' : 'lionel@25c.com', :subject => 'Updated Payout Request'
   end
   
   def daily_report    
     day = Time.now.in_time_zone("Pacific Time (US & Canada)").to_date() - 1
     @day = day
+    
+    @expected_views_week = 219233 * 1.06 ** ((day - Date.new(2012, 9, 23)).to_i / 7)
+    
     # Get website visits from Google Analytics
     puts "Getting Google Analytics data..."
     Garb::Session.login("analytics@25c.com", "superlike25")
@@ -111,7 +114,7 @@ class ApplicationMailer < ActionMailer::Base
     
     # Send email to stats distribution list
     puts "Sending daily report email..."
-    mail :to => 'reports@25c.com', :subject => "25c Report - #{day}"    
+    mail :to => Rails.env.production? ? 'reports@25c.com' : 'lionel@25c.com', :subject => "25c Report - #{day}"    
     puts "Email sent."
   end
   
