@@ -331,9 +331,9 @@ en:
   users:
     show:
       title: "'s 25c Profile"
-      blank_about: 'I use 25c to receive pledges.'
-      current_user: 'This is your profile. '
-      change_url: 'Click here to change your profile URL.'
+      blank_about: "I use 25c to receive pledges."
+      current_user: "This is your profile. "
+      change_url: "Click here to change your profile URL."
       support_title: Please click the 25c Button below to contribute to
       support_title_no_name: Please click the 25c Button below to contribute.
       support_subtitle: " "
