@@ -43,11 +43,11 @@
 #splash-title-top.highlight= t('.title_top')
 
 #splash-main
-  #splash-people.center= image_tag 'front/people-01.png'
-  #splash-arrows.center= image_tag 'front/arrows-02.png'
+  / #splash-people.center= image_tag 'front/people-01.png'
+  / #splash-arrows.center= image_tag 'front/arrows-02.png'
   #splash-container.center
     #splash-button-title= raw t('.button_title')
-    .center
+    .center.buffer
       %a#splash-button{:href => home_receive_pledges_path}
         = image_tag 'front/button-01.png'
     #splash-tooltip.hide
@@ -57,6 +57,11 @@
         = t('.share')
         #fb-share= image_tag("logos/facebook.png")
         #tw-share= image_tag("logos/twitter.png")
+    #link-title.center
+      = t('.link_title_1')
+      = t('.link_title_2')
+    #link-example
+      = link_to t('.link_text'), home_receive_pledges_path
 
 #splash-side-text
   %p
@@ -94,14 +99,14 @@
   %h2.buffer= t('.works_with')
   #supported-blogs.center
     =link_to image_tag('logos/wordpress.png'), home_receive_pledges_path
-    =link_to image_tag('logos/tumblr.png'), home_receive_pledges_path
     =link_to image_tag('logos/posterous.png'), home_receive_pledges_path
+    =link_to image_tag('logos/tumblr.png'), home_receive_pledges_path
+    =link_to image_tag('logos/blogger.png'), home_receive_pledges_path
     =link_to image_tag('logos/youtube.png'), home_receive_pledges_path
     =link_to image_tag('logos/pinterest.png'), home_receive_pledges_path
-    =link_to image_tag('logos/blog-com.png'), home_receive_pledges_path
-    =link_to image_tag('logos/blogger.png'), home_receive_pledges_path
-    =link_to image_tag('logos/jux.png'), home_receive_pledges_path
-    =link_to image_tag('logos/weebly.png'), home_receive_pledges_path
+    / =link_to image_tag('logos/blog-com.png'), home_receive_pledges_path
+    / =link_to image_tag('logos/jux.png'), home_receive_pledges_path
+    / =link_to image_tag('logos/weebly.png'), home_receive_pledges_path
 
 .splash-below
   %h2.buffer= t('.featured_title')

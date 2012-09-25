@@ -336,19 +336,8 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #splash-button-title {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 10px;
-}
-
-#splash-legend {
-  font-size: 15px;
-  width: 160px;
-  text-align: right; 
-  line-height: 23px;
-}
-
-#splash-legend-arrow {
-  
 }
 
 #splash-button {
@@ -361,7 +350,7 @@ ul#footer-nav, ul#footer-nav > li > a {
   left: 180px;
   width: 228px;
   margin-right: 10px;
-  padding: 15px;
+  padding: 10px;
   background-color: white; 
   border: 1px solid rgba(0, 0, 0, 0.2); 
   @include radius(5px);
@@ -370,7 +359,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #splash-tooltip-share {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 #splash-tooltip-share #fb-share, #splash-tooltip-share #tw-share {
@@ -382,7 +371,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 
 #splash-tooltip-share #fb-share img, #splash-tooltip-share #tw-share img {
   height: 20px;
-  width:2 0px;
+  width: 20px;
 }
 
 #splash-people > img {
@@ -395,6 +384,16 @@ ul#footer-nav, ul#footer-nav > li > a {
   right: 10px;
 }
 
+#link-title {
+  font-size: 22px;
+  line-height: 1.2em;
+}
+
+#link-example {
+  margin-top: 15px;
+  font-size: 22px;
+  text-decoration: underline;
+}
 
 #splash-call {
 //  color: #f26422;
@@ -467,7 +466,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 
 #supported-blogs img {
   height: 32px;
-  margin: 10px 30px;
+  margin: 10px 40px;
 }
 
 

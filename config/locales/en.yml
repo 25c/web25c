@@ -257,7 +257,10 @@ en:
       title: 25c - Microdonations Made Easy
       meta_description: 25c simplifies social micro-donations. One click, one quarter.
       title_top: Micro-Donations Made Easy
-      button_title: The +25c Button
+      button_title: "For Blogs: The +25c Button"
+      link_title_1: "For Twitter, Pinterest and Youtube:"
+      link_title_2: "The 25c Profile Link"
+      link_text: tip.25c.com/YOUR_NAME
       pledge_to: Pledge 25c to
       cause: YOUR CAUSE
       share: "Share:"
@@ -280,7 +283,7 @@ en:
       read_more: "Learn more..."
       fb_share_title: 25c social micro-donations.
       fb_share_description: Supporting value one quarter a click.  Be the customer not the product.
-      works_with: "The +25c Button Works With:"
+      works_with: "+25c Tipping Works With:"
       featured_title: "Who's Using +25c?  A few examples:"
     
     not_found:
