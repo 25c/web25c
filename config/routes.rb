@@ -1,8 +1,16 @@
 Web25c::Application.routes.draw do
   
-  # profile wildcard with tip subdomain
+  # Accessible from both 'tip' and 'www' subdomains
+  match 'fb_share_callback' => 'home#fb_share_callback', :as => :fb_share_callback
+  match 'home/account' => 'users#update', :as => :home_account, :via => :put
+  namespace :home do
+    match 'update_button' => 'buttons#update_button', :as => :update_button, :via => :put
+  end
+  
+  # 'tip' subdomain routes
   match ':id' => 'users#show', :constraints => { :id => /.*/, :subdomain => 'tip' }, :as => :profile
   
+  # 'www' subdomain routes
   root :to => 'home#index'
   
   # match 'register' => 'users#new', :via => :get, :as => :register
@@ -22,13 +30,11 @@ Web25c::Application.routes.draw do
   match 'tip/:button_id' => 'users#tip', :as => :tip
   match 'blog/header' => 'home#blog_header'
   match 'blog/footer' => 'home#blog_footer'
-  match 'fb_share_callback' => 'home#fb_share_callback', :as => :fb_share_callback
   match 'paypal_process' => 'home#paypal_process'
   
   namespace :home do
     # Buttons
     resources :buttons
-    match 'update_button' => 'buttons#update_button', :as => :update_button, :via => :put
     match 'get_button' => 'buttons#get_button', :as => :get_button
     match 'receive_pledges' => 'buttons#receive_pledges', :as => :receive_pledges
     match 'choose_pledge_message' => 'buttons#choose_pledge_message', :as => :choose_pledge_message
@@ -48,7 +54,6 @@ Web25c::Application.routes.draw do
   end
   
   match 'home/account' => 'users#edit', :as => :home_account, :via => :get
-  match 'home/account' => 'users#update', :via => :put
   # hidden iframe page for ajax-like picture loading
   match 'home/upload_picture' => 'users#upload_picture', :as => :upload_picture
   match 'home/profile' => 'users#profile', :as => :home_profile
@@ -63,7 +68,7 @@ Web25c::Application.routes.draw do
   
   mount Resque::Server.new, :at => "/admin/resque/frame"
   
-  # profile wildcard without tip subdomain
+  # profile wildcard
   match ':id' => 'users#show', :constraints => { :id => /.*/ }
   
   # catch-all 404 page for unknown routes

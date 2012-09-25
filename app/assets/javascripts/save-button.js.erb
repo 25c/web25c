@@ -77,7 +77,6 @@ $(document).ready(function(){
     } else if (codeType == 'javascript') {
       var linkText = (!buttonTitle || /^\s*$/.test(buttonTitle)) ? "&nbsp;" : buttonTitle;
       newCode = sprintf(jsCode, profileUrl, buttonId, buttonSize, userPledgeName, linkText);
-      console.log(newCode);
       $('.if-javascript').show();
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
@@ -87,15 +86,10 @@ $(document).ready(function(){
       $('.if-javascript').hide();
       $('.if-link').show();
       $('#choose-button').attr('data-skip', true);
+      newCode = "";
     }
-
     $('#button-code-block').text(newCode);
-    
-    if (codeType == 'link') {
-      $('#button-preview').html(linkOpen + newCode + linkClose);
-    } else {
-      $('#button-preview').html(newCode);
-    }
+    $('#button-preview').html(newCode);
 
     if (codeType == 'javascript') {
       $('#tip-25c-tooltip').remove();
