@@ -10,7 +10,6 @@
 %h3 Javascript:
 #test-javascript.buffer
   .test-button-holder
-    THIS ONE:
     %a{ :href => @button.user.profile_url, 
       :class => "tip-25c-button",
       :'data-id' => @button.uuid.to_s,
@@ -18,46 +17,46 @@
       :'data-user' => @button.user.display_name}
       #{@button.title}
   .test-button-holder
-    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+    %a{ :href => @button.user.profile_url, 
       :class => "tip-25c-button",
+      :'data-id' => @button.uuid.to_s,
       :'data-size' => "btn-medium",
-      :'data-user' => @button.user.display_name,
-      :'data-profile' => @button.user.profile_url }
+      :'data-user' => @button.user.display_name}
       #{@button.title}
   .test-button-holder
-    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+    %a{ :href => @button.user.profile_url, 
       :class => "tip-25c-button",
+      :'data-id' => @button.uuid.to_s,
       :'data-size' => "btn-small",
-      :'data-user' => @button.user.display_name, 
-      :'data-profile' => @button.user.profile_url }
+      :'data-user' => @button.user.display_name}
       #{@button.title}
   .test-button-holder
-    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+    %a{ :href => @button.user.profile_url, 
       :class => "tip-25c-button",
+      :'data-id' => @button.uuid.to_s,
       :'data-size' => "icon-large",
-      :'data-user' => @button.user.display_name, 
-      :'data-profile' => @button.user.profile_url }
+      :'data-user' => @button.user.display_name}
       #{@button.title}
   .test-button-holder
-    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+    %a{ :href => @button.user.profile_url, 
       :class => "tip-25c-button",
+      :'data-id' => @button.uuid.to_s,
       :'data-size' => "icon-medium",
-      :'data-user' => @button.user.display_name, 
-      :'data-profile' => @button.user.profile_url }
+      :'data-user' => @button.user.display_name}
       #{@button.title}
   .test-button-holder
-    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+    %a{ :href => @button.user.profile_url, 
       :class => "tip-25c-button",
-      :'data-size' => "icon-small",
-      :'data-user' => @button.user.display_name, 
-      :'data-profile' => @button.user.profile_url }
+      :'data-id' => @button.uuid.to_s,
+      :'data-size' => "icon-large",
+      :'data-user' => @button.user.display_name}
       #{@button.title}
   .test-button-holder
-    %a{ :href => "https://www.25c.com/tip/" +  @button.uuid.to_s, 
+    %a{ :href => @button.user.profile_url, 
       :class => "tip-25c-button",
+      :'data-id' => @button.uuid.to_s,
       :'data-size' => "icon-text",
-      :'data-user' => @button.user.display_name, 
-      :'data-profile' => @button.user.profile_url }
+      :'data-user' => @button.user.display_name}
       #{@button.title}
   .clear
     :javascript 
