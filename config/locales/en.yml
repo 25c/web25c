@@ -4,7 +4,7 @@
 en:
   
   application:
-    title: "25c social micro-donations"
+    title: "25c"
     25c_units: "25c's"
     hello_email: hello@25c.com
       
@@ -22,7 +22,7 @@ en:
         title: Fund Pledges You Have Made
         given: "You have fewer than forty unfunded 25c pledges (exactly: %{total}) or a total commitment of $%{total_amount}."
         click_more_p1: "Feel free to make up to forty 25c pledges at your leisure:  Click on other +25 Buttons, or click the same +25c Button multiple times for a pledge of corresponding multiple of 25c's.  (You may undo unfunded 25c pledges any time.)"
-        click_more_p2: "Once you have made forty 25c pledges, we will ask you to pay $10."
+        click_more_p2: "When you have made forty 25c pledges, we will ask you to pay $10."
         dashboard: Go to Dashboard
         amount: "Payment Amount: $10"
       payment_success:
@@ -107,8 +107,8 @@ en:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
       receive_pledges: 
-        title: Collect Micro-Donations
-        subtitle: "In just a few simple steps, you are ready to collect micro-donations:"
+        title: Create a pledge drive
+        subtitle: "In three simple steps, you have set up your own pledge drive to collect tips as small as 25 cents:"
         short_url_title: 25c Short URL
         platform: Platform
         javascript: JavaScript
@@ -136,11 +136,11 @@ en:
         round-large: Large Round
         icon-text: With Text
         
-        describe_cause_title: "Describe what your micro-donation collections are about and who they go to:"
+        describe_cause_title: "Describe what you are collecting funds for and who they go to:"
         button_title_label: "You ask: Pledge 25c for"
         enter_title: (your cause)
         button_description_label: "Description:"
-        enter_description: (describe what the collections are about)
+        enter_description: (describe what the pledge drive is about)
         set_button_info: Continue
         button_info_url_label: "Optional URL:"
         enter_info_url: (URL to a webpage with more info about your cause)
@@ -159,7 +159,7 @@ en:
         nickname_taken: That nickname has been taken by another user. Please choose another and try again.
         nickname_blank: Please choose a non-blank nickname.
         
-        choose_platform_title: "Where do you want to collect micro-donations?"
+        choose_platform_title: "Where do you want to embed the 25c Button/Link?"
         website: "Website"
         website: "Your website"
         choose_button_title: "Choose a look for your +25c Button:"
@@ -235,7 +235,7 @@ en:
         view_dashboard_title: View your stats and collections
         view_dashboard: "Check your %{link} to see who has pledged 25c's to you."
         view_dashboard_link: dashboard
-        request_payout: Once you have reached a good number of pledges, set up your account to receive pay-outs.
+        request_payout: When you have reached a good number of pledges, set up your account to receive pay-outs.
         enhance_profile: Finally, %{link} and don't forget to make 25c pledges yourself on a website near you!
         enhance_profile_link: enhance your 25c.com profile page
       get_button:
@@ -254,37 +254,37 @@ en:
         title: 25c Blog
         meta_description: Get the latest news about 25c on the blog.
     index:
-      title: 25c - Microdonations Made Easy
-      meta_description: 25c simplifies social micro-donations. One click, one quarter.
-      title_top: Micro-Donations Made Easy
-      button_title: "For Blogs: The +25c Button"
-      link_title_1: "For Twitter, Pinterest and Youtube:"
-      link_title_2: "The 25c Profile Link"
-      link_text: tip.25c.com/YOUR_NAME
+      title: 25c
+      meta_description: 25c simplifies gratuities online as small as 25 cents.
+      title_top: Small Change for Big Change
+      button_title: "For Blogs, Web: The +25c Button"
+      link_title_1: "For Twitter, Pinterest, Youtube:"
+      link_title_2: "The Tip 25c Link"
+      link_text: tip.25c.com/YOU
       pledge_to: Pledge 25c to
       cause: YOUR CAUSE
       share: "Share:"
-      set_up: Get Set Up to Collect Micro-Donations
-      explain_p1: "The +25c Button combines a 'Like'"
-      explain_p2: with a <b>25-cent pledge</b>.
-      explain_p3: "Embed it into your blog, photos, videos."
-      explain_p4: "&#8226; Easy to do"
-      explain_p5: "&#8226; It's upside only"
-      explain_p6: "&#8226; Connect with fans"
-      publisher_title: "Have a website, blog, photo collection, or video?"
-      publisher_p1: "What if there were an easy way to turn 'Likes' into simultaneous 25-cent contributions?"
-      publisher_p2: "Now there is: Simply embed our +25c Button."
-      publisher_p3: "Doesn't sound like much?  Consider it's purely incremental and it can add up!  There's three billion 'Likes' every day. Some fraction of these love it more than 'Like'."
+      set_up: Set Up Your Own 25c Pledge Drive
+      explain_p1: "Embed the 25c Button/Link to receive pledges
+      explain_p2:  as small as <b>25 cents</b>.
+      explain_p3: "Collect pledges first, then payment."
+      explain_p4: "&#8226; Best way to raise funds"
+      explain_p5: "&#8226; Built for bloggers & publishers"
+      explain_p6: "&#8226; Trusted across the web"
+      publisher_title: "Creating a blog, Youtube, Pinterest board?"
+      publisher_p1: "Now you can earn money while connecting with supporters:"
+      publisher_p2: "Simply embed our +25c Button/Link."
+      publisher_p3: "Collect pledges without requiring immediate payment overhead, process donations as small as 25 cents, and connect with your fans."
       pledger_title: "See something you value?"
-      pledger_p1: "Click the +25c Button to show your appreciation."
-      pledger_p2: "Make forty 25c pledges at your leisure. Then pay later through a $10 charge to your credit card. (You may undo 25c pledges until you paid.)"
-      pledger_p3: "Small Change for Big Change."
+      pledger_p1: "Click the +25c Button/Link to show your gratuity."
+      pledger_p2: "Pledge now, pay later."
+      pledger_p3: "Make forty 25c pledges at your leisure. Then fund them later through a credit card payment. (You may undo unfunded pledges at any time.)"
       pledger_p4:  
       read_more: "Learn more..."
-      fb_share_title: 25c social micro-donations.
-      fb_share_description: Supporting value one quarter a click.  Be the customer not the product.
-      works_with: "+25c Tipping Works With:"
-      featured_title: "Who's Using +25c?  A few examples:"
+      fb_share_title: 25c: Tips online as small as 25 cents.
+      fb_share_description: Supporting creators.  One click, one quarter.
+      works_with: "25c Works With:"
+      featured_title: "Who's Using 25c?  A few examples:"
     
     not_found:
       title: Page Not Found
@@ -296,7 +296,7 @@ en:
       admin: "Admin Pages:"
       dashboard: Dashboard
     header:
-      tagline: "Social micro-donations. One click, one quarter."
+      tagline: "Tips online as small as 25 cents"
       home: Home
       about: About
       blog: Blog
