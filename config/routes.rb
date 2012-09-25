@@ -1,7 +1,8 @@
 Web25c::Application.routes.draw do
-  
-  # Accessible from both 'tip' and 'www' subdomains
+    
   match 'fb_share_callback' => 'home#fb_share_callback', :as => :fb_share_callback
+  # hidden iframe page for ajax-like picture loading
+  match 'home/upload_picture' => 'users#upload_picture', :as => :upload_picture
   match 'home/account' => 'users#update', :as => :home_account, :via => :put
   namespace :home do
     match 'update_button' => 'buttons#update_button', :as => :update_button, :via => :put
@@ -54,8 +55,6 @@ Web25c::Application.routes.draw do
   end
   
   match 'home/account' => 'users#edit', :as => :home_account, :via => :get
-  # hidden iframe page for ajax-like picture loading
-  match 'home/upload_picture' => 'users#upload_picture', :as => :upload_picture
   match 'home/profile' => 'users#profile', :as => :home_profile
   match 'home/choose_nickname' => 'users#choose_nickname', :as => :choose_nickname
   
