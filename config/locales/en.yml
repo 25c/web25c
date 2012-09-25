@@ -265,8 +265,8 @@ en:
       cause: YOUR CAUSE
       share: "Share:"
       set_up: Set Up Your Own 25c Pledge Drive
-      explain_p1: "Embed the 25c Button/Link to receive pledges
-      explain_p2:  as small as <b>25 cents</b>.
+      explain_p1: Embed the 25c Button/Link to receive pledges
+      explain_p2: as small as <b>25 cents</b>.
       explain_p3: "Collect pledges first, then payment."
       explain_p4: "&#8226; Best way to raise funds"
       explain_p5: "&#8226; Built for bloggers & publishers"
@@ -279,10 +279,10 @@ en:
       pledger_p1: "Click the +25c Button/Link to show your gratuity."
       pledger_p2: "Pledge now, pay later."
       pledger_p3: "Make forty 25c pledges at your leisure. Then fund them later through a credit card payment. (You may undo unfunded pledges at any time.)"
-      pledger_p4:  
+      pledger_p4: 
       read_more: "Learn more..."
-      fb_share_title: 25c: Tips online as small as 25 cents.
-      fb_share_description: Supporting creators.  One click, one quarter.
+      fb_share_title: "25c: Tips online as small as 25 cents."
+      fb_share_description: "Supporting creators.  One click, one quarter."
       works_with: "25c Works With:"
       featured_title: "Who's Using 25c?  A few examples:"
     
@@ -326,7 +326,7 @@ en:
       works_with: +25c combines a 'Like' with a 25-cent pledge. Pledge now. Pay later.  Undo any 25c pledge until you pay.
       agreement_text: "By continuing, you agree to the "
       terms: User Terms
-      privacy: Privacy Policy.
+      privacy: "Privacy Policy."
       
   users:
     show:
