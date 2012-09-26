@@ -239,7 +239,7 @@ en:
         enhance_profile: Finally, %{link} and don't forget to make 25c pledges yourself on a website near you!
         enhance_profile_link: enhance your 25c.com profile page
       get_button:
-        title: Get your +25c Button Code
+        title: Get your +25c Button
         subtitle: "Follow these easy steps to get your +25c button code:"
       choose_pledge_message:
         title: Choose a Pledge Message
@@ -254,8 +254,8 @@ en:
         title: 25c Blog
         meta_description: Get the latest news about 25c on the blog.
     index:
-      title: 25c
-      meta_description: 25c simplifies gratuities online as small as 25 cents.
+      title: 25c - the best way to tip online as little as 25 cents.
+      meta_description: 25c is the best way to tip online as little as 25 cents.
       title_top: Small Change for Big Change
       button_title: "For Blogs, Web: <b>Your +25c Button</b>"
       link_title_1: "For Twitter, Pinterest, Youtube:"
@@ -264,13 +264,13 @@ en:
       pledge_to: Pledge 25c to
       cause: YOUR CAUSE
       share: "Share:"
-      set_up: Get Your Own Button/Link
-      explain_p1: Embed them into your creations.
-      explain_p2: " "
-      explain_p3: Receive tips as small as <b>25 cents</b>.
-      explain_p4: "&#8226; Best way to raise funds"
-      explain_p5: "&#8226; Built for creators & publishers"
-      explain_p6: "&#8226; Trusted across the web"
+      set_up: Get Your Own 25c Button/Link
+      explain_p1: "Maximize your fan base and tips received through:
+      explain_p2: "+ Tips as small as <b>25 cents</b>"
+      explain_p3: "+ One-click pledges as easy as a 'Like'"
+      explain_p4: "+ Collecting pledges first, payment later"
+      explain_p5: "+ Tools to reach out to your supporters"
+      explain_p6: "+ A service trusted across the web."
       publisher_title: "Creating a blog, Youtube, Pinterest board?"
       publisher_p1: "Now you can earn tips from your fans."
       publisher_p2: "Simply embed your +25c Button or your tip.25c.com Link."
