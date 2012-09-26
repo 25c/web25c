@@ -1125,6 +1125,14 @@ table.table thead .sorting_desc_disabled {
   display: inline;
 }
 
+.update-button-field .btn {
+  display: inline;
+}
+
+.update-button-field .btn.hide {
+  display: none;
+}
+
 #youtube-button.btn {
   margin-bottom: 9px;
 }
@@ -1229,7 +1237,7 @@ table.table thead .sorting_desc_disabled {
 }
 
 #youtube-input {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 #profile-share-container {

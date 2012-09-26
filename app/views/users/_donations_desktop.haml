@@ -12,7 +12,10 @@
         - @click_sets.each do |set|
           %tr
             %td.click-amount #{set[0]}
-            %td.click-user= set[1].button.user.display_name
+            - if set[1].button.user.profile_url.blank?
+              %td.click-user= set[1].button.user.display_name
+            - else
+              %td.click-user= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
             - if set[1].referrer.blank?
               %td.click-referrer= t('users.show.no_referrer')
             - elsif set[1].referrer.include?(request.host)
