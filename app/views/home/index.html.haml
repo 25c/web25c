@@ -58,8 +58,8 @@
         #fb-share= image_tag("logos/facebook.png")
         #tw-share= image_tag("logos/twitter.png")
     #link-title.center
-      = t('.link_title_1')
-      = t('.link_title_2')
+      = raw t('.link_title_1')
+      = raw t('.link_title_2')
     #link-example
       = link_to t('.link_text'), home_receive_pledges_path
 
@@ -69,7 +69,7 @@
     %br
     = raw t('.explain_p2')
   %p
-    = t('.explain_p3')
+    = raw t('.explain_p3')
     %br
     %span{:style => "margin-left: 20px;"}= raw t('.explain_p4')
     %br
