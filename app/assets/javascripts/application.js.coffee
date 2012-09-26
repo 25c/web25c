@@ -24,9 +24,9 @@ jQuery ->
     result = FB.getLoginStatus ((response) ->
       if response.status == 'connected'
         FB.logout () ->
-          window.location.pathname = pathname
+          window.location = pathname
       else
-        window.location.pathname = pathname
+        window.location = pathname
     ), true
     return false
 

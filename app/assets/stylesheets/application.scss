@@ -54,6 +54,7 @@ body, p, strong, h4, ul.plist > li, label, input, button, select, textarea {
   font-weight: 400;
   font-smooth: always;
   -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, .highlight {
@@ -490,8 +491,6 @@ ul#footer-nav, ul#footer-nav > li > a {
   line-height: 1.2em;
   font-family: Helvetica, Arial, Sans-Serif;
   font-weight: 400;
-  font-smooth: always;
-  //  -webkit-font-smoothing: antialiased;
 }
 
 .btn:hover {
