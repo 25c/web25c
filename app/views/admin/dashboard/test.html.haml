@@ -30,6 +30,7 @@
       :'data-size' => "btn-small",
       :'data-user' => @button.user.display_name}
       #{@button.title}
+  .clear
   .test-button-holder
     %a{ :href => @button.user.profile_url, 
       :class => "tip-25c-button",
@@ -98,6 +99,7 @@
       :marginheight => "0",
       :width => "94",
       :height => "20"}
+  .clear
   .test-button-holder
     %iframe{:src => "http://#{ENV['API25C_URL']}/button/#{@button.uuid.to_s}?size=icon-large",
       :allowtransparency => "true",
