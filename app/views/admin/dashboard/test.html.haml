@@ -19,9 +19,9 @@
   .test-button-holder
     %a{ :href => @button.user.profile_url, 
       :class => "tip-25c-button",
-      :'data-id' => "646ef480ac40012fa10848bcc89ac444",
+      :'data-id' => @button.uuid.to_s,
       :'data-size' => "btn-medium",
-      :'data-user' => "Mr. Special"}
+      :'data-user' => @button.user.display_name}
       #{@button.title}
   .test-button-holder
     %a{ :href => @button.user.profile_url, 
