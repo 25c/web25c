@@ -4,7 +4,7 @@
 en:
   
   application:
-    title: "25c - the best way to tip online as little as 25 cents"
+    title: "25c - tips online as small as 25 cents"
     25c_units: "25c's"
     hello_email: hello@25c.com
       
@@ -254,7 +254,7 @@ en:
         title: 25c Blog
         meta_description: Get the latest news about 25c on the blog.
     index:
-      title: 25c - the best way to tip online as little as 25 cents.
+      title: 25c - tips online as small as 25 cents.
       meta_description: 25c is the best way to tip online as little as 25 cents.
       title_top: Small Change for Big Change
       button_title: "For Blogs, Web:<BR> <b>Your +25c Button</b>"
@@ -282,7 +282,7 @@ en:
       pledger_p4: 
       read_more: "Learn more..."
       fb_share_title: "25c: The best way to tip online as little as 25 cents."
-      fb_share_description: "Supporting creators.  One click, one quarter."
+      fb_share_description: "Supporting creators. One click, one quarter."
       works_with: "25c Works With:"
       featured_title: "25c in Action:"
     
@@ -296,7 +296,7 @@ en:
       admin: "Admin Pages:"
       dashboard: Dashboard
     header:
-      tagline: "The best way to tip online as little as 25 cents."
+      tagline: "The best way to tip online."
       home: Home
       about: About
       blog: Blog
