@@ -41,28 +41,29 @@ class ApplicationMailer < ActionMailer::Base
     day = Time.now.in_time_zone("Pacific Time (US & Canada)").to_date() - 1
     @day = day
     
-    @expected_views_week = 219233 * 1.06 ** ((day - Date.new(2012, 9, 23)).to_i / 7)
+    @expected_views_week = (219233 * 1.06 ** ((day - Date.new(2012, 9, 23)).to_f / 7.0)).to_i
     
     # Get website visits from Google Analytics
     puts "Getting Google Analytics data..."
     Garb::Session.login("analytics@25c.com", "superlike25")
     profile = Garb::Management::Profile.all.first
+    
     visits_day = sort_visits(Visits.results(profile, 
-      :start_date => day, 
+      :start_date => day,
       :end_date => day))
     visits_week = sort_visits(Visits.results(profile, 
       :start_date => day.weeks_ago(1) + 1,
       :end_date => day))
     visits_month = sort_visits(Visits.results(profile, 
-      :start_date => day.months_ago(1) + 1, 
+      :start_date => day.months_ago(1) + 1,
       :end_date => day))
     visits_total = sort_visits(Visits.results(profile, 
-      :start_date => Date.new(2012, 9, 6), 
+      :start_date => Date.new(2012, 9, 6),
       :end_date => day))
     @visits = {
       :day => visits_day, 
       :week => visits_week,
-      :month => visits_month, 
+      :month => visits_month,
       :total => visits_total
     }
     
