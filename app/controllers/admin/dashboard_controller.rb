@@ -11,8 +11,10 @@ class Admin::DashboardController < Admin::AdminController
   
   def test
     @button = Button.first
-    if @button.user == current_user
-      @button = Button.all[1]
+    i = 1
+    while (@button.user == current_user or not @button.user) do
+      @button = Button.all[i]
+      i += 1
     end
     @user = current_user
   end
