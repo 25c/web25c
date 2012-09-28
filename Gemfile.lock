@@ -242,6 +242,7 @@ DEPENDENCIES
   garb
   haml
   heroku-api
+  httparty
   jquery-rails
   koala
   omniauth-google-oauth2

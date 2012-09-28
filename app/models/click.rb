@@ -23,31 +23,8 @@ class Click < ActiveRecord::Base
   end
   
   def undo
-    self.with_lock do
-      # ensure this click is in an undo-able state
-      return false unless self.state == State::DEDUCTED
-        
-      # change click state and increment balance
-      self.update_attribute(:state, State::REFUNDED)
-      self.connection.execute("PREPARE TRANSACTION 'undo-click-#{self.uuid}'")
-      begin
-        self.user.update_attribute(:balance, self.user.balance + 1)
-        # self.user.connection.execute("PREPARE TRANSACTION 'undo-user-#{self.uuid}'")
-        begin
-          # self.user.connection.execute("COMMIT PREPARED 'undo-user-#{self.uuid}'")
-        rescue
-          # self.user.connection.execute("ROLLBACK PREPARED 'undo-user-#{self.uuid}'")
-          # raise $!
-        end
-      rescue
-        self.connection.execute("ROLLBACK PREPARED 'undo-click-#{self.uuid}'")
-      end
-      self.connection.execute("COMMIT PREPARED 'undo-click-#{self.uuid}'")
-      
-      DATA_REDIS.decr "#{self.user.uuid}:#{self.button.uuid}"
-      DATA_REDIS.set "user:#{self.user.uuid}", self.user.balance
-    end
-    true
+    response = HTTParty.post(ENV['DATA25C_URL'] + '/api/clicks/undo', :body => { :uuids => [ self.uuid ] })
+    response.code == 200
   end
   
   def process

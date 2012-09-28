@@ -6,6 +6,7 @@ Web25c::Application.configure do
   #end
   
   ENV["API25C_URL"] = 'api.25c.com'
+  ENV["DATA25C_URL"] = 'https://data.25c.com'
 
   # Settings specified here will take precedence over those in config/application.rb
   config.action_mailer.default_url_options = { :host => "www.25c.com" }
