@@ -266,19 +266,19 @@ en:
       share: "Share:"
       set_up: Get Your Own 25c Button/Link
       explain_p1: "25c maximizes tips received through:"
-      explain_p2: "+ Tips as small as <b>25 cents</b>"
-      explain_p3: "+ One-click pledges as easy as a 'Like'"
-      explain_p4: "+ Collect pledges first, payment later"
-      explain_p5: "+ Tools to reach out to your supporters"
-      explain_p6: "+ Trust across the web"
+      explain_p2: "+ Tips as small as <b>25 cents</b>."
+      explain_p3: "+ One-click pledges as easy as a 'Like'."
+      explain_p4: "+ Accumulate pledges first, collect payment later."
+      explain_p5: "+ Tools to reach out to your supporters."
+      explain_p6: "+ Low fees.  Trust across the web."
       publisher_title: "Creating a blog, Youtube, Pinterest board?"
       publisher_p1: "Now your fans can support you directly."
       publisher_p2: "Embed your own +25c Button or tip.25c.com Link."
       publisher_p3: "Accumulate pledges in the simplest way (without requiring immediate payment). Process donations as small as 25 cents all the way into your bank account."
       pledger_title: "See something you appreciate?"
-      pledger_p1: "Click the +25c Button/Link to show your gratuity."
-      pledger_p2: "Pledge now, pay later.  (You may undo pledges until you pay.)"
-      pledger_p3: "Make forty 25c pledges at your leisure. Then fund them all through a credit card payment."
+      pledger_p1: "Click +25c to show your gratuity!"
+      pledger_p2: "Each click pledges 25 cents.  Triple-click to tip larger amounts."
+      pledger_p3: "Pledge now, pay later.  (You may undo pledges until you pay.)"
       pledger_p4: 
       read_more: "Learn more..."
       fb_share_title: "25c: The best way to tip online as little as 25 cents."
@@ -298,7 +298,7 @@ en:
       admin: "Admin Pages:"
       dashboard: Dashboard
     header:
-      tagline: "The best way to tip online."
+      tagline: "The best way to tip online as little as 25 cents."
       home: Home
       about: About
       blog: Blog
