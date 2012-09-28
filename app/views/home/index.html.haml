@@ -46,7 +46,8 @@
   / #splash-people.center= image_tag 'front/people-01.png'
   / #splash-arrows.center= image_tag 'front/arrows-02.png'
   #splash-container.center
-    #splash-button-title= raw t('.button_title')
+    #splash-button-title
+      = raw t('.button_title')
     .center.buffer
       %a#splash-button{:href => home_receive_pledges_path}
         = image_tag 'front/button-01.png'
@@ -64,18 +65,12 @@
       = link_to t('.link_text'), home_receive_pledges_path
 
 #splash-side-text
-  %p
-    = raw t('.explain_p1')
-    %br
-    = raw t('.explain_p2')
-  %p
-    = raw t('.explain_p3')
-    %br
-    %span{:style => "margin-left: 20px;"}= raw t('.explain_p4')
-    %br
-    %span{:style => "margin-left: 20px;"}= raw t('.explain_p5')
-    %br
-    %span{:style => "margin-left: 20px;"}= raw t('.explain_p6')
+  %p{:style => 'padding-bottom:20px;'}= raw t('.explain_p1')
+  %p= raw t('.explain_p2')
+  %p= raw t('.explain_p3')
+  %p= raw t('.explain_p4')
+  %p= raw t('.explain_p5')
+  %p= raw t('.explain_p6')
   %a#splash-call.btn.btn-strong{ :href => home_receive_pledges_path }= raw t('.set_up')
 .clear
 
@@ -94,30 +89,51 @@
     / %p= t('.pledger_p4')
   .clear
   %p.center.learn-more=link_to t('.read_more'), faq_path
-
+  
 .splash-below
   %h2.buffer= t('.works_with')
+  .example-container
+    .title-col.pull-left 
+      .example-title= t('.any_website')
+    .screenshot-col.pull-right
+      .example-image= image_tag('featured/justia-screenshot.png')
+    .clear
+  .example-container
+    .title-col.pull-left 
+      .example-title= image_tag('logos/posterous.png')
+    .screenshot-col.pull-right
+      .example-image= image_tag('featured/posterous-screenshot.png')
+    .clear  
+  .example-container
+    .title-col.pull-left
+      .example-title= image_tag('logos/youtube.png')
+    .screenshot-col.pull-right
+      .example-image= image_tag('featured/youtube-screenshot.png')
+    .clear
+  .example-container
+    .clear
+    .title-col.pull-left
+      .example-title= image_tag('logos/pinterest.png')
+    .screenshot-col.pull-right
+      .example-image= image_tag('featured/pinterest-screenshot.png')
+    .clear
+
+.splash-below
+  %h2.buffer= t('.and_more')
   #supported-blogs.center
     =link_to image_tag('logos/wordpress.png'), home_receive_pledges_path
-    =link_to image_tag('logos/posterous.png'), home_receive_pledges_path
+    / =link_to image_tag('logos/posterous.png'), home_receive_pledges_path
     =link_to image_tag('logos/tumblr.png'), home_receive_pledges_path
     =link_to image_tag('logos/blogger.png'), home_receive_pledges_path
-    =link_to image_tag('logos/youtube.png'), home_receive_pledges_path
-    =link_to image_tag('logos/pinterest.png'), home_receive_pledges_path
-    / =link_to image_tag('logos/blog-com.png'), home_receive_pledges_path
-    / =link_to image_tag('logos/jux.png'), home_receive_pledges_path
-    / =link_to image_tag('logos/weebly.png'), home_receive_pledges_path
+    / =link_to image_tag('logos/youtube.png'), home_receive_pledges_path
+    / =link_to image_tag('logos/pinterest.png'), home_receive_pledges_path
+    =link_to image_tag('logos/blog-com.png'), home_receive_pledges_path
+    =link_to image_tag('logos/jux.png'), home_receive_pledges_path
+    =link_to image_tag('logos/weebly.png'), home_receive_pledges_path
 
 .splash-below
   %h2.buffer= t('.featured_title')
   #featured-container
-    .featured-col.center.pull-left
-      .col-title=link_to "mariefaubert.com", "http://www.mariefaubert.com"
-      .featured-image=link_to image_tag('featured/marie-faubert.png'), "http://www.mariefaubert.com"
-    .featured-col.center.pull-left
-      .col-title=link_to "nayezpaspeur.ca", "http://www.nayezpaspeur.ca/blog/"
-      .featured-image=link_to image_tag('featured/nayez-pas-peur.png'), "http://www.nayezpaspeur.ca/blog/"
-    .featured-col.center.pull-left
-      .col-title=link_to "justia.com", "http://www.justia.com"
-      .featured-image=link_to image_tag('featured/justia.png'), "http://www.justia.com"
+    %span.featured-image=link_to image_tag('featured/marie-faubert-screenshot.png'), "http://www.mariefaubert.com"
+    %span.featured-image=link_to image_tag('featured/nayez-pas-peur-screenshot.png'), "http://www.nayezpaspeur.ca/blog/"
     .clear

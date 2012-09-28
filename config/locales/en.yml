@@ -283,8 +283,10 @@ en:
       read_more: "Learn more..."
       fb_share_title: "25c: The best way to tip online as little as 25 cents."
       fb_share_description: "Supporting creators. One click, one quarter."
-      works_with: "25c Works With:"
-      featured_title: "25c in Action:"
+      works_with: "25c works with:"
+      and_more: "...and many more:"
+      featured_title: "25c in action:"
+      any_website: "Any Website"
     
     not_found:
       title: Page Not Found
@@ -320,6 +322,7 @@ en:
       fees: Fees
       terms: Terms
       privacy: Privacy
+      copyright: "&copy; 25c Inc. 2012"
     mailer:
       recipient: "This message was sent to: %{recipient}"
     sign_in_form:

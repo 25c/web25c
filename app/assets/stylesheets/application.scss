@@ -320,12 +320,11 @@ ul#footer-nav, ul#footer-nav > li > a {
 
 #splash-side-text {
   float: right;
-  margin-top: 10px;
   width: 480px;
 }
 
 #splash-side-text p {
-  margin-bottom: 12px;
+  margin-bottom: 2px;
   font-size: 22px;
 //  color: #4d658d;
 }
@@ -339,17 +338,22 @@ ul#footer-nav, ul#footer-nav > li > a {
 #splash-button-title {
   font-size: 22px;
   margin-bottom: 10px;
+  line-height: 1.2em;
 }
 
 #splash-button {
   width: 180px;
 }
 
+#splash-button img {
+  width: 100px;
+}
+
 #splash-tooltip {
   position: absolute;
-  top: 105px;
+  top: 120px;
   left: 180px;
-  width: 228px;
+  width: 178px;
   margin-right: 10px;
   padding: 10px;
   background-color: white; 
@@ -357,6 +361,8 @@ ul#footer-nav, ul#footer-nav > li > a {
   @include radius(5px);
   @include box-shadow(0, 5px, 10px, rgba(0, 0, 0, 0.2));
   background-clip: padding-box;
+  font-size: 13px;
+  text-align: left;
 }
 
 #splash-tooltip-share {
@@ -400,7 +406,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 //  color: #f26422;
 //  font-weight: bold;
   padding: 12px 20px 8px 20px;
-  margin: 20px 0 0 0;
+  margin: 30px 0 0 0;
   font-size: 22px;
 //  width: 400px;
 }
@@ -421,7 +427,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 .splash-below p {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 //  font-size: 22px;
 }
 
@@ -447,18 +453,18 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #featured-container {
-  margin: 0 20px;
+//  margin: 0 20px;
 }
 
 .featured-col {
   float: left;
-  width: 240px;
-  margin: 0px 19px 40px 19px;
+  width: 400px;
 }
 
 .featured-image img {
-  width: 200px;
+  width: 400px;
   border: 1px solid #d5dfe3;
+  margin: 0 16px;
 }
 
 .featured-text {
@@ -466,8 +472,38 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #supported-blogs img {
-  height: 32px;
-  margin: 10px 40px;
+  height: 48px;
+  margin: 10px 20px;
+}
+
+.example-container {
+  margin-bottom: 40px;
+}
+
+.example-container .title-col {
+  width: 300px;
+}
+
+.example-container .example-title {
+  margin-top: 70px;
+  margin-left: 40px;
+  font-size: 24px;
+  text-align: center;
+  line-height: 46px;
+}
+
+.example-container .example-title img {
+  width: 200px;
+}
+
+.example-container .screenshot-col {
+  width: 500px;
+  margin-right: 60px;
+}
+
+.example-container .screenshot-col img {
+  width: 500px;
+  border: 1px solid #d5dfe3;
 }
 
 
