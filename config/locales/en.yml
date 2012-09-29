@@ -107,8 +107,8 @@ en:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
       receive_pledges: 
-        title: Create a pledge drive
-        subtitle: "In three simple steps, you have set up your own pledge drive to collect tips as small as 25 cents:"
+        title: Get Your Own +25c Button/Link
+        subtitle: "In three simple steps, you will be set up to collect tips as small as 25 cents:"
         short_url_title: 25c Short URL
         platform: Platform
         javascript: JavaScript
@@ -136,11 +136,11 @@ en:
         round-large: Large Round
         icon-text: With Text
         
-        describe_cause_title: "Describe what you are collecting funds for and who they go to:"
-        button_title_label: "You ask: Pledge 25c for"
-        enter_title: (your cause)
+        describe_cause_title: "Tell people a bit about yourself:"
+        button_title_label: "Pledge 25c for"
+        enter_title: (purpose)
         button_description_label: "Description:"
-        enter_description: (describe what the pledge drive is about)
+        enter_description: (describe why people should give you tips)
         set_button_info: Continue
         button_info_url_label: "Optional URL:"
         enter_info_url: (URL to a webpage with more info about your cause)
@@ -149,7 +149,7 @@ en:
         describe_user_title: "Provide some information about yourself:"
         user_picture_label: "Your photo:"
         user_nickname_label: "Your user nickname:"
-        user_pledge_name_label: "Who the funds go to:"
+        user_pledge_name_label: "Your name:"
         upload_picture: Upload
         picture_uploading: Picture uploading...
         picture_link: "Use this picture:"
@@ -159,7 +159,7 @@ en:
         nickname_taken: That nickname has been taken by another user. Please choose another and try again.
         nickname_blank: Please choose a non-blank nickname.
         
-        choose_platform_title: "Where do you want to embed the 25c Button/Link?"
+        choose_platform_title: "Where do you want to embed the +25c Button/Link?"
         website: "Website"
         website: "Your website"
         choose_button_title: "Choose a look for your +25c Button:"
@@ -256,35 +256,35 @@ en:
     index:
       title: 25c - tips online as small as 25 cents.
       meta_description: 25c is the best way to tip online as little as 25 cents.
-      title_top: Small Change for Big Change
-      button_title: "For Blogs, Web:<BR> <b>Your +25c Button</b>"
+      title_top: Put 25c Behind Your 'Like'...Or More.
+      button_title: "For Blogs, Web:<BR> <b>Embed Your Own +25c Button</b>"
       link_title_1: "For Twitter, Pinterest, Youtube:"
-      link_title_2: "<b>Your Tip.25c.com Link</b>"
+      link_title_2: "<b>Add a Tip.25c.com Link</b>"
       link_text: tip.25c.com/YOU
       pledge_to: Pledge 25c to
       cause: YOUR CAUSE
       share: "Share:"
       set_up: Get Your Own 25c Button/Link
-      explain_p1: "Maximize your tips received through:"
-      explain_p2: "+ Tips as small as <b>25 cents</b>"
-      explain_p3: "+ One-click pledges as easy as a 'Like'"
-      explain_p4: "+ Collecting pledges first, payment later"
-      explain_p5: "+ Tools to reach out to your supporters"
-      explain_p6: "+ 25c being trusted across the web."
+      explain_p1: "Maximally supporting creators through:"
+      explain_p2: "+ Tips as small as <b>25 cents</b>."
+      explain_p3: "+ One-click pledges as easy as a 'Like'."
+      explain_p4: "+ Collect pledges first, payment later."
+      explain_p5: "+ Trusted login across the web."
+      explain_p6: "+ Low fees."
       publisher_title: "Creating a blog, Youtube, Pinterest board?"
-      publisher_p1: "Now you can enable your fans to support you directly."
-      publisher_p2: "Embed your own +25c Button or tip.25c.com Link."
-      publisher_p3: "Collect pledges in the easiest way possible for your fans (without requiring them to immediately pay) and process donations as small as 25 cents all the way into your bank account."
+      publisher_p1: "Now your fans can support directly."
+      publisher_p2: "Small donations from lots of people add up."
+      publisher_p3: "Accumulate pledges in the simplest way (without requiring immediate payment). Process donations as small as 25 cents all the way into your bank account."
       pledger_title: "See something you appreciate?"
-      pledger_p1: "Click the +25c Button/Link to show your gratuity."
-      pledger_p2: "Pledge now, pay later.  (You may undo pledges until you pay.)"
-      pledger_p3: "Make forty 25c pledges at your leisure. Then fund them all through a credit card payment."
+      pledger_p1: "Click +25c to show your gratuity!"
+      pledger_p2: "Each click pledges 25 cents.  Triple-click to tip larger amounts."
+      pledger_p3: "Pledge now, pay later.  (Undo pledges any time until you pay.)"
       pledger_p4: 
       read_more: "Learn more..."
       fb_share_title: "25c: The best way to tip online as little as 25 cents."
       fb_share_description: "Supporting creators. One click, one quarter."
-      works_with: "25c works with:"
-      and_more: "...and many more:"
+      works_with: "25c Works With:"
+      and_more: "...And Many More:"
       featured_title: "25c in action:"
       any_website: "Any Website"
     
@@ -298,7 +298,7 @@ en:
       admin: "Admin Pages:"
       dashboard: Dashboard
     header:
-      tagline: "The best way to tip online."
+      tagline: "The best way to tip online as little as 25 cents."
       home: Home
       about: About
       blog: Blog
