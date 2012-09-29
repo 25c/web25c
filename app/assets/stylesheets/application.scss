@@ -481,6 +481,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 .example-container .title-col {
+  float: left;
   width: 300px;
 }
 
@@ -497,6 +498,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 .example-container .screenshot-col {
+  float: right;
   width: 500px;
   margin-right: 60px;
 }
