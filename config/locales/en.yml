@@ -238,6 +238,12 @@ en:
         request_payout: When you have reached a good number of pledges, set up your account to receive pay-outs.
         enhance_profile: Finally, %{link} and don't forget to make 25c pledges yourself on a website near you!
         enhance_profile_link: enhance your 25c.com profile page
+        share_revenue_title: "Advanced feature: Share tips received through your button"
+        share_amount: "Amount to share:"
+        share_email: "Share with:"
+        share_email_description: "We will send an email to let them know you are sharing tips with them."
+        share_confirm: "Confirm"
+        invalid_email: "Please enter a valid e-mail address"
       get_button:
         title: Get your +25c Button
         subtitle: "Follow these easy steps to get your +25c button code:"

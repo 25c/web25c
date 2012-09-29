@@ -59,6 +59,7 @@ module Web25c
     # jQuery dataTables plugin for table functions
     config.assets.precompile += ['jquery.dataTables.min.js']
     config.assets.precompile += ['paging.js']
+    config.assets.precompile += ['verify-email.js']
     
     # sprintf implementation
     config.assets.precompile += ['sprintf-0.6.js']
