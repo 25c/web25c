@@ -1,32 +1,60 @@
-%h3#donations-title.table-title
-  = t('users.show.tips_title')
-.mobile-clicks-container
-  - if @click_sets.length == 0
-    .click-container
-      .field-container= t('users.show.no_pledges_given')
+- if @clicks_received.length > 0
+  %h3#donations-title.table-title
+    = t('home.dashboard.index.tips_received')
+  .mobile-clicks-container
+    - @clicks_received.each do |set|
+      .click-container
+        .field-container
+          .field-title= t('home.dashboard.index.amount')
+          .field-value #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+          .clear
 
-  - @click_sets.each do |set|
-    .click-container
-      .field-container
-        .field-title= t('users.show.amount')
-        .field-value #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
-        .clear
+        .field-container
+          .field-title= t('home.dashboard.index.clicker')
+          - if set[1].button.user.profile_url.blank?
+            .field-value= set[1].button.user.display_name
+            - else
+            .field-value= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
+          .clear
 
-      .field-container
-        .field-title= t('home.dashboard.index.provider')
-        - if set[1].button.user.profile_url.blank?
-          .field-value= set[1].button.user.display_name
-          - else
-          .field-value= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
-        .clear
+        .field-container
+          .field-title= t('home.dashboard.index.referrer')
+          .field-value
+            - if set[1].referrer.blank?
+              = t('home.dashboard.index.no_referrer')
+            - elsif set[1].referrer.include?(request.host)
+              = link_to t('home.dashboard.index.profile_link', :provider => set[1].button.user.display_name), set[1].referrer, :target => "_blank"
+            - else
+              = link_to set[1].referrer, set[1].referrer, :target => "_blank"
+          .clear
+          
+          
+- if @clicks_given.length > 0
+  %h3#donations-title.table-title
+    = t('home.dashboard.index.tips_given')
+  .mobile-clicks-container
+    - @clicks_given.each do |set|
+      .click-container
+        .field-container
+          .field-title= t('home.dashboard.index.amount')
+          .field-value #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+          .clear
 
-      .field-container
-        .field-title= t('users.show.referrer')
-        .field-value
-          - if set[1].referrer.blank?
-            = t('users.show.no_referrer')
-          - elsif set[1].referrer.include?(request.host)
-            = link_to t('users.show.profile_link', :provider => set[1].button.user.display_name), set[1].referrer, :target => "_blank"
-          - else
-            = link_to set[1].referrer, set[1].referrer, :target => "_blank"
-        .clear
+        .field-container
+          .field-title= t('home.dashboard.index.provider')
+          - if set[1].button.user.profile_url.blank?
+            .field-value= set[1].button.user.display_name
+            - else
+            .field-value= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
+          .clear
+
+        .field-container
+          .field-title= t('home.dashboard.index.referrer')
+          .field-value
+            - if set[1].referrer.blank?
+              = t('home.dashboard.index.no_referrer')
+            - elsif set[1].referrer.include?(request.host)
+              = link_to t('home.dashboard.index.profile_link', :provider => set[1].button.user.display_name), set[1].referrer, :target => "_blank"
+            - else
+              = link_to set[1].referrer, set[1].referrer, :target => "_blank"
+          .clear
