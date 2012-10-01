@@ -229,7 +229,7 @@ en:
         share_twitter: Share on Twitters
         share_email: Email
         share_email_subject: I just joined 25c!
-        share_email_body: Please click the link above to check out my 25c profile and support my cause with micro-donations.
+        share_email_body: Please click the link to give a tip on my 25c profile.
         share_cause_note_p1: "Make sure to embed the +25c Button where people can see it."
         share_cause_note_p2: "Embed as many +25c Buttons as you like – you may add more at any time."
         view_dashboard_title: View your stats and collections
@@ -256,7 +256,7 @@ en:
     index:
       title: 25c - tips online as small as 25 cents.
       meta_description: 25c is the best way to tip online as little as 25 cents.
-      title_top: Put 25c Behind Your 'Like'!
+      title_top: Making Micro-Philanthropy Happen
       button_title: "For Blogs, Podcasts:<BR> <b>Embed Your Own +25c Button</b>"
       link_title_1: "For Twitter, Pinterest, Youtube:<br>"
       link_title_2: "<b>Add a Tip.25c.com Link</b>"
@@ -265,18 +265,18 @@ en:
       cause: YOUR CAUSE
       share: "Share:"
       set_up: Get Your Own 25c Button/Link
-      explain_p1: "Maximally supporting creators through:"
-      explain_p2: "+ Tips as small as <b>25 cents</b>."
-      explain_p3: "+ One-click pledges as easy as a 'Like'."
-      explain_p4: "+ Easy pledging first, payment overhead later."
-      explain_p5: "+ Trusted login across the web."
-      explain_p6: "+ Low fees."
-      publisher_title: "Publishing a blog, Youtube, Pinterest board?"
-      publisher_p1: "Enable your fans to support directly!"
+      explain_p1: "Support cool stuff:"
+      explain_p2: "+ Tip artists, bloggers, creators, anybody!"
+      explain_p3: "+ Give as little as <b>25 cents</b>."
+      explain_p4: "+ As easy as clicking 'Like.'"
+      explain_p5:
+      explain_p6: 
+      publisher_title: "Publishing a blog, Youtube, podcast?"
+      publisher_p1: "Let your fans support you directly!"
       publisher_p2: "Gratuities from lots of people add up."
-      publisher_p3: "Build a direct relationship with your best users that's based on what they value (rather than e.g. what an advertiser values)."
+      publisher_p3: "Build a direct relationship with people who love what you are doing."
       pledger_title: "See something you appreciate?"
-      pledger_p1: "Click +25c to support what you value and show your gratuity!"
+      pledger_p1: "Click +25c to support what you value!"
       pledger_p2: "Each click pledges 25 cents.  Hold-click or edit number to tip larger amounts."
       pledger_p3: "Pledge now, pay later.  (Review and possibly cancel pledges before you pay.)"
       pledger_p4: 
@@ -353,12 +353,12 @@ en:
       add_project_content: "Add an image or video to your pledge purpose:"
       save_video: Link Pledge Youtube
       pledge_to: Pledge 25c to %{name}
-      enter_button_title: Name the purpose of the pledge (who/what this is for)
-      enter_button_description: "Describe your pledge: "
+      enter_button_title: Name the purpose of the tips
+      enter_button_description: "Describe what the tips are for:"
       remove_video: Remove Video
       remove_button_picture: Remove Image
-      upload_button_picture: Upload Pledge Image
-      choose_youtube_video: "Or Show a Pledge Video from Youtube: "
+      upload_button_picture: Upload Image
+      choose_youtube_video: "Or Show a Video from Youtube: "
       no_edit: See your profile as other users see it
       tips_title: "25c Pledges Made:"
       amount: "Amount"
@@ -415,7 +415,7 @@ en:
       done: Close
       view_pledges: "Go to %{link} to view or undo 25c pledges you made."
       view_pledges_link: 25c.com
-      new_welcome: "Congratulations! You are now ready to make one-click 25-cent micro-donations."
+      new_welcome: "Congratulations! You are now ready to give one-click tips."
       new_p1: Click +25c to pledge 25 cents. 
       new_p2: "Make forty 25c pledges at your leisure. Fund them later on %{home_link}."
       new_undo: "Feel free to undo 25c pledges any time until you paid."
