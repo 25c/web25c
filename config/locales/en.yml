@@ -78,8 +78,8 @@ en:
         clicker: Pledged By
         share: Share
         payout: Request Payout
-        pledge_message: Pledge Message
-        pledge_message_note: Write a custom message to people that have unfunded pledges to you.
+        pledge_message: Send Reminder
+        pledge_message_note: Send a custom message to supporters who have yet to fund their pledge to you.
         no_referrer: None
         profile_link: "%{provider}'s Profile"
         no_referrer: None
@@ -263,9 +263,9 @@ en:
     index:
       title: 25c - tips online as small as 25 cents.
       meta_description: 25c is the best way to tip online as little as 25 cents.
-      title_top: Put 25c Behind Your 'Like'...Or More.
+      title_top: Put 25c Behind Your 'Like'!
       button_title: "For Blogs, Web:<BR> <b>Embed Your Own +25c Button</b>"
-      link_title_1: "For Twitter, Pinterest, Youtube:"
+      link_title_1: "For Twitter, Pinterest, Youtube:<br>"
       link_title_2: "<b>Add a Tip.25c.com Link</b>"
       link_text: tip.25c.com/YOU
       pledge_to: Pledge 25c to
@@ -275,17 +275,17 @@ en:
       explain_p1: "Maximally supporting creators through:"
       explain_p2: "+ Tips as small as <b>25 cents</b>."
       explain_p3: "+ One-click pledges as easy as a 'Like'."
-      explain_p4: "+ Collect pledges first, payment later."
+      explain_p4: "+ Easy pledging first, payment overhead later."
       explain_p5: "+ Trusted login across the web."
       explain_p6: "+ Low fees."
-      publisher_title: "Creating a blog, Youtube, Pinterest board?"
-      publisher_p1: "Now your fans can support directly."
-      publisher_p2: "Small donations from lots of people add up."
-      publisher_p3: "Accumulate pledges in the simplest way (without requiring immediate payment). Process donations as small as 25 cents all the way into your bank account."
+      publisher_title: "Publishing a blog, Youtube, Pinterest board?"
+      publisher_p1: "Enable your fans to support directly!"
+      publisher_p2: "Gratuities from lots of people add up."
+      publisher_p3: "Build a direct relationship with your best users that's based on what they value (rather than e.g. what an advertiser values)."
       pledger_title: "See something you appreciate?"
-      pledger_p1: "Click +25c to show your gratuity!"
-      pledger_p2: "Each click pledges 25 cents.  Triple-click to tip larger amounts."
-      pledger_p3: "Pledge now, pay later.  (Undo pledges any time until you pay.)"
+      pledger_p1: "Click +25c to support what you value and show your gratuity!"
+      pledger_p2: "Each click pledges 25 cents.  Hold-click or edit number to tip larger amounts."
+      pledger_p3: "Pledge now, pay later.  (Review and possibly cancel pledges before you pay.)"
       pledger_p4: 
       read_more: "Learn more..."
       fb_share_title: "25c: The best way to tip online as little as 25 cents."
@@ -305,7 +305,7 @@ en:
       admin: "Admin Pages:"
       dashboard: Dashboard
     header:
-      tagline: "The best way to tip online as little as 25 cents."
+      tagline: "The best way to tip online -- as little as 25 cents."
       home: Home
       about: About
       blog: Blog
