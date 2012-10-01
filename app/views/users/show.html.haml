@@ -191,7 +191,7 @@
           #youtube-button.btn= t('.save_video')
         #no-edit= link_to(t('.no_edit'), '?edit=no', :target => '_blank')
 
-- if @user.show_donations and @click_sets.length > 0
+- if @user.show_donations
   - if mobile_device?
     = render :partial => "donations_mobile"
   - else

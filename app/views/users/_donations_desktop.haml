@@ -1,33 +1,69 @@
-%h3.table-title
-  = t('users.show.tips_title')
-.table-wrapper
-  %table#profile-clicks-table.clicks-table.table.table-condensed.table-striped
-    %thead
-      %tr
-        %th.click-amount= t('users.show.amount')
-        %th.click-provider= t('users.show.provider')
-        %th.click-referrer= t('users.show.referrer')
-    %tbody
-      - if @click_sets.length > 0
-        - @click_sets.each do |set|
-          %tr
-            %td.click-amount #{set[0]}
-            - if set[1].button.user.profile_url.blank?
-              %td.click-user= set[1].button.user.display_name
-            - else
-              %td.click-user= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
-            - if set[1].referrer.blank?
-              %td.click-referrer= t('users.show.no_referrer')
-            - elsif set[1].referrer.include?(request.host)
-              %td.click-referrer
-                = link_to t('users.show.profile_link', 
-                  :provider => set[1].button.user.display_name),
-                  set[1].referrer, :target => "_blank"
-            - else
-              %td.click-referrer= link_to set[1].referrer, set[1].referrer, 
-                :target => "_blank"
-      - else
+- if @clicks_received.length
+  %h3.table-title
+    = t('home.dashboard.index.tips_received')
+  .table-wrapper
+    %table#profile-clicks-table.clicks-table.table.table-condensed.table-striped
+      %thead
         %tr
-          %td.click-amount 0
-          %td.click-user= t('users.show.no_clicks')
-          %td.click-referrer
+          %th.click-amount= t('home.dashboard.index.amount')
+          %th.click-provider= t('home.dashboard.index.clicker')
+          %th.click-referrer= t('home.dashboard.index.referrer')
+      %tbody
+        - if @clicks_received.length > 0
+          - @clicks_received.each do |set|
+            %tr
+              %td.click-amount #{set[0]}
+              - if set[1].button.user.profile_url.blank?
+                %td.click-user= set[1].button.user.display_name
+              - else
+                %td.click-user= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
+              - if set[1].referrer.blank?
+                %td.click-referrer= t('home.dashboard.index.no_referrer')
+              - elsif set[1].referrer.include?(request.host)
+                %td.click-referrer
+                  = link_to t('home.dashboard.index.profile_link', 
+                    :provider => set[1].button.user.display_name),
+                    set[1].referrer, :target => "_blank"
+              - else
+                %td.click-referrer= link_to set[1].referrer, set[1].referrer, 
+                  :target => "_blank"
+        - else
+          %tr
+            %td.click-amount 0
+            %td.click-user= t('home.dashboard.index.no_clicks')
+            %td.click-referrer
+
+- if @clicks_given.length
+  %h3.table-title
+    = t('home.dashboard.index.tips_given')
+  .table-wrapper
+    %table#profile-clicks-table.clicks-table.table.table-condensed.table-striped
+      %thead
+        %tr
+          %th.click-amount= t('home.dashboard.index.amount')
+          %th.click-provider= t('home.dashboard.index.provider')
+          %th.click-referrer= t('home.dashboard.index.referrer')
+      %tbody
+        - if @clicks_given.length > 0
+          - @clicks_given.each do |set|
+            %tr
+              %td.click-amount #{set[0]}
+              - if set[1].button.user.profile_url.blank?
+                %td.click-user= set[1].button.user.display_name
+              - else
+                %td.click-user= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
+              - if set[1].referrer.blank?
+                %td.click-referrer= t('home.dashboard.index.no_referrer')
+              - elsif set[1].referrer.include?(request.host)
+                %td.click-referrer
+                  = link_to t('home.dashboard.index.profile_link', 
+                    :provider => set[1].button.user.display_name),
+                    set[1].referrer, :target => "_blank"
+              - else
+                %td.click-referrer= link_to set[1].referrer, set[1].referrer, 
+                  :target => "_blank"
+        - else
+          %tr
+            %td.click-amount 0
+            %td.click-user= t('home.dashboard.index.no_clicks')
+            %td.click-referrer
