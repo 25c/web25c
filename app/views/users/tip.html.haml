@@ -70,11 +70,11 @@
             %p= raw t('.new_welcome', :account => t('.' + @new_account))
             %p= t('.new_p1')
             #tip-button-holder.center
-              %a.tip-25c-button{ :href => "/tip/#{@button.uuid}", 
+              %a.tip-25c-button{ :href => @button.user.profile_url, 
+              :'data-id' => @button_uuid
               :'data-size' => "btn-large",
-              :'data-user' => @button.user.display_name,
-              :'data-profile' => @button.user.profile_url }
-                #{@button.title}
+              :'data-user' => @button.user.display_name }
+                = @button.title
               :javascript
                 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
                 if(!d.getElementById(id)){js=d.createElement(s);js.id=id;

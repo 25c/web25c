@@ -1,4 +1,4 @@
-- if @clicks_received.length
+- if @clicks_received.length > 0
   %h3.table-title
     = t('home.dashboard.index.tips_received')
   .table-wrapper
@@ -33,7 +33,7 @@
             %td.click-user= t('home.dashboard.index.no_clicks')
             %td.click-referrer
 
-- if @clicks_given.length
+- if @clicks_given.length > 0
   %h3.table-title
     = t('home.dashboard.index.tips_given')
   .table-wrapper

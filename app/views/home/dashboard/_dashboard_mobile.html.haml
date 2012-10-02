@@ -93,8 +93,11 @@
 
       .field-container
         .field-title= t('home.dashboard.index.clicker')
+      - if set[1].button.user.profile_url.blank?
         .field-value= set[1].user.display_name
-        .clear
+      - else
+        .field-value= link_to set[1].user.display_name, set[1].user.profile_url,  :target => "_blank"
+      .clear
 
       .field-container
         .field-title= t('home.dashboard.index.referrer')
@@ -139,8 +142,11 @@
 
       .field-container
         .field-title= t('home.dashboard.index.clicker')
+      - if set[1].button.user.profile_url.blank?
         .field-value= set[1].user.display_name
-        .clear
+      - else
+        .field-value= link_to set[1].user.display_name, set[1].user.profile_url,  :target => "_blank"
+      .clear
 
       .field-container
         .field-title= t('home.dashboard.index.referrer')

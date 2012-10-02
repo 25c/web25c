@@ -10,8 +10,10 @@
     %tbody
       - @clicks_given.each do |click|
         %tr
-          %td.click-user= click.button.user.display_name
-          
+          -if click.button.user.profile_url.blank?
+            %td.click-user= click.button.user.display_name
+          - else
+            %td.click-user= link_to click.button.user.display_name, click.button.user.profile_url,  :target => "_blank"
           - if click.referrer.blank?
             %td.click-referrer= t('home.dashboard.index.no_referrer')
           - elsif click.referrer.include?(request.host)
