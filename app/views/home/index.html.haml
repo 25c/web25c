@@ -70,23 +70,23 @@
   %p= raw t('.explain_p2')
   %p= raw t('.explain_p3')
   %p= raw t('.explain_p4')
-  %p= raw t('.explain_p5')
-  %p= raw t('.explain_p6')
+  / %p= raw t('.explain_p5')
+  / %p= raw t('.explain_p6')
   
 .clear
 
 .splash-below
   .splash-col-left
-    .col-title= t('.publisher_title')
-    %p= t('.publisher_p1')
-    %p= t('.publisher_p2')
-    %p= t('.publisher_p3')
+    .col-title= raw t('.publisher_title')
+    %p= raw t('.publisher_p1')
+    %p= raw t('.publisher_p2')
+    %p= raw t('.publisher_p3')
     / %p= t('.publisher_p4')
   .splash-col-right
-    .col-title= t('.pledger_title')
-    %p= t('.pledger_p1')
-    %p= t('.pledger_p2')
-    %p= t('.pledger_p3')
+    .col-title= raw t('.pledger_title')
+    %p= raw t('.pledger_p1')
+    %p= raw t('.pledger_p2')
+    %p= raw t('.pledger_p3')
     / %p= t('.pledger_p4')
     %p.center.learn-more=link_to t('.read_more'), faq_path
   .clear
