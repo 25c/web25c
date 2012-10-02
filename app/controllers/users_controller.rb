@@ -12,11 +12,13 @@ class UsersController < ApplicationController
       if Rails.env.development? or request.subdomain == "tip"
         @is_editable = self.current_user == @user unless params[:edit] == 'no'
         @button = @user.buttons[0]
+        
         clicks = Click.where(:button_id => @user.button_ids).includes(:user).order("created_at DESC").find_all_by_state([ 
           Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
         ])
+        clicks = nil
         @clicks_received = group_clicks(clicks, true, false)
-        
+                
         clicks = @user.clicks.includes(:button => :user).order("created_at DESC").find_all_by_state([
           Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
         ])
