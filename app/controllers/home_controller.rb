@@ -38,10 +38,9 @@ class HomeController < ApplicationController
   end
   
   def about
-    if Rails.env.production?
-      user = User.find_by_email('rmr@25c.com')
-    else
-      # dev placeholder for about page button
+    user = User.find_by_email('rmr@25c.com')
+    unless Rails.env.production? or user
+      # dev / staging - if no rmr, then use first user found
       user = User.first
     end
     @button = user.buttons[0]

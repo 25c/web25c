@@ -1,12 +1,10 @@
 %h3.table-title
   = t('home.dashboard.index.tips_given_title')
-  = @clicks_given_total.to_s + ' '
-  ($#{"%.2f" % (@clicks_given_total.to_f / 4)})
+  $#{"%.2f" % (@clicks_given_total.to_f / 4)}
 %p
   %a= link_to t('home.dashboard.index.payment'), home_payment_path, :class => 'btn dashboard-action'
   = t('home.dashboard.index.not_funded')
-  = @clicks_unfunded_total.to_s + ' '
-  ($#{"%.2f" % (@clicks_unfunded_total.to_f / 4)})
+  $#{"%.2f" % (@clicks_unfunded_total.to_f / 4)}
 %p.buffer
   %a= link_to t('home.dashboard.index.undo_clicks'), home_undo_clicks_path, :class => 'btn dashboard-action'
   = t('home.dashboard.index.funded_note')
@@ -27,7 +25,7 @@
       - @clicks_given.each do |set|
         %tr
           %td= set[0]
-          %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+          %td.click-amount $#{"%.2f" % (set[0].to_f / 4)}
           -if set[1].button.user.profile_url.blank?
             %td.click-user= set[1].button.user.display_name
           - else
@@ -65,8 +63,7 @@
 
 %h3.table-title
   = t('home.dashboard.index.tips_received_title')
-  = @clicks_received_total.to_s + ' '
-  ($#{"%.2f" % (@clicks_received_total.to_f / 4)})
+  $#{"%.2f" % (@clicks_received_total.to_f / 4)}
 %p
   %a= link_to t('home.dashboard.index.payout'), home_payout_path, :class => 'btn'
 %p.buffer
@@ -89,7 +86,7 @@
       - @clicks_received.each do |set|
         %tr
           %td= set[0]
-          %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+          %td.click-amount $#{"%.2f" % (set[0].to_f / 4)}
           %td.click-user= set[1].user.display_name
           - if set[1].referrer.blank?
             %td.click-referrer= t('home.dashboard.index.no_referrer')
@@ -113,8 +110,7 @@
 
 %h3.table-title
   = t('home.dashboard.index.tips_referred_title')
-  = @clicks_referred_total.to_s + ' '
-  ($#{"%.2f" % (@clicks_referred_total.to_f / 4)})
+  $#{"%.2f" % (@clicks_referred_total.to_f / 4)}
 .table-wrapper
   %table#clicks-referred.clicks-table.table.table-condensed.table-striped
     %thead
@@ -132,7 +128,7 @@
       - @clicks_referred.each do |set|
         %tr
           %td= set[0]
-          %td.click-amount #{set[0]} ($#{"%.2f" % (set[0].to_f / 4)})
+          %td.click-amount $#{"%.2f" % (set[0].to_f / 4)}
           %td.click-user= set[1].user.display_name
           - if set[1].referrer.blank?
             %td.click-referrer= t('home.dashboard.index.no_referrer')

@@ -187,6 +187,9 @@ $(document).ready(function(){
   
   // Save user info
   $('#set-user-info').click(function() {
+    
+    $(this).attr('disabled', 'disabled');
+    
     // get user pledge name
     userPledgeName = $('#user-pledge-name').val();
         
@@ -221,6 +224,10 @@ $(document).ready(function(){
     }
   });
   
+  $('#describe-cause input').keypress(function() {
+    $('#set-user-info[disabled="disabled"]').removeAttr('disabled');
+  });
+  
   $('#user-about').focusout(function() {
     $('#set-user-info').click();
   });
@@ -236,6 +243,7 @@ $(document).ready(function(){
       $('#current-picture-link>img').attr('src', newUserPictureUrl);
     }
     $('#upload-user-picture').unbind('click').click(function() {
+      $('#set-user-info').removeAttr('disabled');
       $user_input.click();
       $user_input.change(function() {
         $user_form.submit();
@@ -267,6 +275,40 @@ $(document).ready(function(){
     $('#upload-picture-fields #current-picture-checkbox').click();
   });
   
+  // Save share info and send email
+  $('#set-share-info').click(function() {
+    $('#set-share-info').attr('disabled', 'disabled');
+    shareAmount = $('#share-amount').val();
+    shareEmail = $('#share-email').val().replace(/\s+/g, ' ');
+    if (isValidEmailAddress(shareEmail)) {
+      var updates = { share_email: shareEmail, share_amount: shareAmount } ;
+      $.ajax({
+        type: "PUT",
+        url: shareEmailUrl,
+        data: JSON.stringify(updates),
+        contentType: 'application/json',
+        dataType: 'json',
+        success: function() {
+          // success callback
+        },
+        error: function() {
+          // error callback
+        }
+      });
+      showNextStep(6);
+    } else {
+      alert(invalidEmail);
+    }
+  });
+  
+  $('#share-revenue input').keypress(function() {
+    $('#set-share-info[disabled="disabled"]').removeAttr('disabled');
+  });
+  
+  $('#share-revenue select').change(function() {
+    $('#set-share-info[disabled="disabled"]').removeAttr('disabled');
+  });
+  
   // Initialization
   var profileUrl = getProfileUrl();
   $('#profile-link > a').attr('href', profileUrl).text(profileUrl);
@@ -280,7 +322,3 @@ $(document).ready(function(){
   }
 
 });
-
-
-
-

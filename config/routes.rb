@@ -55,6 +55,9 @@ Web25c::Application.routes.draw do
       match 'payment/failure' => 'account#payment_failure', :as => :payment_failure
       match 'payout' => 'account#payout', :as => :payout
       match 'create_payment' => 'account#create_payment', :as => :create_payment, :via => :post
+      
+      # Revenue Sharing
+      match 'share_email' => 'buttons#share_email', :as => :share_email, :via => :put
     end
 
     match 'home/account' => 'users#edit', :as => :home_account, :via => :get

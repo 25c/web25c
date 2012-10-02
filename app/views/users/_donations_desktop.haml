@@ -12,7 +12,7 @@
         - if @clicks_received.length > 0
           - @clicks_received.each do |set|
             %tr
-              %td.click-amount #{set[0]}
+              %td.click-amount $#{"%.2f" % (set[0].to_f / 4)}
               - if set[1].button.user.profile_url.blank?
                 %td.click-user= set[1].button.user.display_name
               - else
@@ -47,7 +47,7 @@
         - if @clicks_given.length > 0
           - @clicks_given.each do |set|
             %tr
-              %td.click-amount #{set[0]}
+              %td.click-amount $#{"%.2f" % (set[0].to_f / 4)}
               - if set[1].button.user.profile_url.blank?
                 %td.click-user= set[1].button.user.display_name
               - else

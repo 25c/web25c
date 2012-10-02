@@ -53,4 +53,18 @@ class Home::ButtonsController < Home::HomeController
     @button = self.current_user.buttons[0]
   end
   
+  def share_email
+    share_email = params[:share_email]
+    share_amount = params[:share_amount].to_i
+    puts "****"
+    puts share_amount
+    puts params.inspect
+    if not self.current_user.blank? and not share_email.blank? and share_amount > 0
+      UserMailer.tip_share(self.current_user, share_email, share_amount).deliver
+    end
+    respond_to do |format|
+      format.json { render json: true, head: :ok }
+    end    
+  end
+  
 end
