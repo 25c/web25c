@@ -33,11 +33,11 @@
     %h3.step-title= t('.describe_cause_title')
     .step-body
     
-      .label-column
-        %label= t('.button_title_label')
-      .input-column
-        %input#button-title{ :type => 'text', :name => 'button[title]',
-          :value => @button.title.blank? ? t('.enter_title') : @button.title }
+      / .label-column
+      /   %label= t('.button_title_label')
+      / .input-column
+      /   %input#button-title{ :type => 'text', :name => 'button[title]',
+      /     :value => @button.title.blank? ? t('.enter_title') : @button.title }
 
       - if @user.nickname.blank?
         .clear.label-column

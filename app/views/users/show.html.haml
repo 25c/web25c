@@ -197,3 +197,11 @@
   - else
     = render :partial => "donations_desktop"
 .clear
+
+%h3= t('.button_code_title')
+%p= t('.button_code_description', :name => @user.display_name)
+%pre#button-code-block
+  :escaped
+    <a href="#{@user.profile_url}" class="tip-25c-button" target="_blank" data-id="@button.uuid" data-size="button-large" data-user="#{@user.pledge_name ? @user.pledge_name : @user.display_name}">&nbsp;</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//localhost:5000/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");</script>
+
+

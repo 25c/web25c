@@ -376,6 +376,8 @@ en:
       fb_share_button_title: "I just pledged 25c to %{button_title}!"
       fb_share_user_title: "I just pledged 25c to %{user_name}!"
       fb_share_description: Using 25c to pledge one quarter one click.
+      button_code_title: Button Code
+      button_code_description: "Add the this code to your website or blog to collect tips for %{name}:"
     form:
       title: Update Account Settings
       show_donations: Show pledges on my profile page
