@@ -23,5 +23,5 @@
 = simple_form_for @button, :remote => 'true' , :url => home_update_button_path do |f|
   = f.input :pledge_message, :as => :text, :input_html => {:rows => 10, :value => @button.pledge_message.blank? ? t('.default_message') : @button.pledge_message}
   .form-actions
-    = f.button :submit, :class => 'btn-strong', :value => t('.submit'), :disabled => true
+    = f.button :submit, :class => 'btn-strong', :value => t('.submit')
     %span.form-saved= t('.saved')

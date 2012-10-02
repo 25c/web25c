@@ -12,7 +12,6 @@
   %table#clicks-given.clicks-table.table.table-condensed.table-striped
     %thead
       %tr
-        %th
         %th.click-amount= t('home.dashboard.index.amount')
         %th.click-provider= t('home.dashboard.index.provider')
         %th.click-referrer= t('home.dashboard.index.referrer')
@@ -24,7 +23,6 @@
     %tbody
       - @clicks_given.each do |set|
         %tr
-          %td= set[0]
           %td.click-amount $#{"%.2f" % (set[0].to_f / 4)}
           -if set[1].button.user.profile_url.blank?
             %td.click-user= set[1].button.user.display_name
@@ -73,7 +71,6 @@
   %table#clicks-received.clicks-table.table.table-condensed.table-striped
     %thead
       %tr
-        %th
         %th.click-amount= t('home.dashboard.index.amount')
         %th.click-user= t('home.dashboard.index.clicker')
         %th.click-referrer= t('home.dashboard.index.referrer')
@@ -85,7 +82,6 @@
     %tbody
       - @clicks_received.each do |set|
         %tr
-          %td= set[0]
           %td.click-amount $#{"%.2f" % (set[0].to_f / 4)}
           %td.click-user= set[1].user.display_name
           - if set[1].referrer.blank?
@@ -115,7 +111,6 @@
   %table#clicks-referred.clicks-table.table.table-condensed.table-striped
     %thead
       %tr
-        %th
         %th.click-amount= t('home.dashboard.index.amount')
         %th.click-user= t('home.dashboard.index.clicker')
         %th.click-referrer= t('home.dashboard.index.referrer')
@@ -127,7 +122,6 @@
     %tbody
       - @clicks_referred.each do |set|
         %tr
-          %td= set[0]
           %td.click-amount $#{"%.2f" % (set[0].to_f / 4)}
           %td.click-user= set[1].user.display_name
           - if set[1].referrer.blank?

@@ -11,10 +11,9 @@ $(document).ready(function() {
     'iDisplayLength': 100,
     'sPaginationType': 'bootstrap',
     'bAutoWidth': false,
-    'aaSorting': [[ 1, 'desc' ]],   // start with sorting by first col (date), descending
+    'aaSorting': [[ 0, 'desc' ]],   // start with sorting by amount, descending
     'aoColumns': [                  // define setting for each col
-      {'bVisible': false},          // invisible sortable count col
-      {'sWidth': '100px', 'iDataSort': 0},    // click count - sorting linked to raw number
+      {'sWidth': '100px'},    // click count
       {'sWidth': '120px'},
       {'sWidth': '300px'},
       {'bVisible': false},                    // invisible sortable created_at date col
