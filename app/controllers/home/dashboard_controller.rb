@@ -14,12 +14,12 @@ class Home::DashboardController < Home::HomeController
     
     # LJ hack: correct user balance to match unfunded click count
     # TODO: replace it with a cron job task
-    
-    @user.editing = true
-    @user.balance = -@clicks_unfunded_total
-    @user.save!
-    
-    DATA_REDIS.set "user:#{@user.uuid}", @user.balance
+    # 
+    # @user.editing = true
+    # @user.balance = -@clicks_unfunded_total
+    # @user.save!
+    # 
+    # DATA_REDIS.set "user:#{@user.uuid}", @user.balance
     
     clicks = Click.where(:button_id => @user.button_ids).includes(:user).order("created_at DESC").find_all_by_state([ 
       Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
