@@ -19,16 +19,16 @@ en:
   home:
     account:
       payment:
-        title: Fund Pledges You Have Made
-        given: "You have fewer than forty unfunded 25c pledges (exactly: %{total}) or a total commitment of $%{total_amount}."
-        click_more_p1: "Feel free to make up to forty 25c pledges at your leisure:  Click on other +25 Buttons, or click the same +25c Button multiple times for a pledge of corresponding multiple of 25c's.  (You may undo unfunded 25c pledges any time.)"
-        click_more_p2: "When you have made forty 25c pledges, we will ask you to pay $10."
+        title: Fund 25c Tips You Have Pledged
+        given: "You have less than $10 in unfunded pledges (exactly: $%{total_amount})."
+        click_more_p1: "Feel free to pledge a total of $10 in 25c tips at your leisure: Tip others or tip a larger amount to the same person.  (You may undo unfunded pledges at any time.)"
+        click_more_p2: "When you have pledged $10 or more in 25c tips, we will ask you to fund your pledges."
         dashboard: Go to Dashboard
-        amount: "Payment Amount: $10"
+        amount: "Payment Amount: %{amount}"
       payment_success:
         title: Payment Completed
-        message_p1: Your $10 payment has been successfully processed.
-        message_p2: Thank you for paying $10.
+        message_p1: Your %{amount} payment has been successfully processed.
+        message_p2: Thank you for paying %{amount}.
         message_p3: Greatly appreciated!
       payment_failure:
         title: Payment Error
@@ -36,20 +36,20 @@ en:
         message_p2: Please go back and try again.
       payout:
         title: Request Payout
-        contents: "25c Pledges Received:"
+        contents: "25c Tips Received:"
         payout_amount: "Payout amount"
         dwolla_title: Request payment through Dwolla
         dwolla_email: Dwolla E-mail
         dwolla_email_confirmation: Confirm Dwolla E-mail
         submit: Send Request
-        received_one: You have received one 25c pledge ($0.25), of which %{funded} ($%{funded_amount}) have so far been funded.
-        received_many: You have received %{total} 25c pledges ($%{total_amount}), of which %{funded} ($%{funded_amount}) have so far been funded.
-        too_low_p1: "Once you have reached a good number of <i>funded</i> 25c pledges, get set up to receive pay-outs."
-        too_low_p2: "In order to receive more 25c pledges, consider the following: add more +25 Buttons to more pages in more prominent locations; advertise your pages; tell your friends about your pages on Facebook, Twitter, or email lists.  (25c provides a transactional platform but it is up to you to promote your cause!)"
-        provide_dwolla_email: "We use the service Dwolla to deliver pay-outs with minimal transactional expense.  It is FREE to maintain an account with Dwolla and micro-transactions are FREE on Dwolla.  Please provide and verify your Dwolla Account:"
-        sent: You have been queued for receiving a pay-out of your funded pledges.  You should be receiving the amount within 30 days provided no funder withdraws their funding during this time period.  Please check your Dwolla account.
+        received_one: You have $%{total_amount} in pledges, of which $%{funded_amount} so far are funded 25c tips. (You can use the messaging function on your dashboard to remind pledgers to fund their tips!)
+        received_many: You have $%{total_amount} in pledges, of which $%{funded_amount} so far are funded 25c tips. (You can use the messaging function on your dashboard to remind pledgers to fund their tips!)
+        too_low_p1: "Once you have reached a minimum of $10 in (funded) 25c tips, get set up to receive pay-outs."
+        too_low_p2: "In order to receive more 25c tips, consider the following: add more +25 Buttons to more pages in more prominent locations; advertise your pages; tell your friends about your pages on Facebook, Twitter, or email lists.  (25c provides a transactional platform but it is up to you to promote your cause!)"
+        provide_dwolla_email: "We minimize transactional expense by using ACH payments or Dwolla for delivering pay-outs.  There are no fees for maintaining an account with Dwolla and receiving sub-$10 payments.  If you use Dwolla, we can pay you out quarter by quarter.  If you use ACH, we require a minimum of $10.  Please provide and verify your ACH bank account or Dwolla account information:"
+        sent: You have been queued for receiving a pay-out of your 25c tips.  You should be receiving the amount within 30 days provided no funder withdraws their funding during this time period.  Please check your bank account.
         dashboard: Back to Dashboard
-        use_dwolla: We use the payment network Dwolla to save you money on your pay-outs.
+        use_dwolla: We offer the use of ACH payments or Dwolla to save you money on your pay-outs.
         dwolla_warning: Your Dwolla e-mail is invalid. Please try again.
     dashboard:
       index:
@@ -58,10 +58,10 @@ en:
         get_button: Get Your Own +25c Button
         payment: Fund Pledges
         undo_clicks: Undo Pledges
-        tips_given_title: "25c Pledges Made: "
+        tips_given_title: "25c Pledges Made:"
         tips_received_title: "25c Pledges Received: "
         tips_referred_title: "25c Pledges Referred: "
-        tips_given: 25c Pledges Given
+        tips_given: 25c Pledges Made
         tips_received: 25c Pledges Received
         total: Total
         state: State
@@ -79,21 +79,21 @@ en:
         share: Share
         payout: Request Payout
         pledge_message: Send Reminder
-        pledge_message_note: Send a custom message to supporters who have yet to fund their pledge to you.
+        pledge_message_note: Remind supporters to fund tips they pledged to you.
         no_referrer: None
         profile_link: "%{provider}'s Profile"
         no_referrer: None
-        not_funded: "Unfunded 25c pledges:"
-        funded_note: "You may undo 25c pledges until you paid."
+        not_funded: "Unfunded pledges:"
+        funded_note: "You may undo pledges until you funded them."
         funded: Funded
         to_be: To be
-        no_pledges_given: You have not yet made any 25c pledges.
-        no_pledges_received: You have not received any 25c pledges.  In order to receive 25c pledges, %{profile_link} or %{button_link}.
+        no_pledges_given: You have not yet pledged any 25c tips.
+        no_pledges_received: You have not received any 25c tips.  In order to receive 25c tips, %{profile_link} or %{button_link}.
         no_pledges_profile_link: enhance your 25c.com pledge profile
         no_pledges_button_link: embed a +25c Button
-        no_pledges_referred: "Your sharing your pledge activity has not yet resulted in any 25c pledge(s) being made by others."
-        fb_share_button_title: "I just pledged 25c to %{button_title}!"
-        fb_share_user_title: "I just pledged 25c to %{user_name}!"
+        no_pledges_referred: "Using the Facebook or Twitter icons next to your tips above, share the fact that you made them to refer others to also pledge tips.  This table will list any successful referral you achieved in this way!"
+        fb_share_button_title: "I just tipped %{user_name} using 25c!"
+        fb_share_user_title: "I just tipped %{user_name} using 25c!"
         fb_share_description: Using 25c to pledge one quarter one click.
       undo_clicks:
         title: Undo Pledges
@@ -101,14 +101,14 @@ en:
         confirm_undo: Are you sure you want to undo this pledge?  (Your pledgee will be disappointed!)
         profile_link: "%{provider}'s Profile"
         dashboard: Back to Dashboard
-        no_pledges: You have not given any 25c pledges.
+        no_pledges: You have not pledged any 25c tips.
       
     buttons:
       button_updated: Your button has been updated.
       update_failure: Button update failed. Please try again.
       receive_pledges: 
         title: Get Your Own +25c Button/Link
-        subtitle: "In three simple steps, you will be set up to collect tips as small as 25 cents:"
+        subtitle: "In three simple steps, you will be set up to collect tips online as small as 25 cents:"
         short_url_title: 25c Short URL
         platform: Platform
         javascript: JavaScript
@@ -233,10 +233,10 @@ en:
         share_cause_note_p1: "Make sure to embed the +25c Button where people can see it."
         share_cause_note_p2: "Embed as many +25c Buttons as you like – you may add more at any time."
         view_dashboard_title: View your stats and collections
-        view_dashboard: "Check your %{link} to see who has pledged 25c's to you."
+        view_dashboard: "Check your %{link} to see who has pledged 25c tips to you."
         view_dashboard_link: dashboard
-        request_payout: When you have reached a good number of pledges, set up your account to receive pay-outs.
-        enhance_profile: Finally, %{link} and don't forget to make 25c pledges yourself on a website near you!
+        request_payout: When you have received a good number of pledges, set up your account to receive pay-outs.
+        enhance_profile: Finally, %{link} and don't forget to pledge 25c tips yourself on a website near you!
         enhance_profile_link: enhance your 25c.com profile page
         share_revenue_title: "Advanced feature: Share tips received through your button"
         share_amount: "Share "
@@ -250,7 +250,7 @@ en:
         subtitle: "Follow these easy steps to get your +25c button code:"
       choose_pledge_message:
         title: Choose a Pledge Message
-        instructions: "25c will send reminder messages to people that haven't yet funded their pledges. Enter a custom message for people that have pledged to you:"
+        instructions: "25c will send reminder messages to people that haven't yet funded their pledges. Enter a custom message for people that have pledged 25c tips to you:"
         default_message: "Thank you for supporting my cause.\n\nI noticed that you have not yet funded the pledge you made - any chance you could?\n\nYou can do so at www.25c.com/home/payment\n\nThank you!"
         submit: Save
         saved: Message Saved.
@@ -279,9 +279,9 @@ en:
       explain_p5:
       explain_p6: 
       publisher_title: "Publishing a blog, podcast, video?  Embed +25c!"
-      publisher_p1: "Lay out your superpowered digital tip jar!"
+      publisher_p1: "Create a superpowered digital tip jar!"
       publisher_p2: "Let fans support you directly."
-      publisher_p3: "Reward your top supporters with highlighting and messaging tools provided by 25c."
+      publisher_p3: "Reward your top supporters with 25c's highlighting, badging, and messaging tools."
       pledger_title: "Love an article, podcast, video?  Click +25c!"
       pledger_p1: "Give a tip to directly support its creator."
       pledger_p2: "Each click pledges 25 cents."
@@ -317,7 +317,7 @@ en:
       or: "Or: "
       sign_in: Sign In
       sign_out: Sign Out
-      receive_pledges: Receive 25c Pledges
+      receive_pledges: Receive 25c Tips
       get_button: Get +25c Button Code
       payments: Fund Pledges You Made
       dashboard: Dashboard
@@ -332,7 +332,7 @@ en:
     mailer:
       recipient: "This message was sent to: %{recipient}"
     sign_in_form:
-      works_with: +25c combines a 'Like' with a 25-cent pledge. Pledge now. Pay later.  Undo any 25c pledge until you pay.
+      works_with: Clicking +25c pledges a tip of 25 cents or more. Pledge now, pay later.  You may cancel pledges you made until you fund them.
       agreement_text: "By continuing, you agree to the "
       terms: User Terms
       privacy: "Privacy Policy."
@@ -340,7 +340,7 @@ en:
   users:
     show:
       title: "'s 25c Profile"
-      blank_about: "I use 25c to receive pledges."
+      blank_about: "I use 25c to receive tips online."
       current_user: "This is your profile. "
       change_url: "Click here to change your profile URL."
       support_title: Please click the 25c Button below to contribute to
@@ -353,33 +353,33 @@ en:
       enter_name: Name who the funds go to.
       enter_about: Describe who the funds go to.
       edit_url: Change Profile URL
-      no_clicks: No pledges given yet.
+      no_clicks: No tips given yet.
       button_title_intro: "Click to pledge "
-      button_description_default: "Pledge 25c to show your support."
-      add_project_content: "Add an image or video to your pledge purpose:"
-      save_video: Link Pledge Youtube
-      pledge_to: Pledge 25c to %{name}
-      enter_button_title: Name the purpose of the tips
+      button_description_default: "Click to pledge a 25c tip."
+      add_project_content: "Add an image or video:"
+      save_video: Link Youtube
+      pledge_to: Give a tip to %{name}
+      enter_button_title: Name the purpose for the tips
       enter_button_description: "Describe what the tips are for:"
       remove_video: Remove Video
       remove_button_picture: Remove Image
       upload_button_picture: Upload Image
       choose_youtube_video: "Or Show a Video from Youtube: "
       no_edit: See your profile as other users see it
-      tips_title: "25c Pledges Made:"
+      tips_title: "25c Tips Pledged:"
       amount: "Amount"
-      provider: Pledged To
+      provider: To
       referrer: Link 
       profile_link: "%{provider}'s Profile"
-      share_profile: "Share this page on:"
-      fb_share_button_title: "I just pledged 25c to %{button_title}!"
-      fb_share_user_title: "I just pledged 25c to %{user_name}!"
-      fb_share_description: Using 25c to pledge one quarter one click.
-      button_code_title: Button Code
-      button_code_description: "Add the this code to your website or blog to collect tips for %{name}:"
+      share_profile: "Help raise funds: Share this page on:"
+      fb_share_button_title: "I just supported %{user_name} with 25c tip!"
+      fb_share_user_title: "I just supported %{user_name} with 25c tip!"
+      fb_share_description: Using 25c to tip online one quarter one click.
+      button_code_title: "Help Raise Funds"
+      button_code_description: "Add this code to your website or blog to collect tips for %{name}:"
     form:
       title: Update Account Settings
-      show_donations: Show pledges on my profile page
+      show_donations: Show pledges made and received on my profile page
       edit_password_hint: Leave blank to keep current.
       nickname_url: "Your nickname determines the URL of your pledge profile, such as: https://www.25c.com/example"
       paypal_email: "Paypal Email"
@@ -416,23 +416,23 @@ en:
       success: Your account has been created!
       failure: Your account was not created. Please try again.
     tip:
-      pledge_to: "You have pledged 25c to %{provider}."
-      pledge_more: "Click the following button to pledge another 25c."
-      over_limit: "You have reached a total of 40 unfunded 25c pledges.  Please now make a payment of $10!"
+      pledge_to: "You have pledged a 25c tip to %{provider}."
+      pledge_more: "Click the following button to pledge more."
+      over_limit: "You have reached a total of more than $10 in 25c pledges.  Please now make a payment!"
       payment: Fund Pledges You Made
       done: Close
-      view_pledges: "Go to %{link} to view or undo 25c pledges you made."
+      view_pledges: "Go to %{link} to view or undo tips you pledged."
       view_pledges_link: 25c.com
-      new_welcome: "Congratulations! You are now ready to give one-click tips."
-      new_p1: Click +25c to pledge 25 cents. 
-      new_p2: "Make forty 25c pledges at your leisure. Fund them later on %{home_link}."
-      new_undo: "Feel free to undo 25c pledges any time until you paid."
+      new_welcome: "Congratulations! You are now ready to give one-click tips using 25c."
+      new_p1: Click +25c to pledge a tip of 25 cents or more.
+      new_p2: "Pledge 25c tips at your leisure. Fund them later on %{home_link}."
+      new_undo: "Feel free to undo pledges any time until you funded them."
       undo_button: Undo Pledges
       new_bottom_tagline: " "
       facebook: Facebook
       google: Google
-      signed_in_p1: "You are signed in and ready to make 25c pledges -- anywhere you see the +25c button.  Please now return and re-click +25c to make a pledge."
-      signed_in_p2: "You may make forty 25c pledges at your leisure. Then we ask you to fund them. You may undo any 25c pledge until you fund it. So click ahead!"
+      signed_in_p1: "You are signed in and ready to pledge 25c tips -- anywhere you see the +25c button.  Please now return and re-click +25c to make a pledge.  Click & hold to accelerate the counter.  Or enter a number to tip a larger amount."
+      signed_in_p2: "You may pledge 25c tips at your leisure. Then we ask you to fund them. You may undo tips you pledged until you fund them. So click ahead!"
     choose_nickname:
       title: Choose User Nickname
       instructions: "Your Nickname determines the URL of your user profile."
