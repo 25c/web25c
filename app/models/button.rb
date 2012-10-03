@@ -2,6 +2,7 @@ class Button < ActiveRecord::Base
   belongs_to :user
   
   has_many :clicks
+  has_many :invites
   
   has_attached_file :picture
   
