@@ -49,13 +49,9 @@
       var twShareHref = "https://twitter.com/share?url=" + encodeURIComponent(profile_url);
       openPopup(twShareHref, "Share on Twitter");
     });
-    
-  - if @button.title.blank?
-    :javascript
-      window.fbShareText = '#{ t('.fb_share_user_title', :user_name => @user.display_name) }';
-  - else
-    :javascript
-      window.fbShareText = '#{ t('.fb_share_button_title', :button_title => @button.title) }';
+
+  :javascript
+    window.fbShareText = '#{ t('.fb_share_user_title', :user_name => @user.display_name) }';
 
   - if mobile_device?
     :javascript
