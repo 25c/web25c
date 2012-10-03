@@ -11,7 +11,7 @@ class Home::DashboardController < Home::HomeController
     @clicks_given = group_clicks(clicks, true, true)
     @clicks_given_total = clicks.length
     @clicks_unfunded_total = clicks.count{ |click| click.state == Click::State::DEDUCTED }
-    
+        
     # LJ hack: correct user balance to match unfunded click count
     # TODO: replace it with a cron job task
     
