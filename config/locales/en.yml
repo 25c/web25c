@@ -24,7 +24,7 @@ en:
         click_more_p1: "Feel free to make up to forty 25c pledges at your leisure:  Click on other +25 Buttons, or click the same +25c Button multiple times for a pledge of corresponding multiple of 25c's.  (You may undo unfunded 25c pledges any time.)"
         click_more_p2: "When you have made forty 25c pledges, we will ask you to pay $10."
         dashboard: Go to Dashboard
-        amount: "Payment Amount: $10"
+        amount: "Payment Amount: "
       payment_success:
         title: Payment Completed
         message_p1: Your $10 payment has been successfully processed.

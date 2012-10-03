@@ -8,7 +8,9 @@
 %h2.page-header= t('.title')
 -if @has_payin
   %p.buffer= t('users.tip.over_limit')
-  %p.buffer= t('.amount')
+  %p.buffer
+    = t('.amount')
+    $#{"%.2f" % (@total.to_f / 4)}
   
   - if @user.email  == 'paypal@25c.com'      
     %form{ :action => "https://www.sandbox.paypal.com/cgi-bin/webscr", :method => "post" }
