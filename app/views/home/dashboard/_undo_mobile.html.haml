@@ -7,7 +7,10 @@
     .click-container
       .field-container
         .field-title= t('home.dashboard.index.provider')
-        .field-value= click.button.user.display_name
+        - if click.button.user.profile_url.blank?
+          .field-value= click.button.user.display_name
+        - else
+          .field-value= link_to click.button.user.display_name, click.button.user.profile_url,  :target => "_blank"
         .clear
 
       .field-container

@@ -60,16 +60,10 @@
       .field-container
         .field-title= t('home.dashboard.index.share')
         .field-value
-          - if set[1].button.title.blank?
-            #fb-share{:"data-referrer" => set[1].referrer,
-              :"data-title" => t('home.dashboard.index.fb_share_user_title', 
-                :user_name => set[1].button.user.display_name) }
-              = image_tag("logos/facebook.png")
-          - else
-            #fb-share{:"data-referrer" => set[1].referrer,
-              :"data-title" => t('home.dashboard.index.fb_share_button_title', 
-                :button_title => set[1].button.title) }
-              = image_tag("logos/facebook.png")
+          #fb-share{:"data-referrer" => set[1].referrer,
+            :"data-title" => t('home.dashboard.index.fb_share_user_title', 
+              :user_name => set[1].button.user.display_name) }
+            = image_tag("logos/facebook.png")
           #tw-share{:"data-referrer" => set[1].referrer}= image_tag("logos/twitter.png")
         .clear
 
@@ -93,8 +87,11 @@
 
       .field-container
         .field-title= t('home.dashboard.index.clicker')
+      - if set[1].button.user.profile_url.blank?
         .field-value= set[1].user.display_name
-        .clear
+      - else
+        .field-value= link_to set[1].user.display_name, set[1].user.profile_url,  :target => "_blank"
+      .clear
 
       .field-container
         .field-title= t('home.dashboard.index.referrer')
@@ -139,8 +136,11 @@
 
       .field-container
         .field-title= t('home.dashboard.index.clicker')
+      - if set[1].button.user.profile_url.blank?
         .field-value= set[1].user.display_name
-        .clear
+      - else
+        .field-value= link_to set[1].user.display_name, set[1].user.profile_url,  :target => "_blank"
+      .clear
 
       .field-container
         .field-title= t('home.dashboard.index.referrer')

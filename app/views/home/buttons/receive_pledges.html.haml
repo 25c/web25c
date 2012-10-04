@@ -10,7 +10,7 @@
     window.shareEmailUrl = '#{ j home_share_email_url }';
     window.updateUserUrl = '#{ j home_account_url }';
     window.userNickname = '#{ @user.nickname.blank? ? '' : @user.nickname }';
-    window.userPledgeName = '#{ @user.pledge_name.blank? ? @user.display_name : @user.pledge_name }';
+    window.userPledgeName = '#{ @user.display_name }';
     window.fbShareDescription = '#{ t('.fb_share_description') }';
     window.fbShareCallbackUrl = '#{ j fb_share_callback_url }';
     window.fbShareTitle = '#{ t('.fb_share_title') }';
@@ -50,7 +50,7 @@
         %label= t('.user_pledge_name_label')
       .input-column
         %input#user-pledge-name{ :type => 'text', :name => 'user[pledge_name]',
-          :value => @user.pledge_name.blank? ? @user.display_name : @user.pledge_name }
+          :value => @user.display_name }
            
       .clear.label-column
         %label= t('.user_picture_label')

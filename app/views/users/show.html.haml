@@ -49,13 +49,9 @@
       var twShareHref = "https://twitter.com/share?url=" + encodeURIComponent(profile_url);
       openPopup(twShareHref, "Share on Twitter");
     });
-    
-  - if @button.title.blank?
-    :javascript
-      window.fbShareText = '#{ t('.fb_share_user_title', :user_name => @user.display_name) }';
-  - else
-    :javascript
-      window.fbShareText = '#{ t('.fb_share_button_title', :button_title => @button.title) }';
+
+  :javascript
+    window.fbShareText = '#{ t('.fb_share_user_title', :user_name => @user.display_name) }';
 
   - if mobile_device?
     :javascript
@@ -85,10 +81,10 @@
         .block#name-block
           .input-block
             %input{:type => 'text', :name => 'user[pledge_name]', 
-            :value => @user.pledge_name.blank? ? @user.display_name : @user.pledge_name,
+            :value => @user.display_name,
             :id => 'pledge_name_input'}
           %p.content-block.emphasis
-            =@user.pledge_name.blank? ? @user.display_name : @user.pledge_name
+            = @user.display_name
         .block#about-block.clear
           .input-block
             %textarea{:id => 'about', :name => 'user[about]', :rows => 3}
@@ -96,7 +92,7 @@
       - else
         .block#name-block
           %p.content-block.emphasis
-            =@user.pledge_name.blank? ? @user.display_name : @user.pledge_name
+            = @user.display_name
         .block#about-block.clear
           .input-block
             %textarea{:id => 'about', :name => 'user[about]', :rows => 3}
@@ -202,6 +198,6 @@
 %p= t('.button_code_description', :name => @user.display_name)
 %pre#button-code-block
   :escaped
-    <a href="#{@user.profile_url}" class="tip-25c-button" target="_blank" data-id="#{@button.uuid}" data-size="button-large" data-user="#{@user.pledge_name ? @user.pledge_name : @user.display_name}">&nbsp;</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//localhost:5000/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");</script>
+    <a href="#{@user.profile_url}" class="tip-25c-button" target="_blank" data-id="#{@button.uuid}" data-size="button-large" data-user="#{@user.display_name}">&nbsp;</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//localhost:5000/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");</script>
 
 

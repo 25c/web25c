@@ -58,7 +58,8 @@ class User < ActiveRecord::Base
   end
   
   def display_name
-    name = "#{self.first_name} #{self.last_name}".strip
+    name = self.pledge_name
+    name = "#{self.first_name} #{self.last_name}".strip if name.blank?
     name = self.nickname if name.blank?
     name = self.email if name.blank?
     name

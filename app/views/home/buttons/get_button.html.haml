@@ -9,7 +9,7 @@
     window.updateButtonUrl = '#{ j home_update_button_url }';
     window.shareEmailUrl = '#{ j home_share_email_url }';
     window.userNickname = '#{ @user.nickname.blank? ? '' : @user.nickname }';
-    window.userPledgeName = '#{ @user.pledge_name.blank? ? @user.display_name : @user.pledge_name }';
+    window.userPledgeName = '#{ @user.display_name }';
     window.isButtonPage = true;
     window.buttonSize = '#{ @button.size.blank? ? '' : @button.size }';
     window.invalidEmail = '#{ t('.invalid_email') }';
