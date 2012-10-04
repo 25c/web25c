@@ -71,7 +71,7 @@
             %p= t('.new_p1')
             #tip-button-holder.center
               %a.tip-25c-button{ :href => @button.user.profile_url, 
-              :'data-id' => @button_uuid
+              :'data-id' => @button_uuid,
               :'data-size' => "btn-large",
               :'data-user' => @button.user.display_name }
                 = @button.title
