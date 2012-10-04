@@ -9,7 +9,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_nickname_ci(params[:id])
     if @user
-      if Rails.env.development? or request.subdomain == "tip"
+      # if Rails.env.development? or request.subdomain == "tip"
+      if true
         @is_editable = self.current_user == @user unless params[:edit] == 'no'
         @button = @user.buttons[0]
         
