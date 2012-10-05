@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121003213450) do
+ActiveRecord::Schema.define(:version => 20121004205750) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",                                 :null => false
@@ -34,12 +34,13 @@ ActiveRecord::Schema.define(:version => 20121003213450) do
   add_index "buttons", ["user_id"], :name => "index_buttons_on_user_id"
 
   create_table "invites", :force => true do |t|
-    t.string   "uuid",                      :null => false
-    t.integer  "button_id",                 :null => false
+    t.string   "uuid",                        :null => false
+    t.integer  "button_id",                   :null => false
     t.string   "email"
-    t.integer  "state",      :default => 0, :null => false
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.integer  "state",        :default => 0, :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "share_amount", :default => 0
   end
 
   add_index "invites", ["uuid"], :name => "index_invites_on_uuid"
