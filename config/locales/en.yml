@@ -431,8 +431,8 @@ en:
       new_bottom_tagline: " "
       facebook: Facebook
       google: Google
-      signed_in_p1: "You are signed in and ready to pledge 25c tips -- anywhere you see the +25c button.  Please now return and re-click +25c to make a pledge.  Click & hold to accelerate the counter.  Or enter a number to tip a larger amount."
-      signed_in_p2: "You may pledge 25c tips at your leisure. Then we ask you to fund them. You may undo tips you pledged until you fund them. So click ahead!"
+      signed_in_p1: "You are now signed in and ready to tip!"
+      signed_in_p2: "Each time you now click +25c, you pledge to pay a tip of 25 cents.  For larger tips, hold the click and accelerate the counter to the amount you desire to give."
     choose_nickname:
       title: Choose User Nickname
       instructions: "Your Nickname determines the URL of your user profile."
