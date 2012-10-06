@@ -61,7 +61,7 @@ $(document).ready(function() {
     }
   });
   
-  $('#fb-share').click(function() {
+  $('.fb-share').click(function() {
     var $this = $(this);
     var fbShareHref = "https://www.facebook.com/dialog/feed?display=popup"
 		  + "&app_id=<%= FACEBOOK_SETTINGS['app_id'] %>"
@@ -74,7 +74,7 @@ $(document).ready(function() {
     openPopup(fbShareHref, "Share on Facebook");
 	});
 
-  $('#tw-share').click(function() {
+  $('.tw-share').click(function() {
     var $this = $(this);
 		var twShareHref = "https://twitter.com/share?url=" + encodeURIComponent($this.attr('data-referrer'));
 		openPopup(twShareHref, "Share on Twitter");
