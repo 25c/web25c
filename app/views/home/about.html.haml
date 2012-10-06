@@ -43,7 +43,11 @@ San Francisco, CA 94110<br />
 <p>Click here to pledge 25c to 25c Inc.:</p>
 
 <div id ="about-button-container">
-<a href="https://www.25c.com/tip/#{@button.uuid.to_s}" class="tip-25c-button" data-size="btn-large" data-user="25c Inc." data-profile="#{@profile_url}"></a>
+
+
+
+<a href="#{@profile_url}" class="tip-25c-button" data-size="btn-large" data-user="25c Inc." data-id="#{@button.uuid.to_s}" target="_blank" style="background-image:url('#{ENV["API25C_URL"]}/public/images/buttons/25c-btn-large.png');display:block;width:72px;height:40px;"></a>
+/ <script type="text/javascript" id="tip-25c-js" src="//#{ENV["API25C_URL"]}/public/javascripts/button.js"></script>
 
 <script>
 !function(d,s,id){
