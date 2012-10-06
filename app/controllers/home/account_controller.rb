@@ -37,6 +37,12 @@ class Home::AccountController < Home::HomeController
   
   def payment_success
     @user = current_user
+    payment = @user.payments.order("created_at DESC").where(:state => Payment::State::PAID, :payment_type => 'payin').first
+    if payment.nil?
+      @amount = 0
+    else
+      @amount = payment.amount
+    end
   end
   
   def payment_failure
