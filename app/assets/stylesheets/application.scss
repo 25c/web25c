@@ -907,14 +907,14 @@ table.clicks-table .delete-click, table.payments-table .process-payment {
   margin-right: 5px;
 }
 
-table.clicks-table #fb-share, table.clicks-table #tw-share {
+table.clicks-table .fb-share, table.clicks-table .tw-share {
   cursor:pointer;
   padding-top:5px;
   margin-left:5px;
   display: inline;
 }
 
-table.clicks-table #fb-share img, table.clicks-table #tw-share img {
+table.clicks-table .fb-share img, table.clicks-table .tw-share img {
   height:20px;
   width:20px;
 }
