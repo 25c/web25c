@@ -27,37 +27,6 @@ class Click < ActiveRecord::Base
     response.code == 200
   end
   
-  def process
-    self.with_lock do
-      # ensure this click is in a processable state first
-      return false unless self.state == State::DEDUCTED
-      
-      # update state and increment user balance
-      self.update_attribute(:state, State::FUNDED)
-      self.connection.execute("PREPARE TRANSACTION 'process-click-#{self.uuid}'")
-      begin
-        self.button.user.with_lock do
-          self.user.update_attribute(:balance, self.user.balance + 1)
-          self.button.user.connection.execute("PREPARE TRANSACTION 'process-user-#{self.uuid}'")
-          begin
-            self.button.user.connection.execute("COMMIT PREPARED 'process-user-#{self.uuid}'")
-          rescue
-            self.button.user.connection.execute("ROLLBACK PREPARED 'process-user-#{self.uuid}'")
-            raise $!
-          end
-        end
-      rescue
-        self.connection.execute("ROLLBACK PREPARED 'process-click-#{self.uuid}'")
-      end
-      self.connection.execute("COMMIT PREPARED 'process-click-#{self.uuid}'")
-      
-      # update user balance and user click per button caches
-      DATA_REDIS.decr "#{self.user.uuid}:#{self.button.uuid}"
-      DATA_REDIS.set "user:#{self.user.uuid}", self.user.balance
-    end
-    true  
-  end
-  
   def queue_for_payout
     self.with_lock do
       # ensure this click is in the right state

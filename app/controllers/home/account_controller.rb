@@ -1,6 +1,7 @@
 class Home::AccountController < Home::HomeController
   
   # include ActiveMerchant::Billing::Integrations
+  skip_before_filter :verify_authenticity_token, :only => :payment_success
 
   require 'dwolla.rb'
   DwollaClient = Dwolla::Client.new(DWOLLA_SETTINGS[:app_key], DWOLLA_SETTINGS[:app_secret])
@@ -23,7 +24,7 @@ class Home::AccountController < Home::HomeController
     @user = current_user
     openPayments = @user.payments.where(:state => Payment::State::NEW, :payment_type => 'payin')
     if openPayments.empty?
-      payment = @user.payments.create!({ :amount => 10, :payment_type => 'payin' })
+      payment = @user.payments.create!({ :amount => @user.balance, :payment_type => 'payin' })
     elsif openPayments.length == 1
       payment = openPayments[0]
     else

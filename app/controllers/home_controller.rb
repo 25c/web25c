@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   # before_filter :authenticate, :except => :paypal_process
   
   include ActiveMerchant::Billing::Integrations
+  skip_before_filter :verify_authenticity_token, :only => :paypal_process
   skip_before_filter :check_facebook_cookies, :only => :paypal_process
   
   def authenticate
@@ -67,16 +68,9 @@ class HomeController < ApplicationController
     return_ok = false
     notify = Paypal::Notification.new(request.raw_post)
     uuid = notify.invoice
-    payment = Payment.includes(:user => :clicks).find_by_uuid(uuid)
-    if payment and notify.acknowledge
-      begin
-        if notify.complete?
-          payment.process
-          payment.user.clicks.each { |click| click.process }
-        end
-      rescue => e
-        raise "Pay-in processing from Paypal failed"
-      end
+    payment = Payment.find_by_uuid(uuid)
+    if payment and notify.acknowledge and notify.complete?
+      raise Exception.new('Pay-in processing from Paypal failed') unless payment.process 
       return_ok = true
     end
     if return_ok

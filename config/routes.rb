@@ -34,7 +34,7 @@ Web25c::Application.routes.draw do
     match 'tip/:button_id' => 'users#tip', :as => :tip
     match 'blog/header' => 'home#blog_header'
     match 'blog/footer' => 'home#blog_footer'
-    match 'paypal_process' => 'home#paypal_process'
+    match 'paypal_process' => 'home#paypal_process', :as => :paypal_process
 
     namespace :home do
       # Buttons
@@ -51,7 +51,7 @@ Web25c::Application.routes.draw do
 
       # Account
       match 'payment' => 'account#payment', :as => :payment
-      match 'payment/success' => 'account#payment_success', :as => :payment_sucess
+      match 'payment/success' => 'account#payment_success', :as => :payment_success
       match 'payment/failure' => 'account#payment_failure', :as => :payment_failure
       match 'payout' => 'account#payout', :as => :payout
       match 'create_payment' => 'account#create_payment', :as => :create_payment, :via => :post

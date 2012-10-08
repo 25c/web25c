@@ -22,9 +22,8 @@ class Payment < ActiveRecord::Base
   def process
     # process payouts after 25c admin approval
     if self.payment_type == 'payin'
-      if self.state == State::NEW or self.state == State::PROCESSING
-        return true if self.update_attribute(:state, State::PAID)
-      end
+      response = HTTParty.post(ENV['DATA25C_URL'] + '/api/payments/process', :body => { :uuids => [ self.uuid ] })
+      response.code == 200
     elsif self.payment_type == 'payout'
       # TODO - replace with automatic processing with Dwolla
       self.update_attribute(:state, State::PAID)
