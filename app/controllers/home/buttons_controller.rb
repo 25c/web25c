@@ -60,10 +60,10 @@ class Home::ButtonsController < Home::HomeController
       # UserMailer.tip_share(self.current_user, share_email, share_amount).deliver
       invites = self.current_user.buttons[0].invites
       existing_invite = invites.select{|invite| invite.email == share_email }
-      if existing_invite.nil?
+      if existing_invite.blank?
         invites.create(:email => share_email, :share_amount => share_amount)
       else
-        existing_invite.update_amount(share_amount)
+        existing_invite[0].update_amount(share_amount)
       end
     end
     respond_to do |format|
