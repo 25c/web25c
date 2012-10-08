@@ -24,12 +24,8 @@ en:
         click_more_p1: "Feel free to pledge a total of $10 in 25c tips at your leisure: Tip others or tip a larger amount to the same person.  (You may undo unfunded pledges at any time.)"
         click_more_p2: "When you have pledged $10 or more in 25c tips, we will ask you to fund your pledges."
         dashboard: Go to Dashboard
-<<<<<<< HEAD
         amount: "Payment Amount: %{amount}"
         item_name: "25c Pledges Payment"
-=======
-        amount: "Payment Amount:"
->>>>>>> 86c17f3b03f4ad1a74f8940ffaac499df12622a1
       payment_success:
         title: Payment Completed
         message_p1: Your %{amount} payment has been successfully processed.
