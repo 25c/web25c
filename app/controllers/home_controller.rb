@@ -1,18 +1,9 @@
 class HomeController < ApplicationController
   
-  before_filter :authenticate, :except => :paypal_process
-  
   include ActiveMerchant::Billing::Integrations
+  skip_before_filter :authenticate_if_staging, :only => :paypal_process
   skip_before_filter :verify_authenticity_token, :only => :paypal_process
   skip_before_filter :check_facebook_cookies, :only => :paypal_process
-  
-  def authenticate
-    if Rails.env.production?
-      authenticate_or_request_with_http_basic do |username, password|
-        (username == "user25c" && password == "sup3rl!k3") || (username == "guest" && password == "123456")
-      end 
-    end
-  end
   
   def index
     # redirect_to home_dashboard_path if self.current_user
