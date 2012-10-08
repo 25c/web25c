@@ -5,10 +5,10 @@ class UserMailer < ApplicationMailer
     mail :to => user.email, :subject => 'Welcome to 25c.'
   end
   
-  def tip_share(user, email, amount)
-    @user = user
-    @share_amount = amount
-    mail :to => email, :subject => "25c user #{@user.display_name} is sharing tips with you!"
+  def new_invite(invite)
+    @user = invite.button.user
+    @share_amount = invite.share_amount
+    mail :to => invite.email, :subject => "25c user #{@user.display_name} is sharing tips with you!"
   end
 
 end

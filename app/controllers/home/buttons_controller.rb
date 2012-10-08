@@ -56,11 +56,15 @@ class Home::ButtonsController < Home::HomeController
   def share_email
     share_email = params[:share_email]
     share_amount = params[:share_amount].to_i
-    puts "****"
-    puts share_amount
-    puts params.inspect
     if not self.current_user.blank? and not share_email.blank? and share_amount > 0
-      UserMailer.tip_share(self.current_user, share_email, share_amount).deliver
+      # UserMailer.tip_share(self.current_user, share_email, share_amount).deliver
+      invites = self.current_user.buttons[0].invites
+      existing_invite = invites.select{|invite| invite.email == share_email }
+      if existing_invite.nil?
+        invites.create(:email => share_email, :share_amount => share_amount)
+      else
+        existing_invite.update(share_amount)
+      end
     end
     respond_to do |format|
       format.json { render json: true, head: :ok }

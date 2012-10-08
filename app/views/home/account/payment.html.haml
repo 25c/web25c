@@ -7,7 +7,6 @@
 
 %h2.page-header= t('.title')
 -if @has_payin
-  %p.buffer= t('users.tip.over_limit')
   %p.buffer= t('.amount', :amount => number_to_currency(current_user.balance.to_f / 100))
 
   = form_tag PAYPAL_SETTINGS['service_url'], :method => :post do

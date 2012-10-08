@@ -332,7 +332,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 #splash-container {
   position: relative;
   width: 350px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto;
 }
 
 #splash-button-title {
@@ -406,7 +406,7 @@ ul#footer-nav, ul#footer-nav > li > a {
 //  color: #f26422;
 //  font-weight: bold;
   padding: 12px 20px 8px 20px;
-  margin: 30px 0 0 0;
+//  margin: 30px 0 0 0;
   font-size: 22px;
 //  width: 400px;
 }
@@ -417,13 +417,11 @@ ul#footer-nav, ul#footer-nav > li > a {
 }
 
 #splash-explain {
-  width: 300px;
-  margin: -50px 0 0 90px;
-  line-height: 23px;
+  margin-top: 60px;
 }
 
 .splash-below {
-  margin: 40px 0;
+  margin-bottom: 40px;
 }
 
 .splash-below p {
@@ -434,22 +432,24 @@ ul#footer-nav, ul#footer-nav > li > a {
 .splash-col-left {
   float: left;
   width: 420px;
+  margin-bottom: 40px;
 }
 
 .splash-col-right {
   float: right;
   width: 420px;
+  margin-bottom: 40px;
 }
 
-.splash-below .col-title {
+.col-title {
 //  font-size: 22px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-.splash-below .learn-more {
-  margin-top: 30px;
-  font-weight: bold; 
+.learn-more {
+  margin-top: 9px;
+//  font-weight: bold; 
 }
 
 #featured-container {
@@ -745,7 +745,7 @@ ul.login-buttons > li.login-logo > a > img {
 }
 
 #tip-center #tip-result {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 #tip-center #more-info-buttons {
@@ -907,14 +907,14 @@ table.clicks-table .delete-click, table.payments-table .process-payment {
   margin-right: 5px;
 }
 
-table.clicks-table #fb-share, table.clicks-table #tw-share {
+table.clicks-table .fb-share, table.clicks-table .tw-share {
   cursor:pointer;
   padding-top:5px;
   margin-left:5px;
   display: inline;
 }
 
-table.clicks-table #fb-share img, table.clicks-table #tw-share img {
+table.clicks-table .fb-share img, table.clicks-table .tw-share img {
   height:20px;
   width:20px;
 }
@@ -1150,6 +1150,7 @@ table.table thead .sorting_desc_disabled {
   clear: both;
   height: 40px;
   margin-top: 20px;
+//  margin-left: 100px;
 }
 
 #profile-button-title {

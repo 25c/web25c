@@ -9,7 +9,7 @@
     window.updateButtonUrl = '#{ j home_update_button_url }';
     window.shareEmailUrl = '#{ j home_share_email_url }';
     window.userNickname = '#{ @user.nickname.blank? ? '' : @user.nickname }';
-    window.userPledgeName = '#{ @user.pledge_name.blank? ? @user.display_name : @user.pledge_name }';
+    window.userPledgeName = '#{ @user.display_name }';
     window.isButtonPage = true;
     window.buttonSize = '#{ @button.size.blank? ? '' : @button.size }';
     window.invalidEmail = '#{ t('.invalid_email') }';
@@ -160,19 +160,19 @@
           %span.profile-link
   .clear
   
-/ #share-revenue.step-container.hide
-/   .step-number
-/   .step-content
-/     %h3.step-title= t('home.buttons.receive_pledges.share_revenue_title')
-/     .step-body
-/       %span= t('home.buttons.receive_pledges.share_amount')
-/       %select#share-amount{ :type => 'text', :name => 'button[share_amount]' }
-/         - ['0', '10', '20', '30', '40', '50', '60', '70', '80', '90'].each do |amount|
-/           %option{ :value => amount } #{amount}%
-/       %span= t('home.buttons.receive_pledges.share_email')
-/       %input#share-email{ :type => 'text', :name => 'button[share_email]', :value => t('home.buttons.receive_pledges.default_email')}
-/       / %p= t('home.buttons.receive_pledges.share_email_description')
-/       .clear
-/       #set-share-info.clear.btn.btn-strong{:disabled => 'disabled'}
-/         = t('home.buttons.receive_pledges.share_confirm')
-/   .clear
+#share-revenue.step-container.hide
+  .step-number
+  .step-content
+    %h3.step-title= t('home.buttons.receive_pledges.share_revenue_title')
+    .step-body
+      %span= t('home.buttons.receive_pledges.share_amount')
+      %select#share-amount{ :type => 'text', :name => 'button[share_amount]' }
+        - ['0', '10', '20', '30', '40', '50', '60', '70', '80', '90'].each do |amount|
+          %option{ :value => amount } #{amount}%
+      %span= t('home.buttons.receive_pledges.share_email')
+      %input#share-email{ :type => 'text', :name => 'button[share_email]', :value => t('home.buttons.receive_pledges.default_email')}
+      / %p= t('home.buttons.receive_pledges.share_email_description')
+      .clear
+      #set-share-info.clear.btn.btn-strong{:disabled => 'disabled'}
+        = t('home.buttons.receive_pledges.share_confirm')
+  .clear

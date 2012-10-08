@@ -24,8 +24,12 @@ en:
         click_more_p1: "Feel free to pledge a total of $10 in 25c tips at your leisure: Tip others or tip a larger amount to the same person.  (You may undo unfunded pledges at any time.)"
         click_more_p2: "When you have pledged $10 or more in 25c tips, we will ask you to fund your pledges."
         dashboard: Go to Dashboard
+<<<<<<< HEAD
         amount: "Payment Amount: %{amount}"
         item_name: "25c Pledges Payment"
+=======
+        amount: "Payment Amount:"
+>>>>>>> 86c17f3b03f4ad1a74f8940ffaac499df12622a1
       payment_success:
         title: Payment Completed
         message_p1: Your %{amount} payment has been successfully processed.
@@ -432,8 +436,8 @@ en:
       new_bottom_tagline: " "
       facebook: Facebook
       google: Google
-      signed_in_p1: "You are signed in and ready to pledge 25c tips -- anywhere you see the +25c button.  Please now return and re-click +25c to make a pledge.  Click & hold to accelerate the counter.  Or enter a number to tip a larger amount."
-      signed_in_p2: "You may pledge 25c tips at your leisure. Then we ask you to fund them. You may undo tips you pledged until you fund them. So click ahead!"
+      signed_in_p1: "You are now signed in and ready to tip!"
+      signed_in_p2: "Each time you now click +25c, you pledge to pay a tip of 25 cents.  For larger tips, hold the click and accelerate the counter to the amount you desire to give."
     choose_nickname:
       title: Choose User Nickname
       instructions: "Your Nickname determines the URL of your user profile."

@@ -16,7 +16,7 @@ class CreateButtons < ActiveRecord::Migration
     execute 'CREATE UNIQUE INDEX "index_buttons_on_uuid" ON "buttons" (LOWER(uuid))'
     
     # drop no longer needed contents table
-    # drop_table :contents
+    drop_table :contents
     
     # create a new button for each user
     User.all.each do |user|

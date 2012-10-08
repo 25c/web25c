@@ -1,6 +1,6 @@
 - content_for :title, '25c - ' + t('.title')
 
 %h2.page-header= t('.title')
-%p= t('.message_p1')
-%p= t('.message_p2')
+%p= t('.message_p1', :amount => '$' + "%.2f" % @amount)
+%p= t('.message_p2', :amount => '$' + "%.2f" % @amount)
 %p= t('.message_p3')
