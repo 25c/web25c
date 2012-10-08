@@ -17,7 +17,7 @@ class Invite < ActiveRecord::Base
   
   def new_invite_email
     unless self.email.blank?
-      UserMailer.new_invite(self).deliver
+      UserMailer.new_invite(self.id).deliver
     end
   end
   
@@ -33,6 +33,8 @@ class Invite < ActiveRecord::Base
       self.button.save
       self.state = State::ACCEPTED
       self.save
+      UserMailer.share_confirm(self.button.user.id, user.id, self.share_amount).deliver
+      UserMailer.share_welcome(self.button.user.id, user.id, self.share_amount).deliver
     end
   end
   

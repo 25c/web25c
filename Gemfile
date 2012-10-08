@@ -29,6 +29,7 @@ gem 'valid_email'
 gem 'garb'
 gem 'sitemap_generator'
 gem 'httparty'                    # easy HTTP/REST client library (also used by aws-sdk)
+gem 'resque_mailer'
 
 # Gems used only for assets and not required
 # in production environments by default.

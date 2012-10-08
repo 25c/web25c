@@ -1,0 +1,11 @@
+%p Hi #{@sharer.display_name}!
+
+%p You are now sharing tips with #{@receiver.display_name}.
+
+%p Percentage shared: #{@share_amount}%.
+
+%p Update your button settings anytime:
+%p{ :style => 'margin-bottom:30px;'}= link_to home_get_button_url, home_get_button_url
+
+%p Best wishes,
+%p The 25c Team

@@ -161,7 +161,7 @@ class User < ActiveRecord::Base
   
   def send_welcome_email
     if self.is_new and not self.email.blank?
-      UserMailer.welcome(self).deliver
+      UserMailer.welcome(self.id).deliver
       self.editing = true
       self.is_new = false
       self.save!
