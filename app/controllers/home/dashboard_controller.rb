@@ -7,19 +7,10 @@ class Home::DashboardController < Home::HomeController
     clicks = @user.clicks.includes(:button => :user).order("created_at DESC").find_all_by_state([ 
       Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED, Click::State::PAID
     ])
-    
+        
     @clicks_given = group_clicks(clicks, true, true)
     @clicks_given_total = clicks.length
     @clicks_unfunded_total = clicks.count{ |click| click.state == Click::State::DEDUCTED }
-        
-    # LJ hack: correct user balance to match unfunded click count
-    # TODO: replace it with a cron job task
-    # 
-    # @user.editing = true
-    # @user.balance = -@clicks_unfunded_total
-    # @user.save!
-    # 
-    # DATA_REDIS.set "user:#{@user.uuid}", @user.balance
     
     clicks = Click.where(:button_id => @user.button_ids).includes(:user).order("created_at DESC").find_all_by_state([ 
       Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED

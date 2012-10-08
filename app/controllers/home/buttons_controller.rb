@@ -63,7 +63,7 @@ class Home::ButtonsController < Home::HomeController
       if existing_invite.nil?
         invites.create(:email => share_email, :share_amount => share_amount)
       else
-        existing_invite.update(share_amount)
+        existing_invite.update_amount(share_amount)
       end
     end
     respond_to do |format|
