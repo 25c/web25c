@@ -22,14 +22,7 @@ class Home::AccountController < Home::HomeController
   
   def create_payment
     @user = current_user
-    openPayments = @user.payments.where(:state => Payment::State::NEW, :payment_type => 'payin')
-    if openPayments.empty?
-      payment = @user.payments.create!({ :amount => @user.balance, :payment_type => 'payin' })
-    elsif openPayments.length == 1
-      payment = openPayments[0]
-    else
-      # error: multiple open payouts
-    end
+    payment = @user.payments.create!({ :amount => @user.balance, :payment_type => 'payin' })
     respond_to do |format|
       format.json { render :json => { uuid: payment.uuid } }
       format.html { render :nothing => true, :status => 200, :content_type => 'text/html'}
@@ -37,13 +30,7 @@ class Home::AccountController < Home::HomeController
   end
   
   def payment_success
-    @user = current_user
-    payment = @user.payments.order("created_at DESC").where(:state => Payment::State::PAID, :payment_type => 'payin').first
-    if payment.nil?
-      @amount = 0
-    else
-      @amount = payment.amount
-    end
+
   end
   
   def payment_failure
