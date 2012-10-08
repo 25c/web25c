@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   
-  # before_filter :authenticate, :except => :paypal_process
+  before_filter :authenticate, :except => :paypal_process
   
   include ActiveMerchant::Billing::Integrations
   skip_before_filter :verify_authenticity_token, :only => :paypal_process
