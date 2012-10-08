@@ -1,10 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  before_filter :authenticate_if_staging
   before_filter :check_facebook_cookies
   helper_method :signed_in?, :current_user, :url_base, :mobile_device?
   
   protected
+  
+  def authenticate_if_staging
+    authenticate_or_request_with_http_basic do |username, password|
+      (username == "user25c" && password == "sup3rl!k3")
+    end if Rails.env.staging?
+  end
 
   def check_facebook_cookies
     has_signed_in = false
