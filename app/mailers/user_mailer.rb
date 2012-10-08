@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
   
   def new_invite(invite)
     @user = invite.button.user
-    @share_amount = invite.share_amount
+    @invite = invite
     mail :to => invite.email, :subject => "25c user #{@user.display_name} is sharing tips with you!"
   end
 

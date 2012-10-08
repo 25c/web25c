@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121004205750) do
+ActiveRecord::Schema.define(:version => 20121008185008) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",                                 :null => false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20121004205750) do
     t.datetime "picture_updated_at"
     t.string   "info_url"
     t.string   "pledge_message",       :default => ""
+    t.string   "share_users",          :default => ""
   end
 
   add_index "buttons", ["user_id"], :name => "index_buttons_on_user_id"

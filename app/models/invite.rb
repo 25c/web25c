@@ -21,9 +21,19 @@ class Invite < ActiveRecord::Base
     end
   end
   
-  def update(amount)
+  def update_amount(amount)
     self.share_amount = amount
     # TODO: send update email to user indicating update
+    self.save
+  end
+  
+  def process(user)
+    unless self.button.user == user
+      self.button.share_users = [{ :user => user.id, :share_amount => self.share_amount }]
+      self.button.save
+      self.state = State::ACCEPTED
+      self.save
+    end
   end
   
 end

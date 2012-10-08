@@ -61,8 +61,13 @@ class ApplicationController < ActionController::Base
           # self.current_user.update_profile_from_facebook
           self.current_user.update_profile
         end
-        current_user.has_agreed = true
-        current_user.save!
+        self.current_user.has_agreed = true
+        self.current_user.save!
+        invite_uuid = session.delete(:invite_uuid)
+        if invite_uuid
+          invite = Invite.where(:state => Invite::State::OPEN).find_by_uuid(invite_uuid)
+          invite.process(self.current_user) if invite
+        end
         if has_tip
           redirect_to tip_path(
             :button_id => params[:button_id],

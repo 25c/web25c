@@ -16,7 +16,6 @@ class UsersController < ApplicationController
         clicks = Click.where(:button_id => @user.button_ids).includes(:user).order("created_at DESC").find_all_by_state([ 
           Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
         ])
-        clicks = nil
         @clicks_received = group_clicks(clicks, true, false)
                 
         clicks = @user.clicks.includes(:button => :user).order("created_at DESC").find_all_by_state([
@@ -171,6 +170,11 @@ class UsersController < ApplicationController
       #   user.has_agreed = true
       #   user.save!
       # end
+      invite_uuid = session.delete(:invite_uuid)
+      if invite_uuid
+        invite = Invite.where(:state => Invite::State::OPEN).find_by_uuid(invite_uuid)
+        invite.process(user) if invite
+      end
       user.has_agreed = true
       user.save!
       self.current_user = user
@@ -206,9 +210,17 @@ class UsersController < ApplicationController
   end
   
   def sign_in
-    session[:has_seen_agreement_text] = true
     if self.current_user
+      if params[:id]
+        invite = Invite.where(:state => Invite::State::OPEN).find_by_uuid(params[:id])
+        invite.process(self.current_user) if invite
+      end
       redirect_to_session_redirect_path(home_dashboard_path)
+    else
+      session[:has_seen_agreement_text] = true
+      if params[:id]
+        session[:invite_uuid] = params[:id]
+      end
     end
   end
   

@@ -2,10 +2,10 @@
 
 %p #{@user.display_name} has decided to share tips with you!
 
-%p Percentage shared: #{@share_amount}%.
+%p Percentage shared: #{@invite.share_amount}%.
 
 %p If you are not a 25c user already, please follow this link to register:
-%p{ :style => 'margin-bottom:30px;'}= link_to sign_in_url, sign_in_url
+%p{ :style => 'margin-bottom:30px;'}= link_to sign_in_url(:id => @invite.uuid), sign_in_url(:id => @invite.uuid)
 
 
 %p Best wishes,

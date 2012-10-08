@@ -6,6 +6,10 @@ class Button < ActiveRecord::Base
   
   has_attached_file :picture
   
+  attr_accessible :size, :title, :description, :code_type, :picture, :youtube_id, :pledge_message
+  
+  serialize :share_users
+  
   validates :size,
     :inclusion => {
       :in => %w(btn-large btn-medium btn-small icon-large icon-medium icon-small round-large round-medium round-small icon-text),
@@ -21,8 +25,6 @@ class Button < ActiveRecord::Base
   before_create :generate_uuid
   
   before_validation :assign_defaults
-  
-  attr_accessible :size, :title, :description, :code_type, :picture, :youtube_id, :pledge_message
   
   def to_param
     self.uuid
