@@ -82,7 +82,7 @@ $(document).ready(function(){
     }
     $('#set-nickname-link').hide();
     if (codeType == 'iframe') {
-      newCode = sprintf(iframeCode, buttonSize, sprintf(imageIframeSizeString, iframeImageSizes[buttonSize].width, imageSizes[buttonSize].height));
+      newCode = sprintf(iframeCode, buttonSize, sprintf(iframeImageSizeString, iframeImageSizes[buttonSize].width, imageSizes[buttonSize].height));
       $('.if-javascript').show();
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
