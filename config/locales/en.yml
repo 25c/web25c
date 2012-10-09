@@ -43,8 +43,7 @@ en:
         dwolla_email: Dwolla E-mail
         dwolla_email_confirmation: Confirm Dwolla E-mail
         submit: Send Request
-        received_one: You have $%{total_amount} in pledges, of which $%{funded_amount} so far are funded 25c tips. (You can use the messaging function on your dashboard to remind pledgers to fund their tips!)
-        received_many: You have $%{total_amount} in pledges, of which $%{funded_amount} so far are funded 25c tips. (You can use the messaging function on your dashboard to remind pledgers to fund their tips!)
+        received: You have %{total_amount} in pledges, of which %{funded_amount} so far are funded 25c tips. (You can use the messaging function on your dashboard to remind pledgers to fund their tips!)
         too_low_p1: "Once you have reached a minimum of $10 in (funded) 25c tips, get set up to receive pay-outs."
         too_low_p2: "In order to receive more 25c tips, consider the following: add more +25 Buttons to more pages in more prominent locations; advertise your pages; tell your friends about your pages on Facebook, Twitter, or email lists.  (25c provides a transactional platform but it is up to you to promote your cause!)"
         provide_dwolla_email: "We minimize transactional expense by using ACH payments or Dwolla for delivering pay-outs.  There are no fees for maintaining an account with Dwolla and receiving sub-$10 payments.  If you use Dwolla, we can pay you out quarter by quarter.  If you use ACH, we require a minimum of $10.  Please provide and verify your ACH bank account or Dwolla account information:"

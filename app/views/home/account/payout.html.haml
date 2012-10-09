@@ -2,18 +2,11 @@
 
 %h2.page-header= t('.title')
 
-- if @total == 1
-  %p= t('.received_one', 
-    :total => @total, :total_amount => "%.2f" % (@total.to_f / 4),
-    :funded => @funded, :funded_amount => "%.2f" % (@funded.to_f / 4))
-- else
-  %p= t('.received_many', 
-    :total => @total, :total_amount => "%.2f" % (@total.to_f / 4),
-    :funded => @funded, :funded_amount => "%.2f" % (@funded.to_f / 4))
+%p= t '.received', :total_amount => number_to_currency(@total.to_f / 100), :funded_amount => number_to_currency(@funded.to_f / 100)
     
 - if not @has_payout
-  %p= raw t('.too_low_p1')
-  %p.buffer= raw t('.too_low_p2')
+  %p= t '.too_low_p1'
+  %p.buffer= t '.too_low_p2'
   %a= link_to t('.dashboard'), home_dashboard_path, :class => 'btn'
 
 - elsif @user.dwolla_email.blank?
