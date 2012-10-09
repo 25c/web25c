@@ -2,6 +2,7 @@
   %table#undo-clicks.clicks-table.table.table-condensed.table-striped
     %thead
       %tr
+        %th.click-amount= t('home.dashboard.index.amount')
         %th.click-provider= t('home.dashboard.index.provider')
         %th.click-referrer= t('home.dashboard.index.referrer')
         %th
@@ -10,6 +11,7 @@
     %tbody
       - @clicks_given.each do |click|
         %tr
+          %td.click-amount= number_to_currency(click.amount.to_f / 100)
           -if click.button.user.profile_url.blank?
             %td.click-user= click.button.user.display_name
           - else

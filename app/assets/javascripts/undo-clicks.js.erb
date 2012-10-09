@@ -10,8 +10,9 @@ $(document).ready(function(){
     'sDom': 't<"row"<"span6"i><"span6"p>>',
     'iDisplayLength': 100,
     'sPaginationType': 'bootstrap',
-    'aaSorting': [[ 3, 'desc' ]],   // start with sorting by first col (date), descending
+    'aaSorting': [[ 4, 'desc' ]],   // start with sorting by first col (date), descending
     'aoColumns': [                  // define setting for each col
+      {'sWidth': '80px'},
       {'sWidth': '120px'},
       {'sWidth': '300px'},
       {'bVisible': false},          // invisible sortable date col
