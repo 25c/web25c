@@ -2,6 +2,7 @@ Web25c::Application.configure do
   
   ENV["API25C_URL"] = 'api.plus25c.com'
   ENV["DATA25C_URL"] = 'https://data.plus25c.com'
+  ENV["ASSETS_URL_BASE"] = 'https://d1y0s23xz5cgse.cloudfront.net'
 
   # Settings specified here will take precedence over those in config/application.rb
   config.action_mailer.default_url_options = { :host => "www.plus25c.com" }

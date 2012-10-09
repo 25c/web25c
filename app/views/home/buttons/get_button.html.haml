@@ -62,30 +62,12 @@
     %h3.step-title= t('home.buttons.receive_pledges.choose_button_title')
     .step-body
       #button-choice-container
-        .button-choice
-          %input.button-size{ :type => 'radio', :name => 'button_size' }
-          %span= t('home.buttons.receive_pledges.btn-large')
-          %img{ :src => image_path('buttons/25c-btn-large.png'), :'data-size' => 'btn-large' }
-        .button-choice
-          %input.button-size{ :type => 'radio', :name => 'button_size' }
-          %span= t('home.buttons.receive_pledges.icon-large')
-          %img{ :src => image_path('buttons/25c-icon-large.png'), :'data-size' => 'icon-large' }
-        .button-choice
-          %input.button-size{ :type => 'radio', :name => 'button_size' }
-          %span= t('home.buttons.receive_pledges.btn-medium')
-          %img{ :src => image_path('buttons/25c-btn-medium.png'), :'data-size' => 'btn-medium' }
-        .button-choice
-          %input.button-size{ :type => 'radio', :name => 'button_size' }
-          %span= t('home.buttons.receive_pledges.icon-medium')
-          %img{ :src => image_path('buttons/25c-icon-medium.png'), :'data-size' => 'icon-medium' }
-        .button-choice
-          %input.button-size{ :type => 'radio', :name => 'button_size' }
-          %span= t('home.buttons.receive_pledges.btn-small')
-          %img{ :src => image_path('buttons/25c-btn-small.png'), :'data-size' => 'btn-small' }
-        .button-choice
-          %input.button-size{ :type => 'radio', :name => 'button_size' }
-          %span= t('home.buttons.receive_pledges.icon-small')
-          %img{ :src => image_path('buttons/25c-icon-small.png'), :'data-size' => 'icon-small' }
+        - ['btn-large', 'btn-medium', 'btn-small', 'icon-large', 'icon-medium', 'icon-small',
+          'tip-large', 'tip-medium', 'tip-small'].each do |size|
+          .button-choice
+            %input.button-size{ :type => 'radio', :name => 'button_size' }
+            %span= t('home.buttons.receive_pledges.' + size)
+            %img{ :src => image_path('buttons/25c-'+ size +'.png'), :'data-size' => size }
         .clear
   .clear
 

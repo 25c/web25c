@@ -16,6 +16,7 @@ Web25c::Application.configure do
   ENV["REDISTOGO_URL"] = 'redis://localhost:6379'
   ENV["API25C_URL"] = 'localhost:5000'
   ENV["DATA25C_URL"] = 'http://localhost:5200'
+  ENV["ASSETS_URL_BASE"] = 'https://d1y0s23xz5cgse.cloudfront.net'
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

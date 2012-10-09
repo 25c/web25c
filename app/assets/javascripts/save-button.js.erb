@@ -1,27 +1,38 @@
 $(document).ready(function(){
     
 	// lookup dictionary for image sizes
-	var imageSizesDict = {
-	  // old sizes: 114, 88, 70, 82, 64, 70, 82, 64, 70, 84
-		'btn-large': ' width="130" height="40"',
-		'btn-medium': ' width="112" height="30"',
-		'btn-small': ' width="94" height="20"',
-		'icon-large': ' width="98" height="40"',
-		'icon-medium': ' width="88" height="30"',
-		'icon-small': ' width="78" height="20"',
-		'round-large': ' width="98" height="40"',
-		'round-medium': ' width="88" height="30"',
-		'round-small': ' width="78" height="20"',
-		'icon-text': ' width="98" height="20"'
+	var iframeImageSizes = {
+		'btn-large':    { width: '130', height: '40' },
+		'btn-medium':   { width: '112', height: '30' },
+		'btn-small':    { width: '94',  height: '20' },
+		'icon-large':   { width: '98',  height: '40' },
+		'icon-medium':  { width: '88',  height: '30' },
+		'icon-small':   { width: '78',  height: '20' },
+		'tip-large':   { width: '130',  height: '40' },
+		'tip-medium':  { width: '112',  height: '30' },
+		'tip-small':   { width: '94',  height: '20' }
 	};
 	
+	var imageSizes = {
+		'btn-large':    { width: '72', height: '40' },
+		'btn-medium':   { width: '54', height: '30' },
+		'btn-small':    { width: '36',  height: '20' },
+		'icon-large':   { width: '40',  height: '40' },
+		'icon-medium':  { width: '30',  height: '30' },
+		'icon-small':   { width: '20',  height: '20' },
+		'tip-large':   { width: '72',  height: '40' },
+		'tip-medium':  { width: '54',  height: '30' },
+		'tip-small':   { width: '36',  height: '20' }
+	};
+	
+	var iframeImageSizeString = 'width="%s" height="%s"';
 	var webUrl = window.location.protocol + '//' + window.location.hostname;
   if (webUrl.indexOf('localhost') != -1) webUrl += ':3000';
-  
-  var apiUrl = window.location.protocol + '//' + '<%= ENV["API25C_URL"] %>'
+  var apiUrl = window.location.protocol + '//' + '<%= ENV["API25C_URL"] %>';
+  var buttonImageUrl = '<%= ENV["ASSETS_URL_BASE"] %>' + '/buttons/25c-%s.png';
 
   // Code contents
-  var jsCode = '<a href="%s" class="tip-25c-button" target="_blank" data-id="%s" data-size="%s" data-user="%s">%s</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");</script>';
+  var jsCode = '<a href="%s" class="tip-25c-button" target="_blank" data-id="%s" data-size="%s" data-user="%s" style="background-image:url(\'%s\');display:block;width:%spx;height:%spx;">%s</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");</script>';
   var iframeCode = '<iframe src="' + apiUrl + '/button/' + buttonId + '?size=%s" allowtransparency="true" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" %s></iframe>';  
   
   // jQuery objects
@@ -71,13 +82,16 @@ $(document).ready(function(){
     }
     $('#set-nickname-link').hide();
     if (codeType == 'iframe') {
-      newCode = sprintf(iframeCode, buttonSize, imageSizesDict[buttonSize]);
+      newCode = sprintf(iframeCode, buttonSize, sprintf(imageIframeSizeString, iframeImageSizes[buttonSize].width, imageSizes[buttonSize].height));
       $('.if-javascript').show();
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
     } else if (codeType == 'javascript') {
       var linkText = (!buttonTitle || /^\s*$/.test(buttonTitle)) ? "&nbsp;" : buttonTitle;
-      newCode = sprintf(jsCode, profileUrl, buttonId, buttonSize, userPledgeName, linkText);
+      newCode = sprintf(jsCode, profileUrl, buttonId, buttonSize, userPledgeName, sprintf(buttonImageUrl, buttonSize), imageSizes[buttonSize].width, imageSizes[buttonSize].height, linkText);
+
+      console.log(sprintf(buttonImageUrl, buttonSize));
+
       $('.if-javascript').show();
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');

@@ -12,14 +12,14 @@ class Button < ActiveRecord::Base
   
   validates :size,
     :inclusion => {
-      :in => %w(btn-large btn-medium btn-small icon-large icon-medium icon-small round-large round-medium round-small icon-text),
+      :in => %w(btn-large btn-medium btn-small icon-large icon-medium icon-small tip-large tip-medium tip-small),
       :message => "%{value} is not a valid button size"
     }
 
   validates :code_type,
     :inclusion => {
       :in => %w(javascript iframe),
-      :message => "%{value} is not a valid button size"
+      :message => "%{value} is not a valid button code type"
     }
     
   before_create :generate_uuid
