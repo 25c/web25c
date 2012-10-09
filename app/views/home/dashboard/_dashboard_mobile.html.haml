@@ -2,7 +2,7 @@
   %a= link_to t('home.dashboard.index.payment'), home_payment_path, :class => 'btn dashboard-action'
 %p.buffer
   = t('home.dashboard.index.not_funded')
-  $#{"%.2f" % (@clicks_unfunded_total.to_f / 4)}
+  = number_to_currency(@clicks_unfunded_total.to_f / 100)
 %p
   %a= link_to t('home.dashboard.index.undo_clicks'), home_undo_clicks_path, :class => 'btn dashboard-action'
 %p.buffer
@@ -10,7 +10,7 @@
 
 %h3.table-title
   = t('home.dashboard.index.tips_given_title')
-  $#{"%.2f" % (@clicks_given_total.to_f / 4)}
+  = number_to_currency(@clicks_given_total.to_f / 100)
 
 .mobile-clicks-container
   - if @clicks_given.length == 0
@@ -20,7 +20,7 @@
     .click-container
       .field-container
         .field-title= t('home.dashboard.index.amount')
-        .field-value $#{"%.2f" % (set[0].to_f / 4)}
+        .field-value= number_to_currency(set[0].to_f / 100)
         .clear
       
       .field-container
@@ -71,7 +71,7 @@
   %a= link_to t('home.dashboard.index.payout'), home_payout_path, :class => 'btn'
 %h3.table-title
   = t('home.dashboard.index.tips_received_title')
-  $#{"%.2f" % (@clicks_received_total.to_f / 4)}
+  = number_to_currency(@clicks_received_total.to_f / 100)
   
 .mobile-clicks-container
   - if @clicks_received.length == 0
@@ -82,7 +82,7 @@
     .click-container
       .field-container
         .field-title= t('home.dashboard.index.amount')
-        .field-value $#{"%.2f" % (set[0].to_f / 4)}
+        .field-value= number_to_currency(set[0].to_f / 100)
         .clear
 
       .field-container
@@ -121,7 +121,7 @@
 
 %h3.table-title
   = t('home.dashboard.index.tips_referred_title')
-  $#{"%.2f" % (@clicks_referred_total.to_f / 4)}
+  = number_to_currency(@clicks_referred_total.to_f / 100)
 .mobile-clicks-container
   - if @clicks_referred.length == 0
     .click-container
@@ -131,7 +131,7 @@
     .click-container
       .field-container
         .field-title= t('home.dashboard.index.amount')
-        .field-value $#{"%.2f" % (set[0].to_f / 4)}
+        .field-value= number_to_currency(set[0].to_f / 100)
         .clear
 
       .field-container

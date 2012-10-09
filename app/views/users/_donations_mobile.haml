@@ -6,7 +6,7 @@
       .click-container
         .field-container
           .field-title= t('home.dashboard.index.amount')
-          .field-value $#{"%.2f" % (set[0].to_f / 4)}
+          .field-value= number_to_currency(set[0].to_f / 100)
           .clear
 
         .field-container
@@ -37,7 +37,7 @@
       .click-container
         .field-container
           .field-title= t('home.dashboard.index.amount')
-          .field-value $#{"%.2f" % (set[0].to_f / 4)}
+          .field-value= number_to_currency(set[0].to_f / 100)
           .clear
 
         .field-container
