@@ -124,7 +124,9 @@ class User < ActiveRecord::Base
   
   def profile_url
     if Rails.env.production?
-      url = 'https://www.25c.com/'
+      url = 'https://tip.25c.com/'
+    elsif Rails.env.staging?
+      url = 'https://tip.plus25c.com/'
     else
       url = 'http://localhost:3000/'
     end
