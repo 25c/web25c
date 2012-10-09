@@ -40,8 +40,8 @@
           %td.click-date.convert-date= set[1].created_at.to_f()
           / %td.click-date= l set[1].created_at, :format => "%d %b %y"
           - if set[1].state > Click::State::DEDUCTED
-            %td= set[1].created_at.to_s(:number)
-            %td.click-date.convert-date= set[1].created_at.to_f()
+            %td= set[1].funded_at.to_s(:number)
+            %td.click-date.convert-date= set[1].funded_at.to_f()
             / %td.click-funded= l set[1].updated_at, :format => "%d %b %y"
           - else
             %td 0
@@ -94,8 +94,8 @@
           %td.click-date.convert-date= set[1].created_at.to_f()
           / %td.click-date= l set[1].created_at, :format => "%d %b %y"
           - if set[1].state > Click::State::DEDUCTED
-            %td= set[1].created_at.to_s(:number)
-            %td.click-date.convert-date= set[1].created_at.to_f()
+            %td= set[1].funded_at.to_s(:number)
+            %td.click-date.convert-date= set[1].funded_at.to_f()
             / %td.click-funded= l set[1].updated_at, :format => "%d %b %y"
           - else
             %td 0
@@ -134,8 +134,8 @@
           %td.click-date.convert-date= set[1].created_at.to_f()
           / %td.click-date= l set[1].created_at, :format => "%d %b %y"
           - if set[1].state > Click::State::DEDUCTED
-            %td= set[1].created_at.to_s(:number)
-            %td.click-date.convert-date= set[1].created_at.to_f()
+            %td= set[1].funded_at.to_s(:number)
+            %td.click-date.convert-date= set[1].funded_at.to_f()
             / %td.click-funded= l set[1].updated_at, :format => "%d %b %y"
           - else
             %td 0
