@@ -16,7 +16,7 @@ Dwolla Email:
 PAYMENT:
 \
 Amount:
-$#{"%.2f" % (@payment.amount.to_f / 100)}
+= number_to_currency(@payment.amount.to_f / 100)
 \
 UUID:
 = @payment.uuid

@@ -45,10 +45,16 @@ class Home::AccountController < Home::HomeController
       Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
     ])
     funded_clicks = clicks.select{ |click| click.state > Click::State::DEDUCTED }
-    @total = clicks.length
-    @funded = funded_clicks.length
+    @total = 0
+    clicks.each do |click|
+      @total += click.amount
+    end
+    @funded = 0
+    funded_clicks.each do |click|
+      @funded += click.amount
+    end
     
-    if @funded < 1
+    if @funded < 25
       @has_payout = false
     else
       @has_payout = true
@@ -71,7 +77,7 @@ class Home::AccountController < Home::HomeController
       # @authUrl = DwollaClient.auth_url(dwolla_auth_callback_url)
       unless @user.dwolla_email.blank?
         # Create or update payment object
-        amount = @funded.to_f / 4 * 100
+        amount = @funded
         openPayments = @user.payments.where(:state => Payment::State::NEW, :payment_type => 'payout')
         if openPayments.empty?
           payment = @user.payments.new({:amount => amount, :payment_type => 'payout'})
