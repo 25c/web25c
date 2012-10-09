@@ -20,7 +20,7 @@ en:
     account:
       payment:
         title: Fund 25c Tips You Have Pledged
-        given: "You have less than $10 in unfunded pledges (exactly: $%{total_amount})."
+        given: "You have less than $10 in unfunded pledges (exactly: %{total_amount})."
         click_more_p1: "Feel free to pledge a total of $10 in 25c tips at your leisure: Tip others or tip a larger amount to the same person.  (You may undo unfunded pledges at any time.)"
         click_more_p2: "When you have pledged $10 or more in 25c tips, we will ask you to fund your pledges."
         dashboard: Go to Dashboard

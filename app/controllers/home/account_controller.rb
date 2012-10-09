@@ -16,8 +16,7 @@ class Home::AccountController < Home::HomeController
     clicks = @user.clicks.find_all_by_state([ 
       Click::State::DEDUCTED
     ])
-    @total = clicks.length
-    @has_payin = @total >= 40
+    @has_payin = @user.balance > 1000
   end
   
   def create_payment
