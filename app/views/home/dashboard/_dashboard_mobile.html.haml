@@ -52,7 +52,7 @@
         .field-title= t('home.dashboard.index.funded')
         .field-value
           - if set[1].state > Click::State::DEDUCTED
-            .convert-date= set[1].updated_at.to_f()
+            .convert-date= set[1].funded_at.to_f()
           - else
             = t('home.dashboard.index.to_be')
         .clear
@@ -114,7 +114,7 @@
         .field-title= t('home.dashboard.index.funded')
         .field-value
           - if set[1].state > Click::State::DEDUCTED
-            .convert-date= set[1].updated_at.to_f()
+            .convert-date= set[1].funded_at.to_f()
           - else
             = t('home.dashboard.index.to_be')
         .clear
@@ -163,7 +163,7 @@
         .field-title= t('home.dashboard.index.funded')
         .field-value
           - if set[1].state > Click::State::DEDUCTED
-            .convert-date= set[1].updated_at.to_f()
+            .convert-date= set[1].funded_at.to_f()
           - else
             = t('home.dashboard.index.to_be')
         .clear

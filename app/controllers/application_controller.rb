@@ -184,9 +184,8 @@ class ApplicationController < ActionController::Base
         end
         if click_sets[id]
           click_sets[id][0] += click.amount
-          if click.created_at > click_sets[id][1].created_at
-            click_sets[id][1].created_at = click.created_at
-          end
+          click_sets[id][1].created_at = click.created_at if click.created_at > click_sets[id][1].created_at
+          click_sets[id][2].funded_at = click.funded_at if click.funded_at and click.funded_at > click_sets[id][1].funded_at
         else
           click_set = [click.amount, click]
           click_sets[id] = click_set
