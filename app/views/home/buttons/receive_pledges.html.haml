@@ -83,33 +83,11 @@
         %input{ :type => 'radio', :name => 'platform' }
         = image_tag 'logos/web.png', :class => 'web-logo-img'
         %span.platform-text= t('.website')
-      .pull-left.platform-container{ :'data-platform' => 'wordpress' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/wordpress.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'tumblr' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/tumblr.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'posterous' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/posterous.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'blog-com' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/blog-com.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'blogger' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/blogger.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'jux' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/jux.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'weebly' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/weebly.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'youtube' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/youtube.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'pinterest' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/pinterest.png', :class => 'platform-logo-img'
+      - ['wordpress', 'tumblr', 'posterous', 'blog-com', 'blogger', 'jux', 'weebly', 'youtube',
+        'pinterest', 'facebook'].each do |platform|
+        .pull-left.platform-container{ :'data-platform' => platform }
+          %input{ :type => 'radio', :name => 'platform' }
+          = image_tag 'logos/' + platform + '.png', :class => 'platform-logo-img'
       .clear
   .clear
 
@@ -197,6 +175,11 @@
         %p
           = raw t('.for_pinterest_2')
           %span.profile-link
+      .facebook-instructions.hide
+        %p= raw t('.for_facebook_1')
+        %p
+          = raw t('.for_facebook_2')
+          %span.profile-link
   .clear
 
   / #share-revenue.step-container.hide
@@ -224,8 +207,8 @@
       #profile-link.buffer= raw t('.profile_link', :link => link_to('', '#', :target => '_blank'))
       #share-cause.buffer
         = t('.share_cause_label')
-        #fb-share= image_tag("logos/facebook.png")
-        #tw-share= image_tag("logos/twitter.png")
+        #fb-share= image_tag("logos/facebook-icon.png")
+        #tw-share= image_tag("logos/twitter-icon.png")
       %p= t('.share_cause_note_p1')
       %p= t('.share_cause_note_p2')
   .clear
