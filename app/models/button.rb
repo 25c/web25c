@@ -8,7 +8,7 @@ class Button < ActiveRecord::Base
   
   attr_accessible :size, :title, :description, :code_type, :picture, :youtube_id, :pledge_message
   
-  serialize :share_users
+  serialize :share_users, JSON
   
   validates :size,
     :inclusion => {
