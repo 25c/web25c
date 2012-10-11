@@ -11,7 +11,7 @@
     %tbody
       - @clicks_given.each do |click|
         %tr
-          %td.click-amount= number_to_currency(click.amount.to_f / 100)
+          %td.click-amount= number_to_currency(click.amount.to_f / 100000000)
           -if click.button.user.profile_url.blank?
             %td.click-user= click.button.user.display_name
           - else
