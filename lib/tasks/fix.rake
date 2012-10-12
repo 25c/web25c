@@ -15,7 +15,11 @@ namespace :fix do
     task :receiver => :environment do
       Click.where(:parent_click_id => nil).find_each do |click|
         if click.receiver_user_id.nil? and click.clicks.empty?
-          click.update_attribute(:receiver_user_id, click.button.user_id)
+          if click.button.nil?
+            click.destroy
+          else
+            click.update_attribute(:receiver_user_id, click.button.user_id)
+          end
         end
       end
     end
