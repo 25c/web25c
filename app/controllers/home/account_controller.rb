@@ -40,7 +40,7 @@ class Home::AccountController < Home::HomeController
     @user = current_user
     
     # TODO: replace this lookup with balance fields in the User model
-    clicks = Click.where(:button_id => @user.button_ids).find_all_by_state([ 
+    clicks = Click.where(:receiver_user_id => @user.id).find_all_by_state([ 
       Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
     ])
     funded_clicks = clicks.select{ |click| click.state > Click::State::DEDUCTED }

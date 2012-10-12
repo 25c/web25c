@@ -14,6 +14,8 @@ class Click < ActiveRecord::Base
   belongs_to :button
   belongs_to :user
   
+  has_many :clicks, :foreign_key => 'parent_click_id'
+  
   before_create :generate_uuid
   
   attr_accessible :user_id, :ip_address, :button_id

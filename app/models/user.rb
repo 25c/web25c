@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_secure_password
   
   has_many :buttons, :dependent => :destroy
-  has_many :clicks, :dependent => :destroy
+  has_many :clicks, :conditions => { :parent_click_id => nil }
   has_many :payments
   
   has_attached_file :picture, :styles => { :thumb => ["50x50#", :jpg], :profile => ["1000x500>", :jpg] }
