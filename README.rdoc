@@ -1,5 +1,37 @@
 README
 
+- Homebrew
+
+Homebrew automates installing UNIX packages on Mac OS X, and is recommended for installing other dependencies of this project.
+
+http://mxcl.github.com/homebrew/
+
+- Postgres
+
+Install postgres 9.1.x using Homebrew:
+
+$ brew install postgres
+
+Modify your postgresql.conf to enable prepared transactions:
+
+max_prepared_transactions = 4
+
+Make sure to also create the data25c database and schema, see the data25c project README.
+
+You can install the auto-launch config, or manually start and stop postgres on the command line.  If you forget the commands, you can get the info at any time:
+
+$ brew info postgres
+
+- Redis
+
+Install redis using Homebrew:
+
+$ brew install redis
+
+You can install the auto-launch config, or manually start and stop redis on the command line. For instructions:
+
+$ brew info redis
+
 - Asset Precompilation on Heroku
 
 The app on Heroku must have the user-env-compile labs feature enabled for asset precompilation to work, as some assets refer to variables initialized in the user config.

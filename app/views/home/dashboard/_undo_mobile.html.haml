@@ -7,7 +7,7 @@
     .click-container
       .field-container
         .field-title= t('home.dashboard.index.amount')
-        .field-value= number_to_currency(click.amount.to_f / 100)
+        .field-value= number_to_currency(click.amount.to_f / 100000000)
         .clear
         
       .field-container

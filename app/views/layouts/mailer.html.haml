@@ -1,4 +1,4 @@
 = yield
-
-/ %hr
-/ %p= t('.recipient', :recipient => @recipient)
+- if Rails.env.development?
+  %hr
+  %p= t('.recipient', :recipient => @recipient)

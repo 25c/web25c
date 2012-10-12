@@ -28,13 +28,13 @@ class ApplicationMailer < ActionMailer::Base
   def new_payout_request(user, payment)
     @user = user
     @payment = payment
-    mail :to => Rails.env.production? ? 'payout@25c.com' : 'lionel@25c.com', :subject => 'New Payout Request'
+    mail :to => recipient("payout#{'-' + Rails.env unless Rails.env.production?}@25c.com"), :subject => 'New Payout Request'
   end
   
   def updated_payout_request(user, payment)
     @user = user
     @payment = payment
-    mail :to => Rails.env.production? ? 'payout@25c.com' : 'lionel@25c.com', :subject => 'Updated Payout Request'
+    mail :to => recipient("payout#{'-' + Rails.env unless Rails.env.production?}@25c.com"), :subject => 'Updated Payout Request'
   end
   
   def daily_report    
@@ -115,7 +115,7 @@ class ApplicationMailer < ActionMailer::Base
     
     # Send email to stats distribution list
     puts "Sending daily report email..."
-    mail :to => Rails.env.production? ? 'reports@25c.com' : 'lionel@25c.com', :subject => "25c Report - #{day}"    
+    mail :to => recipient("reports#{'-' + Rails.env unless Rails.env.production?}@25c.com"), :subject => "25c Report - #{day}"    
     puts "Email sent."
   end
   

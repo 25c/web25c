@@ -19,7 +19,7 @@ class Home::DashboardController < Home::HomeController
       @clicks_unfunded_total += click.amount if click.state == Click::State::DEDUCTED
     end
     
-    clicks = Click.where(:button_id => @user.button_ids).includes(:user).order("created_at DESC").find_all_by_state([ 
+    clicks = Click.where(:receiver_user_id => @user.id).includes(:button, :user).order("created_at DESC").find_all_by_state([ 
       Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
     ])
     @clicks_received = group_clicks(clicks, false, true)
@@ -28,7 +28,7 @@ class Home::DashboardController < Home::HomeController
       @clicks_received_total += set[0]
     end
     
-    clicks = Click.where(:referrer_user_id => @user.id).includes(:user).order("created_at DESC").find_all_by_state([ 
+    clicks = Click.where(:referrer_user_id => @user.id).includes(:button, :user).order("created_at DESC").find_all_by_state([ 
       Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
     ])
     @clicks_referred = group_clicks(clicks, false, true)

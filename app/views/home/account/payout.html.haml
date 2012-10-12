@@ -2,7 +2,7 @@
 
 %h2.page-header= t('.title')
 
-%p= t '.received', :total_amount => number_to_currency(@total.to_f / 100), :funded_amount => number_to_currency(@funded.to_f / 100)
+%p= t '.received', :total_amount => number_to_currency(@total.to_f / 100000000), :funded_amount => number_to_currency(@funded.to_f / 100000000)
     
 - if not @has_payout
   %p= t '.too_low_p1'

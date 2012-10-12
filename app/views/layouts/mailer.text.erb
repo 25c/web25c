@@ -1,4 +1,4 @@
 <%= yield %>
-
-<!-- -
-<%= t('.recipient', :recipient => @recipient) %> -->
+<% if Rails.env.development? %>
+<%= t('.recipient', :recipient => @recipient) %>
+<% end %>
