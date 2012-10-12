@@ -25,34 +25,12 @@
       .pull-left.platform-container{ :'data-platform' => 'html' }
         %input{ :type => 'radio', :name => 'platform' }
         = image_tag 'logos/web.png', :class => 'web-logo-img'
-        %span.platform-text= t('home.buttons.receive_pledges.website')
-      .pull-left.platform-container{ :'data-platform' => 'wordpress' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/wordpress.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'tumblr' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/tumblr.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'posterous' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/posterous.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'blog-com' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/blog-com.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'blogger' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/blogger.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'jux' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/jux.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'weebly' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/weebly.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'youtube' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/youtube.png', :class => 'platform-logo-img'
-      .pull-left.platform-container{ :'data-platform' => 'pinterest' }
-        %input{ :type => 'radio', :name => 'platform' }
-        = image_tag 'logos/pinterest.png', :class => 'platform-logo-img'
+        %span.platform-text= t('.website')
+      - ['wordpress', 'tumblr', 'posterous', 'blog-com', 'blogger', 'jux', 'weebly', 'youtube',
+        'pinterest', 'facebook'].each do |platform|
+        .pull-left.platform-container{ :'data-platform' => platform }
+          %input{ :type => 'radio', :name => 'platform' }
+          = image_tag 'logos/' + platform + '.png', :class => 'platform-logo-img'
       .clear
   .clear
 
@@ -139,6 +117,11 @@
         %p= raw t('home.buttons.receive_pledges.for_pinterest_1')
         %p
           = raw t('home.buttons.receive_pledges.for_pinterest_2')
+          %span.profile-link          
+      .facebook-instructions.hide
+        %p= raw t('home.buttons.receive_pledges.for_facebook_1')
+        %p
+          = raw t('home.buttons.receive_pledges.for_facebook_2')
           %span.profile-link
   .clear
   

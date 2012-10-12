@@ -15,3 +15,19 @@ button_lionel:
   title: MyString
   description: MyText
   user: lionel
+
+button_francis:
+  uuid: 92d1cdb0f60c012f5f3960c5470a09c8
+  size: btn-medium
+  code_type: javascript
+  title: MyString
+  description: MyText
+  user: francis
+  
+button_martin:
+  uuid: 98bf13e0f60c012f5f3a60c5470a09c8
+  size: btn-medium
+  code_type: javascript
+  title: MyString
+  description: MyText
+  user: martin

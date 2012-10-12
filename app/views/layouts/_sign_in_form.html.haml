@@ -12,7 +12,7 @@
       = t('users.sign_in.facebook')
   #sign_in_title.large.buffer= t('users.sign_in.sign_in_with')
   .login-buttons
-    %a.facebook-btn.pointer= image_tag "logos/facebook.png"
+    %a.facebook-btn.pointer= image_tag "logos/facebook-icon.png"
     - if @button
       = link_to image_tag("logos/google.png"),
         '/auth/google_oauth2?state=button_info:' + @button.uuid + '|' + @referrer + '|' + @source,

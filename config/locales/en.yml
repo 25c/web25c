@@ -216,6 +216,9 @@ en:
         for_pinterest_1: "When creating a new Pin or editing an existing Pin, enter the following in the description:"
         for_pinterest_2: "Click to tip 25 cents: "
         
+        for_facebook_1: "When creating a new Post, enter the following:"
+        for_facebook_2: "Click to tip 25 cents: "
+        
         button_preview: "Button preview:"
         link_preview: "Link preview:"
         

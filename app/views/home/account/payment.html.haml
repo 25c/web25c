@@ -8,6 +8,7 @@
 
 %h2.page-header= t('.title')
 -if @has_payin
+<<<<<<< HEAD
   %p.buffer= t('.amount', :amount => number_to_currency(current_user.balance.to_f / 100))
   
   .row
@@ -25,11 +26,26 @@
         = hidden_field_tag "cancel_return", home_payment_url
         = image_submit_tag "#{PAYPAL_SETTINGS['assets_url']}/en_US/i/btn/btn_paynowCC_LG.gif", :border => "0", :alt => "PayPal - The safer, easier way to pay online!"
         = image_tag "#{PAYPAL_SETTINGS['assets_url']}/en_US/i/scr/pixel.gif", :alt => "", :border => "0", :width => "1", :height => "1"
+=======
+  %p.buffer= t('.amount', :amount => number_to_currency(current_user.balance.to_f / 100000000))
+
+  = form_tag PAYPAL_SETTINGS['service_url'], :method => :post do
+    = hidden_field_tag "business", PAYPAL_SETTINGS['merchant_id']
+    = hidden_field_tag "cmd", "_xclick"
+    = hidden_field_tag "amount", current_user.balance.to_f / 100000000
+    = hidden_field_tag "notify_url", paypal_process_url
+    = hidden_field_tag "item_name", t('.item_name')
+    = hidden_field_tag "no_shipping", 1
+    = hidden_field_tag "return", home_payment_success_url
+    = hidden_field_tag "cancel_return", home_payment_url
+    = image_submit_tag "#{PAYPAL_SETTINGS['assets_url']}/en_US/i/btn/btn_paynowCC_LG.gif", :border => "0", :alt => "PayPal - The safer, easier way to pay online!"
+    = image_tag "#{PAYPAL_SETTINGS['assets_url']}/en_US/i/scr/pixel.gif", :alt => "", :border => "0", :width => "1", :height => "1"
+>>>>>>> c557f6278d17dbf40c857f58c4c7d2a503239240
     
       <!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="#" onclick="javascript:window.open('https://www.paypal.com/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=400, height=350');"><img  src="https://www.paypal.com/en_US/Marketing/i/banner/bnr_payments_120x30_y.gif" border="0" alt="PayPal Logo"></a></td></tr></table><!-- PayPal Logo -->
 
 - else
-  %p= t '.given', :total_amount => number_to_currency(current_user.balance.to_f / 100)
+  %p= t '.given', :total_amount => number_to_currency(current_user.balance.to_f / 100000000)
   %p= t('.click_more_p1')
   %p.buffer= t('.click_more_p2')
   

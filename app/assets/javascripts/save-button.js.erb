@@ -2,27 +2,27 @@ $(document).ready(function(){
     
 	// lookup dictionary for image sizes
 	var iframeImageSizes = {
-		'btn-large':    { width: '130', height: '40' },
-		'btn-medium':   { width: '112', height: '30' },
-		'btn-small':    { width: '94',  height: '20' },
-		'icon-large':   { width: '98',  height: '40' },
-		'icon-medium':  { width: '88',  height: '30' },
-		'icon-small':   { width: '78',  height: '20' },
-		'tip-large':   { width: '130',  height: '40' },
-		'tip-medium':  { width: '112',  height: '30' },
+		'btn-large':   { width: '130', height: '40' },
+		'btn-medium':  { width: '112', height: '30' },
+		'btn-small':   { width: '94',  height: '20' },
+		'icon-large':  { width: '98',  height: '40' },
+		'icon-medium': { width: '88',  height: '30' },
+		'icon-small':  { width: '78',  height: '20' },
+		'tip-large':   { width: '130', height: '40' },
+		'tip-medium':  { width: '112', height: '30' },
 		'tip-small':   { width: '94',  height: '20' }
 	};
 	
 	var imageSizes = {
-		'btn-large':    { width: '72', height: '40' },
-		'btn-medium':   { width: '54', height: '30' },
-		'btn-small':    { width: '36',  height: '20' },
-		'icon-large':   { width: '40',  height: '40' },
-		'icon-medium':  { width: '30',  height: '30' },
-		'icon-small':   { width: '20',  height: '20' },
-		'tip-large':   { width: '72',  height: '40' },
-		'tip-medium':  { width: '54',  height: '30' },
-		'tip-small':   { width: '36',  height: '20' }
+		'btn-large':   { width: '72', height: '40' },
+		'btn-medium':  { width: '54', height: '30' },
+		'btn-small':   { width: '36', height: '20' },
+		'icon-large':  { width: '40', height: '40' },
+		'icon-medium': { width: '30', height: '30' },
+		'icon-small':  { width: '20', height: '20' },
+		'tip-large':   { width: '72', height: '40' },
+		'tip-medium':  { width: '54', height: '30' },
+		'tip-small':   { width: '36', height: '20' }
 	};
 	
 	var iframeImageSizeString = 'width="%s" height="%s"';
@@ -89,9 +89,6 @@ $(document).ready(function(){
     } else if (codeType == 'javascript') {
       var linkText = (!buttonTitle || /^\s*$/.test(buttonTitle)) ? "&nbsp;" : buttonTitle;
       newCode = sprintf(jsCode, profileUrl, buttonId, buttonSize, userPledgeName, sprintf(buttonImageUrl, buttonSize), imageSizes[buttonSize].width, imageSizes[buttonSize].height, linkText);
-
-      console.log(sprintf(buttonImageUrl, buttonSize));
-
       $('.if-javascript').show();
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
@@ -180,7 +177,7 @@ $(document).ready(function(){
         var newCodeType = "javascript";
       } else if (platform == 'posterous' || platform == 'tumblr' || platform == 'blog-com' || platform == 'jux') {
         var newCodeType = "iframe";
-      } else if (platform == 'youtube' || platform == 'pinterest') {
+      } else if (platform == 'youtube' || platform == 'facebook' || platform == 'pinterest') {
         var newCodeType = "link";
       }
       $('#get-code').removeAttr('data-skip');

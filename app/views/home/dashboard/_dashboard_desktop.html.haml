@@ -1,10 +1,10 @@
 %h3.table-title
   = t('home.dashboard.index.tips_given_title')
-  = number_to_currency(@clicks_given_total.to_f / 100)
+  = number_to_currency(@clicks_given_total.to_f / 100000000)
 %p
   %a= link_to t('home.dashboard.index.payment'), home_payment_path, :class => 'btn dashboard-action'
   = t('home.dashboard.index.not_funded')
-  = number_to_currency(@clicks_unfunded_total.to_f / 100)
+  = number_to_currency(@clicks_unfunded_total.to_f / 100000000)
 %p.buffer
   %a= link_to t('home.dashboard.index.undo_clicks'), home_undo_clicks_path, :class => 'btn dashboard-action'
   = t('home.dashboard.index.funded_note')
@@ -23,7 +23,7 @@
     %tbody
       - @clicks_given.each do |set|
         %tr
-          %td.click-amount= number_to_currency(set[0].to_f / 100)
+          %td.click-amount= number_to_currency(set[0].to_f / 100000000)
           -if set[1].button.user.profile_url.blank?
             %td.click-user= set[1].button.user.display_name
           - else
@@ -50,12 +50,12 @@
             .fb-share{:"data-referrer" => set[1].referrer,
               :"data-title" => t('home.dashboard.index.fb_share_user_title', 
                 :user_name => set[1].button.user.display_name) }
-              = image_tag("logos/facebook.png")
-            .tw-share{:"data-referrer" => set[1].referrer}= image_tag("logos/twitter.png")
+              = image_tag("logos/facebook-icon.png")
+            .tw-share{:"data-referrer" => set[1].referrer}= image_tag("logos/twitter-icon.png")
 
 %h3.table-title
   = t('home.dashboard.index.tips_received_title')
-  = number_to_currency(@clicks_received_total.to_f / 100)
+  = number_to_currency(@clicks_received_total.to_f / 100000000)
 %p
   %a= link_to t('home.dashboard.index.payout'), home_payout_path, :class => 'btn'
 %p.buffer
@@ -76,7 +76,7 @@
     %tbody
       - @clicks_received.each do |set|
         %tr
-          %td.click-amount= number_to_currency(set[0].to_f / 100)
+          %td.click-amount= number_to_currency(set[0].to_f / 100000000)
           
           -if set[1].button.user.profile_url.blank?
             %td.click-user= set[1].user.display_name
@@ -104,7 +104,7 @@
 
 %h3.table-title
   = t('home.dashboard.index.tips_referred_title')
-  = number_to_currency(@clicks_referred_total.to_f / 100)
+  = number_to_currency(@clicks_referred_total.to_f / 100000000)
 .table-wrapper
   %table#clicks-referred.clicks-table.table.table-condensed.table-striped
     %thead
@@ -120,7 +120,7 @@
     %tbody
       - @clicks_referred.each do |set|
         %tr
-          %td.click-amount= number_to_currency(set[0].to_f / 100)
+          %td.click-amount= number_to_currency(set[0].to_f / 100000000)
           %td.click-user= set[1].user.display_name
           - if set[1].referrer.blank?
             %td.click-referrer= t('home.dashboard.index.no_referrer')

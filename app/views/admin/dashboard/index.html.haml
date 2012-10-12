@@ -24,7 +24,7 @@
         %tr
           %td.payment-user= payment.user.display_name
           %td.payment-user-dwolla-email= mail_to(payment.user.dwolla_email)
-          %td.payment-amount= number_to_currency(payment.amount.to_f / 100)
+          %td.payment-amount= number_to_currency(payment.amount.to_f / 100000000)
           %td= payment.created_at.to_s(:number)
           %td.payment-date= l payment.created_at, :format => "%d %b %y"
           %td.payment-button.center
