@@ -30,10 +30,12 @@ $(document).ready(function(){
   if (webUrl.indexOf('localhost') != -1) webUrl += ':3000';
   var apiUrl = window.location.protocol + '//' + '<%= ENV["API25C_URL"] %>';
   var buttonImageUrl = '<%= ENV["ASSETS_URL_BASE"] %>' + '/buttons/25c-%s.png';
+  var beltOn = false;
 
   // Code contents
   var jsCode = '<a href="%s" class="tip-25c-button" target="_blank" data-id="%s" data-size="%s" data-user="%s" style="background-image:url(\'%s\');display:block;width:%spx;height:%spx;">%s</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/button.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");</script>';
   var iframeCode = '<iframe src="' + apiUrl + '/button/' + buttonId + '?size=%s" allowtransparency="true" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" %s></iframe>';  
+  var beltCode = '<a href="%s" class="tip-25c-belt" target="_blank" data-id="%s" data-size="%s" data-user="%s">%s</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/belt.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-belt-js");</script>';
   
   // jQuery objects
   var $iframe = $('#upload-picture');
@@ -81,21 +83,27 @@ $(document).ready(function(){
       putUpdate(true, { code_type: codeType });
     }
     $('#set-nickname-link').hide();
-    if (codeType == 'iframe') {
-      newCode = sprintf(iframeCode, buttonSize, sprintf(iframeImageSizeString, iframeImageSizes[buttonSize].width, imageSizes[buttonSize].height));
-      $('.if-javascript').show();
+    if (beltOn) {
+      var linkText = (!buttonTitle || /^\s*$/.test(buttonTitle)) ? "&nbsp;" : buttonTitle;
+      newCode = sprintf(beltCode, profileUrl, buttonId, buttonSize, userPledgeName, linkText);
+      $('.if-code, .if-javascript').show();
       $('.if-link').hide();
+      $('#choose-button').removeAttr('data-skip');
+    } else if (codeType == 'iframe') {
+      newCode = sprintf(iframeCode, buttonSize, sprintf(iframeImageSizeString, iframeImageSizes[buttonSize].width, imageSizes[buttonSize].height));
+      $('.if-code').show();
+      $('.if-javascript, .if-link').hide();
       $('#choose-button').removeAttr('data-skip');
     } else if (codeType == 'javascript') {
       var linkText = (!buttonTitle || /^\s*$/.test(buttonTitle)) ? "&nbsp;" : buttonTitle;
       newCode = sprintf(jsCode, profileUrl, buttonId, buttonSize, userPledgeName, sprintf(buttonImageUrl, buttonSize), imageSizes[buttonSize].width, imageSizes[buttonSize].height, linkText);
-      $('.if-javascript').show();
+      $('.if-code, .if-javascript').show();
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
     } else if (codeType == 'link') {
       $('.profile-link').html('<a href="' + profileUrl + '" target="_blank">' + profileUrl + '</a>');
       $('#set-nickname-link').show();
-      $('.if-javascript').hide();
+      $(' .if-code, .if-javascript').hide();
       $('.if-link').show();
       $('#choose-button').attr('data-skip', true);
       newCode = "";
@@ -103,13 +111,27 @@ $(document).ready(function(){
     $('#button-code-block').text(newCode);
     $('#button-preview').html(newCode);
 
-    if (codeType == 'javascript') {
+    if (!beltOn && codeType == 'javascript') {
       $('#tip-25c-tooltip').remove();
-      $('#button-code-js').remove();
+      // $('#button-code-js').remove();
+      // $('#tip-25c-js').remove();
       if (typeof _tip25c_jquery != "undefined") {
         _tip25c_jquery.receiveMessage();
         $('head').append('<script id="tip-25c-js" type="text/javascript" src="//<%= ENV["API25C_URL"] %>/public/javascripts/button.js">');
       }
+    }
+    
+    if (beltOn) {
+      $('#tip-25c-tooltip').remove();
+      // $('#button-code-js').remove();
+      // $('#tip-25c-belt-js').remove();
+      if (typeof _tip25c_belt_jquery != "undefined") {
+        _tip25c_jquery.receiveMessage();
+        $('head').append('<script id="tip-25c-belt-js" type="text/javascript" src="//<%= ENV["API25C_URL"] %>/public/javascripts/belt.js">');
+      }
+      $('#button-preview-container').css('float', 'none');
+    } else {
+      $('#button-preview-container').css('float', '');
     }
   };
   
@@ -161,8 +183,13 @@ $(document).ready(function(){
         buttonSize = newButtonSize;
         $this.parent().find('.selected-option').removeClass('selected-option');
         $this.addClass('selected-option');
+        if ($this.hasClass('belt')) {
+          beltOn = true;
+        } else {
+          beltOn = false;
+          putUpdate(true, { 'size': buttonSize });
+        }
         updateButtonCode();
-        putUpdate(true, { 'size': buttonSize });
       }
       showNextStep(4);
     } else if ($this.hasClass('platform-container')) {

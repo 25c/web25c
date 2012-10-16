@@ -109,12 +109,12 @@ body {
 
 .main-col {
   float: left;
-  width: 500px;
+  width: 460px;
 }
 
 .side-col {
   float: right;
-  width: 300px;
+  width: 360px;
 }
 
 .side-col-title {
@@ -1324,12 +1324,13 @@ table.table thead .sorting_desc_disabled {
   position: relative;
   float: left;
   height: 80px;
-  width: 125px;
-  text-align: center;
+  width: 120px;
+//  text-align: center;
   cursor: pointer;
   padding-top: 5px;
+  padding-left: 5px;
   margin: 2px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
 }
 
@@ -1383,6 +1384,16 @@ table.table thead .sorting_desc_disabled {
   top: 2px;
   font: normal normal 400 15px helvetica,arial,sans-serif;
   color: #333;
+}
+
+.button-choice.belt {
+  height: 120px;
+  width: 370px;
+}
+
+.button-choice.belt img {
+  margin-left: -162px;
+  margin-top: 30px;
 }
 
 .button-choice:hover {
@@ -1544,6 +1555,7 @@ pre#button-code-block {
 
 #button-preview-container {
   float: left;
+  min-height: 120px;
   width: 200px;
   margin: 10px 20px 0 0;
 }

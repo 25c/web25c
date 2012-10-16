@@ -45,21 +45,24 @@
           .button-choice
             %input.button-size{ :type => 'radio', :name => 'button_size' }
             %span= t('home.buttons.receive_pledges.' + size)
-            %img{ :src => image_path('buttons/25c-'+ size +'.png'), :'data-size' => size }
-        .clear
+            %img{ :src => image_path('buttons/25c-'+ size +'.png'), :'data-size' => size }  
+        .button-choice.belt.if-javascript.hide.clear
+          %input.button-size{ :type => 'radio', :name => 'button_size' }
+          %span= t('home.buttons.receive_pledges.belt')
+          %img{ :src => image_path('buttons/25c-belt.png'), :'data-size' => 'belt-25c' }
   .clear
 
 #get-code.step-container
   .step-number 3
   .step-content
-    %h3.step-title.if-javascript= t('home.buttons.receive_pledges.get_code_title')
+    %h3.step-title.if-code= t('home.buttons.receive_pledges.get_code_title')
     %h3.step-title.if-link.hide= t('home.buttons.receive_pledges.get_link_title')
     .step-body.buffer
-      #button-preview-container.if-javascript
+      #button-preview-container.if-code
         #button-preview-title
           = t('home.buttons.receive_pledges.button_preview')
         #button-preview     
-      #code-container.if-javascript
+      #code-container.if-code
         %p
           %b= t('home.buttons.receive_pledges.button_code')
         %pre#button-code-block
@@ -67,7 +70,7 @@
           #set-nickname-link.hide
             = link_to t('home.buttons.receive_pledges.set_nickname'), home_account_url
       .clear
-    %h3.if-javascript= t('home.buttons.receive_pledges.installation')
+    %h3.if-code= t('home.buttons.receive_pledges.installation')
     .step-body#install-instructions
       .html-instructions
         %p= raw t('home.buttons.receive_pledges.for_website')
