@@ -316,28 +316,30 @@ $(document).ready(function(){
   // Save share info and send email
   $('#share-revenue').on('click', '#set-share-info', function() {
     var button = $(this);
-    button.attr('disabled', 'disabled');
-    shareAmount = $('#share-amount').val();
-    shareEmail = $('#share-email').val().replace(/\s+/g, ' ');
-    if (isValidEmailAddress(shareEmail)) {
-      var updates = { share_email: shareEmail, share_amount: shareAmount } ;
-      $.ajax({
-        type: "PUT",
-        url: shareEmailUrl,
-        data: JSON.stringify(updates),
-        contentType: 'application/json',
-        dataType: 'json',
-        success: function(data, status, xhr) {
-          // success callback
-          button.closest('#share-revenue').html(data['html']);
-        },
-        error: function() {
-          // error callback
-        }
-      });
-      showNextStep(6);
-    } else {
-      alert(invalidEmail);
+    if (button.attr('disabled') != 'disabled') {
+      button.attr('disabled', 'disabled');
+      shareAmount = $('#share-amount').val();
+      shareEmail = $('#share-email').val().replace(/\s+/g, ' ');
+      if (isValidEmailAddress(shareEmail)) {
+        var updates = { share_email: shareEmail, share_amount: shareAmount } ;
+        $.ajax({
+          type: "PUT",
+          url: shareEmailUrl,
+          data: JSON.stringify(updates),
+          contentType: 'application/json',
+          dataType: 'json',
+          success: function(data, status, xhr) {
+            // success callback
+            button.closest('#share-revenue').html(data['html']);
+          },
+          error: function() {
+            // error callback
+          }
+        });
+        showNextStep(6);
+      } else {
+        alert(invalidEmail);
+      }
     }
   });
   
@@ -345,11 +347,11 @@ $(document).ready(function(){
     $(this).closest('#share-revenue').html(data['html']);
   });
   
-  $('#share-revenue input').keypress(function() {
+  $('#share-revenue').on('keypress', 'input', function() {
     $('#set-share-info[disabled="disabled"]').removeAttr('disabled');
   });
   
-  $('#share-revenue select').change(function() {
+  $('#share-revenue').on('change', 'select', function() {
     $('#set-share-info[disabled="disabled"]').removeAttr('disabled');
   });
   
