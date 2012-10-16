@@ -8,7 +8,11 @@ class User < ActiveRecord::Base
   has_many :clicks, :conditions => { :parent_click_id => nil }
   has_many :payments
   
-  has_attached_file :picture, :styles => { :thumb => ["50x50#", :jpg], :profile => ["1000x500>", :jpg] }
+  has_attached_file :picture, :styles => { 
+      :thumb => ["50x50#", :jpg], 
+      :profile => ["1000x500>", :jpg] 
+    }, 
+    :default_url => "https://s3.amazonaws.com/assets.25c.com/users/pictures/missing/:style.jpg"
   
   attr_writer :editing
   attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, 
