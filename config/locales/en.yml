@@ -2,6 +2,16 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  activerecord:
+    attributes:
+      invite:
+        share_amount: Share
+        email: Recipient Email
+        created_at: Sent
+        
+  time:
+    formats:
+      date_only: "%d %b"
   
   application:
     title: "25c - tips online as small as 25 cents"
@@ -251,6 +261,11 @@ en:
       get_button:
         title: Get your +25c Button
         subtitle: "Follow these easy steps to get your +25c button code:"
+      share_revenue:
+        sharing: "You are currently sharing your tips with:"
+        outstanding_invites: "You have sent the following tip share invitations:"
+        cancel: "Cancel"
+        stop: "Stop sharing"
       choose_pledge_message:
         title: Choose a Pledge Message
         instructions: "25c will send reminder messages to people that haven't yet funded their pledges. Enter a custom message for people that have pledged 25c tips to you:"
@@ -333,7 +348,10 @@ en:
       privacy: Privacy
       copyright: "&copy; 25c Inc. 2012"
     mailer:
+      valediction: "Best wishes,"
+      team: "The 25c Team"      
       recipient: "This message was sent to: %{recipient}"
+      
     sign_in_form:
       works_with: Clicking +25c pledges a tip of 25 cents or more. Pledge now, pay later.  You may cancel pledges you made until you fund them.
       agreement_text: "By continuing, you agree to the "
@@ -452,8 +470,26 @@ en:
       email_taken: "That e-mail address has been taken. Please choose another."
       email_invalid: "That e-mail address is not valid."
 
+  invites:
+    show:
+      invited_by: "25c user %{user} is sharing tips with you!"
+      share: "%{user} has decided to share tips with you!"
+      percentage: "Percentage shared: %{percentage}"      
+      sent: "You sent this invite on %{date}."
+      already_used: "This invite has already been accepted!"
+      closed: "Sorry, but this invite has been withdrawn."
+      accept: "Accept!"
+    update:
+      success: "Invitation accepted! Shared tips will appear under Pledges Received."
+
   user_mailer:
-    welcome:
+    new_invite:
+      subject: "25c user %{user} is sharing tips with you!"
+      greeting: "Hi!"
+      share: "%{user} has decided to share tips with you!"
+      percentage: "Percentage shared: %{percentage}."
+      to_accept: "To accept this invite, visit the following link:"
+      
       
   admin:
     dashboard:

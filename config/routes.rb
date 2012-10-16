@@ -35,6 +35,8 @@ Web25c::Application.routes.draw do
     match 'blog/header' => 'home#blog_header'
     match 'blog/footer' => 'home#blog_footer'
     match 'paypal_process' => 'home#paypal_process', :as => :paypal_process
+    
+    resources :i, :controller => 'invites', :as => 'invites', :only => [ :index, :show, :update ]
 
     namespace :home do
       # Buttons
@@ -59,6 +61,8 @@ Web25c::Application.routes.draw do
       
       # Revenue Sharing
       match 'share_email' => 'buttons#share_email', :as => :share_email, :via => :put
+      match 'cancel_email' => 'buttons#cancel_email', :as => :cancel_email, :via => :delete
+      match 'stop_share' => 'buttons#stop_share', :as => :stop_share, :via => :delete
     end
 
     match 'home/account' => 'users#edit', :as => :home_account, :via => :get

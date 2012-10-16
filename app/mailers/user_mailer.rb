@@ -10,7 +10,7 @@ class UserMailer < ApplicationMailer
   def new_invite(invite_id)
     @invite = Invite.find(invite_id)
     @user = @invite.button.user
-    mail :to => recipient(@invite.email), :subject => "25c user #{@user.display_name} is sharing tips with you!"
+    mail :to => recipient(@invite.email), :subject => t('user_mailer.new_invite.subject', :user => @user.display_name)
   end
   
   # tell sharer that their button tips are now being shared
