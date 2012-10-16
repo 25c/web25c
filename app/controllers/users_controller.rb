@@ -198,7 +198,9 @@ class UsersController < ApplicationController
         )
         @is_tip_page = true
       else
-        if user.has_seen_receive_page
+        if !session[:redirect_path].blank?
+          @redirect_url = session.delete(:redirect_path)
+        elsif user.has_seen_receive_page
           @redirect_url = home_dashboard_path
         else
           @redirect_url = home_receive_pledges_path
