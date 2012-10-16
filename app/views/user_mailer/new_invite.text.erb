@@ -1,0 +1,8 @@
+<%= t '.greeting' %>
+
+<%= t '.share', :user => @user.display_name %>
+
+<%= t '.percentage', :percentage => number_to_percentage(@invite.share_amount, :precision => 0) %>
+
+<%= t '.to_accept' %>
+<%= invite_url(:id => @invite.uuid)%>

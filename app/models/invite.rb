@@ -11,8 +11,12 @@ class Invite < ActiveRecord::Base
   belongs_to :button
   before_create :generate_uuid
   
+  def to_param
+    self.uuid
+  end
+  
   def generate_uuid
-    self.uuid = UUID.new.generate
+    self.uuid = UUID.new.generate(:compact)
   end
   
   def new_invite_email
@@ -28,7 +32,7 @@ class Invite < ActiveRecord::Base
   end
   
   def process(user)
-    unless self.button.user == user
+    unless self.button.user == user or self.state != State::OPEN
       self.button.share_users = [{ :user => user.id, :share_amount => self.share_amount }]
       self.button.save
       self.state = State::ACCEPTED

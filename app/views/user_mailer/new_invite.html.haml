@@ -1,12 +1,5 @@
-%p Hi!
-
-%p #{@user.display_name} has decided to share tips with you!
-
-%p Percentage shared: #{@invite.share_amount}%.
-
-%p If you are not a 25c user already, please follow this link to register:
-%p{ :style => 'margin-bottom:30px;'}= link_to sign_in_url(:id => @invite.uuid), sign_in_url(:id => @invite.uuid)
-
-
-%p Best wishes,
-%p The 25c Team
+%p= t '.greeting'
+%p= t '.share', :user => @user.display_name
+%p= t '.percentage', :percentage => number_to_percentage(@invite.share_amount, :precision => 0)
+%p= t '.to_accept'
+%p{ :style => 'margin-bottom:30px;'}= link_to invite_url(:id => @invite.uuid), invite_url(:id => @invite.uuid)

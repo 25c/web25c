@@ -35,6 +35,8 @@ Web25c::Application.routes.draw do
     match 'blog/header' => 'home#blog_header'
     match 'blog/footer' => 'home#blog_footer'
     match 'paypal_process' => 'home#paypal_process', :as => :paypal_process
+    
+    resources :i, :controller => 'invites', :as => 'invites', :only => [ :index, :show, :update ]
 
     namespace :home do
       # Buttons

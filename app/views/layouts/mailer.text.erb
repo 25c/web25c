@@ -1,4 +1,10 @@
 <%= yield %>
+
+<%= t '.valediction' %>
+<%= t '.team' %>
+
+----
+
 <% if Rails.env.development? %>
 <%= t('.recipient', :recipient => @recipient) %>
 <% end %>

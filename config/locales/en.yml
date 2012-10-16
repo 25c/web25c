@@ -347,7 +347,10 @@ en:
       privacy: Privacy
       copyright: "&copy; 25c Inc. 2012"
     mailer:
+      valediction: "Best wishes,"
+      team: "The 25c Team"      
       recipient: "This message was sent to: %{recipient}"
+      
     sign_in_form:
       works_with: Clicking +25c pledges a tip of 25 cents or more. Pledge now, pay later.  You may cancel pledges you made until you fund them.
       agreement_text: "By continuing, you agree to the "
@@ -466,8 +469,26 @@ en:
       email_taken: "That e-mail address has been taken. Please choose another."
       email_invalid: "That e-mail address is not valid."
 
+  invites:
+    show:
+      invited_by: "25c user %{user} is sharing tips with you!"
+      share: "%{user} has decided to share tips with you!"
+      percentage: "Percentage shared: %{percentage}"      
+      sent: "You sent this invite on %{date}."
+      already_used: "This invite has already been accepted!"
+      closed: "Sorry, but this invite has been withdrawn."
+      accept: "Accept!"
+    update:
+      success: "Invitation accepted! Shared tips will appear under Pledges Received."
+
   user_mailer:
-    welcome:
+    new_invite:
+      subject: "25c user %{user} is sharing tips with you!"
+      greeting: "Hi!"
+      share: "%{user} has decided to share tips with you!"
+      percentage: "Percentage shared: %{percentage}."
+      to_accept: "To accept this invite, visit the following link:"
+      
       
   admin:
     dashboard:
