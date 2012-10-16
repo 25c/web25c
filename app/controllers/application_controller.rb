@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
   protected
   
   def authenticate_if_staging
-    authenticate_or_request_with_http_basic do |username, password|
-      (username == "user25c" && password == "sup3rl!k3")
-    end if Rails.env.staging?
+    # authenticate_or_request_with_http_basic do |username, password|
+    #   (username == "user25c" && password == "sup3rl!k3")
+    # end if Rails.env.staging?
   end
 
   def check_facebook_cookies
