@@ -54,21 +54,39 @@ class Home::ButtonsController < Home::HomeController
   end
   
   def share_email
+    @user = self.current_user
+    @button = @user.buttons[0]
     share_email = params[:share_email]
     share_amount = params[:share_amount].to_i
     if not self.current_user.blank? and not share_email.blank? and share_amount > 0
       # UserMailer.tip_share(self.current_user, share_email, share_amount).deliver
-      invites = self.current_user.buttons[0].invites
-      existing_invite = invites.select{|invite| invite.email == share_email }
-      if existing_invite.blank?
-        invites.create(:email => share_email, :share_amount => share_amount)
-      else
-        existing_invite[0].update_amount(share_amount)
-      end
+      invites = @button.invites
+      invites.create(:email => share_email, :share_amount => share_amount)
     end
     respond_to do |format|
-      format.json { render json: true, head: :ok }
+      format.json { render json: { :html => render_to_string(:partial => 'home/buttons/share_revenue', :formats => :html) } }
     end    
+  end
+  
+  def cancel_email
+    @user = self.current_user
+    @button = @user.buttons[0]
+    invite = @button.invites.find_by_uuid(params[:invite_uuid])
+    unless invite.nil?
+      invite.cancel
+    end
+    respond_to do |format|
+      format.json { render json: { :html => render_to_string(:partial => 'home/buttons/share_revenue', :formats => :html) } }
+    end
+  end
+  
+  def stop_share
+    @user = self.current_user
+    @button = @user.buttons[0]
+    @button.update_attribute(:share_users, nil)
+    respond_to do |format|
+      format.json { render json: { :html => render_to_string(:partial => 'home/buttons/share_revenue', :formats => :html) } }
+    end
   end
   
 end

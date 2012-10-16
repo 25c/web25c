@@ -59,6 +59,8 @@ Web25c::Application.routes.draw do
       
       # Revenue Sharing
       match 'share_email' => 'buttons#share_email', :as => :share_email, :via => :put
+      match 'cancel_email' => 'buttons#cancel_email', :as => :cancel_email, :via => :delete
+      match 'stop_share' => 'buttons#stop_share', :as => :stop_share, :via => :delete
     end
 
     match 'home/account' => 'users#edit', :as => :home_account, :via => :get

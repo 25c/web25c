@@ -38,4 +38,8 @@ class Invite < ActiveRecord::Base
     end
   end
   
+  def cancel
+    self.update_attribute(:state, State::CLOSED)
+  end
+  
 end

@@ -40,3 +40,15 @@ heroku labs:enable user-env-compile
 
 http://devcenter.heroku.com/articles/labs-user-env-compile
 
+- Resque
+
+Resque is a background job queue implementation. Process background jobs by running a resque worker:
+
+$ rake resque:work
+
+- Email
+
+ActionMailer has now been configured to dispatch email in a background process using Resque. You need to have a worker running to process the queue in order to test email delivery (see above). In the development environment, the recipient will be overridden with an email address set in the MAILTO environment variable.  This allows you to test sending email to different addresses, but receive them all in a single account.  You can specify this in your environment, or on the command line when starting the resque worker (since email is sent only in the background worker process):
+
+$ rake resque:work MAILTO=<email address here>
+

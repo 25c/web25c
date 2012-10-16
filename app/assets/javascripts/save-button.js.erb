@@ -287,8 +287,9 @@ $(document).ready(function(){
   });
   
   // Save share info and send email
-  $('#set-share-info').click(function() {
-    $('#set-share-info').attr('disabled', 'disabled');
+  $('#share-revenue').on('click', '#set-share-info', function() {
+    var button = $(this);
+    button.attr('disabled', 'disabled');
     shareAmount = $('#share-amount').val();
     shareEmail = $('#share-email').val().replace(/\s+/g, ' ');
     if (isValidEmailAddress(shareEmail)) {
@@ -299,8 +300,9 @@ $(document).ready(function(){
         data: JSON.stringify(updates),
         contentType: 'application/json',
         dataType: 'json',
-        success: function() {
+        success: function(data, status, xhr) {
           // success callback
+          button.closest('#share-revenue').html(data['html']);
         },
         error: function() {
           // error callback
@@ -310,6 +312,10 @@ $(document).ready(function(){
     } else {
       alert(invalidEmail);
     }
+  });
+  
+  $('#share-revenue').on('ajax:success', 'a.cancel-share-email,a.stop-share', function(event, data, status, xhr) {
+    $(this).closest('#share-revenue').html(data['html']);
   });
   
   $('#share-revenue input').keypress(function() {

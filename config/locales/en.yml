@@ -2,6 +2,16 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  activerecord:
+    attributes:
+      invite:
+        share_amount: Share
+        email: Recipient Email
+        created_at: Sent
+        
+  time:
+    formats:
+      date_only: "%d %b"
   
   application:
     title: "25c - tips online as small as 25 cents"
@@ -250,6 +260,11 @@ en:
       get_button:
         title: Get your +25c Button
         subtitle: "Follow these easy steps to get your +25c button code:"
+      share_revenue:
+        sharing: "You are currently sharing your tips with:"
+        outstanding_invites: "You have sent the following tip share invitations:"
+        cancel: "Cancel"
+        stop: "Stop sharing"
       choose_pledge_message:
         title: Choose a Pledge Message
         instructions: "25c will send reminder messages to people that haven't yet funded their pledges. Enter a custom message for people that have pledged 25c tips to you:"
