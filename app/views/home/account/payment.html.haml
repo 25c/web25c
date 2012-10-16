@@ -11,14 +11,15 @@
   %p.buffer= t('.amount', :amount => number_to_currency(current_user.balance.to_f / 100000000))
   
   .row
-    %a.pull-left{ :href => "http://www.25c.com/dwolla_process",
-    :class => "dwolla_button",
-    :'data-name' => "25c Pledges Payment",
-    :'data-desc' => "Fund your 25c Pledges",
-    :'data-amount' => "#{current_user.balance.to_f / 100000000}",
-    :'data-shipping' => "0",
-    :'data-tax' => "0",
-    :'data-key' => "UUwr8uAr3vLzoItqjZBEmLGUSmOxy89jW86uKDphL6rz5RBSTu" } Pay Now With Dwolla
+    -#
+      %a.pull-left{ :href => "http://www.25c.com/dwolla_process",
+      :class => "dwolla_button",
+      :'data-name' => "25c Pledges Payment",
+      :'data-desc' => "Fund your 25c Pledges",
+      :'data-amount' => "#{current_user.balance.to_f / 100000000}",
+      :'data-shipping' => "0",
+      :'data-tax' => "0",
+      :'data-key' => "UUwr8uAr3vLzoItqjZBEmLGUSmOxy89jW86uKDphL6rz5RBSTu" } Pay Now With Dwolla
     
     = form_tag PAYPAL_SETTINGS['service_url'], :method => :post, :id => 'paypal-button-form' do
       = hidden_field_tag "business", PAYPAL_SETTINGS['merchant_id']
@@ -35,8 +36,8 @@
       :alt => "", :border => "0", :width => "1", :height => "1")
     
     .clear
-    =image_tag 'logos/dwolla.png'
-    %img{ :src => "https://www.paypal.com/en_US/Marketing/i/banner/bnr_payments_120x30_y.gif", :alt => "PayPal Logo", :style => "margin-left: 105px;"}
+    -# =image_tag 'logos/dwolla.png'
+    %img{ :src => "https://www.paypal.com/en_US/Marketing/i/banner/bnr_payments_120x30_y.gif", :alt => "PayPal Logo", :style => "margin-left: 30px;"}
 
 - else
   %p= t '.given', :total_amount => number_to_currency(current_user.balance.to_f / 100000000)
