@@ -68,7 +68,7 @@ $(document).ready(function(){
   
   // Correct step numbers and hide / show non-relevant steps
   var recomputeSteps = function(state) {
-    $('.step-container:visible[data-skip=true]').hide();
+    $('.step-container:visible[data-skip="true"]').hide();
     $('.step-container:visible').prevAll('[data-skip!="true"]').show();
     step = 0;
     $('.step-container:visible').each(function() {
@@ -83,16 +83,24 @@ $(document).ready(function(){
       putUpdate(true, { code_type: codeType });
     }
     $('#set-nickname-link').hide();
-    if (beltOn) {
-      var linkText = (!buttonTitle || /^\s*$/.test(buttonTitle)) ? "&nbsp;" : buttonTitle;
-      newCode = sprintf(beltCode, profileUrl, buttonId, buttonSize, userPledgeName, linkText);
-      $('.if-code, .if-javascript').show();
-      $('.if-link').hide();
-      $('#choose-button').removeAttr('data-skip');
+    
+    if (codeType == 'link') {
+      $('.profile-link').html('<a href="' + profileUrl + '" target="_blank">' + profileUrl + '</a>');
+      $('#set-nickname-link').show();
+      $(' .if-code, .if-javascript').hide();
+      $('.if-link').show();
+      $('#choose-button').attr('data-skip', 'true');
+      newCode = "";
     } else if (codeType == 'iframe') {
       newCode = sprintf(iframeCode, buttonSize, sprintf(iframeImageSizeString, iframeImageSizes[buttonSize].width, imageSizes[buttonSize].height));
       $('.if-code').show();
       $('.if-javascript, .if-link').hide();
+      $('#choose-button').removeAttr('data-skip');
+    } else if (beltOn) {
+      var linkText = (!buttonTitle || /^\s*$/.test(buttonTitle)) ? "&nbsp;" : buttonTitle;
+      newCode = sprintf(beltCode, profileUrl, buttonId, buttonSize, userPledgeName, linkText);
+      $('.if-code, .if-javascript').show();
+      $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
     } else if (codeType == 'javascript') {
       var linkText = (!buttonTitle || /^\s*$/.test(buttonTitle)) ? "&nbsp;" : buttonTitle;
@@ -100,13 +108,6 @@ $(document).ready(function(){
       $('.if-code, .if-javascript').show();
       $('.if-link').hide();
       $('#choose-button').removeAttr('data-skip');
-    } else if (codeType == 'link') {
-      $('.profile-link').html('<a href="' + profileUrl + '" target="_blank">' + profileUrl + '</a>');
-      $('#set-nickname-link').show();
-      $(' .if-code, .if-javascript').hide();
-      $('.if-link').show();
-      $('#choose-button').attr('data-skip', true);
-      newCode = "";
     }
     $('#button-code-block').text(newCode);
     $('#button-preview').html(newCode);
