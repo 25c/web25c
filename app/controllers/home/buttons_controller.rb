@@ -60,8 +60,7 @@ class Home::ButtonsController < Home::HomeController
     share_amount = params[:share_amount].to_i
     if not self.current_user.blank? and not share_email.blank? and share_amount > 0
       # UserMailer.tip_share(self.current_user, share_email, share_amount).deliver
-      invites = @button.invites
-      invites.create(:email => share_email, :share_amount => share_amount)
+      @button.invites.create(:email => share_email, :share_amount => share_amount) if @button.invites.where(:state => Invite::State::OPEN).empty?
     end
     respond_to do |format|
       format.json { render json: { :html => render_to_string(:partial => 'home/buttons/share_revenue', :formats => :html) } }
