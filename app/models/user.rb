@@ -61,6 +61,10 @@ class User < ActiveRecord::Base
     end
   end
   
+  def to_param
+    self.nickname
+  end
+  
   def display_name
     name = self.pledge_name
     name = "#{self.first_name} #{self.last_name}".strip if name.blank?

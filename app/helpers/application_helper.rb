@@ -1,5 +1,10 @@
 module ApplicationHelper
   
+  def image_url(source)
+    return "#{request.protocol}#{request.host_with_port}#{source}" if source.start_with?('/')
+    source
+  end
+  
   def auth_google_oauth2_path
     path = "/auth/google_oauth2"
     if @button_id

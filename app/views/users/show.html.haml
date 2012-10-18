@@ -61,6 +61,11 @@
       window.youtubeSize = [ 560, 341 ];
 
 = content_for(:head) do
+  %meta{ :property => 'fb:app_id', :content => FACEBOOK_SETTINGS['app_id'] }
+  %meta{ :property => 'og:title', :content => @user.display_name }
+  %meta{ :property => 'og:image', :content => image_url(@user.picture.url) }
+  %meta{ :property => 'og:url', :content => profile_url(@user) }
+  %meta{ :property => 'og:type', :content => "#{FACEBOOK_SETTINGS['namespace']}:publisher"}
   :css
     body{ min-width: 480px; }
 
