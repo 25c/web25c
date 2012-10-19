@@ -13,6 +13,12 @@ class UserMailer < ApplicationMailer
     mail :to => recipient(@invite.email), :subject => t('user_mailer.new_invite.subject', :user => @user.display_name)
   end
   
+  # remind the user to fund their tips
+  def fund_reminder(user_id)
+    @user = User.find_by_id(user_id)
+    mail :to => recipient(@user.email), :subject => t('user_mailer.fund_reminder.subject')
+  end
+  
   # tell sharer that their button tips are now being shared
   def share_confirm(sharer_id, receiver_id, share_amount)
     @receiver = User.find(receiver_id)

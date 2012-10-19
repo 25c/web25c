@@ -1,0 +1,19 @@
+Dear <%= @user.display_name %>:
+
+Thank you for using 25c to support what you value. The pledgees are excited about your pledge and are looking forward to receiving funds.
+
+You have now pledged <%= number_to_currency(@user.balance.to_f / 100000000) %> to different 25c providers.  We will pay those providers once you have funded these pledges.
+
+Please take action now to fund the pledges you made:
+
+<%= link_to home_payment_url, home_payment_url %>
+
+If you have changed your mind and would like to withdraw certain pledges, you may do so on your personal dashboard:
+
+<%= link_to "your personal dashboard", home_dashboard_url %>
+
+You either have to withdraw your pledges or fund them.
+
+Again thank you for your pledges and helping us changing the world one click a time!
+
+(In the event you overlooked this email, we will continue to remind you.)

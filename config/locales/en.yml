@@ -483,6 +483,8 @@ en:
       success: "Invitation accepted! Shared tips will appear under Pledges Received."
 
   user_mailer:
+    fund_reminder:
+      subject: "Funding the pledges you made"
     new_invite:
       subject: "25c user %{user} is sharing tips with you!"
       greeting: "Hi!"
