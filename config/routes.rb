@@ -79,7 +79,7 @@ Web25c::Application.routes.draw do
     mount Resque::Server.new, :at => "/admin/resque/frame"
 
     # profile wildcard
-    match ':id' => 'users#show', :constraints => { :id => /.*/ }, :as => :profile
+    match ':id' => 'users#show', :constraints => { :id => /.*/ }
   end
   
   # catch-all 404 page for unknown routes
