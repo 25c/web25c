@@ -11,7 +11,7 @@
 
 #test-javascript.buffer
   %a{ :href => @button.user.profile_url,
-    :class => "tip-25c-belt",
+    :class => "tip-25c-feed",
     :'data-id' => @button.uuid.to_s,
     :'data-user' => @button.user.display_name }
     #{@button.title}
@@ -20,7 +20,7 @@
       var js,fjs=d.getElementsByTagName(s)[0];
       if(!d.getElementById(id)){
         js=d.createElement(s);js.id=id;
-        js.src="//#{ENV["API25C_URL"]}/public/javascripts/belt.js";
+        js.src="//#{ENV["API25C_URL"]}/public/javascripts/feed.js";
         fjs.parentNode.insertBefore(js,fjs);
       }
     } (document,"script","tip-25c-belt-js");
