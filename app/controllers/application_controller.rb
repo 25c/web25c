@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       ua = request.env['HTTP_USER_AGENT']      
       authenticate_or_request_with_http_basic do |username, password|
         (username == "user25c" && password == "sup3rl!k3")
-      end if ua.blank? or not ua.start_with?('facebookexternalhit')
+      end unless not ua.blank? and (ua.start_with?('facebookexternalhit') or ua.start_with('twentyfivec'))
     end
   end
 
