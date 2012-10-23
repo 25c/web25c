@@ -13,10 +13,10 @@
           - @clicks_received.each do |set|
             %tr
               %td.click-amount= number_to_currency(set[0].to_f / 100000000)
-              - if set[1].button.user.profile_url.blank?
-                %td.click-user= set[1].button.user.display_name
+              - if set[1].user.profile_url.blank?
+                %td.click-user= set[1].user.display_name
               - else
-                %td.click-user= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
+                %td.click-user= link_to set[1].user.display_name, set[1].user.profile_url,  :target => "_blank"
               - if set[1].referrer.blank?
                 %td.click-referrer= t('home.dashboard.index.no_referrer')
               - else
