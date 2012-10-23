@@ -348,7 +348,7 @@ en:
       privacy: Privacy
       copyright: "&copy; 25c Inc. 2012"
     mailer:
-      valediction: "Best wishes,"
+      valediction: "Best Wishes,"
       team: "The 25c Team"      
       recipient: "This message was sent to: %{recipient}"
       
