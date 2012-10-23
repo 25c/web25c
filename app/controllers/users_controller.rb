@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         clicks = Click.where(:receiver_user_id => @user.id).includes(:user).order("created_at DESC").find_all_by_state([ 
           Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
         ])
-        @clicks_received = group_clicks(clicks, true, false)
+        @clicks_received = group_clicks(clicks, false, false)
                 
         clicks = @user.clicks.includes(:button => :user).order("created_at DESC").find_all_by_state([
           Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
