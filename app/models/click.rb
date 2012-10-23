@@ -20,6 +20,11 @@ class Click < ActiveRecord::Base
   
   attr_accessible :user_id, :ip_address, :button_id
   
+  def referrer_title
+    @title ||= Click.connection.select_value("SELECT title FROM titles WHERE url='#{self.referrer}'")
+    @title ||= self.referrer
+  end
+  
   def generate_uuid
     self.uuid = UUID.new.generate
   end

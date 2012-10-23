@@ -36,10 +36,8 @@
         .field-value
           - if set[1].referrer.blank?
             = t('home.dashboard.index.no_referrer')
-          - elsif set[1].referrer.include?(request.host)
-            = link_to t('home.dashboard.index.profile_link', :provider => set[1].button.user.display_name), set[1].referrer, :target => "_blank"
           - else
-            = link_to set[1].referrer, set[1].referrer, :target => "_blank"
+            = link_to set[1].referrer_title, set[1].referrer, :target => "_blank"
         .clear
       
       .field-container
@@ -98,10 +96,8 @@
         .field-value
           - if set[1].referrer.blank?
             = t('home.dashboard.index.no_referrer')
-          - elsif set[1].referrer.include?(request.host)
-            = link_to t('home.dashboard.index.profile_link', :provider => set[1].button.user.display_name), set[1].referrer, :target => "_blank"
           - else
-            = link_to set[1].referrer, set[1].referrer, :target => "_blank"
+            = link_to set[1].referrer_title, set[1].referrer, :target => "_blank"
         .clear
 
       .field-container
@@ -147,10 +143,8 @@
         .field-value
           - if set[1].referrer.blank?
             = t('home.dashboard.index.no_referrer')
-          - elsif set[1].referrer.include?(request.host)
-            = link_to t('home.dashboard.index.profile_link', :provider => set[1].button.user.display_name), set[1].referrer, :target => "_blank"
           - else
-            = link_to set[1].referrer, set[1].referrer, :target => "_blank"
+            = link_to set[1].referrer_title, set[1].referrer, :target => "_blank"
         .clear
 
       .field-container

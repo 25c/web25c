@@ -19,13 +19,8 @@
                 %td.click-user= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
               - if set[1].referrer.blank?
                 %td.click-referrer= t('home.dashboard.index.no_referrer')
-              - elsif set[1].referrer.include?(request.host)
-                %td.click-referrer
-                  = link_to t('home.dashboard.index.profile_link', 
-                    :provider => set[1].button.user.display_name),
-                    set[1].referrer, :target => "_blank"
               - else
-                %td.click-referrer= link_to set[1].referrer, set[1].referrer, 
+                %td.click-referrer= link_to set[1].referrer_title, set[1].referrer, 
                   :target => "_blank"
         - else
           %tr
@@ -54,13 +49,8 @@
                 %td.click-user= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
               - if set[1].referrer.blank?
                 %td.click-referrer= t('home.dashboard.index.no_referrer')
-              - elsif set[1].referrer.include?(request.host)
-                %td.click-referrer
-                  = link_to t('home.dashboard.index.profile_link', 
-                    :provider => set[1].button.user.display_name),
-                    set[1].referrer, :target => "_blank"
               - else
-                %td.click-referrer= link_to set[1].referrer, set[1].referrer, 
+                %td.click-referrer= link_to set[1].referrer_title, set[1].referrer, 
                   :target => "_blank"
         - else
           %tr

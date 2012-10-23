@@ -23,10 +23,8 @@
         .field-value
           - if click.referrer.blank?
             = t('home.dashboard.index.no_referrer')
-          - elsif click.referrer.include?(request.host)
-            = link_to t('home.dashboard.index.profile_link', :provider => click.button.user.display_name), click.referrer, :target => "_blank"
           - else
-            = link_to click.referrer, click.referrer, :target => "_blank"
+            = link_to click.referrer_title, click.referrer, :target => "_blank"
         .clear
 
       .field-container
