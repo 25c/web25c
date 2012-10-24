@@ -1,0 +1,22 @@
+#sign-in
+  .login-buttons
+    = link_to '/auth/facebook' do
+      = image_tag "logos/facebook-icon.png"
+    = link_to '/auth/google_oauth2', :class => 'google-btn' do
+      = image_tag("logos/google.png")
+  %p.sign-in-or= t '.or'
+  = simple_form_for User.new, :url => '/auth/identity/callback', :html => { :class => 'form form-horizontal' } do |f|
+    = f.input :email, :input_html => { :name => 'auth_key' }
+    = f.input :password, :input_html => { :name => 'password' }
+    .form-submit= f.submit t('.submit'), :class => 'btn btn-strong'
+  %p.sign-in-or
+    = link_to t('.forgot_password'), '#'
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    = link_to t('.join_free'), '#'
+  .user-agreement-message
+    %p= raw t('.works_with')
+    %p
+      = raw t('.agreement_text')
+      25c #{link_to t('.terms'), terms_path, :target => "blank"}, 
+      #{link_to t('.privacy'), privacy_path, :target => "blank"}
+    

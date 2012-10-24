@@ -1,5 +1,3 @@
-=render 'layouts/fb_login'
-
 - if signed_in?
   = content_for(:js) do
     :javascript      
@@ -7,10 +5,10 @@
         window.open('', '_self', '');
       });
       $(document).ready(function() {
-      function isValidEmailAddress(emailAddress) {
+        function isValidEmailAddress(emailAddress) {
           var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
           return pattern.test(emailAddress);
-      };
+        };
         $('a').click(function() {
           setTimeout(function() { window.close(); }, 100);
         });
@@ -48,45 +46,20 @@
     #tip-inner-container
       #tip-center.main-content
         - if signed_in?
-          - if @user.email.blank?
+          - if current_user.email.blank?
             .buffer
             %p#user-email-instructions= t('users.choose_email.email_instructions')
             %input#user-email{ :type => 'text', :name => 'user[email]', :value => '' }
             #submit-email.btn.btn-strong= t('users.choose_email.submit_email')
             #email-error.errors.hidden
-            
-          - elsif params[:overdraft]
-            #tip-overdraft.center
-              %p.buffer= t('.over_limit')
-              = link_to t('.payment'), home_payment_path, :class => 'btn btn-strong', 
-                :target => '_blank'
-          - elsif @new_account.blank?
+          - else
             #tip-result.center
               %p= t('.signed_in_p1')
               %p.buffer= t('.signed_in_p2')
               .tip-close-container
                 %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
-          - else
-            %p= raw t('.new_welcome', :account => t('.' + @new_account))
-            %p= t('.new_p1')
-            #tip-button-holder.center
-              %a.tip-25c-button{ :href => @button.user.profile_url, 
-              :'data-id' => @button_uuid,
-              :'data-size' => "btn-large",
-              :'data-user' => @button.user.display_name }
-                = @button.title
-              :javascript
-                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
-                if(!d.getElementById(id)){js=d.createElement(s);js.id=id;
-                js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
-                fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-js");
-            %p= raw t('.new_p2', :home_link => link_to('25c.com', root_path, :target => '_blank'))
-            %p= raw t('.new_undo', :undo_button => link_to(t('.undo_button'), home_undo_clicks_path, 
-              :class => 'btn', :target => '_blank'))
-            .tip-close-container.center
-              %a= link_to t('.done'), '#', :class => 'btn', :id => 'close'
         - else
-          = render 'layouts/sign_in_form'
+          = render 'sessions/form'
 
 = javascript_include_tag "application"
 = yield(:js)

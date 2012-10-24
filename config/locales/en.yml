@@ -357,7 +357,22 @@ en:
       agreement_text: "By continuing, you agree to the "
       terms: User Terms
       privacy: "Privacy Policy."
-      
+  
+  sessions:
+    new:
+      title: "Please Sign In"
+    failure:
+      identity: Invalid email and/or password.
+    form:
+      forgot_password: Forgot your password?
+      join_free: Register for free!
+      or: or
+      submit: "Submit"
+      works_with: Clicking +25c pledges a tip of 25 cents or more. Pledge now, pay later.  You may cancel pledges you made until you fund them.
+      agreement_text: "By continuing, you agree to the "
+      terms: User Terms
+      privacy: "Privacy Policy."         
+  
   users:
     show:
       title: "'s 25c Profile"

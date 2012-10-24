@@ -1,0 +1,7 @@
+- content_for :title, t('.title')
+
+%h2.page-header= yield :title
+
+.row
+  .span6.offset3
+    = render :partial => 'sessions/form'

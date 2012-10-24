@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < OmniAuth::Identity::Models::ActiveRecord
   
   require 'valid_email'
   
@@ -39,6 +39,41 @@ class User < ActiveRecord::Base
   
   after_create :create_default_button
   after_save :send_welcome_email
+  
+  def self.from_omniauth(auth)
+    user = nil
+    case auth['provider']
+    when 'google_oauth2'
+      user = User.find_by_google_uid(auth['uid'])
+      user = User.find_by_email_ci(auth['info']['email']) if user.nil? and not auth['info']['email'].blank?
+      user = User.new(:password => SecureRandom.hex) if user.nil?
+      user.google_uid = auth['uid']
+      user.google_token = auth['credentials']['token']
+      user.google_refresh_token = auth['credentials']['refresh_token']
+      user.email = auth['info']['email']
+      user.first_name = auth['info']['first_name'] if user.first_name.blank?
+      user.last_name = auth['info']['last_name'] if user.last_name.blank?
+      user.picture_url = auth['info']['image'] unless user.picture?
+      user.save!
+    when 'identity'
+      user = User.find_by_id(auth['uid'])
+      raise Exception.new("User not found in omniauth identity callback") if user.nil?
+    when 'facebook'
+      user = User.find_by_facebook_uid(auth['uid'])
+      user = User.find_by_email_ci(auth['info']['email']) if user.nil? and not auth['info']['email'].blank?
+      user = User.new(:password => SecureRandom.hex) if user.nil?
+      user.facebook_uid = auth['uid']
+      user.facebook_access_token = auth['credentials']['token']
+      user.email = auth['info']['email'] if user.email.blank?
+      user.first_name = auth['info']['first_name'] if user.first_name.blank?
+      user.last_name = auth['info']['last_name'] if user.last_name.blank?
+      user.picture_url = auth['info']['image'] unless user.picture?
+      user.save!
+    else
+      raise Exception.new("Unsuppored omniauth strategy: #{auth['provider']}")
+    end
+    return user
+  end
   
   def refresh_facebook_access_token(code, force_refresh = false)
     begin

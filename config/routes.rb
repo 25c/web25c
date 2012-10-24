@@ -19,11 +19,12 @@ Web25c::Application.routes.draw do
 
     # match 'register' => 'users#new', :via => :get, :as => :register
     # match 'register' => 'users#create', :via => :post
-
-    match 'sign-in' => 'users#sign_in', :as => :sign_in
-    match 'sign-out' => 'users#sign_out', :as => :sign_out
     match 'auth/dwolla/callback' => 'home/account#payout', :as => :dwolla_auth_callback
-    match 'auth/:provider/callback' => 'users#sign_in_callback'
+
+    match 'sign-in' => 'sessions#new', :as => :sign_in
+    match 'sign-out' => 'sessions#destroy', :as => :sign_out
+    match 'auth/:provider/callback' => 'sessions#create'
+    match 'auth/failure' => 'sessions#failure'
 
     match 'about' => 'home#about', :as => :about
     match 'faq' => 'home#faq', :as => :faq

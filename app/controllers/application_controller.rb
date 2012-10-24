@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   before_filter :authenticate_if_staging
-  before_filter :check_facebook_cookies
   helper_method :signed_in?, :current_user, :url_base, :mobile_device?
   
   protected
@@ -13,91 +12,6 @@ class ApplicationController < ActionController::Base
       authenticate_or_request_with_http_basic do |username, password|
         (username == "user25c" && password == "sup3rl!k3")
       end unless not ua.blank? and (ua.start_with?('facebookexternalhit') or ua.start_with?('twentyfivec'))
-    end
-  end
-
-  def check_facebook_cookies
-    has_signed_in = false
-    signed_request = cookies["fbsr_#{FACEBOOK_SETTINGS['app_id']}"]
-    new_account = ''
-    unless signed_request.blank?
-      oauth = Koala::Facebook::OAuth.new(FACEBOOK_SETTINGS['app_id'], FACEBOOK_SETTINGS['app_secret'])
-      @_facebook_session = oauth.parse_signed_request(signed_request)
-      if @_facebook_session
-        # figure out if we're coming from the "tip" popup login page
-        has_tip = request.url.include? '/tip/'
-        # if signed in another way, no need to sign in with facebook  
-        if self.signed_in?
-          return
-        # if not, try signing in with an existing facebook-linked account
-        else
-          self.current_user = User.find_by_facebook_uid(@_facebook_session['user_id']) 
-          flash[:notice] = t('application.check_facebook_cookies.sign_in')
-        end
-        if self.signed_in?
-          # verify that the signed in user is linked to the facebook account
-          if self.current_user.facebook_uid == @_facebook_session['user_id']
-            # if so, refresh access token
-            self.current_user.refresh_facebook_access_token(@_facebook_session['code'])
-          else
-            # uh-oh, shared computer? clear out
-            self.current_user = nil
-            flash[:alert] = t('application.check_facebook_cookies.failure');
-            if has_tip
-              redirect_to tip_path(
-                :button_id => params[:button_id], 
-                :referrer => params[:referrer],
-                :source => params[:source]
-              )
-              return
-            else
-              if not request.referrer.blank? and request.referrer.include? 'blog/header'
-                redirect_to request.referrer
-              else
-                redirect_to sign_in_path
-              end
-              return
-            end
-          end
-        else
-          # register new user
-          user = User.new
-          new_account = 'facebook'
-          user.facebook_uid = @_facebook_session['user_id']
-          user.password = SecureRandom.hex
-          user.save!
-          self.current_user = user
-          self.current_user.refresh_facebook_access_token(@_facebook_session['code'])
-          # self.current_user.update_profile_from_facebook
-          self.current_user.update_profile
-        end
-        self.current_user.has_agreed = true
-        self.current_user.save!
-        invite_uuid = session.delete(:invite_uuid)
-        if invite_uuid
-          invite = Invite.where(:state => Invite::State::OPEN).find_by_uuid(invite_uuid)
-          invite.process(self.current_user) if invite
-        end
-        if has_tip
-          redirect_to tip_path(
-            :button_id => params[:button_id],
-            :referrer => params[:referrer],
-            :source => params[:source],
-            :new_account => new_account
-          )
-          return
-        else
-          if not request.referrer.blank? and request.referrer.include? 'blog/header'
-            redirect_to request.referrer
-          else
-            if current_user.has_seen_receive_page
-              redirect_to_session_redirect_path(home_dashboard_path)
-            else
-              redirect_to_session_redirect_path(home_receive_pledges_path)
-            end
-          end
-        end
-      end
     end
   end
   

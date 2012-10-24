@@ -1,5 +1,3 @@
-=render 'layouts/fb_login'
-
 #header-container
   %a#nav-logo{:href => root_url}
     %img{ :src => image_path('logo-incline-01.png') }
@@ -23,15 +21,8 @@
             %li= link_to t('.sign_out'), sign_out_url, :id => 'sign-out'
     - else
       %ul#nav-login
-        .hide
-          %li.fb-login-button(data-scope="email,publish_actions")
-        %li#nav-login-text.pull-left
-          = t('.sign_in_with')
-        %li.login-logo.pull-left
-          %a.facebook-btn= image_tag "logos/facebook-icon.png"
-        / %li.login-logo= link_to image_tag("logos/twitter.png"), '/auth/twitter'
-        %li.login-logo.pull-left
-          = link_to image_tag("logos/google.png"), '/auth/google_oauth2', :class => 'google-btn'
+        %li#nav-login-text
+          = link_to t('.sign_in'), sign_in_path
         .clear
     .clear
   .clear
