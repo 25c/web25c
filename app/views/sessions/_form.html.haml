@@ -1,16 +1,21 @@
 #sign-in
   #login.email-form{ :style => "display:#{@show_register ? 'none' : 'block'};" }
+    %p.sign-in-instructions= t '.sign_in_with'
     .login-buttons
       = link_to '/auth/facebook' do
         = image_tag "logos/facebook-icon.png"
       = link_to '/auth/google_oauth2', :class => 'google-btn' do
         = image_tag("logos/google.png")
     %p.sign-in-instructions= t '.use_email_html', :link => link_to(t('.use_email'), '#', :class => 'use-email')
-    .use-email{ :style => 'display:none;' }
+    .use-email{ :style => "display:#{@show_login ? 'block' : 'none'};" }
       %p.sign-in-instructions= t '.or'
-      = simple_form_for User.new, :url => '/auth/identity/callback', :html => { :class => 'form form-horizontal' } do |f|
-        = f.input :email, :input_html => { :name => 'auth_key' }
-        = f.input :password, :input_html => { :name => 'password' }
+      - if @show_login_error
+        .alert.alert-error= t '.invalid_login'
+      = simple_form_for User.new, :url => sign_in_path, :html => { :class => 'form form-horizontal' } do |f|
+        - if @popup
+          = hidden_field_tag 'popup', 'true'
+        = f.input :email
+        = f.input :password
         .form-submit= f.submit t('.submit'), :class => 'btn btn-strong'
       %p.sign-in-instructions
         = link_to t('.forgot_password'), '#', :class => 'forgot-password'
@@ -36,6 +41,8 @@
     .use-email{ :style => "display:#{@show_register ? 'block' : 'none'};" }
       %p.sign-in-instructions= t '.or'
       = simple_form_for @user, :url => register_path, :html => { :class => 'form form-horizontal' } do |f|
+        - if @popup
+          = hidden_field_tag 'popup', 'true'
         = f.input :email
         = f.input :password
         .form-submit= f.submit t('.submit'), :class => 'btn btn-strong'

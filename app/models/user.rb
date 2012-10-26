@@ -1,4 +1,4 @@
-class User < OmniAuth::Identity::Models::ActiveRecord
+class User < ActiveRecord::Base
   
   require 'valid_email'
   

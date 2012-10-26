@@ -5,14 +5,28 @@ class SessionsController < ApplicationController
     @user = User.new
   end
   
-  def failure
-    redirect_to sign_in_path, :alert => t("sessions.failure.#{params[:strategy]}")
-  end
-  
   def create
-    user = User.from_omniauth(request.env['omniauth.auth'])
-    self.current_user = user
-    redirect_to_session_redirect_path root_path
+    if request.env['omniauth.auth']
+      user = User.from_omniauth(request.env['omniauth.auth'])
+      self.current_user = user
+      redirect_to_session_redirect_path root_path
+    else
+      user = User.find_by_email_ci(params[:user][:email])
+      if user and user.authenticate(params[:user][:password])
+        self.current_user = user
+        redirect_to_session_redirect_path root_path
+      else
+        @user = User.new
+        @popup = params[:popup]
+        @show_login = true
+        @show_login_error = true
+        if @popup
+          render 'users/tip', :layout => 'blank'
+        else
+          render :new
+        end
+      end
+    end
   end
   
   def destroy

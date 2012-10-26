@@ -10,7 +10,12 @@ class UsersController < ApplicationController
       redirect_to_session_redirect_path(home_dashboard_path, :notice => t('users.create.success'))
     else
       @show_register = true
-      render 'sessions/new'
+      @popup = params[:popup]
+      if @popup
+        render 'users/tip', :layout => 'blank'
+      else
+        render 'sessions/new'
+      end
     end
   end
   
@@ -113,6 +118,8 @@ class UsersController < ApplicationController
     
   def tip
     session[:redirect_path] = request.path unless self.signed_in?
+    @user = User.new
+    @popup = true
     render :layout => "blank"
   end
     

@@ -351,19 +351,13 @@ en:
       valediction: "Best Wishes,"
       team: "The 25c Team"      
       recipient: "This message was sent to: %{recipient}"
-      
-    sign_in_form:
-      works_with: Clicking +25c pledges a tip of 25 cents or more. Pledge now, pay later.  You may cancel pledges you made until you fund them.
-      agreement_text: "By continuing, you agree to the "
-      terms: User Terms
-      privacy: "Privacy Policy."
   
   sessions:
     new:
       title: "Please Sign In"
-    failure:
-      identity: Invalid email and/or password.
     form:
+      invalid_login: Invalid email and/or password.
+      sign_in_with: "Please sign in via Facebook or Google:"
       back_login: Back to Sign in...
       reset: Reset Password
       forgot_password: Forgot your password?
@@ -445,29 +439,8 @@ en:
       success: Your account has been updated.
     update_profile:
       success: Your profile has been updated.
-    sign_in_callback:
-      twitter: You've been signed in automatically using your Twitter account.
-      google: You've been signed in automatically using your Google account.
-    sign_in:
-      title: Please Sign In
-      sign_in_with: "Please sign in via Facebook or Google:"
-      facebook: Sign In with Facebook
-      twitter: Sign In with Twitter
-      google: Sign In with Google
-      email: Email
-      password: Password
-      new_password: New Password
-      confirm_password: Confirm Password
-      submit_new: Create Free Account
-      submit_existing: Sign In
-      failure: "Sorry, your email and/or password were incorrect."
-      click_success: "Your pledge has been recorded."
-      click_failure: "Something went wrong. Your click was not processed."
-      sign_in_failure: "Something went wrong with the sign in process. Please try again."
-      button_not_found: "The button was not found."
     create:
       success: Your account has been created!
-      failure: Your account was not created. Please try again.
     tip:
       pledge_to: "You have pledged a 25c tip to %{provider}."
       pledge_more: "Click the following button to pledge more."

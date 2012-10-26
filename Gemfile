@@ -20,7 +20,6 @@ gem 'rmagick'                     # imageimagick image manipulation
 gem 'aws-sdk'											# amazon web services
 gem 'curb'												# libcurl bindings
 gem 'resque', '~>1.20.0'					# redis-backed jobs queuing system
-gem 'omniauth-identity'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
