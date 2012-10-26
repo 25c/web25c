@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   
   def new
     redirect_to_session_redirect_path root_path if self.signed_in?
+    @user = User.new
   end
   
   def failure
@@ -24,7 +25,7 @@ class SessionsController < ApplicationController
   end
   
   def request_password
-    user = User.find_by_email(params[:auth_key])
+    user = User.find_by_email(params[:user][:email])
     if user.nil?
       render :json => { :result => 'error', :message => t('sessions.request_password.not_found') }
     else

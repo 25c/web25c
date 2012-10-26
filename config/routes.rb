@@ -17,9 +17,9 @@ Web25c::Application.routes.draw do
 
     root :to => 'home#index'
 
-    # match 'register' => 'users#new', :via => :get, :as => :register
-    # match 'register' => 'users#create', :via => :post
     match 'auth/dwolla/callback' => 'home/account#payout', :as => :dwolla_auth_callback
+    
+    match 'register' => 'users#create', :via => :post, :as => :register
 
     match 'sign-in' => 'sessions#new', :as => :sign_in
     match 'sign-out' => 'sessions#destroy', :as => :sign_out

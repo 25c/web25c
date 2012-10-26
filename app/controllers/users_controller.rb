@@ -1,10 +1,18 @@
 class UsersController < ApplicationController
   
-  before_filter :require_signed_in, :except => [:show, :new, :sign_in, :sign_in_callback, :tip]
+  before_filter :require_signed_in, :except => [:show, :create, :tip]
   before_filter :check_user_email, :except => [ :user_agremeent, :update, :sign_in, :sign_out, :sign_in_callback, :tip ]
 
-  # GET /users/1
-  # GET /users/1.json
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      self.current_user = @user
+      redirect_to_session_redirect_path(home_dashboard_path, :notice => t('users.create.success'))
+    else
+      @show_register = true
+      render 'sessions/new'
+    end
+  end
   
   def show
     @user = User.find_by_nickname_ci(params[:id])
@@ -41,21 +49,6 @@ class UsersController < ApplicationController
       redirect_to choose_nickname_path
     else
       redirect_to profile_path(current_user.nickname)
-    end
-  end
-
-  # GET /users/new
-  # GET /users/new.json
-  def new
-    if self.current_user
-      redirect_to_session_redirect_path(home_dashboard_path)
-    else
-      @user = User.new
-      @new = true
-      respond_to do |format|
-        format.html { render action: "sign_in" }
-        format.json { render json: @user }
-      end
     end
   end
 
