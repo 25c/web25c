@@ -364,14 +364,31 @@ en:
     failure:
       identity: Invalid email and/or password.
     form:
+      back_login: Back to Sign in...
+      reset: Reset Password
       forgot_password: Forgot your password?
+      forgot_password_instructions: Enter the email address you registered with and press Reset Password to receive an email with a link that you can use to set a new password.
       join_free: Register for free!
+      join_free_instructions: Register instantly by signing into Facebook or Google!
+      use_email_html: "or use your %{link}..."
+      use_email: "email address"
       or: or
       submit: "Submit"
       works_with: Clicking +25c pledges a tip of 25 cents or more. Pledge now, pay later.  You may cancel pledges you made until you fund them.
       agreement_text: "By continuing, you agree to the "
       terms: User Terms
-      privacy: "Privacy Policy."         
+      privacy: "Privacy Policy."       
+    request_password:
+      not_found: The email address you entered was not found.
+      email_sent: An email with a reset link has been sent to the specified address.  
+    reset_password:
+      reset_password: Reset Your Password
+      not_found: "This password reset link has already been used, expired, or is invalid."
+      try_again_html: "Please try requesting a new password reset link from the %{link} page."
+      sign_in_page: "Sign in"
+      new_password: "Please enter your new password in the form below."
+      submit: Submit
+      success: Your new password has been saved.
   
   users:
     show:
@@ -506,8 +523,9 @@ en:
       share: "%{user} has decided to share tips with you!"
       percentage: "Percentage shared: %{percentage}."
       to_accept: "To accept this invite, visit the following link:"
-      
-      
+    reset_password:
+      subject: "Your 25c reset password link"
+      instructions: "To reset your 25c account password, visit the following link. If you did not request to reset your password, you may ignore this email and your password will not be changed."      
   admin:
     dashboard:
       index:

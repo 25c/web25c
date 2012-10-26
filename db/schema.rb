@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121011204753) do
+ActiveRecord::Schema.define(:version => 20121025231606) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",                                 :null => false
@@ -59,18 +59,18 @@ ActiveRecord::Schema.define(:version => 20121011204753) do
   add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "uuid",                                                  :null => false
+    t.string   "uuid",                                                   :null => false
     t.string   "email"
     t.string   "password_digest"
     t.string   "facebook_uid"
     t.string   "facebook_code"
     t.string   "facebook_access_token"
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
-    t.boolean  "is_admin",                           :default => false, :null => false
-    t.integer  "balance",               :limit => 8, :default => 0,     :null => false
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
+    t.boolean  "is_admin",                            :default => false, :null => false
+    t.integer  "balance",                :limit => 8, :default => 0,     :null => false
     t.string   "card_token"
-    t.boolean  "auto_refill",                        :default => true
+    t.boolean  "auto_refill",                         :default => true
     t.string   "nickname"
     t.string   "first_name"
     t.string   "last_name"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(:version => 20121011204753) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.boolean  "is_new",                             :default => true
+    t.boolean  "is_new",                              :default => true
     t.string   "twitter_uid"
     t.string   "twitter_username"
     t.string   "twitter_token"
@@ -88,15 +88,18 @@ ActiveRecord::Schema.define(:version => 20121011204753) do
     t.string   "google_token"
     t.string   "google_refresh_token"
     t.string   "picture_url"
-    t.boolean  "has_agreed",                         :default => false
-    t.boolean  "show_donations",                     :default => true
+    t.boolean  "has_agreed",                          :default => false
+    t.boolean  "show_donations",                      :default => true
     t.string   "paypal_email"
     t.string   "dwolla_email"
     t.string   "pledge_name"
-    t.boolean  "has_seen_receive_page",              :default => false
+    t.boolean  "has_seen_receive_page",               :default => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
   end
 
   add_index "users", ["google_uid"], :name => "index_users_on_google_uid", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["twitter_uid"], :name => "index_users_on_twitter_uid", :unique => true
 
 end

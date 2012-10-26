@@ -23,6 +23,8 @@ Web25c::Application.routes.draw do
 
     match 'sign-in' => 'sessions#new', :as => :sign_in
     match 'sign-out' => 'sessions#destroy', :as => :sign_out
+    match 'request-password' => 'sessions#request_password', :as => :request_password
+    match 'reset-password/:id' => 'sessions#reset_password', :as => :reset_password
     match 'auth/:provider/callback' => 'sessions#create'
     match 'auth/failure' => 'sessions#failure'
 
