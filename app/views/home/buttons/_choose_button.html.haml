@@ -1,0 +1,21 @@
+#choose-button.step-container{:class => hide ? 'hide' : ''}
+  .step-number 2
+  .step-content
+    %h3.step-title= t('home.buttons.receive_pledges.choose_button_title')
+    .step-body
+      #button-choice-container
+        - ['btn-large', 'btn-medium', 'btn-small', 'icon-large', 'icon-medium', 'icon-small',
+          'tip-large', 'tip-medium', 'tip-small'].each do |size|
+          .button-choice
+            %input.button-size{ :type => 'radio', :name => 'button_size' }
+            %span= t('home.buttons.receive_pledges.' + size)
+            %img{ :src => image_path('buttons/25c-'+ size +'.png'), :'data-size' => size }  
+        .button-choice.belt.if-javascript.hide.clear
+          %input.button-size{ :type => 'radio', :name => 'button_size' }
+          %span= t('home.buttons.receive_pledges.belt')
+          %img{ :src => image_path('buttons/25c-belt.png'), :'data-size' => 'belt-25c' }
+        .button-choice.feed.if-javascript.hide.clear
+          %input.button-size{ :type => 'radio', :name => 'button_size' }
+          %span= t('home.buttons.receive_pledges.feed')
+          %img{ :src => image_path('buttons/25c-feed.png'), :'data-size' => 'feed-25c' }
+  .clear

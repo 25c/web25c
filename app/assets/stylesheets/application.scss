@@ -1396,6 +1396,16 @@ table.table thead .sorting_desc_disabled {
   margin-top: 30px;
 }
 
+.button-choice.feed {
+  height: 362px;
+  width: 440px;
+}
+
+.button-choice.feed img {
+  margin-left: -197px;
+  margin-top: 30px;
+}
+
 .button-choice:hover {
   @include radius(5px);
   background-color: #ffeae1;
