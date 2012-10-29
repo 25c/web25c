@@ -5,5 +5,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     scope: 'https://www.googleapis.com/auth/userinfo.profile,https://www.googleapis.com/auth/userinfo.email'
   }
   provider :twitter, TWITTER_SETTINGS[:consumer_key], TWITTER_SETTINGS[:consumer_secret]
-  # provider :paypal, PAYPAL_SETTINGS[:app_id], PAYPAL_SETTINGS[:app_secret], {:scope => "https://identity.x.com/xidentity/resources/profile/me"}
+  provider :facebook, FACEBOOK_SETTINGS[:app_id], FACEBOOK_SETTINGS[:app_secret], :scope => 'email,publish_actions'
 end

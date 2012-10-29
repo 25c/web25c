@@ -6,17 +6,7 @@ class HomeController < ApplicationController
   skip_before_filter :check_facebook_cookies, :only => :paypal_process
   
   def index
-    # redirect_to home_dashboard_path if self.current_user
-    session.delete(:button_id)
-    session.delete(:referrer)
-    # session.delete(:has_seen_agreement_text)
-    user = self.current_user
-    
-    if user and not user.nickname.blank?
-      @profile_path = profile_path(user.nickname)
-    else
-      @profile_path = choose_nickname_path
-    end
+    redirect_to home_dashboard_path if self.current_user
   end
 
   # static pages

@@ -168,6 +168,10 @@ body {
 
 ul#nav-login > li#nav-login-text {
   margin: 13px 15px 0 0;
+  text-align: center;
+  a {
+    color: white;
+  }
 }
 
 ul#nav-login > li.login-logo img {
@@ -791,7 +795,24 @@ img#tip-25c-logo {
 //  margin-top: 40px;
   width: 100%;
   min-height: 100px;
-  text-align: center;
+  .login-buttons, .user-agreement-message {
+    text-align: center;    
+  }
+  .control-label {
+    width: 120px;
+  }
+  .controls {
+    margin-left: 140px;
+  }
+  .form-submit {
+    text-align: center;
+  }
+  .sign-in-instructions {
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 10px 0 12px;
+  }
 }
 
 #tip-thanks {

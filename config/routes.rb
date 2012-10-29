@@ -17,13 +17,16 @@ Web25c::Application.routes.draw do
 
     root :to => 'home#index'
 
-    # match 'register' => 'users#new', :via => :get, :as => :register
-    # match 'register' => 'users#create', :via => :post
-
-    match 'sign-in' => 'users#sign_in', :as => :sign_in
-    match 'sign-out' => 'users#sign_out', :as => :sign_out
     match 'auth/dwolla/callback' => 'home/account#payout', :as => :dwolla_auth_callback
-    match 'auth/:provider/callback' => 'users#sign_in_callback'
+    
+    match 'register' => 'users#create', :via => :post, :as => :register
+
+    match 'sign-in' => 'sessions#new', :as => :sign_in, :via => :get
+    match 'sign-in' => 'sessions#create', :via => :post
+    match 'sign-out' => 'sessions#destroy', :as => :sign_out
+    match 'request-password' => 'sessions#request_password', :as => :request_password
+    match 'reset-password/:id' => 'sessions#reset_password', :as => :reset_password
+    match 'auth/:provider/callback' => 'sessions#create'
 
     match 'about' => 'home#about', :as => :about
     match 'faq' => 'home#faq', :as => :faq

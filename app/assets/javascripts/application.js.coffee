@@ -13,32 +13,12 @@
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap
+#= require sessions
 
 jQuery ->
   $("a[rel=popover]").popover()
   $(".tooltip").tooltip()
   $("a[rel=tooltip]").tooltip()
-
-  $("#sign-out").click () ->
-    pathname = $(this).attr('href')
-    result = FB.getLoginStatus ((response) ->
-      if response.status == 'connected'
-        FB.logout () ->
-          window.location = pathname
-      else
-        window.location = pathname
-    ), true
-    return false
-
-  $(".facebook-btn").click () ->
-    FB.login ((response) ->
-        mixpanel.track("LogIn", {"Account": "Facebook"});
-      ), {scope: 'email,publish_stream'}
-    # FB.login()
-    
-  $("a.google-btn").click (event) ->
-    event.preventDefault()
-    openPopup($(this).attr('href'), 'Facebook')
     
 openPopup = (href, name, width, height) ->
   width = width || 580

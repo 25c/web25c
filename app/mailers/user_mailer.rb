@@ -7,6 +7,15 @@ class UserMailer < ApplicationMailer
     mail :to => recipient(@user.email), :subject => 'Welcome to 25c.'
   end
   
+  def reset_password(user_id)
+    @user = User.find_by_id(user_id)
+    @user.editing = true
+    @user.reset_password_token = UUID.new.generate(:compact)
+    @user.reset_password_sent_at = Time.now.utc
+    @user.save!
+    mail :to => recipient(@user.email), :subject => t('user_mailer.reset_password.subject')
+  end
+  
   def new_invite(invite_id)
     @invite = Invite.find(invite_id)
     @user = @invite.button.user

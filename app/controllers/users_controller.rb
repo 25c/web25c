@@ -1,10 +1,23 @@
 class UsersController < ApplicationController
   
-  before_filter :require_signed_in, :except => [:show, :new, :sign_in, :sign_in_callback, :tip]
+  before_filter :require_signed_in, :except => [:show, :create, :tip]
   before_filter :check_user_email, :except => [ :user_agremeent, :update, :sign_in, :sign_out, :sign_in_callback, :tip ]
 
-  # GET /users/1
-  # GET /users/1.json
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      self.current_user = @user
+      redirect_to_session_redirect_path(home_dashboard_path, :notice => t('users.create.success'))
+    else
+      @show_register = true
+      @popup = params[:popup]
+      if @popup
+        render 'users/tip', :layout => 'blank'
+      else
+        render 'sessions/new'
+      end
+    end
+  end
   
   def show
     @user = User.find_by_nickname_ci(params[:id])
@@ -41,21 +54,6 @@ class UsersController < ApplicationController
       redirect_to choose_nickname_path
     else
       redirect_to profile_path(current_user.nickname)
-    end
-  end
-
-  # GET /users/new
-  # GET /users/new.json
-  def new
-    if self.current_user
-      redirect_to_session_redirect_path(home_dashboard_path)
-    else
-      @user = User.new
-      @new = true
-      respond_to do |format|
-        format.html { render action: "sign_in" }
-        format.json { render json: @user }
-      end
     end
   end
 
@@ -117,132 +115,11 @@ class UsersController < ApplicationController
       redirect_to home_account_path
     end
   end
-  
-  def sign_in_callback
-    auth = request.env['omniauth.auth']
-    user = nil
-    @redirect_url = sign_in_path
-    @is_tip_page = false
-    new_account = ''
-    case auth['provider']
-    when 'google_oauth2'
-      user = User.find_by_google_uid(auth['uid'])
-      if user.nil?
-        user = User.new
-        new_account = 'google'
-        user.password = SecureRandom.hex
-        user.google_uid = auth['uid']
-        user.google_token = auth['credentials']['token']
-        user.google_refresh_token = auth['credentials']['refresh_token']
-        user.first_name = auth['info']['first_name']
-        user.last_name = auth['info']['last_name']
-        user.picture_url = auth['info']['image'] unless auth['info']['image'].blank?
-        user.save!
-        begin
-          user.email = auth['info']['email']
-          user.save!
-        rescue
-          user.reload
-        end
-        begin
-          user.nickname = auth['info']['email'].split('@')[0]
-          user.save!
-        rescue
-          user.reload
-        end
-      elsif user.google_token.blank? or user.google_refresh_token.blank?
-        if auth['credentials']['refresh_token'].blank?
-          @redirect_url = '/auth/google_oauth2?approval_prompt=force'
-          # return
-        end
-        user.google_token = auth['credentials']['token']
-        user.google_refresh_token = auth['credentials']['refresh_token']        
-        user.save!
-      end
-      if user.picture_file_name.blank? and not auth['info']['image'].blank?
-        user.picture_url = auth['info']['image']
-        user.save!
-      end
-      notice = t('users.sign_in_callback.google')
-    end
-    unless user.nil?
-      # if session.delete(:has_seen_agreement_text)
-      #   user.has_agreed = true
-      #   user.save!
-      # end
-      invite_uuid = session.delete(:invite_uuid)
-      if invite_uuid
-        invite = Invite.where(:state => Invite::State::OPEN).find_by_uuid(invite_uuid)
-        invite.process(user) if invite
-      end
-      user.has_agreed = true
-      user.save!
-      self.current_user = user
-      user.update_profile if user.picture_file_name.blank? and not user.picture_url.blank?
-      
-      unless params[:state].blank?
-        if params[:state].include? 'button_info:'
-          state = params[:state].split('button_info:')[1].split("|")
-          button_id = state[0]
-          referrer = state[1]
-          source = state[2]
-        end
-      end
-      
-      if button_id
-        @redirect_url = tip_path(
-          :button_id => button_id,
-          :referrer => referrer,
-          :source => source,
-          :new_account => new_account
-        )
-        @is_tip_page = true
-      else
-        if !session[:redirect_path].blank?
-          @redirect_url = session.delete(:redirect_path)
-        elsif user.has_seen_receive_page
-          @redirect_url = home_dashboard_path
-        else
-          @redirect_url = home_receive_pledges_path
-        end
-        flash[:notice] = notice
-      end
-    end
-    render :layout => "blank"
-  end
-  
-  def sign_in
-    if self.current_user
-      if params[:id]
-        invite = Invite.where(:state => Invite::State::OPEN).find_by_uuid(params[:id])
-        invite.process(self.current_user) if invite
-      end
-      redirect_to_session_redirect_path(home_dashboard_path)
-    else
-      session[:has_seen_agreement_text] = true
-      if params[:id]
-        session[:invite_uuid] = params[:id]
-      end
-    end
-  end
-  
-  def sign_out
-    self.current_user = nil
-    if not request.referrer.blank? and request.referrer.include? 'blog/header'
-      redirect_to request.referrer
-    else
-      redirect_to root_path
-    end
-  end
-  
+    
   def tip
-    session[:has_seen_agreement_text] = true
-    session.delete(:redirect_path)
-    @referrer = params[:referrer].nil? ? '' : params[:referrer]
-    @new_account = params[:new_account].nil? ? '' : params[:new_account]
-    @source = params[:source].nil? ? '' : params[:source]
-    @user = self.current_user
-    @button = Button.find_by_uuid(params[:button_id])
+    session[:redirect_path] = request.path unless self.signed_in?
+    @user = User.new
+    @popup = true
     render :layout => "blank"
   end
     
