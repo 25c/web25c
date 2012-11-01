@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.role = 'publisher'
     if @user.save
       self.current_user = @user
       redirect_to_session_redirect_path(home_dashboard_path, :notice => t('users.create.success'))

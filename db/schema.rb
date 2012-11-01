@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121025231606) do
+ActiveRecord::Schema.define(:version => 20121101222202) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",                                 :null => false
@@ -59,16 +59,16 @@ ActiveRecord::Schema.define(:version => 20121025231606) do
   add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "uuid",                                                   :null => false
+    t.string   "uuid",                                                      :null => false
     t.string   "email"
     t.string   "password_digest"
     t.string   "facebook_uid"
     t.string   "facebook_code"
     t.string   "facebook_access_token"
-    t.datetime "created_at",                                             :null => false
-    t.datetime "updated_at",                                             :null => false
-    t.boolean  "is_admin",                            :default => false, :null => false
-    t.integer  "balance",                :limit => 8, :default => 0,     :null => false
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
+    t.boolean  "is_admin",                            :default => false,    :null => false
+    t.integer  "balance",                :limit => 8, :default => 0,        :null => false
     t.string   "card_token"
     t.boolean  "auto_refill",                         :default => true
     t.string   "nickname"
@@ -96,8 +96,10 @@ ActiveRecord::Schema.define(:version => 20121025231606) do
     t.boolean  "has_seen_receive_page",               :default => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
+    t.string   "role",                                :default => "tipper", :null => false
   end
 
+  add_index "users", ["facebook_uid"], :name => "index_users_on_facebook_uid", :unique => true
   add_index "users", ["google_uid"], :name => "index_users_on_google_uid", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["twitter_uid"], :name => "index_users_on_twitter_uid", :unique => true

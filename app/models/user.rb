@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  ROLES = %w(tipper publisher)
   
   require 'valid_email'
   
@@ -33,6 +34,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :password, :confirmation => true, :if => 'not linked? and not editing?'
   validates_confirmation_of :password
+  
+  validates :role, :inclusion => { :in => ROLES }
   
   before_validation :preprocess_fields
   before_create :generate_uuid
