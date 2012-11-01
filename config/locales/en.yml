@@ -4,6 +4,8 @@
 en:
   activerecord:
     attributes:
+      user:
+        pledge_name: Name
       invite:
         share_amount: Share
         email: Recipient Email
@@ -355,19 +357,21 @@ en:
   sessions:
     new:
       title: "Please Sign In"
-    form:
       invalid_login: Invalid email and/or password.
-      sign_in_with: "Please sign in via Facebook or Google:"
+      sign_in: Sign in with your 25c account email and password.
       back_login: Back to Sign in...
       reset: Reset Password
       forgot_password: Forgot your password?
       forgot_password_instructions: Enter the email address you registered with and press Reset Password to receive an email with a link that you can use to set a new password.
       join_free: Register for free!
+      submit: "Submit"
+      register: To register a new account, fill out the following form.
+    form:
+      sign_in_with: "Please sign in via Facebook:"
       join_free_instructions: Register instantly by signing into Facebook or Google!
       use_email_html: "or use your %{link}..."
       use_email: "email address"
       or: or
-      submit: "Submit"
       works_with: Clicking +25c pledges a tip of 25 cents or more. Pledge now, pay later.  You may cancel pledges you made until you fund them.
       agreement_text: "By continuing, you agree to the "
       terms: User Terms
