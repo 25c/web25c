@@ -2,7 +2,7 @@
   #login.email-form
     %p.sign-in-instructions= t '.sign_in_with'
     .login-buttons
-      = link_to '/auth/facebook' do
+      = link_to "/auth/facebook#{'?display=popup' if @popup}" do
         = image_tag "logos/facebook-icon.png"
   .user-agreement-message
     %p= raw t('.works_with')
