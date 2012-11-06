@@ -16,7 +16,7 @@
       
       function stripeResponseHandler(status, response) {
         if (response.error) {
-          $(".payment-errors").text(response.error.message).show();
+          $(".payment-errors").text(response.error.message + '.').show();
           $(".submit-button").removeAttr("disabled");
         } else {
           var $form = $("#payment-form");
@@ -26,6 +26,8 @@
         }
       }
     });
+    
+.payment-errors.errors.buffer.hide
 
 %form{ :action => "", :method => "POST", :id => "payment-form"}
   #card-number

@@ -1,6 +1,6 @@
 class Tipper::PaymentController < Tipper::TipperController
   
-  skip_before_filter :verify_registration, :only => [:site_register]
+  skip_before_filter :verify_registration, :only => [:site_register, :tip_register]
 
   def index
     @user = current_user
