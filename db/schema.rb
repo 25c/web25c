@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101222202) do
+ActiveRecord::Schema.define(:version => 20121102233803) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",                                 :null => false
@@ -69,8 +69,6 @@ ActiveRecord::Schema.define(:version => 20121101222202) do
     t.datetime "updated_at",                                                :null => false
     t.boolean  "is_admin",                            :default => false,    :null => false
     t.integer  "balance",                :limit => 8, :default => 0,        :null => false
-    t.string   "card_token"
-    t.boolean  "auto_refill",                         :default => true
     t.string   "nickname"
     t.string   "first_name"
     t.string   "last_name"
@@ -97,6 +95,9 @@ ActiveRecord::Schema.define(:version => 20121101222202) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.string   "role",                                :default => "tipper", :null => false
+    t.string   "stripe_id"
+    t.string   "stripe_last4"
+    t.boolean  "has_valid_card",                      :default => false
   end
 
   add_index "users", ["facebook_uid"], :name => "index_users_on_facebook_uid", :unique => true

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user.role = 'publisher'
     if @user.save
       self.current_user = @user
-      redirect_to_session_redirect_path(home_dashboard_path, :notice => t('users.create.success'))
+      redirect_to_session_redirect_path(publisher_dashboard_path, :notice => t('users.create.success'))
     else
       @show_register = true
       @popup = params[:popup]
@@ -121,7 +121,7 @@ class UsersController < ApplicationController
     session[:redirect_path] = request.path unless self.signed_in?
     @user = User.new
     @popup = true
-    render :layout => "blank"
+    render :layout => 'popup'
   end
     
 end

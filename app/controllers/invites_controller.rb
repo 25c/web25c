@@ -14,7 +14,7 @@ class InvitesController < ApplicationController
   
   def update
     @invite.process(self.current_user)
-    redirect_to home_dashboard_path, :notice => t('.invites.update.success')
+    redirect_to publisher_dashboard_path, :notice => t('.invites.update.success')
   end
   
   private

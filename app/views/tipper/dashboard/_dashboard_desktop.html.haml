@@ -1,0 +1,50 @@
+%h3.table-title
+  = t('tipper.dashboard.index.tips_given_title')
+  = number_to_currency(@clicks_given_total.to_f / 100000000)
+%p
+  %a= link_to t('tipper.dashboard.index.payment'), tipper_payment_path, :class => 'btn dashboard-action'
+  = t('tipper.dashboard.index.not_funded')
+  = number_to_currency(@clicks_unfunded_total.to_f / 100000000)
+%p.buffer
+  %a= link_to t('tipper.dashboard.index.undo_clicks'), tipper_undo_clicks_path, :class => 'btn dashboard-action'
+  = t('tipper.dashboard.index.funded_note')
+.table-wrapper
+  %table#clicks-given.clicks-table.table.table-condensed.table-striped
+    %thead
+      %tr
+        %th.click-amount= t('tipper.dashboard.index.amount')
+        %th.click-provider= t('tipper.dashboard.index.provider')
+        %th.click-referrer= t('tipper.dashboard.index.referrer')
+        %th
+        %th.click-date= t('tipper.dashboard.index.date_created')
+        %th
+        %th.click-funded= t('tipper.dashboard.index.funded')
+        %th.click-share= t('tipper.dashboard.index.share')
+    %tbody
+      - @clicks_given.each do |set|
+        %tr
+          %td.click-amount= number_to_currency(set[0].to_f / 100000000)
+          -if set[1].button.user.profile_url.blank?
+            %td.click-user= set[1].button.user.display_name
+          - else
+            %td.click-user= link_to set[1].button.user.display_name, set[1].button.user.profile_url,  :target => "_blank"
+          - if set[1].referrer.blank?
+            %td.click-referrer= t('tipper.dashboard.index.no_referrer')
+          - else
+            %td.click-referrer= link_to set[1].referrer_title, set[1].referrer, :target => "_blank"
+          %td= set[1].created_at.to_s(:number)
+          %td.click-date.convert-date= set[1].created_at.to_f()
+          / %td.click-date= l set[1].created_at, :format => "%d %b %y"
+          - if set[1].state > Click::State::DEDUCTED
+            %td= set[1].funded_at.to_s(:number)
+            %td.click-date.convert-date= set[1].funded_at.to_f()
+            / %td.click-funded= l set[1].updated_at, :format => "%d %b %y"
+          - else
+            %td 0
+            %td.click-funded= t('tipper.dashboard.index.to_be')
+          %td.click-share
+            .fb-share{:"data-referrer" => set[1].referrer,
+              :"data-title" => t('tipper.dashboard.index.fb_share_user_title', 
+                :user_name => set[1].button.user.display_name) }
+              = image_tag("logos/facebook-icon.png")
+            .tw-share{:"data-referrer" => set[1].referrer}= image_tag("logos/twitter-icon.png")

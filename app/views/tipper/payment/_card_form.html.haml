@@ -1,0 +1,51 @@
+= content_for(:js) do
+  = javascript_include_tag "https://js.stripe.com/v1/"
+  :javascript
+    Stripe.setPublishableKey('pk_test_wOaRJBEIIn5nBOtQ8D7UqvIe');
+    $(document).ready(function() {
+      $("#payment-form").submit(function(event) {
+        $('.submit-button').attr("disabled", "disabled");
+        Stripe.createToken({
+          number: $('.card-number').val(),
+          cvc: $('.card-cvc').val(),
+          exp_month: $('.card-expiry-month').val(),
+          exp_year: $('.card-expiry-year').val()
+        }, stripeResponseHandler);
+        return false;
+      });
+      
+      function stripeResponseHandler(status, response) {
+        if (response.error) {
+          $(".payment-errors").text(response.error.message).show();
+          $(".submit-button").removeAttr("disabled");
+        } else {
+          var $form = $("#payment-form");
+          var token = response['id'];
+          $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+          $form.get(0).submit();
+        }
+      }
+    });
+
+%form{ :action => "", :method => "POST", :id => "payment-form"}
+  #card-number
+    %label= t('.card_number')
+    %input{ :type => "text", :size => "20", :autocomplete => "off", :class => "card-number" }
+
+  #card-cvc
+    %label= t('.card_cvc')
+    %input{ :type => "text", :size => "4", :autocomplete => "off", :class => "card-cvc" }
+  
+  #card-expiration
+    %label= t('.expiration')
+    %select#expiration-month{ :class => "card-expiry-month" }
+      %option{ :value => '00', :disabled => true, :selected => true}= t('.month')
+      - (1..12).each do |m|
+        %option{ :value => "%02d" % m }= "%02d" % m
+    %select#expiration-year{ :class => "card-expiry-year" }
+      %option{ :value => '00', :disabled => true, :selected => true}= t('.year')
+      - (2012..2022).each do |y|
+        %option{ :value => y }= y
+  %button{ :type => "submit", :class => "btn submit-button" }= t('.save')
+  - if show_later_button
+    %a.btn.close-window= t('.later')

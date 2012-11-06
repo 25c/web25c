@@ -49,7 +49,7 @@
     #splash-button-title
       = raw t('.button_title')
     .center.buffer
-      %a#splash-button{:href => home_receive_pledges_path}
+      %a#splash-button{:href => publisher_receive_pledges_path}
         = image_tag 'front/button-01.png'
     #splash-tooltip.hide
       = t('.pledge_to')
@@ -62,7 +62,7 @@
       = raw t('.link_title_1')
       = raw t('.link_title_2')
     #link-example
-      = link_to t('.link_text'), home_receive_pledges_path
+      = link_to t('.link_text'), publisher_receive_pledges_path
 
 #splash-explain.splash-col-right
   %p.large{:style => 'padding-bottom:20px;'}= raw t('.explain_p1')
@@ -74,7 +74,7 @@
 .clear
 
 .splash-col-left.center
-  %a#splash-call.btn.btn-strong{ :href => home_receive_pledges_path }= raw t('.set_up')
+  %a#splash-call.btn.btn-strong{ :href => publisher_receive_pledges_path }= raw t('.set_up')
 .splash-col-right
   %p.large.learn-more=link_to t('.read_more'), faq_path
 .clear
@@ -125,12 +125,12 @@
 .splash-below
   %h2.buffer= t('.and_more')
   #supported-blogs.center
-    =link_to image_tag('logos/wordpress.png'), home_receive_pledges_path
-    / =link_to image_tag('logos/posterous.png'), home_receive_pledges_path
-    =link_to image_tag('logos/tumblr.png'), home_receive_pledges_path
-    =link_to image_tag('logos/blogger.png'), home_receive_pledges_path
-    / =link_to image_tag('logos/youtube.png'), home_receive_pledges_path
-    / =link_to image_tag('logos/pinterest.png'), home_receive_pledges_path
-    =link_to image_tag('logos/blog-com.png'), home_receive_pledges_path
-    =link_to image_tag('logos/jux.png'), home_receive_pledges_path
-    =link_to image_tag('logos/weebly.png'), home_receive_pledges_path
+    =link_to image_tag('logos/wordpress.png'), publisher_receive_pledges_path
+    / =link_to image_tag('logos/posterous.png'), publisher_receive_pledges_path
+    =link_to image_tag('logos/tumblr.png'), publisher_receive_pledges_path
+    =link_to image_tag('logos/blogger.png'), publisher_receive_pledges_path
+    / =link_to image_tag('logos/youtube.png'), publisher_receive_pledges_path
+    / =link_to image_tag('logos/pinterest.png'), publisher_receive_pledges_path
+    =link_to image_tag('logos/blog-com.png'), publisher_receive_pledges_path
+    =link_to image_tag('logos/jux.png'), publisher_receive_pledges_path
+    =link_to image_tag('logos/weebly.png'), publisher_receive_pledges_path

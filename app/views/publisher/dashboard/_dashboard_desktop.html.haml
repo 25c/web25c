@@ -1,0 +1,44 @@
+%h3.table-title
+  = t('publisher.dashboard.index.tips_received_title')
+  = number_to_currency(@clicks_received_total.to_f / 100000000)
+%p
+  %a= link_to t('publisher.dashboard.index.payout'), publisher_payout_path, :class => 'btn'
+%p.buffer
+  %a= link_to t('publisher.dashboard.index.pledge_message'), publisher_choose_pledge_message_path, :class => 'btn'
+  = t('publisher.dashboard.index.pledge_message_note')
+.table-wrapper
+  %table#clicks-received.clicks-table.table.table-condensed.table-striped
+    %thead
+      %tr
+        %th.click-amount= t('publisher.dashboard.index.amount')
+        %th.click-user= t('publisher.dashboard.index.clicker')
+        %th.click-referrer= t('publisher.dashboard.index.referrer')
+        %th
+        %th= t('publisher.dashboard.index.date_created')
+        %th
+        %th.click-funded= t('publisher.dashboard.index.funded')
+        %th.hide
+    %tbody
+      - @clicks_received.each do |set|
+        %tr
+          %td.click-amount= number_to_currency(set[0].to_f / 100000000)
+          
+          -if set[1].button.user.profile_url.blank?
+            %td.click-user= set[1].user.display_name
+          - else
+            %td.click-user= link_to set[1].user.display_name, set[1].user.profile_url,  :target => "_blank"
+          - if set[1].referrer.blank?
+            %td.click-referrer= t('publisher.dashboard.index.no_referrer')
+          - else
+            %td.click-referrer= link_to set[1].referrer_title, set[1].referrer, :target => "_blank"
+          %td= set[1].created_at.to_s(:number)
+          %td.click-date.convert-date= set[1].created_at.to_f()
+          / %td.click-date= l set[1].created_at, :format => "%d %b %y"
+          - if set[1].state > Click::State::DEDUCTED
+            %td= set[1].funded_at.to_s(:number)
+            %td.click-date.convert-date= set[1].funded_at.to_f()
+            / %td.click-funded= l set[1].updated_at, :format => "%d %b %y"
+          - else
+            %td 0
+            %td.click-funded= t('publisher.dashboard.index.to_be')
+          %td.hide

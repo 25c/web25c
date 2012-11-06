@@ -16,7 +16,7 @@ Web25c::Application.configure do
     :domain         => 'plus25c.com',
     :enable_starttls_auto => true
   }
-
+  
   # Code is not reloaded between requests
   config.cache_classes = true
 
@@ -80,11 +80,5 @@ Web25c::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-  
-  # Braintree Development Settings
-  Braintree::Configuration.environment = :sandbox
-  Braintree::Configuration.merchant_id = "z8xhfzhb86xgbs7j"
-  Braintree::Configuration.public_key = "ddpwb3dd49pqs9fw"
-  Braintree::Configuration.private_key = "2f7qpq38rwgx92j5"
   
 end

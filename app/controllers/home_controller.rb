@@ -6,7 +6,10 @@ class HomeController < ApplicationController
   skip_before_filter :check_facebook_cookies, :only => :paypal_process
   
   def index
-    redirect_to home_dashboard_path if self.current_user
+    if self.current_user
+      redirect_to publisher_dashboard_path if self.current_user.role == 'publisher'
+      redirect_to tipper_dashboard_path if self.current_user.role == 'tipper'
+    end
   end
 
   # static pages

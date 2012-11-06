@@ -1,0 +1,13 @@
+#share-cause.step-container{:class => hide ? 'hide' : ''}
+  .step-number
+  .step-content
+    %h3.step-title= t('home.buttons.receive_pledges.share_cause_title')
+    .step-body
+      #profile-link.buffer= raw t('home.buttons.receive_pledges.profile_link', :link => link_to('', '#', :target => '_blank'))
+      #share-cause.buffer
+        = t('home.buttons.receive_pledges.share_cause_label')
+        #fb-share= image_tag("logos/facebook-icon.png")
+        #tw-share= image_tag("logos/twitter-icon.png")
+      %p= t('home.buttons.receive_pledges.share_cause_note_p1')
+      %p= t('home.buttons.receive_pledges.share_cause_note_p2')
+  .clear

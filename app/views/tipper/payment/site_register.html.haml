@@ -1,0 +1,6 @@
+- content_for :title, '25c - ' + t('.title')
+
+%h2.page-header= t('.title')
+%p.buffer= t('.p1')
+
+= render :partial => 'card_form', :locals => { :show_later_button => false }

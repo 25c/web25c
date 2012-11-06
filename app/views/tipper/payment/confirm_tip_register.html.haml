@@ -1,0 +1,9 @@
+%h2=t('.title')
+%p= t('.p1')
+%p.buffer
+  = t('.more_info')
+  = link_to tipper_dashboard_url,
+    tipper_dashboard_url, 
+    :target => '_blank',
+    :class => 'close-window'
+%a.btn.close-window= t('.close')

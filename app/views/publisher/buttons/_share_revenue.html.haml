@@ -1,0 +1,45 @@
+#share-revenue.step-container{:class => hide ? 'hide' : ''}
+  .step-number 4
+  .step-content
+    %h3.step-title= t('home.buttons.receive_pledges.share_revenue_title')
+    .step-body
+      - if @button.share_users.blank?
+        - invites = @button.invites.where(:state => Invite::State::OPEN)
+        - if invites.empty?
+          %span= t('home.buttons.receive_pledges.share_amount')
+          %select#share-amount{ :type => 'text', :name => 'button[share_amount]' }
+            - ['10', '20', '30', '40', '50', '60', '70', '80', '90'].each do |amount|
+              %option{ :value => amount } #{amount}%
+          %span= t('home.buttons.receive_pledges.share_email')
+          %input#share-email{ :type => 'text', :name => 'button[share_email]', :value => t('home.buttons.receive_pledges.default_email')}
+          / %p= t('home.buttons.receive_pledges.share_email_description')
+          .clear
+          #set-share-info.clear.btn.btn-strong{:disabled => 'disabled'}
+            = t('home.buttons.receive_pledges.share_confirm')
+        - else
+          %p= t '.outstanding_invites'
+          %table.table.table-striped
+            %thead
+              %tr
+                %th= Invite.human_attribute_name(:share_amount)
+                %th= Invite.human_attribute_name(:email)
+                %th= Invite.human_attribute_name(:created_at)
+                %th
+            - invites.where(:state => Invite::State::OPEN).each do |invite|
+              %tr
+                %td= number_to_percentage(invite.share_amount, :precision => 0)
+                %td= invite.email
+                %td= l invite.created_at, :format => :date_only
+                %td= link_to t('.cancel'), publisher_cancel_email_path(:invite_uuid => invite.uuid), :class => 'cancel-share-email', :remote => true, :method => :delete, :'data-type' => :json
+      - else
+        %p= t '.sharing'
+        %ul.unstyled
+          - @button.share_users.each do |share|
+            - user = User.find_by_id(share['user'])
+            %li
+              = image_tag user.picture.url(:thumb)
+              = user.display_name
+              (#{number_to_percentage(share['share_amount'], :precision => 0)})
+              &nbsp;&nbsp;
+              = link_to t('.stop'), publisher_stop_share_path, :class => 'stop-share', :remote => true, :method => :delete, :'data-type' => :json
+  .clear

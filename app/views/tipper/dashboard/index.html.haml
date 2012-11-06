@@ -1,0 +1,18 @@
+- content_for :title, '25c - ' + t('.title')
+
+= content_for(:js) do
+  = javascript_include_tag "jquery.dataTables.min"
+  = javascript_include_tag "paging"
+  = javascript_include_tag "update-dashboard"
+  :javascript
+    window.noPledgesGivenText = '#{ j t('.no_pledges_given') }';
+    window.userDisplayName = '#{ j @user.display_name}';
+    window.fbShareCallbackUrl = '#{ j fb_share_callback_url }';
+    window.fbShareDescriptionText = '#{ j t('.fb_share_description') }';
+
+%h2.page-header= t('.title')
+
+- if mobile_device?
+  = render :partial => "dashboard_mobile"
+- else
+  = render :partial => "dashboard_desktop"

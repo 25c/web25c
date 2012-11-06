@@ -1,0 +1,22 @@
+!!! 5
+%html(lang="en")
+  %head
+    = render 'layouts/head'
+  %body#tip-body
+    #tip-outer-container
+      #tip-header-container
+        %a#tip-nav-logo.pull-left{ :href => root_path }
+          %img{ :src => image_path('logo-incline-01.png') }
+        #tip-nav-tagline.pull-left= t('layouts.header.tagline')
+        .clear
+      #tip-inner-container
+        #tip-center.main-content
+          = yield
+  = javascript_include_tag "application"
+  = yield(:js)
+  :javascript      
+    $(document).ready(function() {
+      $('a.close-window').click(function() {
+        setTimeout(function() { window.close(); }, 100);
+      });
+    });

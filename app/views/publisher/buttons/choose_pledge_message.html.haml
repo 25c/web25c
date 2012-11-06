@@ -1,0 +1,27 @@
+= content_for(:js) do
+  :javascript
+    $(document).ready(function() {
+      $('form textarea').one('keyup', function() {
+       $('form input.btn[type="submit"][disabled="disabled"]').removeAttr('disabled');
+      });
+      $('form').bind('ajax:success', function() {
+        $('form input.btn[type="submit"]').attr('disabled', 'disabled');
+        $('form .form-saved').show();
+        setTimeout(function(){
+          $('form .form-saved').fadeOut('fast');
+        }, 5000);
+        $('form textarea').one('keyup', function() {
+          $('input.btn[type="submit"][disabled="disabled"]').removeAttr('disabled');
+        });
+      });
+    });
+
+%h2.page-header= t('.title')
+
+%p.buffer= t('.instructions')
+
+= simple_form_for @button, :remote => 'true' , :url => publisher_update_button_path do |f|
+  = f.input :pledge_message, :as => :text, :input_html => {:rows => 10, :value => @button.pledge_message.blank? ? t('.default_message') : @button.pledge_message}
+  .form-actions
+    = f.button :submit, :class => 'btn-strong', :value => t('.submit')
+    %span.form-saved= t('.saved')

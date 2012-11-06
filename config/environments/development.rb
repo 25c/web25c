@@ -17,7 +17,7 @@ Web25c::Application.configure do
   ENV["API25C_URL"] = 'localhost:5000'
   ENV["DATA25C_URL"] = 'http://localhost:5300'
   ENV["ASSETS_URL_BASE"] = 'https://d1y0s23xz5cgse.cloudfront.net'
-
+  
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
@@ -51,11 +51,5 @@ Web25c::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  
-  # Braintree Development Settings
-  Braintree::Configuration.environment = :sandbox
-  Braintree::Configuration.merchant_id = "z8xhfzhb86xgbs7j"
-  Braintree::Configuration.public_key = "ddpwb3dd49pqs9fw"
-  Braintree::Configuration.private_key = "2f7qpq38rwgx92j5"
   
 end

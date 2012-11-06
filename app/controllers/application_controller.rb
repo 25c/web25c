@@ -22,6 +22,20 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def require_publisher
+    unless self.signed_in? and self.current_user.role == 'publisher'
+      session[:redirect_path] = request.path
+      redirect_to sign_in_path
+    end
+  end
+  
+  def require_tipper
+    unless self.signed_in? and self.current_user.role == 'tipper'
+      session[:redirect_path] = request.path
+      redirect_to sign_in_path
+    end
+  end
+  
   def redirect_to_session_redirect_path(fallback, options = {})
     redirect_path = session.delete(:redirect_path)
     if redirect_path.blank?

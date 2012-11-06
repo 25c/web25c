@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/stripe/stripe-ruby
+  revision: 0080cfe707b07044c660cf277d54becabd2ee933
+  specs:
+    stripe (1.7.6)
+      multi_json (~> 1.1)
+      rest-client (~> 1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -183,6 +191,8 @@ GEM
       vegas (~> 0.1.2)
     resque_mailer (2.1.0)
       actionmailer (~> 3.0)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rmagick (2.13.1)
     sass (3.2.1)
     sass-rails (3.2.5)
@@ -262,6 +272,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   simple_form
   sitemap_generator
+  stripe!
   therubyracer
   thin
   twitter-bootstrap-rails

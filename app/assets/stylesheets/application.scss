@@ -1680,3 +1680,35 @@ pre#button-code-block {
   display: block;
   margin: 20px 0 20px 100px;
 }
+
+
+/* CARD FIELDS
+*---------------------------- */
+
+#card-number {
+  float: left;
+}
+
+#card-cvc {
+  margin-left: 20px;
+  float: left;
+}
+
+#card-cvc input {
+  width: 60px;
+}
+
+#card-expiration {
+  clear: both;
+  margin-bottom: 20px;
+}
+
+#card-expiration #expiration-year {
+  margin-left: 15px;
+  width: 70px;
+}
+
+
+
+
+

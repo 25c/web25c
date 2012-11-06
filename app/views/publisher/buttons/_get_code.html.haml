@@ -1,0 +1,75 @@
+#get-code.step-container{:class => hide ? 'hide' : ''}
+  .step-number 3
+  .step-content
+    %h3.step-title.if-code= t('home.buttons.receive_pledges.get_code_title')
+    %h3.step-title.if-link.hide= t('home.buttons.receive_pledges.get_link_title')
+    .step-body.buffer
+      #button-preview-container.if-code
+        #button-preview-title
+          = t('home.buttons.receive_pledges.button_preview')
+        #button-preview     
+      #code-container.if-code
+        %p
+          %b= t('home.buttons.receive_pledges.button_code')
+        %pre#button-code-block
+        - if @user.nickname.blank?
+          #set-nickname-link.hide
+            = link_to t('home.buttons.receive_pledges.set_nickname'), publisher_account_url
+      .clear
+    %h3.if-code= t('home.buttons.receive_pledges.installation')
+    .step-body#install-instructions
+      .html-instructions
+        %p= raw t('home.buttons.receive_pledges.for_website')
+      .wordpress-instructions.hide
+        %p= raw t('home.buttons.receive_pledges.for_wordpress_1')
+        %p= raw t('home.buttons.receive_pledges.for_wordpress_2')
+        %p= raw t('home.buttons.receive_pledges.for_wordpress_3')
+        %p= raw t('home.buttons.receive_pledges.for_wordpress_4')
+      .tumblr-instructions.hide
+        %p= raw t('home.buttons.receive_pledges.for_tumblr_1')
+        %p= raw t('home.buttons.receive_pledges.for_tumblr_2')
+        %p= raw t('home.buttons.receive_pledges.for_tumblr_3')
+        %p= raw t('home.buttons.receive_pledges.for_tumblr_4')
+        %p= raw t('home.buttons.receive_pledges.for_tumblr_5')
+        %p= raw t('home.buttons.receive_pledges.for_tumblr_6')
+      .posterous-instructions.hide
+        %p= raw t('home.buttons.receive_pledges.for_posterous_1')
+        %p= raw t('home.buttons.receive_pledges.for_posterous_2')
+        %p= raw t('home.buttons.receive_pledges.for_posterous_3')
+        %p= raw t('home.buttons.receive_pledges.for_posterous_4')
+      .blog-com-instructions.hide
+        %p= raw t('home.buttons.receive_pledges.for_blog-com_1')
+        %p= raw t('home.buttons.receive_pledges.for_blog-com_2')
+        %p= raw t('home.buttons.receive_pledges.for_blog-com_3')
+        %p= raw t('home.buttons.receive_pledges.for_blog-com_4')
+      .blogger-instructions.hide
+        %p= raw t('home.buttons.receive_pledges.for_blogger_1')
+        %p= raw t('home.buttons.receive_pledges.for_blogger_2')
+        %p= raw t('home.buttons.receive_pledges.for_blogger_3')
+        %p= raw t('home.buttons.receive_pledges.for_blogger_4')
+      .jux-instructions.hide
+        %p= raw t('home.buttons.receive_pledges.for_jux_1')
+        %p= raw t('home.buttons.receive_pledges.for_jux_2')
+        %p= raw t('home.buttons.receive_pledges.for_jux_3')
+        %p= raw t('home.buttons.receive_pledges.for_jux_4')
+      .weebly-instructions.hide
+        %p= raw t('home.buttons.receive_pledges.for_weebly_1')
+        %p= raw t('home.buttons.receive_pledges.for_weebly_2')
+        %p= raw t('home.buttons.receive_pledges.for_weebly_3')
+        %p= raw t('home.buttons.receive_pledges.for_weebly_4')
+      .youtube-instructions.hide
+        %p= raw t('home.buttons.receive_pledges.for_youtube_1')
+        %p
+          = raw t('home.buttons.receive_pledges.for_youtube_2')
+          %span.profile-link
+      .pinterest-instructions.hide
+        %p= raw t('home.buttons.receive_pledges.for_pinterest_1')
+        %p
+          = raw t('home.buttons.receive_pledges.for_pinterest_2')
+          %span.profile-link          
+      .facebook-instructions.hide
+        %p= raw t('home.buttons.receive_pledges.for_facebook_1')
+        %p
+          = raw t('home.buttons.receive_pledges.for_facebook_2')
+          %span.profile-link
+  .clear

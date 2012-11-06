@@ -1,0 +1,9 @@
+- content_for :title, '25c - ' + t('.title')
+
+%h2.page-header= t('.title')
+
+- if not @user.stripe_id.blank?
+  #has-card.buffer
+    %p Your card ending in #{ @user.stripe_last4 } is on file. Use the form below if you'd like to use a different card.
+
+= render :partial => 'card_form', :locals => { :show_later_button => false }

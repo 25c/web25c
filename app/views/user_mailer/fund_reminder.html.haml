@@ -1,8 +1,8 @@
 %p Dear #{@user.display_name}:
 %p Thank you for using 25c to support what you value. The pledgees are excited about your pledge and are looking forward to receiving funds.
 %p You have now pledged #{number_to_currency(@user.balance.to_f / 100000000)} to different 25c providers.  We will pay those providers once you have funded these pledges.
-%p Please take action now to #{link_to "fund the pledges you made", home_payment_url}.
-%p If you have changed your mind and would like to withdraw certain pledges, you may do so on #{link_to "your personal dashboard", home_dashboard_url}.
+%p Please take action now to #{link_to "fund the pledges you made", tipper_payment_url}.
+%p If you have changed your mind and would like to withdraw certain pledges, you may do so on #{link_to "your personal dashboard", tipper_dashboard_url}.
 %p You either have to withdraw your pledges or fund them.
 %p Again thank you for your pledges and helping us changing the world one click a time!
 %p (In the event you overlooked this email, we will continue to remind you.)

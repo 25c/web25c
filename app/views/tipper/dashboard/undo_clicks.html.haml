@@ -1,0 +1,20 @@
+- content_for :title, '25c - ' + t('.title')
+
+= content_for(:js) do
+  = javascript_include_tag "jquery.dataTables.min"
+  = javascript_include_tag "paging"
+  = javascript_include_tag "undo-clicks"
+  :javascript
+    window.confirmDelete = '#{ j t('.confirm_undo') }';
+    window.deleteClickUrl = '#{ j tipper_delete_click_url }';
+    window.noPledgesText = '#{ j t('.no_pledges') }';
+
+%h2.page-header= t('.title')
+%p.buffer
+  %a= link_to t('.dashboard'), tipper_dashboard_path, :class => 'btn'
+
+
+- if mobile_device?
+  = render :partial => "undo_mobile"
+- else
+  = render :partial => "undo_desktop"

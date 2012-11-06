@@ -3,10 +3,10 @@
   - if @is_editable
     = javascript_include_tag "edit-profile"
     :javascript
-      window.updateUserUrl = '#{ j home_account_url }';
+      window.updateUserUrl = '#{ j publisher_account_url }';
       window.youtubeId = '#{ j @button.youtube_id }';
       window.hasButtonPicture = '#{ @button.picture.exists? }' == 'true';
-      window.updateButtonUrl = '#{ j home_update_button_url }';
+      window.updateButtonUrl = '#{ j publisher_update_button_url }';
       window.enterUserAboutText = '#{ j t('.enter_about') }';
       window.enterButtonDescriptionText = '#{ j t('.enter_button_description') }';
       window.enterButtonTitleText = '#{ j t('.enter_button_title') }';

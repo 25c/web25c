@@ -56,7 +56,7 @@ class SessionsController < ApplicationController
       if @user.save
         @user.update_attribute(:reset_password_token, nil)
         self.current_user = @user
-        redirect_to home_dashboard_path, :notice => t('sessions.reset_password.success')
+        redirect_to publisher_dashboard_path, :notice => t('sessions.reset_password.success')
       end
     end
   end
