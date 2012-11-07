@@ -10,10 +10,14 @@
 
 %p With each click, you'll be building a better on-line experience.
 
-%p You can also receive 25c pledges on your own website, blog, etc. by adding a +25c Button or the #{link_to "tip.25c.com", home_profile_url} link. To get paid, request a pay-out on your Dashboard.
+%p You can also receive 25c pledges on your own website, blog, etc. by adding a +25c Button or the #{link_to "tip.25c.com", publisher_profile_url} link. To get paid, request a pay-out on your Dashboard.
+
+- if @user.role = 'tipper' and not @user.has_valid_card
+  %p If you haven't done so, please complete your account registration:
+  %p{ :style => 'margin-bottom:30px;'}= link_to tipper_site_register_url, tipper_site_register_url
 
 %p Keep track of pledges made and received by checking your Dashboard:
-%p{ :style => 'margin-bottom:30px;'}= link_to home_dashboard_url, home_dashboard_url
+%p{ :style => 'margin-bottom:30px;'}= link_to tipper_dashboard_url, tipper_dashboard_url
 
 %p If you have any questions along the way, check our FAQ.
 %p{ :style => 'margin-bottom:30px;'}= link_to faq_url, faq_url(:ref => "email")

@@ -68,8 +68,10 @@ class Tipper::PaymentController < Tipper::TipperController
         
     user.stripe_last4 = customer.active_card.last4
     user.has_valid_card = true
+    user.is_suspended = false
     user.save!
     user.editing = false
+    
   end
   
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121102233803) do
+ActiveRecord::Schema.define(:version => 20121106233942) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",                                 :null => false
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(:version => 20121102233803) do
     t.string   "stripe_id"
     t.string   "stripe_last4"
     t.boolean  "has_valid_card",                      :default => false
+    t.boolean  "is_suspended",                        :default => false
   end
 
   add_index "users", ["facebook_uid"], :name => "index_users_on_facebook_uid", :unique => true
