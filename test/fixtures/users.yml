@@ -15,6 +15,7 @@ francis:
   uuid: 476da1c07941012f5e2e60c5470a09c8
   email: mail@francisli.com
   password_digest: $2a$10$fitziG2ZPEWRKEJPghcZV.9mD9kzIC7EM918/dEt8GieDemcNBxPW
+  stripe_id: cus_0hTStsfXaXh9CO
   
 martin:
   nickname: rmartinr

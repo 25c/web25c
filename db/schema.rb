@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106233942) do
+ActiveRecord::Schema.define(:version => 20121108221641) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",                                 :null => false
@@ -47,13 +47,14 @@ ActiveRecord::Schema.define(:version => 20121106233942) do
   add_index "invites", ["uuid"], :name => "index_invites_on_uuid"
 
   create_table "payments", :force => true do |t|
-    t.string   "uuid",                                     :null => false
-    t.integer  "user_id",                                  :null => false
-    t.integer  "amount",       :limit => 8
-    t.integer  "state",                     :default => 0, :null => false
-    t.string   "payment_type",                             :null => false
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.string   "uuid",                                       :null => false
+    t.integer  "user_id",                                    :null => false
+    t.integer  "amount",         :limit => 8
+    t.integer  "state",                       :default => 0, :null => false
+    t.string   "payment_type",                               :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "transaction_id"
   end
 
   add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
