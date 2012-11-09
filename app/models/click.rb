@@ -13,6 +13,7 @@ class Click < ActiveRecord::Base
   
   belongs_to :button
   belongs_to :user
+  belongs_to :payment
   
   has_many :clicks, :foreign_key => 'parent_click_id'
   
