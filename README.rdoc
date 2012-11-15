@@ -22,6 +22,22 @@ You can install the auto-launch config, or manually start and stop postgres on t
 
 $ brew info postgres
 
+The postgres info includes the command to initialize your db for the first time:
+
+$ initdb /usr/local/var/postgres
+
+This creates a default 'postgres' database. The project is then configured to use a shared 'superuser' account role for accessing and managing the dbs for this (and other) 25c project. To create this role, open a psql command line client:
+
+$ psql postgres
+
+This should open the client, connected to the default postgres database.  In the tool, execute the following command:
+
+postgres=# CREATE ROLE superuser WITH SUPERUSER LOGIN;
+
+Once created, you should be able to run the rake task to create the development database:
+
+$ rake db:setup
+
 - Redis
 
 Install redis using Homebrew:
@@ -31,6 +47,12 @@ $ brew install redis
 You can install the auto-launch config, or manually start and stop redis on the command line. For instructions:
 
 $ brew info redis
+
+- ImageMagick
+
+Install imagemagick using Homebrew (dependency for rmagick, for image scaling)
+
+$ brew install imagemagick
 
 - Asset Precompilation on Heroku
 
@@ -51,4 +73,16 @@ $ rake resque:work
 ActionMailer has now been configured to dispatch email in a background process using Resque. You need to have a worker running to process the queue in order to test email delivery (see above). In the development environment, the recipient will be overridden with an email address set in the MAILTO environment variable.  This allows you to test sending email to different addresses, but receive them all in a single account.  You can specify this in your environment, or on the command line when starting the resque worker (since email is sent only in the background worker process):
 
 $ rake resque:work MAILTO=<email address here>
+
+- Starting everything up
+
+Make sure postgres and redis are running- check the brew info postgres and brew info redis documentation for commands, such as this:
+
+$ pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+
+$ redis-server /usr/local/etc/redis.conf
+
+Then run the rails server in the root of the project folder:
+
+$ rails s
 

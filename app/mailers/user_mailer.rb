@@ -149,9 +149,9 @@ class UserMailer < ApplicationMailer
   
   
   # >> Overview of all tips charged upon reaching treshold 
-  def new_invoice(user_id, charges_id)
-    @user = User.find(user_id)
-    @invoice = Invoice.find(charges_id)
+  def new_invoice(user_id, payment_id)
+    @user = User.find_by_id(user_id)
+    @payment = Payment.find_by_id(payment_id)
 
     mail :to => recipient(@user.email), :subject => "New 25c Invoice!"
   end
