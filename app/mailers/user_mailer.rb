@@ -52,10 +52,11 @@ class UserMailer < ApplicationMailer
   end
   
   
-  # >> when a tipper is dislodged from present position to a new position (can be dislodged from displayable area)
-  # >> when a tipper gain position from previous position (may enter displayable area)
-  # >> two types of emails depending if going up or down in position. 
-  # >> show tipper if in displayable area
+  # when a tipper is dislodged from present position to a new position (can be dislodged from displayable area)
+  # when a tipper gain position from previous position (may enter displayable area)
+  # two types of emails depending if going up or down in position. 
+  # show tipper if in displayable area
+  # 
   def new_position_in_fanbelt(user_id, click_id, url_title, previous_pos, current_pos)
     @user = User.find(user_id)
     @click = Click.find(click_id)
@@ -119,14 +120,14 @@ class UserMailer < ApplicationMailer
     @utitle = url_title
     @wtype = widget_type
 
-    mail :to => recipient(@user.email), :subject => "Welcome to 25c!"
+    mail :to => recipient(@user.email), :subject => "Welcome back to 25c!"
   end
   
   # >> welcome email for publisher
   def new_publisher_welcome(user_id)
     @user = User.find(user_id)
 
-    mail :to => recipient(@user.email), :subject => "25c welcomes you as a widget publisher!"
+    mail :to => recipient(@user.email), :subject => "25c a New Publisher!"
   end 
   
   
@@ -142,12 +143,8 @@ class UserMailer < ApplicationMailer
   # >> Daily email for the user to complete their profile and payment information
   def profile_completion(user_id)
     @user = User.find(user_id)
-    @utitle = url_title
-    @comment = Comment.find(comment_id)
-    @prevpos = previous_pos
-    @curpos = current_pos
 
-    mail :to => recipient(@user.email), :subject => "25c Testimonial Notification for #{@utitle}"
+    mail :to => recipient(@user.email), :subject => "25c Profile Completion Reminder"
   end 
   
   
