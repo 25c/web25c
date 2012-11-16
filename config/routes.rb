@@ -64,12 +64,6 @@ Web25c::Application.routes.draw do
     end
     
     namespace :publisher do
-    
-      # Buttons
-      resources :buttons
-      match 'get_button' => 'buttons#get_button', :as => :get_button
-      match 'receive_pledges' => 'buttons#receive_pledges', :as => :receive_pledges
-      match 'choose_pledge_message' => 'buttons#choose_pledge_message', :as => :choose_pledge_message
       
       # Widgets
       match 'widgets' => 'widgets#index', :as => :widgets
