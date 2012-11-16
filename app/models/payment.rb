@@ -8,6 +8,7 @@ class Payment < ActiveRecord::Base
   end
   
   belongs_to :user
+  has_many :clicks, :conditions => { :parent_click_id => nil }
   
   validates :payment_type,
     :inclusion => {
