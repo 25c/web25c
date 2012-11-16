@@ -1441,7 +1441,7 @@ table.table thead .sorting_desc_disabled {
   vertical-align: middle;
 }
 
-pre#button-code-block {
+pre.button-code-block {
   background-color: white;
   white-space: normal;
   margin: 5px 0 0 0;
@@ -1599,9 +1599,9 @@ pre#button-code-block {
   margin: 10px;
 }
 
-#code-container {
+.code-container {
   float: left;
-  width: 560px;
+  width: 460px;
 }
 
 #step2.step-container button.btn {
@@ -1639,7 +1639,7 @@ pre#button-code-block {
   margin-left: 10px;
 }
 
-#button-preview > iframe {
+.button-preview > iframe {
   height: 80px;
 }
 
@@ -1708,7 +1708,118 @@ pre#button-code-block {
   width: 70px;
 }
 
+/* WIDGET MANAGEMENT
+*---------------------------- */
 
+#widget-list {
+  margin-bottom: 30px;
+}
+
+#widgets-description {
+
+}
+
+#no-widgets {
+  padding: 10px;
+}
+
+.widget-container {
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.widget-image-large, .widget-image-small {
+  float: left;
+  background-color: #ccc;
+}
+
+.widget-image-large {
+  width: 100px;
+  height: 100px;
+}
+
+.widget-image-small {
+  width: 50px;
+  height: 50px;
+}
+
+.widget-description {
+  width: 560px;
+  float: left;
+  margin-left: 10px;
+}
+
+.widget-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.widget-fields {
+}
+
+.widget-buttons {
+  float: right;
+  margin: 5px 10px 0 0;
+}
+
+#tab-titles {
+  border-bottom: 1px solid #ccc;
+}
+
+.tab-title {
+  float: left;
+  padding: 5px;
+  color: #aaa;
+  border: 1px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tab-title.selected {
+  color: inherit;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid white;
+  background-color: white;
+}
+
+#tab-contents {
+  margin: 20px 0;
+  position: relative;
+}
+
+.tab-content {
+//  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.widget-settings-col {
+  float: left;
+  width: 400px;
+}
+
+.widget-output-col {
+  float: right;
+  width: 460px;
+}
+
+.share-container {
+  height: 40px;
+  bottom-border: 1px solid #ccc;
+}
+
+.share-container.disabled, .share-container.disabled input, .share-container.disabled select {
+  color: #aaa;
+}
+
+.share-amount {
+  width: 80px;
+}
+
+.share-email {
+  width: 180px;
+}
 
 
 

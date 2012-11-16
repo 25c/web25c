@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       @show_register = true
       @popup = params[:popup]
       if @popup
-        render 'users/tip', :layout => 'blank'
+        render 'users/tip', :layout => 'popup'
       else
         render 'sessions/new'
       end
