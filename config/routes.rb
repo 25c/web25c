@@ -4,10 +4,6 @@ Web25c::Application.routes.draw do
   match 'fb_share_callback' => 'home#fb_share_callback', :as => :fb_share_callback
   # hidden iframe page for ajax-like picture loading
   match 'home/upload_picture' => 'users#upload_picture', :as => :upload_picture
-
-  namespace :publisher do
-    match 'update_button' => 'buttons#update_button', :as => :update_button, :via => :put
-  end
   
   # wildcard routes for profiles under 'tip' domain
   match ':id' => 'users#show', :constraints => { :id => /.*/, :subdomain => 'tip' }, :as => :profile
