@@ -92,166 +92,44 @@ en:
         fb_share_button_title: "I just tipped %{user_name} using 25c!"
         fb_share_user_title: "I just tipped %{user_name} using 25c!"
         fb_share_description: Using 25c to pledge one quarter one click.
-    buttons:
-      button_updated: Your button has been updated.
-      update_failure: Button update failed. Please try again.
-      receive_pledges: 
-        title: Get Your Own +25c Button/Link
-        subtitle: "In three simple steps, you will be set up to collect tips online as small as 25 cents:"
-        short_url_title: 25c Short URL
-        platform: Platform
-        javascript: JavaScript
-        iframe: iFrame
-        note: Special Instructions
-        html: Your Web Page
-        tumblr: Tumblr
-        wordpress: WordPress Self-Hosted
-        wordpress_note: "25c buttons are not yet supported on Wordpress.com hosted sites."
-        posterous: Posterous
-        button_name: "Customize tooltip message:"
-        sign_in_button: Create a Free Account
-        javascript: JavaScript
-        iframe: iFrame
-        link: Link
-
-        btn-small: Small Button
-        btn-medium: Medium Button
-        btn-large: Large Button
-        icon-small: Small Icon
-        icon-medium: Medium Icon
-        icon-large: Large Icon
-        tip-large: Tip Large
-        tip-medium: Tip Medium
-        tip-small: Tip Small
-        belt: Fan Belt
-
-        describe_cause_title: "Tell people a bit about yourself:"
-        button_title_label: "Pledge 25c for"
-        enter_title: (purpose)
-        button_description_label: "Description:"
-        enter_description: (describe why people should give you tips)
-        set_button_info: Continue
-        button_info_url_label: "Optional URL:"
-        enter_info_url: (URL to a webpage with more info about your cause)
-        invalid_url: That URL is invalid. Please check it and try again.
-
-        describe_user_title: "Provide some information about yourself:"
-        user_picture_label: "Your photo:"
-        user_nickname_label: "Your user nickname:"
-        user_pledge_name_label: "Your name:"
-        upload_picture: Upload
-        picture_uploading: Picture uploading...
-        picture_link: "Use this picture:"
-        user_nickname_hint: "This determines your profile URL, such as: http://www.25c.com/example"
-        enter_about: (name who the funds go to, e.g. your name or your org's)
-        set_user_info: Continue
-        nickname_taken: That nickname has been taken by another user. Please choose another and try again.
-        nickname_blank: Please choose a non-blank nickname.
-
-        choose_platform_title: "Where do you want to embed the +25c Button/Link?"
-        website: "Website"
-        website: "Your website"
-        choose_button_title: "Choose a look for your +25c Button:"
-        get_code_title: "Use the code below to embed your button:"
-        get_link_title: "Follow these instructions:"
-        button_code: "HTML Code for Your Own +25c Button:"
-        link_code: "URL to Use:"
-        sign_in_overlay: Click here to create an account!
-        set_nickname: Choose a nickname to set your profile URL.
-        installation: "Installation Instructions:"
-        for_blogs: "Insert the code above as HTML next to the text / images / etc. when you post a new blog entry."
-
-        for_website: "Access your website and paste the +25 Button code in your page\'s HTML.  You can reuse this code any number of times on as many pages and sites as you like."
-
-        for_wordpress_1: "<b>Note: The +25c Button works on self-hosted Wordpress sites, not on Wordpress.com hosted sites.</b>"
-        for_wordpress_2: "1. You\'ll need to use the Wordpress plugin \"Raw HTML\" to enable the +25c Button. Get the code from <a target=\"blank\" href=\"http://wordpress.org/extend/plugins/raw-html/installation/\">http://wordpress.org/extend/plugins/raw-html/installation/</a> and follow the installation instructions."
-        for_wordpress_3: "2. Once the plugin is installed, insert the +25c Button code into the \"Raw HTML\" tags, such as: <br>&lt;!--raw--&gt; (Your +25c Button code goes here) &lt;!--/raw--&gt;"
-        for_wordpress_4: "3. Enter the code with the tags into in a blog post. Your +25c Button will appear when you publish!"
-
-        for_tumblr_1: "1. On your <a target=\"_blank\" href=\"http://www.tumblr.com/dashboard\">Tumblr Dashboard</a> click <b>Aa Text</b> to create a new text post."
-        for_tumblr_2: "2. If using the Rich Text editor:"
-        for_tumblr_3: "&nbsp;&nbsp;&nbsp;&nbsp;- Click on the <b>HTML</b> button in the editor bar."
-        for_tumblr_4: "&nbsp;&nbsp;&nbsp;&nbsp;- Paste the +25c Button code in the HTML window and click <b>Update</b>."
-        for_tumblr_5: "3. If using the HTML editor, paste the +25c Button code directly into the editor."
-        for_tumblr_6: "4. When you\'re finished with your blog post, click <b>Create Post</b>. The button will appear on your main Tumblr site (username.tumblr.com) but will not appear in the dashboard view or preview of the post."
-
-        for_posterous_1: "1. In your <a target=\"_blank\" href=\"http://posterous.com/\">Posterous</a> Space view, click <b>Create a Post</b>."
-        for_posterous_2: "2. Click the <b>HTML</b> button in the editor toolbar."
-        for_posterous_3: "3. Paste your +25c Button code into the editor."
-        for_posterous_4: "4. The button will appear when you publish your post!"
-
-        for_blog-com_1: "1. On your <a target=\"_blank\" href=\"http://www.blog.com/\">Blog.com</a> admin page, Create a new post by clicking the <b>pencil icon</b> on the toolbar."
-        for_blog-com_2: "2. Click the <b>HTML</b> tab in the editor toolbar."
-        for_blog-com_3: "3. Paste your +25c Button code into the editor."
-        for_blog-com_4: "4. The button will appear when you publish your post!"
-
-        for_blogger_1: "1. On your <a target=\"_blank\" href=\"http://www.blogger.com/\">Blogger</a> admin page, Create a new post by clicking the <b>pencil icon</b> next to your blog name."
-        for_blogger_2: "2. Click the <b>HTML</b> button in the editor toolbar."
-        for_blogger_3: "3. Paste your +25c Button code into the editor."
-        for_blogger_4: "4. The button will appear when you publish your post!"
-
-        for_jux_1: "1. On your <a target=\"_blank\" href=\"http://www.jux.com/\">Jux</a> homepage, Create new content by clicking the <b>plus icon</b> in the top right."
-        for_jux_2: "2. Click <b>Article</b>."
-        for_jux_3: "3. Paste your +25c Button code directly into the <b>Content</b> box."
-        for_jux_4: "4. The button will appear instantly in your new article. Click <b>Done</b> when you\'re finished."
-
-        for_weebly_1: "1. On your <a target=\"_blank\" href=\"http://www.weebly.com/\">Weebly</a> homepage, Click the <b>Edit</b> button for your site."
-        for_weebly_2: "2. Drag a <b>Custom HTML</b> widget to your page in the editor."
-        for_weebly_3: "3. Click the section labeled <b>Click to Set Custom HTML</b> and paste in your +25c Button code."
-        for_weebly_4: "4. Your +25c Button will appear immediately. Click <b>Publish</b> when you\'re finished."
-
-        for_youtube_1: "Edit the description of your Youtube video and paste this text in the first line:"
-        for_youtube_2: "Click to tip 25 cents: "
-
-        for_pinterest_1: "When creating a new Pin or editing an existing Pin, enter the following in the description:"
-        for_pinterest_2: "Click to tip 25 cents: "
-
-        for_facebook_1: "When creating a new Post, enter the following:"
-        for_facebook_2: "Click to tip 25 cents: "
-
-        button_preview: "Button preview:"
-        link_preview: "Link preview:"
-
-        share_cause_title: Tell people you know about your cause!
-        profile_link: "You now also have a 25c.com page at: %{link}"
-        share_cause_label: "Tell your friends by sharing via:"
-        share_facebook: Share on Facebook
-        fb_share_description: Using 25c to pledge one quarter one click.
-        fb_share_title: I just created a 25c account!
-        share_twitter: Share on Twitters
-        share_email: Email
-        share_email_subject: I just joined 25c!
-        share_email_body: Please click the link to give a tip on my 25c profile.
-        share_cause_note_p1: "Make sure to embed the +25c Button where people can see it."
-        share_cause_note_p2: "Embed as many +25c Buttons as you like – you may add more at any time."
-        view_dashboard_title: View your stats and collections
-        view_dashboard: "Check your %{link} to see who has pledged 25c tips to you."
-        view_dashboard_link: dashboard
-        request_payout: When you have received a good number of pledges, set up your account to receive pay-outs.
-        enhance_profile: Finally, %{link} and don't forget to pledge 25c tips yourself on a website near you!
-        enhance_profile_link: enhance your 25c.com profile page
-        share_revenue_title: "Advanced feature: Share tips received through your button"
-        share_amount: "Share "
-        share_email: "with "
-        default_email: "email@domain.com"
-        share_email_description: "We will send an email to let them know you are sharing tips with them."
-        share_confirm: "Confirm"
-        invalid_email: "Please enter a valid e-mail address"
-      get_button:
-        title: Get your +25c Button
-        subtitle: "Follow these easy steps to get your +25c button code:"
-      share_revenue:
-        sharing: "You are currently sharing your tips with:"
-        outstanding_invites: "You have sent the following tip share invitations:"
-        cancel: "Cancel"
-        stop: "Stop sharing"
-      choose_pledge_message:
-        title: Choose a Pledge Message
-        instructions: "25c will send reminder messages to people that haven't yet funded their pledges. Enter a custom message for people that have pledged 25c tips to you:"
-        default_message: "Thank you for supporting my cause.\n\nI noticed that you have not yet funded the pledge you made - any chance you could?\n\nYou can do so at www.25c.com/home/payment\n\nThank you!"
-        submit: Save
-        saved: Message Saved.
-
+    widgets:
+      index:
+        title: Widget Management
+        user_widgets:  Your widgets
+        no_widgets: You do not have any widgets. Select one from the list below.
+        fan_belt: Fan Belt Widget
+        testimonials: Testimonials Widget
+        edit: Edit
+        delete: Delete
+        confirm_delete: "Are you sure you want to delete this widget?"
+        new: Create New Widget
+        available_widgets: Available Widgets
+        fan_belt_description: Displays the top five fans who tipped the creator/publisher the most. Place it with your content and feature your most generous fans!
+        testimonials_description: A user commenting system where users can promote the visibility of individual testimonials through small gifts. This system can either replace your user commenting system or be placed on top of it to feature a limited selection of top user "testimonials".
+      new:
+        title: Create New Widget
+        instructions: Use the tool below to add widgets to your website or blog. To place a widget, fill out the widget fields and copy-paste the source code provided.
+        back: Back to Widgets
+      edit:
+        title: Edit Widget
+        instructions: Use the tool below to edit your existing widget. To place the widget, copy-paste the source code provided.
+        back: Back to Widgets
+        fan_belt: Fan Belt
+        testimonials: Testimonials
+      widget_config:
+        settings: Widget Settings
+        pictures_to_show: Picture to Show
+        share_title: Share Tips
+        with: with
+        sharing: "%{amount} with %{name} (Sharing)"
+        invited: "%{amount} with %{email} (Invited %{date})"
+        share: Share
+        with: with
+        add_share_user: Add Share User
+        save: Save
+        cancel: Cancel
+        preview_title: Preview
+        code_title: Code (Copy-paste into your web page)
 
   tipper:
     payment:
@@ -412,8 +290,9 @@ en:
       sign_in: Sign In
       sign_out: Sign Out
       receive_pledges: Receive 25c Tips
-      get_button: Get +25c Button Code
-      payments: Fund Pledges You Made
+      get_button: Widgets
+      payment: Payment Settings
+      payout: Request Payout
       dashboard: Dashboard
     footer:
       about: About

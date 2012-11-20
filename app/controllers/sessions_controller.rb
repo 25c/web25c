@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
         @show_login = true
         @show_login_error = true
         if @popup
-          render 'users/tip', :layout => 'blank'
+          render 'users/tip', :layout => 'popup'
         else
           render :new
         end

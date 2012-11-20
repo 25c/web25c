@@ -4,10 +4,6 @@ Web25c::Application.routes.draw do
   match 'fb_share_callback' => 'home#fb_share_callback', :as => :fb_share_callback
   # hidden iframe page for ajax-like picture loading
   match 'home/upload_picture' => 'users#upload_picture', :as => :upload_picture
-
-  namespace :publisher do
-    match 'update_button' => 'buttons#update_button', :as => :update_button, :via => :put
-  end
   
   # wildcard routes for profiles under 'tip' domain
   match ':id' => 'users#show', :constraints => { :id => /.*/, :subdomain => 'tip' }, :as => :profile
@@ -64,12 +60,19 @@ Web25c::Application.routes.draw do
     end
     
     namespace :publisher do
-    
-      # Buttons
-      resources :buttons
-      match 'get_button' => 'buttons#get_button', :as => :get_button
-      match 'receive_pledges' => 'buttons#receive_pledges', :as => :receive_pledges
-      match 'choose_pledge_message' => 'buttons#choose_pledge_message', :as => :choose_pledge_message
+      
+      # Widgets
+      match 'widgets' => 'widgets#index', :as => :widgets
+      match 'widgets/new' => 'widgets#new', :as => :new_widget, :via => :get
+      match 'widgets/new' => 'widgets#create', :via => :post
+      match 'widgets/edit/:uuid' => 'widgets#edit', :as => :edit_widget, :via => :get
+      match 'widgets/edit/:uuid' => 'widgets#update', :via => :put
+      match 'widgets/delete/:uuid' => 'widgets#destroy', :as => :delete_widget
+      
+      # Revenue Sharing
+      match 'share_email' => 'widgets#share_email', :as => :share_email, :via => :put
+      match 'cancel_email' => 'widgets#cancel_email', :as => :cancel_email, :via => :delete
+      match 'stop_share' => 'widgets#stop_share', :as => :stop_share, :via => :delete
       
       # Dashboard
       match '' => 'dashboard#index', :as => :dashboard
@@ -80,11 +83,6 @@ Web25c::Application.routes.draw do
       
       # Account
        match 'account' => 'account#edit', :as => :account, :via => :get
-      
-      # Revenue Sharing
-      match 'share_email' => 'buttons#share_email', :as => :share_email, :via => :put
-      match 'cancel_email' => 'buttons#cancel_email', :as => :cancel_email, :via => :delete
-      match 'stop_share' => 'buttons#stop_share', :as => :stop_share, :via => :delete
       
     end
 

@@ -1,0 +1,49 @@
+= content_for(:js) do
+  :javascript
+    $(document).ready(function(){
+      $('#widget-list').on('ajax:success', 'a.delete-widget', function(event, data, status, xhr) {
+        $(this).parents('.widget-container').hide();
+        if ($('#widget-list .widget-container:visible').length == 0) {
+          $('#no-widgets').show();
+        }
+      });
+    });
+    
+%h2.page-header= t('.title')
+
+%h3= t('.user_widgets')
+
+#widget-list
+  #no-widgets{ :class => @widgets.length > 0 ? 'hide' : '' }= t('.no_widgets')
+  - @widgets.each do |widget|
+    .widget-container
+      .widget-image-small 
+      .widget-description
+        .widget-title= t('.' + widget.widget_type)
+        .widget-field Name: #{ widget.title }
+        / .widget-field #{ widget.additional_parameters }
+      .widget-buttons
+        = link_to t('.edit'), publisher_edit_widget_url(widget.uuid), :class => 'btn'
+        = link_to t('.delete'), publisher_delete_widget_url(widget.uuid), :remote => true, :class => 'delete-widget', :confirm => t('.confirm_delete')
+      .clear
+= link_to t('.new'), publisher_new_widget_url, :class => 'btn buffer'
+.buffer
+
+%h3= t('.available_widgets')
+#widgets-description
+  .widget-container
+    .widget-image-large 
+    .widget-description
+      .widget-title= t('.fan_belt')
+      .widget-fields= t('.fan_belt_description')
+    .widget-buttons
+      = link_to 'Create Fan Belt', publisher_new_widget_url(:widget => 'fan_belt'), :class => 'btn'
+    .clear
+  .widget-container
+    .widget-image-large 
+    .widget-description
+      .widget-title= t('.testimonials')
+      .widget-fields= t('.testimonials_description')
+    .widget-buttons
+      = link_to 'Create Testimonials', publisher_new_widget_url(:widget => 'testimonials'), :class => 'btn'
+    .clear
