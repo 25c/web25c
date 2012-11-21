@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20121108221641) do
     t.datetime "updated_at",                            :null => false
     t.string   "pledge_message",        :default => ""
     t.string   "share_users",           :default => ""
-    t.string   "additional_parameters", :default => ""
     t.string   "widget_type"
+    t.string   "additional_parameters", :default => ""
   end
 
   add_index "buttons", ["user_id"], :name => "index_buttons_on_user_id"
