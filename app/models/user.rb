@@ -40,7 +40,6 @@ class User < ActiveRecord::Base
   before_validation :preprocess_fields
   before_create :generate_uuid
   
-  after_create :create_default_button
   after_save :send_welcome_email
   
   def self.from_omniauth(auth)
@@ -201,10 +200,6 @@ class User < ActiveRecord::Base
   
   def generate_uuid
     self.uuid = UUID.new.generate(:compact)
-  end
-  
-  def create_default_button
-    self.buttons.create!
   end
   
   def send_welcome_email
