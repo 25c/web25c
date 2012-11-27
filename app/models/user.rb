@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
     :dwolla_email_confirmation, :pledge_name, :has_seen_receive_page, :is_admin, :as => :admin
   
   validates :email, :presence => true, :if => 'not linked?'
-  validates :email, :uniqueness => { :case_sensitive => false }, :allow_nil => true, :email => true
+  validates :email, :uniqueness => { :case_sensitive => false, :scope => 'role' }, :allow_nil => true, :email => true
 
   validates :dwolla_email, :uniqueness => { :case_sensitive => false },
     :allow_nil => true, :email => true, :confirmation => true

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121108221641) do
+ActiveRecord::Schema.define(:version => 20121127203907) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",                                  :null => false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20121108221641) do
     t.datetime "updated_at",                            :null => false
     t.string   "pledge_message",        :default => ""
     t.string   "share_users",           :default => ""
-    t.string   "widget_type"
+    t.string   "widget_type",                           :null => false
     t.string   "additional_parameters", :default => ""
   end
 
