@@ -7,6 +7,13 @@ button_sylvio:
   description: MyText
   user: sylvio
 
+button_sylvio_testimonials:
+  uuid: 2bbded101b00013060a060c5470a09c8
+  widget_type: testimonials
+  title: MyString
+  description: MyText
+  user: sylvio
+
 button_lionel:
   uuid: a4b16a40dff9012f5efd60c5470a09c8
   widget_type: fan_belt

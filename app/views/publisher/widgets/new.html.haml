@@ -25,13 +25,13 @@
 - default_type = params[:widget] ? params[:widget] : 'fan_belt'
 
 #tab-titles
-  - ['fan_belt', 'testimonials'].each do |type|
+  - Button::WIDGET_TYPES.each do |type|
     .tab-title.pointer{ :'data-id' => type, 
       :class => default_type == type ? 'selected' : '' }= t('.' + type)
   .clear
   
 #tab-contents
-  - ['fan_belt', 'testimonials'].each do |type|
+  - Button::WIDGET_TYPES.each do |type|
     .tab-content{ :id => type, :class => default_type == type ? 'selected' : 'hide' }
       = render :partial => 'widget_config', 
         :locals => { :widget_type => type, :is_new_widget => true }

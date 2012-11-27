@@ -1,4 +1,6 @@
 class Button < ActiveRecord::Base
+  WIDGET_TYPES = %w(fan_belt testimonials)
+  
   belongs_to :user
   
   has_many :clicks
@@ -6,9 +8,10 @@ class Button < ActiveRecord::Base
     
   attr_accessible :title, :description, :pledge_message, :widget_type, :additional_parameters
   
-  serialize :share_users, JSON
-  
+  serialize :share_users, JSON  
   serialize :additional_parameters, JSON
+  
+  validates :widget_type, :inclusion => { :in => WIDGET_TYPES }
     
   before_create :generate_uuid
     
