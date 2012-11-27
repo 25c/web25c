@@ -1,28 +1,32 @@
 sylvio:
-  role: tipper
+  role: publisher
   nickname: sylviod
+  pledge_name: Sylvio Drouin
   uuid: 3dd80d107941012f5e2c60c5470a09c8
   email: sylviod@me.com
   password_digest: $2a$10$fitziG2ZPEWRKEJPghcZV.9mD9kzIC7EM918/dEt8GieDemcNBxPW
   stripe_id: cus_0hTStsfXaXh9CO
   
 lionel:
-  role: tipper
+  role: publisher
   nickname: mrjingles
+  pledge_name: Lionel Jingles
   uuid: 439bdb807941012f5e2d60c5470a09c8
   email: mrjingles@gmail.com
   password_digest: $2a$10$fitziG2ZPEWRKEJPghcZV.9mD9kzIC7EM918/dEt8GieDemcNBxPW
   
 francis:
-  role: tipper
+  role: publisher
   nickname: thisisfrancis
+  pledge_name: Francis Li
   uuid: 476da1c07941012f5e2e60c5470a09c8
   email: mail@francisli.com
   password_digest: $2a$10$fitziG2ZPEWRKEJPghcZV.9mD9kzIC7EM918/dEt8GieDemcNBxPW
   
 martin:
-  role: tipper
+  role: publisher
   nickname: rmartinr
+  pledge_name: R. Martin Roscheisen
   uuid: 4b7172007941012f5e2f60c5470a09c8
   email: rmr@rmartinr.com
   password_digest: $2a$10$fitziG2ZPEWRKEJPghcZV.9mD9kzIC7EM918/dEt8GieDemcNBxPW
@@ -30,6 +34,7 @@ martin:
 user_001:
   role: tipper
   nickname: user_001
+  pledge_name: Unit Tester One
   uuid: 69bbbf501b0a013060a560c5470a09c8
   facebook_uid: 100004703622320
   password_digest: $2a$10$fitziG2ZPEWRKEJPghcZV.9mD9kzIC7EM918/dEt8GieDemcNBxPW
@@ -37,6 +42,7 @@ user_001:
 user_002:
   role: tipper
   nickname: user_002
+  pledge_name: Unit Tester Two
   uuid: c8f46e501b0b013060a660c5470a09c8
   facebook_uid: 100004705242642
   password_digest: $2a$10$fitziG2ZPEWRKEJPghcZV.9mD9kzIC7EM918/dEt8GieDemcNBxPW
@@ -44,6 +50,7 @@ user_002:
 user_003:
   role: tipper
   nickname: user_003
+  pledge_name: Unit Tester Three
   uuid: cd3797201b0b013060a760c5470a09c8
   facebook_uid: 100004742802180
   password_digest: $2a$10$fitziG2ZPEWRKEJPghcZV.9mD9kzIC7EM918/dEt8GieDemcNBxPW
@@ -51,6 +58,7 @@ user_003:
 user_004:
   role: tipper
   nickname: user_004
+  pledge_name: Unit Tester Four
   uuid: d09a5df01b0b013060a860c5470a09c8
   facebook_uid: 100004760886647
   password_digest: $2a$10$fitziG2ZPEWRKEJPghcZV.9mD9kzIC7EM918/dEt8GieDemcNBxPW
