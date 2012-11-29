@@ -56,14 +56,21 @@ class UserMailer < ApplicationMailer
   # >> when a tipper gain position from previous position (may enter displayable area)
   # >> two types of emails depending if going up or down in position. 
   # >> show tipper if in displayable area
-  def new_position_in_fanbelt(user_id, click_id, url_title, previous_pos, current_pos)
-    @user = User.find(user_id)
-    @click = Click.find(click_id)
-    @utitle = url_title
-    @prevpos = previous_pos
-    @curpos = current_pos
+  def new_position_in_fanbelt(user_uuid, url_id, previous_pos, current_pos)
+    @user = User.find_by_uuid(user_uuid)
+    @url = Url.find_by_id(url_id)
+    if @url
+      if @url.title.blank?
+        @utitle = @url.url
+      else
+        @utitle = @url.title
+      end
+          
+      @prevpos = previous_pos
+      @curpos = current_pos
 
-    mail :to => recipient(@user.email), :subject => "25c Fan Belt Notification for #{@utitle}"
+      mail :to => recipient(@user.email), :subject => "25c Fan Belt Notification for #{@utitle}"
+    end
   end  
   
   # >> tipper receive confirmation of moderation result
