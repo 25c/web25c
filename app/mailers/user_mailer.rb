@@ -64,24 +64,7 @@ class UserMailer < ApplicationMailer
     @curpos = current_pos
 
     mail :to => recipient(@user.email), :subject => "25c Fan Belt Notification for #{@utitle}"
-  end
-  
-  
-  
-  # >> when a tipper is dislodged from present position to a new position (can be dislodged from displayable area)
-  # >> when a tipper gain position from previous position (may enter displayable area)
-  # >> two types of emails depending if going up or down in position. 
-  # >> show tipper if in displayable area
-  def new_position_in_testimonial(user_id, click_id, url_title, previous_pos, current_position)
-    @user = User.find(user_id)
-    @click = Click.find(click_id)
-    @utitle = url_title
-    @prevpos = previous_pos
-    @curpos = current_pos
-
-    mail :to => recipient(@user.email), :subject => "25c Testimonial Notification for #{@utitle}"
-  end
-  
+  end  
   
   # >> tipper receive confirmation of moderation result
   # >> should only send if comment removed. [APPROVED, DENIED] two response types but only DENIED is used. 
