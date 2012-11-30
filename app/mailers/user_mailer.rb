@@ -148,17 +148,5 @@ class UserMailer < ApplicationMailer
 
     mail :to => recipient(@user.email), :subject => "New 25c Invoice!"
   end
-  
-  
-  # >> Receive an email when someone promote one of your comment in testimonial widget
-  def testimonial_promoted(user_id, tipper_id, comment_id, url_title, promoted_amount)
-    @user = User.find(user_id)
-    @tipper = User.find(tipper_id)
-    @utitle = url_title
-    @comment = Comment.find(comment_id)
-    @amount = promoted_amount
-
-    mail :to => recipient(@user.email), :subject => "Someone has promoted your note on #{@utitle}"
-  end
 
 end

@@ -20,4 +20,19 @@ class CommentMailer < ApplicationMailer
     mail :to => recipient(@user.email), :subject => "25c Testimonial Notification for #{@utitle}"
   end
   
+  # >> Receive an email when someone promote one of your comment in testimonial widget
+  def testimonial_promoted(comment_id, tipper_user_id, amount, current_position)
+    @comment = Comment.find_by_id(comment_id)
+    @user = @comment.user
+    @tipper = User.find_by_id(tipper_user_id)
+    if @comment.url.title.blank?
+      @utitle = @comment.url.url
+    else
+      @utitle = @comment.url.title
+    end
+    @amount = promoted_amount
+    @curpos = current_position
+    mail :to => recipient(@user.email), :subject => "Someone has promoted your note on #{@utitle}"
+  end
+  
 end
