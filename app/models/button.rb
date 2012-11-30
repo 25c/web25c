@@ -1,6 +1,7 @@
 class Button < ActiveRecord::Base
-  belongs_to :user
+  WIDGET_TYPES = %w(fan_belt testimonials)
   
+  belongs_to :user
   has_many :clicks
   has_many :invites
     
@@ -11,6 +12,8 @@ class Button < ActiveRecord::Base
   serialize :additional_parameters, JSON
     
   before_create :generate_uuid
+  
+  validates :widget_type, :inclusion => { :in => WIDGET_TYPES }
     
   def to_param
     self.uuid
