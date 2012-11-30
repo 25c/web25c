@@ -3,9 +3,6 @@
   = number_to_currency(@clicks_received_total.to_f / 100000000)
 %p
   %a= link_to t('publisher.dashboard.index.payout'), publisher_payout_path, :class => 'btn'
-%p.buffer
-  %a= link_to t('publisher.dashboard.index.pledge_message'), publisher_choose_pledge_message_path, :class => 'btn'
-  = t('publisher.dashboard.index.pledge_message_note')
 .table-wrapper
   %table#clicks-received.clicks-table.table.table-condensed.table-striped
     %thead

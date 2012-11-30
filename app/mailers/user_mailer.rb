@@ -56,32 +56,22 @@ class UserMailer < ApplicationMailer
   # >> when a tipper gain position from previous position (may enter displayable area)
   # >> two types of emails depending if going up or down in position. 
   # >> show tipper if in displayable area
-  def new_position_in_fanbelt(user_id, click_id, url_title, previous_pos, current_pos)
-    @user = User.find(user_id)
-    @click = Click.find(click_id)
-    @utitle = url_title
-    @prevpos = previous_pos
-    @curpos = current_pos
+  def new_position_in_fanbelt(user_uuid, url_id, previous_pos, current_pos)
+    @user = User.find_by_uuid(user_uuid)
+    @url = Url.find_by_id(url_id)
+    if @url
+      if @url.title.blank?
+        @utitle = @url.url
+      else
+        @utitle = @url.title
+      end
+          
+      @prevpos = previous_pos
+      @curpos = current_pos
 
-    mail :to => recipient(@user.email), :subject => "25c Fan Belt Notification for #{@utitle}"
-  end
-  
-  
-  
-  # >> when a tipper is dislodged from present position to a new position (can be dislodged from displayable area)
-  # >> when a tipper gain position from previous position (may enter displayable area)
-  # >> two types of emails depending if going up or down in position. 
-  # >> show tipper if in displayable area
-  def new_position_in_testimonial(user_id, click_id, url_title, previous_pos, current_position)
-    @user = User.find(user_id)
-    @click = Click.find(click_id)
-    @utitle = url_title
-    @prevpos = previous_pos
-    @curpos = current_pos
-
-    mail :to => recipient(@user.email), :subject => "25c Testimonial Notification for #{@utitle}"
-  end
-  
+      mail :to => recipient(@user.email), :subject => "25c Fan Belt Notification for #{@utitle}"
+    end
+  end  
   
   # >> tipper receive confirmation of moderation result
   # >> should only send if comment removed. [APPROVED, DENIED] two response types but only DENIED is used. 
@@ -157,18 +147,6 @@ class UserMailer < ApplicationMailer
     @payment = Payment.find_by_id(payment_id)
 
     mail :to => recipient(@user.email), :subject => "New 25c Invoice!"
-  end
-  
-  
-  # >> Receive an email when someone promote one of your comment in testimonial widget
-  def testimonial_promoted(user_id, tipper_id, comment_id, url_title, promoted_amount)
-    @user = User.find(user_id)
-    @tipper = User.find(tipper_id)
-    @utitle = url_title
-    @comment = Comment.find(comment_id)
-    @amount = promoted_amount
-
-    mail :to => recipient(@user.email), :subject => "Someone has promoted your note on #{@utitle}"
   end
 
 end
