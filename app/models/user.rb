@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
     :dwolla_email_confirmation, :pledge_name, :has_seen_receive_page, :is_admin, :as => :admin
   
   validates :email, :presence => true, :if => 'not linked?'
-  validates :email, :uniqueness => { :case_sensitive => false }, :allow_nil => true, :email => true
+  validates :email, :uniqueness => { :case_sensitive => false, :scope => 'role' }, :allow_nil => true, :email => true
 
   validates :dwolla_email, :uniqueness => { :case_sensitive => false },
     :allow_nil => true, :email => true, :confirmation => true
@@ -40,7 +40,6 @@ class User < ActiveRecord::Base
   before_validation :preprocess_fields
   before_create :generate_uuid
   
-  after_create :create_default_button
   after_save :send_welcome_email
   
   def self.from_omniauth(auth)
@@ -201,10 +200,6 @@ class User < ActiveRecord::Base
   
   def generate_uuid
     self.uuid = UUID.new.generate(:compact)
-  end
-  
-  def create_default_button
-    self.buttons.create!
   end
   
   def send_welcome_email

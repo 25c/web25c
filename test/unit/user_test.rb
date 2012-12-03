@@ -2,15 +2,12 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   
-  test "should create a button" do
-    user = User.create!(
-      :email => "test@test.com",
-      :password => "asdfasdf"
-    )
-    # force refresh from database
-    user.reload
-    # assert that a single default button has been created
-    assert_equal 1, user.buttons.size
+  test "should_create_user_with_tipper_role" do
+    user = User.new
+    user.password = SecureRandom.hex
+    user.facebook_uid = "100004500043696"
+    assert user.save
+    assert_equal "tipper", user.role
   end
-
+  
 end

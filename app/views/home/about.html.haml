@@ -13,6 +13,21 @@ Get Set Up to Collect Micro-Donations
 <div class="main-col">
 <h2 class="page-header">About 25c Inc.</h2>
 
+<h3>Try out +25c: Support Us!</h3>
+<p>Click here to pledge 25c to 25c Inc.:</p>
+
+%div.buffer{ :class => "tip-25c-belt", :'data-id' => 'abc' }
+:javascript 
+  !function(d,s,id){
+    var js,fjs=d.getElementsByTagName(s)[0];
+    if(!d.getElementById(id)){
+      js=d.createElement(s);js.id=id;
+      js.src="//#{ENV["API25C_URL"]}/public/javascripts/widget.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  } (document,"script","tip-25c-widget-js");
+
+
 <P>25c offers online creators/publishers an incremental source of revenue by engaging fans around content through gift based widgets.  Getting directly paid by fans aligns you even more with those you care about most: your audience.
 
 <P>At 25c.com, we provide a growing gallery of widgets that publishers can easily embed into their online content to create incentives and opportunities for fans to make gifts in amounts as small as 25 cents.
@@ -46,39 +61,6 @@ San Francisco, CA 94110<br />
 (415) 745-2605</p>
 
 <p class="buffer"><b>Email: hello@25c.com</b><p>
-
-<h3>Try out +25c: Support Us!</h3>
-<p>Click here to pledge 25c to 25c Inc.:</p>
-/ <div id ="about-button-container">
-
-%a{ :href => @button.user.profile_url,
-  :class => "tip-25c-belt",
-  :'data-id' => @button.uuid.to_s,
-  :'data-user' => @button.user.display_name }
-  #{@button.title}
-:javascript 
-  !function(d,s,id){
-    var js,fjs=d.getElementsByTagName(s)[0];
-    if(!d.getElementById(id)){
-      js=d.createElement(s);js.id=id;
-      js.src="//#{ENV["API25C_URL"]}/public/javascripts/belt.js";
-      fjs.parentNode.insertBefore(js,fjs);
-    }
-  } (document,"script","tip-25c-belt-js");
-
-/ <a href="#{@profile_url}" class="tip-25c-button" data-size="btn-large" data-user="25c Inc." data-id="#{@button.uuid.to_s}" target="_blank" style="background-image:url('https://d1y0s23xz5cgse.cloudfront.net/buttons/25c-btn-large.png');display:block;width:72px;height:40px;"></a>
-/ <script>
-/ !function(d,s,id){
-/ var js,fjs=d.getElementsByTagName(s)[0];
-/ if(!d.getElementById(id)){
-/ js=d.createElement(s);js.id=id;
-/ js.src="//#{ENV["API25C_URL"]}/public/javascripts/button.js";
-/ fjs.parentNode.insertBefore(js,fjs);
-/ }
-/ } (document,"script","tip-25c-js");
-/ </script>
-
-/ </div>
 
 </div>
 

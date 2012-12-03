@@ -8,10 +8,7 @@
 / Le HTML5 shim, for IE6-8 support of HTML elements
 /[if lt IE 9]
   / = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
-- if mobile_device?
-  = stylesheet_link_tag "mobile", :media => "all"
-- else
-  = stylesheet_link_tag "application", :media => "all"
+= stylesheet_link_tag "application", :media => "all"
 :javascript
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-34638501-1']);

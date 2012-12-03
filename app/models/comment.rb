@@ -4,5 +4,6 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :button
   belongs_to :url
+  belongs_to :click
   
 end
