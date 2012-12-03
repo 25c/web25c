@@ -95,7 +95,8 @@ class UserMailer < ApplicationMailer
   end 
   
   # >> send an unmoderated comment to the publisher. Everytime a new comment is posted the publisher receive an email
-  # >> this function good for real moderation. Maybe disabled in Publisher account. 
+  # >> this function good for real moderation. Maybe disabled in Publisher account. Should be able to specify
+  # >> a different email so that the publisher can outsource moderation. 
   def new_unmoderated_comment(user_id, comment_id, url_title)
     @user = User.find(user_id)
     @utitle = url_title
@@ -106,19 +107,15 @@ class UserMailer < ApplicationMailer
 
   
   # >> Welcome email tailored to widget that the user clicked on
-  def new_user_FirstClick(user_id, widget_type, url_title, numclicks)
+  def new_user_FirstClick(user_id)
     @user = User.find(user_id)
-    @utitle = url_title
-    @wtype = widget_type
 
     mail :to => recipient(@user.email), :subject => "Welcome to 25c!"
   end
   
   # >> Encouragement email tailored to widget that the user clicked on
-  def new_user_SecondClick(user_id, widget_type, url_title, numclicks)
+  def new_user_SecondClick(user_id)
     @user = User.find(user_id)
-    @utitle = url_title
-    @wtype = widget_type
 
     mail :to => recipient(@user.email), :subject => "Welcome back to 25c!"
   end
@@ -127,7 +124,7 @@ class UserMailer < ApplicationMailer
   def new_publisher_welcome(user_id)
     @user = User.find(user_id)
 
-    mail :to => recipient(@user.email), :subject => "25c a New Publisher!"
+    mail :to => recipient(@user.email), :subject => "25c New Publisher!"
   end 
   
   
@@ -141,10 +138,18 @@ class UserMailer < ApplicationMailer
   
   
   # >> Daily email for the user to complete their profile and payment information
-  def profile_completion(user_id)
+  # >> This need to be part of the recurring email system. 
+  def profile_completion_reminder(user_id)
     @user = User.find(user_id)
 
     mail :to => recipient(@user.email), :subject => "25c Profile Completion Reminder"
+  end 
+  
+  # >> Thank you note for the user who complete their profile and payment information
+  def profile_completion_thankyou(user_id)
+    @user = User.find(user_id)
+
+    mail :to => recipient(@user.email), :subject => "25c Profile Completed!"
   end 
   
   
@@ -168,4 +173,18 @@ class UserMailer < ApplicationMailer
     mail :to => recipient(@user.email), :subject => "Someone has promoted your note on #{@utitle}"
   end
 
+  #
+  # Send an email to someone who already promoted a comment or a friend linked via facebook and logged-in on 25c.
+  # This email specify that a friend or person need help with staying in position by promoting an item. 
+  #
+  #
+  #def promoted_help_required(user_id, tipper_id, comment_id, url_title, promoted_amount)
+  #   @user = User.find(user_id)
+  #   @tipper = User.find(tipper_id)
+  #   @utitle = url_title
+  #   @comment = Comment.find(comment_id)
+  #   @amount = promoted_amount
+  # 
+  #   mail :to => recipient(@user.email), :subject => "A note you have promoted on #{@utitle} need your attention!"
+  # end
 end
