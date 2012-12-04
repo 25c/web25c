@@ -1,8 +1,7 @@
 class Button < ActiveRecord::Base
   WIDGET_TYPES = %w(fan_belt testimonials)
-  
+    
   belongs_to :user
-  
   has_many :clicks
   has_many :invites
     
@@ -14,6 +13,8 @@ class Button < ActiveRecord::Base
   validates :widget_type, :inclusion => { :in => WIDGET_TYPES }
     
   before_create :generate_uuid
+  
+  validates :widget_type, :inclusion => { :in => WIDGET_TYPES }
     
   def to_param
     self.uuid
