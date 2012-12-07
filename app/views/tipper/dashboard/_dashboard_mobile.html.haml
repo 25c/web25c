@@ -49,10 +49,7 @@
       .field-container
         .field-title= t('tipper.dashboard.index.funded')
         .field-value
-          - if set[1].state > Click::State::DEDUCTED
-            .convert-date= set[1].funded_at.to_f()
-          - else
-            = t('tipper.dashboard.index.to_be')
+          = t('tipper.dashboard.index.to_be')
         .clear
 
       .field-container
@@ -109,10 +106,7 @@
       .field-container
         .field-title= t('tipper.dashboard.index.funded')
         .field-value
-          - if set[1].state > Click::State::DEDUCTED
-            .convert-date= set[1].funded_at.to_f()
-          - else
-            = t('tipper.dashboard.index.to_be')
+          = t('tipper.dashboard.index.to_be')
         .clear
 
 %h3.table-title
@@ -156,8 +150,5 @@
       .field-container
         .field-title= t('tipper.dashboard.index.funded')
         .field-value
-          - if set[1].state > Click::State::DEDUCTED
-            .convert-date= set[1].funded_at.to_f()
-          - else
-            = t('tipper.dashboard.index.to_be')
+          = t('tipper.dashboard.index.to_be')
         .clear

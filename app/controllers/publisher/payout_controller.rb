@@ -10,10 +10,8 @@ class Publisher::PayoutController < Publisher::PublisherController
     @user = current_user
     
     # TODO: replace this lookup with balance fields in the User model
-    clicks = Click.where(:receiver_user_id => @user.id).find_all_by_state([ 
-      Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
-    ])
-    funded_clicks = clicks.select{ |click| click.state > Click::State::DEDUCTED }
+    clicks = Click.where(['amount>0 AND receiver_user_id=? AND state=?', @user.id, Click::State::GIVEN])
+    funded_clicks = clicks
     @total = 0
     clicks.each do |click|
       @total += click.amount

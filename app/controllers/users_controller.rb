@@ -27,14 +27,10 @@ class UsersController < ApplicationController
         @is_editable = self.current_user == @user unless params[:edit] == 'no'
         @button = @user.buttons[0]
         
-        clicks = Click.where(:receiver_user_id => @user.id).includes(:user).order("created_at DESC").find_all_by_state([ 
-          Click::State::DEDUCTED, Click::State::FUNDED, Click::State::QUEUED
-        ])
+        clicks = Click.where(['amount>0 AND receiver_user_id=?', @user.id]).includes(:button, :user).order("created_at DESC").all
         @clicks_received = group_clicks(clicks, false, false)
                 
-        clicks = @user.clicks.includes(:button => :user).order("created_at DESC").find_all_by_state([
-          Click::State::DEDUCTED, Click::State::FUNDED, Click::State::PAID
-        ])
+        clicks = @user.clicks.where('amount>0').includes(:button => :user).order("created_at DESC").all
         @clicks_given = group_clicks(clicks, true, false)
         respond_to do |format|
           format.html # show.html.erb

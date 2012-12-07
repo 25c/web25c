@@ -105,7 +105,7 @@ class ApplicationController < ActionController::Base
           else
             id = click.user_id.to_s
           end
-          id += click.state == Click::State::DEDUCTED ? '_0' : '_1'
+          id += click.state == Click::State::GIVEN ? '_0' : '_1'
         else
           if sortByButtonId
             id = click.button.id.to_s
