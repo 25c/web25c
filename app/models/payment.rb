@@ -28,7 +28,7 @@ class Payment < ActiveRecord::Base
     elsif self.payment_type == 'payout'
       # TODO - replace with automatic processing with Dwolla
       self.update_attribute(:state, State::PAID)
-      clicks = Click.where(:button_id => self.user.button_ids).find_all_by_state(Click::State::QUEUED)
+      clicks = Click.where(:button_id => self.user.button_ids).find_all_by_state(Click::State::GIVEN)
       clicks.each{ |click| click.set_paid }
     end
   end

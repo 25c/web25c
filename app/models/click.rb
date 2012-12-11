@@ -1,15 +1,11 @@
 class Click < ActiveRecord::Base
   establish_connection "#{Rails.env}_data"
-  
+
   module State
-    NEW = 0
-    DEDUCTED = 1
-    FUNDED = 2
-    QUEUED = 3
-    PAID = 4
-    REFUNDED = 5
-    DROPPED = 6
+    GIVEN = 'given'
+    PAID = 'paid'
   end
+  STATES = [ Click::State::GIVEN, Click::State::PAID ]
   
   belongs_to :button
   belongs_to :user
