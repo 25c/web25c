@@ -3,9 +3,8 @@
   %head
     = render 'layouts/head'
   %body
-    #outer-container
+    #content.container
       = render 'layouts/header'
-      #inner-container
-        = render 'layouts/alerts'
-        = yield
+      = render 'layouts/alerts'
+      = yield
       = render 'layouts/footer'

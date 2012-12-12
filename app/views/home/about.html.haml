@@ -1,67 +1,36 @@
 - content_for :title, "About 25c Inc"
 - content_for :meta_description, "25c simplifies social micro-donations. One click, one quarter. Quickly install the +25c button on your website or blog and use it to start receive 25c pledges today!"
 
-<div id="action-container" class="center">
-<span id="action-question">
-Ready to get started with 25c?
-</span>
-<a id="action-button" class="btn btn-strong" href = #{publisher_widgets_path}>
-Get Set Up to Collect Micro-Donations
-</a>
-</div>
-
-<div class="main-col">
-<h2 class="page-header">About 25c Inc.</h2>
-
-<h3>Try out +25c: Support Us!</h3>
-<p>Click here to pledge 25c to 25c Inc.:</p>
-
-%div.buffer{ :class => "tip-25c-belt", :'data-id' => 'abc' }
-:javascript 
-  !function(d,s,id){
-    var js,fjs=d.getElementsByTagName(s)[0];
-    if(!d.getElementById(id)){
-      js=d.createElement(s);js.id=id;
-      js.src="//#{ENV["API25C_URL"]}/public/javascripts/widget.js";
-      fjs.parentNode.insertBefore(js,fjs);
-    }
-  } (document,"script","tip-25c-widget-js");
-
-
-<P>25c offers online creators/publishers an incremental source of revenue by engaging fans around content through gift based widgets.  Getting directly paid by fans aligns you even more with those you care about most: your audience.
-
-<P>At 25c.com, we provide a growing gallery of widgets that publishers can easily embed into their online content to create incentives and opportunities for fans to make gifts in amounts as small as 25 cents.
-
-<P>There are presently three widgets available: 
-
-<UL>
-<LI><B>Fan Testimonials</B>: A user commenting system where users can promote the visibility of individual comments through small gifts.  This system can either replace your user commenting system or be placed on top of it to feature a limited selection of top user "testimonials".
-
-<LI><b>Fan Belt</b>: Displays the top five fans who tipped the creator/publisher the most.  Tip more and you might be displayed here.
-
-<LI><b>Top Fan Frame</b>: Displays a tribute to the fan who tipped the creator/publisher the most.  Tip the most and you are displayed here.
-</ul>
-
-<P>Gift pledges are accumulated by 25c into >$10 payments across the network of participants.  Revenue may be automatically shared between publishers and creators.
-
-<P>25c Inc. is a privately held company located in San Francisco, California. Founded by Sylvio Drouin, Lionel Jingles, Francis Li, and Martin Roscheisen, the company operates the 25c network and owns a growing patent portfolio.
-
-</div>
-
-<div class="side-col pull-right">
-
-<h3 class="side-col-title">Contact</h3>
-<p>The best way to reach us is via email to <b>hello@25c.com</b>.
-<p>We read every email even though we may not always be able to answer.
-
-<p><b>Address:</b></p>
-<p>25c Inc.<br />
-660 York St<br />
-San Francisco, CA 94110<br />
-(415) 745-2605</p>
-
-<p class="buffer"><b>Email: hello@25c.com</b><p>
-
-</div>
-
-<div class="clear"></div>
+.row
+  .span5
+    .split-sidebar
+      %h2 Contact
+      %p The best way to reach us is via email to <b>hello@25c.com</b>.
+      %p We read every email even though we may not always be able to answer.
+      %p <b>Address:</b>
+      %p
+        25c Inc.<br />
+        660 York St<br />
+        San Francisco, CA 94110<br />
+        (415) 745-2605
+      %p <b>Email: hello@25c.com</b>
+    
+      %h2 Try out +25c: Support Us!
+      %p Click here to pledge 25c to 25c Inc.:
+      %div.buffer{ :class => "tip-25c-belt", :'data-id' => 'abc' }
+      :javascript 
+        !function(d,s,id){
+          var js,fjs=d.getElementsByTagName(s)[0];
+          if(!d.getElementById(id)){
+            js=d.createElement(s);js.id=id;
+            js.src="//#{ENV["API25C_URL"]}/public/javascripts/widget.js";
+            fjs.parentNode.insertBefore(js,fjs);
+          }
+        } (document,"script","tip-25c-widget-js");
+  .span11
+    .split-body
+      %h2 About 25c Inc.
+      %p 25c offers online creators/publishers an incremental source of revenue by engaging fans around content through gift based widgets.  Getting directly paid by fans aligns you even more with those you care about most: your audience.
+      %p At 25c.com, we provide a growing gallery of widgets that publishers can easily embed into their online content to create incentives and opportunities for fans to make gifts in amounts as small as 25 cents.
+      %p Gift pledges are accumulated by 25c into >$10 payments across the network of participants.  Revenue may be automatically shared between publishers and creators.
+      %p 25c Inc. is a privately held company located in San Francisco, California. Founded by Sylvio Drouin, Lionel Jingles, Francis Li, and Martin Roscheisen, the company operates the 25c network and owns a growing patent portfolio.

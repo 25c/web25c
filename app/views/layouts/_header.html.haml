@@ -1,10 +1,19 @@
-#header-container
-  %a#nav-logo{:href => root_url}
-    %img{ :src => image_path('logo-incline-01.png') }
-  #nav-tagline= t('.tagline')
-  #nav-menu-container.pull-right
+.header
+  .header-inner
+    = link_to root_url, :class => 'brand' do
+      %span 25c
     - if signed_in?
-      %ul
+      %ul.nav
+        - if current_user.publisher?
+          %li= link_to t('.dashboard'), publisher_dashboard_url
+          %li= link_to t('.get_button'), publisher_widgets_url
+          %li= link_to t('.payout'), publisher_payout_url
+          %li= link_to t('.sign_out'), sign_out_url, :id => 'sign-out'
+        - else
+          %li= link_to t('.dashboard'), tipper_dashboard_url
+          %li= link_to t('.payment'), tipper_payment_url
+          %li= link_to t('.sign_out'), sign_out_url, :id => 'sign-out'
+      %ul.nav.pull-right
         %li.dropdown
           %a.dropdown-toggle{ :href => '#', :'data-toggle' => 'dropdown' }
             %b.caret
@@ -22,10 +31,5 @@
               %li= link_to t('.payment'), tipper_payment_url
               %li= link_to t('.sign_out'), sign_out_url, :id => 'sign-out'
     - else
-      %ul#nav-login
-        %li#nav-login-text
-          = link_to t('.sign_in'), sign_in_path
-        .clear
-    .clear
-  .clear
-#nav-menu-container-cover
+      %ul.nav.pull-right
+        = link_to t('.sign_in'), sign_in_path

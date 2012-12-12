@@ -1,0 +1,53 @@
+body {
+  font-family: $serifFontFamily;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#content {
+  border: 1px solid $gray-border;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+a {
+  color: $teal; 
+  text-decoration: none; 
+  padding-bottom: 1px; 
+  border-bottom: transparent solid 1px;
+  &:hover {
+    color: #4bb0ce; 
+    text-decoration: none; 
+    border-bottom: #4bb0ce dotted 1px;    
+  }
+  &:visited {
+    color: #3e6d7b; 
+    text-decoration: none; 
+    border-bottom: transparent solid 1px;
+  }
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: normal;
+}
+
+h2 {
+  color: #000; 
+  font-family: $sansFontFamily;
+  font-size: 14px; 
+  font-weight: bold;
+}
+
+.padded {
+  padding: 0 45px;
+}
+
+.split-sidebar {
+  padding: 0 20px;
+}
+
+.split-body {
+  border-left: 1px solid $gray-border;
+  padding: 0 30px;
+}

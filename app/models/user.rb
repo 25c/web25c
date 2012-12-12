@@ -102,6 +102,14 @@ class User < ActiveRecord::Base
     self.nickname
   end
   
+  def publisher?
+    self.role == 'publisher'
+  end
+  
+  def tipper?
+    self.role == 'tipper'
+  end
+  
   def display_name
     name = self.pledge_name
     name = "#{self.first_name} #{self.last_name}".strip if name.blank?
