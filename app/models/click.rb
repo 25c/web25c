@@ -19,6 +19,14 @@ class Click < ActiveRecord::Base
   
   attr_accessible :user_id, :ip_address, :button_id
   
+  def editable?
+    self.created_at > (Time.now.utc - 60.minute)
+  end
+  
+  def amount_value
+    self.amount * 0.25
+  end
+  
   def referrer_title
     @title ||= Click.connection.select_value("SELECT title FROM urls WHERE url='#{self.referrer}'")
     @title ||= self.referrer

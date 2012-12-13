@@ -21,7 +21,12 @@ $inputBorderRadius: 0px;
 @import 'bourbon';
 
 $gray-border: #d2cfcf;
+$gray-dark-text: #20211f;
 $gray-light: #eff5f7;
+$gray-light-text: #8e8e8e;
+$gray-medium-text: #7c7b7b;
+$red: #bf3a3a;
+$slate: #3e6d7b;
 $slate-light: #d0dfe3;
 $teal: #177793;
 
@@ -30,3 +35,6 @@ $teal: #177793;
 @import 'footer';
 @import 'buttons';
 @import 'form';
+
+@import 'home';
+@import 'dashboard';

@@ -1,0 +1,54 @@
+body.dashboard {  
+  .stats {
+    .stat {
+      .stat-value {
+        font-family: $serifFontFamily;
+        font-size: 28px;
+        font-weight: bold;
+        color: $slate;
+      }
+      .stat-label {
+        font-family: $sansFontFamily;
+        font-size: 11px;
+        color: $gray-dark-text;
+      }
+      &.stat-points-given {
+        margin-left: 100px;
+      }
+    }
+  }
+  .points_balance_value {
+    font-size: 12px;
+    font-weight: normal;
+    color: $gray-light-text;
+  }
+  
+  .col-date {
+    width: 60px;
+  }
+  .col-given-to {
+    width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .col-amount {
+    text-align: right;
+    width: 50px;
+  }
+  .col-amount-value {
+    color: $gray-light-text;
+    padding-left: 10px;
+  }
+  .col-action {
+
+  }
+  
+  a.click-cancel {
+    font-size: 10px;
+    color: $red;
+    &:hover {
+      border-bottom-color: $red;
+    }
+  }
+}
