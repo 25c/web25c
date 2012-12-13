@@ -7,9 +7,9 @@
   .span8
     .padded
       %h2= t '.publishers'
-      #sign-in
+      #sign-in.center
         #login.email-form{ :style => "display:#{@show_register ? 'none' : 'block'};" }
-          %p.sign-in-instructions= t '.sign_in'
+          %p.buffer.sign-in-instructions= t '.sign_in'
           - if @show_login_error
             .alert.alert-error= t '.invalid_login'
           .use-email
@@ -18,7 +18,7 @@
                 = hidden_field_tag 'popup', 'true'
               = f.input :email
               = f.input :password
-              .form-submit= f.submit t('.submit'), :class => 'btn btn-strong'
+              .form-submit= f.submit t('.submit'), :class => 'button'
             %p.sign-in-instructions
               = link_to t('.forgot_password'), '#', :class => 'forgot-password'
               &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -28,7 +28,7 @@
           = simple_form_for User.new, :url => request_password_path, :remote => true, :html => { :'data-type' => :json, :class => 'form form-horizontal' } do |f|
             .alert{ :style => 'display:none;' } &nbsp;
             = f.input :email
-            .form-submit= f.submit t('.reset'), :class => 'btn btn-strong'
+            .form-submit= f.submit t('.reset'), :class => 'button'
           %p.sign-in-instructions
             &laquo;
             = link_to t('.back_login'), '#', :class => 'login'
@@ -41,7 +41,7 @@
               = f.input :pledge_name
               = f.input :email
               = f.input :password
-              .form-submit= f.submit t('.submit'), :class => 'btn btn-strong'
+              .form-submit= f.submit t('.submit'), :class => 'button'
           %p.sign-in-instructions
             &laquo;
             = link_to t('.back_login'), '#', :class => 'login'

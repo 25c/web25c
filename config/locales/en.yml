@@ -317,7 +317,7 @@ en:
       forgot_password: Forgot your password?
       forgot_password_instructions: Enter the email address you registered with and press Reset Password to receive an email with a link that you can use to set a new password.
       join_free: Register for free!
-      submit: "Submit"
+      submit: "Sign In"
       register: To register a new account, fill out the following form.
     form:
       sign_in_with: "Please sign in via Facebook:"

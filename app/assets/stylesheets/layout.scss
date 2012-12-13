@@ -44,10 +44,19 @@ h2 {
 }
 
 .split-sidebar {
-  padding: 0 20px;
+  border-right: 1px solid $gray-border;
+  padding: 0 30px;
 }
 
 .split-body {
-  border-left: 1px solid $gray-border;
-  padding: 0 30px;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.center {
+  text-align: center;
+}
+
+.buffer {
+  margin-bottom: 20px;
 }

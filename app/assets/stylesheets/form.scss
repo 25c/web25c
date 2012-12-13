@@ -1,0 +1,20 @@
+input[type="text"], input[type="email"], input[type="password"] {
+  padding: 10px; 
+  color: #4c4c4c; 
+  outline: none;
+  font-style:italic; 
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid #d2cfcf;
+  @include box-shadow(inset 0 0px 5px #e2e2e2);
+  -webkit-appearance: none;
+  &:focus {
+    color: #202223;
+    border: 1px solid #BAD7DF;
+    @include box-shadow(inset 0 0px 2px #ceecf6, 0 0 4px #ceecf6);  
+  }
+}
+
+.control-group label.control-label {
+  padding-top: 11px;
+}
