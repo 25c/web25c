@@ -291,9 +291,10 @@ en:
       sign_out: Sign Out
       receive_pledges: Receive 25c Tips
       get_button: Widgets
-      payment: Payment Settings
       payout: Request Payout
       dashboard: Dashboard
+      get_points: Get points!
+      greeting: Hi, %{user}!
     footer:
       about: About
       faq: FAQ
