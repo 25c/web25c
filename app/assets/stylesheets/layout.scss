@@ -81,3 +81,10 @@ table {
 .buffer {
   margin-bottom: 20px;
 }
+
+.loader {
+  display: inline-block;
+  background: transparent image-url('ajax-loader.gif') no-repeat;
+  width: 16px;
+  height: 11px;
+}

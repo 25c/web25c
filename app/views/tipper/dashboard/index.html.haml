@@ -24,16 +24,4 @@
             %th.col-amount-value &nbsp;
             %th.col-action &nbsp;
         %tbody
-          - @clicks.each do |click|
-            %tr{ :id => click.uuid }
-              %td.col-date= l click.created_at, :format => :date_short
-              %td
-                .col-given-to
-                  - if click.url
-                    #{link_to click.url.host, click.url.url}:
-                    click.url.title
-              %td.col-amount= number_with_precision click.amount, :precision => 0
-              %td.col-amount-value= number_to_currency click.amount_value
-              %td.col-action
-                = link_to t('.cancel'), '#', :class => 'click-cancel' if click.editable?
-                
+          = render :partial => 'clicks'

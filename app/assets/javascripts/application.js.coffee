@@ -14,6 +14,7 @@
 #= require jquery_ujs
 #= require bootstrap
 #= require sessions
+#= require dashboard
 
 jQuery ->
   $("a[rel=popover]").popover()

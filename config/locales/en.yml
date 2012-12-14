@@ -183,14 +183,13 @@ en:
         points: points
         points_balance: "Points balance: %{balance} points"
         points_given: "Points given"
-
-      undo_clicks:
-        title: Undo Pledges
-        undo: Undo Pledge
-        confirm_undo: Are you sure you want to undo this pledge?  (Your pledgee will be disappointed!)
-        profile_link: "%{provider}'s Profile"
-        dashboard: Back to Dashboard
-        no_pledges: You have not pledged any 25c tips.
+      cancel_click:
+        failure: An unexpected error occurred. Please try again!
+        success: Your sponsorship has been cancelled.
+      clicks:
+        cancel: Cancel
+        confirm_cancel: Are you sure you wish to cancel your sponsorship?
+        show_more: Show more...
         
   home:
     index:
