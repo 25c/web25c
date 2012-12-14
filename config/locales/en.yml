@@ -12,6 +12,7 @@ en:
         created_at: Sent
       click:
         created_at: Date
+        user: Giver
         url: Given To
         amount: Points
         
@@ -55,47 +56,8 @@ en:
     dashboard:
       index:
         title: Dashboard
-        contents: "Your pledge total is:"
-        get_button: Get Your Own +25c Button
-        payment: Fund Pledges
-        undo_clicks: Undo Pledges
-        tips_given_title: "25c Pledges Made:"
-        tips_received_title: "25c Pledges Received: "
-        tips_referred_title: "25c Pledges Referred: "
-        tips_given: 25c Pledges Made
-        tips_received: 25c Pledges Received
-        total: Total
-        state: State
-        state0: New
-        state1: Deducted
-        state2: Funded
-        state3: Processed
-        state4: Paid
-        state5: Refunded
-        amount: Amount
-        date_created: Date
-        provider: Pledged To
-        referrer: Link
-        clicker: Pledged By
-        share: Share
-        payout: Request Payout
-        pledge_message: Send Reminder
-        pledge_message_note: Remind supporters to fund tips they pledged to you.
-        no_referrer: None
-        profile_link: "%{provider}'s Profile"
-        no_referrer: None
-        not_funded: "Unfunded pledges:"
-        funded_note: "You may undo pledges until you funded them."
-        funded: Funded
-        to_be: To be
-        no_pledges_given: You have not yet pledged any 25c tips.
-        no_pledges_received: You have not received any 25c tips.  In order to receive 25c tips, %{profile_link} or %{button_link}.
-        no_pledges_profile_link: enhance your 25c.com pledge profile
-        no_pledges_button_link: embed a +25c Button
-        no_pledges_referred: "Using the Facebook or Twitter icons next to your tips above, share the fact that you made them to refer others to also pledge tips.  This table will list any successful referral you achieved in this way!"
-        fb_share_button_title: "I just tipped %{user_name} using 25c!"
-        fb_share_user_title: "I just tipped %{user_name} using 25c!"
-        fb_share_description: Using 25c to pledge one quarter one click.
+        total_received: "Since joining, you've received..."
+        points_received: Points received
     widgets:
       index:
         title: Widget Management
@@ -257,7 +219,7 @@ en:
       sign_in: Sign In
       sign_out: Sign Out
       receive_pledges: Receive 25c Tips
-      get_button: Widgets
+      widgets: Widgets
       payout: Request Payout
       dashboard: Dashboard
       get_points: Get points!

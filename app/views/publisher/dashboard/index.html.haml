@@ -1,23 +1,24 @@
 - content_for :title, '25c - ' + t('.title')
 
-= content_for(:js) do
-  = javascript_include_tag "jquery.dataTables.min"
-  = javascript_include_tag "paging"
-  = javascript_include_tag "update-dashboard"
-  :javascript
-    window.noPledgesGivenText = '#{ j t('.no_pledges_given') }';
-    window.noPledgesReceivedText = '#{ j raw t('.no_pledges_received', 
-      :profile_link => link_to(t('.no_pledges_profile_link'), publisher_profile_path), 
-      :button_link => link_to(t('.no_pledges_button_link'), publisher_widgets_path)) 
-    }';
-    window.noPledgesReferredText = '#{ j t('.no_pledges_referred') }';
-    window.userDisplayName = '#{ j @user.display_name}';
-    window.fbShareCallbackUrl = '#{ j fb_share_callback_url }';
-    window.fbShareDescriptionText = '#{ j t('.fb_share_description') }';
-
-%h2.page-header= t('.title')
-
-- if mobile_device?
-  = render :partial => "dashboard_mobile"
-- else
-  = render :partial => "dashboard_desktop"
+.row
+  .span11
+    .split-left
+      %h2= t '.points_received'
+      
+      %table
+        %thead
+          %tr
+            %th.col-date= Click.human_attribute_name(:created_at)
+            %th.col-giver= Click.human_attribute_name(:user)
+            %th.col-amount= Click.human_attribute_name(:amount)
+            %th.col-amount-value &nbsp;
+            %th.col-action &nbsp;
+        %tbody
+          = render :partial => 'clicks'
+  .span5
+    .split-right
+      %h2= t '.total_received'
+      .stats
+        .stat.stat-points-received
+          .stat-value= number_with_delimiter 0
+          .stat-label= t('.points')

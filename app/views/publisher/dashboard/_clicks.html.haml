@@ -1,0 +1,11 @@
+- @clicks.each do |click|
+  %tr{ :id => click.uuid }
+    %td.col-date= l click.created_at, :format => :date_short
+    %td.col-giver= click.user.display_name
+    %td.col-amount= number_with_precision click.amount, :precision => 0
+    %td.col-amount-value= number_to_currency click.amount_value
+    %td.col-action &nbsp;
+- unless @clicks.last_page?
+  %tr
+    %td{ :colspan => 5}
+      = link_to_next_page @clicks, t('.show_more'), :class => 'click-show-more', :remote => true
