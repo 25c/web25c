@@ -41,7 +41,7 @@ Web25c::Application.routes.draw do
     
       # Dashboard
       match '' => 'dashboard#index', :as => :dashboard
-      match 'cancel/:uuid' => 'dashboard#cancel_click', :as => :cancel_click, :via => :delete
+      match 'cancel' => 'dashboard#cancel_click', :as => :cancel_click, :via => :delete
       
       # Payment
       match 'payment' => 'payment#index', :as => :payment
