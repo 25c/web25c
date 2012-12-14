@@ -94,8 +94,6 @@ Web25c::Application.routes.draw do
       match 'test' => 'dashboard#test', :as => :test
     end
 
-    mount Resque::Server.new, :at => "/admin/resque/frame"
-
     # profile wildcard
     match ':id' => 'users#show', :constraints => { :id => /.*/ }
   end
