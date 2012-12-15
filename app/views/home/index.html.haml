@@ -2,23 +2,7 @@
 - content_for :meta_description, t('.meta_description')
 
 = content_for(:js) do
-  :javascript    
-    $('#fb-share').click(function() {
-      var fbShareHref = "https://www.facebook.com/dialog/feed?display=popup"
-        + "&app_id=#{ FACEBOOK_SETTINGS['app_id'] }"
-        + "&link=#{ root_url }"
-        + "&picture=http://assets.25c.com.s3.amazonaws.com/logos/icon-50.png"
-        + "&name=#{ j t('.fb_share_title') }"
-        + "&caption=" + " "
-        + "&description=#{ j t('.fb_share_description') }"
-        + "&redirect_uri=#{ j fb_share_callback_url }";
-      openPopup(fbShareHref, "Share on Facebook");
-    });
-    $('#tw-share').click(function() {
-      var twShareHref = "https://twitter.com/share?url=" + encodeURIComponent("#{ root_url }");
-      openPopup(twShareHref, "Share on Twitter");
-    });
-    
+  :javascript        
     var timer = null;
     
     $('#splash-button').hover(function() {
