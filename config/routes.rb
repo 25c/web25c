@@ -76,16 +76,14 @@ Web25c::Application.routes.draw do
       
     match 'publisher/profile' => 'users#profile', :as => :publisher_profile
     # match 'home/choose_nickname' => 'users#choose_nickname', :as => :choose_nickname
-
-    namespace :admin do
-      resources :users, :except => [ :new, :create ]
-      match '' => 'dashboard#index', :as => :dashboard
-      match 'process_payment' => 'dashboard#process_payment', :as => :process_payment, :via => :post
-      match 'test' => 'dashboard#test', :as => :test
-    end
-
-    # profile wildcard
-    # match ':id' => 'users#show', :constraints => { :id => /.*/ }
+    
+  end
+  
+  namespace :admin do
+    resources :users, :except => [ :new, :create ]
+    match '' => 'dashboard#index', :as => :dashboard
+    match 'process_payment' => 'dashboard#process_payment', :as => :process_payment, :via => :post
+    match 'test' => 'dashboard#test', :as => :test
   end
   
   # catch-all 404 page for unknown routes
