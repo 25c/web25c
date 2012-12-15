@@ -9,8 +9,10 @@ class ApplicationController < ActionController::Base
   protected
   
   def show_placeholder_if_production
-    self.current_user = nil
-    redirect_to coming_soon_path
+    if Rails.env.production?
+      self.current_user = nil
+      redirect_to coming_soon_path
+    end
   end
   
   def authenticate_if_staging
