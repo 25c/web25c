@@ -1,9 +1,11 @@
 class HomeController < ApplicationController
   
   include ActiveMerchant::Billing::Integrations
-  skip_before_filter :authenticate_if_staging, :only => :paypal_process
-  skip_before_filter :verify_authenticity_token, :only => :paypal_process
-  skip_before_filter :check_facebook_cookies, :only => :paypal_process
+  
+  skip_before_filter :show_placeholder_if_production, :only => :coming_soon
+  
+  def coming_soon
+  end
   
   def index
     if self.current_user
@@ -47,22 +49,6 @@ class HomeController < ApplicationController
   
   def blog_footer
     render :layout => "blank"
-  end
-  
-  def paypal_process
-    return_ok = false
-    notify = Paypal::Notification.new(request.raw_post)
-    uuid = notify.invoice
-    payment = Payment.find_by_uuid(uuid)
-    if payment and notify.acknowledge and notify.complete?
-      raise Exception.new('Pay-in processing from Paypal failed') unless payment.process 
-      return_ok = true
-    end
-    if return_ok
-      render :nothing => true, :status => 200, :content_type => 'text/html'
-    else
-      render "home/not_found", :status => 404
-    end
   end
 
 end

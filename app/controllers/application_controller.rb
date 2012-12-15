@@ -1,10 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  before_filter :authenticate_if_staging
+  # "Coming Soon" placeholder page
+  before_filter :show_placeholder_if_production
+  before_filter :authenticate_if_staging  
   helper_method :signed_in?, :current_user, :url_base, :mobile_device?
   
   protected
+  
+  def show_placeholder_if_production
+    self.current_user = nil
+    redirect_to coming_soon_path
+  end
   
   def authenticate_if_staging
     if Rails.env.staging?
