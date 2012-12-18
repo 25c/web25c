@@ -11,7 +11,8 @@
     %div{ :href => @testimonials.user.profile_url,
       :class => "tip-25c-feed",
       :'data-id' => @testimonials.uuid.to_s,
-      :'data-user' => @testimonials.user.display_name }
+      :'data-user' => @testimonials.user.display_name,
+      :'data-url' => 'http://www.25c.com' }
       #{@testimonials.title}
     :javascript
       !function(d,s,id){
