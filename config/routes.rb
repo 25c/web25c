@@ -27,6 +27,10 @@ Web25c::Application.routes.draw do
   match 'blog/footer' => 'home#blog_footer'
   match 'paypal_process' => 'home#paypal_process', :as => :paypal_process
   
+  # endpoints for Facebook Open Graph links
+  match 'notes/:uuid' => 'open_graph#note'
+  match 'webpages/:uuid' => 'open_graph#webpage'
+  
   resources :i, :controller => 'invites', :as => 'invites', :only => [ :index, :show, :update ]
   
   namespace :tipper do

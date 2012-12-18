@@ -1,0 +1,9 @@
+!!! 5
+%html
+  %head{ :prefix => "og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# #{FACEBOOK_SETTINGS['namespace']}: http://ogp.me/ns/fb/#{FACEBOOK_SETTINGS['namespace']}#" }
+    %meta{ :property => "fb:app_id", :content => FACEBOOK_SETTINGS['app_id'] }
+    %meta{ :property => "og:type",   :content => "#{FACEBOOK_SETTINGS['namespace']}:webpage" }
+    %meta{ :property => "og:url",    :content => @url.url }
+    %meta{ :property => "og:title",  :content => @url.title }
+    %meta{ :property => "og:image",  :content => image_url(image_path('25c-logo-canonical.png')) }
+  %body
