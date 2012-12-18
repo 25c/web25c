@@ -6,4 +6,8 @@ class Url < ActiveRecord::Base
     @uri.host
   end
   
+  def to_param
+    self.uuid
+  end
+  
 end

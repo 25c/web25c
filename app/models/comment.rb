@@ -6,4 +6,8 @@ class Comment < ActiveRecord::Base
   belongs_to :url
   belongs_to :click
   
+  def to_param
+    self.uuid
+  end
+  
 end

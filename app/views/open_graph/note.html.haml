@@ -3,7 +3,7 @@
   %head{ :prefix => "og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# #{FACEBOOK_SETTINGS['namespace']}: http://ogp.me/ns/fb/#{FACEBOOK_SETTINGS['namespace']}#" }
     %meta{ :property => "fb:app_id", :content => FACEBOOK_SETTINGS['app_id'] }
     %meta{ :property => "og:type",   :content => "#{FACEBOOK_SETTINGS['namespace']}:note" }
-    %meta{ :property => "og:url",    :content => @comment.url.url }
+    %meta{ :property => "og:url",    :content => note_url(@comment) }
     %meta{ :property => "og:title",  :content => @comment.content }
     %meta{ :property => "og:image",  :content => image_url(image_path('25c-logo-canonical.png')) }
   %body
