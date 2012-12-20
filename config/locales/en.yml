@@ -15,6 +15,10 @@ en:
         user: Giver
         url: Given To
         amount: Points
+      payment:
+        created_at: Date
+        amount: Points
+        amount_value: Amount
         
   time:
     formats:
@@ -152,6 +156,19 @@ en:
         cancel: Cancel
         confirm_cancel: Are you sure you wish to cancel your sponsorship?
         show_more: Show more...
+    points:
+      index:
+        buy_points: Buy points
+        about_html: "<p>Points are a quick and easy way to show your support for your favorite sites. Buy points, then give them out anywhere you see a 25c widget.</p><p>The more points you give, the higher your rank. %{learn_more}</p>"
+        learn_more: Learn more about points.
+        points_20: 20 points
+        points_45: 45 points
+        points_100: 100 points
+        points_300: 300 points
+        points_700: 700 points
+        current_balance: "Current balance: %{balance} points"
+        current_payment: Current payment method
+        purchase_history: Purchase history
         
   home:
     index:

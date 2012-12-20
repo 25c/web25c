@@ -1,0 +1,46 @@
+.buy-points
+  %h2= t '.buy_points'
+  .row
+    .span11
+      %ul.buy-points<
+        %li
+          = link_to '#', :class => 'buy-points-20' do
+            %span= t '.points_20'
+          $5.00
+        %li>
+          = link_to '#', :class => 'buy-points-45' do
+            %span= t '.points_45'
+          $10.00
+        %li>
+          = link_to '#', :class => 'buy-points-100' do
+            %span= t '.points_100'
+          $20.00
+        %li>
+          = link_to '#', :class => 'buy-points-300' do
+            %span= t '.points_300'
+          $50.00
+        %li
+          = link_to '#', :class => 'buy-points-700' do
+            %span= t '.points_700'
+          $100
+    .span5
+      .split-left
+        = t '.about_html', :learn_more => link_to(t('.learn_more'), '#')
+  %hr
+.row
+  .span5
+    .split-left
+      %h2
+        = t '.current_balance', :balance => current_user.balance
+        %span (#{number_to_currency(current_user.balance_value)})
+      %h2= t '.current_payment'
+  .span11
+    .split-right
+      %h2= t '.purchase_history'
+      %table
+        %thead
+          %tr
+            %th.col-date= Payment.human_attribute_name(:created_at)
+            %th.col-amount= Payment.human_attribute_name(:amount)
+            %th.col-amount-value= Payment.human_attribute_name(:amount_value)
+            %th.col-action &nbsp;
