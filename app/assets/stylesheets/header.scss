@@ -6,6 +6,28 @@
   border-bottom: 1px solid $gray-border;
   overflow: visible;
 
+  a.brand {
+    position: absolute;
+    display: block;
+    left: 20px;
+    top: 8px;
+    background: transparent image-url('logo-header.png');
+    width: 41px;
+    height: 29px;
+    padding: 0;
+    border: 0;
+    span {
+      position: relative;
+      left: -100000px;
+    }
+    &:hover {
+      border: 0;
+    }
+    &:visited {
+      border: 0;
+    }
+  }
+
   .header-inner {
     background-color: $gray-light;
     height: 43px;
@@ -53,27 +75,5 @@
         }
       }
     }
-  }
-}
-
-a.brand {
-  position: absolute;
-  display: block;
-  left: 20px;
-  top: -3px;
-  background: transparent image-url('logo-header.png');
-  width: 53px;
-  height: 53px;
-  padding: 0;
-  border: 0;
-  span {
-    position: relative;
-    left: -100000px;
-  }
-  &:hover {
-    border: 0;
-  }
-  &:visited {
-    border: 0;
   }
 }
