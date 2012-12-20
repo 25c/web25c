@@ -5,7 +5,7 @@
       .col-given-to
         - if click.url
           #{link_to click.url.host, click.url.url}:
-          click.url.title
+          #{click.url.title}
     %td.col-amount= number_with_precision click.amount, :precision => 0
     %td.col-amount-value= number_to_currency click.amount_value
     %td.col-action
