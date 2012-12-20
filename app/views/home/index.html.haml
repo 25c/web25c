@@ -1,120 +1,29 @@
 - content_for :title, t('.title')
 - content_for :meta_description, t('.meta_description')
 
-= content_for(:js) do
-  :javascript        
-    var timer = null;
-    
-    $('#splash-button').hover(function() {
-      clearTimeout(timer);
-      $('#splash-tooltip').fadeIn('fast');
-    }, function() {
-      clearTimeout(timer);
-      timer = setTimeout(function() {
-        $('#splash-tooltip').fadeOut('fast');
-      }, 500);
-    });
-    
-    $('#splash-tooltip').hover(function() {
-      clearTimeout(timer);
-    }, function() {
-    clearTimeout(timer);
-    timer = setTimeout(function() {
-      $('#splash-tooltip').fadeOut('fast');
-    }, 500);
-    });
-
-#splash-title-top.highlight.center= t('.title_top')
-
-.splash-col-left
-  / #splash-people.center= image_tag 'front/people-01.png'
-  / #splash-arrows.center= image_tag 'front/arrows-02.png'
-  #splash-container.center
-    #splash-button-title
-      = raw t('.button_title')
-    .center.buffer
-      %a#splash-button{:href => publisher_widgets_path}
-        = image_tag 'front/button-01.png'
-    #splash-tooltip.hide
-      = t('.pledge_to')
-      %span.highlight= t('.cause')
-      #splash-tooltip-share
-        = t('.share')
-        #fb-share= image_tag("logos/facebook-icon.png")
-        #tw-share= image_tag("logos/twitter-icon.png")
-    #link-title.center
-      = raw t('.link_title_1')
-      = raw t('.link_title_2')
-    #link-example
-      = link_to t('.link_text'), publisher_widgets_path
-
-#splash-explain.splash-col-right
-  %p.large{:style => 'padding-bottom:20px;'}= raw t('.explain_p1')
-  %p.large= raw t('.explain_p2')
-  %p.large= raw t('.explain_p3')
-  %p.large= raw t('.explain_p4')
-  / %p.large= raw t('.explain_p5')
-  / %p.large= raw t('.explain_p6')
-.clear
-
-.splash-col-left.center
-  %a#splash-call.btn.btn-strong{ :href => publisher_widgets_path }= raw t('.set_up')
-.splash-col-right
-  %p.large.learn-more=link_to t('.read_more'), faq_path
-.clear
-
-.splash-col-left
-  .col-title= raw t('.publisher_title')
-  %p= raw t('.publisher_p1')
-  %p= raw t('.publisher_p2')
-  %p= raw t('.publisher_p3')
-  / %p= t('.publisher_p4')
-
-.splash-col-right
-  .col-title= raw t('.pledger_title')
-  %p= raw t('.pledger_p1')
-  %p= raw t('.pledger_p2')
-  %p= raw t('.pledger_p3')
-  / %p= t('.pledger_p4')
-.clear
-  
-.splash-below
-  %h2.buffer= t('.works_with')
-  .example-container
-    .title-col 
-      .example-title= t('.any_website')
-    .screenshot-col
-      .example-image= image_tag('featured/justia-screenshot.png')
-    .clear
-  .example-container
-    .title-col
-      .example-title= image_tag('logos/posterous.png')
-    .screenshot-col
-      .example-image= image_tag('featured/posterous-screenshot.png')
-    .clear  
-  .example-container
-    .title-col
-      .example-title= image_tag('logos/youtube.png')
-    .screenshot-col
-      .example-image= image_tag('featured/youtube-screenshot.png')
-    .clear
-  .example-container
-    .clear
-    .title-col
-      .example-title= image_tag('logos/pinterest.png')
-    .screenshot-col
-      .example-image= image_tag('featured/pinterest-screenshot.png')
-    .clear
-
-.splash-below
-  %h2.buffer= t('.and_more')
-  #supported-blogs.center
-    =link_to image_tag('logos/wordpress.png'), publisher_widgets_path
-    / =link_to image_tag('logos/posterous.png'), publisher_widgets_path
-    =link_to image_tag('logos/tumblr.png'), publisher_widgets_path
-    =link_to image_tag('logos/blogger.png'), publisher_widgets_path
-    / =link_to image_tag('logos/youtube.png'), publisher_widgets_path
-    / =link_to image_tag('logos/pinterest.png'), publisher_widgets_path
-    =link_to image_tag('logos/blog-com.png'), publisher_widgets_path
-    =link_to image_tag('logos/jux.png'), publisher_widgets_path
-    =link_to image_tag('logos/weebly.png'), publisher_widgets_path
+%h1= t '.tagline'
+.row
+  .span14.offset1
+    .row
+      .span9
+        = image_tag 'home-screenshot.png'
+      .span5
+        %h2= t '.value_prop'
+        = t '.description_html'
+        = link_to t('.add_now'), sign_in_path, :class => 'button'
+        = image_tag 'home-callout.png', :class => 'callout'
+    .works_with
+      %hr
+      %h2= t '.works_with'
+      %ul.unstyled<
+        %li.works_with_wordpress
+          %span WordPress
+        %li.works_with_drupal> 
+          %span Drupal
+        %li.works_with_tumblr> 
+          %span Tumblr
+        %li.works_with_blogger> 
+          %span Blogger
+        %li.works_with_html 
+          %span HTML & CSS
+      = link_to t('.get_started'), sign_in_path, :class => 'button'    

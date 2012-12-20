@@ -155,38 +155,14 @@ en:
         
   home:
     index:
-      title: 25c - tip online as little as 25 cents.
-      meta_description: 25c is the best way to tip online as little as 25 cents.
-      title_top: Small Change for Big Change
-      button_title: "For Blogs, Podcasts:<BR> <b>Embed Your Own +25c Button</b>"
-      link_title_1: "For Twitter, Pinterest, Youtube:<br>"
-      link_title_2: "Add Your 25c Link:"
-      link_text: Tip.25c.com/YOU
-      pledge_to: Pledge 25c to
-      cause: YOUR CAUSE
-      share: "Share:"
-      set_up: Get Your Own 25c Button/Link
-      explain_p1: "<b>Micro-donations made easy.</b>"
-      explain_p2: "+ Give as little as 25 cents."
-      explain_p3: "+ One click, one quarter."
-      explain_p4: "+ Pledge now, pay later."
-      explain_p5:
-      explain_p6: 
-      publisher_title: "Publishing a blog, podcast, video?  Embed +25c!"
-      publisher_p1: "Create a superpowered digital tip jar!"
-      publisher_p2: "Let fans support you directly."
-      publisher_p3: "Reward your top supporters with 25c's highlighting, badging, and messaging tools."
-      pledger_title: "Love an article, podcast, video?  Click +25c!"
-      pledger_p1: "Give a tip to directly support its creator."
-      pledger_p2: "Each click pledges 25 cents."
-      pledger_p3: "Tip larger amounts through click & hold (or enter the amount)."
-      read_more: "Learn more..."
-      fb_share_title: "25c: The best way to tip online -- as little as 25 cents."
-      fb_share_description: "Supporting creators. One click, one quarter."
-      works_with: "25c Works With:"
-      and_more: "...And Many More:"
-      featured_title: "25c in action:"
-      any_website: "Any Website"
+      title: 25c - Turn your fans into sponsors.
+      meta_description: 25c is the easiest way to add sponsorship to your site.
+      tagline: Turn your fans into sponsors.
+      value_prop: 25c is the easiest way to add sponsorship to your site.
+      description_html: <p>Your top fans will give you 25c points through the widget to show their support. <em>Points can be cashed out for real money.</em></p><p>In return, you can build up a community on your site showcasing your most loyal fans.</p>
+      add_now: Add this widget to your site now
+      works_with: 25c works with
+      get_started: Get started now
     
     not_found:
       title: Page Not Found

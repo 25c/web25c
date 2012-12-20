@@ -39,6 +39,9 @@ Web25c::Application.routes.draw do
     match '' => 'dashboard#index', :as => :dashboard
     match 'cancel' => 'dashboard#cancel_click', :as => :cancel_click, :via => :delete
     
+    # Buy Points
+    match 'points' => 'points#index', :as => :points
+    
     # Payment
     match 'payment' => 'payment#index', :as => :payment
     match 'tip_register' => 'payment#tip_register', :as => :tip_register
