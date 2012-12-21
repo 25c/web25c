@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   
   include ActiveMerchant::Billing::Integrations
   
-  skip_before_filter :show_placeholder_if_production, :only => :coming_soon, :demo
+  skip_before_filter :show_placeholder_if_production, :only => [ :coming_soon, :demo ]
   
   def coming_soon
   end
