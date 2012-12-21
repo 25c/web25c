@@ -17,7 +17,7 @@ en:
         amount: Points
       payment:
         created_at: Date
-        amount: Points
+        amount_points: Points
         amount_value: Amount
         
   time:
@@ -169,6 +169,23 @@ en:
         current_balance: "Current balance: %{balance} points"
         current_payment: Current payment method
         purchase_history: Purchase history
+        expires: "Exp. %{expiration}"
+        remove: remove
+      remove_card:
+        success: Your credit card information has been deleted.
+      checkout:
+        title: Checkout
+        invalid_amount: Invalid amount.
+        card_number: Credit card number
+        card_cvc: CVC
+        expiration: Expiration
+        pay_now: Pay now
+        card_save: Save credit card information for future purchases
+        success: Your purchase is complete!
+        use_saved_card: "Use the following saved credit card:"
+        expires: "Expires: %{expiration}"
+        or_html: or %{use_new_card}...
+        use_new_card: enter a new credit card number
         
   home:
     index:

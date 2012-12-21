@@ -36,7 +36,10 @@
       - if current_user.has_valid_card
         %h2= t '.current_payment'
         .credit_card
-          **** **** **** #{current_user.stripe_last4}
+          #{current_user.stripe_type} **** **** **** #{current_user.stripe_last4}
+          %span
+            = t '.expires', :expiration => "#{current_user.stripe_exp_month}/#{current_user.stripe_exp_year}"
+            (#{link_to t('.remove'), tipper_points_remove_card_path})
   .span11
     .split-right
       %h2= t '.purchase_history'
@@ -44,6 +47,8 @@
         %thead
           %tr
             %th.col-date= Payment.human_attribute_name(:created_at)
-            %th.col-amount= Payment.human_attribute_name(:amount)
+            %th.col-amount= Payment.human_attribute_name(:amount_points)
             %th.col-amount-value= Payment.human_attribute_name(:amount_value)
             %th.col-action &nbsp;
+        %tbody
+          = render :partial => 'payments'

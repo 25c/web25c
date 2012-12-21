@@ -1,8 +1,24 @@
 body.points.index {
+  .col-date {
+    width: 80px;
+  }
+  .col-amount {
+    width: 80px;
+    text-align: right;
+    font-weight: bold;
+  }
+  .col-amount-value {
+    width: 80px;
+    text-align: right;
+  }
   .credit_card {
     font-family: $sansFontFamily;
     font-weight: bold;
     font-size: 12px;
+    span {
+      font-weight: normal;
+      font-size: 11px;
+    }
   }
   .buy-points {
     h2, hr {
@@ -49,5 +65,28 @@ body.points.index {
         }
       }
     }
+  }
+}
+
+body.points.checkout {
+  .points {
+    text-align: center;
+    font-family: $sansFontFamily;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 30px;
+    margin-left: 30px;
+  }
+  #card-number {
+    
+  }
+  input#card-cvc {
+    width: 60px;
+  }
+  select#card-expiry-month {
+    width: 80px;
+  }
+  select#card-expiry-year {
+    width: 80px;
   }
 }

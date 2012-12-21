@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121205020053) do
+ActiveRecord::Schema.define(:version => 20121221013812) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",                                  :null => false
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20121205020053) do
     t.datetime "updated_at",                            :null => false
     t.string   "pledge_message",        :default => ""
     t.string   "share_users",           :default => ""
-    t.string   "additional_parameters", :default => ""
     t.string   "widget_type",                           :null => false
+    t.string   "additional_parameters", :default => ""
   end
 
   add_index "buttons", ["user_id"], :name => "index_buttons_on_user_id"
@@ -41,16 +41,13 @@ ActiveRecord::Schema.define(:version => 20121205020053) do
   add_index "invites", ["uuid"], :name => "index_invites_on_uuid"
 
   create_table "payments", :force => true do |t|
-    t.string   "uuid",                          :null => false
-    t.integer  "user_id",                       :null => false
-    t.decimal  "amount"
-    t.integer  "state",          :default => 0, :null => false
-    t.string   "payment_type",                  :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.string   "transaction_id"
-    t.integer  "balance_paid",                  :null => false
-    t.string   "currency",                      :null => false
+    t.integer  "user_id",        :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "currency",       :null => false
+    t.string   "transaction_id", :null => false
+    t.decimal  "amount_value",   :null => false
+    t.integer  "amount_points",  :null => false
   end
 
   add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
@@ -98,6 +95,9 @@ ActiveRecord::Schema.define(:version => 20121205020053) do
     t.boolean  "is_suspended",           :default => false
     t.integer  "balance_free",           :default => 0,        :null => false
     t.integer  "total_given",            :default => 0,        :null => false
+    t.string   "stripe_type"
+    t.integer  "stripe_exp_month"
+    t.integer  "stripe_exp_year"
   end
 
   add_index "users", ["facebook_uid"], :name => "index_users_on_facebook_uid", :unique => true
