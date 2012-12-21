@@ -3,3 +3,88 @@ body.home.about {
     min-height: 290px;
   }
 }
+
+body.home.index {
+  .header {
+    a.brand {
+      top: 0;
+      left: 0;
+      width: 84px;
+      height: 56px;
+      background-image: image-url('logo-header-home.png');
+    }
+    .header-inner {
+      background-color: transparent;
+    }
+  }
+  h1 {
+    text-align: center;
+    font-size: 48px;
+    line-height: 48px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  em {
+    font-style: normal;
+    font-weight: bold;
+    color: $teal-light-text;
+  }
+  img.callout {
+    position: relative;
+    left: -50px;
+  }
+  .works_with {
+    position: relative;
+    margin-top: 40px;
+    text-align: center;
+    h2 {
+      position: absolute;
+      background: white;
+      top: -20px;
+      left: 375px;
+      text-align: center;
+      width: 140px;
+    }
+    a.button {
+      margin: 20px 0;
+    }
+    ul {
+      li {
+        display: inline-block;
+        height: 40px;
+        margin-left: 40px;
+        &:first-child {
+          margin-left: 0;
+        }
+        span {
+          position: relative;
+          left: -100000px;
+        }
+        &.works_with_wordpress {
+          background: transparent image-url('logos/wordpress.png') no-repeat center center;
+          width: 160px;
+        }
+        &.works_with_drupal {
+          background: transparent image-url('logos/drupal.png') no-repeat center center;
+          width: 87px;
+        }
+        &.works_with_tumblr {
+          background: transparent image-url('logos/tumblr.png') no-repeat center center;
+          width: 92px;
+        }
+        &.works_with_blogger {
+          background: transparent image-url('logos/blogger.png') no-repeat center center;
+          width: 128px;
+        }
+        &.works_with_html {
+          background: transparent image-url('logos/html.png') no-repeat center center;
+          width: 119px;
+        }
+      }
+    }
+  }
+}

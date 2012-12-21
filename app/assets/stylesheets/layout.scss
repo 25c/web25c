@@ -36,7 +36,17 @@ h2 {
   color: #000; 
   font-family: $sansFontFamily;
   font-size: 14px; 
+  line-height: 20px;
   font-weight: bold;
+  span {
+    font-size: 12px;
+    font-weight: normal;
+    color: $gray-light-text;
+  }
+}
+
+hr {
+  border-top-color: $gray-border;
 }
 
 table {

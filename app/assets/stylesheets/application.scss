@@ -29,6 +29,7 @@ $red: #bf3a3a;
 $slate: #3e6d7b;
 $slate-light: #d0dfe3;
 $teal: #177793;
+$teal-light-text: #738d93;
 
 @import 'layout';
 @import 'header';
@@ -38,3 +39,4 @@ $teal: #177793;
 
 @import 'home';
 @import 'dashboard';
+@import 'points';
