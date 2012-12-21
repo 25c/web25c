@@ -1,0 +1,29 @@
+- content_for :title, '25c - Demo'
+
+.padded
+
+  %div{:style => 'margin:0 auto 40px auto;'}
+    %h1 25c Notes Widget Demo
+    %p Welcome to 25c! Below is a demo of the Notes Widget with placeholder data. Try it out!
+    %p You can see this widget in the context of a Wired article here:
+    %p= link_to "http://#{ENV['API25C_URL']}/public/test/wired-notes.html#25c",
+      "http://#{ENV['API25C_URL']}/public/test/wired-notes.html#25c", :target => '_blank'
+
+  %center.buffer
+    #test-javascript
+      %div{ :id => '25c',
+        :width => 650,
+        :class => "tip-25c-feed",
+        :'data-id' => '999',
+        :'data-title' => '25c',
+        :'data-url' => 'http://www.25c.com',
+        :'data-demo' => 'true'}
+      :javascript
+        !function(d,s,id){
+          var js,fjs=d.getElementsByTagName(s)[0];
+          if(!d.getElementById(id)){
+            js=d.createElement(s);js.id=id;
+            js.src="//#{ENV["API25C_URL"]}/public/javascripts/widget.js";
+            fjs.parentNode.insertBefore(js,fjs);
+          }
+        } (document,"script","tip-25c-widget-js");
