@@ -4,4 +4,8 @@ class Tipper::PointsController < Tipper::TipperController
     
   end
   
+  def checkout
+    
+  end
+  
 end

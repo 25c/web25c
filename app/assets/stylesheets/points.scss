@@ -1,4 +1,9 @@
 body.points.index {
+  .credit_card {
+    font-family: $sansFontFamily;
+    font-weight: bold;
+    font-size: 12px;
+  }
   .buy-points {
     h2, hr {
       margin: 20px;

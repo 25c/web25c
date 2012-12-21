@@ -4,23 +4,23 @@
     .span11
       %ul.buy-points<
         %li
-          = link_to '#', :class => 'buy-points-20' do
+          = link_to tipper_points_checkout_path(:amount => 20), :class => 'buy-points-20' do
             %span= t '.points_20'
           $5.00
         %li>
-          = link_to '#', :class => 'buy-points-45' do
+          = link_to tipper_points_checkout_path(:amount => 45), :class => 'buy-points-45' do
             %span= t '.points_45'
           $10.00
         %li>
-          = link_to '#', :class => 'buy-points-100' do
+          = link_to tipper_points_checkout_path(:amount => 100), :class => 'buy-points-100' do
             %span= t '.points_100'
           $20.00
         %li>
-          = link_to '#', :class => 'buy-points-300' do
+          = link_to tipper_points_checkout_path(:amount => 300), :class => 'buy-points-300' do
             %span= t '.points_300'
           $50.00
         %li
-          = link_to '#', :class => 'buy-points-700' do
+          = link_to tipper_points_checkout_path(:amount => 700), :class => 'buy-points-700' do
             %span= t '.points_700'
           $100
     .span5
@@ -33,7 +33,10 @@
       %h2
         = t '.current_balance', :balance => current_user.balance
         %span (#{number_to_currency(current_user.balance_value)})
-      %h2= t '.current_payment'
+      - if current_user.has_valid_card
+        %h2= t '.current_payment'
+        .credit_card
+          **** **** **** #{current_user.stripe_last4}
   .span11
     .split-right
       %h2= t '.purchase_history'

@@ -41,6 +41,7 @@ Web25c::Application.routes.draw do
     
     # Buy Points
     match 'points' => 'points#index', :as => :points
+    match 'points/checkout' => 'points#checkout', :as => :points_checkout
     
     # Payment
     match 'payment' => 'payment#index', :as => :payment
