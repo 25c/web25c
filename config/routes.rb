@@ -4,6 +4,10 @@ Web25c::Application.routes.draw do
   root :to => 'home#index'
   
   match 'coming_soon' => 'home#coming_soon', :as => :coming_soon
+  
+  # temporary demo page
+  match 'demo' => 'home#demo'
+  
 
   match 'auth/dwolla/callback' => 'home/payout#index', :as => :dwolla_auth_callback
   

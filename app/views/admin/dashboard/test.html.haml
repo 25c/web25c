@@ -8,12 +8,12 @@
   %p.buffer Widget owner: #{ @testimonials.user.display_name }
 
   #test-javascript.buffer
-    %div{ :href => @testimonials.user.profile_url,
+    %div{ :width => 650,
       :class => "tip-25c-feed",
       :'data-id' => @testimonials.uuid.to_s,
-      :'data-user' => @testimonials.user.display_name,
-      :'data-url' => 'http://www.25c.com' }
-      #{@testimonials.title}
+      :'data-title' => '25c',
+      :'data-url' => 'http://www.25c.com',
+      :'data-demo' => 'true'}
     :javascript
       !function(d,s,id){
         var js,fjs=d.getElementsByTagName(s)[0];
