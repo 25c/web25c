@@ -1,0 +1,51 @@
+.footer {
+  position: relative;
+  margin-top: 5px;
+  padding: 6px 4px;
+
+  a.brand {
+    position: absolute;
+    display: block;
+    left: 20px;
+    top: 22px;
+    background: transparent image-url('logo-footer.png');
+    width: 28px;
+    height: 20px;
+    padding: 0;
+    border: 0;
+    span {
+      position: relative;
+      left: -100000px;
+    }
+    &:hover {
+      border: 0;
+    }
+    &:visited {
+      border: 0;
+    }
+  }
+
+  .footer-inner {
+    background: $gray-light;
+    height: 54px;
+    ul {
+      list-style-type: none;
+      margin: 17px 30px 0;
+      li {
+        display: inline-block;
+        font-family: $sansFontFamily;
+        font-size: 12px;
+        line-height: 20px;
+        font-weight: bold;
+        color: $teal-light-text;
+        a {
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+      }
+      &.pull-left {
+        margin-left: 50px;
+      }
+    }
+  }
+}

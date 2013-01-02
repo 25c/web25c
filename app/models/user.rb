@@ -102,6 +102,26 @@ class User < ActiveRecord::Base
     self.nickname
   end
   
+  def publisher?
+    self.role == 'publisher'
+  end
+  
+  def tipper?
+    self.role == 'tipper'
+  end
+  
+  def balance
+    self.balance_paid + self.balance_free
+  end
+  
+  def balance_value
+    self.balance * 0.25
+  end
+  
+  def clicks_received
+    Click.where(:receiver_user_id => self.id)
+  end
+  
   def display_name
     name = self.pledge_name
     name = "#{self.first_name} #{self.last_name}".strip if name.blank?

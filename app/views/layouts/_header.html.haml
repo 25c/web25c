@@ -1,16 +1,21 @@
-#header-container
-  %a#nav-logo{:href => root_url}
-    %img{ :src => image_path('logo-incline-01.png') }
-  #nav-tagline= t('.tagline')
-  #nav-menu-container.pull-right
+.header
+  .header-inner
+    = link_to root_url, :class => 'brand' do
+      %span 25c
     - if signed_in?
-      %ul
+      %ul.nav.pull-left
+        - if current_user.publisher?
+          %li= link_to t('.dashboard'), publisher_dashboard_url
+          %li= link_to t('.widgets'), publisher_widgets_url
+        - else
+          %li= link_to t('.dashboard'), tipper_dashboard_url
+          %li= link_to t('.get_points'), tipper_points_url
+      %ul.nav.pull-right
         %li.dropdown
           %a.dropdown-toggle{ :href => '#', :'data-toggle' => 'dropdown' }
+            %span.greeting= t '.greeting', :user => current_user.display_name
+            = image_tag(current_user.get_thumb, :class => 'img-circle')
             %b.caret
-            #nav-image= image_tag(current_user.get_thumb, :class => 'thumb-picture')
-            #nav-username= current_user.display_name
-            .clear
           %ul.dropdown-menu
             - if current_user.role == 'publisher'
               %li= link_to t('.dashboard'), publisher_dashboard_url
@@ -22,10 +27,5 @@
               %li= link_to t('.payment'), tipper_payment_url
               %li= link_to t('.sign_out'), sign_out_url, :id => 'sign-out'
     - else
-      %ul#nav-login
-        %li#nav-login-text
-          = link_to t('.sign_in'), sign_in_path
-        .clear
-    .clear
-  .clear
-#nav-menu-container-cover
+      %ul.nav.pull-right
+        = link_to t('.sign_in'), sign_in_path

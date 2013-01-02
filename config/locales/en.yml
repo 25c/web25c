@@ -10,10 +10,19 @@ en:
         share_amount: Share
         email: Recipient Email
         created_at: Sent
+      click:
+        created_at: Date
+        user: Giver
+        url: Given To
+        amount: Points
+      payment:
+        created_at: Date
+        amount_points: Points
+        amount_value: Amount
         
   time:
     formats:
-      date_only: "%d %b"
+      date_short: "%b %-d"
   
   application:
     title: "25c - tips online as small as 25 cents"
@@ -51,47 +60,8 @@ en:
     dashboard:
       index:
         title: Dashboard
-        contents: "Your pledge total is:"
-        get_button: Get Your Own +25c Button
-        payment: Fund Pledges
-        undo_clicks: Undo Pledges
-        tips_given_title: "25c Pledges Made:"
-        tips_received_title: "25c Pledges Received: "
-        tips_referred_title: "25c Pledges Referred: "
-        tips_given: 25c Pledges Made
-        tips_received: 25c Pledges Received
-        total: Total
-        state: State
-        state0: New
-        state1: Deducted
-        state2: Funded
-        state3: Processed
-        state4: Paid
-        state5: Refunded
-        amount: Amount
-        date_created: Date
-        provider: Pledged To
-        referrer: Link
-        clicker: Pledged By
-        share: Share
-        payout: Request Payout
-        pledge_message: Send Reminder
-        pledge_message_note: Remind supporters to fund tips they pledged to you.
-        no_referrer: None
-        profile_link: "%{provider}'s Profile"
-        no_referrer: None
-        not_funded: "Unfunded pledges:"
-        funded_note: "You may undo pledges until you funded them."
-        funded: Funded
-        to_be: To be
-        no_pledges_given: You have not yet pledged any 25c tips.
-        no_pledges_received: You have not received any 25c tips.  In order to receive 25c tips, %{profile_link} or %{button_link}.
-        no_pledges_profile_link: enhance your 25c.com pledge profile
-        no_pledges_button_link: embed a +25c Button
-        no_pledges_referred: "Using the Facebook or Twitter icons next to your tips above, share the fact that you made them to refer others to also pledge tips.  This table will list any successful referral you achieved in this way!"
-        fb_share_button_title: "I just tipped %{user_name} using 25c!"
-        fb_share_user_title: "I just tipped %{user_name} using 25c!"
-        fb_share_description: Using 25c to pledge one quarter one click.
+        total_received: "Since joining, you've received..."
+        points_received: Points received
     widgets:
       index:
         title: Widget Management
@@ -175,89 +145,58 @@ en:
     dashboard:
       index:
         title: Dashboard
-        contents: "Your pledge total is:"
-        get_button: Get Your Own +25c Button
-        payment: Fund Pledges
-        undo_clicks: Undo Pledges
-        tips_given_title: "25c Pledges Made:"
-        tips_received_title: "25c Pledges Received: "
-        tips_referred_title: "25c Pledges Referred: "
-        tips_given: 25c Pledges Made
-        tips_received: 25c Pledges Received
-        total: Total
-        state: State
-        state0: New
-        state1: Deducted
-        state2: Funded
-        state3: Processed
-        state4: Paid
-        state5: Refunded
-        amount: Amount
-        date_created: Date
-        provider: Pledged To
-        referrer: Link
-        clicker: Pledged By
-        share: Share
-        payout: Request Payout
-        pledge_message: Send Reminder
-        pledge_message_note: Remind supporters to fund tips they pledged to you.
-        no_referrer: None
-        profile_link: "%{provider}'s Profile"
-        no_referrer: None
-        not_funded: "Unfunded pledges:"
-        funded_note: "You may undo pledges until you funded them."
-        funded: Funded
-        to_be: To be
-        no_pledges_given: You have not yet pledged any 25c tips.
-        no_pledges_received: You have not received any 25c tips.  In order to receive 25c tips, %{profile_link} or %{button_link}.
-        no_pledges_profile_link: enhance your 25c.com pledge profile
-        no_pledges_button_link: embed a +25c Button
-        no_pledges_referred: "Using the Facebook or Twitter icons next to your tips above, share the fact that you made them to refer others to also pledge tips.  This table will list any successful referral you achieved in this way!"
-        fb_share_button_title: "I just tipped %{user_name} using 25c!"
-        fb_share_user_title: "I just tipped %{user_name} using 25c!"
-        fb_share_description: Using 25c to pledge one quarter one click.
-      undo_clicks:
-        title: Undo Pledges
-        undo: Undo Pledge
-        confirm_undo: Are you sure you want to undo this pledge?  (Your pledgee will be disappointed!)
-        profile_link: "%{provider}'s Profile"
-        dashboard: Back to Dashboard
-        no_pledges: You have not pledged any 25c tips.
+        total_given: "Since you've joined, you've given..."
+        points: points
+        points_balance: "Points balance: %{balance} points"
+        points_given: "Points given"
+      cancel_click:
+        failure: An unexpected error occurred. Please try again!
+        success: Your sponsorship has been cancelled.
+      clicks:
+        cancel: Cancel
+        confirm_cancel: Are you sure you wish to cancel your sponsorship?
+        show_more: Show more...
+    points:
+      index:
+        buy_points: Buy points
+        about_html: "<p>Points are a quick and easy way to show your support for your favorite sites. Buy points, then give them out anywhere you see a 25c widget.</p><p>The more points you give, the higher your rank. %{learn_more}</p>"
+        learn_more: Learn more about points.
+        points_20: 20 points
+        points_45: 45 points
+        points_100: 100 points
+        points_300: 300 points
+        points_700: 700 points
+        current_balance: "Current balance: %{balance} points"
+        current_payment: Current payment method
+        purchase_history: Purchase history
+        expires: "Exp. %{expiration}"
+        remove: remove
+      remove_card:
+        success: Your credit card information has been deleted.
+      checkout:
+        title: Checkout
+        invalid_amount: Invalid amount.
+        card_number: Credit card number
+        card_cvc: CVC
+        expiration: Expiration
+        pay_now: Pay now
+        card_save: Save credit card information for future purchases
+        success: Your purchase is complete!
+        use_saved_card: "Use the following saved credit card:"
+        expires: "Expires: %{expiration}"
+        or_html: or %{use_new_card}...
+        use_new_card: enter a new credit card number
         
   home:
     index:
-      title: 25c - tip online as little as 25 cents.
-      meta_description: 25c is the best way to tip online as little as 25 cents.
-      title_top: Small Change for Big Change
-      button_title: "For Blogs, Podcasts:<BR> <b>Embed Your Own +25c Button</b>"
-      link_title_1: "For Twitter, Pinterest, Youtube:<br>"
-      link_title_2: "Add Your 25c Link:"
-      link_text: Tip.25c.com/YOU
-      pledge_to: Pledge 25c to
-      cause: YOUR CAUSE
-      share: "Share:"
-      set_up: Get Your Own 25c Button/Link
-      explain_p1: "<b>Micro-donations made easy.</b>"
-      explain_p2: "+ Give as little as 25 cents."
-      explain_p3: "+ One click, one quarter."
-      explain_p4: "+ Pledge now, pay later."
-      explain_p5:
-      explain_p6: 
-      publisher_title: "Publishing a blog, podcast, video?  Embed +25c!"
-      publisher_p1: "Create a superpowered digital tip jar!"
-      publisher_p2: "Let fans support you directly."
-      publisher_p3: "Reward your top supporters with 25c's highlighting, badging, and messaging tools."
-      pledger_title: "Love an article, podcast, video?  Click +25c!"
-      pledger_p1: "Give a tip to directly support its creator."
-      pledger_p2: "Each click pledges 25 cents."
-      pledger_p3: "Tip larger amounts through click & hold (or enter the amount)."
-      read_more: "Learn more..."
-      fb_share_title: "25c: The best way to tip online -- as little as 25 cents."
-      fb_share_description: "Supporting creators. One click, one quarter."
-      works_with: "25c Works With:"
-      and_more: "...And Many More:"
-      featured_title: "25c in action:"
-      any_website: "Any Website"
+      title: 25c - Turn your fans into sponsors.
+      meta_description: 25c is the easiest way to add sponsorship to your site.
+      tagline: Turn your fans into sponsors.
+      value_prop: 25c is the easiest way to add sponsorship to your site.
+      description_html: <p>Your top fans will give you 25c points through the widget to show their support. <em>Points can be cashed out for real money.</em></p><p>In return, you can build up a community on your site showcasing your most loyal fans.</p>
+      add_now: Add this widget to your site now
+      works_with: 25c works with
+      get_started: Get started now
     
     not_found:
       title: Page Not Found
@@ -290,10 +229,11 @@ en:
       sign_in: Sign In
       sign_out: Sign Out
       receive_pledges: Receive 25c Tips
-      get_button: Widgets
-      payment: Payment Settings
+      widgets: Widgets
       payout: Request Payout
       dashboard: Dashboard
+      get_points: Get points!
+      greeting: Hi, %{user}!
     footer:
       about: About
       faq: FAQ
@@ -301,7 +241,7 @@ en:
       fees: Fees
       terms: Terms
       privacy: Privacy
-      copyright: "&copy; 25c Inc. 2012"
+      copyright: "&copy; 2012-2013 25c Inc. "
     mailer:
       valediction: "Best Wishes,"
       team: "The 25c Team"      
@@ -317,7 +257,7 @@ en:
       forgot_password: Forgot your password?
       forgot_password_instructions: Enter the email address you registered with and press Reset Password to receive an email with a link that you can use to set a new password.
       join_free: Register for free!
-      submit: "Submit"
+      submit: "Sign In"
       register: To register a new account, fill out the following form.
     form:
       sign_in_with: "Please sign in via Facebook:"

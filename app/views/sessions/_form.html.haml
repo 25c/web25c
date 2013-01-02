@@ -1,14 +1,13 @@
-#sign-in
-  #login.email-form
-    %p.sign-in-instructions= t '.sign_in_with'
-    .login-buttons
-      = link_to "/auth/facebook#{'?display=popup' if @popup}" do
-        = image_tag "logos/facebook-icon.png"
-  .user-agreement-message
-    %p= raw t('.works_with')
-    %p
-      = raw t('.agreement_text')
-      25c #{link_to t('.terms'), terms_path, :target => "blank"}, 
-      #{link_to t('.privacy'), privacy_path, :target => "blank"}
+.center
+  .login-buttons.center
+    = link_to "/auth/facebook#{'?display=popup' if @popup}", :class => 'button', :id => 'sign-in-fb' do
+      = image_tag "logos/fb-logo-f.png"
+      Sign in With Facebook
+
+  %p= raw t('.works_with')
+  %p
+    = raw t('.agreement_text')
+    25c #{link_to t('.terms'), terms_path, :target => "blank"}, 
+    #{link_to t('.privacy'), privacy_path, :target => "blank"}
 
     

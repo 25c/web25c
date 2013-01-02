@@ -1,44 +1,26 @@
-- content_for :title, '25c - Admin Test Page'
+.padded
+  %h1.page-header Admin Test Page
 
-%h2.page-header Admin Test Page
+  %p Logged in user: #{ @user.display_name }
+  %p Free balance: #{ number_to_currency(@user.balance_free) }
+  %p.buffer Paid balance: #{ number_to_currency(@user.balance_paid) }
 
-%p Logged in user: #{ @user.display_name }
-%p.buffer Starting balance: #{ number_to_currency(@user.balance / 100000000) }
+  %p.buffer Widget owner: #{ @testimonials.user.display_name }
 
-%h3 Widgets
-%p.buffer Button owner: #{ @button.user.display_name }
-
-%h3 Fan Belt:
-#test-javascript.buffer
-  %div{ :href => @button.user.profile_url,
-    :class => "tip-25c-belt",
-    :'data-id' => @button.uuid.to_s,
-    :'data-user' => @button.user.display_name }
-    #{@button.title}
-  :javascript
-    !function(d,s,id){
-      var js,fjs=d.getElementsByTagName(s)[0];
-      if(!d.getElementById(id)){
-        js=d.createElement(s);js.id=id;
-        js.src="//#{ENV["API25C_URL"]}/public/javascripts/widget.js";
-        fjs.parentNode.insertBefore(js,fjs);
-      }
-    } (document,"script","tip-25c-widget-js");
-
-%h3 Comments:
-#test-javascript.buffer
-  %div{ :href => @button.user.profile_url,
-    :class => "tip-25c-feed",
-    :'data-id' => @button.uuid.to_s,
-    :'data-user' => @button.user.display_name }
-    #{@button.title}
-  :javascript
-    !function(d,s,id){
-      var js,fjs=d.getElementsByTagName(s)[0];
-      if(!d.getElementById(id)){
-        js=d.createElement(s);js.id=id;
-        js.src="//#{ENV["API25C_URL"]}/public/javascripts/widget.js";
-        fjs.parentNode.insertBefore(js,fjs);
-      }
-    } (document,"script","tip-25c-widget-js");
+  #test-javascript.buffer
+    %div{ :width => 650,
+      :class => "tip-25c-feed",
+      :'data-id' => @testimonials.uuid.to_s,
+      :'data-title' => '25c',
+      :'data-url' => 'http://www.25c.com',
+      :'data-demo' => 'true'}
+    :javascript
+      !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+          js=d.createElement(s);js.id=id;
+          js.src="//#{ENV["API25C_URL"]}/public/javascripts/widget.js";
+          fjs.parentNode.insertBefore(js,fjs);
+        }
+      } (document,"script","tip-25c-widget-js");
       

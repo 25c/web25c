@@ -1,0 +1,44 @@
+.button {
+  min-width: 100px;
+  display: inline-block;
+  background-color: #3f4e52;
+  border: none; 
+  color: #fff;
+  font-family: $sansFontFamily;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 14px 18px;
+  @include transition(background-color 0.25s linear);
+  &:hover {
+    background-color: #416b76;
+    @include animation(fade 1.0s ease-in);
+    @include transition(background-color 0.25s linear);
+  }
+  &:active {
+    background-color: #365a63;
+    @include box-shadow(inset 0 3px 4px #284249)
+  }
+  &:hover, &:visited {
+    color: #fff;
+    border-bottom: 0 none transparent;
+  }
+}
+
+#sign-in-fb.button {
+  padding: 10px 18px;
+  background-color: #3B5998;
+  line-height: 1.1em;
+  &:hover {
+    background-color: #627AAD;
+  }
+  img {
+    padding-bottom: 4px;
+    margin-right: 10px;
+  }
+}
+
+.login-buttons {
+  margin-bottom: 20px;
+}

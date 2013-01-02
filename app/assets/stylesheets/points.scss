@@ -1,0 +1,92 @@
+body.points.index {
+  .col-date {
+    width: 80px;
+  }
+  .col-amount {
+    width: 80px;
+    text-align: right;
+    font-weight: bold;
+  }
+  .col-amount-value {
+    width: 80px;
+    text-align: right;
+  }
+  .credit_card {
+    font-family: $sansFontFamily;
+    font-weight: bold;
+    font-size: 12px;
+    span {
+      font-weight: normal;
+      font-size: 11px;
+    }
+  }
+  .buy-points {
+    h2, hr {
+      margin: 20px;
+    }
+    ul {
+      list-style: none;
+      li {
+        display: inline-block;
+        text-align: center;
+        font-family: $sansFontFamily;
+        font-size: 11px;
+        font-weight: bold;
+        width: 20%;
+        a {
+          display: block;
+          width: 100%;
+          height: 110px;  
+          padding: 0;
+          border: 0;
+          &:hover {
+            padding: 0;
+            border: 0;
+          };
+          span {
+            position: relative;
+            left: -100000px;
+          }
+          &.buy-points-20 {
+            background: transparent image-url('points-20.png') no-repeat center top;
+          }
+          &.buy-points-45 {
+            background: transparent image-url('points-45.png') no-repeat center top;
+          }
+          &.buy-points-100 {
+            background: transparent image-url('points-100.png') no-repeat center top;
+          }
+          &.buy-points-300 {
+            background: transparent image-url('points-300.png') no-repeat center top;
+          }
+          &.buy-points-700 {
+            background: transparent image-url('points-700.png') no-repeat center top;
+          }
+        }
+      }
+    }
+  }
+}
+
+body.points.checkout {
+  .points {
+    text-align: center;
+    font-family: $sansFontFamily;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 30px;
+    margin-left: 30px;
+  }
+  #card-number {
+    
+  }
+  input#card-cvc {
+    width: 60px;
+  }
+  select#card-expiry-month {
+    width: 80px;
+  }
+  select#card-expiry-year {
+    width: 80px;
+  }
+}

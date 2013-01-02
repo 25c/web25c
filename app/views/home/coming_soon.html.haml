@@ -1,0 +1,11 @@
+= content_for(:head) do
+  :css
+    .brand {display: none !important;}
+    ul.nav.pull-right {display: none !important;}
+    footer.footer > .footer-inner > ul.pull-left {display: none !important;}
+
+.padded
+  .center
+    = image_tag '25c-logo-canonical.png',
+      :style => "width:360px;min-height:253px;margin:60px 0 40px 0"
+    %h1{:style => "margin:0 0 60px 0"} Big changes are coming.

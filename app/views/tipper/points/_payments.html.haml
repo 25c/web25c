@@ -1,0 +1,10 @@
+- @payments.each do |payment|
+  %tr
+    %td.col-date= l payment.created_at, :format => :date_short
+    %td.col-amount= payment.amount_points
+    %td.col-amount-value= number_to_currency payment.amount_value/100.0
+    %td.col-action &nbsp;
+- unless @payments.last_page?
+  %tr
+    %td{ :colspan => 5}
+      = link_to_next_page @payments, t('.show_more'), :class => 'payment-show-more', :remote => true

@@ -1,18 +1,27 @@
 - content_for :title, '25c - ' + t('.title')
 
-= content_for(:js) do
-  = javascript_include_tag "jquery.dataTables.min"
-  = javascript_include_tag "paging"
-  = javascript_include_tag "update-dashboard"
-  :javascript
-    window.noPledgesGivenText = '#{ j t('.no_pledges_given') }';
-    window.userDisplayName = '#{ j @user.display_name}';
-    window.fbShareCallbackUrl = '#{ j fb_share_callback_url }';
-    window.fbShareDescriptionText = '#{ j t('.fb_share_description') }';
-
-%h2.page-header= t('.title')
-
-- if mobile_device?
-  = render :partial => "dashboard_mobile"
-- else
-  = render :partial => "dashboard_desktop"
+.row
+  .span5
+    .split-left
+      %h2= t '.total_given'
+      .stats
+        .stat.stat-points-given
+          .stat-value= number_with_delimiter current_user.total_given
+          .stat-label= t('.points')
+      %h2
+        = t '.points_balance', :balance => current_user.balance
+        %span.points_balance_value (#{number_to_currency current_user.balance_value})
+  .span11
+    .split-right
+      %h2= t '.points_given'
+      
+      %table
+        %thead
+          %tr
+            %th.col-date= Click.human_attribute_name(:created_at)
+            %th.col-given-to= Click.human_attribute_name(:url)
+            %th.col-amount= Click.human_attribute_name(:amount)
+            %th.col-amount-value &nbsp;
+            %th.col-action &nbsp;
+        %tbody
+          = render :partial => 'clicks'

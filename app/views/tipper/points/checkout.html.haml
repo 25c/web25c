@@ -1,0 +1,79 @@
+- content_for :title, t('.title')
+
+= content_for(:js) do
+  = javascript_include_tag "https://js.stripe.com/v1/"
+  :javascript
+    Stripe.setPublishableKey('#{STRIPE_SETTINGS[:publishable_key]}');
+    $(document).ready(function() {
+      $("#payment-form").submit(function(event) {
+        $('.submit-button').attr("disabled", "disabled");
+        Stripe.createToken({
+          number: $('#card-number').val(),
+          cvc: $('#card-cvc').val(),
+          exp_month: $('#card-expiry-month').val(),
+          exp_year: $('#card-expiry-year').val()
+        }, stripeResponseHandler);
+        return false;
+      });
+      $(".use_new_card").on('click', function(event) {
+        $('.checkout_saved_card').hide();
+        $('.checkout_new_card').show();
+        return false;
+      });
+      
+      function stripeResponseHandler(status, response) {
+        if (response.error) {
+          $(".payment-errors").text(response.error.message + '.').show();
+          $(".submit-button").removeAttr("disabled");
+        } else {
+          var $form = $("#payment-form");
+          var token = response['id'];
+          $form.append("<input type='hidden' name='stripe_token' value='" + token + "'/>");
+          $form.get(0).submit();
+        }
+      }
+    });
+
+.padded
+  %h1= yield :title
+.row
+  .span3
+    .points
+      = image_tag "points-#{@amount_points}.png"
+      %br
+      = number_to_currency(@amount_values[@amount_points].to_f / 100.0)
+  .span12
+    - if self.current_user.has_valid_card
+      .checkout_saved_card
+        = form_tag tipper_points_checkout_path do
+          = hidden_field_tag :amount, @amount_points
+          .control-group
+            %h2= t '.use_saved_card'
+            %p 
+              #{current_user.stripe_type} **** **** **** #{current_user.stripe_last4}
+              %br
+              = t '.expires', :expiration => "#{current_user.stripe_exp_month}/#{current_user.stripe_exp_year}"
+            %p= t '.or_html', :use_new_card => link_to(t('.use_new_card'), '#', :class => 'use_new_card')
+          = submit_tag t('.pay_now'), :class => 'button'
+    .checkout_new_card{ :style => "display:#{self.current_user.has_valid_card ? 'none' : 'block'}"}
+      = form_tag tipper_points_checkout_path, :id => 'payment-form' do
+        = hidden_field_tag :amount, @amount_points
+        .payment-errors.alert.alert-error.buffer.hide
+        .control-group
+          = label_tag 'card-number', t('.card_number')
+          .controls
+            = text_field_tag 'card-number', nil, :name => nil, :size => "20", :autocomplete => "off"
+        .control-group
+          = label_tag 'card-cvc', t('.card_cvc')
+          .controls
+            = text_field_tag 'card-cvc', nil, :name => nil, :size => "4", :autocomplete => "off"
+        .control-group
+          = label_tag 'card-expiry-month', t('.expiration')
+          .controls
+            = select_tag 'card-expiry-month', options_for_select((1..12).map{|m| "%02d"%m }), :name => nil
+            = select_tag 'card-expiry-year', options_for_select((Time.now.year..Time.now.year+10)), :name => nil
+        .control-group
+          = label_tag 'save', :class => 'checkbox' do
+            = check_box_tag 'save', 1, true
+            = t '.card_save'
+        = submit_tag t('.pay_now'), :class => 'button submit-button'

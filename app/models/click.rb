@@ -19,6 +19,18 @@ class Click < ActiveRecord::Base
   
   attr_accessible :user_id, :ip_address, :button_id
   
+  def to_param
+    self.uuid
+  end
+  
+  def editable?
+    self.created_at > (Time.now.utc - 60.minute)
+  end
+  
+  def amount_value
+    self.amount * 0.25
+  end
+  
   def referrer_title
     @title ||= Click.connection.select_value("SELECT title FROM urls WHERE url='#{self.referrer}'")
     @title ||= self.referrer
@@ -28,9 +40,13 @@ class Click < ActiveRecord::Base
     self.uuid = UUID.new.generate
   end
   
-  def undo
-    response = HTTParty.post(ENV['DATA25C_URL'] + '/api/clicks/undo', :body => { :uuids => [ self.uuid ] })
-    response.code == 200
+  def cancel
+    begin
+      response = HTTParty.post(ENV['DATA25C_URL'] + '/api/clicks/undo', :body => { :uuids => [ self.uuid ] })
+      return response.code == 200
+    rescue
+      return false
+    end
   end
   
   def queue_for_payout

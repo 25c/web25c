@@ -1,20 +1,21 @@
-%footer#footer-container
-  %ul#footer-nav
-    %li= link_to t('.about'), about_url
-    .footer-separator &#124;
-    %li= link_to t('.blog'), 'http://blog.25c.com'    
-    .footer-separator &#124;
-    %li= link_to t('.faq'), faq_url
-    .footer-separator &#124;
-    %li= link_to t('.fees'), fees_url
-    .footer-separator &#124;
-    %li= link_to t('.privacy'), privacy_url
-    .footer-separator &#124;
-    %li= link_to t('.terms'), terms_url
-    .clear
-  #footer-copy= raw t('.copyright')
-  .clear
-
-/ Javascripts - bottom of page to load faster
+%footer.footer
+  .footer-inner
+    = link_to root_url, :class => 'brand' do
+      %span 25c
+    %ul.pull-left
+      %li= link_to t('.about'), about_url
+      &#124;
+      %li= link_to t('.blog'), 'http://blog.25c.com'    
+      &#124;
+      %li= link_to t('.faq'), faq_url
+      &#124;
+      %li= link_to t('.fees'), fees_url
+      &#124;
+      %li= link_to t('.privacy'), privacy_url
+      &#124;
+      %li= link_to t('.terms'), terms_url
+    %ul.pull-right
+      %li= raw t('.copyright')
+-# Javascripts - bottom of page to load faster
 = javascript_include_tag "application"
 = yield(:js)

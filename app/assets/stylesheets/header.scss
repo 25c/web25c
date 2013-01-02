@@ -1,0 +1,78 @@
+.header {
+  position: relative;
+  background-color: white;
+  padding: 2px;
+  border-bottom: 1px solid $gray-border;
+  overflow: visible;
+
+  a.brand {
+    position: absolute;
+    display: block;
+    left: 20px;
+    top: 8px;
+    background: transparent image-url('logo-header.png');
+    width: 41px;
+    height: 29px;
+    padding: 0;
+    border: 0;
+    span {
+      position: relative;
+      left: -100000px;
+    }
+    &:hover {
+      border: 0;
+    }
+    &:visited {
+      border: 0;
+    }
+  }
+
+  .header-inner {
+    background-color: $gray-light;
+    height: 43px;
+  }
+
+  .nav {
+    line-height: 25px;
+    margin: 10px 18px 0 0;
+    li {
+      display: inline-block;
+    }
+    a {
+      display: inline;
+      font-family: $sansFontFamily;
+      font-size: 12px;
+      font-weight: bold;
+      &:hover {
+        background: transparent;
+      }
+      &.dropdown-toggle {
+        .greeting {
+          margin-right: 40px;
+        }
+        img {
+          position: absolute;
+          top: -6px;
+          right: 15px;
+          width: 30px;
+          height: 30px;
+        }
+        b.caret {
+          margin-top: 9px;
+        }
+      }
+    }
+    &.pull-left {
+      margin-left: 80px;
+      li {
+        border-left: 1px solid white;
+        margin: 0;
+        width: 100px;
+        text-align: center;
+        &:first-child {
+          border: 0;
+        }
+      }
+    }
+  }
+}

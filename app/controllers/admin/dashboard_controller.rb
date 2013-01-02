@@ -10,13 +10,9 @@ class Admin::DashboardController < Admin::AdminController
   end
   
   def test
-    @button = Button.first
-    i = 1
-    while (@button.user == current_user or not @button.user) do
-      @button = Button.all[i]
-      i += 1
-    end
     @user = current_user
+    @belt = Button.where("widget_type = ? and user_id != ?", "fan_belt", current_user.id).first
+    @testimonials = Button.where("widget_type = ? and user_id != ?", "testimonials", current_user.id).first
   end
   
 end
