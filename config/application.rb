@@ -52,13 +52,8 @@ module Web25c
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    
-    # Mobile CSS
-    config.assets.precompile += ['mobile.css']
-    
+        
     # jQuery dataTables plugin for table functions
-    config.assets.precompile += ['jquery.dataTables.min.js']
-    config.assets.precompile += ['paging.js']
     config.assets.precompile += ['verify-email.js']
     
     # sprintf implementation
@@ -74,6 +69,7 @@ module Web25c
     config.assets.precompile += ['update-dashboard.js']
     config.assets.precompile += ['process-payments.js']
     config.assets.precompile += ['process-agreement.js']
+    config.assets.precompile += ['widget-config.js']
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
