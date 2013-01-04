@@ -53,10 +53,8 @@ module Web25c
     # Enable the asset pipeline
     config.assets.enabled = true
         
-    # jQuery dataTables plugin for table functions
+    # Helper functions Javacript
     config.assets.precompile += ['verify-email.js']
-    
-    # sprintf implementation
     config.assets.precompile += ['sprintf-0.6.js']
     
     # Page specific Javascript
