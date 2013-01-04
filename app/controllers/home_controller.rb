@@ -8,6 +8,10 @@ class HomeController < ApplicationController
   end
   
   def demo
+    user = User.find_by_email('dev@25c.com')
+    if user and user.buttons[0]
+      @uuid = User.find_by_email('dev@25c.com').buttons[0].uuid
+    end
   end
   
   def index

@@ -11,6 +11,7 @@ body {
 }
 
 a {
+  cursor: pointer;
   color: $teal; 
   text-decoration: none; 
   padding-bottom: 1px; 
@@ -94,6 +95,10 @@ table {
 
 .buffer {
   margin-bottom: 20px;
+}
+
+.clear {
+  clear: both;
 }
 
 .loader {

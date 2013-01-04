@@ -1,0 +1,5 @@
+.center
+  #signed-in-title.main-title
+    = image_tag(current_user.get_thumb, :class => 'img-circle')
+    %h2 Welcome, #{@user.display_name}! You are now ready to start tipping.
+  %a.close-window Close this window

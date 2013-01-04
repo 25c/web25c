@@ -266,9 +266,9 @@ en:
       use_email: "email address"
       or: or
       works_with: Clicking +25c pledges a tip of 25 cents or more. Pledge now, pay later.  You may cancel pledges you made until you fund them.
-      agreement_text: "By continuing, you agree to the "
-      terms: User Terms
-      privacy: "Privacy Policy."       
+      agreement_text: "By continuing, you agree to the %{terms} and %{privacy}."
+      terms: 25c User Terms
+      privacy: 25c Privacy Policy       
     request_password:
       not_found: The email address you entered was not found.
       email_sent: An email with a reset link has been sent to the specified address.  

@@ -7,7 +7,6 @@ Web25c::Application.routes.draw do
   
   # temporary demo page
   match 'demo' => 'home#demo'
-  
 
   match 'auth/dwolla/callback' => 'home/payout#index', :as => :dwolla_auth_callback
   
@@ -19,17 +18,17 @@ Web25c::Application.routes.draw do
   match 'request-password' => 'sessions#request_password', :as => :request_password
   match 'reset-password/:id' => 'sessions#reset_password', :as => :reset_password
   match 'auth/:provider/callback' => 'sessions#create'
+  
+  match 'widget/sign-in' => 'sessions#widget_new', :as => :widget_sign_in, :via => :get
+  
+  # DEBUG
+  match 'widget/intro' => 'sessions#widget_intro', :as => :widget_intro, :via => :get
 
   match 'about' => 'home#about', :as => :about
   match 'faq' => 'home#faq', :as => :faq
   match 'fees' => 'home#fees', :as => :fees
   match 'terms' => 'home#terms', :as => :terms
   match 'privacy' => 'home#privacy', :as => :privacy
-
-  match 'tip/:button_id' => 'users#tip', :as => :tip
-  match 'blog/header' => 'home#blog_header'
-  match 'blog/footer' => 'home#blog_footer'
-  match 'paypal_process' => 'home#paypal_process', :as => :paypal_process
   
   # endpoints for Facebook Open Graph links
   match 'notes/:uuid' => 'open_graph#note', :as => :note
