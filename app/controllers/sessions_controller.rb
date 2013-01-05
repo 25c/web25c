@@ -9,13 +9,7 @@ class SessionsController < ApplicationController
     @user = User.new
     render :layout => 'popup'
   end
-  
-  # DEBUG
-  def widget_intro
-    @user = self.current_user
-    render :layout => 'popup'
-  end
-    
+      
   def create
     if request.env['omniauth.auth']
       result = User.from_omniauth(request.env['omniauth.auth'])
@@ -23,7 +17,7 @@ class SessionsController < ApplicationController
       @user = result[:user]
       @popup = request.env['omniauth.params']['display'] == 'popup'
       self.current_user = @user
-      if @popup        
+      if @popup              
         if is_new
           render 'widget_intro', :layout => 'popup'
         else
