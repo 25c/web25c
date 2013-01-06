@@ -2,21 +2,27 @@
 %html(lang="en")
   %head
     = render 'layouts/head'
-  %body#tip-body
-    #tip-outer-container
-      #tip-header-container
-        %a#tip-nav-logo.pull-left{ :href => root_path }
-          %img{ :src => image_path('logo-incline-01.png') }
-        #tip-nav-tagline.pull-left= t('layouts.header.tagline')
-        .clear
-      #tip-inner-container
-        #tip-center.main-content
-          = yield
+  %body#widget-sign-in
+    .header
+      .header-inner
+        = link_to root_url, :class => 'brand' do
+          %span 25c
+    = yield
   = javascript_include_tag "application"
   = yield(:js)
-  :javascript      
+  :javascript
     $(document).ready(function() {
       $('a.close-window').click(function() {
-        setTimeout(function() { window.close(); }, 100);
+        setTimeout(function() { 
+          window.close();
+        }, 100);
       });
+      var height = $('body').outerHeight(true) + window.outerHeight - window.innerHeight;
+      if (height > window.outerHeight) {
+        if (height > screen.availHeight) {
+          height = screen.availHeight;
+        }
+        window.moveTo(window.screenX, (screen.availHeight - height) / 2);
+        window.resizeTo(window.outerWidth, height);
+      }
     });

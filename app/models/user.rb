@@ -44,11 +44,15 @@ class User < ActiveRecord::Base
   
   def self.from_omniauth(auth)
     user = nil
+    is_new = false
     case auth['provider']
     when 'google_oauth2'
       user = User.find_by_google_uid(auth['uid'])
       user = User.find_by_email_ci(auth['info']['email']) if user.nil? and not auth['info']['email'].blank?
-      user = User.new(:password => SecureRandom.hex) if user.nil?
+      if user.nil?
+        user = User.new(:password => SecureRandom.hex) if user.nil?
+        is_new = true
+      end
       user.google_uid = auth['uid']
       user.google_token = auth['credentials']['token']
       user.google_refresh_token = auth['credentials']['refresh_token']
@@ -63,7 +67,10 @@ class User < ActiveRecord::Base
     when 'facebook'
       user = User.find_by_facebook_uid(auth['uid'])
       user = User.find_by_email_ci(auth['info']['email']) if user.nil? and not auth['info']['email'].blank?
-      user = User.new(:password => SecureRandom.hex) if user.nil?
+      if user.nil?
+        user = User.new(:password => SecureRandom.hex) if user.nil?
+        is_new = true
+      end
       user.facebook_uid = auth['uid']
       user.facebook_access_token = auth['credentials']['token']
       user.email = auth['info']['email'] if user.email.blank?
@@ -74,7 +81,7 @@ class User < ActiveRecord::Base
     else
       raise Exception.new("Unsuppored omniauth strategy: #{auth['provider']}")
     end
-    return user
+    return { :user => user, :is_new => is_new }
   end
   
   def refresh_facebook_access_token(code, force_refresh = false)

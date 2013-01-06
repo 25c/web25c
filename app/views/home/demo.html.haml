@@ -14,10 +14,10 @@
       %div{ :id => '25c',
         :width => 650,
         :class => "tip-25c-feed",
-        :'data-id' => '999',
+        :'data-id' => @uuid ? @uuid : '999',
         :'data-title' => '25c',
         :'data-url' => 'http://www.25c.com',
-        :'data-demo' => 'true'}
+        :'data-demo' => @uuid ? 'false' : 'true'}
       :javascript
         !function(d,s,id){
           var js,fjs=d.getElementsByTagName(s)[0];

@@ -1,0 +1,98 @@
+body#widget-sign-in {
+  padding: 0 0 20px 0;
+  .padded {
+    padding: 0 40px;
+  }
+  .header {
+    .brand { 
+      left: 50%;
+      background: transparent image-url('logo-header-home.png') no-repeat;
+      width: 84px;
+      height: 56px;
+      margin: 0 0 0 -42px;
+    }
+  }
+  .main-title {
+    margin: 30px 0 0 0;
+    img {
+      width: 40px;
+    }
+    h2 {
+      color: $slate;
+    }
+  }
+  #sign-in-fb {
+    margin: 20px 0;
+  }
+  #signed-in-title {
+    margin: 80px 0;
+  }
+  #signed-in-title, #welcome-title {
+    img {
+      margin-right: 10px;
+    }
+    h2 {
+      display: inline;
+    }
+  }
+  #welcome-title {
+    padding: 10px 40px;
+    img {
+      width: 40px;
+    }
+  }
+  #welcome-title, .welcome-block {
+    border-bottom: 1px solid $gray-border;
+  }
+  .welcome-block {
+    position: relative;
+    margin: 20px 0;
+    img {
+      position: absolute;
+      top: 0;
+      -moz-box-shadow:    0 2px 8px $gray-medium-text;
+      -webkit-box-shadow: 0 2px 8px $gray-medium-text;
+      box-shadow:         0 2px 8px $gray-medium-text;
+    }
+    p {
+      padding: 10px 0 0 0;
+      margin: 0 0 10px 0;
+    }
+    &:nth-child(2) {
+      p {
+        margin-left: 167px;
+        min-height: 59px;
+      }
+      img {
+        left: 0;
+      }
+    }
+    &:nth-child(3) {
+      p {
+        margin-right: 210px;
+        min-height: 99px;
+      }
+      img {
+        right: 0;
+        width: 200px;
+      }
+    }
+    &:nth-child(4) {
+      p {
+        margin-left: 230px;
+        min-height: 77px;
+      }
+      img {
+        left: 0;
+      }
+    }
+  }
+  .button {
+    margin: 0 10px 0 0;
+  }
+}
+
+.agreement {
+  font-size: 11px;
+  font-style: italic;
+}

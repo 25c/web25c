@@ -5,26 +5,37 @@ class SessionsController < ApplicationController
     @user = User.new
   end
   
+  def widget_new
+    @user = User.new
+    render :layout => 'popup'
+  end
+      
   def create
     if request.env['omniauth.auth']
-      user = User.from_omniauth(request.env['omniauth.auth'])
-      self.current_user = user
-      redirect_to_session_redirect_path root_path
+      result = User.from_omniauth(request.env['omniauth.auth'])
+      is_new = result[:is_new]
+      @user = result[:user]
+      @popup = request.env['omniauth.params']['display'] == 'popup'
+      self.current_user = @user
+      if @popup              
+        if is_new
+          render 'widget_intro', :layout => 'popup'
+        else
+          render 'widget_signed_in', :layout => 'popup'
+        end
+      else
+        redirect_to_session_redirect_path root_path
+      end
     else
-      user = User.find_by_email_ci(params[:user][:email])
-      if user and user.authenticate(params[:user][:password])
-        self.current_user = user
+      @user = User.find_by_email_ci(params[:user][:email])
+      if @user and @user.authenticate(params[:user][:password])
+        self.current_user = @user
         redirect_to_session_redirect_path root_path
       else
         @user = User.new
-        @popup = params[:popup]
         @show_login = true
         @show_login_error = true
-        if @popup
-          render 'users/tip', :layout => 'popup'
-        else
-          render :new
-        end
+        render :new
       end
     end
   end

@@ -1,0 +1,24 @@
+
+
+#welcome-title.main-title.center
+  = image_tag current_user.get_thumb, :class => 'img-circle'
+  %h2 Welcome, #{@user.display_name}! Thanks for signing up with 25c.
+.padded
+  %h2 How does it work?
+  .welcome-block
+    %p On any website you see the 25c Widget, give as many points as you'd like!
+    = image_tag 'intro-01.png'
+    .clear
+  .welcome-block
+    %p If you give the most points, you're featured on the widget as a top sponsor! You can add more points anytime and increase your ranking.
+    = image_tag 'intro-02.png'
+    .clear
+  .welcome-block
+    %p
+      You have 10 points for signing up! Buy more points anytime on #{ link_to 'the 25c points page', tipper_points_url }.
+    = image_tag 'intro-03.png'
+    .clear
+  
+  .center
+    = link_to 'Buy Points Now!', tipper_points_url, :target => '_blank', :class => 'button'
+    %a.close-window Close this window
