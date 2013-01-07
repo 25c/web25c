@@ -29,19 +29,36 @@ $(document).ready(function(){
     if (!$container.find('.share-container:hidden').length) $(this).hide();
   });  
   
-  var beltCodeTemplate = '<a class="tip-25c-belt" target="_blank" data-id="%s" data-size="%s" data-user="%s">%s</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/belt.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-belt-js");</script>';
-  var feedCodeTemplate = '<a class="tip-25c-feed" target="_blank" data-id="%s" data-size="%s" data-user="%s">%s</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/feed.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-feed-js");</script>';
+  var feedCodeTemplate = '<div class="tip-25c-feed" data-id="%s" data-url="%s"%s></div><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/widget.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-widget-js");</script>';
   
-  var buttonSize = 'btn-large';
+  function updatePreview() {
+    url = $.trim($('input#permalink_url').val());
+    if (url == "") {
+      $('input#permalink_url').closest('.control-group').addClass('error');
+      $('.button-code-block').text('');
+      $('.button-code-block').hide();
+      $('.button-preview').html('');
+      $('.preview').hide();
+      $('.button-code-error').show();
+    } else {
+      $('input#permalink_url').closest('.control-group').removeClass('error');
+      $('#tip-25c-widget-js').remove();
+      $('.button-code-error').hide();
+      width = parseInt($.trim($('input#width').val()));
+      if (isNaN(width)) {
+        width = 600;
+      }
+      width = ' width="' + width + '"';
+      feedCode = sprintf(feedCodeTemplate, buttonId, url, width);
+      $('.button-code-block').text(feedCode);
+      $('.button-code-block').show();
+      $('.button-preview').html(feedCode);
+      $('.preview').show();
+    }
+  }
   
-  var linkText = (!buttonTitle || /^\s*$/.test(buttonTitle)) ? "&nbsp;" : buttonTitle;
-  beltCode = sprintf(beltCodeTemplate, buttonId, buttonSize, userPledgeName, linkText);
-  feedCode = sprintf(feedCodeTemplate, buttonId, buttonSize, userPledgeName, linkText);
+  updatePreview();
   
-  $('#fan_belt .button-code-block').text(beltCode);
-  $('#fan_belt .button-preview').html(beltCode);
-  
-  $('#testimonials .button-code-block').text(feedCode);
-  $('#testimonials .button-preview').html(feedCode);
-  
+  $('input#permalink_url').on('keyup', updatePreview);
+  $('input#width').on('keyup', updatePreview);
 });
