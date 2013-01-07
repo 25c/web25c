@@ -36,8 +36,6 @@ en:
       
   form:
     submit: Submit
-
-  home:
     
   publisher:
     payout:
@@ -49,7 +47,7 @@ en:
         dwolla_email: Dwolla E-mail
         dwolla_email_confirmation: Confirm Dwolla E-mail
         submit: Send Request
-        received: You have %{total_amount} in pledges, of which %{funded_amount} so far are funded 25c points. (You can use the messaging function on your dashboard to remind pledgers to fund their points!)
+        received: "You have %{total_amount} in pledges, of which %{funded_amount} so far are funded 25c points. (You can use the messaging function on your dashboard to remind pledgers to fund their points!)"
         too_low_p1: "Once you have reached a minimum of $10 in (funded) 25c points, get set up to receive pay-outs."
         too_low_p2: "In order to receive more 25c points, consider the following: add more +25 Buttons to more pages in more prominent locations; advertise your pages; tell your friends about your pages on Facebook, Twitter, or email lists.  (25c provides a transactional platform but it is up to you to promote your cause!)"
         provide_dwolla_email: "We minimize transactional expense by using ACH payments or Dwolla for delivering pay-outs.  There are no fees for maintaining an account with Dwolla and receiving sub-$10 payments.  If you use Dwolla, we can pay you out quarter by quarter.  If you use ACH, we require a minimum of $10.  Please provide and verify your ACH bank account or Dwolla account information:"
@@ -78,11 +76,11 @@ en:
         testimonials_description: A user commenting system where users can promote the visibility of individual notes through giving points. This system can either replace your existing user commenting system or be placed on top of it to feature a limited selection of top fan's notes.
       new:
         title: Add Widget
-        instructions: Use the tool below to add widgets to your website or blog. To place a widget, fill out the widget fields and copy & paste the source code provided.
+        instructions: "Use the tool below to add widgets to your website or blog. To place a widget, fill out the widget fields and copy & paste the source code provided."
         back: Back to Widgets
       edit:
         title: Edit Widget
-        instructions: Use the tool below to edit your existing widget. To place the widget, copy-paste the source code provided.
+        instructions: "Use the tool below to edit your existing widget. To place the widget, copy-paste the source code provided."
         back: Back to Widgets
         fan_belt: Fan Belt
         testimonials: Testimonials
@@ -99,7 +97,7 @@ en:
         save: Save
         cancel: Cancel
         preview_title: Preview
-        code_title: Code (Copy & paste into your web page)
+        code_title: "Code (Copy & paste into your web page)"
 
   tipper:
     payment:
@@ -113,8 +111,8 @@ en:
         item_name: "25c Pledges Payment"
       payment_success:
         title: Payment Completed
-        message_p1: Your %{amount} payment has been successfully processed.
-        message_p2: Thank you for paying %{amount}.
+        message_p1: "Your %{amount} payment has been successfully processed."
+        message_p2: "Thank you for paying %{amount}."
         message_p3: Greatly appreciated!
       payment_failure:
         title: Payment Error
@@ -184,16 +182,16 @@ en:
         success: Your purchase is complete!
         use_saved_card: "Use the following saved credit card:"
         expires: "Expires: %{expiration}"
-        or_html: or %{use_new_card}...
+        or_html: "or %{use_new_card}..."
         use_new_card: enter a new credit card number
         
   home:
     index:
-      title: 25c - Turn your fans into sponsors.
-      meta_description: 25c - Turn fans into sponsors.
-      tagline: Engaging fans to be sponsors.
-      value_prop: 25c: Use our widgets to engage your website's fans to support you directly.
-      description_html: <p>25c widgets give your top fans an edge in being seen and heard a bit more than regular users.  By giving 25c points, some of which are purchased just like in a game.  Another revenue stream for creators and publishers.<p>Plus you get to establish a stronger connection with your top fans.</p>
+      title: "25c - Turn your fans into sponsors."
+      meta_description: "25c - Turn fans into sponsors."
+      tagline: "Engaging fans to be sponsors."
+      value_prop: "25c: Use our widgets to engage your website's fans to support you directly."
+      description_html: "<p>25c widgets give your top fans an edge in being seen and heard a bit more than regular users.  By giving 25c points, some of which are purchased just like in a game.  Another revenue stream for creators and publishers.<p>Plus you get to establish a stronger connection with your top fans.</p>"
       add_now: Embed this widget into your site now
       works_with: 25c works with
       get_started: Get started now
@@ -202,7 +200,7 @@ en:
       title: Page Not Found
       no_page_found: "The page <b>%{path}</b> was not found on this server. Please check the URL and try again, or %{return_home}."
       return_home: click here to return to the homepage
-
+  
     blog_header: 
       title: 25c Blog
       meta_description: Get the latest news about 25c on the blog.
@@ -232,7 +230,7 @@ en:
       payout: Request Payout
       dashboard: Dashboard
       get_points: Get points!
-      greeting: Hi, %{user}!
+      greeting: "Hi, %{user}!"
     footer:
       about: About
       faq: FAQ
@@ -256,7 +254,7 @@ en:
       forgot_password_instructions: Enter the email address you registered with and press Reset Password to receive an email with a link that you can use to set a new password.
       join_free: Register for FREE!
       submit: "Sign In"
-      register: To register a new account, fill out the following form.
+      register: "To register a new account, fill out the following form."
     form:
       sign_in_with: "Please sign in via Facebook:"
       join_free_instructions: Register instantly by signing into Facebook or Google!
@@ -300,7 +298,7 @@ en:
       button_description_default: "Click to give a 25c point."
       add_project_content: "Add an image or video:"
       save_video: Link Youtube
-      pledge_to: Give a 25 to %{name}
+      pledge_to: "Give a 25 to %{name}"
       enter_button_title: Name the purpose for the tips
       enter_button_description: "Describe what the tips are for:"
       remove_video: Remove Video
@@ -364,7 +362,7 @@ en:
       submit_email: "Submit"
       email_taken: "That e-mail address has been taken. Please choose another."
       email_invalid: "That e-mail address is not valid."
-
+  
   invites:
     show:
       invited_by: "25c user %{user} is sharing tips with you!"
@@ -376,7 +374,7 @@ en:
       accept: "Accept!"
     update:
       success: "Invitation accepted! Shared points will appear under Pledges Received."
-
+  
   user_mailer:
     fund_reminder:
       subject: "Funding the pledges you made"
