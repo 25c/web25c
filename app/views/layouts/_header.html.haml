@@ -11,21 +11,10 @@
           %li= link_to t('.dashboard'), tipper_dashboard_url
           %li= link_to t('.get_points'), tipper_points_url
       %ul.nav.pull-right
-        %li.dropdown
-          %a.dropdown-toggle{ :href => '#', :'data-toggle' => 'dropdown' }
-            %span.greeting= t '.greeting', :user => current_user.display_name
-            = image_tag(current_user.get_thumb, :class => 'img-circle')
-            %b.caret
-          %ul.dropdown-menu
-            - if current_user.role == 'publisher'
-              %li= link_to t('.dashboard'), publisher_dashboard_url
-              %li= link_to t('.get_button'), publisher_widgets_url
-              %li= link_to t('.payout'), publisher_payout_url
-              %li= link_to t('.sign_out'), sign_out_url, :id => 'sign-out'
-            - else
-              %li= link_to t('.dashboard'), tipper_dashboard_url
-              %li= link_to t('.payment'), tipper_payment_url
-              %li= link_to t('.sign_out'), sign_out_url, :id => 'sign-out'
+        %li.nav-text
+          = image_tag(current_user.get_thumb, :class => 'img-circle')
+          %span.greeting= t '.greeting', :user => current_user.display_name
+          %span.sign-out (#{link_to t('.sign_out'), sign_out_url, :id => 'sign-out'})
     - else
       %ul.nav.pull-right
         = link_to t('.sign_in'), sign_in_path

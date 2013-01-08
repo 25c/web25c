@@ -10,7 +10,8 @@ Web25c::Application.routes.draw do
 
   match 'auth/dwolla/callback' => 'home/payout#index', :as => :dwolla_auth_callback
   
-  match 'register' => 'users#create', :via => :post, :as => :register
+  match 'sign-up' => 'users#new', :via => :get, :as => :register
+  match 'sign-up' => 'users#create', :via => :post
 
   match 'sign-in' => 'sessions#new', :as => :sign_in, :via => :get
   match 'sign-in' => 'sessions#create', :via => :post
@@ -67,12 +68,7 @@ Web25c::Application.routes.draw do
   namespace :publisher do
     
     # Widgets
-    match 'widgets' => 'widgets#index', :as => :widgets
-    match 'widgets/new' => 'widgets#new', :as => :new_widget, :via => :get
-    match 'widgets/new' => 'widgets#create', :via => :post
-    match 'widgets/edit/:uuid' => 'widgets#edit', :as => :edit_widget, :via => :get
-    match 'widgets/edit/:uuid' => 'widgets#update', :via => :put
-    match 'widgets/delete/:uuid' => 'widgets#destroy', :as => :delete_widget
+    resources :widgets, :as => :buttons, :except => [ :new, :edit ]
     
     # Revenue Sharing
     match 'share_email' => 'widgets#share_email', :as => :share_email, :via => :put

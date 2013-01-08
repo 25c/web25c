@@ -1,21 +1,17 @@
 class Publisher::WidgetsController < Publisher::PublisherController
 
   def index
-    @widgets = self.current_user.buttons
-  end
-  
-  def new
-    @user = self.current_user
-    @button = Button.new
-    @invites = []
+    @widgets = self.current_user.buttons.order('created_at DESC')    
+    @widget = Button.new
   end
   
   def create
     @user = self.current_user
-    @button = @user.buttons.new(params[:button])
+    @widget = @user.buttons.new(params[:button])
+    @widget.widget_type = 'testimonials'
     @invites = []
     
-    if @button.save
+    if @widget.save
       
       unless params[:new_invites].nil? or params[:new_invites].empty?
         params[:new_invites].each do |k,v|
@@ -25,41 +21,42 @@ class Publisher::WidgetsController < Publisher::PublisherController
         end
       end
       
-      redirect_to publisher_widgets_path
+      redirect_to publisher_button_path(@widget)
       
     else
-      # flash[:alert] = @button.errors.full_messages
-      render :new
+      puts @widget.errors.inspect
+      @widgets = self.current_user.buttons.order('created_at DESC')    
+      render :index
     end
     
   end
   
-  def edit
+  def show
     @user = self.current_user
-    @button = @user.buttons.find_by_uuid(params[:uuid])
-    @invites = @button.invites.where(:state => Invite::State::OPEN)
+    @widget = @user.buttons.find_by_uuid(params[:id])
+    @invites = @widget.invites.where(:state => Invite::State::OPEN)
   end
   
   def update
     
-    @button = current_user.buttons.where(:uuid => params[:uuid])[0]
-    if @button.update_attributes(params[:button])
+    @widget = current_user.buttons.where(:uuid => params[:id])[0]
+    if @widget.update_attributes(params[:button])
       
-      unless @button.share_users.nil?
+      unless @widget.share_users.nil?
         new_share_users = []
         unless params[:existing_shares].nil? or params[:existing_shares].empty?
-          @button.share_users.each do |share|
+          @widget.share_users.each do |share|
             user = User.find(share.id)
             if not params[:existing_shares].nil? and params[:existing_shares].include?(user.uuid)
               new_share_users.push(share)
             end
           end
         end
-        @button.share_users = new_share_users
-        @button.save!
+        @widget.share_users = new_share_users
+        @widget.save!
       end
       
-      invites = @button.invites.where(:state => Invite::State::OPEN)
+      invites = @widget.invites.where(:state => Invite::State::OPEN)
       
       unless invites.empty?
         invites.each do |invite|
@@ -73,15 +70,16 @@ class Publisher::WidgetsController < Publisher::PublisherController
         params[:new_invites].each do |k,v|
           email = params[:share_emails][k]
           amount = params[:share_amounts][k]
-          @button.share_invite(email, amount)
+          @widget.share_invite(email, amount)
         end
       end
       
-      redirect_to publisher_widgets_path
+      redirect_to publisher_button_path(@widget), :notice => t('publisher.widgets.update.success')
       
     else
-      # flash[:alert] = @button.errors.full_messages
-      render :edit, :uuid => params[:uuid]
+      @user = self.current_user
+      @invites = @widget.invites.where(:state => Invite::State::OPEN)
+      render :show
     end
   end
   

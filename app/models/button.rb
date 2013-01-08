@@ -5,16 +5,16 @@ class Button < ActiveRecord::Base
   has_many :clicks
   has_many :invites
     
-  attr_accessible :title, :description, :pledge_message, :widget_type, :additional_parameters
+  attr_accessible :title, :website_url, :description, :pledge_message, :widget_type, :additional_parameters
   
   serialize :share_users, JSON  
   serialize :additional_parameters, JSON
   
+  validates :title, :presence => true
+  validates :website_url, :presence => true
   validates :widget_type, :inclusion => { :in => WIDGET_TYPES }
     
   before_create :generate_uuid
-  
-  validates :widget_type, :inclusion => { :in => WIDGET_TYPES }
     
   def to_param
     self.uuid
@@ -23,6 +23,15 @@ class Button < ActiveRecord::Base
   def share_invite(email, amount)
     if not email.blank? and amount.to_i > 0
       self.invites.create(:email => email, :share_amount => amount.to_i)
+    end
+  end
+
+  def website_host
+    begin
+      @website_url ||= URI.parse(self.website_url)
+      @website_url.host
+    rescue
+      ""
     end
   end
   

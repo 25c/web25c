@@ -92,6 +92,12 @@ body#widget-sign-in {
   }
 }
 
+body.sessions.new {
+  .form-submit {
+    text-align: left;
+  }
+}
+
 .agreement {
   font-size: 11px;
   font-style: italic;
