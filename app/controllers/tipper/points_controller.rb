@@ -24,13 +24,13 @@ class Tipper::PointsController < Tipper::TipperController
   
   def checkout
     @amount_points = params[:amount].to_i
-    redirect_to tipper_points_path, :alert => t('tipper.points.checkout.invalid_amount') unless [ 20, 45, 100, 300, 750 ].include?(@amount_points)    
+    redirect_to tipper_points_path, :alert => t('tipper.points.checkout.invalid_amount') unless [ 20, 45, 100, 300, 700 ].include?(@amount_points)    
     @amount_values = {
       20 => 500,
       45 => 1000,
       100 => 2000,
       300 => 5000,
-      750 => 10000
+      700 => 10000
     }    
     if request.method == 'POST'
       begin
