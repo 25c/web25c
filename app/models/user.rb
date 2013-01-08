@@ -232,9 +232,9 @@ class User < ActiveRecord::Base
   def send_welcome_email
     if self.is_new and not self.email.blank?
       if self.role == "tipper" 
-        UserMailer.new_publisher_welcome(self.id).deliver
-      else 
         UserMailer.new_user_welcome(self.id).deliver
+      else 
+        UserMailer.new_publisher_welcome(self.id).deliver
       end
       self.editing = true
       self.is_new = false
