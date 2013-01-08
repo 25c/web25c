@@ -6,7 +6,7 @@
       %ul.nav.pull-left
         - if current_user.publisher?
           %li= link_to t('.dashboard'), publisher_dashboard_url
-          %li= link_to t('.widgets'), publisher_widgets_url
+          %li= link_to t('.widgets'), publisher_buttons_url
         - else
           %li= link_to t('.dashboard'), tipper_dashboard_url
           %li= link_to t('.get_points'), tipper_points_url
