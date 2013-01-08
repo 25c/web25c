@@ -35,16 +35,9 @@
             &laquo;
             = link_to t('.back_login'), '#', :class => 'login'
         #register.email-form{ :style => "display:#{@show_register ? 'block' : 'none'};" }
-          %p.sign-in-instructions= t '.register'
+          %p.sign-in-instructions= t 'users.new.instructions'
           .use-email
-            = simple_form_for @user, :url => register_path, :html => { :class => 'form form-horizontal' } do |f|
-              - if @popup
-                = hidden_field_tag 'popup', 'true'
-              = f.input :pledge_name
-              = f.input :email
-              = f.input :password
-              .control-group
-                .controls.form-submit= f.submit t('.submit'), :class => 'button'
+            = render :partial => 'users/form'
           %p.sign-in-instructions
             &laquo;
             = link_to t('.back_login'), '#', :class => 'login'

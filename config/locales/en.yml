@@ -261,7 +261,6 @@ en:
       forgot_password_instructions: Enter the email address you registered with and press Reset Password to receive an email with a link that you can use to set a new password.
       join_free: Register for FREE!
       submit: "Sign In"
-      register: "To register a new account, fill out the following form."
       publishers: Publishers
       tippers: Tippers
     form:
@@ -326,14 +325,12 @@ en:
       fb_share_description: Using 25c to tip online one quarter one click.
       button_code_title: "Help Raise Funds"
       button_code_description: "Add this code to your website or blog to collect tips for %{name}:"
+    new:
+      title: Publisher Sign up
+      instructions: "To register a new account, fill out the following form."
+
     form:
-      title: Update Account Settings
-      show_donations: Show pledges made and received on my profile page
-      edit_password_hint: Leave blank to keep current.
-      nickname_url: "Your nickname determines the URL of your pledge profile, such as: https://www.25c.com/example"
-      paypal_email: "Paypal Email"
-      paypal_email_hint: "We use PayPal to process payments."
-      submit: Update
+      sign_up: Sign up
     edit:
       title: 25c Account
       request_payout: "Request Payout"
