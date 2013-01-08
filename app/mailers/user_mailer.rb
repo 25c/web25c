@@ -134,7 +134,6 @@ class UserMailer < ApplicationMailer
   # >> welcome email for publisher when registering from website (and not from button click)
   def new_user_welcome(user_id)
     @user = User.find(user_id)
-    @utitle = url_title
 
     mail :to => recipient(@user.email), :subject => "Welcome to 25c!"
   end
