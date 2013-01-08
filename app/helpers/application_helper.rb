@@ -14,6 +14,26 @@ module ApplicationHelper
     end
   end
   
+  def age(datetime)
+    diff = Time.now.utc - datetime.utc
+    case
+    when diff < 60
+      t('application_helper.age.now')
+    when diff < 1.hour
+      t('application_helper.age.minutes', :minutes => number_with_precision(diff/1.minute, :precision => 0))
+    when diff < 24.hour
+      t('application_helper.age.hours', :hours => number_with_precision(diff/1.hour, :precision => 0))
+    when diff < 1.week
+      t('application_helper.age.days', :days => number_with_precision(diff/1.day, :precision => 0))
+    when diff < 1.month
+      t('application_helper.age.weeks', :weeks => number_with_precision(diff/1.week, :precision => 0))
+    when diff < 1.year
+      t('application_helper.age.months', :months => number_with_precision(diff/1.month, :precision => 0))
+    else
+      t('application_helper.age.years', :years => number_with_precision(diff/1.year, :precision => 1))
+    end
+  end
+  
   class BraintreeFormBuilder < ActionView::Helpers::FormBuilder
     include ActionView::Helpers::AssetTagHelper
     include ActionView::Helpers::TagHelper

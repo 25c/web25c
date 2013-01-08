@@ -46,21 +46,6 @@
       &:hover {
         background: transparent;
       }
-      &.dropdown-toggle {
-        .greeting {
-          margin-right: 40px;
-        }
-        img {
-          position: absolute;
-          top: -6px;
-          right: 15px;
-          width: 30px;
-          height: 30px;
-        }
-        b.caret {
-          margin-top: 9px;
-        }
-      }
     }
     &.pull-left {
       margin-left: 80px;
@@ -72,6 +57,27 @@
         &:first-child {
           border: 0;
         }
+      }
+    }
+    .nav-text {
+      .greeting {
+        font-family: $sansFontFamily;
+        font-weight: bold;
+        font-size: 12px;
+      }
+      .sign-out {
+        font-weight: normal;
+        font-size: 11px;
+        a {
+          font-weight: normal;
+          font-size: 11px;          
+        }
+      }
+      img {
+        position: relative;
+        top: -2px;
+        width: 30px;
+        height: 30px;
       }
     }
   }

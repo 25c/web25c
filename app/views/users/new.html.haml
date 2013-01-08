@@ -1,0 +1,10 @@
+- content_for :title, t('.title')
+
+.padded
+  %h1= yield :title
+  %p= t '.instructions'
+  = render :partial => 'users/form'
+  %form.form-horizontal
+    .control-group
+      .controls= t 'sessions.form..agreement_html', :terms => link_to(t('sessions.form.terms'), terms_path, :target => "blank"), :privacy => link_to(t('sessions.form.privacy'), privacy_path, :target => "blank")
+  

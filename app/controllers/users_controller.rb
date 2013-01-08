@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
   
-  before_filter :require_signed_in, :except => [:show, :create, :tip]
+  before_filter :require_signed_in, :except => [:new, :show, :create, :tip]
   before_filter :check_user_email, :except => [ :user_agremeent, :update, :sign_in, :sign_out, :sign_in_callback, :tip ]
+  
+  def new
+    redirect_to publisher_dashboard_path if self.signed_in?
+    
+    @user = User.new
+    @user.role = 'publisher'    
+  end
 
   def create
     @user = User.new(params[:user])
@@ -10,13 +17,7 @@ class UsersController < ApplicationController
       self.current_user = @user
       redirect_to_session_redirect_path(publisher_dashboard_path, :notice => t('users.create.success'))
     else
-      @show_register = true
-      @popup = params[:popup]
-      if @popup
-        render 'users/tip', :layout => 'popup'
-      else
-        render 'sessions/new'
-      end
+      render :new
     end
   end
   

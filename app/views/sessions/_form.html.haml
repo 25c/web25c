@@ -6,8 +6,6 @@
 
   %p= raw t('.works_with')
   %p
-    = raw t('.agreement_text')
-    25c #{link_to t('.terms'), terms_path, :target => "blank"}, 
-    #{link_to t('.privacy'), privacy_path, :target => "blank"}
+    = t '.agreement_html', :terms => link_to(t('.terms'), terms_path, :target => "blank"), :privacy => link_to(t('.privacy'), privacy_path, :target => "blank")
 
     
