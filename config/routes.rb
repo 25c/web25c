@@ -66,28 +66,17 @@ Web25c::Application.routes.draw do
   end
   
   namespace :publisher do
-    
+    # Dashboard
+    root :to => 'dashboard#index', :as => :dashboard    
     # Widgets
     resources :widgets, :as => :buttons, :except => [ :new, :edit ]
+    # Account
+    resource :account, :as => :user, :only => [ :show, :update ]
     
     # Revenue Sharing
     match 'share_email' => 'widgets#share_email', :as => :share_email, :via => :put
     match 'cancel_email' => 'widgets#cancel_email', :as => :cancel_email, :via => :delete
-    match 'stop_share' => 'widgets#stop_share', :as => :stop_share, :via => :delete
-    
-    # Dashboard
-    match '' => 'dashboard#index', :as => :dashboard
-
-    # Payout
-    match 'payout' => 'payout#index', :as => :payout
-    match 'create_payment' => 'payout#create_payment', :as => :create_payment, :via => :post
-    
-    # Account
-     match 'account' => 'account#edit', :as => :account, :via => :get
-      
-    match 'publisher/profile' => 'users#profile', :as => :publisher_profile
-    # match 'home/choose_nickname' => 'users#choose_nickname', :as => :choose_nickname
-    
+    match 'stop_share' => 'widgets#stop_share', :as => :stop_share, :via => :delete    
   end
   
   namespace :admin do

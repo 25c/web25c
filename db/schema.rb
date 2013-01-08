@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130107222107) do
+ActiveRecord::Schema.define(:version => 20130108232722) do
 
   create_table "buttons", :force => true do |t|
     t.string   "uuid",                                  :null => false
@@ -54,16 +54,16 @@ ActiveRecord::Schema.define(:version => 20130107222107) do
   add_index "payments", ["user_id"], :name => "index_payments_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "uuid",                                         :null => false
+    t.string   "uuid",                                           :null => false
     t.string   "email"
     t.string   "password_digest"
     t.string   "facebook_uid"
     t.string   "facebook_code"
     t.string   "facebook_access_token"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
-    t.boolean  "is_admin",               :default => false,    :null => false
-    t.integer  "balance_paid",           :default => 0,        :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+    t.boolean  "is_admin",               :default => false,      :null => false
+    t.integer  "balance_paid",           :default => 0,          :null => false
     t.string   "nickname"
     t.string   "first_name"
     t.string   "last_name"
@@ -89,16 +89,20 @@ ActiveRecord::Schema.define(:version => 20130107222107) do
     t.boolean  "has_seen_receive_page",  :default => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
-    t.string   "role",                   :default => "tipper", :null => false
+    t.string   "role",                   :default => "tipper",   :null => false
     t.string   "stripe_id"
     t.string   "stripe_last4"
     t.boolean  "has_valid_card",         :default => false
     t.boolean  "is_suspended",           :default => false
-    t.integer  "balance_free",           :default => 0,        :null => false
-    t.integer  "total_given",            :default => 0,        :null => false
+    t.integer  "balance_free",           :default => 0,          :null => false
+    t.integer  "total_given",            :default => 0,          :null => false
     t.string   "stripe_type"
     t.integer  "stripe_exp_month"
     t.integer  "stripe_exp_year"
+    t.string   "ach_name"
+    t.string   "ach_account_number"
+    t.string   "ach_routing_number"
+    t.string   "ach_type",               :default => "checking", :null => false
   end
 
   add_index "users", ["facebook_uid"], :name => "index_users_on_facebook_uid", :unique => true
