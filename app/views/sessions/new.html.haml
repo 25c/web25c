@@ -18,7 +18,8 @@
                 = hidden_field_tag 'popup', 'true'
               = f.input :email
               = f.input :password
-              .form-submit= f.submit t('.submit'), :class => 'button'
+              .control-group
+                .controls.form-submit= f.submit t('.submit'), :class => 'button'
             %p.sign-in-instructions
               = link_to t('.forgot_password'), '#', :class => 'forgot-password'
               &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -28,7 +29,8 @@
           = simple_form_for User.new, :url => request_password_path, :remote => true, :html => { :'data-type' => :json, :class => 'form form-horizontal' } do |f|
             .alert{ :style => 'display:none;' } &nbsp;
             = f.input :email
-            .form-submit= f.submit t('.reset'), :class => 'button'
+            .control-group
+              .controls.form-submit= f.submit t('.reset'), :class => 'button'
           %p.sign-in-instructions
             &laquo;
             = link_to t('.back_login'), '#', :class => 'login'
@@ -41,7 +43,8 @@
               = f.input :pledge_name
               = f.input :email
               = f.input :password
-              .form-submit= f.submit t('.submit'), :class => 'button'
+              .control-group
+                .controls.form-submit= f.submit t('.submit'), :class => 'button'
           %p.sign-in-instructions
             &laquo;
             = link_to t('.back_login'), '#', :class => 'login'
