@@ -31,6 +31,9 @@ Web25c::Application.routes.draw do
   match 'terms' => 'home#terms', :as => :terms
   match 'privacy' => 'home#privacy', :as => :privacy
   
+  match 'blog/header' => 'home#blog_header', :as => :blog_header
+  match 'blog/footer' => 'home#blog_footer', :as => :blog_footer
+  
   # endpoints for Facebook Open Graph links
   match 'notes/:uuid' => 'open_graph#note', :as => :note
   match 'webpages/:uuid' => 'open_graph#webpage', :as => :webpage
