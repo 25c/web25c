@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   # "Coming Soon" placeholder page
-  before_filter :show_placeholder_if_production
+  # before_filter :show_placeholder_if_production
   before_filter :authenticate_if_staging  
   helper_method :signed_in?, :current_user, :url_base, :mobile_device?
   
