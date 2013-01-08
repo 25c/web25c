@@ -231,7 +231,7 @@ en:
       sign_in_with: "Sign in with:"
       or: "Or: "
       sign_in: Sign In
-      sign_out: Sign Out
+      sign_out: sign out
       receive_pledges: Receive 25c Points
       widgets: Widgets
       payout: Request Payout
