@@ -262,6 +262,8 @@ en:
       join_free: Register for FREE!
       submit: "Sign In"
       register: "To register a new account, fill out the following form."
+      publishers: Publishers
+      tippers: Tippers
     form:
       sign_in_with: "Please sign in via Facebook:"
       join_free_instructions: Register instantly by signing into Facebook or Google!
@@ -271,7 +273,7 @@ en:
       works_with: ""
       terms: 25c User Terms
       privacy: 25c Privacy Policy       
-      agreement_text: "By continuing, you agree to the %{terms} and %{privacy}."
+      agreement_html: "By continuing, you agree to the %{terms} and %{privacy}."
     request_password:
       not_found: The email address you entered was not found.
       email_sent: An email with a reset link has been sent to the specified address.  
