@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   def create
     if request.env['omniauth.auth']
       result = User.from_omniauth(request.env['omniauth.auth'])
-      is_new = result[:is_new]
+      is_new = result[:is_new]      
       @user = result[:user]
       @popup = request.env['omniauth.params']['display'] == 'popup'
       self.current_user = @user

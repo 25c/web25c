@@ -87,7 +87,16 @@ en:
         edit: Edit
       show:
         title: Edit Widget
-        settings: Site-wide Settings
+        settings: Widget Settings
+        preview_title: Preview
+        code_title: "Code (Copy & paste into your web page)"
+        page_config: Per-page Configuration
+        instructions: "For each unique page in your website (i.e. each article, blog post, etc) where you wish to embed the widget, specify its permanent url."
+        permalink_url: Permanent URL
+        title: Content title (optional, for messaging fans)
+        width: Width in px (optional, between 400px and 1000px, default 600px)
+        fix_error: Configure the permanent URL above to get the code.
+      form:
         share_title: Share Points
         with: with
         sharing: "%{amount} with %{name} (Sharing)"
@@ -95,14 +104,7 @@ en:
         share: Share
         with: with
         add_share_user: Add Share User
-        save: Save Site-wide Settings
-        preview_title: Preview
-        code_title: "Code (Copy & paste into your web page)"
-        page_config: Per-page Configuration
-        instructions: "For each unique page in your website (i.e. each article, blog post, etc) where you wish to embed the widget, specify its permanent url."
-        permalink_url: Permanent URL
-        width: Width in px (optional, default 600px)
-        fix_error: Configure the permanent URL above to get the code.
+        save: Save Widget Settings
       update:
         success: Your changes have been saved!
 
@@ -164,8 +166,7 @@ en:
     points:
       index:
         buy_points: Buy points
-        about_html: "<p>Points are a quick and easy way to show your support for your favorite sites. Buy points, then give them out anywhere you see a 25c widget.</p><p>The more points you give, the higher your rank. %{learn_more}</p>"
-        learn_more: Learn more about points.
+        about_html: "<p>Points are a quick and easy way to show your support for your favorite sites. Buy points, then give them out anywhere you see a 25c widget.</p><p>The more points you give, the higher your rank.</p>"
         points_20: 20 points
         points_45: 45 points
         points_100: 100 points
@@ -194,12 +195,12 @@ en:
         
   home:
     index:
-      title: "25c - Turn your fans into sponsors."
+      title: "25c - Turn fans into sponsors."
       meta_description: "25c - Turn fans into sponsors."
-      tagline: "Engaging fans to be sponsors."
+      tagline: "Turn fans into sponsors."
       value_prop: "25c: Use our widgets to engage your website's fans to support you directly."
       description_html: "<p>25c widgets give your top fans an edge in being seen and heard a bit more than regular users.  By giving 25c points, some of which are purchased just like in a game.  Another revenue stream for creators and publishers.<p>Plus you get to establish a stronger connection with your top fans.</p>"
-      add_now: Embed this widget into your site now
+      add_now: Embed this widget into your site
       works_with: 25c works with
       get_started: Get started now
     
@@ -284,7 +285,23 @@ en:
       new_password: "Please enter your new password in the form below."
       submit: Submit
       success: Your new password has been saved.
-  
+    widget_intro:
+      welcome: "Welcome, %{name}! Thanks for signing up with 25c."
+      how: How does it work?
+      explain_1: On any website you see the 25c Widget, give as many points as you'd like!
+      explain_2: If you give the most points, you're featured on the widget as a top sponsor! You can add more points anytime and increase your ranking.
+      explain_3: You have 10 points for signing up! Buy more points anytime on %{link}.
+      link: 'the 25c points page'
+      buy_now: 'Buy Points Now!'
+      close: Close this window
+    widget_new:
+      tagline: "Turn fans into sponsors."
+      explain: "25c is the fastest way to seamlessly and securely give small amounts of money to your favorite websites."
+      close: Close this window
+      fb_sign_in: Sign in with Facebook
+    widget_signed_in:
+      welcome: Welcome, %{name}! You are now ready to start tipping.
+      close: Close this window
   users:
     show:
       title: "'s 25c Profile"

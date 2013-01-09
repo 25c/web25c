@@ -39,7 +39,10 @@ class Publisher::WidgetsController < Publisher::PublisherController
   
   def update
     
-    @widget = current_user.buttons.where(:uuid => params[:id])[0]
+    @user = self.current_user
+    @widget = @user.buttons.where(:uuid => params[:id])[0]
+    @invites = @widget.invites.where(:state => Invite::State::OPEN)
+    
     if @widget.update_attributes(params[:button])
       
       unless @widget.share_users.nil?
@@ -74,12 +77,12 @@ class Publisher::WidgetsController < Publisher::PublisherController
         end
       end
       
-      redirect_to publisher_button_path(@widget), :notice => t('publisher.widgets.update.success')
+      # redirect_to publisher_button_path(@widget), :notice => t('publisher.widgets.update.success')
+      render :partial => 'form'
       
     else
-      @user = self.current_user
-      @invites = @widget.invites.where(:state => Invite::State::OPEN)
-      render :show
+      # render :show
+      render :partial => 'form', :status => 406
     end
   end
   
