@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   validates :ach_type, :inclusion => { :in => ACH_TYPES }
   
   before_validation :preprocess_fields
-  before_create :generate_uuid
+  before_create :generate_uuid, :assign_initial_balance
   
   after_save :send_welcome_email
   
@@ -228,6 +228,10 @@ class User < ActiveRecord::Base
   
   def generate_uuid
     self.uuid = UUID.new.generate(:compact)
+  end
+  
+  def assign_initial_balance
+    self.balance_free = 10
   end
   
   def send_welcome_email
