@@ -251,16 +251,17 @@ en:
   sessions:
     new:
       title: "Please Sign In"
+      publishers: Publishers
+      tippers: Tippers
+    form_publishers:
       invalid_login: Invalid email and/or password.
-      sign_in: Sign in with your 25c account email and password.
+      sign_in: Sign in with your 25c publisher account email and password.
       back_login: Back to Sign in...
       reset: Reset Password
       forgot_password: Forgot your password?
       forgot_password_instructions: Enter the email address you registered with and press Reset Password to receive an email with a link that you can use to set a new password.
       join_free: Register for FREE!
-      submit: "Sign In"
-      publishers: Publishers
-      tippers: Tippers
+      submit: "Sign In"      
     form:
       sign_in_with: "Please sign in via Facebook:"
       join_free_instructions: Register instantly by signing into Facebook or Google!
@@ -369,7 +370,7 @@ en:
   
   invites:
     show:
-      invited_by: "25c user %{user} is sharing tips with you!"
+      invited_by: "25c user %{user} is sharing points with you!"
       share: "%{user} has decided to share points with you!"
       percentage: "Percentage shared: %{percentage}"      
       sent: "You sent this invite on %{date}."
@@ -377,7 +378,7 @@ en:
       closed: "Sorry, but this invite has been withdrawn."
       accept: "Accept!"
     update:
-      success: "Invitation accepted! Shared points will appear under Pledges Received."
+      success: "Invitation accepted! Shared points will appear under Points Received."
   
   user_mailer:
     fund_reminder:

@@ -1,12 +1,10 @@
 - content_for :title, t('.invited_by', :user => @invite.button.user.display_name)
 
-%section
-  .page-header
-    %h1{ :style => 'text-align:center' }= yield :title
-    
-  .row
-    .span4.offset4
-      .well{ :style => 'text-align:center' }
+.row
+  .span8.offset4
+    .padded
+      .center
+        %h1= yield :title
         %p= image_tag @invite.button.user.picture.url(:thumb)
         %p= t '.share', :user => @invite.button.user.display_name
         %p= t '.percentage', :percentage => number_to_percentage(@invite.share_amount, :precision => 0)
@@ -20,6 +18,6 @@
           - else
             = form_for @invite do |f|
               %br/
-              = f.submit t('.accept'), :class => 'btn btn-large btn-strong'
+              = f.submit t('.accept'), :class => 'button'
         - else
-          = render :partial => 'layouts/sign_in_form'
+          = render :partial => 'sessions/form_publishers'

@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
         redirect_to_session_redirect_path root_path
       end
     else
-      @user = User.find_by_email_ci(params[:user][:email])
+      @user = User.where(['role=? AND LOWER(email)=LOWER(?)', 'publisher', params[:user][:email]]).first
       if @user and @user.authenticate(params[:user][:password])
         self.current_user = @user
         redirect_to_session_redirect_path root_path
@@ -50,7 +50,7 @@ class SessionsController < ApplicationController
   end
   
   def request_password
-    user = User.find_by_email(params[:user][:email])
+    user = User.where(['role=? AND LOWER(email)=LOWER(?)', 'publisher', params[:user][:email]]).first
     if user.nil?
       render :json => { :result => 'error', :message => t('sessions.request_password.not_found') }
     else
