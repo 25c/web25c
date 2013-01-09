@@ -10,7 +10,7 @@
         %p= t '.percentage', :percentage => number_to_percentage(@invite.share_amount, :precision => 0)
         - if signed_in?
           - if @invite.button.user == current_user
-            %p= t '.sent', :date => l(@invite.created_at, :format => :date_only)
+            %p= t '.sent', :date => l(@invite.created_at, :format => :date_short)
           - elsif @invite.state == Invite::State::ACCEPTED
             %p= t '.already_used'
           - elsif @invite.state == Invite::State::CLOSED
