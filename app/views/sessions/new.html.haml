@@ -7,40 +7,7 @@
   .span8
     .padded
       %h2= t '.publishers'
-      #sign-in.center
-        #login.email-form{ :style => "display:#{@show_register ? 'none' : 'block'};" }
-          %p.buffer.sign-in-instructions= t '.sign_in'
-          - if @show_login_error
-            .alert.alert-error= t '.invalid_login'
-          .use-email
-            = simple_form_for User.new, :url => sign_in_path, :html => { :class => 'form form-horizontal' } do |f|
-              - if @popup
-                = hidden_field_tag 'popup', 'true'
-              = f.input :email
-              = f.input :password
-              .control-group
-                .controls.form-submit= f.submit t('.submit'), :class => 'button'
-            %p.sign-in-instructions
-              = link_to t('.forgot_password'), '#', :class => 'forgot-password'
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              = link_to t('.join_free'), '#', :class => 'register'
-        #forgot-password.email-form{ :style => 'display:none;' }
-          %p.sign-in-instructions= t '.forgot_password_instructions'
-          = simple_form_for User.new, :url => request_password_path, :remote => true, :html => { :'data-type' => :json, :class => 'form form-horizontal' } do |f|
-            .alert{ :style => 'display:none;' } &nbsp;
-            = f.input :email
-            .control-group
-              .controls.form-submit= f.submit t('.reset'), :class => 'button'
-          %p.sign-in-instructions
-            &laquo;
-            = link_to t('.back_login'), '#', :class => 'login'
-        #register.email-form{ :style => "display:#{@show_register ? 'block' : 'none'};" }
-          %p.sign-in-instructions= t 'users.new.instructions'
-          .use-email
-            = render :partial => 'users/form'
-          %p.sign-in-instructions
-            &laquo;
-            = link_to t('.back_login'), '#', :class => 'login'
+      = render :partial => 'sessions/form_publishers'
   .span8
     .padded
       %h2= t '.tippers'

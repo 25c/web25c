@@ -9,53 +9,14 @@
     window.userPledgeName = '#{ @user.display_name }';
     window.buttonTitle = '#{ @widget.title.gsub("'", "\\\\'") }';
     window.emailDefaultText = 'user@example.com';
+    window.saveMessage ='#{ j t('publisher.widgets.update.success') }';
 
 .row
   .span5
     .split-left
       %h2= t '.settings'
-      = simple_form_for [ :publisher, @widget ] do |f|
-        = f.input :title, :required => false
-        = f.input :website_url, :required => false
-        .share-controls.control-group
-          %label.control-label= t('.share_title')
-          #share-users
-            - total_invites = 5
-            - unless @widget.share_users.blank?
-              - total_invites -= @widget.share_users.size
-              - @widget.share_users.each do |share|
-                - user = User.find_by_id(share['user'])
-                .share-container
-                  %input.share-checkbox{ :type => 'checkbox', :name => "existing_shares[]", 
-                    :value => user.uuid, :checked => true }
-                  %span= t('.sharing', 
-                    :amount => number_to_percentage(share['share_amount'], :precision => 0),
-                    :name => user.display_name)
-            
-            - unless @invites.empty?
-              - total_invites -= @invites.size
-              - @invites.each do |invite|
-                .share-container
-                  %input.share-checkbox{ :type => 'checkbox', :name => "existing_invites[]", 
-                    :value => invite.uuid, :checked => true }
-                  %span= t('.invited', 
-                    :amount => number_to_percentage(invite.share_amount, :precision => 0),
-                    :email => invite.email, :date => l(invite.created_at, :format => :date_short))
-
-            - (1..total_invites).each do |i|
-              .share-container.disabled{ :class => i == 1 ? '' : 'hide' }
-                %input.share-checkbox{ :type => 'checkbox', :name => "new_invites[#{i}]" }
-          
-                %span= t('.share')
-                %select.share-amount{ :type => 'text', :name => "share_amounts[#{i}]" }
-                  - ['10', '20', '30', '40', '50', '60', '70', '80', '90'].each do |amount|
-                    %option{ :value => amount } #{amount}%
-                %span= t('.with')
-                %input.share-email{ :type => 'text', :name => "share_emails[#{i}]", :value => "user@example.com"}
-              .clear
-          - if total_invites > 0
-            %a.add-invite.pointer= t('.add_share_user')
-        = f.submit t('.save'), :class => 'button'
+      #widget-form
+        = render :partial => "form"
   .span11
     .split-right
       %h2= t '.page_config'
@@ -65,6 +26,10 @@
           .controls
             = text_field_tag :permalink_url
             %span.help-block= t '.instructions'
+        .control-group
+          = label_tag :title, t('.title'), :class => 'control-label'
+          .controls
+            = text_field_tag :title
         .control-group
           = label_tag :width, t('.width'), :class => 'control-label'
           .controls

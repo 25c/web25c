@@ -5,6 +5,7 @@ en:
   activerecord:
     models:
       button: Widget
+      user: Account
     attributes:
       button:
         age: Age
@@ -16,6 +17,10 @@ en:
         amount_paid_value: Total Earned
       user:
         pledge_name: Name
+        ach_name: Name on account
+        ach_type: Account type
+        ach_account_number: Account number
+        ach_routing_number: Bank routing number
       invite:
         share_amount: Share
         email: Recipient Email
@@ -29,7 +34,11 @@ en:
         created_at: Date
         amount_points: Points
         amount_value: Amount
-        
+    values:
+      user:
+        ach_type:
+          checking: Checking
+          savings: Savings
   time:
     formats:
       date_short: "%b %-d"
@@ -57,23 +66,12 @@ en:
     submit: Submit
     
   publisher:
-    payout:
-      index:
-        title: Request Payout
-        contents: "25c Points Received:"
-        payout_amount: "Payout amount"
-        dwolla_title: Request payment through Dwolla
-        dwolla_email: Dwolla E-mail
-        dwolla_email_confirmation: Confirm Dwolla E-mail
-        submit: Send Request
-        received: "You have %{total_amount} in pledges, of which %{funded_amount} so far are funded 25c points. (You can use the messaging function on your dashboard to remind pledgers to fund their points!)"
-        too_low_p1: "Once you have reached a minimum of $10 in (funded) 25c points, get set up to receive pay-outs."
-        too_low_p2: "In order to receive more 25c points, consider the following: add more +25 Buttons to more pages in more prominent locations; advertise your pages; tell your friends about your pages on Facebook, Twitter, or email lists.  (25c provides a transactional platform but it is up to you to promote your cause!)"
-        provide_dwolla_email: "We minimize transactional expense by using ACH payments or Dwolla for delivering pay-outs.  There are no fees for maintaining an account with Dwolla and receiving sub-$10 payments.  If you use Dwolla, we can pay you out quarter by quarter.  If you use ACH, we require a minimum of $10.  Please provide and verify your ACH bank account or Dwolla account information:"
-        sent: You have been queued for receiving a pay-out of your 25c points.  You should be receiving the amount within 30 days provided no funder withdraws their funding during this time period.  Please check your bank account.
-        dashboard: Back to Dashboard
-        use_dwolla: We offer the use of ACH payments or Dwolla to save you money on your pay-outs.
-        dwolla_warning: Your Dwolla e-mail is invalid. Please try again.
+    accounts:
+      show:
+        account_details: Bank Details
+        account_instructions: "To receive payouts of your earned points, please enter your bank account details."
+      update:
+        success: Your account has been updated!
     dashboard:
       index:
         title: Dashboard
@@ -87,7 +85,16 @@ en:
         edit: Edit
       show:
         title: Edit Widget
-        settings: Site-wide Settings
+        settings: Widget Settings
+        preview_title: Preview
+        code_title: "Code (Copy & paste into your web page)"
+        page_config: Per-page Configuration
+        instructions: "For each unique page in your website (i.e. each article, blog post, etc) where you wish to embed the widget, specify its permanent url."
+        permalink_url: Permanent URL
+        title: Content title (optional, for messaging fans)
+        width: Width in px (optional, between 400px and 1000px, default 600px)
+        fix_error: Configure the permanent URL above to get the code.
+      form:
         share_title: Share Points
         with: with
         sharing: "%{amount} with %{name} (Sharing)"
@@ -95,14 +102,7 @@ en:
         share: Share
         with: with
         add_share_user: Add Share User
-        save: Save Site-wide Settings
-        preview_title: Preview
-        code_title: "Code (Copy & paste into your web page)"
-        page_config: Per-page Configuration
-        instructions: "For each unique page in your website (i.e. each article, blog post, etc) where you wish to embed the widget, specify its permanent url."
-        permalink_url: Permanent URL
-        width: Width in px (optional, default 600px)
-        fix_error: Configure the permanent URL above to get the code.
+        save: Save Widget Settings
       update:
         success: Your changes have been saved!
 
@@ -164,8 +164,7 @@ en:
     points:
       index:
         buy_points: Buy points
-        about_html: "<p>Points are a quick and easy way to show your support for your favorite sites. Buy points, then give them out anywhere you see a 25c widget.</p><p>The more points you give, the higher your rank. %{learn_more}</p>"
-        learn_more: Learn more about points.
+        about_html: "<p>Points are a quick and easy way to show your support for your favorite sites. Buy points, then give them out anywhere you see a 25c widget.</p><p>The more points you give, the higher your rank.</p>"
         points_20: 20 points
         points_45: 45 points
         points_100: 100 points
@@ -194,12 +193,12 @@ en:
         
   home:
     index:
-      title: "25c - Turn your fans into sponsors."
+      title: "25c - Turn fans into sponsors."
       meta_description: "25c - Turn fans into sponsors."
-      tagline: "Engaging fans to be sponsors."
+      tagline: "Turn fans into sponsors."
       value_prop: "25c: Use our widgets to engage your website's fans to support you directly."
       description_html: "<p>25c widgets give your top fans an edge in being seen and heard a bit more than regular users.  By giving 25c points, some of which are purchased just like in a game.  Another revenue stream for creators and publishers.<p>Plus you get to establish a stronger connection with your top fans.</p>"
-      add_now: Embed this widget into your site now
+      add_now: Embed this widget into your site
       works_with: 25c works with
       get_started: Get started now
     
@@ -237,7 +236,7 @@ en:
       payout: Request Payout
       dashboard: Dashboard
       get_points: Get points!
-      greeting: "Hi, %{user}!"
+      greeting_html: "Hi, %{user}!"
     footer:
       about: About
       faq: FAQ
@@ -253,16 +252,17 @@ en:
   sessions:
     new:
       title: "Please Sign In"
+      publishers: Publishers
+      tippers: Tippers
+    form_publishers:
       invalid_login: Invalid email and/or password.
-      sign_in: Sign in with your 25c account email and password.
+      sign_in: Sign in with your 25c publisher account email and password.
       back_login: Back to Sign in...
       reset: Reset Password
       forgot_password: Forgot your password?
       forgot_password_instructions: Enter the email address you registered with and press Reset Password to receive an email with a link that you can use to set a new password.
       join_free: Register for FREE!
-      submit: "Sign In"
-      publishers: Publishers
-      tippers: Tippers
+      submit: "Sign In"      
     form:
       sign_in_with: "Please sign in via Facebook:"
       join_free_instructions: Register instantly by signing into Facebook or Google!
@@ -284,7 +284,23 @@ en:
       new_password: "Please enter your new password in the form below."
       submit: Submit
       success: Your new password has been saved.
-  
+    widget_intro:
+      welcome: "Welcome, %{name}! Thanks for signing up with 25c."
+      how: How does it work?
+      explain_1: On any website you see the 25c Widget, give as many points as you'd like!
+      explain_2: If you give the most points, you're featured on the widget as a top sponsor! You can add more points anytime and increase your ranking.
+      explain_3: You have 10 points for signing up! Buy more points anytime on %{link}.
+      link: 'the 25c points page'
+      buy_now: 'Buy Points Now!'
+      close: Close this window
+    widget_new:
+      tagline: "Turn fans into sponsors."
+      explain: "25c is the fastest way to seamlessly and securely give small amounts of money to your favorite websites."
+      close: Close this window
+      fb_sign_in: Sign in with Facebook
+    widget_signed_in:
+      welcome: Welcome, %{name}! You are now ready to start tipping.
+      close: Close this window
   users:
     show:
       title: "'s 25c Profile"
@@ -371,7 +387,7 @@ en:
   
   invites:
     show:
-      invited_by: "25c user %{user} is sharing tips with you!"
+      invited_by: "25c user %{user} is sharing points with you!"
       share: "%{user} has decided to share points with you!"
       percentage: "Percentage shared: %{percentage}"      
       sent: "You sent this invite on %{date}."
@@ -379,7 +395,7 @@ en:
       closed: "Sorry, but this invite has been withdrawn."
       accept: "Accept!"
     update:
-      success: "Invitation accepted! Shared points will appear under Pledges Received."
+      success: "Invitation accepted! Shared points will appear under Points Received."
   
   user_mailer:
     fund_reminder:

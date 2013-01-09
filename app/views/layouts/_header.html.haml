@@ -13,7 +13,10 @@
       %ul.nav.pull-right
         %li.nav-text
           = image_tag(current_user.get_thumb, :class => 'img-circle')
-          %span.greeting= t '.greeting', :user => current_user.display_name
+          - if current_user.publisher?
+            %span.greeting= t '.greeting_html', :user => link_to(current_user.display_name, publisher_user_path)
+          - else
+            %span.greeting= t '.greeting_html', :user => current_user.display_name
           %span.sign-out (#{link_to t('.sign_out'), sign_out_url, :id => 'sign-out'})
     - else
       %ul.nav.pull-right

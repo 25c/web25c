@@ -1,14 +1,14 @@
 .padded
   .center.main-title
-    %h2 Reward the content you love.
-    %p 25c is the fastest way to seamlessly, securely give small amounts of money to your favorite websites.
+    %h2= t('home.index.tagline')
+    %p= t('.explain')
 
   .center
     = link_to "/auth/facebook?display=popup", :class => 'button', :id => 'sign-in-fb' do
       = image_tag "logos/fb-logo-f.png"
-      Sign in With Facebook
+      = t('.fb_sign_in')
     
     %p.agreement
-      = raw t('sessions.form.agreement_text', { :terms => link_to(t('sessions.form.terms'), terms_path, :target => "blank"), :privacy => link_to(t('sessions.form.privacy'), privacy_path, :target => "blank")})
+      = raw t('sessions.form.agreement_html', { :terms => link_to(t('sessions.form.terms'), terms_path, :target => "blank"), :privacy => link_to(t('sessions.form.privacy'), privacy_path, :target => "blank")})
     
-    %a.close-window Close this window
+    %a.close-window= t('.close')

@@ -9,7 +9,7 @@
     position: absolute;
     display: block;
     left: 20px;
-    top: 8px;
+    top: 9px;
     background: transparent image-url('logo-header.png');
     width: 41px;
     height: 29px;
@@ -41,7 +41,7 @@
     a {
       display: inline;
       font-family: $sansFontFamily;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: bold;
       &:hover {
         background: transparent;
@@ -63,7 +63,7 @@
       .greeting {
         font-family: $sansFontFamily;
         font-weight: bold;
-        font-size: 12px;
+        font-size: 13px;
       }
       .sign-out {
         font-weight: normal;

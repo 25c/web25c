@@ -32,14 +32,6 @@ class HomeController < ApplicationController
   end
   
   def about
-    user = User.find_by_email('rmr@25c.com')
-    unless Rails.env.production?
-      # dev / staging - if no rmr, then find someone else to use for the button
-      user = User.find_by_email('dev+staging@25c.com') if user.nil?
-      user = User.first if user.nil?
-    end
-    @button = user.buttons[0]
-    @profile_url = user.profile_url
   end
   
   def not_found
