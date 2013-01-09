@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   ROLES = %w(tipper publisher)
+  ACH_TYPES = %w(checking savings)
   
   require 'valid_email'
   
@@ -18,10 +19,8 @@ class User < ActiveRecord::Base
   attr_writer :editing
   attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, 
     :last_name, :picture, :show_donations, :has_agreed, :is_new, :auto_refill, :dwolla_email,
-    :dwolla_email_confirmation, :pledge_name, :has_seen_receive_page
-  attr_accessible :email, :password, :password_confirmation, :nickname, :about, :first_name, 
-    :last_name, :picture, :show_donations, :has_agreed, :is_new, :auto_refill, :dwolla_email,
-    :dwolla_email_confirmation, :pledge_name, :has_seen_receive_page, :is_admin, :as => :admin
+    :dwolla_email_confirmation, :pledge_name, :has_seen_receive_page, 
+    :ach_name, :ach_account_number, :ach_routing_number, :ach_type, :as => [ :default, :admin ]
   
   validates :email, :presence => true, :if => 'not linked?'
   validates :email, :uniqueness => { :case_sensitive => false, :scope => 'role' }, :allow_nil => true, :email => true
@@ -37,6 +36,8 @@ class User < ActiveRecord::Base
   
   validates :role, :inclusion => { :in => ROLES }
   
+  validates :ach_type, :inclusion => { :in => ACH_TYPES }
+  
   before_validation :preprocess_fields
   before_create :generate_uuid
   
@@ -48,7 +49,7 @@ class User < ActiveRecord::Base
     case auth['provider']
     when 'google_oauth2'
       user = User.find_by_google_uid(auth['uid'])
-      user = User.find_by_email_ci(auth['info']['email']) if user.nil? and not auth['info']['email'].blank?
+      user = User.where(['role=? AND LOWER(email)=LOWER(?)', 'tipper', auth['info']['email']]).first and not auth['info']['email'].blank?
       if user.nil?
         user = User.new(:password => SecureRandom.hex) if user.nil?
         is_new = true
@@ -66,7 +67,7 @@ class User < ActiveRecord::Base
       raise Exception.new("User not found in omniauth identity callback") if user.nil?
     when 'facebook'
       user = User.find_by_facebook_uid(auth['uid'])
-      user = User.find_by_email_ci(auth['info']['email']) if user.nil? and not auth['info']['email'].blank?
+      user = User.where(['role=? AND LOWER(email)=LOWER(?)', 'tipper', auth['info']['email']]).first if user.nil? and not auth['info']['email'].blank?
       if user.nil?
         user = User.new(:password => SecureRandom.hex) if user.nil?
         is_new = true
@@ -232,9 +233,9 @@ class User < ActiveRecord::Base
   def send_welcome_email
     if self.is_new and not self.email.blank?
       if self.role == "tipper" 
-        UserMailer.new_publisher_welcome(self.id).deliver
-      else 
         UserMailer.new_user_welcome(self.id).deliver
+      else 
+        UserMailer.new_publisher_welcome(self.id).deliver
       end
       self.editing = true
       self.is_new = false

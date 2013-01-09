@@ -32,7 +32,6 @@
     .split-left
       %h2
         = t '.current_balance', :balance => current_user.balance
-        %span (#{number_to_currency(current_user.balance_value)})
       - if current_user.has_valid_card
         %h2= t '.current_payment'
         .credit_card

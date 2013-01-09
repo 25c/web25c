@@ -10,7 +10,6 @@
           .stat-label= t('.points')
       %h2
         = t '.points_balance', :balance => current_user.balance
-        %span.points_balance_value (#{number_to_currency current_user.balance_value})
   .span11
     .split-right
       %h2= t '.points_given'

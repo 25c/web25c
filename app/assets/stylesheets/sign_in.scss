@@ -92,7 +92,8 @@ body#widget-sign-in {
   }
 }
 
-body.sessions.new {
+#sign-in {
+  text-align: center;
   .form-submit {
     text-align: left;
   }

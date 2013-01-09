@@ -9,7 +9,11 @@ class InvitesController < ApplicationController
   end
   
   def show
-    session[:redirect_path] = request.path unless self.signed_in?
+    self.current_user = nil if self.signed_in? and self.current_user.role == 'tipper'
+    unless self.signed_in?
+      session[:redirect_path] = request.path 
+      @user = User.new
+    end
   end
   
   def update
