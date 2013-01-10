@@ -76,7 +76,9 @@ en:
       index:
         title: Dashboard
         total_received: "Since joining, you've received..."
+        total_withdrawable: "At this time you are eligible a payout of..."
         points_received: Points received
+        points: points
     widgets:
       index:
         title: Widget Management
