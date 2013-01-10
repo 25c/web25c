@@ -36,6 +36,8 @@
 
 .padded
   %h1= yield :title
+  %p Congratulations #{current_user.display_name}! You've decided to buy #{@amount_points} points for #{number_to_currency(@amount_values[@amount_points].to_f / 100.0)}. 
+  %p.buffer Please enter your payment information now so you can start rewarding content you love!
 .row
   .span3
     .points
