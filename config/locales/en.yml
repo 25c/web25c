@@ -78,7 +78,16 @@ en:
         total_received: "Since joining, you've received..."
         total_withdrawable: "At this time you are eligible a payout of..."
         points_received: Points received
+        payout_estimate: Payout estimate for %{month}
+        estimate_details: Payout amounts are calculated month-by-month based on widget revenue. See %{link} for more details.
+        fees_link: the fees page
+        payout_available: Payout available
+        available_details: Payouts are provided via ACH payments and are usually processed within a few days.
         points: points
+        request_payout: Request Payout
+      form:
+        account_instructions: "To request a payout, please enter or verify your bank information for an ACH transfer."
+        send: Send Payout Information
     widgets:
       index:
         title: Widget Management

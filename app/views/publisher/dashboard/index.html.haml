@@ -1,7 +1,13 @@
 - content_for :title, '25c - ' + t('.title')
 
+- content_for :js do
+  :javascript
+    $(document).ajaxComplete(function(event, xhr, settings) {
+      $('#payout-form').empty().html(xhr.responseText);
+    });
+
 .row
-  .span11
+  .span9
     .split-left
       %h2= t '.points_received'
       
@@ -15,10 +21,25 @@
             %th.col-action &nbsp;
         %tbody
           = render :partial => 'clicks'
-  .span5
+  .span7
     .split-right
       %h2= t '.total_received'
       .stats
         .stat.stat-points-received
           .stat-value= number_with_delimiter @total_received
           .stat-label= t('.points')
+      
+      %h2= t '.payout_estimate', :month => Time.zone.now.to_date.strftime("%B")
+      .stats
+        .stat.stat-points-received
+          .stat-value= number_to_currency @payout_estimate
+          .stat-details= raw t '.estimate_details', :link => link_to(t('.fees_link'), fees_url)
+          
+      %h2= t '.payout_available'
+      .stats
+        .stat.stat-points-received
+          .stat-value= number_to_currency @payout_available
+          .stat-details= t '.available_details'
+      #payout-form
+        = link_to t('.request_payout'), {:action => 'request_payout' }, 
+          :class => 'button', :remote => true

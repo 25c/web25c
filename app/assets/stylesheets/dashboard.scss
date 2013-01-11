@@ -11,6 +11,10 @@ body.dashboard {
         font-family: $sansFontFamily;
         font-size: 11px;
         color: $gray-dark-text;
+        margin-bottom: 20px;
+      }
+      .stat-details {
+        margin: 10px 0 20px 0;
       }
       &.stat-points-given {
         margin-left: 100px;

@@ -1,0 +1,22 @@
+- unless Rails.env.production?
+  *** TEST EMAIL FROM DEVELOPMENT / STAGING
+  \
+  
+USER:
+\
+Name:
+= @user.display_name
+\
+Account Email:
+=@user.email
+\
+ACH Info
+Name: #{@user.ach_name}
+Account Number: #{@user.ach_account_number}
+Routing Number: #{@user.ach_routing_number}
+Type: #{@user.ach_type}
+\
+Payment Requested:
+\
+Amount:
+= number_to_currency(@user.payout_available.amount.to_f / 100000000)

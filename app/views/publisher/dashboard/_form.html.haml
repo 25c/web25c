@@ -1,0 +1,11 @@
+= simple_form_for [:publisher, current_user], :url => publisher_submit_request_path, :remote => true do |f|
+  .control-group
+    .controls
+      %p= t '.account_instructions'
+  = f.input :ach_name
+  = f.input :ach_routing_number
+  = f.input :ach_account_number
+  = f.input :ach_type, :collection => User::ACH_TYPES, :label_method => lambda{ |value| t("activerecord.values.user.ach_type.#{value}") }, :include_blank => false
+  .control-group
+    .controls
+      = f.submit t('.send'), :class => 'button'

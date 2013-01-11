@@ -6,12 +6,4 @@
     = f.input :email
     .control-group
       .controls
-        %h2= t '.account_details'
-        %p= t '.account_instructions'
-    = f.input :ach_name
-    = f.input :ach_routing_number
-    = f.input :ach_account_number
-    = f.input :ach_type, :collection => User::ACH_TYPES, :label_method => lambda{ |value| t("activerecord.values.user.ach_type.#{value}") }, :include_blank => false
-    .control-group
-      .controls
         = f.submit :class => 'button'
