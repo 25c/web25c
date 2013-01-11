@@ -22,9 +22,6 @@ Web25c::Application.routes.draw do
   
   match 'widget/sign-in' => 'sessions#widget_new', :as => :widget_sign_in, :via => :get
   
-  # DEBUG
-  match 'widget/intro' => 'sessions#widget_intro', :as => :widget_intro, :via => :get
-
   match 'about' => 'home#about', :as => :about
   match 'faq' => 'home#faq', :as => :faq
   match 'fees' => 'home#fees', :as => :fees
@@ -67,7 +64,9 @@ Web25c::Application.routes.draw do
   
   namespace :publisher do
     # Dashboard
-    root :to => 'dashboard#index', :as => :dashboard    
+    root :to => 'dashboard#index', :as => :dashboard
+    match 'request_payout' => 'dashboard#request_payout'
+    match 'submit_request' =>  'dashboard#submit_request', :as => :submit_request
     # Widgets
     resources :widgets, :as => :buttons, :except => [ :new, :edit ]
     # Account

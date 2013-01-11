@@ -3,6 +3,7 @@ class ApplicationMailer < ActionMailer::Base
   default from: "no-reply@25c.com"
   layout "mailer"
   
+  include Resque::Mailer
   include ActionView::Helpers::NumberHelper
   helper_method :report_number
   
@@ -25,18 +26,11 @@ class ApplicationMailer < ActionMailer::Base
     @recipient
   end
   
-  def new_payout_request(user, payment)
-    @user = user
-    @payment = payment
+  def payout_request(user_id)
+    @user = User.find(user_id)
     mail :to => recipient("payout#{'-' + Rails.env unless Rails.env.production?}@25c.com"), :subject => 'New Payout Request'
   end
-  
-  def updated_payout_request(user, payment)
-    @user = user
-    @payment = payment
-    mail :to => recipient("payout#{'-' + Rails.env unless Rails.env.production?}@25c.com"), :subject => 'Updated Payout Request'
-  end
-  
+    
   def daily_report    
     day = Time.now.in_time_zone("Pacific Time (US & Canada)").to_date() - 1
     @day = day
