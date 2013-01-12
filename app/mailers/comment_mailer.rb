@@ -5,7 +5,7 @@ class CommentMailer < ApplicationMailer
   # >> when a tipper gain position from previous position (may enter displayable area)
   # >> two types of emails depending if going up or down in position. 
   # >> show tipper if in displayable area
-  def new_position_in_testimonial(comment_uuid, previous_pos, current_position)
+  def new_position_in_testimonial(comment_uuid, previous_pos, current_pos)
     @comment = Comment.find_by_uuid(comment_uuid)
     @user = @comment.user
     @click = @comment.click
@@ -21,7 +21,7 @@ class CommentMailer < ApplicationMailer
   end
   
   # >> Receive an email when someone promote one of your comment in testimonial widget
-  def testimonial_promoted(comment_id, tipper_user_id, amount, current_position)
+  def testimonial_promoted(comment_id, tipper_user_id, amount, current_pos)
     @comment = Comment.find_by_id(comment_id)
     @user = @comment.user
     @tipper = User.find_by_id(tipper_user_id)
@@ -30,8 +30,8 @@ class CommentMailer < ApplicationMailer
     else
       @utitle = @comment.url.title
     end
-    @amount = promoted_amount
-    @curpos = current_position
+    @amount = amount
+    @curpos = current_pos
     mail :to => recipient(@user.email), :subject => "Someone has promoted your note on #{@utitle}"
   end
   

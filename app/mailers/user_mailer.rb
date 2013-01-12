@@ -110,16 +110,16 @@ class UserMailer < ApplicationMailer
 
   
   # >> Welcome email tailored to widget that the user clicked on
-  def new_user_FirstClick(user_id)
+  def new_user_FirstClick(user_id, url_id)
     @user = User.find(user_id)
-
+    @url = User.find_by_id(url_id)
     mail :to => recipient(@user.email), :subject => "Welcome to 25c!"
   end
   
   # >> Encouragement email tailored to widget that the user clicked on
-  def new_user_SecondClick(user_id)
+  def new_user_SecondClick(user_id, url_id)
     @user = User.find(user_id)
-
+    @url = User.find_by_id(url_id)
     mail :to => recipient(@user.email), :subject => "Welcome back to 25c!"
   end
   
