@@ -1,5 +1,4 @@
-%p= t '.greeting'
 %p= t '.share', :user => @user.display_name
 %p= t '.percentage', :percentage => number_to_percentage(@invite.share_amount, :precision => 0)
 %p= t '.to_accept'
-%p{ :style => 'margin-bottom:30px;'}= link_to invite_url(:id => @invite.uuid), invite_url(:id => @invite.uuid)
+%p{ :style => 'margin-bottom:30px;'}= link_to invite_url(:id => @invite.uuid), invite_url(:id => @invite.uuid), :style => 'color: #08c; text-decoration: none;'

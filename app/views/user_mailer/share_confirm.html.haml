@@ -1,8 +1,6 @@
-%p Hi #{@sharer.display_name}!
-
 %p You are now sharing tips with #{@receiver.display_name}.
 
 %p Percentage shared: #{@share_amount}%.
 
 %p Update your button settings anytime:
-%p{ :style => 'margin-bottom:30px;'}= link_to publisher_widgets_url, publisher_widgets_url
+%p{ :style => 'margin-bottom:30px;'}= link_to publisher_widgets_url, publisher_widgets_url, :style => 'color: #08c; text-decoration: none;'
