@@ -6,13 +6,9 @@ class Publisher::DashboardController < Publisher::PublisherController
     @total_received = Integer @clicks.sum { |click| click.amount_free + click.amount_paid }
     
     # TODO: implement CRON job to update fields below for all users
-    # @payout_estimate = self.current_user.payout_estimate
-    # @payout_available = self.current_user.payout_available
+    @payout_estimate = self.current_user.payout_estimate
+    @payout_available = self.current_user.payout_available
     
-    # DEBUG VALUES BELOW
-    @payout_estimate = 20
-    @payout_available = 10
-
   end
   
   def request_payout

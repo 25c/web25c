@@ -1,3 +1,5 @@
+<%= t('.greeting', :name => @user ? @user.display_name : @recipient) %>!
+
 <%= yield %>
 
 <%= t '.valediction' %>
@@ -8,3 +10,4 @@
 <% if Rails.env.development? %>
 <%= t('.recipient', :recipient => @recipient) %>
 <% end %>
+

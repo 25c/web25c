@@ -1,6 +1,23 @@
-= yield
-%p= t '.valediction'
-%p= t '.team'
+%div{:style => 'border: 1px solid #D2CFCF; font: normal normal 15px/20px "EB Garamond", Garamond, "Palatino Linotype", Serif;'}
+  %div{:style => 'position: relative; padding: 2px; border-bottom: 1px solid #D2CFCF;'}
+    %div{:style => 'background-color: #EFEFEF; height: 36px; padding: 7px 0 0 20px'}
+      = link_to root_url do
+        %img{:src => root_url + image_path('logo-header.png')[1..-1]}
+
+  %div{:style => 'padding: 30px 40px;'}
+    %h2{:style => 'font: normal bold 16px Raleway, helvetica, arial, sans-serif;'}
+      = t('.greeting', :name => @user ? @user.display_name : @recipient)
+    = yield
+  
+    %p= t '.valediction'
+    %p= t '.team'
+      
+  %div{:style => 'background-color: #EFEFEF; height: 32px; margin: 2px; padding-top: 18px; font: normal normal 13px Raleway, helvetica, arial, sans-serif; text-align: center;'}
+    &copy; 2013 25c, Inc.
+    &bull;
+    = link_to t('.help'), faq_url, :style => 'color: #08c; text-decoration: none;'
+    &bull;
+    = link_to t('.unsuscribe'), '#', :style => 'color: #08c; text-decoration: none;'
+
 - if Rails.env.development?
-  %hr
   %p= t('.recipient', :recipient => @recipient)

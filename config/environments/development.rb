@@ -13,6 +13,9 @@ Web25c::Application.configure do
     :enable_starttls_auto => true
   }
   
+  # DEBUG
+  ENV["MAILTO"] = 'lionel@25c.com'
+  
   ENV["REDISTOGO_URL"] = 'redis://localhost:6379'
   ENV["API25C_URL"] = 'localhost:5000'
   ENV["DATA25C_URL"] = 'http://localhost:5300'

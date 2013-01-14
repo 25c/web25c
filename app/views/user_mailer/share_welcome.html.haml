@@ -1,8 +1,6 @@
-%p Hi #{@receiver.display_name}!
-
 %p You are now set up to receive tips shared by #{@sharer.display_name}.
 
 %p Percentage shared: #{@share_amount}%.
 
 %p Check your dashboard at any time to see if you have received any shared tips:
-%p{ :style => 'margin-bottom:30px;'}= link_to publisher_dashboard_url, publisher_dashboard_url
+%p{ :style => 'margin-bottom:30px;'}= link_to publisher_dashboard_url, publisher_dashboard_url, :style => 'color: #08c; text-decoration: none;'

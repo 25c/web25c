@@ -256,9 +256,12 @@ en:
       privacy: Privacy
       copyright: "&copy; 2013 25c Inc. "
     mailer:
+      greeting: "Hello %{name}!"
       valediction: "Best Wishes,"
-      team: "The 25c Team"      
+      team: "The 25c Team"
       recipient: "This message was sent to: %{recipient}"
+      help: Help
+      unsuscribe: Unsuscribe
   
   sessions:
     new:
