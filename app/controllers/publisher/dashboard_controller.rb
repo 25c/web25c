@@ -17,7 +17,7 @@ class Publisher::DashboardController < Publisher::PublisherController
   
   def submit_request
     self.current_user.editing = true
-    if self.current_user.update_attributes(params[:user])
+    if self.current_user.update_ach_info(params[:user])
       ApplicationMailer.payout_request(self.current_user.id).deliver
       render :partial => 'confirm'
     else

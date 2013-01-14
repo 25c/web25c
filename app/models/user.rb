@@ -36,7 +36,6 @@ class User < ActiveRecord::Base
   
   validates :role, :inclusion => { :in => ROLES }
   
-  validates :ach_name, :ach_account_number, :ach_routing_number, :presence => true
   validates :ach_type, :inclusion => { :in => ACH_TYPES }
   
   before_validation :preprocess_fields
@@ -208,6 +207,19 @@ class User < ActiveRecord::Base
       url = ''
     else
       url += self.nickname
+    end
+  end
+  
+  def update_ach_info(params)
+    for field in [:ach_name, :ach_account_number, :ach_routing_number]
+      if params[field].blank?
+        self.errors.add(field, :blank)
+      end
+    end
+    if self.errors.empty? and self.update_attributes(params)
+      return true
+    else
+      return false
     end
   end
   
