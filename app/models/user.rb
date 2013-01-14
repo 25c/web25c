@@ -79,6 +79,7 @@ class User < ActiveRecord::Base
       user.last_name = auth['info']['last_name'] if user.last_name.blank?
       user.picture_url = auth['info']['image'] unless user.picture?
       user.save!
+      Resque.enqueue(BackgroundJob, 'User', user.id, 'update_picture')
     else
       raise Exception.new("Unsuppored omniauth strategy: #{auth['provider']}")
     end
