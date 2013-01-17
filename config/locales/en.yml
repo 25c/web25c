@@ -175,7 +175,7 @@ en:
     points:
       index:
         buy_points: Buy points
-        about_html: "<p>Points are a quick and easy way to show your support for your favorite sites. Buy points, then give them out anywhere you see a 25c widget.</p><p>The more points you give, the higher your rank.</p>"
+        about_html: "<p>Points allow you to throw your weight behind creations and thoughts you support. Spend them wherever you see a 25c widget. You can earn 25c points in a variety of ways -- or buy them.</p><p>If you buy them, the majority of the revenue goes to sponsor the website where you gave your points.</p>"
         points_20: 20 points
         points_45: 45 points
         points_100: 100 points
@@ -207,8 +207,8 @@ en:
       title: "25c - Turn fans into sponsors."
       meta_description: "25c - Turn fans into sponsors."
       tagline: "Turn fans into sponsors."
-      value_prop: "25c: Use our widgets to engage your website's fans to support you directly."
-      description_html: "<p>25c widgets give your top fans an edge in being seen and heard a bit more than regular users.  By giving 25c points, some of which are purchased just like in a game.  Another revenue stream for creators and publishers.<p>Plus you get to establish a stronger connection with your top fans.</p>"
+      value_prop: "Use 25c widgets to engage fans on your website and generate direct revenue."
+      description_html: "<p>Introduce gaming mechanics into your content and community. Allow fans to be heard and seen based on 25c points given. <p>Establish a stronger connection with your best fans.</p>"
       add_now: Embed this widget into your site
       works_with: 25c works with
       get_started: Get started now

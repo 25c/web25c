@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20130111201435) do
     t.datetime "updated_at",                            :null => false
     t.string   "pledge_message",        :default => ""
     t.string   "share_users",           :default => ""
-    t.string   "additional_parameters", :default => ""
     t.string   "widget_type",                           :null => false
+    t.string   "additional_parameters", :default => ""
     t.string   "website_url"
   end
 
