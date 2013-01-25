@@ -103,8 +103,8 @@ ActiveRecord::Schema.define(:version => 20130111201435) do
     t.string   "ach_account_number"
     t.string   "ach_routing_number"
     t.string   "ach_type",                            :default => "checking", :null => false
-    t.integer  "payout_available",       :limit => 8
-    t.integer  "payout_estimate",        :limit => 8
+    t.integer  "payout_available",       :limit => 8, :default => 0
+    t.integer  "payout_estimate",        :limit => 8, :default => 0
   end
 
   add_index "users", ["facebook_uid"], :name => "index_users_on_facebook_uid", :unique => true
