@@ -175,7 +175,7 @@ en:
     points:
       index:
         buy_points: Buy points
-        about_html: "<p>Points allow you to throw your weight behind creations and thoughts you support. Spend them wherever you see a 25c widget. You can earn 25c points in a variety of ways -- or buy them.</p><p>If you buy them, the majority of the revenue goes to sponsor the website where you gave your points.</p>"
+        about_html: "<p>25c points allow you to throw your weight behind creators and sponsors you support.</p><p>Give 25c points on any website where you see a 25c widget.</p><p>You can earn 25c points in a variety of ways -- or buy them.  If you buy them, the majority of the revenue goes to sponsor the website where you gave your points.</p>"
         points_20: 20 points
         points_45: 45 points
         points_100: 100 points

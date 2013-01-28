@@ -24,7 +24,6 @@ Web25c::Application.routes.draw do
   
   match 'about' => 'home#about', :as => :about
   match 'faq' => 'home#faq', :as => :faq
-  match 'fees' => 'home#fees', :as => :fees
   match 'terms' => 'home#terms', :as => :terms
   match 'privacy' => 'home#privacy', :as => :privacy
   
