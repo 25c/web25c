@@ -8,9 +8,6 @@
     %h2{:style => 'font: normal bold 16px Raleway, helvetica, arial, sans-serif;'}
       = t('.greeting', :name => @user ? @user.display_name : @recipient)
     = yield
-  
-    %p= t '.valediction'
-    %p= t '.team'
       
   %div{:style => 'background-color: #EFEFEF; height: 32px; margin: 2px; padding-top: 18px; font: normal normal 13px Raleway, helvetica, arial, sans-serif; text-align: center;'}
     &copy; 2013 25c, Inc.
