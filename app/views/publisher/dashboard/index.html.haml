@@ -33,7 +33,6 @@
       .stats
         .stat.stat-points-received
           .stat-value= number_to_currency @payout_estimate
-          .stat-details= raw t '.estimate_details', :link => link_to(t('.fees_link'), fees_url)
           
       %h2= t '.payout_available'
       .stats
