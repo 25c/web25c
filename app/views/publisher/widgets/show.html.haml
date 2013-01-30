@@ -27,6 +27,10 @@
             = text_field_tag :permalink_url
             %span.help-block= t '.instructions'
         .control-group
+          = label_tag :allow_notes, :class => 'control-label checkbox' do
+            = check_box_tag :allow_notes, '1', true
+            = t '.allow_notes'
+        .control-group
           = label_tag :title, t('.title'), :class => 'control-label'
           .controls
             = text_field_tag :title

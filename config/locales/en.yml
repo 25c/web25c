@@ -105,6 +105,7 @@ en:
         title: Content title (optional, for messaging fans)
         width: Width in px (optional, between 400px and 1000px, default 600px)
         fix_error: Configure the permanent URL above to get the code.
+        allow_notes: Allow sponsors to leave notes with their tip
       form:
         share_title: Share Points
         with: with

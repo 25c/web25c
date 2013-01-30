@@ -32,7 +32,7 @@ $(document).ready(function(){
     if (!$container.find('.share-container:hidden').length) $(this).hide();
   });  
   
-  var feedCodeTemplate = '<div class="tip-25c-feed" data-id="%s" data-url="%s" data-title="%s" width="%s"></div><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/widget.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-widget-js");</script>';
+  var feedCodeTemplate = '<div class="tip-25c-feed" data-id="%s" data-url="%s" data-title="%s" width="%s" data-hide-notes="%s"></div><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//<%= ENV["API25C_URL"] %>/public/javascripts/widget.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","tip-25c-widget-js");</script>';
   
   function updatePreview() {
     url = $.trim($('input#permalink_url').val());
@@ -52,7 +52,8 @@ $(document).ready(function(){
         width = 600;
       }
       var title = $.trim($('input#title').val());
-      feedCode = sprintf(feedCodeTemplate, buttonId, url, title, width);
+      var hide_notes = $('input#allow_notes').is(':checked') ? 'false' : 'true';
+      feedCode = sprintf(feedCodeTemplate, buttonId, url, title, width, hide_notes);
       $('.button-code-block').text(feedCode);
       $('.button-code-block, .preview').show();
       clearTimeout(previewTimer);
@@ -65,7 +66,7 @@ $(document).ready(function(){
   updatePreview();
   
   $('input#permalink_url, input#title, input#width').on('keyup', updatePreview);
-  
+  $('input#allow_notes').on('change', updatePreview);
   
   $(document).ajaxComplete(function(event, xhr, settings) {
     $('#widget-form').empty().html(xhr.responseText);
