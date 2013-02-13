@@ -107,7 +107,7 @@ en:
         fix_error: Configure the permanent URL above to get the code.
         allow_notes: Allow sponsors to leave notes with their tip
       form:
-        share_title: Share Points
+        share_title: Optional: Share Points
         with: with
         sharing: "%{amount} with %{name} (Sharing)"
         invited: "%{amount} with %{email} (Invited %{date})"
@@ -205,15 +205,18 @@ en:
         
   home:
     index:
-      title: "25c - Turn fans into sponsors."
-      meta_description: "25c - Turn fans into sponsors."
-      tagline: "Turn fans into sponsors."
-      value_prop: "Use 25c widgets to engage fans on your website and generate direct revenue."
-      description_html: "<p>Introduce gaming mechanics into your content and community. <p>Allow fans to be heard and seen based on 25c points given.</p><p>Establish a stronger connection with your best fans.</p>"
-      add_now: Embed this widget into your site
+      title: "25c - Unleash your fans!"
+      meta_description: "25c - Widgets to Engage your fans!"
+      tagline: "Unleash your Fans!"
+      value_prop: "Install the 25c widget and increase engagement, traffic and revenues!"
+      description_html: "<p><b>Giving made simple:</b> One-click contributions as small as 25cents. No credit card charge required for every pledge.</p><p><b>Gaming mechanics:</b> Top sponsors are featured to encourage others to participate.</p><b>Get to know your fans:</b> Find out who is truly supporting you.</p><p><b>Get paid:</b> No up-front and no monthly expenses to you. 85% paid in your account.</p><p><b>Easily installed:</b> Simply cut & paste our HTML code into your web templates.</p>"
+      description_learn_html: "Learn more here "
+      description_demo_html: "And View a demo here "
+
       works_with: 25c works with
       get_started: Get started now
-    
+      add_now: Add this widget to your site now!
+      
     not_found:
       title: Page Not Found
       no_page_found: "The page <b>%{path}</b> was not found on this server. Please check the URL and try again, or %{return_home}."
