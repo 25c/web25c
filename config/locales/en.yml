@@ -208,10 +208,10 @@ en:
       title: "25c - Unleash your fans!"
       meta_description: "25c - Widgets to Engage your fans!"
       tagline: "Unleash your Fans!"
-      value_prop: "Install the 25c widget and increase engagement, traffic and revenues!"
-      description_html: "<p><b>Giving made simple:</b> One-click contributions as small as 25cents. No credit card charge required for every pledge.</p><p><b>Gaming mechanics:</b> Top sponsors are featured to encourage others to participate.</p><b>Get to know your fans:</b> Find out who is truly supporting you.</p><p><b>Get paid:</b> No up-front and no monthly expenses to you. 85% paid in your account.</p><p><b>Easily installed:</b> Simply cut & paste our HTML code into your web templates.</p>"
-      description_learn_html: "Learn more here "
-      description_demo_html: "And View a demo here "
+      value_prop: "Fans love your online content. Add the 25c widget and let them crowd sponsor you."
+      description_html: "<p><b>Giving made simple:</b> One-click contributions as small as 25cents.</p><p><b>Gaming mechanics:</b> Top sponsors are featured to encourage others to participate.</p><b>Get to know your fans:</b> Find out who is truly supporting you.</p><p><b>Get paid:</b> No up-front and no monthly expenses to you. 85% paid in your account.</p><p><b>Easily installed:</b> Simply cut & paste our HTML code into your web templates.</p><p><b><a href=https://www.25c.com/faq>Learn more</a></b> ....... <b><a href=https://www.25c.com/demo>See the demo</a></b></p>"
+      learnmore_link: "Learn more here" 
+      demo_link: "View a demo here"
 
       works_with: 25c works with
       get_started: Get started now
