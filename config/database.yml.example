@@ -15,12 +15,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  pool: 5
   database: web25c_development
-  host: "<%= ENV['ENV_25C_DB_HOST'] %>"
-  port: "<%= ENV['ENV_25C_DB_PORT'] %>"
-  username: "<%= ENV['ENV_25C_DB_USERNAME'] %>"
-  password: "<%= ENV['ENV_25C_DB_PASSWORD'] %>"
+  pool: 5
+  username: superuser
+  password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -43,69 +41,63 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  pool: 5
   database: web25c_test
-  host: "<%= ENV['ENV_25C_DB_HOST'] %>"
-  port: "<%= ENV['ENV_25C_DB_PORT'] %>"
-  username: "<%= ENV['ENV_25C_DB_USERNAME'] %>"
-  password: "<%= ENV['ENV_25C_DB_PASSWORD'] %>"
+  pool: 5
+  username: superuser
+  password:
+  # host: localhost
+  # port: 5432
 
 staging:
   adapter: postgresql
   encoding: unicode
-  pool: 5
   database: web25c_staging
-  host: "<%= ENV['ENV_25C_DB_HOST'] %>"
-  port: "<%= ENV['ENV_25C_DB_PORT'] %>"
-  username: "<%= ENV['ENV_25C_DB_USERNAME'] %>"
-  password: "<%= ENV['ENV_25C_DB_PASSWORD'] %>"
+  pool: 5
+  username: superuser
+  password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  pool: 5
   database: web25c_production
-  host: "<%= ENV['ENV_25C_DB_HOST'] %>"
-  port: "<%= ENV['ENV_25C_DB_PORT'] %>"
-  username: "<%= ENV['ENV_25C_DB_USERNAME'] %>"
-  password: "<%= ENV['ENV_25C_DB_PASSWORD'] %>"
+  pool: 5
+  username: superuser
+  password:
 
 development_data:
   adapter: postgresql
   encoding: unicode
-  pool: 5
   database: data25c_development
-  host: "<%= ENV['ENV_25C_DB_HOST'] %>"
-  port: "<%= ENV['ENV_25C_DB_PORT'] %>"
-  username: "<%= ENV['ENV_25C_DB_USERNAME'] %>"
-  password: "<%= ENV['ENV_25C_DB_PASSWORD'] %>"
+  pool: 5
+  username: superuser
+  password:
 
+  # host: localhost
+  # port: 5432
+      
 test_data:
   adapter: postgresql
   encoding: unicode
-  pool: 5
   database: data25c_test
-  host: "<%= ENV['ENV_25C_DB_HOST'] %>"
-  port: "<%= ENV['ENV_25C_DB_PORT'] %>"
-  username: "<%= ENV['ENV_25C_DB_USERNAME'] %>"
-  password: "<%= ENV['ENV_25C_DB_PASSWORD'] %>"
+  pool: 5
+  username: superuser
+  password:
 
 staging_data:
   adapter: postgresql
   encoding: unicode
-  pool: 5
   database: data25c_staging
-  host: "<%= ENV['ENV_25C_DB_HOST'] %>"
-  port: "<%= ENV['ENV_25C_DB_PORT'] %>"
-  username: "<%= ENV['ENV_25C_DB_USERNAME'] %>"
-  password: "<%= ENV['ENV_25C_DB_PASSWORD'] %>"
+  pool: 5
+  username: superuser
+  password:
 
+  # host: localhost
+  # port: 5432
+      
 production_data:
   adapter: postgresql
   encoding: unicode
-  pool: 5
   database: data25c_production
-  host: "<%= ENV['ENV_25C_DB_HOST'] %>"
-  port: "<%= ENV['ENV_25C_DB_PORT'] %>"
-  username: "<%= ENV['ENV_25C_DB_USERNAME'] %>"
-  password: "<%= ENV['ENV_25C_DB_PASSWORD'] %>"
+  pool: 5
+  username: superuser
+  password:

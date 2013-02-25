@@ -12,9 +12,8 @@ staging:
   api_key: "3ca58924a123e1eb86c46403db3c0605e8001255"
   application: "web25c-stage"
   worker_min_count: 1
-  
+
 production:
   api_key: "3ca58924a123e1eb86c46403db3c0605e8001255"
   application: "web25c"
   worker_min_count: 1
-  

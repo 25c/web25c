@@ -1,7 +1,7 @@
 development:
   publishable_key: pk_test_wOaRJBEIIn5nBOtQ8D7UqvIe
   secret_key: sk_test_9GECsLndO8PHDgQcAnRIIFFL
-  
+
 test:
   publishable_key: pk_test_wOaRJBEIIn5nBOtQ8D7UqvIe
   secret_key: sk_test_9GECsLndO8PHDgQcAnRIIFFL
@@ -9,8 +9,7 @@ test:
 staging:
   publishable_key: pk_test_wOaRJBEIIn5nBOtQ8D7UqvIe
   secret_key: sk_test_9GECsLndO8PHDgQcAnRIIFFL
-  
+
 production:
   publishable_key: pk_live_2ej5LczgudHDZFdZYVtqTtxK
   secret_key: sk_live_7XPXGxsWIwQQ1j5vh48HrKef
-  
