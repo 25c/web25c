@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  force_ssl
   
   # "Coming Soon" placeholder page
   # before_filter :show_placeholder_if_production

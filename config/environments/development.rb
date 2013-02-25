@@ -55,4 +55,9 @@ Web25c::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  # config.force_ssl = true
+  config.use_ssl = true
+
+  config.ssl_port = ENV['SSL_PORT'] || 3001
 end

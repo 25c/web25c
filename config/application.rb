@@ -76,5 +76,6 @@ module Web25c
       g.template_engine :haml
     end
     
+    config.use_ssl = false
   end
 end
